@@ -1,0 +1,20 @@
+{
+  "game_id": "824747",
+  "date": "2026-06-25",
+  "game": "New York Yankees @ Boston Red Sox",
+  "away_team": "New York Yankees",
+  "home_team": "Boston Red Sox",
+  "away_sp": "Cam Schlittler",
+  "home_sp": "Connelly Early",
+  "venue": "Fenway Park",
+  "status": "Pre-Game",
+  "slate_summary": {
+    "top_hr_target": "",
+    "top_pitcher": "",
+    "alpha_game_rating": "",
+    "notes": ""
+  },
+  "hitters": [],
+  "pitchers": [],
+  "weather": {}
+}

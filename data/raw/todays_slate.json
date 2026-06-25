@@ -1,0 +1,101 @@
+[
+  {
+    "game_id": 822961,
+    "date": "2026-06-25",
+    "game": "Kansas City Royals @ Tampa Bay Rays",
+    "away_team": "Kansas City Royals",
+    "home_team": "Tampa Bay Rays",
+    "away_sp": "Seth Lugo",
+    "home_sp": "Casey Legumina",
+    "venue": "Tropicana Field",
+    "status": "Final"
+  },
+  {
+    "game_id": 823366,
+    "date": "2026-06-25",
+    "game": "Seattle Mariners @ Pittsburgh Pirates",
+    "away_team": "Seattle Mariners",
+    "home_team": "Pittsburgh Pirates",
+    "away_sp": "Bryce Miller",
+    "home_sp": "Bubba Chandler",
+    "venue": "PNC Park",
+    "status": "Final"
+  },
+  {
+    "game_id": 823209,
+    "date": "2026-06-25",
+    "game": "Athletics @ San Francisco Giants",
+    "away_team": "Athletics",
+    "home_team": "San Francisco Giants",
+    "away_sp": "Jeffrey Springs",
+    "home_sp": "Landen Roupp",
+    "venue": "Oracle Park",
+    "status": "In Progress"
+  },
+  {
+    "game_id": 824258,
+    "date": "2026-06-25",
+    "game": "Houston Astros @ Detroit Tigers",
+    "away_team": "Houston Astros",
+    "home_team": "Detroit Tigers",
+    "away_sp": "Tatsuya Imai",
+    "home_sp": "Troy Melton",
+    "venue": "Comerica Park",
+    "status": "Pre-Game"
+  },
+  {
+    "game_id": 822717,
+    "date": "2026-06-25",
+    "game": "Philadelphia Phillies @ Washington Nationals",
+    "away_team": "Philadelphia Phillies",
+    "home_team": "Washington Nationals",
+    "away_sp": "Cristopher S\u00e1nchez",
+    "home_sp": "Cade Cavalli",
+    "venue": "Nationals Park",
+    "status": "Pre-Game"
+  },
+  {
+    "game_id": 822797,
+    "date": "2026-06-25",
+    "game": "Texas Rangers @ Toronto Blue Jays",
+    "away_team": "Texas Rangers",
+    "home_team": "Toronto Blue Jays",
+    "away_sp": "MacKenzie Gore",
+    "home_sp": "Kevin Gausman",
+    "venue": "Rogers Centre",
+    "status": "Pre-Game"
+  },
+  {
+    "game_id": 823612,
+    "date": "2026-06-25",
+    "game": "Chicago Cubs @ New York Mets",
+    "away_team": "Chicago Cubs",
+    "home_team": "New York Mets",
+    "away_sp": "Matthew Boyd",
+    "home_sp": "Freddy Peralta",
+    "venue": "Citi Field",
+    "status": "Pre-Game"
+  },
+  {
+    "game_id": 824747,
+    "date": "2026-06-25",
+    "game": "New York Yankees @ Boston Red Sox",
+    "away_team": "New York Yankees",
+    "home_team": "Boston Red Sox",
+    "away_sp": "Cam Schlittler",
+    "home_sp": "Connelly Early",
+    "venue": "Fenway Park",
+    "status": "Pre-Game"
+  },
+  {
+    "game_id": 823042,
+    "date": "2026-06-25",
+    "game": "Arizona Diamondbacks @ St. Louis Cardinals",
+    "away_team": "Arizona Diamondbacks",
+    "home_team": "St. Louis Cardinals",
+    "away_sp": "Zac Gallen",
+    "home_sp": "Michael McGreevy",
+    "venue": "Busch Stadium",
+    "status": "Pre-Game"
+  }
+]

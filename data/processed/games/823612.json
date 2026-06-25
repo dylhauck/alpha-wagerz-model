@@ -1,0 +1,20 @@
+{
+  "game_id": "823612",
+  "date": "2026-06-25",
+  "game": "Chicago Cubs @ New York Mets",
+  "away_team": "Chicago Cubs",
+  "home_team": "New York Mets",
+  "away_sp": "Matthew Boyd",
+  "home_sp": "Freddy Peralta",
+  "venue": "Citi Field",
+  "status": "Pre-Game",
+  "slate_summary": {
+    "top_hr_target": "",
+    "top_pitcher": "",
+    "alpha_game_rating": "",
+    "notes": ""
+  },
+  "hitters": [],
+  "pitchers": [],
+  "weather": {}
+}
