@@ -14,7 +14,46 @@
     "alpha_game_rating": "",
     "notes": ""
   },
-  "hitters": [],
-  "pitchers": [],
-  "weather": {}
+  "hitters": {
+    "away": [],
+    "home": []
+  },
+  "pitchers": [
+    {
+      "Team": "Seattle Mariners",
+      "Pitcher": "Bryce Miller",
+      "Throws": "",
+      "Opponent": "Pittsburgh Pirates",
+      "Pitch Score": "",
+      "Strikeout Score": "",
+      "xwOBA": "",
+      "CSW%": "",
+      "SwStr%": "",
+      "Ball%": "",
+      "PulledBrl%": "",
+      "Brl/BIP%": "",
+      "FB%": "",
+      "HH%": ""
+    },
+    {
+      "Team": "Pittsburgh Pirates",
+      "Pitcher": "Bubba Chandler",
+      "Throws": "",
+      "Opponent": "Seattle Mariners",
+      "Pitch Score": "",
+      "Strikeout Score": "",
+      "xwOBA": "",
+      "CSW%": "",
+      "SwStr%": "",
+      "Ball%": "",
+      "PulledBrl%": "",
+      "Brl/BIP%": "",
+      "FB%": "",
+      "HH%": ""
+    }
+  ],
+  "weather": {},
+  "lineup_status": "unconfirmed",
+  "away_hitters": [],
+  "home_hitters": []
 }

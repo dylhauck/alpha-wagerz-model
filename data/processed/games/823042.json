@@ -7,14 +7,53 @@
   "away_sp": "Zac Gallen",
   "home_sp": "Michael McGreevy",
   "venue": "Busch Stadium",
-  "status": "Pre-Game",
+  "status": "Postponed",
   "slate_summary": {
     "top_hr_target": "",
     "top_pitcher": "",
     "alpha_game_rating": "",
     "notes": ""
   },
-  "hitters": [],
-  "pitchers": [],
-  "weather": {}
+  "hitters": {
+    "away": [],
+    "home": []
+  },
+  "pitchers": [
+    {
+      "Team": "Arizona Diamondbacks",
+      "Pitcher": "Zac Gallen",
+      "Throws": "",
+      "Opponent": "St. Louis Cardinals",
+      "Pitch Score": "",
+      "Strikeout Score": "",
+      "xwOBA": "",
+      "CSW%": "",
+      "SwStr%": "",
+      "Ball%": "",
+      "PulledBrl%": "",
+      "Brl/BIP%": "",
+      "FB%": "",
+      "HH%": ""
+    },
+    {
+      "Team": "St. Louis Cardinals",
+      "Pitcher": "Michael McGreevy",
+      "Throws": "",
+      "Opponent": "Arizona Diamondbacks",
+      "Pitch Score": "",
+      "Strikeout Score": "",
+      "xwOBA": "",
+      "CSW%": "",
+      "SwStr%": "",
+      "Ball%": "",
+      "PulledBrl%": "",
+      "Brl/BIP%": "",
+      "FB%": "",
+      "HH%": ""
+    }
+  ],
+  "weather": {},
+  "lineup_status": "unconfirmed",
+  "away_hitters": [],
+  "home_hitters": []
 }

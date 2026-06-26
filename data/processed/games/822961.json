@@ -14,7 +14,46 @@
     "alpha_game_rating": "",
     "notes": ""
   },
-  "hitters": [],
-  "pitchers": [],
-  "weather": {}
+  "hitters": {
+    "away": [],
+    "home": []
+  },
+  "pitchers": [
+    {
+      "Team": "Kansas City Royals",
+      "Pitcher": "Seth Lugo",
+      "Throws": "",
+      "Opponent": "Tampa Bay Rays",
+      "Pitch Score": "",
+      "Strikeout Score": "",
+      "xwOBA": "",
+      "CSW%": "",
+      "SwStr%": "",
+      "Ball%": "",
+      "PulledBrl%": "",
+      "Brl/BIP%": "",
+      "FB%": "",
+      "HH%": ""
+    },
+    {
+      "Team": "Tampa Bay Rays",
+      "Pitcher": "Casey Legumina",
+      "Throws": "",
+      "Opponent": "Kansas City Royals",
+      "Pitch Score": "",
+      "Strikeout Score": "",
+      "xwOBA": "",
+      "CSW%": "",
+      "SwStr%": "",
+      "Ball%": "",
+      "PulledBrl%": "",
+      "Brl/BIP%": "",
+      "FB%": "",
+      "HH%": ""
+    }
+  ],
+  "weather": {},
+  "lineup_status": "unconfirmed",
+  "away_hitters": [],
+  "home_hitters": []
 }

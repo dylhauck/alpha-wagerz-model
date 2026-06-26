@@ -1,0 +1,8 @@
+{
+  "power": 0.30,
+  "contact": 0.20,
+  "pitcher": 0.20,
+  "weather": 0.10,
+  "park": 0.10,
+  "recent": 0.10
+}

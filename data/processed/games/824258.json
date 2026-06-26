@@ -7,14 +7,53 @@
   "away_sp": "Tatsuya Imai",
   "home_sp": "Troy Melton",
   "venue": "Comerica Park",
-  "status": "Pre-Game",
+  "status": "Final",
   "slate_summary": {
     "top_hr_target": "",
     "top_pitcher": "",
     "alpha_game_rating": "",
     "notes": ""
   },
-  "hitters": [],
-  "pitchers": [],
-  "weather": {}
+  "hitters": {
+    "away": [],
+    "home": []
+  },
+  "pitchers": [
+    {
+      "Team": "Houston Astros",
+      "Pitcher": "Tatsuya Imai",
+      "Throws": "",
+      "Opponent": "Detroit Tigers",
+      "Pitch Score": "",
+      "Strikeout Score": "",
+      "xwOBA": "",
+      "CSW%": "",
+      "SwStr%": "",
+      "Ball%": "",
+      "PulledBrl%": "",
+      "Brl/BIP%": "",
+      "FB%": "",
+      "HH%": ""
+    },
+    {
+      "Team": "Detroit Tigers",
+      "Pitcher": "Troy Melton",
+      "Throws": "",
+      "Opponent": "Houston Astros",
+      "Pitch Score": "",
+      "Strikeout Score": "",
+      "xwOBA": "",
+      "CSW%": "",
+      "SwStr%": "",
+      "Ball%": "",
+      "PulledBrl%": "",
+      "Brl/BIP%": "",
+      "FB%": "",
+      "HH%": ""
+    }
+  ],
+  "weather": {},
+  "lineup_status": "unconfirmed",
+  "away_hitters": [],
+  "home_hitters": []
 }

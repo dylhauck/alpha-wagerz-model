@@ -1,10 +1,16 @@
 game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status
-822961,2026-06-25,Kansas City Royals @ Tampa Bay Rays,Kansas City Royals,Tampa Bay Rays,Seth Lugo,Casey Legumina,Tropicana Field,Final
-823366,2026-06-25,Seattle Mariners @ Pittsburgh Pirates,Seattle Mariners,Pittsburgh Pirates,Bryce Miller,Bubba Chandler,PNC Park,Final
-823209,2026-06-25,Athletics @ San Francisco Giants,Athletics,San Francisco Giants,Jeffrey Springs,Landen Roupp,Oracle Park,In Progress
-824258,2026-06-25,Houston Astros @ Detroit Tigers,Houston Astros,Detroit Tigers,Tatsuya Imai,Troy Melton,Comerica Park,Pre-Game
-822717,2026-06-25,Philadelphia Phillies @ Washington Nationals,Philadelphia Phillies,Washington Nationals,Cristopher Sánchez,Cade Cavalli,Nationals Park,Pre-Game
-822797,2026-06-25,Texas Rangers @ Toronto Blue Jays,Texas Rangers,Toronto Blue Jays,MacKenzie Gore,Kevin Gausman,Rogers Centre,Pre-Game
-823612,2026-06-25,Chicago Cubs @ New York Mets,Chicago Cubs,New York Mets,Matthew Boyd,Freddy Peralta,Citi Field,Pre-Game
-824747,2026-06-25,New York Yankees @ Boston Red Sox,New York Yankees,Boston Red Sox,Cam Schlittler,Connelly Early,Fenway Park,Pre-Game
-823042,2026-06-25,Arizona Diamondbacks @ St. Louis Cardinals,Arizona Diamondbacks,St. Louis Cardinals,Zac Gallen,Michael McGreevy,Busch Stadium,Pre-Game
+824255,2026-06-26,Houston Astros @ Detroit Tigers,Houston Astros,Detroit Tigers,Spencer Arrighetti,Keider Montero,Comerica Park,Scheduled
+823363,2026-06-26,Cincinnati Reds @ Pittsburgh Pirates,Cincinnati Reds,Pittsburgh Pirates,Andrew Abbott,Paul Skenes,PNC Park,Scheduled
+824824,2026-06-26,Washington Nationals @ Baltimore Orioles,Washington Nationals,Baltimore Orioles,Andrew Alvarez,Trevor Rogers,Oriole Park at Camden Yards,Scheduled
+822796,2026-06-26,Texas Rangers @ Toronto Blue Jays,Texas Rangers,Toronto Blue Jays,Nathan Eovaldi,Patrick Corbin,Rogers Centre,Scheduled
+824423,2026-06-26,Seattle Mariners @ Cleveland Guardians,Seattle Mariners,Cleveland Guardians,Luis Castillo,Joey Cantillo,Progressive Field,Scheduled
+822962,2026-06-26,Arizona Diamondbacks @ Tampa Bay Rays,Arizona Diamondbacks,Tampa Bay Rays,Zac Gallen,Nick Martinez,Tropicana Field,Scheduled
+823610,2026-06-26,Philadelphia Phillies @ New York Mets,Philadelphia Phillies,New York Mets,Zack Wheeler,,Citi Field,Scheduled
+824743,2026-06-26,New York Yankees @ Boston Red Sox,New York Yankees,Boston Red Sox,Will Warren,Payton Tolle,Fenway Park,Scheduled
+824582,2026-06-26,Kansas City Royals @ Chicago White Sox,Kansas City Royals,Chicago White Sox,,,Rate Field,Scheduled
+823773,2026-06-26,Chicago Cubs @ Milwaukee Brewers,Chicago Cubs,Milwaukee Brewers,Colin Rea,Jacob Misiorowski,American Family Field,Scheduled
+823688,2026-06-26,Colorado Rockies @ Minnesota Twins,Colorado Rockies,Minnesota Twins,Tomoyuki Sugano,Taj Bradley,Target Field,Scheduled
+823039,2026-06-26,Miami Marlins @ St. Louis Cardinals,Miami Marlins,St. Louis Cardinals,Max Meyer,Michael McGreevy,Busch Stadium,Scheduled
+824014,2026-06-26,Athletics @ Los Angeles Angels,Athletics,Los Angeles Angels,J.T. Ginn,Walbert Ureña,Angel Stadium,Scheduled
+823285,2026-06-26,Los Angeles Dodgers @ San Diego Padres,Los Angeles Dodgers,San Diego Padres,Roki Sasaki,Walker Buehler,Petco Park,Scheduled
+823206,2026-06-26,Atlanta Braves @ San Francisco Giants,Atlanta Braves,San Francisco Giants,Reynaldo López,,Oracle Park,Scheduled

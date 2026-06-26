@@ -8,8 +8,32 @@
     "away_sp": "Zac Gallen",
     "home_sp": "Michael McGreevy",
     "venue": "Busch Stadium",
-    "status": "Pre-Game",
+    "status": "Postponed",
     "file": "data/processed/games/823042.json"
+  },
+  {
+    "game_id": "822962",
+    "date": "2026-06-26",
+    "game": "Arizona Diamondbacks @ Tampa Bay Rays",
+    "away_team": "Arizona Diamondbacks",
+    "home_team": "Tampa Bay Rays",
+    "away_sp": "Zac Gallen",
+    "home_sp": "Nick Martinez",
+    "venue": "Tropicana Field",
+    "status": "Scheduled",
+    "file": "data/processed/games/822962.json"
+  },
+  {
+    "game_id": "824014",
+    "date": "2026-06-26",
+    "game": "Athletics @ Los Angeles Angels",
+    "away_team": "Athletics",
+    "home_team": "Los Angeles Angels",
+    "away_sp": "J.T. Ginn",
+    "home_sp": "Walbert Ure\u00f1a",
+    "venue": "Angel Stadium",
+    "status": "Scheduled",
+    "file": "data/processed/games/824014.json"
   },
   {
     "game_id": "823209",
@@ -20,8 +44,32 @@
     "away_sp": "Jeffrey Springs",
     "home_sp": "Landen Roupp",
     "venue": "Oracle Park",
-    "status": "In Progress",
+    "status": "Final",
     "file": "data/processed/games/823209.json"
+  },
+  {
+    "game_id": "823206",
+    "date": "2026-06-26",
+    "game": "Atlanta Braves @ San Francisco Giants",
+    "away_team": "Atlanta Braves",
+    "home_team": "San Francisco Giants",
+    "away_sp": "Reynaldo L\u00f3pez",
+    "home_sp": "",
+    "venue": "Oracle Park",
+    "status": "Scheduled",
+    "file": "data/processed/games/823206.json"
+  },
+  {
+    "game_id": "823773",
+    "date": "2026-06-26",
+    "game": "Chicago Cubs @ Milwaukee Brewers",
+    "away_team": "Chicago Cubs",
+    "home_team": "Milwaukee Brewers",
+    "away_sp": "Colin Rea",
+    "home_sp": "Jacob Misiorowski",
+    "venue": "American Family Field",
+    "status": "Scheduled",
+    "file": "data/processed/games/823773.json"
   },
   {
     "game_id": "823612",
@@ -32,8 +80,32 @@
     "away_sp": "Matthew Boyd",
     "home_sp": "Freddy Peralta",
     "venue": "Citi Field",
-    "status": "Pre-Game",
+    "status": "Final",
     "file": "data/processed/games/823612.json"
+  },
+  {
+    "game_id": "823363",
+    "date": "2026-06-26",
+    "game": "Cincinnati Reds @ Pittsburgh Pirates",
+    "away_team": "Cincinnati Reds",
+    "home_team": "Pittsburgh Pirates",
+    "away_sp": "Andrew Abbott",
+    "home_sp": "Paul Skenes",
+    "venue": "PNC Park",
+    "status": "Scheduled",
+    "file": "data/processed/games/823363.json"
+  },
+  {
+    "game_id": "823688",
+    "date": "2026-06-26",
+    "game": "Colorado Rockies @ Minnesota Twins",
+    "away_team": "Colorado Rockies",
+    "home_team": "Minnesota Twins",
+    "away_sp": "Tomoyuki Sugano",
+    "home_sp": "Taj Bradley",
+    "venue": "Target Field",
+    "status": "Scheduled",
+    "file": "data/processed/games/823688.json"
   },
   {
     "game_id": "824258",
@@ -44,8 +116,32 @@
     "away_sp": "Tatsuya Imai",
     "home_sp": "Troy Melton",
     "venue": "Comerica Park",
-    "status": "Pre-Game",
+    "status": "Final",
     "file": "data/processed/games/824258.json"
+  },
+  {
+    "game_id": "824255",
+    "date": "2026-06-26",
+    "game": "Houston Astros @ Detroit Tigers",
+    "away_team": "Houston Astros",
+    "home_team": "Detroit Tigers",
+    "away_sp": "Spencer Arrighetti",
+    "home_sp": "Keider Montero",
+    "venue": "Comerica Park",
+    "status": "Scheduled",
+    "file": "data/processed/games/824255.json"
+  },
+  {
+    "game_id": "824582",
+    "date": "2026-06-26",
+    "game": "Kansas City Royals @ Chicago White Sox",
+    "away_team": "Kansas City Royals",
+    "home_team": "Chicago White Sox",
+    "away_sp": "",
+    "home_sp": "",
+    "venue": "Rate Field",
+    "status": "Scheduled",
+    "file": "data/processed/games/824582.json"
   },
   {
     "game_id": "822961",
@@ -60,6 +156,30 @@
     "file": "data/processed/games/822961.json"
   },
   {
+    "game_id": "823285",
+    "date": "2026-06-26",
+    "game": "Los Angeles Dodgers @ San Diego Padres",
+    "away_team": "Los Angeles Dodgers",
+    "home_team": "San Diego Padres",
+    "away_sp": "Roki Sasaki",
+    "home_sp": "Walker Buehler",
+    "venue": "Petco Park",
+    "status": "Scheduled",
+    "file": "data/processed/games/823285.json"
+  },
+  {
+    "game_id": "823039",
+    "date": "2026-06-26",
+    "game": "Miami Marlins @ St. Louis Cardinals",
+    "away_team": "Miami Marlins",
+    "home_team": "St. Louis Cardinals",
+    "away_sp": "Max Meyer",
+    "home_sp": "Michael McGreevy",
+    "venue": "Busch Stadium",
+    "status": "Scheduled",
+    "file": "data/processed/games/823039.json"
+  },
+  {
     "game_id": "824747",
     "date": "2026-06-25",
     "game": "New York Yankees @ Boston Red Sox",
@@ -68,8 +188,32 @@
     "away_sp": "Cam Schlittler",
     "home_sp": "Connelly Early",
     "venue": "Fenway Park",
-    "status": "Pre-Game",
+    "status": "Final",
     "file": "data/processed/games/824747.json"
+  },
+  {
+    "game_id": "824743",
+    "date": "2026-06-26",
+    "game": "New York Yankees @ Boston Red Sox",
+    "away_team": "New York Yankees",
+    "home_team": "Boston Red Sox",
+    "away_sp": "Will Warren",
+    "home_sp": "Payton Tolle",
+    "venue": "Fenway Park",
+    "status": "Scheduled",
+    "file": "data/processed/games/824743.json"
+  },
+  {
+    "game_id": "823610",
+    "date": "2026-06-26",
+    "game": "Philadelphia Phillies @ New York Mets",
+    "away_team": "Philadelphia Phillies",
+    "home_team": "New York Mets",
+    "away_sp": "Zack Wheeler",
+    "home_sp": "",
+    "venue": "Citi Field",
+    "status": "Scheduled",
+    "file": "data/processed/games/823610.json"
   },
   {
     "game_id": "822717",
@@ -80,8 +224,20 @@
     "away_sp": "Cristopher S\u00e1nchez",
     "home_sp": "Cade Cavalli",
     "venue": "Nationals Park",
-    "status": "Pre-Game",
+    "status": "Final",
     "file": "data/processed/games/822717.json"
+  },
+  {
+    "game_id": "824423",
+    "date": "2026-06-26",
+    "game": "Seattle Mariners @ Cleveland Guardians",
+    "away_team": "Seattle Mariners",
+    "home_team": "Cleveland Guardians",
+    "away_sp": "Luis Castillo",
+    "home_sp": "Joey Cantillo",
+    "venue": "Progressive Field",
+    "status": "Scheduled",
+    "file": "data/processed/games/824423.json"
   },
   {
     "game_id": "823366",
@@ -104,7 +260,31 @@
     "away_sp": "MacKenzie Gore",
     "home_sp": "Kevin Gausman",
     "venue": "Rogers Centre",
-    "status": "Pre-Game",
+    "status": "Final",
     "file": "data/processed/games/822797.json"
+  },
+  {
+    "game_id": "822796",
+    "date": "2026-06-26",
+    "game": "Texas Rangers @ Toronto Blue Jays",
+    "away_team": "Texas Rangers",
+    "home_team": "Toronto Blue Jays",
+    "away_sp": "Nathan Eovaldi",
+    "home_sp": "Patrick Corbin",
+    "venue": "Rogers Centre",
+    "status": "Scheduled",
+    "file": "data/processed/games/822796.json"
+  },
+  {
+    "game_id": "824824",
+    "date": "2026-06-26",
+    "game": "Washington Nationals @ Baltimore Orioles",
+    "away_team": "Washington Nationals",
+    "home_team": "Baltimore Orioles",
+    "away_sp": "Andrew Alvarez",
+    "home_sp": "Trevor Rogers",
+    "venue": "Oriole Park at Camden Yards",
+    "status": "Scheduled",
+    "file": "data/processed/games/824824.json"
   }
 ]

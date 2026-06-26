@@ -7,14 +7,53 @@
   "away_sp": "Cristopher S\u00e1nchez",
   "home_sp": "Cade Cavalli",
   "venue": "Nationals Park",
-  "status": "Pre-Game",
+  "status": "Final",
   "slate_summary": {
     "top_hr_target": "",
     "top_pitcher": "",
     "alpha_game_rating": "",
     "notes": ""
   },
-  "hitters": [],
-  "pitchers": [],
-  "weather": {}
+  "hitters": {
+    "away": [],
+    "home": []
+  },
+  "pitchers": [
+    {
+      "Team": "Philadelphia Phillies",
+      "Pitcher": "Cristopher S\u00e1nchez",
+      "Throws": "",
+      "Opponent": "Washington Nationals",
+      "Pitch Score": "",
+      "Strikeout Score": "",
+      "xwOBA": "",
+      "CSW%": "",
+      "SwStr%": "",
+      "Ball%": "",
+      "PulledBrl%": "",
+      "Brl/BIP%": "",
+      "FB%": "",
+      "HH%": ""
+    },
+    {
+      "Team": "Washington Nationals",
+      "Pitcher": "Cade Cavalli",
+      "Throws": "",
+      "Opponent": "Philadelphia Phillies",
+      "Pitch Score": "",
+      "Strikeout Score": "",
+      "xwOBA": "",
+      "CSW%": "",
+      "SwStr%": "",
+      "Ball%": "",
+      "PulledBrl%": "",
+      "Brl/BIP%": "",
+      "FB%": "",
+      "HH%": ""
+    }
+  ],
+  "weather": {},
+  "lineup_status": "unconfirmed",
+  "away_hitters": [],
+  "home_hitters": []
 }

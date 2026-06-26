@@ -7,14 +7,53 @@
   "away_sp": "MacKenzie Gore",
   "home_sp": "Kevin Gausman",
   "venue": "Rogers Centre",
-  "status": "Pre-Game",
+  "status": "Final",
   "slate_summary": {
     "top_hr_target": "",
     "top_pitcher": "",
     "alpha_game_rating": "",
     "notes": ""
   },
-  "hitters": [],
-  "pitchers": [],
-  "weather": {}
+  "hitters": {
+    "away": [],
+    "home": []
+  },
+  "pitchers": [
+    {
+      "Team": "Texas Rangers",
+      "Pitcher": "MacKenzie Gore",
+      "Throws": "",
+      "Opponent": "Toronto Blue Jays",
+      "Pitch Score": "",
+      "Strikeout Score": "",
+      "xwOBA": "",
+      "CSW%": "",
+      "SwStr%": "",
+      "Ball%": "",
+      "PulledBrl%": "",
+      "Brl/BIP%": "",
+      "FB%": "",
+      "HH%": ""
+    },
+    {
+      "Team": "Toronto Blue Jays",
+      "Pitcher": "Kevin Gausman",
+      "Throws": "",
+      "Opponent": "Texas Rangers",
+      "Pitch Score": "",
+      "Strikeout Score": "",
+      "xwOBA": "",
+      "CSW%": "",
+      "SwStr%": "",
+      "Ball%": "",
+      "PulledBrl%": "",
+      "Brl/BIP%": "",
+      "FB%": "",
+      "HH%": ""
+    }
+  ],
+  "weather": {},
+  "lineup_status": "unconfirmed",
+  "away_hitters": [],
+  "home_hitters": []
 }

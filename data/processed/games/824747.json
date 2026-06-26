@@ -7,14 +7,53 @@
   "away_sp": "Cam Schlittler",
   "home_sp": "Connelly Early",
   "venue": "Fenway Park",
-  "status": "Pre-Game",
+  "status": "Final",
   "slate_summary": {
     "top_hr_target": "",
     "top_pitcher": "",
     "alpha_game_rating": "",
     "notes": ""
   },
-  "hitters": [],
-  "pitchers": [],
-  "weather": {}
+  "hitters": {
+    "away": [],
+    "home": []
+  },
+  "pitchers": [
+    {
+      "Team": "New York Yankees",
+      "Pitcher": "Cam Schlittler",
+      "Throws": "",
+      "Opponent": "Boston Red Sox",
+      "Pitch Score": "",
+      "Strikeout Score": "",
+      "xwOBA": "",
+      "CSW%": "",
+      "SwStr%": "",
+      "Ball%": "",
+      "PulledBrl%": "",
+      "Brl/BIP%": "",
+      "FB%": "",
+      "HH%": ""
+    },
+    {
+      "Team": "Boston Red Sox",
+      "Pitcher": "Connelly Early",
+      "Throws": "",
+      "Opponent": "New York Yankees",
+      "Pitch Score": "",
+      "Strikeout Score": "",
+      "xwOBA": "",
+      "CSW%": "",
+      "SwStr%": "",
+      "Ball%": "",
+      "PulledBrl%": "",
+      "Brl/BIP%": "",
+      "FB%": "",
+      "HH%": ""
+    }
+  ],
+  "weather": {},
+  "lineup_status": "unconfirmed",
+  "away_hitters": [],
+  "home_hitters": []
 }
