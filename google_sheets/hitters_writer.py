@@ -28,10 +28,11 @@ def hitter_section(title, hitters, team_name, opp_pitcher):
     for hitter in hitters:
         rows.append([
             hitter.get("Player", ""),
-            team_name,
-            "",
+            hitter.get("Team", team_name),
+            hitter.get("Team Abbr", ""),
+            hitter.get("Bats", ""),
             opp_pitcher,
-            "",
+            hitter.get("Throws", ""),
             hitter.get("Matchup", ""),
             hitter.get("Test Score", ""),
             hitter.get("Ceiling", ""),

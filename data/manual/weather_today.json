@@ -1,0 +1,10 @@
+[
+  {
+    "venue": "Citi Field",
+    "temperature": 78,
+    "humidity": 72,
+    "conditions": "Overcast",
+    "wind_direction": "NEUTRAL",
+    "wind_speed": 12
+  }
+]

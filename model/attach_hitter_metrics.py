@@ -1,95 +1,176 @@
-import json
 from pathlib import Path
 import pandas as pd
 
 from model.scores.alpha import alpha_score
-
+from utils.json_utils import load_json, save_json, clean_value
 
 GAMES_DIR = Path("data/processed/games")
 HITTER_METRICS_FILE = Path("data/processed/hitter_metrics_last_30_days.csv")
 
 
-def load_json(filepath):
-    with open(filepath, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-
-def save_json(data, filepath):
-    with open(filepath, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2)
-
-
 def normalize_name(name):
-    return str(name).strip().lower().replace(".", "")
+    return str(name).strip().lower().replace(".", "").replace(",", "")
+
+
+def hitter_name(hitter):
+    if isinstance(hitter, dict):
+        return hitter.get("name", "") or hitter.get("Player", "")
+    return str(hitter)
+
+
+def hitter_id(hitter):
+    if isinstance(hitter, dict):
+        return hitter.get("id") or hitter.get("Player ID")
+    return None
+
+
+def get_existing_value(hitter_input, key, default=""):
+    if isinstance(hitter_input, dict):
+        return hitter_input.get(key, default)
+    return default
 
 
 def build_metrics_lookup():
     df = pd.read_csv(HITTER_METRICS_FILE)
-    df["lookup_name"] = df["player_name"].apply(normalize_name)
 
-    return {
+    df["lookup_name"] = df["player_name"].apply(normalize_name)
+    df["lookup_id"] = df["batter"].astype(str)
+
+    by_name = {
         row["lookup_name"]: row.to_dict()
         for _, row in df.iterrows()
     }
 
+    by_id = {
+        row["lookup_id"]: row.to_dict()
+        for _, row in df.iterrows()
+    }
 
-def format_hitter(name, metrics_lookup, game):
+    return by_name, by_id
+
+
+def find_metrics(hitter, by_name, by_id):
+    mlb_id = hitter_id(hitter)
+
+    if mlb_id and str(mlb_id) in by_id:
+        return by_id[str(mlb_id)]
+
+    name = hitter_name(hitter)
     key = normalize_name(name)
-    metrics = metrics_lookup.get(key, {})
+
+    if key in by_name:
+        return by_name[key]
+
+    parts = key.split()
+    if len(parts) >= 2:
+        reversed_key = normalize_name(f"{parts[-1]} {' '.join(parts[:-1])}")
+        return by_name.get(reversed_key, {})
+
+    return {}
+
+
+def get_opposing_pitcher(game, side):
+    pitchers = game.get("pitchers", [])
+
+    if side == "away":
+        opponent_team = game.get("home_team", "")
+    else:
+        opponent_team = game.get("away_team", "")
+
+    return next(
+        (pitcher for pitcher in pitchers if pitcher.get("Team") == opponent_team),
+        None,
+    )
+
+
+def format_hitter(hitter_input, by_name, by_id, game, side):
+    name = hitter_name(hitter_input)
+    metrics = find_metrics(hitter_input, by_name, by_id)
+    opposing_pitcher = get_opposing_pitcher(game, side)
 
     hitter = {
         "Player": name,
+        "Player ID": hitter_id(hitter_input),
+
+        "Team Offense": clean_value(get_existing_value(hitter_input, "Team Offense")),
+        "Team ISO": clean_value(get_existing_value(hitter_input, "Team ISO")),
+        "Team xwOBA": clean_value(get_existing_value(hitter_input, "Team xwOBA")),
+        "Team HR%": clean_value(get_existing_value(hitter_input, "Team HR%")),
+        "Team Brl/BIP%": clean_value(get_existing_value(hitter_input, "Team Brl/BIP%")),
+        "Team HH%": clean_value(get_existing_value(hitter_input, "Team HH%")),
+
+        "Pitch Type Score": clean_value(get_existing_value(hitter_input, "Pitch Type Score")),
+        "Pitch Type Notes": clean_value(get_existing_value(hitter_input, "Pitch Type Notes")),
+        "Pitch Type Matchups": get_existing_value(hitter_input, "Pitch Type Matchups", []),
+
         "Matchup": "",
         "Test Score": "",
         "Ceiling": "",
         "Zone Fit": "",
         "HR Form": "",
         "kHR": "",
-        "Pitches": metrics.get("Pitches", ""),
-        "BIP": metrics.get("BIP", ""),
-        "ISO": metrics.get("ISO", ""),
-        "xwOBA": metrics.get("xwOBA", ""),
-        "xwOBAcon": metrics.get("xwOBAcon", ""),
-        "SwStr%": metrics.get("SwStr%", ""),
-        "PulledBrl%": metrics.get("PulledBrl%", ""),
-        "Brl/BIP%": metrics.get("Brl/BIP%", ""),
-        "Sweet Spot%": metrics.get("Sweet Spot%", ""),
-        "FB%": metrics.get("FB%", ""),
-        "HH%": metrics.get("HH%", ""),
-        "LA": metrics.get("LA", ""),
+
+        "Pitches": clean_value(metrics.get("Pitches", "")),
+        "BIP": clean_value(metrics.get("BIP", "")),
+        "ISO": clean_value(metrics.get("ISO", "")),
+        "xwOBA": clean_value(metrics.get("xwOBA", "")),
+        "xwOBAcon": clean_value(metrics.get("xwOBAcon", "")),
+        "SwStr%": clean_value(metrics.get("SwStr%", "")),
+        "PulledBrl%": clean_value(metrics.get("PulledBrl%", "")),
+        "Brl/BIP%": clean_value(metrics.get("Brl/BIP%", "")),
+        "Sweet Spot%": clean_value(metrics.get("Sweet Spot%", "")),
+        "FB%": clean_value(metrics.get("FB%", "")),
+        "HH%": clean_value(metrics.get("HH%", "")),
+        "LA": clean_value(metrics.get("LA", "")),
     }
 
-    # Build Alpha Wagerz score breakdown
-    scores = alpha_score(hitter, game=game)
+    scores = alpha_score(
+        hitter,
+        pitcher=opposing_pitcher,
+        game=game,
+    )
 
-    hitter["Power"] = scores["Power"]
-    hitter["Contact"] = scores["Contact"]
-    hitter["Pitcher"] = scores["Pitcher"]
-    hitter["Weather"] = scores["Weather"]
-    hitter["Park"] = scores["Park"]
-    hitter["Recent"] = scores["Recent"]
-    hitter["Likely"] = scores["Likely"]
+    hitter["Power"] = clean_value(scores.get("Power", ""))
+    hitter["Contact"] = clean_value(scores.get("Contact", ""))
+    hitter["Pitcher"] = clean_value(scores.get("Pitcher", ""))
+    hitter["Pitch Type"] = clean_value(scores.get("Pitch Type", ""))
+    hitter["Team"] = clean_value(scores.get("Team", ""))
+    hitter["Weather"] = clean_value(scores.get("Weather", ""))
+    hitter["Park"] = clean_value(scores.get("Park", ""))
+    hitter["Recent"] = clean_value(scores.get("Recent", ""))
+    hitter["Likely"] = clean_value(scores.get("Likely", ""))
+    hitter["Confidence"] = clean_value(scores.get("Confidence", ""))
+    hitter["Reasons"] = scores.get("Reasons", [])
 
     return hitter
 
 
 def attach_hitter_metrics_to_games():
-    metrics_lookup = build_metrics_lookup()
+    by_name, by_id = build_metrics_lookup()
 
     for file in GAMES_DIR.glob("*.json"):
-        game = load_json(file)
+        game = load_json(file, default={})
 
-        away_names = game.get("away_hitters", [])
-        home_names = game.get("home_hitters", [])
+        if not game:
+            continue
+
+        away_hitters = game.get("away_hitters", [])
+        home_hitters = game.get("home_hitters", [])
 
         game["hitters"] = {
-            "away": [format_hitter(name, metrics_lookup, game) for name in away_names],
-            "home": [format_hitter(name, metrics_lookup, game) for name in home_names],
+            "away": [
+                format_hitter(hitter, by_name, by_id, game, "away")
+                for hitter in away_hitters
+            ],
+            "home": [
+                format_hitter(hitter, by_name, by_id, game, "home")
+                for hitter in home_hitters
+            ],
         }
 
         save_json(game, file)
 
-    print("✅ Attached hitter metrics and Likely scores to game files")
+    print("✅ Attached hitter metrics using MLB IDs/full names")
 
 
 if __name__ == "__main__":

@@ -8,7 +8,7 @@
     "away_sp": "Spencer Arrighetti",
     "home_sp": "Keider Montero",
     "venue": "Comerica Park",
-    "status": "Scheduled"
+    "status": "Pre-Game"
   },
   {
     "game_id": 823363,
@@ -19,7 +19,7 @@
     "away_sp": "Andrew Abbott",
     "home_sp": "Paul Skenes",
     "venue": "PNC Park",
-    "status": "Scheduled"
+    "status": "Pre-Game"
   },
   {
     "game_id": 824824,
@@ -30,7 +30,7 @@
     "away_sp": "Andrew Alvarez",
     "home_sp": "Trevor Rogers",
     "venue": "Oriole Park at Camden Yards",
-    "status": "Scheduled"
+    "status": "Pre-Game"
   },
   {
     "game_id": 822796,
@@ -41,7 +41,7 @@
     "away_sp": "Nathan Eovaldi",
     "home_sp": "Patrick Corbin",
     "venue": "Rogers Centre",
-    "status": "Scheduled"
+    "status": "Pre-Game"
   },
   {
     "game_id": 824423,
@@ -52,7 +52,7 @@
     "away_sp": "Luis Castillo",
     "home_sp": "Joey Cantillo",
     "venue": "Progressive Field",
-    "status": "Scheduled"
+    "status": "Pre-Game"
   },
   {
     "game_id": 822962,
@@ -63,7 +63,7 @@
     "away_sp": "Zac Gallen",
     "home_sp": "Nick Martinez",
     "venue": "Tropicana Field",
-    "status": "Scheduled"
+    "status": "Pre-Game"
   },
   {
     "game_id": 823610,
@@ -72,9 +72,9 @@
     "away_team": "Philadelphia Phillies",
     "home_team": "New York Mets",
     "away_sp": "Zack Wheeler",
-    "home_sp": "",
+    "home_sp": "Zach Thornton",
     "venue": "Citi Field",
-    "status": "Scheduled"
+    "status": "Pre-Game"
   },
   {
     "game_id": 824743,
@@ -85,7 +85,7 @@
     "away_sp": "Will Warren",
     "home_sp": "Payton Tolle",
     "venue": "Fenway Park",
-    "status": "Scheduled"
+    "status": "Pre-Game"
   },
   {
     "game_id": 824582,
@@ -93,10 +93,10 @@
     "game": "Kansas City Royals @ Chicago White Sox",
     "away_team": "Kansas City Royals",
     "home_team": "Chicago White Sox",
-    "away_sp": "",
-    "home_sp": "",
+    "away_sp": "Steven Cruz",
+    "home_sp": "David Sandlin",
     "venue": "Rate Field",
-    "status": "Scheduled"
+    "status": "Pre-Game"
   },
   {
     "game_id": 823773,
@@ -107,7 +107,7 @@
     "away_sp": "Colin Rea",
     "home_sp": "Jacob Misiorowski",
     "venue": "American Family Field",
-    "status": "Scheduled"
+    "status": "Pre-Game"
   },
   {
     "game_id": 823688,
@@ -118,7 +118,7 @@
     "away_sp": "Tomoyuki Sugano",
     "home_sp": "Taj Bradley",
     "venue": "Target Field",
-    "status": "Scheduled"
+    "status": "Pre-Game"
   },
   {
     "game_id": 823039,
@@ -129,7 +129,7 @@
     "away_sp": "Max Meyer",
     "home_sp": "Michael McGreevy",
     "venue": "Busch Stadium",
-    "status": "Scheduled"
+    "status": "Pre-Game"
   },
   {
     "game_id": 824014,
@@ -140,7 +140,7 @@
     "away_sp": "J.T. Ginn",
     "home_sp": "Walbert Ure\u00f1a",
     "venue": "Angel Stadium",
-    "status": "Scheduled"
+    "status": "Pre-Game"
   },
   {
     "game_id": 823285,
@@ -151,7 +151,7 @@
     "away_sp": "Roki Sasaki",
     "home_sp": "Walker Buehler",
     "venue": "Petco Park",
-    "status": "Scheduled"
+    "status": "Pre-Game"
   },
   {
     "game_id": 823206,

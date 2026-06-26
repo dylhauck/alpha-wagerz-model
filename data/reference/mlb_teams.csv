@@ -1,0 +1,31 @@
+team_id,team_name,team_abbr,short_name,club_name,league,division,venue_id,venue_name
+133,Athletics,ATH,Athletics,Athletics,American League,American League West,2529,Sutter Health Park
+134,Pittsburgh Pirates,PIT,Pittsburgh,Pirates,National League,National League Central,31,PNC Park
+135,San Diego Padres,SD,San Diego,Padres,National League,National League West,2680,Petco Park
+136,Seattle Mariners,SEA,Seattle,Mariners,American League,American League West,680,T-Mobile Park
+137,San Francisco Giants,SF,San Francisco,Giants,National League,National League West,2395,Oracle Park
+138,St. Louis Cardinals,STL,St. Louis,Cardinals,National League,National League Central,2889,Busch Stadium
+139,Tampa Bay Rays,TB,Tampa Bay,Rays,American League,American League East,12,Tropicana Field
+140,Texas Rangers,TEX,Texas,Rangers,American League,American League West,5325,Globe Life Field
+141,Toronto Blue Jays,TOR,Toronto,Blue Jays,American League,American League East,14,Rogers Centre
+142,Minnesota Twins,MIN,Minnesota,Twins,American League,American League Central,3312,Target Field
+143,Philadelphia Phillies,PHI,Philadelphia,Phillies,National League,National League East,2681,Citizens Bank Park
+144,Atlanta Braves,ATL,Atlanta,Braves,National League,National League East,4705,Truist Park
+145,Chicago White Sox,CWS,Chi White Sox,White Sox,American League,American League Central,4,Rate Field
+146,Miami Marlins,MIA,Miami,Marlins,National League,National League East,4169,loanDepot park
+147,New York Yankees,NYY,NY Yankees,Yankees,American League,American League East,3313,Yankee Stadium
+158,Milwaukee Brewers,MIL,Milwaukee,Brewers,National League,National League Central,32,American Family Field
+108,Los Angeles Angels,LAA,LA Angels,Angels,American League,American League West,1,Angel Stadium
+109,Arizona Diamondbacks,AZ,Arizona,Diamondbacks,National League,National League West,15,Chase Field
+110,Baltimore Orioles,BAL,Baltimore,Orioles,American League,American League East,2,Oriole Park at Camden Yards
+111,Boston Red Sox,BOS,Boston,Red Sox,American League,American League East,3,Fenway Park
+112,Chicago Cubs,CHC,Chi Cubs,Cubs,National League,National League Central,17,Wrigley Field
+113,Cincinnati Reds,CIN,Cincinnati,Reds,National League,National League Central,2602,Great American Ball Park
+114,Cleveland Guardians,CLE,Cleveland,Guardians,American League,American League Central,5,Progressive Field
+115,Colorado Rockies,COL,Colorado,Rockies,National League,National League West,19,Coors Field
+116,Detroit Tigers,DET,Detroit,Tigers,American League,American League Central,2394,Comerica Park
+117,Houston Astros,HOU,Houston,Astros,American League,American League West,2392,Daikin Park
+118,Kansas City Royals,KC,Kansas City,Royals,American League,American League Central,7,Kauffman Stadium
+119,Los Angeles Dodgers,LAD,LA Dodgers,Dodgers,National League,National League West,22,UNIQLO Field at Dodger Stadium
+120,Washington Nationals,WSH,Washington,Nationals,National League,National League East,3309,Nationals Park
+121,New York Mets,NYM,NY Mets,Mets,National League,National League East,3289,Citi Field

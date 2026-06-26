@@ -1,0 +1,26 @@
+{
+  "base": 50,
+  "temperature": {
+    "hot_85_plus": 8,
+    "warm_75_84": 5,
+    "mild_65_74": 1,
+    "cool_under_65": -4
+  },
+  "wind": {
+    "out": 12,
+    "out_towards_rf_lf": 10,
+    "neutral": 0,
+    "in": -10,
+    "in_towards_rf_lf": -8
+  },
+  "wind_speed_multiplier": 0.6,
+  "conditions": {
+    "clear": 3,
+    "mostly_clear": 2,
+    "overcast": 0,
+    "fog": -3,
+    "light_drizzle": -6,
+    "rain": -10,
+    "thunderstorm": -15
+  }
+}
