@@ -1,36 +1,49 @@
-import json
 from pathlib import Path
+
+from utils.json_utils import load_json, save_json
 
 GAMES_DIR = Path("data/processed/games")
 WEATHER_FILE = Path("data/processed/weather.json")
 
 
-def load_json(filepath):
-    with open(filepath, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-
-def save_json(data, filepath):
-    with open(filepath, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2)
+VENUE_ALIASES = {
+    "Rate Field": "Guaranteed Rate Field",
+    "Guaranteed Rate Field": "Rate Field",
+}
 
 
 def normalize(value):
-    return str(value or "").strip().lower()
+    return (
+        str(value or "")
+        .strip()
+        .lower()
+        .replace(".", "")
+        .replace("&", "and")
+    )
+
+
+def venue_keys(value):
+    raw = str(value or "").strip()
+    alias = VENUE_ALIASES.get(raw)
+
+    keys = {normalize(raw)}
+
+    if alias:
+        keys.add(normalize(alias))
+
+    return keys
 
 
 def build_weather_lookup():
-    if not WEATHER_FILE.exists():
-        print(f"⚠️ Missing weather file: {WEATHER_FILE}")
-        return {}
+    weather_data = load_json(WEATHER_FILE, default=[])
 
-    weather_data = load_json(WEATHER_FILE)
     lookup = {}
 
     for item in weather_data:
-        venue = normalize(item.get("venue") or item.get("stadium"))
-        if venue:
-            lookup[venue] = item
+        venue = item.get("venue") or item.get("stadium")
+        for key in venue_keys(venue):
+            if key:
+                lookup[key] = item
 
     return lookup
 
@@ -46,13 +59,21 @@ def attach_weather_to_games():
     missing = []
 
     for file in GAMES_DIR.glob("*.json"):
-        game = load_json(file)
+        game = load_json(file, default={})
 
-        venue = normalize(game.get("venue"))
-        weather = weather_lookup.get(venue)
+        if not game:
+            continue
+
+        game_venue = game.get("venue", "")
+        weather = None
+
+        for key in venue_keys(game_venue):
+            if key in weather_lookup:
+                weather = weather_lookup[key]
+                break
 
         if not weather:
-            missing.append(game.get("venue", "Unknown venue"))
+            missing.append(game_venue)
             continue
 
         weather_payload = {
@@ -63,10 +84,7 @@ def attach_weather_to_games():
             "wind_speed": weather.get("wind_speed"),
         }
 
-        # Store weather as a nested object
         game["weather"] = weather_payload
-
-        # Also store top-level fields for scoring convenience
         game["temperature"] = weather_payload["temperature"]
         game["humidity"] = weather_payload["humidity"]
         game["conditions"] = weather_payload["conditions"]
