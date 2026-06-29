@@ -18,6 +18,8 @@ HEADERS = [
     "Contact",
     "Pitcher",
     "Pitch Type",
+    "Team Offense",
+    "Bullpen",
     "Weather",
     "Park",
     "Recent",
@@ -45,15 +47,27 @@ def format_reasons(value):
     return value or ""
 
 
+def safe_float(value):
+    try:
+        return float(value)
+    except Exception:
+        return 0
+
+
 def update_full_slate_hitters_sheet():
     games = load_json(ALL_GAMES_FILE)
     rows_data = []
 
     for game in games:
-        for side in ["away", "home"]:
-            team = game.get("away_team") if side == "away" else game.get("home_team")
+        hitters_obj = game.get("hitters", {})
 
-            for hitter in game.get("hitters", {}).get(side, []):
+        if not isinstance(hitters_obj, dict):
+            continue
+
+        for side in ["away", "home"]:
+            team_name = game.get("away_team") if side == "away" else game.get("home_team")
+
+            for hitter in hitters_obj.get(side, []):
                 likely = hitter.get("Likely", "")
 
                 if likely == "":
@@ -61,7 +75,7 @@ def update_full_slate_hitters_sheet():
 
                 rows_data.append({
                     "game": game.get("game", ""),
-                    "team": team,
+                    "team_name": team_name,
                     "player": hitter.get("Player", ""),
                     "likely": likely,
                     "confidence": hitter.get("Confidence", ""),
@@ -69,13 +83,15 @@ def update_full_slate_hitters_sheet():
                     "contact": hitter.get("Contact", ""),
                     "pitcher": hitter.get("Pitcher", ""),
                     "pitch_type": hitter.get("Pitch Type", ""),
+                    "team_offense": hitter.get("Team", ""),
+                    "bullpen": hitter.get("Bullpen", ""),
                     "weather": hitter.get("Weather", ""),
                     "park": hitter.get("Park", ""),
                     "recent": hitter.get("Recent", ""),
                     "reasons": format_reasons(hitter.get("Reasons", "")),
                 })
 
-    rows_data.sort(key=lambda x: float(x["likely"] or 0), reverse=True)
+    rows_data.sort(key=lambda x: safe_float(x["likely"]), reverse=True)
 
     rows = [
         ["Alpha Wagerz Full Slate Hitters"],
@@ -87,7 +103,7 @@ def update_full_slate_hitters_sheet():
         rows.append([
             i,
             item["game"],
-            item["team"],
+            item["team_name"],
             item["player"],
             item["likely"],
             item["confidence"],
@@ -95,7 +111,8 @@ def update_full_slate_hitters_sheet():
             item["contact"],
             item["pitcher"],
             item["pitch_type"],
-            item["team"],
+            item["team_offense"],
+            item["bullpen"],
             item["weather"],
             item["park"],
             item["recent"],
@@ -113,13 +130,13 @@ def update_full_slate_hitters_sheet():
     ws.clear()
     ws.update(rows)
 
-    ws.format("A:N", {
+    ws.format("A:P", {
         "textFormat": {"foregroundColor": {"red": 0, "green": 0, "blue": 0}},
         "horizontalAlignment": "CENTER",
         "verticalAlignment": "MIDDLE",
     })
 
-    ws.format("A1:N1", {
+    ws.format("A1:P1", {
         "backgroundColor": {"red": 0.02, "green": 0.05, "blue": 0.10},
         "textFormat": {
             "foregroundColor": {"red": 1, "green": 1, "blue": 1},
@@ -128,7 +145,7 @@ def update_full_slate_hitters_sheet():
         },
     })
 
-    ws.format("A3:N3", {
+    ws.format("A3:P3", {
         "backgroundColor": {"red": 0.08, "green": 0.36, "blue": 0.48},
         "textFormat": {
             "foregroundColor": {"red": 1, "green": 1, "blue": 1},
@@ -136,7 +153,7 @@ def update_full_slate_hitters_sheet():
         },
     })
 
-    ws.format("E:M", {
+    ws.format("E:O", {
         "numberFormat": {
             "type": "NUMBER",
             "pattern": "0.0",

@@ -20,6 +20,15 @@ url = (
 )
 
 response = requests.get(url)
+data = response.json()
 
-print("Status:", response.status_code)
-print(response.json())
+print(f"Status: {response.status_code}")
+
+if response.status_code == 200:
+    print(f"Temperature : {data['main']['temp']}°F")
+    print(f"Humidity    : {data['main']['humidity']}%")
+    print(f"Wind Speed  : {data['wind']['speed']} mph")
+    print(f"Wind Dir    : {data['wind']['deg']}°")
+    print(f"Conditions  : {data['weather'][0]['description']}")
+else:
+    print(data)

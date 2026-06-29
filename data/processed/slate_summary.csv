@@ -1,16 +1,14 @@
 game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status
-824255,2026-06-26,Houston Astros @ Detroit Tigers,Houston Astros,Detroit Tigers,Spencer Arrighetti,Keider Montero,Comerica Park,Pre-Game
-823363,2026-06-26,Cincinnati Reds @ Pittsburgh Pirates,Cincinnati Reds,Pittsburgh Pirates,Andrew Abbott,Paul Skenes,PNC Park,Pre-Game
-824824,2026-06-26,Washington Nationals @ Baltimore Orioles,Washington Nationals,Baltimore Orioles,Andrew Alvarez,Trevor Rogers,Oriole Park at Camden Yards,Pre-Game
-822796,2026-06-26,Texas Rangers @ Toronto Blue Jays,Texas Rangers,Toronto Blue Jays,Nathan Eovaldi,Patrick Corbin,Rogers Centre,Pre-Game
-824423,2026-06-26,Seattle Mariners @ Cleveland Guardians,Seattle Mariners,Cleveland Guardians,Luis Castillo,Joey Cantillo,Progressive Field,Pre-Game
-822962,2026-06-26,Arizona Diamondbacks @ Tampa Bay Rays,Arizona Diamondbacks,Tampa Bay Rays,Zac Gallen,Nick Martinez,Tropicana Field,Pre-Game
-823610,2026-06-26,Philadelphia Phillies @ New York Mets,Philadelphia Phillies,New York Mets,Zack Wheeler,Zach Thornton,Citi Field,Pre-Game
-824743,2026-06-26,New York Yankees @ Boston Red Sox,New York Yankees,Boston Red Sox,Will Warren,Payton Tolle,Fenway Park,Pre-Game
-824582,2026-06-26,Kansas City Royals @ Chicago White Sox,Kansas City Royals,Chicago White Sox,Steven Cruz,David Sandlin,Rate Field,Pre-Game
-823773,2026-06-26,Chicago Cubs @ Milwaukee Brewers,Chicago Cubs,Milwaukee Brewers,Colin Rea,Jacob Misiorowski,American Family Field,Pre-Game
-823688,2026-06-26,Colorado Rockies @ Minnesota Twins,Colorado Rockies,Minnesota Twins,Tomoyuki Sugano,Taj Bradley,Target Field,Pre-Game
-823039,2026-06-26,Miami Marlins @ St. Louis Cardinals,Miami Marlins,St. Louis Cardinals,Max Meyer,Michael McGreevy,Busch Stadium,Pre-Game
-824014,2026-06-26,Athletics @ Los Angeles Angels,Athletics,Los Angeles Angels,J.T. Ginn,Walbert Ureña,Angel Stadium,Pre-Game
-823285,2026-06-26,Los Angeles Dodgers @ San Diego Padres,Los Angeles Dodgers,San Diego Padres,Roki Sasaki,Walker Buehler,Petco Park,Pre-Game
-823206,2026-06-26,Atlanta Braves @ San Francisco Giants,Atlanta Braves,San Francisco Giants,Reynaldo López,,Oracle Park,Scheduled
+824822,2026-06-29,Chicago White Sox @ Baltimore Orioles,Chicago White Sox,Baltimore Orioles,Sean Burke,Shane Baz,Oriole Park at Camden Yards,Pre-Game
+823444,2026-06-29,Pittsburgh Pirates @ Philadelphia Phillies,Pittsburgh Pirates,Philadelphia Phillies,Braxton Ashcraft,Aaron Nola,Citizens Bank Park,Pre-Game
+823529,2026-06-29,Detroit Tigers @ New York Yankees,Detroit Tigers,New York Yankees,Casey Mize,Ryan Weathers,Yankee Stadium,Pre-Game
+822792,2026-06-29,New York Mets @ Toronto Blue Jays,New York Mets,Toronto Blue Jays,Sean Manaea,Trey Yesavage,Rogers Centre,Pre-Game
+824741,2026-06-29,Washington Nationals @ Boston Red Sox,Washington Nationals,Boston Red Sox,Miles Mikolas,Ranger Suarez,Fenway Park,Pre-Game
+824420,2026-06-29,Texas Rangers @ Cleveland Guardians,Texas Rangers,Cleveland Guardians,Tyler Alexander,Parker Messick,Progressive Field,Pre-Game
+823771,2026-06-29,Cincinnati Reds @ Milwaukee Brewers,Cincinnati Reds,Milwaukee Brewers,Nick Lodolo,Robert Gasser,American Family Field,Pre-Game
+824662,2026-06-29,San Diego Padres @ Chicago Cubs,San Diego Padres,Chicago Cubs,Griffin Canning,Shota Imanaga,Wrigley Field,Pre-Game
+824176,2026-06-29,Minnesota Twins @ Houston Astros,Minnesota Twins,Houston Astros,Zebby Matthews,Peter Lambert,Daikin Park,Pre-Game
+824339,2026-06-29,Miami Marlins @ Colorado Rockies,Miami Marlins,Colorado Rockies,Sandy Alcantara,Sean Sullivan,Coors Field,Pre-Game
+824986,2026-06-29,Los Angeles Dodgers @ Athletics,Los Angeles Dodgers,Athletics,Eric Lauer,Gage Jump,Sutter Health Park,Scheduled
+823121,2026-06-29,Los Angeles Angels @ Seattle Mariners,Los Angeles Angels,Seattle Mariners,Ryan Johnson,George Kirby,T-Mobile Park,Scheduled
+825065,2026-06-29,San Francisco Giants @ Arizona Diamondbacks,San Francisco Giants,Arizona Diamondbacks,Tyler Mahle,Eduardo Rodriguez,Chase Field,Scheduled

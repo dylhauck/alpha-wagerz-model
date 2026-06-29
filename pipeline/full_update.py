@@ -21,6 +21,8 @@ from model.team_offense_metrics import build_team_offense_metrics
 from model.attach_team_context import attach_team_context
 
 from google_sheets.update_full_slate import update_full_slate_sheets
+from model.bullpen_metrics import build_bullpen_metrics
+from model.attach_bullpen_context import attach_bullpen_context
 
 
 def run_full_update():
@@ -46,11 +48,13 @@ def run_full_update():
     build_pitch_mix()
     build_hitter_pitch_type_metrics()
     build_team_offense_metrics()
+    build_bullpen_metrics()
 
     print("\n🔗 Attachments")
     attach_pitcher_metrics_to_games()
     attach_pitch_type_matchups()
     attach_team_context()
+    attach_bullpen_context()
     attach_hitter_metrics_to_games()
     enrich_players_in_games()
 

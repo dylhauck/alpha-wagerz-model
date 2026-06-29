@@ -13,6 +13,8 @@ HEADERS = [
     "Contact Score",
     "Pitcher Matchup",
     "Pitch Type",
+    "Team Offense",
+    "Bullpen",
     "Weather Impact",
     "Park Factor",
     "Recent Form",
@@ -65,6 +67,7 @@ def update_model_breakdown(game_id):
                 hitter.get("Pitcher", ""),
                 hitter.get("Pitch Type", ""),
                 hitter.get("Team", ""),
+                hitter.get("Bullpen", ""),
                 hitter.get("Weather", ""),
                 hitter.get("Park", ""),
                 hitter.get("Recent", ""),
@@ -76,7 +79,7 @@ def update_model_breakdown(game_id):
     ws.clear()
     ws.update(rows)
 
-    ws.format("A:L", {
+    ws.format("A:N", {
         "textFormat": {
             "foregroundColor": {"red": 0, "green": 0, "blue": 0}
         },
@@ -84,7 +87,7 @@ def update_model_breakdown(game_id):
         "verticalAlignment": "MIDDLE",
     })
 
-    ws.format("A1:L1", {
+    ws.format("A1:N1", {
         "backgroundColor": {"red": 0.02, "green": 0.05, "blue": 0.10},
         "textFormat": {
             "foregroundColor": {"red": 1, "green": 1, "blue": 1},
@@ -93,7 +96,7 @@ def update_model_breakdown(game_id):
         },
     })
 
-    ws.format("A3:L3", {
+    ws.format("A3:N3", {
         "backgroundColor": {"red": 0.08, "green": 0.36, "blue": 0.48},
         "textFormat": {
             "foregroundColor": {"red": 1, "green": 1, "blue": 1},
@@ -101,7 +104,7 @@ def update_model_breakdown(game_id):
         },
     })
 
-    ws.format("I:J", {
+    ws.format("C:M", {
         "numberFormat": {
             "type": "NUMBER",
             "pattern": "0.0",

@@ -9,23 +9,25 @@ from model.scores.recent_form import score_recent_form
 from model.scores.confidence import score_confidence, build_score_reasons
 
 
+def safe_score(value, default=50):
+    try:
+        if value == "" or value is None:
+            return default
+        return float(value)
+    except Exception:
+        return default
+
+
 def score_pitch_type(hitter):
-    try:
-        value = hitter.get("Pitch Type Score", 50)
-        if value == "" or value is None:
-            return 50
-        return float(value)
-    except Exception:
-        return 50
-    
+    return safe_score(hitter.get("Pitch Type Score", 50))
+
+
 def score_team(hitter):
-    try:
-        value = hitter.get("Team Offense", 50)
-        if value == "" or value is None:
-            return 50
-        return float(value)
-    except Exception:
-        return 50
+    return safe_score(hitter.get("Team Offense", 50))
+
+
+def score_bullpen(hitter):
+    return safe_score(hitter.get("Bullpen", 50))
 
 
 def alpha_score(hitter, pitcher=None, game=None):
@@ -35,20 +37,22 @@ def alpha_score(hitter, pitcher=None, game=None):
     contact = score_contact(hitter)
     pitcher_score = score_pitcher(hitter, pitcher)
     pitch_type = score_pitch_type(hitter)
+    team = score_team(hitter)
+    bullpen = score_bullpen(hitter)
     weather = score_weather(game)
     park = score_park(game, hitter)
     recent = score_recent_form(hitter)
-    team = score_team(hitter)
 
     likely = (
         power * weights["power"]
         + contact * weights["contact"]
         + pitcher_score * weights["pitcher"]
         + pitch_type * weights["pitch_type"]
+        + team * weights["team"]
+        + bullpen * weights["bullpen"]
         + weather * weights["weather"]
         + park * weights["park"]
         + recent * weights["recent"]
-        + team * weights["team"]
     )
 
     scores = {
@@ -57,6 +61,7 @@ def alpha_score(hitter, pitcher=None, game=None):
         "Pitcher": round(pitcher_score, 1),
         "Pitch Type": round(pitch_type, 1),
         "Team": round(team, 1),
+        "Bullpen": round(bullpen, 1),
         "Weather": round(weather, 1),
         "Park": round(park, 1),
         "Recent": round(recent, 1),

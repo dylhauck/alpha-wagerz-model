@@ -4,6 +4,10 @@ from pathlib import Path
 WEATHER_THRESHOLDS_FILE = Path("data/reference/weather_thresholds.json")
 
 
+DOME_ROOFS = {"dome", "closed"}
+RETRACTABLE_ROOFS = {"retractable"}
+
+
 def clamp(value, low=0, high=100):
     return max(low, min(high, value))
 
@@ -28,12 +32,19 @@ def score_weather(game=None):
     if not game:
         return 50
 
+    weather = game.get("weather", {})
+    roof = normalize(weather.get("roof") or game.get("roof"))
+
+    # Dome/closed roof = neutral weather, because outside wind/temp should not boost HRs
+    if roof in DOME_ROOFS:
+        return 50
+
     rules = load_weather_thresholds()
 
-    temp = safe_float(game.get("temperature"))
-    wind_direction = normalize(game.get("wind_direction"))
-    wind_speed = safe_float(game.get("wind_speed"))
-    conditions = normalize(game.get("conditions"))
+    temp = safe_float(weather.get("temperature", game.get("temperature")))
+    wind_direction = normalize(weather.get("wind_direction", game.get("wind_direction")))
+    wind_speed = safe_float(weather.get("wind_speed", game.get("wind_speed")))
+    conditions = normalize(weather.get("conditions", game.get("conditions")))
 
     score = rules["base"]
 
@@ -57,7 +68,11 @@ def score_weather(game=None):
     elif wind_direction == "neutral":
         score += rules["wind"]["neutral"]
 
-    score += wind_speed * rules["wind_speed_multiplier"]
-    score += rules["conditions"].get(conditions, 0)
+    # For retractable roofs, reduce weather impact because roof status may change.
+    multiplier = 0.5 if roof in RETRACTABLE_ROOFS else 1
+
+    score = rules["base"] + ((score - rules["base"]) * multiplier)
+    score += wind_speed * rules["wind_speed_multiplier"] * multiplier
+    score += rules["conditions"].get(conditions, 0) * multiplier
 
     return round(clamp(score), 1)

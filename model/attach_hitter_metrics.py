@@ -36,15 +36,8 @@ def build_metrics_lookup():
     df["lookup_name"] = df["player_name"].apply(normalize_name)
     df["lookup_id"] = df["batter"].astype(str)
 
-    by_name = {
-        row["lookup_name"]: row.to_dict()
-        for _, row in df.iterrows()
-    }
-
-    by_id = {
-        row["lookup_id"]: row.to_dict()
-        for _, row in df.iterrows()
-    }
+    by_name = {row["lookup_name"]: row.to_dict() for _, row in df.iterrows()}
+    by_id = {row["lookup_id"]: row.to_dict() for _, row in df.iterrows()}
 
     return by_name, by_id
 
@@ -55,8 +48,7 @@ def find_metrics(hitter, by_name, by_id):
     if mlb_id and str(mlb_id) in by_id:
         return by_id[str(mlb_id)]
 
-    name = hitter_name(hitter)
-    key = normalize_name(name)
+    key = normalize_name(hitter_name(hitter))
 
     if key in by_name:
         return by_name[key]
@@ -72,10 +64,7 @@ def find_metrics(hitter, by_name, by_id):
 def get_opposing_pitcher(game, side):
     pitchers = game.get("pitchers", [])
 
-    if side == "away":
-        opponent_team = game.get("home_team", "")
-    else:
-        opponent_team = game.get("away_team", "")
+    opponent_team = game.get("home_team", "") if side == "away" else game.get("away_team", "")
 
     return next(
         (pitcher for pitcher in pitchers if pitcher.get("Team") == opponent_team),
@@ -98,6 +87,13 @@ def format_hitter(hitter_input, by_name, by_id, game, side):
         "Team HR%": clean_value(get_existing_value(hitter_input, "Team HR%")),
         "Team Brl/BIP%": clean_value(get_existing_value(hitter_input, "Team Brl/BIP%")),
         "Team HH%": clean_value(get_existing_value(hitter_input, "Team HH%")),
+
+        "Bullpen": clean_value(get_existing_value(hitter_input, "Bullpen")),
+        "Bullpen xwOBA": clean_value(get_existing_value(hitter_input, "Bullpen xwOBA")),
+        "Bullpen HR/Pitch%": clean_value(get_existing_value(hitter_input, "Bullpen HR/Pitch%")),
+        "Bullpen Brl/BIP%": clean_value(get_existing_value(hitter_input, "Bullpen Brl/BIP%")),
+        "Bullpen HH%": clean_value(get_existing_value(hitter_input, "Bullpen HH%")),
+        "Bullpen SwStr%": clean_value(get_existing_value(hitter_input, "Bullpen SwStr%")),
 
         "Pitch Type Score": clean_value(get_existing_value(hitter_input, "Pitch Type Score")),
         "Pitch Type Notes": clean_value(get_existing_value(hitter_input, "Pitch Type Notes")),
@@ -124,17 +120,14 @@ def format_hitter(hitter_input, by_name, by_id, game, side):
         "LA": clean_value(metrics.get("LA", "")),
     }
 
-    scores = alpha_score(
-        hitter,
-        pitcher=opposing_pitcher,
-        game=game,
-    )
+    scores = alpha_score(hitter, pitcher=opposing_pitcher, game=game)
 
     hitter["Power"] = clean_value(scores.get("Power", ""))
     hitter["Contact"] = clean_value(scores.get("Contact", ""))
     hitter["Pitcher"] = clean_value(scores.get("Pitcher", ""))
     hitter["Pitch Type"] = clean_value(scores.get("Pitch Type", ""))
     hitter["Team"] = clean_value(scores.get("Team", ""))
+    hitter["Bullpen"] = clean_value(scores.get("Bullpen", ""))
     hitter["Weather"] = clean_value(scores.get("Weather", ""))
     hitter["Park"] = clean_value(scores.get("Park", ""))
     hitter["Recent"] = clean_value(scores.get("Recent", ""))
