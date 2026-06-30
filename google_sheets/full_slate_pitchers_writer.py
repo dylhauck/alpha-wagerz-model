@@ -15,13 +15,31 @@ HEADERS = [
     "Opponent",
     "Pitch Score",
     "Strikeout Score",
+    "HR Vulnerability",
+    "Fly Ball Profile",
+    "Barrel Profile",
+    "Pitches",
+    "BF",
+    "IP",
+    "HR",
+    "K",
+    "BB",
     "xwOBA",
+    "xwOBAcon",
     "CSW%",
     "SwStr%",
     "Ball%",
+    "PulledBrl%",
     "Brl/BIP%",
     "FB%",
+    "GB%",
     "HH%",
+    "K%",
+    "BB%",
+    "HR/9",
+    "AvgEV",
+    "AvgLA",
+    "FBv",
 ]
 
 
@@ -42,7 +60,7 @@ def load_json(filepath):
 def safe_score(value):
     try:
         return float(value)
-    except:
+    except Exception:
         return 0
 
 
@@ -53,22 +71,12 @@ def update_full_slate_pitchers_sheet():
     for game in games:
         for pitcher in game.get("pitchers", []):
             rows_data.append({
-                "game": game.get("game", ""),
-                "team": pitcher.get("Team", ""),
-                "pitcher": pitcher.get("Pitcher", ""),
-                "opponent": pitcher.get("Opponent", ""),
-                "pitch_score": pitcher.get("Pitch Score", ""),
-                "strikeout_score": pitcher.get("Strikeout Score", ""),
-                "xwoba": pitcher.get("xwOBA", ""),
-                "csw": pitcher.get("CSW%", ""),
-                "swstr": pitcher.get("SwStr%", ""),
-                "ball": pitcher.get("Ball%", ""),
-                "brl": pitcher.get("Brl/BIP%", ""),
-                "fb": pitcher.get("FB%", ""),
-                "hh": pitcher.get("HH%", ""),
-            })
+                header: pitcher.get(header, "")
+                for header in HEADERS
+                if header not in ["Rank", "Game"]
+            } | {"Game": game.get("game", "")})
 
-    rows_data.sort(key=lambda x: safe_score(x["strikeout_score"]), reverse=True)
+    rows_data.sort(key=lambda x: safe_score(x.get("Strikeout Score", "")), reverse=True)
 
     rows = [
         ["Alpha Wagerz Full Slate Pitchers"],
@@ -79,19 +87,37 @@ def update_full_slate_pitchers_sheet():
     for i, item in enumerate(rows_data, start=1):
         rows.append([
             i,
-            item["game"],
-            item["team"],
-            item["pitcher"],
-            item["opponent"],
-            item["pitch_score"],
-            item["strikeout_score"],
-            item["xwoba"],
-            item["csw"],
-            item["swstr"],
-            item["ball"],
-            item["brl"],
-            item["fb"],
-            item["hh"],
+            item.get("Game", ""),
+            item.get("Team", ""),
+            item.get("Pitcher", ""),
+            item.get("Opponent", ""),
+            item.get("Pitch Score", ""),
+            item.get("Strikeout Score", ""),
+            item.get("HR Vulnerability", ""),
+            item.get("Fly Ball Profile", ""),
+            item.get("Barrel Profile", ""),
+            item.get("Pitches", ""),
+            item.get("BF", ""),
+            item.get("IP", ""),
+            item.get("HR", ""),
+            item.get("K", ""),
+            item.get("BB", ""),
+            item.get("xwOBA", ""),
+            item.get("xwOBAcon", ""),
+            item.get("CSW%", ""),
+            item.get("SwStr%", ""),
+            item.get("Ball%", ""),
+            item.get("PulledBrl%", ""),
+            item.get("Brl/BIP%", ""),
+            item.get("FB%", ""),
+            item.get("GB%", ""),
+            item.get("HH%", ""),
+            item.get("K%", ""),
+            item.get("BB%", ""),
+            item.get("HR/9", ""),
+            item.get("AvgEV", ""),
+            item.get("AvgLA", ""),
+            item.get("FBv", ""),
         ])
 
     client = get_client()
@@ -100,18 +126,18 @@ def update_full_slate_pitchers_sheet():
     try:
         ws = sheet.worksheet("Full Slate Pitchers")
     except gspread.WorksheetNotFound:
-        ws = sheet.add_worksheet(title="Full Slate Pitchers", rows=100, cols=20)
+        ws = sheet.add_worksheet(title="Full Slate Pitchers", rows=100, cols=40)
 
     ws.clear()
     ws.update(rows)
 
-    ws.format("A:N", {
+    ws.format("A:AF", {
         "textFormat": {"foregroundColor": {"red": 0, "green": 0, "blue": 0}},
         "horizontalAlignment": "CENTER",
         "verticalAlignment": "MIDDLE",
     })
 
-    ws.format("A1:N1", {
+    ws.format("A1:AF1", {
         "backgroundColor": {"red": 0.02, "green": 0.05, "blue": 0.10},
         "textFormat": {
             "foregroundColor": {"red": 1, "green": 1, "blue": 1},
@@ -120,7 +146,7 @@ def update_full_slate_pitchers_sheet():
         },
     })
 
-    ws.format("A3:N3", {
+    ws.format("A3:AF3", {
         "backgroundColor": {"red": 0.08, "green": 0.36, "blue": 0.48},
         "textFormat": {
             "foregroundColor": {"red": 1, "green": 1, "blue": 1},
@@ -128,7 +154,7 @@ def update_full_slate_pitchers_sheet():
         },
     })
 
-    ws.format("F:N", {
+    ws.format("F:AF", {
         "numberFormat": {
             "type": "NUMBER",
             "pattern": "0.0",

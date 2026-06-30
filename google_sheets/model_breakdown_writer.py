@@ -13,6 +13,13 @@ HEADERS = [
     "Contact Score",
     "Pitcher Matchup",
     "Pitch Type",
+    "Arsenal Score",
+    "Fastball",
+    "Breaking",
+    "Offspeed",
+    "xHR",
+    "Hot Zones",
+    "Cold Zones",
     "Team Offense",
     "Bullpen",
     "Weather Impact",
@@ -66,6 +73,13 @@ def update_model_breakdown(game_id):
                 hitter.get("Contact", ""),
                 hitter.get("Pitcher", ""),
                 hitter.get("Pitch Type", ""),
+                hitter.get("Arsenal Score", ""),
+                hitter.get("Fastball Matchup", ""),
+                hitter.get("Breaking Ball Matchup", ""),
+                hitter.get("Offspeed Matchup", ""),
+                hitter.get("xHR Matchup", ""),
+                hitter.get("Hot Zones Allowed", ""),
+                hitter.get("Cold Zones Allowed", ""),
                 hitter.get("Team", ""),
                 hitter.get("Bullpen", ""),
                 hitter.get("Weather", ""),
@@ -79,7 +93,7 @@ def update_model_breakdown(game_id):
     ws.clear()
     ws.update(rows)
 
-    ws.format("A:N", {
+    ws.format("A:U", {
         "textFormat": {
             "foregroundColor": {"red": 0, "green": 0, "blue": 0}
         },
@@ -87,7 +101,7 @@ def update_model_breakdown(game_id):
         "verticalAlignment": "MIDDLE",
     })
 
-    ws.format("A1:N1", {
+    ws.format("A1:U1", {
         "backgroundColor": {"red": 0.02, "green": 0.05, "blue": 0.10},
         "textFormat": {
             "foregroundColor": {"red": 1, "green": 1, "blue": 1},
@@ -96,7 +110,7 @@ def update_model_breakdown(game_id):
         },
     })
 
-    ws.format("A3:N3", {
+    ws.format("A3:U3", {
         "backgroundColor": {"red": 0.08, "green": 0.36, "blue": 0.48},
         "textFormat": {
             "foregroundColor": {"red": 1, "green": 1, "blue": 1},
@@ -104,7 +118,7 @@ def update_model_breakdown(game_id):
         },
     })
 
-    ws.format("C:M", {
+    ws.format("C:T", {
         "numberFormat": {
             "type": "NUMBER",
             "pattern": "0.0",

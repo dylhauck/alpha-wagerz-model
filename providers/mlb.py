@@ -4,16 +4,25 @@ from datetime import date
 MLB_SCHEDULE_URL = "https://statsapi.mlb.com/api/v1/schedule"
 
 
+def get_probable_pitcher(team_data):
+    pitcher = team_data.get("probablePitcher") or {}
+
+    return {
+        "name": pitcher.get("fullName", ""),
+        "id": pitcher.get("id", ""),
+    }
+
+
 def get_todays_slate():
     today = date.today().isoformat()
 
     params = {
         "sportId": 1,
         "date": today,
-        "hydrate": "probablePitcher,venue,team"
+        "hydrate": "probablePitcher,venue,team,linescore",
     }
 
-    response = requests.get(MLB_SCHEDULE_URL, params=params)
+    response = requests.get(MLB_SCHEDULE_URL, params=params, timeout=30)
     response.raise_for_status()
 
     data = response.json()
@@ -21,22 +30,31 @@ def get_todays_slate():
 
     for day in data.get("dates", []):
         for game in day.get("games", []):
-            away = game["teams"]["away"]["team"]["name"]
-            home = game["teams"]["home"]["team"]["name"]
+            away_team_data = game["teams"]["away"]
+            home_team_data = game["teams"]["home"]
 
-            away_pitcher = game["teams"]["away"].get("probablePitcher", {}).get("fullName", "")
-            home_pitcher = game["teams"]["home"].get("probablePitcher", {}).get("fullName", "")
+            away = away_team_data["team"]["name"]
+            home = home_team_data["team"]["name"]
+
+            away_pitcher = get_probable_pitcher(away_team_data)
+            home_pitcher = get_probable_pitcher(home_team_data)
 
             games.append({
                 "game_id": game["gamePk"],
                 "date": today,
                 "game": f"{away} @ {home}",
+
                 "away_team": away,
                 "home_team": home,
-                "away_sp": away_pitcher,
-                "home_sp": home_pitcher,
+
+                "away_sp": away_pitcher["name"],
+                "away_sp_id": away_pitcher["id"],
+
+                "home_sp": home_pitcher["name"],
+                "home_sp_id": home_pitcher["id"],
+
                 "venue": game.get("venue", {}).get("name", ""),
-                "status": game.get("status", {}).get("detailedState", "")
+                "status": game.get("status", {}).get("detailedState", ""),
             })
 
     return games

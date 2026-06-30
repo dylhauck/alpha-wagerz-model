@@ -3,6 +3,7 @@ import pandas as pd
 
 from model.scores.alpha import alpha_score
 from utils.json_utils import load_json, save_json, clean_value
+from model.scores.hitter_detail import attach_hitter_detail_scores
 
 GAMES_DIR = Path("data/processed/games")
 HITTER_METRICS_FILE = Path("data/processed/hitter_metrics_last_30_days.csv")
@@ -98,6 +99,15 @@ def format_hitter(hitter_input, by_name, by_id, game, side):
         "Pitch Type Score": clean_value(get_existing_value(hitter_input, "Pitch Type Score")),
         "Pitch Type Notes": clean_value(get_existing_value(hitter_input, "Pitch Type Notes")),
         "Pitch Type Matchups": get_existing_value(hitter_input, "Pitch Type Matchups", []),
+        "Arsenal Score": clean_value(get_existing_value(hitter_input, "Arsenal Score")),
+
+        "Fastball Matchup": clean_value(get_existing_value(hitter_input, "Fastball Matchup")),
+        "Breaking Ball Matchup": clean_value(get_existing_value(hitter_input, "Breaking Ball Matchup")),
+        "Offspeed Matchup": clean_value(get_existing_value(hitter_input, "Offspeed Matchup")),
+        "xHR Matchup": clean_value(get_existing_value(hitter_input, "xHR Matchup")),
+        "Pitch Arsenal Notes": clean_value(get_existing_value(hitter_input, "Pitch Arsenal Notes")),
+        "Hot Zones Allowed": clean_value(get_existing_value(hitter_input, "Hot Zones Allowed")),
+        "Cold Zones Allowed": clean_value(get_existing_value(hitter_input, "Cold Zones Allowed")),
 
         "Matchup": "",
         "Test Score": "",
@@ -126,6 +136,14 @@ def format_hitter(hitter_input, by_name, by_id, game, side):
     hitter["Contact"] = clean_value(scores.get("Contact", ""))
     hitter["Pitcher"] = clean_value(scores.get("Pitcher", ""))
     hitter["Pitch Type"] = clean_value(scores.get("Pitch Type", ""))
+    hitter["Arsenal Score"] = clean_value(hitter.get("Arsenal Score", ""))
+    hitter["Fastball Matchup"] = clean_value(hitter.get("Fastball Matchup", ""))
+    hitter["Breaking Ball Matchup"] = clean_value(hitter.get("Breaking Ball Matchup", ""))
+    hitter["Offspeed Matchup"] = clean_value(hitter.get("Offspeed Matchup", ""))
+    hitter["xHR Matchup"] = clean_value(hitter.get("xHR Matchup", ""))
+    hitter["Pitch Arsenal Notes"] = clean_value(hitter.get("Pitch Arsenal Notes", ""))
+    hitter["Hot Zones Allowed"] = clean_value(hitter.get("Hot Zones Allowed", ""))
+    hitter["Cold Zones Allowed"] = clean_value(hitter.get("Cold Zones Allowed", ""))
     hitter["Team"] = clean_value(scores.get("Team", ""))
     hitter["Bullpen"] = clean_value(scores.get("Bullpen", ""))
     hitter["Weather"] = clean_value(scores.get("Weather", ""))
@@ -134,6 +152,7 @@ def format_hitter(hitter_input, by_name, by_id, game, side):
     hitter["Likely"] = clean_value(scores.get("Likely", ""))
     hitter["Confidence"] = clean_value(scores.get("Confidence", ""))
     hitter["Reasons"] = scores.get("Reasons", [])
+    hitter = attach_hitter_detail_scores(hitter)
 
     return hitter
 

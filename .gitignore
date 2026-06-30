@@ -153,6 +153,7 @@ config/google_credentials.json
 .env
 data/raw/
 data/processed/
+data/history/
 outputs/
 .envrc
 .venv
@@ -221,3 +222,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+.DS_Store
+.vscode/

@@ -13,6 +13,13 @@ HEADERS = [
     "Team",
     "Player",
     "Likely",
+    "Arsenal Score",
+    "Fastball Matchup",
+    "Breaking Ball Matchup",
+    "Offspeed Matchup",
+    "xHR Matchup",
+    "Hot Zones Allowed",
+    "Cold Zones Allowed",
     "Confidence",
     "Power",
     "Contact",
@@ -78,6 +85,13 @@ def update_full_slate_hitters_sheet():
                     "team_name": team_name,
                     "player": hitter.get("Player", ""),
                     "likely": likely,
+                    "arsenal_score": hitter.get("Arsenal Score", ""),
+                    "fastball_matchup": hitter.get("Fastball Matchup", ""),
+                    "breaking_matchup": hitter.get("Breaking Ball Matchup", ""),
+                    "offspeed_matchup": hitter.get("Offspeed Matchup", ""),
+                    "xhr_matchup": hitter.get("xHR Matchup", ""),
+                    "hot_zones": hitter.get("Hot Zones Allowed", ""),
+                    "cold_zones": hitter.get("Cold Zones Allowed", ""),
                     "confidence": hitter.get("Confidence", ""),
                     "power": hitter.get("Power", ""),
                     "contact": hitter.get("Contact", ""),
@@ -106,6 +120,13 @@ def update_full_slate_hitters_sheet():
             item["team_name"],
             item["player"],
             item["likely"],
+            item["arsenal_score"],
+            item["fastball_matchup"],
+            item["breaking_matchup"],
+            item["offspeed_matchup"],
+            item["xhr_matchup"],
+            item["hot_zones"],
+            item["cold_zones"],
             item["confidence"],
             item["power"],
             item["contact"],
@@ -125,18 +146,18 @@ def update_full_slate_hitters_sheet():
     try:
         ws = sheet.worksheet("Full Slate Hitters")
     except gspread.WorksheetNotFound:
-        ws = sheet.add_worksheet(title="Full Slate Hitters", rows=500, cols=20)
+        ws = sheet.add_worksheet(title="Full Slate Hitters", rows=500, cols=30)
 
     ws.clear()
     ws.update(rows)
 
-    ws.format("A:P", {
+    ws.format("A:W", {
         "textFormat": {"foregroundColor": {"red": 0, "green": 0, "blue": 0}},
         "horizontalAlignment": "CENTER",
         "verticalAlignment": "MIDDLE",
     })
 
-    ws.format("A1:P1", {
+    ws.format("A1:W1", {
         "backgroundColor": {"red": 0.02, "green": 0.05, "blue": 0.10},
         "textFormat": {
             "foregroundColor": {"red": 1, "green": 1, "blue": 1},
@@ -145,7 +166,7 @@ def update_full_slate_hitters_sheet():
         },
     })
 
-    ws.format("A3:P3", {
+    ws.format("A3:W3", {
         "backgroundColor": {"red": 0.08, "green": 0.36, "blue": 0.48},
         "textFormat": {
             "foregroundColor": {"red": 1, "green": 1, "blue": 1},
@@ -153,7 +174,14 @@ def update_full_slate_hitters_sheet():
         },
     })
 
-    ws.format("E:O", {
+    ws.format("E:J", {
+        "numberFormat": {
+            "type": "NUMBER",
+            "pattern": "0.0",
+        }
+    })
+
+    ws.format("M:V", {
         "numberFormat": {
             "type": "NUMBER",
             "pattern": "0.0",

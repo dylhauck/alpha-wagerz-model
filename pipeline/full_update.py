@@ -23,7 +23,10 @@ from model.attach_team_context import attach_team_context
 from google_sheets.update_full_slate import update_full_slate_sheets
 from model.bullpen_metrics import build_bullpen_metrics
 from model.attach_bullpen_context import attach_bullpen_context
-
+from model.validate_model_features import validate_model_features
+from model.pitch_arsenal_metrics import build_pitch_arsenal_metrics
+from model.zone_allowed_metrics import build_zone_allowed_metrics
+from model.save_history import save_daily_history
 
 def run_full_update():
     print("🐺 Starting Alpha Wagerz full update...")
@@ -47,6 +50,8 @@ def run_full_update():
     build_pitcher_metrics()
     build_pitch_mix()
     build_hitter_pitch_type_metrics()
+    build_pitch_arsenal_metrics()
+    build_zone_allowed_metrics()
     build_team_offense_metrics()
     build_bullpen_metrics()
 
@@ -64,8 +69,12 @@ def run_full_update():
 
     print("\n🔎 Validation")
     validate_pipeline()
+    validate_model_features()
 
     print("\n📄 Google Sheets")
     update_full_slate_sheets()
+
+    print("\n🗄️ Saving history")
+    save_daily_history()
 
     print("\n✅ Alpha Wagerz full update complete.")

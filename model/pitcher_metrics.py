@@ -1,8 +1,20 @@
 from pathlib import Path
+import numpy as np
 import pandas as pd
 
 RAW_FILE = Path("data/raw/statcast/statcast_last_30_days.csv")
 OUTPUT_FILE = Path("data/processed/pitcher_metrics_last_30_days.csv")
+
+
+def safe_rate(numerator, denominator, multiplier=1):
+    numerator = numerator.fillna(0)
+    denominator = denominator.fillna(0)
+
+    return np.where(
+        denominator > 0,
+        numerator / denominator * multiplier,
+        0,
+    )
 
 
 def is_barrel(row):
@@ -18,69 +30,134 @@ def is_barrel(row):
 def build_pitcher_metrics():
     df = pd.read_csv(RAW_FILE, low_memory=False)
 
+    df = df[df["pitcher"].notna()]
+
     df["is_bip"] = df["type"] == "X"
-    df["is_swinging_strike"] = df["description"].str.contains("swinging_strike", na=False)
     df["is_called_strike"] = df["description"].str.contains("called_strike", na=False)
+    df["is_swinging_strike"] = df["description"].str.contains("swinging_strike", na=False)
+    df["is_csw"] = df["is_called_strike"] | df["is_swinging_strike"]
     df["is_ball"] = df["description"].str.contains("ball", na=False)
     df["is_hard_hit"] = df["launch_speed"] >= 95
-    df["is_fly_ball"] = df["bb_type"].isin(["fly_ball", "popup"])
     df["is_barrel"] = df.apply(is_barrel, axis=1)
+    df["is_fly_ball"] = df["bb_type"].isin(["fly_ball", "popup"])
+    df["is_ground_ball"] = df["bb_type"] == "ground_ball"
+    df["is_hr"] = df["events"] == "home_run"
+    df["is_k"] = df["events"].isin(["strikeout", "strikeout_double_play"])
+    df["is_bb"] = df["events"].isin(["walk", "intent_walk"])
+
+    pa_events = [
+        "single", "double", "triple", "home_run",
+        "field_out", "force_out", "grounded_into_double_play",
+        "field_error", "strikeout", "strikeout_double_play",
+        "fielders_choice", "fielders_choice_out",
+        "double_play", "triple_play",
+        "walk", "intent_walk", "hit_by_pitch", "sac_fly", "sac_bunt"
+    ]
+
+    df["is_pa"] = df["events"].isin(pa_events)
 
     grouped = df.groupby(["pitcher", "player_name"], dropna=False).agg(
         Pitches=("pitch_type", "count"),
+        BF=("is_pa", "sum"),
         BIP=("is_bip", "sum"),
+        HR=("is_hr", "sum"),
+        K=("is_k", "sum"),
+        BB=("is_bb", "sum"),
         xwOBA=("estimated_woba_using_speedangle", "mean"),
-        CSW=("is_called_strike", "sum"),
+        xwOBAcon=("estimated_woba_using_speedangle", "mean"),
+        CSW=("is_csw", "sum"),
         SwStr=("is_swinging_strike", "sum"),
         Ball=("is_ball", "sum"),
-        PulledBrl=("is_barrel", "sum"),
         Barrels=("is_barrel", "sum"),
-        FB=("is_fly_ball", "sum"),
         HH=("is_hard_hit", "sum"),
+        FB=("is_fly_ball", "sum"),
+        GB=("is_ground_ball", "sum"),
+        AvgEV=("launch_speed", "mean"),
+        AvgLA=("launch_angle", "mean"),
+        FBv=("release_speed", "mean"),
     ).reset_index()
 
-    grouped["CSW%"] = ((grouped["CSW"] + grouped["SwStr"]) / grouped["Pitches"] * 100).fillna(0)
-    grouped["SwStr%"] = (grouped["SwStr"] / grouped["Pitches"] * 100).fillna(0)
-    grouped["Ball%"] = (grouped["Ball"] / grouped["Pitches"] * 100).fillna(0)
-    grouped["PulledBrl%"] = (grouped["PulledBrl"] / grouped["BIP"] * 100).fillna(0)
-    grouped["Brl/BIP%"] = (grouped["Barrels"] / grouped["BIP"] * 100).fillna(0)
-    grouped["FB%"] = (grouped["FB"] / grouped["BIP"] * 100).fillna(0)
-    grouped["HH%"] = (grouped["HH"] / grouped["BIP"] * 100).fillna(0)
+    grouped["CSW%"] = safe_rate(grouped["CSW"], grouped["Pitches"], 100)
+    grouped["SwStr%"] = safe_rate(grouped["SwStr"], grouped["Pitches"], 100)
+    grouped["Ball%"] = safe_rate(grouped["Ball"], grouped["Pitches"], 100)
+    grouped["Brl/BIP%"] = safe_rate(grouped["Barrels"], grouped["BIP"], 100)
+    grouped["PulledBrl%"] = grouped["Brl/BIP%"]
+    grouped["HH%"] = safe_rate(grouped["HH"], grouped["BIP"], 100)
+    grouped["FB%"] = safe_rate(grouped["FB"], grouped["BIP"], 100)
+    grouped["GB%"] = safe_rate(grouped["GB"], grouped["BIP"], 100)
+    grouped["K%"] = safe_rate(grouped["K"], grouped["BF"], 100)
+    grouped["BB%"] = safe_rate(grouped["BB"], grouped["BF"], 100)
+
+    # Approximation from Statcast pitch data:
+    # 3 outs per inning, BF is imperfect but gives us a useful scaled HR vulnerability.
+    grouped["IP"] = grouped["BF"] / 3
+    grouped["HR/9"] = safe_rate(grouped["HR"], grouped["IP"], 9)
 
     grouped["Pitch Score"] = (
-        grouped["CSW%"] * 1.2 +
-        grouped["SwStr%"] * 1.8 -
-        grouped["Ball%"] * 0.5 -
-        grouped["HH%"] * 0.35 -
-        grouped["Brl/BIP%"] * 1.0
-    ).clip(0, 100).round(1)
+        100
+        - grouped["xwOBA"].fillna(0) * 85
+        - grouped["Brl/BIP%"] * 1.2
+        - grouped["HH%"] * 0.35
+        - grouped["FB%"] * 0.25
+        - grouped["Ball%"] * 0.20
+        + grouped["SwStr%"] * 0.55
+    ).clip(0, 100)
 
     grouped["Strikeout Score"] = (
-        grouped["SwStr%"] * 4 +
-        grouped["CSW%"] * 1.2 -
-        grouped["Ball%"] * 0.4
-    ).clip(0, 100).round(1)
+        grouped["SwStr%"] * 2.4
+        + grouped["CSW%"] * 1.5
+        - grouped["Ball%"] * 0.35
+        + grouped["K%"] * 0.35
+    ).clip(0, 100)
+
+    grouped["HR Vulnerability"] = (
+        grouped["HR/9"] * 10
+        + grouped["Brl/BIP%"] * 1.5
+        + grouped["HH%"] * 0.55
+        + grouped["FB%"] * 0.35
+        + grouped["xwOBAcon"].fillna(0) * 60
+    ).clip(0, 100)
 
     final = grouped[[
         "pitcher",
         "player_name",
-        "Pitch Score",
-        "Strikeout Score",
+        "Pitches",
+        "BF",
+        "IP",
+        "HR",
+        "K",
+        "BB",
         "xwOBA",
+        "xwOBAcon",
         "CSW%",
         "SwStr%",
         "Ball%",
         "PulledBrl%",
         "Brl/BIP%",
         "FB%",
+        "GB%",
         "HH%",
-    ]]
+        "K%",
+        "BB%",
+        "HR/9",
+        "AvgEV",
+        "AvgLA",
+        "FBv",
+        "Pitch Score",
+        "Strikeout Score",
+        "HR Vulnerability",
+    ]].copy()
+
+    final = final.replace([np.inf, -np.inf], 0)
+    final = final.fillna(0)
 
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     final.to_csv(OUTPUT_FILE, index=False)
 
     print(f"✅ Saved pitcher metrics for {len(final)} pitchers")
     print(f"📁 {OUTPUT_FILE}")
+
+    return final
 
 
 if __name__ == "__main__":

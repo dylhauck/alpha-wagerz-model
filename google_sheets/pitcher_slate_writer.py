@@ -12,14 +12,31 @@ HEADERS = [
     "Opponent",
     "Pitch Score",
     "Strikeout Score",
+    "HR Vulnerability",
+    "Fly Ball Profile",
+    "Barrel Profile",
+    "Pitches",
+    "BF",
+    "IP",
+    "HR",
+    "K",
+    "BB",
     "xwOBA",
+    "xwOBAcon",
     "CSW%",
     "SwStr%",
     "Ball%",
     "PulledBrl%",
     "Brl/BIP%",
     "FB%",
+    "GB%",
     "HH%",
+    "K%",
+    "BB%",
+    "HR/9",
+    "AvgEV",
+    "AvgLA",
+    "FBv",
 ]
 
 
@@ -53,13 +70,13 @@ def update_pitcher_slate(game_id):
     ws.clear()
     ws.update(rows)
 
-    ws.format("A:Z", {
+    ws.format("A:AE", {
         "textFormat": {"foregroundColor": {"red": 0, "green": 0, "blue": 0}},
         "horizontalAlignment": "CENTER",
         "verticalAlignment": "MIDDLE",
     })
 
-    ws.format("A1:Z1", {
+    ws.format("A1:AE1", {
         "backgroundColor": {"red": 0.02, "green": 0.05, "blue": 0.10},
         "textFormat": {
             "foregroundColor": {"red": 1, "green": 1, "blue": 1},
@@ -68,12 +85,19 @@ def update_pitcher_slate(game_id):
         },
     })
 
-    ws.format("A3:Z3", {
+    ws.format("A3:AE3", {
         "backgroundColor": {"red": 0.08, "green": 0.36, "blue": 0.48},
         "textFormat": {
             "foregroundColor": {"red": 1, "green": 1, "blue": 1},
             "bold": True,
         },
+    })
+
+    ws.format("E:AE", {
+        "numberFormat": {
+            "type": "NUMBER",
+            "pattern": "0.0",
+        }
     })
 
     print(f"✅ Updated Pitcher Slate for {selected['game']}")

@@ -1,11 +1,11 @@
 {
-  "power": 0.20,
+  "power": 0.22,
   "contact": 0.12,
-  "pitcher": 0.13,
-  "pitch_type": 0.13,
-  "team": 0.09,
-  "bullpen": 0.09,
+  "pitcher": 0.12,
+  "pitch_type": 0.16,
+  "team": 0.08,
+  "bullpen": 0.08,
   "weather": 0.08,
-  "park": 0.08,
-  "recent": 0.08
+  "park": 0.07,
+  "recent": 0.07
 }

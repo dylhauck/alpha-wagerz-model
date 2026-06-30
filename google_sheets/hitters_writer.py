@@ -6,10 +6,37 @@ SHEET_NAME = "Alpha Wagerz Model"
 CREDENTIALS_FILE = "config/google_credentials.json"
 
 HEADERS = [
-    "Player", "Team", "Bats", "Opp Pitcher", "Throws",
-    "Matchup", "Test Score", "Ceiling", "Zone Fit", "HR Form", "kHR",
-    "Pitches", "BIP", "ISO", "xwOBA", "xwOBAcon", "SwStr%",
-    "PulledBrl%", "Brl/BIP%", "Sweet Spot%", "FB%", "HH%", "LA", "Likely"
+    "Player",
+    "Team",
+    "Bats",
+    "Opp Pitcher",
+    "Throws",
+    "Matchup",
+    "Test Score",
+    "Ceiling",
+    "Zone Fit",
+    "HR Form",
+    "kHR",
+    "Pitches",
+    "BIP",
+    "ISO",
+    "xwOBA",
+    "xwOBAcon",
+    "SwStr%",
+    "PulledBrl%",
+    "Brl/BIP%",
+    "Sweet Spot%",
+    "FB%",
+    "HH%",
+    "LA",
+    "Likely",
+    "Arsenal Score",
+    "Fastball Matchup",
+    "Breaking Ball Matchup",
+    "Offspeed Matchup",
+    "xHR Matchup",
+    "Hot Zones Allowed",
+    "Cold Zones Allowed",
 ]
 
 
@@ -22,17 +49,16 @@ def get_client():
     return gspread.authorize(creds)
 
 
-def hitter_section(title, hitters, team_name, opp_pitcher):
+def hitter_section(title, hitters, team_name, opp_pitcher, opp_throws):
     rows = [[title], HEADERS]
 
     for hitter in hitters:
         rows.append([
             hitter.get("Player", ""),
             hitter.get("Team", team_name),
-            hitter.get("Team Abbr", ""),
             hitter.get("Bats", ""),
             opp_pitcher,
-            hitter.get("Throws", ""),
+            opp_throws,
             hitter.get("Matchup", ""),
             hitter.get("Test Score", ""),
             hitter.get("Ceiling", ""),
@@ -52,46 +78,64 @@ def hitter_section(title, hitters, team_name, opp_pitcher):
             hitter.get("HH%", ""),
             hitter.get("LA", ""),
             hitter.get("Likely", ""),
+            hitter.get("Arsenal Score", ""),
+            hitter.get("Fastball Matchup", ""),
+            hitter.get("Breaking Ball Matchup", ""),
+            hitter.get("Offspeed Matchup", ""),
+            hitter.get("xHR Matchup", ""),
+            hitter.get("Hot Zones Allowed", ""),
+            hitter.get("Cold Zones Allowed", ""),
         ])
 
     return rows
 
 
+def pitcher_throws(pitchers, pitcher_name):
+    for pitcher in pitchers:
+        if pitcher.get("Pitcher") == pitcher_name:
+            return pitcher.get("Throws", "")
+    return ""
+
+
 def apply_formatting(ws):
-    # Reset readable text
-    ws.format("A:Z", {
+    ws.format("A:AE", {
         "textFormat": {
             "foregroundColor": {"red": 0, "green": 0, "blue": 0},
-            "fontSize": 10
+            "fontSize": 10,
         },
         "horizontalAlignment": "CENTER",
-        "verticalAlignment": "MIDDLE"
+        "verticalAlignment": "MIDDLE",
     })
 
-    # Title rows / section rows
-    ws.format("A1:Z1", {
+    ws.format("A1:AE1", {
         "backgroundColor": {"red": 0.02, "green": 0.05, "blue": 0.10},
         "textFormat": {
             "foregroundColor": {"red": 1, "green": 1, "blue": 1},
             "bold": True,
-            "fontSize": 14
-        }
+            "fontSize": 14,
+        },
     })
 
-    # Headers
-    ws.format("A4:Z4", {
+    ws.format("A3:AE3", {
         "backgroundColor": {"red": 0.08, "green": 0.36, "blue": 0.48},
         "textFormat": {
             "foregroundColor": {"red": 1, "green": 1, "blue": 1},
-            "bold": True
-        }
+            "bold": True,
+        },
     })
 
-    # Likely column as number, NOT percent
-    ws.format("X:X", {
+    ws.format("A15:AE15", {
+        "backgroundColor": {"red": 0.08, "green": 0.36, "blue": 0.48},
+        "textFormat": {
+            "foregroundColor": {"red": 1, "green": 1, "blue": 1},
+            "bold": True,
+        },
+    })
+
+    ws.format("F:AC", {
         "numberFormat": {
             "type": "NUMBER",
-            "pattern": "0.0"
+            "pattern": "0.0",
         }
     })
 
@@ -100,6 +144,13 @@ def update_hitter_matchups(game_id):
     payload = build_dashboard_payload(game_id)
     selected = payload["selected_game"]
     hitters = payload["hitters"]
+    pitchers = payload.get("pitchers", [])
+
+    away_sp = selected.get("away_sp", "")
+    home_sp = selected.get("home_sp", "")
+
+    away_sp_throws = pitcher_throws(pitchers, away_sp)
+    home_sp_throws = pitcher_throws(pitchers, home_sp)
 
     client = get_client()
     sheet = client.open(SHEET_NAME)
@@ -114,7 +165,8 @@ def update_hitter_matchups(game_id):
         f'{selected["away_team"]} Hitters',
         hitters.get("away", []),
         selected["away_team"],
-        selected["home_sp"],
+        home_sp,
+        home_sp_throws,
     )
 
     rows += [[]]
@@ -123,7 +175,8 @@ def update_hitter_matchups(game_id):
         f'{selected["home_team"]} Hitters',
         hitters.get("home", []),
         selected["home_team"],
-        selected["away_sp"],
+        away_sp,
+        away_sp_throws,
     )
 
     ws.clear()

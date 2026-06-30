@@ -1,14 +1,16 @@
-game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status
-824822,2026-06-29,Chicago White Sox @ Baltimore Orioles,Chicago White Sox,Baltimore Orioles,Sean Burke,Shane Baz,Oriole Park at Camden Yards,Pre-Game
-823444,2026-06-29,Pittsburgh Pirates @ Philadelphia Phillies,Pittsburgh Pirates,Philadelphia Phillies,Braxton Ashcraft,Aaron Nola,Citizens Bank Park,Pre-Game
-823529,2026-06-29,Detroit Tigers @ New York Yankees,Detroit Tigers,New York Yankees,Casey Mize,Ryan Weathers,Yankee Stadium,Pre-Game
-822792,2026-06-29,New York Mets @ Toronto Blue Jays,New York Mets,Toronto Blue Jays,Sean Manaea,Trey Yesavage,Rogers Centre,Pre-Game
-824741,2026-06-29,Washington Nationals @ Boston Red Sox,Washington Nationals,Boston Red Sox,Miles Mikolas,Ranger Suarez,Fenway Park,Pre-Game
-824420,2026-06-29,Texas Rangers @ Cleveland Guardians,Texas Rangers,Cleveland Guardians,Tyler Alexander,Parker Messick,Progressive Field,Pre-Game
-823771,2026-06-29,Cincinnati Reds @ Milwaukee Brewers,Cincinnati Reds,Milwaukee Brewers,Nick Lodolo,Robert Gasser,American Family Field,Pre-Game
-824662,2026-06-29,San Diego Padres @ Chicago Cubs,San Diego Padres,Chicago Cubs,Griffin Canning,Shota Imanaga,Wrigley Field,Pre-Game
-824176,2026-06-29,Minnesota Twins @ Houston Astros,Minnesota Twins,Houston Astros,Zebby Matthews,Peter Lambert,Daikin Park,Pre-Game
-824339,2026-06-29,Miami Marlins @ Colorado Rockies,Miami Marlins,Colorado Rockies,Sandy Alcantara,Sean Sullivan,Coors Field,Pre-Game
-824986,2026-06-29,Los Angeles Dodgers @ Athletics,Los Angeles Dodgers,Athletics,Eric Lauer,Gage Jump,Sutter Health Park,Scheduled
-823121,2026-06-29,Los Angeles Angels @ Seattle Mariners,Los Angeles Angels,Seattle Mariners,Ryan Johnson,George Kirby,T-Mobile Park,Scheduled
-825065,2026-06-29,San Francisco Giants @ Arizona Diamondbacks,San Francisco Giants,Arizona Diamondbacks,Tyler Mahle,Eduardo Rodriguez,Chase Field,Scheduled
+game_id,date,game,away_team,home_team,away_sp,away_sp_id,home_sp,home_sp_id,venue,status
+824819,2026-06-30,Chicago White Sox @ Baltimore Orioles,Chicago White Sox,Baltimore Orioles,Erick Fedde,607200,Trey Gibson,694346,Oriole Park at Camden Yards,Pre-Game
+824418,2026-06-30,Texas Rangers @ Cleveland Guardians,Texas Rangers,Cleveland Guardians,Jacob deGrom,594798,Tanner Bibee,676440,Progressive Field,Pre-Game
+823445,2026-06-30,Pittsburgh Pirates @ Philadelphia Phillies,Pittsburgh Pirates,Philadelphia Phillies,Bubba Chandler,696149,Cristopher Sánchez,650911,Citizens Bank Park,Pre-Game
+823528,2026-06-30,Detroit Tigers @ New York Yankees,Detroit Tigers,New York Yankees,Tarik Skubal,669373,Cam Schlittler,693645,Yankee Stadium,Pre-Game
+822793,2026-06-30,New York Mets @ Toronto Blue Jays,New York Mets,Toronto Blue Jays,Nolan McLean,690997,Kevin Gausman,592332,Rogers Centre,Pre-Game
+824742,2026-06-30,Washington Nationals @ Boston Red Sox,Washington Nationals,Boston Red Sox,Cade Cavalli,676917,Connelly Early,813349,Fenway Park,Scheduled
+824907,2026-06-30,St. Louis Cardinals @ Atlanta Braves,St. Louis Cardinals,Atlanta Braves,Matthew Liberatore,669461,Martín Pérez,527048,Truist Park,Pre-Game
+824096,2026-06-30,Tampa Bay Rays @ Kansas City Royals,Tampa Bay Rays,Kansas City Royals,Griffin Jax,643377,Noah Cameron,702070,Kauffman Stadium,Scheduled
+823768,2026-06-30,Cincinnati Reds @ Milwaukee Brewers,Cincinnati Reds,Milwaukee Brewers,Rhett Lowder,695076,Brandon Sproat,687075,American Family Field,Scheduled
+824661,2026-06-30,San Diego Padres @ Chicago Cubs,San Diego Padres,Chicago Cubs,JP Sears,676664,Matthew Boyd,571510,Wrigley Field,Scheduled
+824175,2026-06-30,Minnesota Twins @ Houston Astros,Minnesota Twins,Houston Astros,Joe Ryan,657746,Mike Burrows,681347,Daikin Park,Scheduled
+824338,2026-06-30,Miami Marlins @ Colorado Rockies,Miami Marlins,Colorado Rockies,Eury Pérez,691587,Tanner Gordon,685299,Coors Field,Scheduled
+824984,2026-06-30,Los Angeles Dodgers @ Athletics,Los Angeles Dodgers,Athletics,Justin Wrobleski,680736,Jeffrey Springs,605488,Sutter Health Park,Scheduled
+823122,2026-06-30,Los Angeles Angels @ Seattle Mariners,Los Angeles Angels,Seattle Mariners,José Soriano,667755,Bryan Woo,693433,T-Mobile Park,Scheduled
+825066,2026-06-30,San Francisco Giants @ Arizona Diamondbacks,San Francisco Giants,Arizona Diamondbacks,Landen Roupp,694738,,,Chase Field,Scheduled
