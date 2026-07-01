@@ -27,6 +27,9 @@ from model.validate_model_features import validate_model_features
 from model.pitch_arsenal_metrics import build_pitch_arsenal_metrics
 from model.zone_allowed_metrics import build_zone_allowed_metrics
 from model.save_history import save_daily_history
+from model.publish_to_web import publish_to_web
+from providers.standings import build_team_context_file
+from model.attach_team_standings import attach_team_standings
 
 def run_full_update():
     print("🐺 Starting Alpha Wagerz full update...")
@@ -37,6 +40,7 @@ def run_full_update():
 
     print("\n🗓️ Slate / lineups")
     update_today()
+    build_team_context_file()
 
     print("\n📊 Statcast")
     get_statcast_batter_events()
@@ -59,6 +63,7 @@ def run_full_update():
     attach_pitcher_metrics_to_games()
     attach_pitch_type_matchups()
     attach_team_context()
+    attach_team_standings()
     attach_bullpen_context()
     attach_hitter_metrics_to_games()
     enrich_players_in_games()
@@ -76,5 +81,8 @@ def run_full_update():
 
     print("\n🗄️ Saving history")
     save_daily_history()
+
+    print("\n🌐 Publishing web data")
+    publish_to_web()
 
     print("\n✅ Alpha Wagerz full update complete.")

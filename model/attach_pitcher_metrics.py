@@ -9,6 +9,7 @@ from utils.json_utils import clean_value
 
 GAMES_DIR = Path("data/processed/games")
 PITCHER_METRICS_FILE = Path("data/processed/pitcher_metrics_last_30_days.csv")
+PITCHER_SEASON_METRICS_FILE = Path("data/processed/pitcher_metrics_season.csv")
 
 
 def load_json(filepath):
@@ -31,9 +32,11 @@ def normalize_name(name):
 
     return name.replace(",", "")
 
+def build_lookup_from_file(filepath):
+    if not filepath.exists():
+        return {}, {}
 
-def build_lookup():
-    df = pd.read_csv(PITCHER_METRICS_FILE)
+    df = pd.read_csv(filepath)
 
     df["lookup_name"] = df["player_name"].apply(normalize_name)
     df["lookup_id"] = df["pitcher"].astype(str)
@@ -50,21 +53,50 @@ def build_lookup():
 
     return by_name, by_id
 
+def build_lookup():
+    last_30_by_name, last_30_by_id = build_lookup_from_file(PITCHER_METRICS_FILE)
+    season_by_name, season_by_id = build_lookup_from_file(PITCHER_SEASON_METRICS_FILE)
 
-def find_metrics(name, pitcher_id, by_name, by_id):
-    if pitcher_id and str(pitcher_id) in by_id:
-        return by_id[str(pitcher_id)]
+    return {
+        "last_30_by_name": last_30_by_name,
+        "last_30_by_id": last_30_by_id,
+        "season_by_name": season_by_name,
+        "season_by_id": season_by_id,
+    }
 
-    return by_name.get(normalize_name(name), {})
+def find_metrics(name, pitcher_id, lookup):
+    if pitcher_id and str(pitcher_id) in lookup["last_30_by_id"]:
+        metrics = lookup["last_30_by_id"][str(pitcher_id)]
+        metrics["Metric Source"] = "Last 30"
+        return metrics
 
+    normalized = normalize_name(name)
 
-def format_pitcher(name, team, opponent, by_name, by_id, pitcher_id=None):
-    metrics = find_metrics(name, pitcher_id, by_name, by_id)
+    if normalized in lookup["last_30_by_name"]:
+        metrics = lookup["last_30_by_name"][normalized]
+        metrics["Metric Source"] = "Last 30"
+        return metrics
+
+    if pitcher_id and str(pitcher_id) in lookup["season_by_id"]:
+        metrics = lookup["season_by_id"][str(pitcher_id)]
+        metrics["Metric Source"] = "Season"
+        return metrics
+
+    if normalized in lookup["season_by_name"]:
+        metrics = lookup["season_by_name"][normalized]
+        metrics["Metric Source"] = "Season"
+        return metrics
+
+    return {"Metric Source": "Missing"}
+
+def format_pitcher(name, team, opponent, lookup, pitcher_id=None):
+    metrics = find_metrics(name, pitcher_id, lookup)
 
     pitcher = {
         "Team": team,
         "Pitcher": name,
         "Pitcher ID": clean_value(metrics.get("pitcher", pitcher_id or "")),
+        "Metric Source": clean_value(metrics.get("Metric Source", "")),
         "Throws": clean_value(metrics.get("Throws", "")),
         "Opponent": opponent,
 
@@ -112,7 +144,7 @@ def format_pitcher(name, team, opponent, by_name, by_id, pitcher_id=None):
 
 
 def attach_pitcher_metrics_to_games():
-    by_name, by_id = build_lookup()
+    lookup = build_lookup()
 
     for file in GAMES_DIR.glob("*.json"):
         game = load_json(file)
@@ -134,16 +166,14 @@ def attach_pitcher_metrics_to_games():
                 game.get("away_sp", ""),
                 game.get("away_team", ""),
                 game.get("home_team", ""),
-                by_name,
-                by_id,
+                lookup,
                 away_sp_id,
             ),
             format_pitcher(
                 game.get("home_sp", ""),
                 game.get("home_team", ""),
                 game.get("away_team", ""),
-                by_name,
-                by_id,
+                lookup,
                 home_sp_id,
             ),
         ]

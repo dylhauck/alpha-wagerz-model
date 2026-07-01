@@ -1,16 +1,15 @@
 game_id,date,game,away_team,home_team,away_sp,away_sp_id,home_sp,home_sp_id,venue,status
-824819,2026-06-30,Chicago White Sox @ Baltimore Orioles,Chicago White Sox,Baltimore Orioles,Erick Fedde,607200,Trey Gibson,694346,Oriole Park at Camden Yards,Pre-Game
-824418,2026-06-30,Texas Rangers @ Cleveland Guardians,Texas Rangers,Cleveland Guardians,Jacob deGrom,594798,Tanner Bibee,676440,Progressive Field,Pre-Game
-823445,2026-06-30,Pittsburgh Pirates @ Philadelphia Phillies,Pittsburgh Pirates,Philadelphia Phillies,Bubba Chandler,696149,Cristopher Sánchez,650911,Citizens Bank Park,Pre-Game
-823528,2026-06-30,Detroit Tigers @ New York Yankees,Detroit Tigers,New York Yankees,Tarik Skubal,669373,Cam Schlittler,693645,Yankee Stadium,Pre-Game
-822793,2026-06-30,New York Mets @ Toronto Blue Jays,New York Mets,Toronto Blue Jays,Nolan McLean,690997,Kevin Gausman,592332,Rogers Centre,Pre-Game
-824742,2026-06-30,Washington Nationals @ Boston Red Sox,Washington Nationals,Boston Red Sox,Cade Cavalli,676917,Connelly Early,813349,Fenway Park,Scheduled
-824907,2026-06-30,St. Louis Cardinals @ Atlanta Braves,St. Louis Cardinals,Atlanta Braves,Matthew Liberatore,669461,Martín Pérez,527048,Truist Park,Pre-Game
-824096,2026-06-30,Tampa Bay Rays @ Kansas City Royals,Tampa Bay Rays,Kansas City Royals,Griffin Jax,643377,Noah Cameron,702070,Kauffman Stadium,Scheduled
-823768,2026-06-30,Cincinnati Reds @ Milwaukee Brewers,Cincinnati Reds,Milwaukee Brewers,Rhett Lowder,695076,Brandon Sproat,687075,American Family Field,Scheduled
-824661,2026-06-30,San Diego Padres @ Chicago Cubs,San Diego Padres,Chicago Cubs,JP Sears,676664,Matthew Boyd,571510,Wrigley Field,Scheduled
-824175,2026-06-30,Minnesota Twins @ Houston Astros,Minnesota Twins,Houston Astros,Joe Ryan,657746,Mike Burrows,681347,Daikin Park,Scheduled
-824338,2026-06-30,Miami Marlins @ Colorado Rockies,Miami Marlins,Colorado Rockies,Eury Pérez,691587,Tanner Gordon,685299,Coors Field,Scheduled
-824984,2026-06-30,Los Angeles Dodgers @ Athletics,Los Angeles Dodgers,Athletics,Justin Wrobleski,680736,Jeffrey Springs,605488,Sutter Health Park,Scheduled
-823122,2026-06-30,Los Angeles Angels @ Seattle Mariners,Los Angeles Angels,Seattle Mariners,José Soriano,667755,Bryan Woo,693433,T-Mobile Park,Scheduled
-825066,2026-06-30,San Francisco Giants @ Arizona Diamondbacks,San Francisco Giants,Arizona Diamondbacks,Landen Roupp,694738,,,Chase Field,Scheduled
+824818,2026-07-01,Chicago White Sox @ Baltimore Orioles,Chicago White Sox,Baltimore Orioles,Noah Schultz,702273,Dean Kremer,665152,Oriole Park at Camden Yards,In Progress
+824419,2026-07-01,Texas Rangers @ Cleveland Guardians,Texas Rangers,Cleveland Guardians,MacKenzie Gore,669022,Joey Cantillo,676282,Progressive Field,In Progress
+824740,2026-07-01,Washington Nationals @ Boston Red Sox,Washington Nationals,Boston Red Sox,Brad Lord,695418,Payton Tolle,801139,Fenway Park,In Progress
+823530,2026-07-01,Detroit Tigers @ New York Yankees,Detroit Tigers,New York Yankees,Troy Melton,675512,Will Warren,701542,Yankee Stadium,In Progress
+824660,2026-07-01,San Diego Padres @ Chicago Cubs,San Diego Padres,Chicago Cubs,Walker Buehler,621111,Colin Rea,607067,Wrigley Field,In Progress
+822791,2026-07-01,New York Mets @ Toronto Blue Jays,New York Mets,Toronto Blue Jays,Freddy Peralta,642547,Braydon Fisher,680755,Rogers Centre,Delayed Start
+823446,2026-07-01,Pittsburgh Pirates @ Philadelphia Phillies,Pittsburgh Pirates,Philadelphia Phillies,Paul Skenes,694973,Zack Wheeler,554430,Citizens Bank Park,Scheduled
+824905,2026-07-01,St. Louis Cardinals @ Atlanta Braves,St. Louis Cardinals,Atlanta Braves,Michael McGreevy,700241,Reynaldo López,625643,Truist Park,Scheduled
+824094,2026-07-01,Tampa Bay Rays @ Kansas City Royals,Tampa Bay Rays,Kansas City Royals,Shane McClanahan,663556,Seth Lugo,607625,Kauffman Stadium,Scheduled
+824174,2026-07-01,Minnesota Twins @ Houston Astros,Minnesota Twins,Houston Astros,Taj Bradley,671737,Tatsuya Imai,837227,Daikin Park,Pre-Game
+823767,2026-07-01,Cincinnati Reds @ Milwaukee Brewers,Cincinnati Reds,Milwaukee Brewers,Andrew Abbott,671096,Shane Drohan,675660,American Family Field,Scheduled
+824337,2026-07-01,Miami Marlins @ Colorado Rockies,Miami Marlins,Colorado Rockies,Max Meyer,676974,Kyle Freeland,607536,Coors Field,Scheduled
+824985,2026-07-01,Los Angeles Dodgers @ Athletics,Los Angeles Dodgers,Athletics,,,J.T. Ginn,669372,Sutter Health Park,Scheduled
+825064,2026-07-01,San Francisco Giants @ Arizona Diamondbacks,San Francisco Giants,Arizona Diamondbacks,Trevor McDonald,686790,Zac Gallen,668678,Chase Field,Scheduled

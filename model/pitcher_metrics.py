@@ -2,8 +2,11 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-RAW_FILE = Path("data/raw/statcast/statcast_last_30_days.csv")
-OUTPUT_FILE = Path("data/processed/pitcher_metrics_last_30_days.csv")
+RAW_LAST_30_FILE = Path("data/raw/statcast/statcast_last_30_days.csv")
+RAW_SEASON_FILE = Path("data/raw/statcast/statcast_season.csv")
+
+OUTPUT_LAST_30_FILE = Path("data/processed/pitcher_metrics_last_30_days.csv")
+OUTPUT_SEASON_FILE = Path("data/processed/pitcher_metrics_season.csv")
 
 
 def safe_rate(numerator, denominator, multiplier=1):
@@ -27,9 +30,12 @@ def is_barrel(row):
     return ev >= 98 and 26 <= la <= 30
 
 
-def build_pitcher_metrics():
-    df = pd.read_csv(RAW_FILE, low_memory=False)
+def build_metrics_from_file(raw_file, output_file, label):
+    if not raw_file.exists():
+        print(f"⚠️ Missing {raw_file}. Skipping {label} pitcher metrics.")
+        return pd.DataFrame()
 
+    df = pd.read_csv(raw_file, low_memory=False)
     df = df[df["pitcher"].notna()]
 
     df["is_bip"] = df["type"] == "X"
@@ -88,8 +94,6 @@ def build_pitcher_metrics():
     grouped["K%"] = safe_rate(grouped["K"], grouped["BF"], 100)
     grouped["BB%"] = safe_rate(grouped["BB"], grouped["BF"], 100)
 
-    # Approximation from Statcast pitch data:
-    # 3 outs per inning, BF is imperfect but gives us a useful scaled HR vulnerability.
     grouped["IP"] = grouped["BF"] / 3
     grouped["HR/9"] = safe_rate(grouped["HR"], grouped["IP"], 9)
 
@@ -148,16 +152,31 @@ def build_pitcher_metrics():
         "HR Vulnerability",
     ]].copy()
 
-    final = final.replace([np.inf, -np.inf], 0)
-    final = final.fillna(0)
+    final = final.replace([np.inf, -np.inf], 0).fillna(0)
 
-    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    final.to_csv(OUTPUT_FILE, index=False)
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    final.to_csv(output_file, index=False)
 
-    print(f"✅ Saved pitcher metrics for {len(final)} pitchers")
-    print(f"📁 {OUTPUT_FILE}")
+    print(f"✅ Saved {label} pitcher metrics for {len(final)} pitchers")
+    print(f"📁 {output_file}")
 
     return final
+
+
+def build_pitcher_metrics():
+    last_30 = build_metrics_from_file(
+        RAW_LAST_30_FILE,
+        OUTPUT_LAST_30_FILE,
+        "last-30-day",
+    )
+
+    season = build_metrics_from_file(
+        RAW_SEASON_FILE,
+        OUTPUT_SEASON_FILE,
+        "season",
+    )
+
+    return last_30, season
 
 
 if __name__ == "__main__":
