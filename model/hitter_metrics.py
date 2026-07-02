@@ -99,13 +99,7 @@ def build_metrics_from_file(raw_file, output_file, label):
     ).reset_index()
 
     grouped = grouped.rename(columns={"real_player_name": "player_name"})
-
-    # Do NOT drop hitters just because the player reference missed their name.
-    # The MLB batter ID is enough for lookup later.
-    grouped["player_name"] = grouped.apply(
-    lambda row: row["player_name"] if row["player_name"] else f"batter_{row['batter']}",
-    axis=1,
-)
+    grouped = grouped[grouped["player_name"] != ""]
 
     grouped["ISO"] = safe_rate(grouped["TB"] - grouped["H"], grouped["AB"])
     grouped["SwStr%"] = safe_rate(grouped["SwStr"], grouped["Pitches"], 100)

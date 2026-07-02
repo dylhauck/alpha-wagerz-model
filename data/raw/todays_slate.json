@@ -8,7 +8,7 @@
     "away_sp": "Jared Jones",
     "home_sp": "Alan Rangel",
     "venue": "Citizens Bank Park",
-    "status": "Scheduled",
+    "status": "In Progress",
     "game_date_utc": "2026-07-02T16:35:00Z",
     "game_time": "11:35 AM",
     "game_time_sort": "11:35"
@@ -22,7 +22,7 @@
     "away_sp": "Chase Burns",
     "home_sp": "Jacob Misiorowski",
     "venue": "American Family Field",
-    "status": "Scheduled",
+    "status": "Warmup",
     "game_date_utc": "2026-07-02T18:10:00Z",
     "game_time": "1:10 PM",
     "game_time_sort": "13:10"
@@ -36,7 +36,7 @@
     "away_sp": "Ryan Gusto",
     "home_sp": "Michael Lorenzen",
     "venue": "Coors Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-02T19:10:00Z",
     "game_time": "2:10 PM",
     "game_time_sort": "14:10"

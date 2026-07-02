@@ -1,3 +1,4 @@
+from graphics.create_weather_graphic import create_weather_graphic
 from providers.mlb_reference import build_reference_files
 from providers.mlb_players import build_player_reference
 from providers.statcast import get_statcast_batter_events
@@ -31,6 +32,8 @@ from model.publish_to_web import publish_to_web
 from providers.standings import build_team_context_file
 from model.attach_team_standings import attach_team_standings
 from model.attach_game_times import attach_game_times
+from model.export_hr_graphic_data import export_hr_graphic_data
+from graphics.create_hr_targets_graphic import create_graphic
 
 def run_full_update():
     print("🐺 Starting Alpha Wagerz full update...")
@@ -74,6 +77,9 @@ def run_full_update():
     print("\n🏆 Outputs")
     build_rankings()
     build_all_games()
+    export_hr_graphic_data()
+    create_graphic()
+    create_weather_graphic()
 
     print("\n🔎 Validation")
     validate_pipeline()

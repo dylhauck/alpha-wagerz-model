@@ -299,6 +299,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 694462,Hurston Waldrep,144,Atlanta Braves,ATL,P,Pitcher,R,R
 641656,Ian Hamilton,144,Atlanta Braves,ATL,P,Pitcher,R,R
 675916,James Karinchak,144,Atlanta Braves,ATL,P,Pitcher,R,R
+805347,Jim Jarvis,144,Atlanta Braves,ATL,SS,Shortstop,L,R
 663698,Joey Bart,144,Atlanta Braves,ATL,C,Catcher,R,R
 622761,Jorge Mateo,144,Atlanta Braves,ATL,SS,Shortstop,R,R
 527048,Martín Pérez,144,Atlanta Braves,ATL,P,Pitcher,L,L
@@ -309,7 +310,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 645277,Ozzie Albies,144,Atlanta Braves,ATL,2B,Second Base,S,R
 628452,Raisel Iglesias,144,Atlanta Braves,ATL,P,Pitcher,R,R
 625643,Reynaldo López,144,Atlanta Braves,ATL,P,Pitcher,R,R
-642133,Rowdy Tellez,144,Atlanta Braves,ATL,1B,First Base,L,L
 641755,Tyler Kinley,144,Atlanta Braves,ATL,P,Pitcher,R,R
 643217,Andrew Benintendi,145,Chicago White Sox,CWS,DH,Designated Hitter,L,L
 641743,Anthony Kay,145,Chicago White Sox,CWS,P,Pitcher,L,L
@@ -373,6 +373,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 666808,Camilo Doval,147,New York Yankees,NYY,P,Pitcher,R,R
 607074,Carlos Rodón,147,New York Yankees,NYY,P,Pitcher,L,L
 641355,Cody Bellinger,147,New York Yankees,NYY,LF,Outfielder,L,L
+670280,David Bednar,147,New York Yankees,NYY,P,Pitcher,L,R
 518585,Fernando Cruz,147,New York Yankees,NYY,P,Pitcher,R,R
 543037,Gerrit Cole,147,New York Yankees,NYY,P,Pitcher,R,R
 656234,Jake Bird,147,New York Yankees,NYY,P,Pitcher,R,R
@@ -723,7 +724,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 660271,Shohei Ohtani,119,Los Angeles Dodgers,LAD,TWP,Two-Way Player,L,R
 656945,Tanner Scott,119,Los Angeles Dodgers,LAD,P,Pitcher,R,L
 606192,Teoscar Hernández,119,Los Angeles Dodgers,LAD,LF,Outfielder,R,R
-669242,Tommy Edman,119,Los Angeles Dodgers,LAD,2B,Second Base,S,R
+669242,Tommy Edman,119,Los Angeles Dodgers,LAD,LF,Outfielder,S,R
 694361,Will Klein,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
 808967,Yoshinobu Yamamoto,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
 665953,Andrés Chaparro,120,Washington Nationals,WSH,1B,First Base,R,R

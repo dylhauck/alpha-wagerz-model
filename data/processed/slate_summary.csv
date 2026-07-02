@@ -1,7 +1,7 @@
 game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status,game_date_utc,game_time,game_time_sort
-823442,2026-07-02,Pittsburgh Pirates @ Philadelphia Phillies,Pittsburgh Pirates,Philadelphia Phillies,Jared Jones,Alan Rangel,Citizens Bank Park,Scheduled,2026-07-02T16:35:00Z,11:35 AM,11:35
-823765,2026-07-02,Cincinnati Reds @ Milwaukee Brewers,Cincinnati Reds,Milwaukee Brewers,Chase Burns,Jacob Misiorowski,American Family Field,Scheduled,2026-07-02T18:10:00Z,1:10 PM,13:10
-824335,2026-07-02,Miami Marlins @ Colorado Rockies,Miami Marlins,Colorado Rockies,Ryan Gusto,Michael Lorenzen,Coors Field,Scheduled,2026-07-02T19:10:00Z,2:10 PM,14:10
+823442,2026-07-02,Pittsburgh Pirates @ Philadelphia Phillies,Pittsburgh Pirates,Philadelphia Phillies,Jared Jones,Alan Rangel,Citizens Bank Park,In Progress,2026-07-02T16:35:00Z,11:35 AM,11:35
+823765,2026-07-02,Cincinnati Reds @ Milwaukee Brewers,Cincinnati Reds,Milwaukee Brewers,Chase Burns,Jacob Misiorowski,American Family Field,Warmup,2026-07-02T18:10:00Z,1:10 PM,13:10
+824335,2026-07-02,Miami Marlins @ Colorado Rockies,Miami Marlins,Colorado Rockies,Ryan Gusto,Michael Lorenzen,Coors Field,Pre-Game,2026-07-02T19:10:00Z,2:10 PM,14:10
 824416,2026-07-02,Chicago White Sox @ Cleveland Guardians,Chicago White Sox,Cleveland Guardians,Davis Martin,Slade Cecconi,Progressive Field,Scheduled,2026-07-02T22:40:00Z,5:40 PM,17:40
 824906,2026-07-02,St. Louis Cardinals @ Atlanta Braves,St. Louis Cardinals,Atlanta Braves,Dustin May,Hurston Waldrep,Truist Park,Scheduled,2026-07-02T23:15:00Z,6:15 PM,18:15
 824093,2026-07-02,Tampa Bay Rays @ Kansas City Royals,Tampa Bay Rays,Kansas City Royals,Ian Seymour,Stephen Kolek,Kauffman Stadium,Scheduled,2026-07-02T23:40:00Z,6:40 PM,18:40

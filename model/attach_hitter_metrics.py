@@ -47,14 +47,14 @@ def get_existing_value(hitter_input, key, default=""):
     return default
 
 
-def is_missing_metric(value):
+def has_value(value):
     if value is None or value == "":
-        return True
+        return False
 
     try:
-        return float(value) == 0
+        return float(value) != 0
     except Exception:
-        return False
+        return True
 
 
 def build_lookup_from_file(filepath):
@@ -133,13 +133,13 @@ def metric_value(field, last_30, season):
     last_value = last_30.get(field, "")
     season_value = season.get(field, "")
 
-    if not is_missing_metric(last_value):
+    if has_value(last_value):
         return clean_value(last_value)
 
-    if not is_missing_metric(season_value):
+    if has_value(season_value):
         return clean_value(season_value)
 
-    return clean_value(last_value if last_value != "" else season_value)
+    return 0
 
 
 def get_opposing_pitcher(game, side):
@@ -222,6 +222,7 @@ def format_hitter(hitter_input, lookup, game, side):
 
 def attach_hitter_metrics_to_games():
     lookup = build_metrics_lookup()
+    missing = []
 
     for file in GAMES_DIR.glob("*.json"):
         game = load_json(file, default={})
@@ -243,9 +244,19 @@ def attach_hitter_metrics_to_games():
             ],
         }
 
+        for side in ["away", "home"]:
+            for hitter in game["hitters"][side]:
+                if hitter.get("Metric Source") == "Missing":
+                    missing.append(f"{game.get('game', file.name)}: {hitter.get('Player')}")
+
         save_json(game, file)
 
-    print("✅ Attached hitter metrics with per-field season fallback")
+    print("✅ Attached hitter metrics with last-30 first, season fallback second")
+
+    if missing:
+        print(f"⚠️ Hitters with no metrics found: {len(missing)}")
+        for item in missing[:30]:
+            print(f" - {item}")
 
 
 if __name__ == "__main__":

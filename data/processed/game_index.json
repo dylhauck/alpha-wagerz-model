@@ -20,7 +20,7 @@
     "away_sp": "Chase Burns",
     "home_sp": "Jacob Misiorowski",
     "venue": "American Family Field",
-    "status": "Scheduled",
+    "status": "Warmup",
     "file": "data/processed/games/823765.json"
   },
   {
@@ -56,7 +56,7 @@
     "away_sp": "Ryan Gusto",
     "home_sp": "Michael Lorenzen",
     "venue": "Coors Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/824335.json"
   },
   {
@@ -68,7 +68,7 @@
     "away_sp": "Jared Jones",
     "home_sp": "Alan Rangel",
     "venue": "Citizens Bank Park",
-    "status": "Scheduled",
+    "status": "In Progress",
     "file": "data/processed/games/823442.json"
   },
   {

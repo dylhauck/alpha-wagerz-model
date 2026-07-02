@@ -31,16 +31,18 @@ def score_ceiling(hitter):
     fb = safe_float(hitter.get("FB%"))
     la = safe_float(hitter.get("LA"))
 
-    launch_bonus = 8 if 15 <= la <= 32 else 0
+    launch_bonus = 4 if 15 <= la <= 32 else 0
 
-    return round(clamp(
-        iso * 120 +
-        xwoba_con * 65 +
-        brl * 1.6 +
-        hh * 0.45 +
-        fb * 0.30 +
+    raw = (
+        iso * 80 +
+        xwoba_con * 45 +
+        brl * 1.15 +
+        hh * 0.30 +
+        fb * 0.18 +
         launch_bonus
-    ), 1)
+    )
+
+    return round(clamp(raw, 0, 97), 1)
 
 
 def score_zone_fit(hitter):
