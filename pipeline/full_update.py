@@ -30,6 +30,7 @@ from model.save_history import save_daily_history
 from model.publish_to_web import publish_to_web
 from providers.standings import build_team_context_file
 from model.attach_team_standings import attach_team_standings
+from model.attach_game_times import attach_game_times
 
 def run_full_update():
     print("🐺 Starting Alpha Wagerz full update...")
@@ -60,13 +61,15 @@ def run_full_update():
     build_bullpen_metrics()
 
     print("\n🔗 Attachments")
+
     attach_pitcher_metrics_to_games()
     attach_pitch_type_matchups()
     attach_team_context()
-    attach_team_standings()
     attach_bullpen_context()
     attach_hitter_metrics_to_games()
     enrich_players_in_games()
+    attach_game_times()          # NEW
+    attach_team_standings()
 
     print("\n🏆 Outputs")
     build_rankings()

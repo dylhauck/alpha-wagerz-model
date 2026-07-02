@@ -26,11 +26,11 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 701762,Nick Kurtz,133,Athletics,ATH,1B,First Base,L,L
 669127,Shea Langeliers,133,Athletics,ATH,C,Catcher,R,R
 695257,Billy Cook,134,Pittsburgh Pirates,PIT,RF,Outfielder,R,R
-684049,Brandan Bidois,134,Pittsburgh Pirates,PIT,P,Pitcher,R,R
 664040,Brandon Lowe,134,Pittsburgh Pirates,PIT,2B,Second Base,L,R
 677952,Braxton Ashcraft,134,Pittsburgh Pirates,PIT,P,Pitcher,L,R
 668804,Bryan Reynolds,134,Pittsburgh Pirates,PIT,LF,Outfielder,S,R
 696149,Bubba Chandler,134,Pittsburgh Pirates,PIT,P,Pitcher,S,R
+676742,Cam Sanders,134,Pittsburgh Pirates,PIT,P,Pitcher,R,R
 669387,Carmen Mlodzinski,134,Pittsburgh Pirates,PIT,P,Pitcher,R,R
 642701,Dennis Santana,134,Pittsburgh Pirates,PIT,P,Pitcher,R,R
 682848,Endy Rodríguez,134,Pittsburgh Pirates,PIT,C,Catcher,S,R
@@ -107,6 +107,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 805811,Bryce Eldridge,137,San Francisco Giants,SF,DH,Designated Hitter,L,R
 668873,Caleb Kilian,137,San Francisco Giants,SF,P,Pitcher,R,R
 669477,Casey Schmitt,137,San Francisco Giants,SF,LF,Outfielder,R,R
+683766,Christian Koss,137,San Francisco Giants,SF,2B,Second Base,R,R
 701852,Drew Cavanaugh,137,San Francisco Giants,SF,C,Catcher,L,R
 687551,Drew Gilbert,137,San Francisco Giants,SF,CF,Outfielder,L,L
 681916,Dylan Smith,137,San Francisco Giants,SF,P,Pitcher,R,R
@@ -119,7 +120,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 694738,Landen Roupp,137,San Francisco Giants,SF,P,Pitcher,R,R
 657277,Logan Webb,137,San Francisco Giants,SF,P,Pitcher,R,R
 650333,Luis Arraez,137,San Francisco Giants,SF,2B,Second Base,L,R
-656305,Matt Chapman,137,San Francisco Giants,SF,3B,Third Base,R,R
 657424,Matt Gage,137,San Francisco Giants,SF,P,Pitcher,L,L
 646240,Rafael Devers,137,San Francisco Giants,SF,1B,First Base,L,R
 592662,Robbie Ray,137,San Francisco Giants,SF,P,Pitcher,L,L
@@ -388,7 +388,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 682987,Spencer Jones,147,New York Yankees,NYY,CF,Outfielder,L,L
 657612,Tim Hill,147,New York Yankees,NYY,P,Pitcher,R,L
 701542,Will Warren,147,New York Yankees,NYY,P,Pitcher,R,R
-672442,Yovanny Cruz,147,New York Yankees,NYY,P,Pitcher,R,R
 676879,Aaron Ashby,158,Milwaukee Brewers,MIL,P,Pitcher,R,L
 682842,Abner Uribe,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 683734,Andrew Vaughn,158,Milwaukee Brewers,MIL,1B,First Base,R,R
@@ -604,10 +603,10 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 694249,Cole Carrigg,115,Colorado Rockies,COL,CF,Outfielder,S,R
 666397,Edouard Julien,115,Colorado Rockies,COL,2B,Second Base,L,R
 678662,Ezequiel Tovar,115,Colorado Rockies,COL,SS,Shortstop,R,R
+687312,Gabriel Hughes,115,Colorado Rockies,COL,P,Pitcher,R,R
 696100,Hunter Goodman,115,Colorado Rockies,COL,C,Catcher,R,R
 664983,Jake McCarthy,115,Colorado Rockies,COL,CF,Outfielder,L,L
 623474,Jimmy Herget,115,Colorado Rockies,COL,P,Pitcher,R,R
-605154,John Brebbia,115,Colorado Rockies,COL,P,Pitcher,L,R
 675848,Juan Mejia,115,Colorado Rockies,COL,P,Pitcher,R,R
 607536,Kyle Freeland,115,Colorado Rockies,COL,P,Pitcher,L,L
 691720,Kyle Karros,115,Colorado Rockies,COL,3B,Third Base,R,R
@@ -679,13 +678,12 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 694360,Beck Way,118,Kansas City Royals,KC,P,Pitcher,R,R
 677951,Bobby Witt Jr.,118,Kansas City Royals,KC,SS,Shortstop,R,R
 695600,Carter Jensen,118,Kansas City Royals,KC,C,Catcher,L,R
-657756,Connor Seabold,118,Kansas City Royals,KC,P,Pitcher,R,R
 663738,Daniel Lynch IV,118,Kansas City Royals,KC,P,Pitcher,L,L
-672021,Eric Cerantola,118,Kansas City Royals,KC,P,Pitcher,R,R
 686555,Isaac Collins,118,Kansas City Royals,KC,LF,Outfielder,S,R
 695506,Jac Caglianone,118,Kansas City Royals,KC,RF,Outfielder,L,L
 670231,John Rave,118,Kansas City Royals,KC,RF,Outfielder,L,L
 670167,John Schreiber,118,Kansas City Royals,KC,P,Pitcher,R,R
+621016,Jose Cuas,118,Kansas City Royals,KC,P,Pitcher,R,R
 668942,Josh Rojas,118,Kansas City Royals,KC,3B,Third Base,L,R
 670224,Kameron Misner,118,Kansas City Royals,KC,CF,Outfielder,L,L
 657041,Lane Thomas,118,Kansas City Royals,KC,CF,Outfielder,R,R
@@ -696,6 +694,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 608379,Michael Wacha,118,Kansas City Royals,KC,P,Pitcher,R,R
 679845,Nick Loftin,118,Kansas City Royals,KC,3B,Third Base,R,R
 702070,Noah Cameron,118,Kansas City Royals,KC,P,Pitcher,L,L
+677976,Randy Dobnak,118,Kansas City Royals,KC,P,Pitcher,R,R
 521692,Salvador Perez,118,Kansas City Royals,KC,C,Catcher,R,R
 607625,Seth Lugo,118,Kansas City Royals,KC,P,Pitcher,R,R
 516782,Starling Marte,118,Kansas City Royals,KC,RF,Outfielder,R,R
@@ -706,6 +705,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 681911,Alex Vesia,119,Los Angeles Dodgers,LAD,P,Pitcher,L,L
 681624,Andy Pages,119,Los Angeles Dodgers,LAD,CF,Outfielder,R,R
 592779,Brock Stewart,119,Los Angeles Dodgers,LAD,P,Pitcher,L,R
+656212,Charlie Barnes,119,Los Angeles Dodgers,LAD,P,Pitcher,L,L
 642020,Chuckie Robinson,119,Los Angeles Dodgers,LAD,C,Catcher,R,R
 687221,Dalton Rushing,119,Los Angeles Dodgers,LAD,C,Catcher,L,R
 683618,Edgardo Henriquez,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
@@ -725,7 +725,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 606192,Teoscar Hernández,119,Los Angeles Dodgers,LAD,LF,Outfielder,R,R
 669242,Tommy Edman,119,Los Angeles Dodgers,LAD,2B,Second Base,S,R
 694361,Will Klein,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
-670090,Wyatt Mills,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
 808967,Yoshinobu Yamamoto,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
 665953,Andrés Chaparro,120,Washington Nationals,WSH,1B,First Base,R,R
 674841,Andrew Alvarez,120,Washington Nationals,WSH,P,Pitcher,L,L

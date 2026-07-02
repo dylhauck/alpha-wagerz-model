@@ -2,48 +2,65 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+RAW_LAST_30_FILE = Path("data/raw/statcast/statcast_last_30_days.csv")
+RAW_SEASON_FILE = Path("data/raw/statcast/statcast_season.csv")
+PLAYER_REFERENCE_FILE = Path("data/reference/player_reference.csv")
 
-RAW_FILE = Path("data/raw/statcast/statcast_last_30_days.csv")
-OUTPUT_FILE = Path("data/processed/hitter_metrics_last_30_days.csv")
+OUTPUT_LAST_30_FILE = Path("data/processed/hitter_metrics_last_30_days.csv")
+OUTPUT_SEASON_FILE = Path("data/processed/hitter_metrics_season.csv")
+
+
+def load_player_reference():
+    if not PLAYER_REFERENCE_FILE.exists():
+        return {}
+
+    ref = pd.read_csv(PLAYER_REFERENCE_FILE)
+    return {
+        str(row["player_id"]): row["player_name"]
+        for _, row in ref.iterrows()
+    }
 
 
 def is_barrel(row):
     ev = row.get("launch_speed")
     la = row.get("launch_angle")
-
     if pd.isna(ev) or pd.isna(la):
         return False
-
     return ev >= 98 and 26 <= la <= 30
 
 
 def total_bases(event):
-    if event == "single":
-        return 1
-    if event == "double":
-        return 2
-    if event == "triple":
-        return 3
-    if event == "home_run":
-        return 4
-    return 0
+    return {
+        "single": 1,
+        "double": 2,
+        "triple": 3,
+        "home_run": 4,
+    }.get(event, 0)
 
 
 def safe_rate(numerator, denominator, multiplier=1):
     numerator = numerator.fillna(0)
     denominator = denominator.fillna(0)
 
-    result = np.where(
+    return np.where(
         denominator > 0,
         numerator / denominator * multiplier,
         0,
     )
 
-    return result
 
+def build_metrics_from_file(raw_file, output_file, label):
+    if not raw_file.exists():
+        print(f"⚠️ Missing {raw_file}. Skipping {label} hitter metrics.")
+        return pd.DataFrame()
 
-def build_hitter_metrics():
-    df = pd.read_csv(RAW_FILE, low_memory=False)
+    player_lookup = load_player_reference()
+
+    df = pd.read_csv(raw_file, low_memory=False)
+    df = df[df["batter"].notna()].copy()
+
+    df["batter"] = df["batter"].astype(int).astype(str)
+    df["real_player_name"] = df["batter"].map(player_lookup).fillna("")
 
     df["is_bip"] = df["type"] == "X"
     df["is_swinging_strike"] = df["description"].str.contains("swinging_strike", na=False)
@@ -58,13 +75,13 @@ def build_hitter_metrics():
         "field_out", "force_out", "grounded_into_double_play",
         "field_error", "strikeout", "strikeout_double_play",
         "fielders_choice", "fielders_choice_out",
-        "double_play", "triple_play"
+        "double_play", "triple_play",
     ]
 
     df["is_ab"] = df["events"].isin(at_bat_events)
     df["is_hit"] = df["events"].isin(["single", "double", "triple", "home_run"])
 
-    grouped = df.groupby(["batter", "player_name"], dropna=False).agg(
+    grouped = df.groupby(["batter", "real_player_name"], dropna=False).agg(
         Pitches=("pitch_type", "count"),
         BIP=("is_bip", "sum"),
         AB=("is_ab", "sum"),
@@ -80,6 +97,15 @@ def build_hitter_metrics():
         HH=("is_hard_hit", "sum"),
         LA=("launch_angle", "mean"),
     ).reset_index()
+
+    grouped = grouped.rename(columns={"real_player_name": "player_name"})
+
+    # Do NOT drop hitters just because the player reference missed their name.
+    # The MLB batter ID is enough for lookup later.
+    grouped["player_name"] = grouped.apply(
+    lambda row: row["player_name"] if row["player_name"] else f"batter_{row['batter']}",
+    axis=1,
+)
 
     grouped["ISO"] = safe_rate(grouped["TB"] - grouped["H"], grouped["AB"])
     grouped["SwStr%"] = safe_rate(grouped["SwStr"], grouped["Pitches"], 100)
@@ -106,14 +132,31 @@ def build_hitter_metrics():
         "LA",
     ]].copy()
 
-    final = final.replace([np.inf, -np.inf], 0)
-    final = final.fillna(0)
+    final = final.replace([np.inf, -np.inf], 0).fillna(0)
 
-    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    final.to_csv(OUTPUT_FILE, index=False)
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    final.to_csv(output_file, index=False)
 
-    print(f"✅ Saved hitter metrics for {len(final)} players")
-    print(f"📁 {OUTPUT_FILE}")
+    print(f"✅ Saved {label} hitter metrics for {len(final)} players")
+    print(f"📁 {output_file}")
+
+    return final
+
+
+def build_hitter_metrics():
+    last_30 = build_metrics_from_file(
+        RAW_LAST_30_FILE,
+        OUTPUT_LAST_30_FILE,
+        "last-30-day",
+    )
+
+    season = build_metrics_from_file(
+        RAW_SEASON_FILE,
+        OUTPUT_SEASON_FILE,
+        "season",
+    )
+
+    return last_30, season
 
 
 if __name__ == "__main__":

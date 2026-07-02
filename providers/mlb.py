@@ -1,16 +1,21 @@
 import requests
-from datetime import date
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 
 MLB_SCHEDULE_URL = "https://statsapi.mlb.com/api/v1/schedule"
 
 
-def get_probable_pitcher(team_data):
-    pitcher = team_data.get("probablePitcher") or {}
+def format_game_time(game_date):
+    if not game_date:
+        return "", ""
 
-    return {
-        "name": pitcher.get("fullName", ""),
-        "id": pitcher.get("id", ""),
-    }
+    utc_dt = datetime.fromisoformat(game_date.replace("Z", "+00:00"))
+    central_dt = utc_dt.astimezone(ZoneInfo("America/Chicago"))
+
+    display = central_dt.strftime("%I:%M %p").lstrip("0")
+    sort = central_dt.strftime("%H:%M")
+
+    return display, sort
 
 
 def get_todays_slate():
@@ -19,10 +24,10 @@ def get_todays_slate():
     params = {
         "sportId": 1,
         "date": today,
-        "hydrate": "probablePitcher,venue,team,linescore",
+        "hydrate": "probablePitcher,venue,team",
     }
 
-    response = requests.get(MLB_SCHEDULE_URL, params=params, timeout=30)
+    response = requests.get(MLB_SCHEDULE_URL, params=params)
     response.raise_for_status()
 
     data = response.json()
@@ -30,31 +35,28 @@ def get_todays_slate():
 
     for day in data.get("dates", []):
         for game in day.get("games", []):
-            away_team_data = game["teams"]["away"]
-            home_team_data = game["teams"]["home"]
+            away = game["teams"]["away"]["team"]["name"]
+            home = game["teams"]["home"]["team"]["name"]
 
-            away = away_team_data["team"]["name"]
-            home = home_team_data["team"]["name"]
+            away_pitcher = game["teams"]["away"].get("probablePitcher", {}).get("fullName", "")
+            home_pitcher = game["teams"]["home"].get("probablePitcher", {}).get("fullName", "")
 
-            away_pitcher = get_probable_pitcher(away_team_data)
-            home_pitcher = get_probable_pitcher(home_team_data)
+            game_date = game.get("gameDate", "")
+            game_time, game_time_sort = format_game_time(game_date)
 
             games.append({
                 "game_id": game["gamePk"],
                 "date": today,
                 "game": f"{away} @ {home}",
-
                 "away_team": away,
                 "home_team": home,
-
-                "away_sp": away_pitcher["name"],
-                "away_sp_id": away_pitcher["id"],
-
-                "home_sp": home_pitcher["name"],
-                "home_sp_id": home_pitcher["id"],
-
+                "away_sp": away_pitcher,
+                "home_sp": home_pitcher,
                 "venue": game.get("venue", {}).get("name", ""),
                 "status": game.get("status", {}).get("detailedState", ""),
+                "game_date_utc": game_date,
+                "game_time": game_time,
+                "game_time_sort": game_time_sort,
             })
 
     return games

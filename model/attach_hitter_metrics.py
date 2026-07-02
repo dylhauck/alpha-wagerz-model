@@ -7,6 +7,22 @@ from model.scores.hitter_detail import attach_hitter_detail_scores
 
 GAMES_DIR = Path("data/processed/games")
 HITTER_METRICS_FILE = Path("data/processed/hitter_metrics_last_30_days.csv")
+HITTER_SEASON_METRICS_FILE = Path("data/processed/hitter_metrics_season.csv")
+
+METRIC_FIELDS = [
+    "Pitches",
+    "BIP",
+    "ISO",
+    "xwOBA",
+    "xwOBAcon",
+    "SwStr%",
+    "PulledBrl%",
+    "Brl/BIP%",
+    "Sweet Spot%",
+    "FB%",
+    "HH%",
+    "LA",
+]
 
 
 def normalize_name(name):
@@ -31,8 +47,21 @@ def get_existing_value(hitter_input, key, default=""):
     return default
 
 
-def build_metrics_lookup():
-    df = pd.read_csv(HITTER_METRICS_FILE)
+def is_missing_metric(value):
+    if value is None or value == "":
+        return True
+
+    try:
+        return float(value) == 0
+    except Exception:
+        return False
+
+
+def build_lookup_from_file(filepath):
+    if not filepath.exists():
+        return {}, {}
+
+    df = pd.read_csv(filepath)
 
     df["lookup_name"] = df["player_name"].apply(normalize_name)
     df["lookup_id"] = df["batter"].astype(str)
@@ -43,7 +72,19 @@ def build_metrics_lookup():
     return by_name, by_id
 
 
-def find_metrics(hitter, by_name, by_id):
+def build_metrics_lookup():
+    last_30_by_name, last_30_by_id = build_lookup_from_file(HITTER_METRICS_FILE)
+    season_by_name, season_by_id = build_lookup_from_file(HITTER_SEASON_METRICS_FILE)
+
+    return {
+        "last_30_by_name": last_30_by_name,
+        "last_30_by_id": last_30_by_id,
+        "season_by_name": season_by_name,
+        "season_by_id": season_by_id,
+    }
+
+
+def find_one_metrics(hitter, by_name, by_id):
     mlb_id = hitter_id(hitter)
 
     if mlb_id and str(mlb_id) in by_id:
@@ -57,14 +98,52 @@ def find_metrics(hitter, by_name, by_id):
     parts = key.split()
     if len(parts) >= 2:
         reversed_key = normalize_name(f"{parts[-1]} {' '.join(parts[:-1])}")
-        return by_name.get(reversed_key, {})
+        if reversed_key in by_name:
+            return by_name[reversed_key]
 
     return {}
 
 
+def find_metrics_bundle(hitter, lookup):
+    last_30 = find_one_metrics(
+        hitter,
+        lookup["last_30_by_name"],
+        lookup["last_30_by_id"],
+    )
+
+    season = find_one_metrics(
+        hitter,
+        lookup["season_by_name"],
+        lookup["season_by_id"],
+    )
+
+    if last_30 and season:
+        source = "Last 30 + Season Fallback"
+    elif last_30:
+        source = "Last 30"
+    elif season:
+        source = "Season"
+    else:
+        source = "Missing"
+
+    return last_30 or {}, season or {}, source
+
+
+def metric_value(field, last_30, season):
+    last_value = last_30.get(field, "")
+    season_value = season.get(field, "")
+
+    if not is_missing_metric(last_value):
+        return clean_value(last_value)
+
+    if not is_missing_metric(season_value):
+        return clean_value(season_value)
+
+    return clean_value(last_value if last_value != "" else season_value)
+
+
 def get_opposing_pitcher(game, side):
     pitchers = game.get("pitchers", [])
-
     opponent_team = game.get("home_team", "") if side == "away" else game.get("away_team", "")
 
     return next(
@@ -73,14 +152,15 @@ def get_opposing_pitcher(game, side):
     )
 
 
-def format_hitter(hitter_input, by_name, by_id, game, side):
+def format_hitter(hitter_input, lookup, game, side):
     name = hitter_name(hitter_input)
-    metrics = find_metrics(hitter_input, by_name, by_id)
+    last_30_metrics, season_metrics, metric_source = find_metrics_bundle(hitter_input, lookup)
     opposing_pitcher = get_opposing_pitcher(game, side)
 
     hitter = {
         "Player": name,
         "Player ID": hitter_id(hitter_input),
+        "Metric Source": clean_value(metric_source),
 
         "Team Offense": clean_value(get_existing_value(hitter_input, "Team Offense")),
         "Team ISO": clean_value(get_existing_value(hitter_input, "Team ISO")),
@@ -115,20 +195,10 @@ def format_hitter(hitter_input, by_name, by_id, game, side):
         "Zone Fit": "",
         "HR Form": "",
         "kHR": "",
-
-        "Pitches": clean_value(metrics.get("Pitches", "")),
-        "BIP": clean_value(metrics.get("BIP", "")),
-        "ISO": clean_value(metrics.get("ISO", "")),
-        "xwOBA": clean_value(metrics.get("xwOBA", "")),
-        "xwOBAcon": clean_value(metrics.get("xwOBAcon", "")),
-        "SwStr%": clean_value(metrics.get("SwStr%", "")),
-        "PulledBrl%": clean_value(metrics.get("PulledBrl%", "")),
-        "Brl/BIP%": clean_value(metrics.get("Brl/BIP%", "")),
-        "Sweet Spot%": clean_value(metrics.get("Sweet Spot%", "")),
-        "FB%": clean_value(metrics.get("FB%", "")),
-        "HH%": clean_value(metrics.get("HH%", "")),
-        "LA": clean_value(metrics.get("LA", "")),
     }
+
+    for field in METRIC_FIELDS:
+        hitter[field] = metric_value(field, last_30_metrics, season_metrics)
 
     scores = alpha_score(hitter, pitcher=opposing_pitcher, game=game)
 
@@ -136,14 +206,6 @@ def format_hitter(hitter_input, by_name, by_id, game, side):
     hitter["Contact"] = clean_value(scores.get("Contact", ""))
     hitter["Pitcher"] = clean_value(scores.get("Pitcher", ""))
     hitter["Pitch Type"] = clean_value(scores.get("Pitch Type", ""))
-    hitter["Arsenal Score"] = clean_value(hitter.get("Arsenal Score", ""))
-    hitter["Fastball Matchup"] = clean_value(hitter.get("Fastball Matchup", ""))
-    hitter["Breaking Ball Matchup"] = clean_value(hitter.get("Breaking Ball Matchup", ""))
-    hitter["Offspeed Matchup"] = clean_value(hitter.get("Offspeed Matchup", ""))
-    hitter["xHR Matchup"] = clean_value(hitter.get("xHR Matchup", ""))
-    hitter["Pitch Arsenal Notes"] = clean_value(hitter.get("Pitch Arsenal Notes", ""))
-    hitter["Hot Zones Allowed"] = clean_value(hitter.get("Hot Zones Allowed", ""))
-    hitter["Cold Zones Allowed"] = clean_value(hitter.get("Cold Zones Allowed", ""))
     hitter["Team"] = clean_value(scores.get("Team", ""))
     hitter["Bullpen"] = clean_value(scores.get("Bullpen", ""))
     hitter["Weather"] = clean_value(scores.get("Weather", ""))
@@ -152,13 +214,14 @@ def format_hitter(hitter_input, by_name, by_id, game, side):
     hitter["Likely"] = clean_value(scores.get("Likely", ""))
     hitter["Confidence"] = clean_value(scores.get("Confidence", ""))
     hitter["Reasons"] = scores.get("Reasons", [])
+
     hitter = attach_hitter_detail_scores(hitter)
 
     return hitter
 
 
 def attach_hitter_metrics_to_games():
-    by_name, by_id = build_metrics_lookup()
+    lookup = build_metrics_lookup()
 
     for file in GAMES_DIR.glob("*.json"):
         game = load_json(file, default={})
@@ -171,18 +234,18 @@ def attach_hitter_metrics_to_games():
 
         game["hitters"] = {
             "away": [
-                format_hitter(hitter, by_name, by_id, game, "away")
+                format_hitter(hitter, lookup, game, "away")
                 for hitter in away_hitters
             ],
             "home": [
-                format_hitter(hitter, by_name, by_id, game, "home")
+                format_hitter(hitter, lookup, game, "home")
                 for hitter in home_hitters
             ],
         }
 
         save_json(game, file)
 
-    print("✅ Attached hitter metrics using MLB IDs/full names")
+    print("✅ Attached hitter metrics with per-field season fallback")
 
 
 if __name__ == "__main__":

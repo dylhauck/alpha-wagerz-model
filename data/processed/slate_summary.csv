@@ -1,15 +1,10 @@
-game_id,date,game,away_team,home_team,away_sp,away_sp_id,home_sp,home_sp_id,venue,status
-824818,2026-07-01,Chicago White Sox @ Baltimore Orioles,Chicago White Sox,Baltimore Orioles,Noah Schultz,702273,Dean Kremer,665152,Oriole Park at Camden Yards,In Progress
-824419,2026-07-01,Texas Rangers @ Cleveland Guardians,Texas Rangers,Cleveland Guardians,MacKenzie Gore,669022,Joey Cantillo,676282,Progressive Field,In Progress
-824740,2026-07-01,Washington Nationals @ Boston Red Sox,Washington Nationals,Boston Red Sox,Brad Lord,695418,Payton Tolle,801139,Fenway Park,In Progress
-823530,2026-07-01,Detroit Tigers @ New York Yankees,Detroit Tigers,New York Yankees,Troy Melton,675512,Will Warren,701542,Yankee Stadium,In Progress
-824660,2026-07-01,San Diego Padres @ Chicago Cubs,San Diego Padres,Chicago Cubs,Walker Buehler,621111,Colin Rea,607067,Wrigley Field,In Progress
-822791,2026-07-01,New York Mets @ Toronto Blue Jays,New York Mets,Toronto Blue Jays,Freddy Peralta,642547,Braydon Fisher,680755,Rogers Centre,Delayed Start
-823446,2026-07-01,Pittsburgh Pirates @ Philadelphia Phillies,Pittsburgh Pirates,Philadelphia Phillies,Paul Skenes,694973,Zack Wheeler,554430,Citizens Bank Park,Scheduled
-824905,2026-07-01,St. Louis Cardinals @ Atlanta Braves,St. Louis Cardinals,Atlanta Braves,Michael McGreevy,700241,Reynaldo López,625643,Truist Park,Scheduled
-824094,2026-07-01,Tampa Bay Rays @ Kansas City Royals,Tampa Bay Rays,Kansas City Royals,Shane McClanahan,663556,Seth Lugo,607625,Kauffman Stadium,Scheduled
-824174,2026-07-01,Minnesota Twins @ Houston Astros,Minnesota Twins,Houston Astros,Taj Bradley,671737,Tatsuya Imai,837227,Daikin Park,Pre-Game
-823767,2026-07-01,Cincinnati Reds @ Milwaukee Brewers,Cincinnati Reds,Milwaukee Brewers,Andrew Abbott,671096,Shane Drohan,675660,American Family Field,Scheduled
-824337,2026-07-01,Miami Marlins @ Colorado Rockies,Miami Marlins,Colorado Rockies,Max Meyer,676974,Kyle Freeland,607536,Coors Field,Scheduled
-824985,2026-07-01,Los Angeles Dodgers @ Athletics,Los Angeles Dodgers,Athletics,,,J.T. Ginn,669372,Sutter Health Park,Scheduled
-825064,2026-07-01,San Francisco Giants @ Arizona Diamondbacks,San Francisco Giants,Arizona Diamondbacks,Trevor McDonald,686790,Zac Gallen,668678,Chase Field,Scheduled
+game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status,game_date_utc,game_time,game_time_sort
+823442,2026-07-02,Pittsburgh Pirates @ Philadelphia Phillies,Pittsburgh Pirates,Philadelphia Phillies,Jared Jones,Alan Rangel,Citizens Bank Park,Scheduled,2026-07-02T16:35:00Z,11:35 AM,11:35
+823765,2026-07-02,Cincinnati Reds @ Milwaukee Brewers,Cincinnati Reds,Milwaukee Brewers,Chase Burns,Jacob Misiorowski,American Family Field,Scheduled,2026-07-02T18:10:00Z,1:10 PM,13:10
+824335,2026-07-02,Miami Marlins @ Colorado Rockies,Miami Marlins,Colorado Rockies,Ryan Gusto,Michael Lorenzen,Coors Field,Scheduled,2026-07-02T19:10:00Z,2:10 PM,14:10
+824416,2026-07-02,Chicago White Sox @ Cleveland Guardians,Chicago White Sox,Cleveland Guardians,Davis Martin,Slade Cecconi,Progressive Field,Scheduled,2026-07-02T22:40:00Z,5:40 PM,17:40
+824906,2026-07-02,St. Louis Cardinals @ Atlanta Braves,St. Louis Cardinals,Atlanta Braves,Dustin May,Hurston Waldrep,Truist Park,Scheduled,2026-07-02T23:15:00Z,6:15 PM,18:15
+824093,2026-07-02,Tampa Bay Rays @ Kansas City Royals,Tampa Bay Rays,Kansas City Royals,Ian Seymour,Stephen Kolek,Kauffman Stadium,Scheduled,2026-07-02T23:40:00Z,6:40 PM,18:40
+822884,2026-07-02,Detroit Tigers @ Texas Rangers,Detroit Tigers,Texas Rangers,Framber Valdez,Nathan Eovaldi,Globe Life Field,Scheduled,2026-07-03T00:05:00Z,7:05 PM,19:05
+823119,2026-07-02,Los Angeles Angels @ Seattle Mariners,Los Angeles Angels,Seattle Mariners,Walbert Ureña,Bryce Miller,T-Mobile Park,Scheduled,2026-07-03T01:40:00Z,8:40 PM,20:40
+823935,2026-07-02,San Diego Padres @ Los Angeles Dodgers,San Diego Padres,Los Angeles Dodgers,Randy Vásquez,Roki Sasaki,UNIQLO Field at Dodger Stadium,Scheduled,2026-07-03T02:10:00Z,9:10 PM,21:10
