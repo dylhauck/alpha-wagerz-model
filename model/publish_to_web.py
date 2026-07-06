@@ -10,6 +10,9 @@ FILES_TO_PUBLISH = [
     "all_games.json",
     "weather.json",
     "rankings.json",
+    "hr_targets.json",
+    "game_projections.json",
+    "market_lines.json",
 ]
 
 
@@ -32,8 +35,11 @@ def publish_to_web():
 
         shutil.copy2(source, target)
         published += 1
+        print(f"✅ Published {filename}")
 
-    print(f"✅ Published {published} files to {WEB_DATA_DIR}")
+    print()
+    print(f"✅ Published {published} files to:")
+    print(f"📁 {WEB_DATA_DIR}")
 
 
 if __name__ == "__main__":

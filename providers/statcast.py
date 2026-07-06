@@ -22,6 +22,13 @@ def pull_statcast_range(start_date, end_date, output_file):
 
     return df
 
+def get_statcast_longterm_events(years_back=3):
+    end_date = date.today()
+    start_date = date(end_date.year - years_back, 3, 1)
+
+    output_file = RAW_DIR / "statcast_longterm.csv"
+
+    return pull_statcast_range(start_date, end_date, output_file)
 
 def get_statcast_batter_events(days_back=30):
     end_date = date.today()
@@ -44,6 +51,7 @@ def get_statcast_season_events():
 def get_all_statcast_events():
     get_statcast_batter_events()
     get_statcast_season_events()
+    get_statcast_longterm_events()
 
 
 if __name__ == "__main__":

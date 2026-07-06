@@ -34,6 +34,9 @@ from model.attach_team_standings import attach_team_standings
 from model.attach_game_times import attach_game_times
 from model.export_hr_graphic_data import export_hr_graphic_data
 from graphics.create_hr_targets_graphic import create_graphic
+from model.export_game_projections import export_game_projections
+from providers.market import build_market_lines
+from providers.market import build_market_lines
 
 def run_full_update():
     print("🐺 Starting Alpha Wagerz full update...")
@@ -74,9 +77,13 @@ def run_full_update():
     attach_game_times()          # NEW
     attach_team_standings()
 
+    print("\n💰 Market Lines")
+    build_market_lines()
+
     print("\n🏆 Outputs")
     build_rankings()
     build_all_games()
+    export_game_projections()
     export_hr_graphic_data()
     create_graphic()
     create_weather_graphic()

@@ -8,11 +8,13 @@ from dotenv import load_dotenv
 from model.game_selector import get_game_index
 from utils.json_utils import save_json
 
-load_dotenv()
-
+load_dotenv(dotenv_path=Path.cwd() / ".env")
 OPENWEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY")
 
 STADIUM_FILE = Path("data/reference/stadium_weather.csv")
+VENUE_ALIASES = {
+    "uniqlo field at dodger stadium": "dodger stadium",
+}
 OUTPUT_FILE = Path("data/processed/weather.json")
 
 
@@ -89,7 +91,10 @@ def build_weather_file():
 
     for game in games:
         venue = game.get("venue", "")
-        stadium = stadiums.get(normalize(venue))
+        venue_key = normalize(venue)
+        venue_key = VENUE_ALIASES.get(venue_key, venue_key)
+
+        stadium = stadiums.get(venue_key)
 
         if not stadium:
             print(f"⚠️ Missing stadium weather reference for {venue}")

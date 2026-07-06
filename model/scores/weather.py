@@ -3,18 +3,12 @@ from pathlib import Path
 
 WEATHER_THRESHOLDS_FILE = Path("data/reference/weather_thresholds.json")
 
-
 DOME_ROOFS = {"dome", "closed"}
 RETRACTABLE_ROOFS = {"retractable"}
 
 
 def clamp(value, low=0, high=100):
     return max(low, min(high, value))
-
-
-def load_weather_thresholds():
-    with open(WEATHER_THRESHOLDS_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
 
 
 def normalize(value):
@@ -35,44 +29,64 @@ def score_weather(game=None):
     weather = game.get("weather", {})
     roof = normalize(weather.get("roof") or game.get("roof"))
 
-    # Dome/closed roof = neutral weather, because outside wind/temp should not boost HRs
     if roof in DOME_ROOFS:
         return 50
-
-    rules = load_weather_thresholds()
 
     temp = safe_float(weather.get("temperature", game.get("temperature")))
     wind_direction = normalize(weather.get("wind_direction", game.get("wind_direction")))
     wind_speed = safe_float(weather.get("wind_speed", game.get("wind_speed")))
     conditions = normalize(weather.get("conditions", game.get("conditions")))
 
-    score = rules["base"]
+    score = 50
 
-    if temp >= 85:
-        score += rules["temperature"]["hot_85_plus"]
-    elif temp >= 75:
-        score += rules["temperature"]["warm_75_84"]
-    elif temp >= 65:
-        score += rules["temperature"]["mild_65_74"]
-    else:
-        score += rules["temperature"]["cool_under_65"]
+    # Temperature impact
+    if temp >= 95:
+        score += 16
+    elif temp >= 88:
+        score += 12
+    elif temp >= 80:
+        score += 8
+    elif temp >= 72:
+        score += 4
+    elif temp < 60:
+        score -= 8
+    elif temp < 68:
+        score -= 4
 
+    # Wind direction impact
     if "out_towards" in wind_direction:
-        score += rules["wind"]["out_towards_rf_lf"]
+        score += 10
     elif wind_direction == "out":
-        score += rules["wind"]["out"]
+        score += 7
     elif "in_towards" in wind_direction:
-        score += rules["wind"]["in_towards_rf_lf"]
+        score -= 10
     elif wind_direction == "in":
-        score += rules["wind"]["in"]
+        score -= 12
     elif wind_direction == "neutral":
-        score += rules["wind"]["neutral"]
+        score += 0
 
-    # For retractable roofs, reduce weather impact because roof status may change.
-    multiplier = 0.5 if roof in RETRACTABLE_ROOFS else 1
+    # Wind speed impact
+    if "out" in wind_direction:
+        score += min(wind_speed * 1.6, 18)
+    elif "in" in wind_direction:
+        score -= min(wind_speed * 1.8, 20)
+    else:
+        score += min(wind_speed * 0.25, 3)
 
-    score = rules["base"] + ((score - rules["base"]) * multiplier)
-    score += wind_speed * rules["wind_speed_multiplier"] * multiplier
-    score += rules["conditions"].get(conditions, 0) * multiplier
+    # Conditions impact
+    if "clear" in conditions:
+        score += 3
+    elif "few_clouds" in conditions:
+        score += 2
+    elif "scattered_clouds" in conditions:
+        score += 1
+    elif "overcast" in conditions:
+        score -= 2
+    elif "rain" in conditions:
+        score -= 8
+
+    # Retractable roof = reduce impact
+    if roof in RETRACTABLE_ROOFS:
+        score = 50 + ((score - 50) * 0.55)
 
     return round(clamp(score), 1)

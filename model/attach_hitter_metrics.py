@@ -6,8 +6,10 @@ from utils.json_utils import load_json, save_json, clean_value
 from model.scores.hitter_detail import attach_hitter_detail_scores
 
 GAMES_DIR = Path("data/processed/games")
+
 HITTER_METRICS_FILE = Path("data/processed/hitter_metrics_last_30_days.csv")
 HITTER_SEASON_METRICS_FILE = Path("data/processed/hitter_metrics_season.csv")
+HITTER_LONGTERM_METRICS_FILE = Path("data/processed/hitter_metrics_longterm.csv")
 
 METRIC_FIELDS = [
     "Pitches",
@@ -47,16 +49,6 @@ def get_existing_value(hitter_input, key, default=""):
     return default
 
 
-def has_value(value):
-    if value is None or value == "":
-        return False
-
-    try:
-        return float(value) != 0
-    except Exception:
-        return True
-
-
 def build_lookup_from_file(filepath):
     if not filepath.exists():
         return {}, {}
@@ -75,12 +67,15 @@ def build_lookup_from_file(filepath):
 def build_metrics_lookup():
     last_30_by_name, last_30_by_id = build_lookup_from_file(HITTER_METRICS_FILE)
     season_by_name, season_by_id = build_lookup_from_file(HITTER_SEASON_METRICS_FILE)
+    longterm_by_name, longterm_by_id = build_lookup_from_file(HITTER_LONGTERM_METRICS_FILE)
 
     return {
         "last_30_by_name": last_30_by_name,
         "last_30_by_id": last_30_by_id,
         "season_by_name": season_by_name,
         "season_by_id": season_by_id,
+        "longterm_by_name": longterm_by_name,
+        "longterm_by_id": longterm_by_id,
     }
 
 
@@ -117,29 +112,44 @@ def find_metrics_bundle(hitter, lookup):
         lookup["season_by_id"],
     )
 
-    if last_30 and season:
-        source = "Last 30 + Season Fallback"
-    elif last_30:
-        source = "Last 30"
+    longterm = find_one_metrics(
+        hitter,
+        lookup["longterm_by_name"],
+        lookup["longterm_by_id"],
+    )
+
+    # Main displayed metrics should use long-term baseline first.
+    # This keeps stars from looking broken because of one small recent sample.
+    base = longterm or season or last_30
+
+    if longterm:
+        source = "Longterm"
     elif season:
         source = "Season"
+    elif last_30:
+        source = "Last 30"
     else:
         source = "Missing"
 
-    return last_30 or {}, season or {}, source
+    return base or {}, last_30 or {}, season or {}, longterm or {}, source
 
 
-def metric_value(field, last_30, season):
-    last_value = last_30.get(field, "")
-    season_value = season.get(field, "")
+def metric_value(field, base_metrics):
+    value = base_metrics.get(field, "")
 
-    if has_value(last_value):
-        return clean_value(last_value)
+    if value is None or value == "":
+        return 0
 
-    if has_value(season_value):
-        return clean_value(season_value)
+    return clean_value(value)
 
-    return 0
+
+def recent_metric_value(field, recent_metrics):
+    value = recent_metrics.get(field, "")
+
+    if value is None or value == "":
+        return ""
+
+    return clean_value(value)
 
 
 def get_opposing_pitcher(game, side):
@@ -154,7 +164,15 @@ def get_opposing_pitcher(game, side):
 
 def format_hitter(hitter_input, lookup, game, side):
     name = hitter_name(hitter_input)
-    last_30_metrics, season_metrics, metric_source = find_metrics_bundle(hitter_input, lookup)
+
+    (
+        base_metrics,
+        last_30_metrics,
+        season_metrics,
+        longterm_metrics,
+        metric_source,
+    ) = find_metrics_bundle(hitter_input, lookup)
+
     opposing_pitcher = get_opposing_pitcher(game, side)
 
     hitter = {
@@ -197,8 +215,18 @@ def format_hitter(hitter_input, lookup, game, side):
         "kHR": "",
     }
 
+    # Main baseline metrics shown on the website.
     for field in METRIC_FIELDS:
-        hitter[field] = metric_value(field, last_30_metrics, season_metrics)
+        hitter[field] = metric_value(field, base_metrics)
+
+    # Recent metrics used only by score_recent_form().
+    for field in METRIC_FIELDS:
+        hitter[f"Recent {field}"] = recent_metric_value(field, last_30_metrics)
+
+    # Optional debug/source fields.
+    hitter["Recent Metric Source"] = "Last 30" if last_30_metrics else "Missing"
+    hitter["Season Metric Source"] = "Season" if season_metrics else "Missing"
+    hitter["Longterm Metric Source"] = "Longterm" if longterm_metrics else "Missing"
 
     scores = alpha_score(hitter, pitcher=opposing_pitcher, game=game)
 
@@ -251,7 +279,7 @@ def attach_hitter_metrics_to_games():
 
         save_json(game, file)
 
-    print("✅ Attached hitter metrics with last-30 first, season fallback second")
+    print("✅ Attached hitter metrics using longterm baseline + last-30 recent form")
 
     if missing:
         print(f"⚠️ Hitters with no metrics found: {len(missing)}")

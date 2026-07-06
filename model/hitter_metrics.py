@@ -4,10 +4,12 @@ import pandas as pd
 
 RAW_LAST_30_FILE = Path("data/raw/statcast/statcast_last_30_days.csv")
 RAW_SEASON_FILE = Path("data/raw/statcast/statcast_season.csv")
+RAW_LONGTERM_FILE = Path("data/raw/statcast/statcast_longterm.csv")
 PLAYER_REFERENCE_FILE = Path("data/reference/player_reference.csv")
 
 OUTPUT_LAST_30_FILE = Path("data/processed/hitter_metrics_last_30_days.csv")
 OUTPUT_SEASON_FILE = Path("data/processed/hitter_metrics_season.csv")
+OUTPUT_LONGTERM_FILE = Path("data/processed/hitter_metrics_longterm.csv")
 
 
 def load_player_reference():
@@ -15,6 +17,8 @@ def load_player_reference():
         return {}
 
     ref = pd.read_csv(PLAYER_REFERENCE_FILE)
+    ref["player_id"] = ref["player_id"].astype(str)
+
     return {
         str(row["player_id"]): row["player_name"]
         for _, row in ref.iterrows()
@@ -24,8 +28,10 @@ def load_player_reference():
 def is_barrel(row):
     ev = row.get("launch_speed")
     la = row.get("launch_angle")
+
     if pd.isna(ev) or pd.isna(la):
         return False
+
     return ev >= 98 and 26 <= la <= 30
 
 
@@ -57,10 +63,24 @@ def build_metrics_from_file(raw_file, output_file, label):
     player_lookup = load_player_reference()
 
     df = pd.read_csv(raw_file, low_memory=False)
-    df = df[df["batter"].notna()].copy()
 
+    if df.empty or "batter" not in df.columns:
+        print(f"⚠️ No usable batter data in {raw_file}. Skipping {label}.")
+        return pd.DataFrame()
+
+    df = df[df["batter"].notna()].copy()
     df["batter"] = df["batter"].astype(int).astype(str)
-    df["real_player_name"] = df["batter"].map(player_lookup).fillna("")
+
+    df["player_name"] = df["batter"].map(player_lookup).fillna("")
+
+    # Fallback to Statcast player_name if reference misses someone.
+    if "player_name" in df.columns:
+        df["player_name"] = df["player_name"].where(
+            df["player_name"] != "",
+            df["player_name"],
+        )
+
+    df = df[df["player_name"] != ""].copy()
 
     df["is_bip"] = df["type"] == "X"
     df["is_swinging_strike"] = df["description"].str.contains("swinging_strike", na=False)
@@ -81,7 +101,7 @@ def build_metrics_from_file(raw_file, output_file, label):
     df["is_ab"] = df["events"].isin(at_bat_events)
     df["is_hit"] = df["events"].isin(["single", "double", "triple", "home_run"])
 
-    grouped = df.groupby(["batter", "real_player_name"], dropna=False).agg(
+    grouped = df.groupby(["batter", "player_name"], dropna=False).agg(
         Pitches=("pitch_type", "count"),
         BIP=("is_bip", "sum"),
         AB=("is_ab", "sum"),
@@ -97,9 +117,6 @@ def build_metrics_from_file(raw_file, output_file, label):
         HH=("is_hard_hit", "sum"),
         LA=("launch_angle", "mean"),
     ).reset_index()
-
-    grouped = grouped.rename(columns={"real_player_name": "player_name"})
-    grouped = grouped[grouped["player_name"] != ""]
 
     grouped["ISO"] = safe_rate(grouped["TB"] - grouped["H"], grouped["AB"])
     grouped["SwStr%"] = safe_rate(grouped["SwStr"], grouped["Pitches"], 100)
@@ -150,7 +167,13 @@ def build_hitter_metrics():
         "season",
     )
 
-    return last_30, season
+    longterm = build_metrics_from_file(
+        RAW_LONGTERM_FILE,
+        OUTPUT_LONGTERM_FILE,
+        "longterm",
+    )
+
+    return last_30, season, longterm
 
 
 if __name__ == "__main__":

@@ -82,6 +82,7 @@ def attach_weather_to_games():
             "conditions": weather.get("conditions"),
             "wind_direction": weather.get("wind_direction"),
             "wind_speed": weather.get("wind_speed"),
+            "wind_degrees": weather.get("wind_degrees"),
         }
 
         game["weather"] = weather_payload
