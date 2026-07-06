@@ -4,6 +4,7 @@ import pandas as pd
 from model.scores.alpha import alpha_score
 from utils.json_utils import load_json, save_json, clean_value
 from model.scores.hitter_detail import attach_hitter_detail_scores
+from model.scores.slate_normalizer import normalize_slate_hitters
 
 GAMES_DIR = Path("data/processed/games")
 
@@ -277,6 +278,18 @@ def attach_hitter_metrics_to_games():
                 if hitter.get("Metric Source") == "Missing":
                     missing.append(f"{game.get('game', file.name)}: {hitter.get('Player')}")
 
+        save_json(game, file)
+
+        games_to_save = []
+
+    for file in GAMES_DIR.glob("*.json"):
+        game = load_json(file, default={})
+        if game:
+            games_to_save.append((file, game))
+
+    normalized_games = normalize_slate_hitters([game for _, game in games_to_save])
+
+    for (file, _), game in zip(games_to_save, normalized_games):
         save_json(game, file)
 
     print("✅ Attached hitter metrics using longterm baseline + last-30 recent form")

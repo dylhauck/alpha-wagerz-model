@@ -2,6 +2,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from model.team_offense_metrics import is_barrel
+
 RAW_LAST_30_FILE = Path("data/raw/statcast/statcast_last_30_days.csv")
 RAW_SEASON_FILE = Path("data/raw/statcast/statcast_season.csv")
 RAW_LONGTERM_FILE = Path("data/raw/statcast/statcast_longterm.csv")
@@ -25,14 +27,32 @@ def load_player_reference():
     }
 
 
-def is_barrel(row):
-    ev = row.get("launch_speed")
-    la = row.get("launch_angle")
+def spray_angle(row):
+    hc_x = row.get("hc_x")
+    hc_y = row.get("hc_y")
 
-    if pd.isna(ev) or pd.isna(la):
+    if pd.isna(hc_x) or pd.isna(hc_y):
+        return None
+
+    # Statcast field center approximation.
+    # Negative = pulled for RHH, positive = pulled for LHH depending batter side.
+    return np.degrees(np.arctan2(float(hc_x) - 125.42, 198.27 - float(hc_y)))
+
+
+def is_pulled(row):
+    angle = spray_angle(row)
+    stand = str(row.get("stand", "")).upper()
+
+    if angle is None:
         return False
 
-    return ev >= 98 and 26 <= la <= 30
+    if stand == "R":
+        return angle < -10
+
+    if stand == "L":
+        return angle > 10
+
+    return False
 
 
 def total_bases(event):
@@ -88,6 +108,8 @@ def build_metrics_from_file(raw_file, output_file, label):
     df["is_sweet_spot"] = df["launch_angle"].between(8, 32)
     df["is_fly_ball"] = df["bb_type"].isin(["fly_ball", "popup"])
     df["is_barrel"] = df.apply(is_barrel, axis=1)
+    df["is_pulled"] = df.apply(is_pulled, axis=1)
+    df["is_pulled_barrel"] = df["is_barrel"] & df["is_pulled"]
     df["total_bases"] = df["events"].apply(total_bases)
 
     at_bat_events = [
@@ -110,7 +132,7 @@ def build_metrics_from_file(raw_file, output_file, label):
         xwOBA=("estimated_woba_using_speedangle", "mean"),
         xwOBAcon=("estimated_woba_using_speedangle", "mean"),
         SwStr=("is_swinging_strike", "sum"),
-        PulledBrl=("is_barrel", "sum"),
+        PulledBrl=("is_pulled_barrel", "sum"),
         Barrels=("is_barrel", "sum"),
         SweetSpot=("is_sweet_spot", "sum"),
         FB=("is_fly_ball", "sum"),

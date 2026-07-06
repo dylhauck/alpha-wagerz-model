@@ -135,6 +135,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 663494,Bryan Torres,138,St. Louis Cardinals,STL,LF,Outfielder,L,R
 669160,Dustin May,138,St. Louis Cardinals,STL,P,Pitcher,R,R
 666277,George Soriano,138,St. Louis Cardinals,STL,P,Pitcher,R,R
+700669,Gordon Graceffo,138,St. Louis Cardinals,STL,P,Pitcher,R,R
 671056,Iván Herrera,138,St. Louis Cardinals,STL,DH,Designated Hitter,R,R
 802139,JJ Wetherholt,138,St. Louis Cardinals,STL,2B,Second Base,L,R
 699625,Jimmy Crooks,138,St. Louis Cardinals,STL,C,Catcher,L,R
@@ -147,7 +148,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 691026,Masyn Winn,138,St. Louis Cardinals,STL,SS,Shortstop,R,R
 694335,Matt Svanson,138,St. Louis Cardinals,STL,P,Pitcher,R,R
 669461,Matthew Liberatore,138,St. Louis Cardinals,STL,P,Pitcher,L,L
-691008,Max Rajcic,138,St. Louis Cardinals,STL,P,Pitcher,R,R
 700241,Michael McGreevy,138,St. Louis Cardinals,STL,P,Pitcher,L,R
 701675,Nathan Church,138,St. Louis Cardinals,STL,LF,Outfielder,L,L
 676369,Nelson Velázquez,138,St. Louis Cardinals,STL,LF,Outfielder,R,R
@@ -161,6 +161,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 668984,Casey Legumina,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 656775,Cedric Mullins,139,Tampa Bay Rays,TB,CF,Outfielder,L,L
 802415,Chandler Simpson,139,Tampa Bay Rays,TB,LF,Outfielder,L,R
+688297,Chris Roycroft,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 642121,Cole Sulser,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 518886,Craig Kimbrel,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 656876,Drew Rasmussen,139,Tampa Bay Rays,TB,P,Pitcher,R,R
@@ -172,7 +173,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 676356,Jonny DeLuca,139,Tampa Bay Rays,TB,RF,Outfielder,R,R
 691406,Junior Caminero,139,Tampa Bay Rays,TB,3B,Third Base,R,R
 687330,Kevin Kelly,139,Tampa Bay Rays,TB,P,Pitcher,R,R
-669438,Mason Englert,139,Tampa Bay Rays,TB,P,Pitcher,S,R
 663743,Nick Fortes,139,Tampa Bay Rays,TB,C,Catcher,R,R
 607259,Nick Martinez,139,Tampa Bay Rays,TB,P,Pitcher,L,R
 680700,Richie Palacios,139,Tampa Bay Rays,TB,2B,Second Base,L,R
@@ -287,7 +287,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 554430,Zack Wheeler,143,Philadelphia Phillies,PHI,P,Pitcher,L,R
 663586,Austin Riley,144,Atlanta Braves,ATL,3B,Third Base,R,R
 693821,Bryce Elder,144,Atlanta Braves,ATL,P,Pitcher,R,R
-471911,Carlos Carrasco,144,Atlanta Braves,ATL,P,Pitcher,R,R
 519242,Chris Sale,144,Atlanta Braves,ATL,P,Pitcher,L,L
 664849,Danny Young,144,Atlanta Braves,ATL,P,Pitcher,L,L
 800311,Didier Fuentes,144,Atlanta Braves,ATL,P,Pitcher,R,R
@@ -295,18 +294,19 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 686948,Drake Baldwin,144,Atlanta Braves,ATL,C,Catcher,L,R
 689266,Dylan Dodd,144,Atlanta Braves,ATL,P,Pitcher,L,L
 669276,Dylan Lee,144,Atlanta Braves,ATL,P,Pitcher,L,L
-642201,Eli White,144,Atlanta Braves,ATL,RF,Outfielder,R,R
 656550,Grant Holmes,144,Atlanta Braves,ATL,P,Pitcher,L,R
 694462,Hurston Waldrep,144,Atlanta Braves,ATL,P,Pitcher,R,R
+702275,JR Ritchie,144,Atlanta Braves,ATL,P,Pitcher,R,R
 805347,Jim Jarvis,144,Atlanta Braves,ATL,SS,Shortstop,L,R
 663698,Joey Bart,144,Atlanta Braves,ATL,C,Catcher,R,R
 622761,Jorge Mateo,144,Atlanta Braves,ATL,SS,Shortstop,R,R
+640492,José Azócar,144,Atlanta Braves,ATL,RF,Outfielder,R,R
 571657,Kyle Farmer,144,Atlanta Braves,ATL,DH,Designated Hitter,R,R
-527048,Martín Pérez,144,Atlanta Braves,ATL,P,Pitcher,L,L
 621566,Matt Olson,144,Atlanta Braves,ATL,1B,First Base,L,R
 643289,Mauricio Dubón,144,Atlanta Braves,ATL,LF,Outfielder,R,R
 671739,Michael Harris II,144,Atlanta Braves,ATL,CF,Outfielder,L,L
 573262,Mike Yastrzemski,144,Atlanta Braves,ATL,LF,Outfielder,L,L
+702566,Owen Murphy,144,Atlanta Braves,ATL,P,Pitcher,R,R
 645277,Ozzie Albies,144,Atlanta Braves,ATL,2B,Second Base,S,R
 628452,Raisel Iglesias,144,Atlanta Braves,ATL,P,Pitcher,R,R
 625643,Reynaldo López,144,Atlanta Braves,ATL,P,Pitcher,R,R
@@ -650,6 +650,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 663947,Tyler Holton,116,Detroit Tigers,DET,P,Pitcher,L,L
 656716,Zach McKinstry,116,Detroit Tigers,DET,2B,Second Base,L,R
 805123,AJ Blubaugh,117,Houston Astros,HOU,P,Pitcher,R,R
+669699,Braden Shewmake,117,Houston Astros,HOU,SS,Shortstop,L,R
 694728,Brice Matthews,117,Houston Astros,HOU,CF,Outfielder,R,R
 650556,Bryan Abreu,117,Houston Astros,HOU,P,Pitcher,R,R
 687911,Bryan King,117,Houston Astros,HOU,P,Pitcher,R,L
@@ -667,7 +668,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 663878,Nate Pearson,117,Houston Astros,HOU,P,Pitcher,R,R
 669397,Nick Allen,117,Houston Astros,HOU,SS,Shortstop,R,R
 663567,Peter Lambert,117,Houston Astros,HOU,P,Pitcher,R,R
-669384,Raynel Delgado,117,Houston Astros,HOU,2B,Second Base,L,R
 681293,Spencer Arrighetti,117,Houston Astros,HOU,P,Pitcher,R,R
 595345,Steven Okert,117,Houston Astros,HOU,P,Pitcher,L,L
 837227,Tatsuya Imai,117,Houston Astros,HOU,P,Pitcher,R,R
@@ -731,14 +731,13 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 674841,Andrew Alvarez,120,Washington Nationals,WSH,P,Pitcher,L,L
 695418,Brad Lord,120,Washington Nationals,WSH,P,Pitcher,R,R
 682928,CJ Abrams,120,Washington Nationals,WSH,SS,Shortstop,L,R
-676917,Cade Cavalli,120,Washington Nationals,WSH,P,Pitcher,R,R
 687223,Carson Palmquist,120,Washington Nationals,WSH,P,Pitcher,L,L
 690925,Clayton Beeter,120,Washington Nationals,WSH,P,Pitcher,R,R
+669371,Cole Henry,120,Washington Nationals,WSH,P,Pitcher,R,R
 678554,Curtis Mead,120,Washington Nationals,WSH,3B,Third Base,R,R
 695734,Daylen Lile,120,Washington Nationals,WSH,LF,Outfielder,L,R
 686452,Drew Millas,120,Washington Nationals,WSH,C,Catcher,S,R
 686611,Dylan Crews,120,Washington Nationals,WSH,RF,Outfielder,R,R
-678868,Eddy Yean,120,Washington Nationals,WSH,P,Pitcher,R,R
 656492,Foster Griffin,120,Washington Nationals,WSH,P,Pitcher,R,L
 696285,Jacob Young,120,Washington Nationals,WSH,CF,Outfielder,R,R
 695578,James Wood,120,Washington Nationals,WSH,RF,Outfielder,L,R

@@ -20,7 +20,7 @@
     "away_sp": "Kyle Freeland",
     "home_sp": "Eric Lauer",
     "venue": "UNIQLO Field at Dodger Stadium",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/823930.json"
   },
   {
@@ -32,7 +32,7 @@
     "away_sp": "Mike Burrows",
     "home_sp": "Miles Mikolas",
     "venue": "Nationals Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/822712.json"
   },
   {
@@ -44,7 +44,7 @@
     "away_sp": "Shane Drohan",
     "home_sp": "Dustin May",
     "venue": "Busch Stadium",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/823036.json"
   },
   {
@@ -56,7 +56,7 @@
     "away_sp": "Freddy Peralta",
     "home_sp": "Reynaldo L\u00f3pez",
     "venue": "Truist Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/824900.json"
   },
   {
@@ -68,7 +68,7 @@
     "away_sp": "Cam Schlittler",
     "home_sp": "Griffin Jax",
     "venue": "Tropicana Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/822958.json"
   },
   {
@@ -80,7 +80,7 @@
     "away_sp": "Cristopher S\u00e1nchez",
     "home_sp": "Noah Cameron",
     "venue": "Kauffman Stadium",
-    "status": "Scheduled",
+    "status": "Final",
     "file": "data/processed/games/824089.json"
   },
   {

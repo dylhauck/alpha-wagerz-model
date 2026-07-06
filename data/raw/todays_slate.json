@@ -8,7 +8,7 @@
     "away_sp": "Cristopher S\u00e1nchez",
     "home_sp": "Noah Cameron",
     "venue": "Kauffman Stadium",
-    "status": "Scheduled",
+    "status": "Final",
     "game_date_utc": "2026-07-06T18:10:00Z",
     "game_time": "1:10 PM",
     "game_time_sort": "13:10"
@@ -22,7 +22,7 @@
     "away_sp": "Cam Schlittler",
     "home_sp": "Griffin Jax",
     "venue": "Tropicana Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-06T22:40:00Z",
     "game_time": "5:40 PM",
     "game_time_sort": "17:40"
@@ -36,7 +36,7 @@
     "away_sp": "Mike Burrows",
     "home_sp": "Miles Mikolas",
     "venue": "Nationals Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-06T22:45:00Z",
     "game_time": "5:45 PM",
     "game_time_sort": "17:45"
@@ -50,7 +50,7 @@
     "away_sp": "Freddy Peralta",
     "home_sp": "Reynaldo L\u00f3pez",
     "venue": "Truist Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-06T23:15:00Z",
     "game_time": "6:15 PM",
     "game_time_sort": "18:15"
@@ -64,7 +64,7 @@
     "away_sp": "Shane Drohan",
     "home_sp": "Dustin May",
     "venue": "Busch Stadium",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-06T23:45:00Z",
     "game_time": "6:45 PM",
     "game_time_sort": "18:45"
@@ -106,7 +106,7 @@
     "away_sp": "Kyle Freeland",
     "home_sp": "Eric Lauer",
     "venue": "UNIQLO Field at Dodger Stadium",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-07T02:10:00Z",
     "game_time": "9:10 PM",
     "game_time_sort": "21:10"

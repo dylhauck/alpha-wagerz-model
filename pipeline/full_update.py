@@ -92,8 +92,8 @@ def run_full_update():
     validate_pipeline()
     validate_model_features()
 
-    print("\n📄 Google Sheets")
-    update_full_slate_sheets()
+    #print("\n📄 Google Sheets")
+    #update_full_slate_sheets()
 
     print("\n🗄️ Saving history")
     save_daily_history()

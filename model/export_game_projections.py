@@ -407,7 +407,6 @@ def export_game_projections():
             "game_id": game.get("game_id", ""),
             "game": game.get("game", ""),
             "game_time": game.get("game_time", ""),
-            "game_time_sort": game.get("game_time_sort", ""),
             "venue": game.get("venue", ""),
             "away_team": away_team,
             "home_team": home_team,
