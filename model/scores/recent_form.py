@@ -17,6 +17,16 @@ def scale(value, bad, elite):
     return clamp((value - bad) / (elite - bad) * 100)
 
 
+def launch_score(la):
+    if 12 <= la <= 30:
+        return 100
+    if 8 <= la < 12 or 30 < la <= 36:
+        return 75
+    if 4 <= la < 8 or 36 < la <= 42:
+        return 45
+    return 20
+
+
 def score_recent_form(hitter):
     recent_bip = f(hitter.get("Recent BIP"))
     recent_pitches = f(hitter.get("Recent Pitches"))
@@ -27,21 +37,21 @@ def score_recent_form(hitter):
     recent_iso = f(hitter.get("Recent ISO"))
     recent_xwoba = f(hitter.get("Recent xwOBA"))
     recent_xcon = f(hitter.get("Recent xwOBAcon"))
+    recent_pulled = f(hitter.get("Recent PulledBrl%"))
     recent_brl = f(hitter.get("Recent Brl/BIP%"))
     recent_hh = f(hitter.get("Recent HH%"))
     recent_fb = f(hitter.get("Recent FB%"))
     recent_la = f(hitter.get("Recent LA"))
 
-    la_score = 75 if 12 <= recent_la <= 32 else 45
-
     score = (
-        scale(recent_iso, 0.070, 0.300) * 0.22 +
-        scale(recent_xwoba, 0.240, 0.430) * 0.22 +
-        scale(recent_xcon, 0.260, 0.540) * 0.20 +
-        scale(recent_brl, 3.0, 18.0) * 0.16 +
-        scale(recent_hh, 30.0, 60.0) * 0.12 +
+        scale(recent_iso, 0.070, 0.300) * 0.18 +
+        scale(recent_xwoba, 0.240, 0.430) * 0.18 +
+        scale(recent_xcon, 0.300, 0.560) * 0.18 +
+        scale(recent_brl, 3.0, 16.0) * 0.16 +
+        scale(recent_pulled, 1.0, 9.0) * 0.12 +
+        scale(recent_hh, 30.0, 60.0) * 0.10 +
         scale(recent_fb, 18.0, 45.0) * 0.05 +
-        la_score * 0.03
+        launch_score(recent_la) * 0.03
     )
 
     return round(clamp(score), 1)

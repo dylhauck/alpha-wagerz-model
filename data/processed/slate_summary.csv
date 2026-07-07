@@ -1,9 +1,17 @@
 game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status,game_date_utc,game_time,game_time_sort
-824089,2026-07-06,Philadelphia Phillies @ Kansas City Royals,Philadelphia Phillies,Kansas City Royals,Cristopher Sánchez,Noah Cameron,Kauffman Stadium,Final,2026-07-06T18:10:00Z,1:10 PM,13:10
-822958,2026-07-06,New York Yankees @ Tampa Bay Rays,New York Yankees,Tampa Bay Rays,Cam Schlittler,Griffin Jax,Tropicana Field,Pre-Game,2026-07-06T22:40:00Z,5:40 PM,17:40
-822712,2026-07-06,Houston Astros @ Washington Nationals,Houston Astros,Washington Nationals,Mike Burrows,Miles Mikolas,Nationals Park,Pre-Game,2026-07-06T22:45:00Z,5:45 PM,17:45
-824900,2026-07-06,New York Mets @ Atlanta Braves,New York Mets,Atlanta Braves,Freddy Peralta,Reynaldo López,Truist Park,Pre-Game,2026-07-06T23:15:00Z,6:15 PM,18:15
-823036,2026-07-06,Milwaukee Brewers @ St. Louis Cardinals,Milwaukee Brewers,St. Louis Cardinals,Shane Drohan,Dustin May,Busch Stadium,Pre-Game,2026-07-06T23:45:00Z,6:45 PM,18:45
-823282,2026-07-06,Arizona Diamondbacks @ San Diego Padres,Arizona Diamondbacks,San Diego Padres,Brandon Pfaadt,Walker Buehler,Petco Park,Scheduled,2026-07-07T01:40:00Z,8:40 PM,20:40
-823205,2026-07-06,Toronto Blue Jays @ San Francisco Giants,Toronto Blue Jays,San Francisco Giants,Kevin Gausman,Landen Roupp,Oracle Park,Scheduled,2026-07-07T01:45:00Z,8:45 PM,20:45
-823930,2026-07-06,Colorado Rockies @ Los Angeles Dodgers,Colorado Rockies,Los Angeles Dodgers,Kyle Freeland,Eric Lauer,UNIQLO Field at Dodger Stadium,Pre-Game,2026-07-07T02:10:00Z,9:10 PM,21:10
+823062,2026-07-07,Milwaukee Brewers @ St. Louis Cardinals,Milwaukee Brewers,St. Louis Cardinals,Jacob Misiorowski,,Busch Stadium,Scheduled,2026-07-07T18:15:00Z,1:15 PM,13:15
+823035,2026-07-07,Milwaukee Brewers @ St. Louis Cardinals,Milwaukee Brewers,St. Louis Cardinals,,,Busch Stadium,Scheduled,2026-07-07T23:45:00Z,6:45 PM,18:45
+824820,2026-07-07,Chicago Cubs @ Baltimore Orioles,Chicago Cubs,Baltimore Orioles,Matthew Boyd,Shane Baz,Oriole Park at Camden Yards,Scheduled,2026-07-07T22:35:00Z,5:35 PM,17:35
+824254,2026-07-07,Athletics @ Detroit Tigers,Athletics,Detroit Tigers,J.T. Ginn,Tarik Skubal,Comerica Park,Scheduled,2026-07-07T22:40:00Z,5:40 PM,17:40
+823361,2026-07-07,Atlanta Braves @ Pittsburgh Pirates,Atlanta Braves,Pittsburgh Pirates,Hurston Waldrep,Paul Skenes,PNC Park,Scheduled,2026-07-07T22:40:00Z,5:40 PM,17:40
+823847,2026-07-07,Seattle Mariners @ Miami Marlins,Seattle Mariners,Miami Marlins,,Max Meyer,loanDepot park,Scheduled,2026-07-07T22:40:00Z,5:40 PM,17:40
+822956,2026-07-07,New York Yankees @ Tampa Bay Rays,New York Yankees,Tampa Bay Rays,Will Warren,Ian Seymour,Tropicana Field,Scheduled,2026-07-07T22:40:00Z,5:40 PM,17:40
+822713,2026-07-07,Houston Astros @ Washington Nationals,Houston Astros,Washington Nationals,Tatsuya Imai,Andrew Alvarez,Nationals Park,Scheduled,2026-07-07T22:45:00Z,5:45 PM,17:45
+823607,2026-07-07,Kansas City Royals @ New York Mets,Kansas City Royals,New York Mets,Seth Lugo,,Citi Field,Scheduled,2026-07-07T23:10:00Z,6:10 PM,18:10
+824495,2026-07-07,Philadelphia Phillies @ Cincinnati Reds,Philadelphia Phillies,Cincinnati Reds,,Andrew Abbott,Great American Ball Park,Scheduled,2026-07-07T23:10:00Z,6:10 PM,18:10
+823687,2026-07-07,Cleveland Guardians @ Minnesota Twins,Cleveland Guardians,Minnesota Twins,Joey Cantillo,Taj Bradley,Target Field,Scheduled,2026-07-07T23:40:00Z,6:40 PM,18:40
+824579,2026-07-07,Boston Red Sox @ Chicago White Sox,Boston Red Sox,Chicago White Sox,Payton Tolle,Noah Schultz,Rate Field,Scheduled,2026-07-07T23:40:00Z,6:40 PM,18:40
+822881,2026-07-07,Los Angeles Angels @ Texas Rangers,Los Angeles Angels,Texas Rangers,José Soriano,Jacob deGrom,Globe Life Field,Scheduled,2026-07-08T00:05:00Z,7:05 PM,19:05
+823280,2026-07-07,Arizona Diamondbacks @ San Diego Padres,Arizona Diamondbacks,San Diego Padres,Zac Gallen,Germán Márquez,Petco Park,Scheduled,2026-07-08T01:40:00Z,8:40 PM,20:40
+823203,2026-07-07,Toronto Blue Jays @ San Francisco Giants,Toronto Blue Jays,San Francisco Giants,,Trevor McDonald,Oracle Park,Scheduled,2026-07-08T01:45:00Z,8:45 PM,20:45
+823929,2026-07-07,Colorado Rockies @ Los Angeles Dodgers,Colorado Rockies,Los Angeles Dodgers,Michael Lorenzen,Justin Wrobleski,UNIQLO Field at Dodger Stadium,Scheduled,2026-07-08T02:10:00Z,9:10 PM,21:10
