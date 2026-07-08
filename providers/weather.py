@@ -1,4 +1,5 @@
 import os
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
@@ -27,10 +28,6 @@ def angle_diff(a, b):
 
 
 def wind_to_baseball_terms(wind_deg, center_field_deg):
-    """
-    OpenWeather wind deg = direction wind comes FROM.
-    Convert to direction wind is blowing TO.
-    """
     if wind_deg is None:
         return "NEUTRAL"
 
@@ -43,14 +40,11 @@ def wind_to_baseball_terms(wind_deg, center_field_deg):
     rf = (cf + 35) % 360
     lf = (cf - 35) % 360
 
-    diff_rf = angle_diff(wind_to, rf)
-    diff_lf = angle_diff(wind_to, lf)
-
     if diff_cf <= 35:
         return "OUT"
-    if diff_rf <= 30:
+    if angle_diff(wind_to, rf) <= 30:
         return "OUT TOWARDS RF"
-    if diff_lf <= 30:
+    if angle_diff(wind_to, lf) <= 30:
         return "OUT TOWARDS LF"
     if diff_in <= 35:
         return "IN"
@@ -60,19 +54,15 @@ def wind_to_baseball_terms(wind_deg, center_field_deg):
 
 def load_stadium_lookup():
     df = pd.read_csv(STADIUM_FILE)
-
-    return {
-        normalize(row["venue"]): row.to_dict()
-        for _, row in df.iterrows()
-    }
+    return {normalize(row["venue"]): row.to_dict() for _, row in df.iterrows()}
 
 
-def fetch_weather(lat, lon):
+def fetch_forecast(lat, lon):
     if not OPENWEATHER_API_KEY:
         raise ValueError("OPENWEATHER_API_KEY missing from .env")
 
     url = (
-        "https://api.openweathermap.org/data/2.5/weather"
+        "https://api.openweathermap.org/data/2.5/forecast"
         f"?lat={lat}&lon={lon}"
         f"&appid={OPENWEATHER_API_KEY}"
         "&units=imperial"
@@ -83,6 +73,45 @@ def fetch_weather(lat, lon):
     return response.json()
 
 
+def parse_game_datetime(game):
+    for key in ["game_datetime_utc", "commence_time", "game_date_utc", "game_time_utc"]:
+        value = game.get(key)
+        if value:
+            try:
+                return datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+            except Exception:
+                pass
+
+    value = game.get("game_datetime")
+    if value:
+        try:
+            dt = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+            return dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
+        except Exception:
+            pass
+
+    return None
+
+
+def closest_forecast(forecast_data, target_dt):
+    forecasts = forecast_data.get("list", [])
+
+    if not forecasts:
+        return None
+
+    if not target_dt:
+        return forecasts[0]
+
+    if target_dt.tzinfo is None:
+        target_dt = target_dt.replace(tzinfo=timezone.utc)
+
+    def diff_seconds(item):
+        item_dt = datetime.fromtimestamp(item.get("dt", 0), tz=timezone.utc)
+        return abs((item_dt - target_dt).total_seconds())
+
+    return min(forecasts, key=diff_seconds)
+
+
 def build_weather_file():
     games = get_game_index()
     stadiums = load_stadium_lookup()
@@ -91,9 +120,7 @@ def build_weather_file():
 
     for game in games:
         venue = game.get("venue", "")
-        venue_key = normalize(venue)
-        venue_key = VENUE_ALIASES.get(venue_key, venue_key)
-
+        venue_key = VENUE_ALIASES.get(normalize(venue), normalize(venue))
         stadium = stadiums.get(venue_key)
 
         if not stadium:
@@ -101,7 +128,13 @@ def build_weather_file():
             continue
 
         try:
-            data = fetch_weather(stadium["lat"], stadium["lon"])
+            forecast_data = fetch_forecast(stadium["lat"], stadium["lon"])
+            game_dt = parse_game_datetime(game)
+            data = closest_forecast(forecast_data, game_dt)
+
+            if not data:
+                print(f"⚠️ No forecast data for {game.get('game')} — {venue}")
+                continue
 
             temp = data.get("main", {}).get("temp")
             humidity = data.get("main", {}).get("humidity")
@@ -114,6 +147,11 @@ def build_weather_file():
                 stadium.get("center_field_deg", 0),
             )
 
+            forecast_time_utc = datetime.fromtimestamp(
+                data.get("dt", 0),
+                tz=timezone.utc,
+            ).isoformat()
+
             weather_rows.append({
                 "game_id": game.get("game_id"),
                 "game": game.get("game"),
@@ -125,9 +163,10 @@ def build_weather_file():
                 "wind_speed": round(float(wind_speed), 1),
                 "wind_degrees": wind_deg,
                 "roof": stadium.get("roof", "open"),
+                "forecast_time_utc": forecast_time_utc,
             })
 
-            print(f"✅ Weather: {game.get('game')} — {venue}")
+            print(f"✅ Forecast weather: {game.get('game')} — {venue}")
 
         except Exception as e:
             print(f"⚠️ Weather failed for {venue}: {e}")

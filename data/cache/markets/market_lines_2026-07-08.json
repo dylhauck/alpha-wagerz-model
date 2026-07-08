@@ -1,0 +1,576 @@
+[
+  {
+    "game_id": "823279",
+    "game": "Arizona Diamondbacks @ San Diego Padres",
+    "away_team": "Arizona Diamondbacks",
+    "home_team": "San Diego Padres",
+    "bookmaker": "DraftKings",
+    "bookmaker_key": "draftkings",
+    "odds_event_id": "8c0695707371420ef6b1cf89c2d1b262",
+    "moneyline": {
+      "away": 119,
+      "home": -143
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -175,
+      "home": -1.5,
+      "home_price": 144
+    },
+    "total": 8.0,
+    "game_total": {
+      "line": 8.0,
+      "over_price": -105,
+      "under_price": -114
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "cache",
+    "market_status": "cached"
+  },
+  {
+    "game_id": "824253",
+    "game": "Athletics @ Detroit Tigers",
+    "away_team": "Athletics",
+    "home_team": "Detroit Tigers",
+    "bookmaker": "DraftKings",
+    "bookmaker_key": "draftkings",
+    "odds_event_id": "8d7cadd457d4e05f27a0ef6feab14d62",
+    "moneyline": {
+      "away": 135,
+      "home": -163
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -155,
+      "home": -1.5,
+      "home_price": 128
+    },
+    "total": 9.0,
+    "game_total": {
+      "line": 9.0,
+      "over_price": 100,
+      "under_price": -120
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "cache",
+    "market_status": "cached"
+  },
+  {
+    "game_id": "823360",
+    "game": "Atlanta Braves @ Pittsburgh Pirates",
+    "away_team": "Atlanta Braves",
+    "home_team": "Pittsburgh Pirates",
+    "bookmaker": "DraftKings",
+    "bookmaker_key": "draftkings",
+    "odds_event_id": "f30eb3060b32a01dced2737d2398b918",
+    "moneyline": {
+      "away": -101,
+      "home": -120
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -199,
+      "home": -1.5,
+      "home_price": 163
+    },
+    "total": 8.5,
+    "game_total": {
+      "line": 8.5,
+      "over_price": -119,
+      "under_price": -101
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "cache",
+    "market_status": "cached"
+  },
+  {
+    "game_id": "824578",
+    "game": "Boston Red Sox @ Chicago White Sox",
+    "away_team": "Boston Red Sox",
+    "home_team": "Chicago White Sox",
+    "bookmaker": "DraftKings",
+    "bookmaker_key": "draftkings",
+    "odds_event_id": "e8175b3e1d8e51c76f4fad9075a7d707",
+    "moneyline": {
+      "away": 104,
+      "home": -125
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -198,
+      "home": -1.5,
+      "home_price": 162
+    },
+    "total": 8.0,
+    "game_total": {
+      "line": 8.0,
+      "over_price": -110,
+      "under_price": -110
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "cache",
+    "market_status": "cached"
+  },
+  {
+    "game_id": "824815",
+    "game": "Chicago Cubs @ Baltimore Orioles",
+    "away_team": "Chicago Cubs",
+    "home_team": "Baltimore Orioles",
+    "bookmaker": "DraftKings",
+    "bookmaker_key": "draftkings",
+    "odds_event_id": "fbdf2c9598b2ee82ae2cd6b9934f9b67",
+    "moneyline": {
+      "away": 108,
+      "home": -131
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -191,
+      "home": -1.5,
+      "home_price": 157
+    },
+    "total": 9.0,
+    "game_total": {
+      "line": 9.0,
+      "over_price": -120,
+      "under_price": 100
+    },
+    "team_totals": {
+      "away": 4.5,
+      "away_over_price": -105,
+      "away_under_price": -125,
+      "home": 4.5,
+      "home_over_price": -115,
+      "home_under_price": -115
+    },
+    "pitcher_strikeouts": {
+      "dean kremer": {
+        "player": "Dean Kremer",
+        "normalized_name": "dean kremer",
+        "line": 5.5,
+        "over_price": 125,
+        "under_price": -160,
+        "bookmaker_key": "draftkings"
+      },
+      "colin rea": {
+        "player": "Colin Rea",
+        "normalized_name": "colin rea",
+        "line": 4.5,
+        "over_price": 105,
+        "under_price": -134,
+        "bookmaker_key": "draftkings"
+      }
+    },
+    "market_source": "cache",
+    "market_status": "cached"
+  },
+  {
+    "game_id": "823684",
+    "game": "Cleveland Guardians @ Minnesota Twins",
+    "away_team": "Cleveland Guardians",
+    "home_team": "Minnesota Twins",
+    "bookmaker": "DraftKings",
+    "bookmaker_key": "draftkings",
+    "odds_event_id": "f69a7dce841f22ee977afebfd8dfc142",
+    "moneyline": {
+      "away": 113,
+      "home": -136
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -185,
+      "home": -1.5,
+      "home_price": 152
+    },
+    "total": 8.5,
+    "game_total": {
+      "line": 8.5,
+      "over_price": -105,
+      "under_price": -115
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "cache",
+    "market_status": "cached"
+  },
+  {
+    "game_id": "823928",
+    "game": "Colorado Rockies @ Los Angeles Dodgers",
+    "away_team": "Colorado Rockies",
+    "home_team": "Los Angeles Dodgers",
+    "bookmaker": "DraftKings",
+    "bookmaker_key": "draftkings",
+    "odds_event_id": "49de1a8b7d85007610fb077c920e206a",
+    "moneyline": {
+      "away": 194,
+      "home": -239
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -102,
+      "home": -1.5,
+      "home_price": -119
+    },
+    "total": 10.0,
+    "game_total": {
+      "line": 10.0,
+      "over_price": -109,
+      "under_price": -110
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "cache",
+    "market_status": "cached"
+  },
+  {
+    "game_id": "822710",
+    "game": "Houston Astros @ Washington Nationals",
+    "away_team": "Houston Astros",
+    "home_team": "Washington Nationals",
+    "bookmaker": "DraftKings",
+    "bookmaker_key": "draftkings",
+    "odds_event_id": "673394fe5878e43a0bdc2feb5f6634d3",
+    "moneyline": {
+      "away": 113,
+      "home": -136
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -179,
+      "home": -1.5,
+      "home_price": 148
+    },
+    "total": 9.0,
+    "game_total": {
+      "line": 9.0,
+      "over_price": -117,
+      "under_price": -103
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "cache",
+    "market_status": "cached"
+  },
+  {
+    "game_id": "823605",
+    "game": "Kansas City Royals @ New York Mets",
+    "away_team": "Kansas City Royals",
+    "home_team": "New York Mets",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": "",
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "unavailable",
+    "market_status": "cached"
+  },
+  {
+    "game_id": "822880",
+    "game": "Los Angeles Angels @ Texas Rangers",
+    "away_team": "Los Angeles Angels",
+    "home_team": "Texas Rangers",
+    "bookmaker": "DraftKings",
+    "bookmaker_key": "draftkings",
+    "odds_event_id": "88cb3f823f958bc6b24e7f918541e63f",
+    "moneyline": {
+      "away": 134,
+      "home": -162
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -163,
+      "home": -1.5,
+      "home_price": 135
+    },
+    "total": 7.5,
+    "game_total": {
+      "line": 7.5,
+      "over_price": -114,
+      "under_price": -105
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "cache",
+    "market_status": "cached"
+  },
+  {
+    "game_id": "823032",
+    "game": "Milwaukee Brewers @ St. Louis Cardinals",
+    "away_team": "Milwaukee Brewers",
+    "home_team": "St. Louis Cardinals",
+    "bookmaker": "DraftKings",
+    "bookmaker_key": "draftkings",
+    "odds_event_id": "e885d80c0e3339f69c0a7c1b898c173e",
+    "moneyline": {
+      "away": -143,
+      "home": 119
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": 124,
+      "home": 1.5,
+      "home_price": -149
+    },
+    "total": 8.0,
+    "game_total": {
+      "line": 8.0,
+      "over_price": -110,
+      "under_price": -109
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "cache",
+    "market_status": "cached"
+  },
+  {
+    "game_id": "822957",
+    "game": "New York Yankees @ Tampa Bay Rays",
+    "away_team": "New York Yankees",
+    "home_team": "Tampa Bay Rays",
+    "bookmaker": "DraftKings",
+    "bookmaker_key": "draftkings",
+    "odds_event_id": "79b379f1dea98a6b1596852f00534a6c",
+    "moneyline": {
+      "away": 108,
+      "home": -131
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -205,
+      "home": -1.5,
+      "home_price": 168
+    },
+    "total": 7.5,
+    "game_total": {
+      "line": 7.5,
+      "over_price": -108,
+      "under_price": -111
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "cache",
+    "market_status": "cached"
+  },
+  {
+    "game_id": "824496",
+    "game": "Philadelphia Phillies @ Cincinnati Reds",
+    "away_team": "Philadelphia Phillies",
+    "home_team": "Cincinnati Reds",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": "",
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "unavailable",
+    "market_status": "cached"
+  },
+  {
+    "game_id": "823848",
+    "game": "Seattle Mariners @ Miami Marlins",
+    "away_team": "Seattle Mariners",
+    "home_team": "Miami Marlins",
+    "bookmaker": "DraftKings",
+    "bookmaker_key": "draftkings",
+    "odds_event_id": "ee87ced2d6a2acedec0ca6c9d37dde8c",
+    "moneyline": {
+      "away": -131,
+      "home": 109
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": 123,
+      "home": 1.5,
+      "home_price": -149
+    },
+    "total": 8.5,
+    "game_total": {
+      "line": 8.5,
+      "over_price": -110,
+      "under_price": -110
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "cache",
+    "market_status": "cached"
+  },
+  {
+    "game_id": "823202",
+    "game": "Toronto Blue Jays @ San Francisco Giants",
+    "away_team": "Toronto Blue Jays",
+    "home_team": "San Francisco Giants",
+    "bookmaker": "DraftKings",
+    "bookmaker_key": "draftkings",
+    "odds_event_id": "57172eebee377baa85502b3c14ce8249",
+    "moneyline": {
+      "away": -112,
+      "home": -107
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": 154,
+      "home": 1.5,
+      "home_price": -188
+    },
+    "total": 7.0,
+    "game_total": {
+      "line": 7.0,
+      "over_price": 104,
+      "under_price": -126
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": 100,
+      "away_under_price": -130,
+      "home": 3.5,
+      "home_over_price": 114,
+      "home_under_price": -145
+    },
+    "pitcher_strikeouts": {
+      "dylan cease": {
+        "player": "Dylan Cease",
+        "normalized_name": "dylan cease",
+        "line": 7.5,
+        "over_price": 112,
+        "under_price": -144,
+        "bookmaker_key": "draftkings"
+      },
+      "logan webb": {
+        "player": "Logan Webb",
+        "normalized_name": "logan webb",
+        "line": 4.5,
+        "over_price": -164,
+        "under_price": 128,
+        "bookmaker_key": "draftkings"
+      }
+    },
+    "market_source": "cache",
+    "market_status": "cached"
+  }
+]

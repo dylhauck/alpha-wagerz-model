@@ -1,4 +1,5 @@
 from pathlib import Path
+
 import numpy as np
 import pandas as pd
 
@@ -11,12 +12,15 @@ OUTPUT_LAST_30_FILE = Path("data/processed/hitter_metrics_last_30_days.csv")
 OUTPUT_SEASON_FILE = Path("data/processed/hitter_metrics_season.csv")
 OUTPUT_LONGTERM_FILE = Path("data/processed/hitter_metrics_longterm.csv")
 
+BATTED_BALL_TYPES = {"ground_ball", "line_drive", "fly_ball", "popup"}
+
 
 def load_player_reference():
     if not PLAYER_REFERENCE_FILE.exists():
         return {}
 
     ref = pd.read_csv(PLAYER_REFERENCE_FILE)
+
     if "player_id" not in ref.columns or "player_name" not in ref.columns:
         return {}
 
@@ -30,11 +34,22 @@ def load_player_reference():
 
 def clean_statcast_name(value):
     name = str(value or "").strip()
+
     if "," in name:
-        parts = [p.strip() for p in name.split(",", 1)]
+        parts = [part.strip() for part in name.split(",", 1)]
+
         if len(parts) == 2:
             return f"{parts[1]} {parts[0]}".strip()
+
     return name
+
+
+def ensure_columns(df, defaults):
+    for col, default in defaults.items():
+        if col not in df.columns:
+            df[col] = default
+
+    return df
 
 
 def total_bases(event):
@@ -58,10 +73,6 @@ def safe_rate(numerator, denominator, multiplier=1):
 
 
 def is_barrel(row):
-    """
-    Statcast-style barrel approximation.
-    The old EV >= 98 and LA 26-30 rule was too strict and undercounted barrels.
-    """
     ev = row.get("launch_speed")
     la = row.get("launch_angle")
 
@@ -119,15 +130,29 @@ def build_metrics_from_file(raw_file, output_file, label):
         print(f"⚠️ No usable batter data in {raw_file}. Skipping {label}.")
         return pd.DataFrame()
 
+    df = ensure_columns(
+        df,
+        {
+            "player_name": "",
+            "type": "",
+            "description": "",
+            "launch_speed": np.nan,
+            "launch_angle": np.nan,
+            "bb_type": "",
+            "events": "",
+            "estimated_woba_using_speedangle": np.nan,
+            "pitch_type": "",
+            "hc_x": np.nan,
+            "hc_y": np.nan,
+            "stand": "",
+        },
+    )
+
     df = df[df["batter"].notna()].copy()
     df["batter"] = df["batter"].astype(int).astype(str)
 
     df["player_name_from_ref"] = df["batter"].map(player_lookup).fillna("")
-
-    if "player_name" in df.columns:
-        df["player_name_from_csv"] = df["player_name"].apply(clean_statcast_name)
-    else:
-        df["player_name_from_csv"] = ""
+    df["player_name_from_csv"] = df["player_name"].apply(clean_statcast_name)
 
     df["player_name"] = np.where(
         df["player_name_from_ref"] != "",
@@ -136,32 +161,29 @@ def build_metrics_from_file(raw_file, output_file, label):
     )
 
     df = df[df["player_name"].astype(str).str.strip() != ""].copy()
+    df["bb_type"] = df["bb_type"].fillna("").astype(str)
 
-    required_defaults = {
-        "type": "",
-        "description": "",
-        "launch_speed": np.nan,
-        "launch_angle": np.nan,
-        "bb_type": "",
-        "events": "",
-        "estimated_woba_using_speedangle": np.nan,
-        "pitch_type": "",
-        "hc_x": np.nan,
-        "hc_y": np.nan,
-        "stand": "",
-    }
+    # TRUE batted-ball denominator. Do not count every launch-data row.
+    # This is the fix for FB% / HH% / Brl% being way too low.
+    df["is_bip"] = (
+        df["bb_type"].isin(BATTED_BALL_TYPES)
+        & df["launch_speed"].notna()
+        & df["launch_angle"].notna()
+    )
 
-    for col, default in required_defaults.items():
-        if col not in df.columns:
-            df[col] = default
+    df["is_swinging_strike"] = df["description"].astype(str).str.contains(
+        "swinging_strike",
+        na=False,
+    )
 
-    df["is_bip"] = df["type"] == "X"
-    df["is_swinging_strike"] = df["description"].str.contains("swinging_strike", na=False)
-    df["is_hard_hit"] = df["launch_speed"] >= 95
-    df["is_sweet_spot"] = df["launch_angle"].between(8, 32)
-    df["is_fly_ball"] = df["bb_type"].isin(["fly_ball", "popup"])
-    df["is_barrel"] = df.apply(is_barrel, axis=1)
-    df["is_pulled"] = df.apply(is_pulled, axis=1)
+    df["is_hard_hit"] = df["is_bip"] & (df["launch_speed"] >= 95)
+    df["is_sweet_spot"] = df["is_bip"] & df["launch_angle"].between(8, 32)
+
+    # Kasper-style FB% is fly balls, not popups credited as good fly balls.
+    df["is_fly_ball"] = df["is_bip"] & (df["bb_type"] == "fly_ball")
+
+    df["is_barrel"] = df["is_bip"] & df.apply(is_barrel, axis=1)
+    df["is_pulled"] = df["is_bip"] & df.apply(is_pulled, axis=1)
     df["is_pulled_barrel"] = df["is_barrel"] & df["is_pulled"]
     df["total_bases"] = df["events"].apply(total_bases)
 
@@ -187,23 +209,34 @@ def build_metrics_from_file(raw_file, output_file, label):
         "fielders_choice_out": 0.00,
     }
 
-    df["estimated_xwoba_value"] = df["estimated_woba_using_speedangle"]
     df["event_woba_value"] = df["events"].map(event_woba)
-    df["xwoba_value"] = df["estimated_xwoba_value"].where(
-        df["estimated_xwoba_value"].notna(),
+    df["xwoba_value"] = df["estimated_woba_using_speedangle"].where(
+        df["estimated_woba_using_speedangle"].notna(),
         df["event_woba_value"],
     )
 
     at_bat_events = [
-        "single", "double", "triple", "home_run",
-        "field_out", "force_out", "grounded_into_double_play",
-        "field_error", "strikeout", "strikeout_double_play",
-        "fielders_choice", "fielders_choice_out",
-        "double_play", "triple_play",
+        "single",
+        "double",
+        "triple",
+        "home_run",
+        "field_out",
+        "force_out",
+        "grounded_into_double_play",
+        "field_error",
+        "strikeout",
+        "strikeout_double_play",
+        "fielders_choice",
+        "fielders_choice_out",
+        "double_play",
+        "triple_play",
     ]
 
     plate_appearance_events = at_bat_events + [
-        "walk", "hit_by_pitch", "sac_fly", "sac_bunt",
+        "walk",
+        "hit_by_pitch",
+        "sac_fly",
+        "sac_bunt",
     ]
 
     df["is_ab"] = df["events"].isin(at_bat_events)
@@ -236,31 +269,42 @@ def build_metrics_from_file(raw_file, output_file, label):
     grouped["FB%"] = safe_rate(grouped["FB"], grouped["BIP"], 100)
     grouped["HH%"] = safe_rate(grouped["HH"], grouped["BIP"], 100)
 
-    final = grouped[[
-        "batter",
-        "player_name",
-        "Pitches",
-        "BIP",
-        "PA",
-        "AB",
-        "ISO",
-        "xwOBA",
-        "xwOBAcon",
-        "SwStr%",
-        "PulledBrl%",
-        "Brl/BIP%",
-        "Sweet Spot%",
-        "FB%",
-        "HH%",
-        "LA",
-    ]].copy()
+    final = grouped[
+        [
+            "batter",
+            "player_name",
+            "Pitches",
+            "BIP",
+            "PA",
+            "AB",
+            "ISO",
+            "xwOBA",
+            "xwOBAcon",
+            "SwStr%",
+            "PulledBrl%",
+            "Brl/BIP%",
+            "Sweet Spot%",
+            "FB%",
+            "HH%",
+            "LA",
+        ]
+    ].copy()
 
     final = final.replace([np.inf, -np.inf], 0).fillna(0)
+
+    for col in ["PulledBrl%", "Brl/BIP%", "Sweet Spot%", "FB%", "HH%", "SwStr%"]:
+        final[col] = final[col].clip(lower=0, upper=100)
+
+    final["ISO"] = final["ISO"].clip(lower=0, upper=2.0)
+    final["xwOBAcon"] = final["xwOBAcon"].clip(lower=0, upper=2.0)
 
     output_file.parent.mkdir(parents=True, exist_ok=True)
     final.to_csv(output_file, index=False)
 
+    qualified = final[(final["PA"] >= 15) | (final["BIP"] >= 10)]
+
     print(f"✅ Saved {label} hitter metrics for {len(final)} players")
+    print(f"   Qualified-ish rows: {len(qualified)}")
     print(f"📁 {output_file}")
 
     return final

@@ -1,5 +1,3 @@
-from model.load_weights import load_weights
-
 from model.scores.power import score_power
 from model.scores.contact import score_contact
 from model.scores.pitcher import score_pitcher
@@ -7,6 +5,10 @@ from model.scores.weather import score_weather
 from model.scores.park import score_park
 from model.scores.recent_form import score_recent_form
 from model.scores.confidence import score_confidence, build_score_reasons
+
+
+def clamp(value, low=0, high=100):
+    return max(low, min(high, value))
 
 
 def safe_score(value, default=50):
@@ -19,20 +21,54 @@ def safe_score(value, default=50):
 
 
 def score_pitch_type(hitter):
-    return safe_score(hitter.get("Pitch Type Score", 50))
+    return safe_score(hitter.get("Pitch Type Score"), 50)
 
 
 def score_team(hitter):
-    return safe_score(hitter.get("Team Offense", 50))
+    return safe_score(hitter.get("Team Offense"), 50)
 
 
 def score_bullpen(hitter):
-    return safe_score(hitter.get("Bullpen", 50))
+    return safe_score(hitter.get("Bullpen"), 50)
+
+
+def elite_bonus(power, pitcher_score, pitch_type, weather, park, recent):
+    bonus = 0
+
+    if power >= 78 and pitcher_score >= 70:
+        bonus += 5
+
+    if power >= 85 and pitch_type >= 70:
+        bonus += 4
+
+    if pitcher_score >= 78 and pitch_type >= 75:
+        bonus += 4
+
+    if weather >= 70:
+        bonus += 2
+
+    if park >= 70:
+        bonus += 2
+
+    if recent >= 75:
+        bonus += 3
+
+    if power >= 88 and pitcher_score >= 80 and pitch_type >= 75:
+        bonus += 5
+
+    return bonus
+
+
+def boost_score(score, midpoint=58, strength=1.28):
+    score = safe_score(score, 50)
+
+    if score <= midpoint:
+        return score
+
+    return clamp(midpoint + ((score - midpoint) * strength))
 
 
 def alpha_score(hitter, pitcher=None, game=None):
-    weights = load_weights()
-
     power = score_power(hitter)
     contact = score_contact(hitter)
     pitcher_score = score_pitcher(hitter, pitcher)
@@ -43,17 +79,58 @@ def alpha_score(hitter, pitcher=None, game=None):
     park = score_park(game, hitter)
     recent = score_recent_form(hitter)
 
-    likely = (
-        power * weights["power"]
-        + contact * weights["contact"]
-        + pitcher_score * weights["pitcher"]
-        + pitch_type * weights["pitch_type"]
-        + team * weights["team"]
-        + bullpen * weights["bullpen"]
-        + weather * weights["weather"]
-        + park * weights["park"]
-        + recent * weights["recent"]
+    matchup = (
+        power * 0.34
+        + pitcher_score * 0.25
+        + pitch_type * 0.18
+        + contact * 0.08
+        + recent * 0.07
+        + weather * 0.04
+        + park * 0.04
     )
+
+    ceiling = (
+        power * 0.42
+        + pitcher_score * 0.20
+        + pitch_type * 0.16
+        + recent * 0.10
+        + weather * 0.06
+        + park * 0.06
+    )
+
+    khr = (
+        power * 0.38
+        + pitcher_score * 0.24
+        + pitch_type * 0.18
+        + recent * 0.08
+        + park * 0.06
+        + weather * 0.06
+    )
+
+    zone_fit = (
+        pitch_type * 0.48
+        + pitcher_score * 0.22
+        + contact * 0.18
+        + power * 0.12
+    )
+
+    matchup = boost_score(matchup, midpoint=56, strength=1.35)
+    ceiling = boost_score(ceiling, midpoint=58, strength=1.30)
+    khr = boost_score(khr, midpoint=56, strength=1.32)
+
+    bonus = elite_bonus(power, pitcher_score, pitch_type, weather, park, recent)
+
+    likely = (
+        matchup * 0.36
+        + ceiling * 0.24
+        + khr * 0.20
+        + recent * 0.10
+        + team * 0.05
+        + bullpen * 0.05
+        + bonus
+    )
+
+    likely = clamp(likely)
 
     scores = {
         "Power": round(power, 1),
@@ -65,6 +142,12 @@ def alpha_score(hitter, pitcher=None, game=None):
         "Weather": round(weather, 1),
         "Park": round(park, 1),
         "Recent": round(recent, 1),
+        "Matchup": round(matchup, 1),
+        "Test Score": round(matchup, 1),
+        "Ceiling": round(ceiling, 1),
+        "Zone Fit": round(zone_fit, 1),
+        "HR Form": round(recent, 1),
+        "kHR": round(khr, 1),
         "Likely": round(likely, 1),
     }
 

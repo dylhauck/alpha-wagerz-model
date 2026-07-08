@@ -34,24 +34,14 @@ def score_recent_form(hitter):
     if recent_bip < 5 and recent_pitches < 30:
         return 50
 
-    recent_iso = f(hitter.get("Recent ISO"))
-    recent_xwoba = f(hitter.get("Recent xwOBA"))
-    recent_xcon = f(hitter.get("Recent xwOBAcon"))
-    recent_pulled = f(hitter.get("Recent PulledBrl%"))
-    recent_brl = f(hitter.get("Recent Brl/BIP%"))
-    recent_hh = f(hitter.get("Recent HH%"))
-    recent_fb = f(hitter.get("Recent FB%"))
-    recent_la = f(hitter.get("Recent LA"))
-
     score = (
-        scale(recent_iso, 0.070, 0.300) * 0.18 +
-        scale(recent_xwoba, 0.240, 0.430) * 0.18 +
-        scale(recent_xcon, 0.300, 0.560) * 0.18 +
-        scale(recent_brl, 3.0, 16.0) * 0.16 +
-        scale(recent_pulled, 1.0, 9.0) * 0.12 +
-        scale(recent_hh, 30.0, 60.0) * 0.10 +
-        scale(recent_fb, 18.0, 45.0) * 0.05 +
-        launch_score(recent_la) * 0.03
+        scale(f(hitter.get("Recent ISO")), 0.070, 0.300) * 0.18 +
+        scale(f(hitter.get("Recent xwOBA")), 0.240, 0.430) * 0.18 +
+        scale(f(hitter.get("Recent xwOBAcon")), 0.300, 0.560) * 0.18 +
+        scale(f(hitter.get("Recent Brl/BIP%")), 3.0, 16.0) * 0.16 +
+        scale(f(hitter.get("Recent PulledBrl%")), 1.0, 9.0) * 0.12 +
+        scale(f(hitter.get("Recent HH%")), 30.0, 60.0) * 0.10 +
+        scale(f(hitter.get("Recent FB%")), 18.0, 45.0) * 0.05 +
+        launch_score(f(hitter.get("Recent LA"))) * 0.03
     )
-
     return round(clamp(score), 1)
