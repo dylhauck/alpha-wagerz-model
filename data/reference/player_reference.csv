@@ -227,7 +227,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 664702,Myles Straw,141,Toronto Blue Jays,TOR,RF,Outfielder,R,R
 664770,Nathan Lukes,141,Toronto Blue Jays,TOR,RF,Outfielder,L,R
 571578,Patrick Corbin,141,Toronto Blue Jays,TOR,P,Pitcher,L,L
-815873,Sean Keys,141,Toronto Blue Jays,TOR,3B,Third Base,L,R
+815873,Sean Keys,141,Toronto Blue Jays,TOR,DH,Designated Hitter,L,R
 669456,Shane Bieber,141,Toronto Blue Jays,TOR,P,Pitcher,R,R
 693686,Spencer Miles,141,Toronto Blue Jays,TOR,P,Pitcher,L,R
 667297,Tommy Nance,141,Toronto Blue Jays,TOR,P,Pitcher,R,R
@@ -463,7 +463,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 518876,Merrill Kelly,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
 571448,Nolan Arenado,109,Arizona Diamondbacks,AZ,3B,Third Base,R,R
 623149,Paul Sewald,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
-656976,Pavin Smith,109,Arizona Diamondbacks,AZ,DH,Designated Hitter,L,L
+656976,Pavin Smith,109,Arizona Diamondbacks,AZ,1B,First Base,L,L
 657044,Ryan Thompson,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
 664199,Taylor Clarke,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
 694374,Tim Tawa,109,Arizona Diamondbacks,AZ,LF,Outfielder,R,R
@@ -513,7 +513,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 663776,Patrick Sandoval,111,Boston Red Sox,BOS,P,Pitcher,L,L
 801139,Payton Tolle,111,Boston Red Sox,BOS,P,Pitcher,L,L
 624133,Ranger Suarez,111,Boston Red Sox,BOS,P,Pitcher,L,L
-663853,Romy Gonzalez,111,Boston Red Sox,BOS,1B,First Base,R,R
+663853,Romy Gonzalez,111,Boston Red Sox,BOS,DH,Designated Hitter,R,R
 670245,Ryan Watson,111,Boston Red Sox,BOS,P,Pitcher,R,R
 543243,Sonny Gray,111,Boston Red Sox,BOS,P,Pitcher,R,R
 691907,Tsung-Che Cheng,111,Boston Red Sox,BOS,SS,Shortstop,L,R
@@ -769,7 +769,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 642547,Freddy Peralta,121,New York Mets,NYM,P,Pitcher,R,R
 623211,Huascar Brazobán,121,New York Mets,NYM,P,Pitcher,R,R
 676724,Jared Young,121,New York Mets,NYM,1B,First Base,L,R
-593871,Jorge Polanco,121,New York Mets,NYM,1B,First Base,S,R
+593871,Jorge Polanco,121,New York Mets,NYM,DH,Designated Hitter,S,R
 665742,Juan Soto,121,New York Mets,NYM,LF,Outfielder,L,L
 673540,Kodai Senga,121,New York Mets,NYM,P,Pitcher,L,R
 620443,Luis Torrens,121,New York Mets,NYM,C,Catcher,R,R
