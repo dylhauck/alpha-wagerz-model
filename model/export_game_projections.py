@@ -1,11 +1,12 @@
 from pathlib import Path
+from providers import market
 from utils.json_utils import load_json, save_json
 from utils.player_name import normalize_player_name, player_last_name
 
 ALL_GAMES_FILE = Path("data/processed/all_games.json")
 MARKET_LINES_FILE = Path("data/processed/market_lines.json")
 OUTPUT_FILE = Path("data/processed/game_projections.json")
-
+K_LINES_OVERRIDE_FILE = Path("data/raw/k_lines_override.json")
 
 def f(value, default=0):
     try:
@@ -206,10 +207,27 @@ def find_pitcher_k_prop(pitcher_name, market):
             return matches[0]
     return None
 
+def get_manual_k_line(pitcher_name):
+    overrides = load_json(K_LINES_OVERRIDE_FILE, default={})
+    target = normalize_player_name(pitcher_name)
+
+    for name, line in overrides.items():
+        if normalize_player_name(name) == target:
+            return line
+
+    return ""
 
 def find_pitcher_k_line(pitcher_name, market):
     prop = find_pitcher_k_prop(pitcher_name, market)
-    return prop.get("line", "") if prop else ""
+
+    if prop:
+        return prop.get("line", "")
+
+    manual_line = get_manual_k_line(pitcher_name)
+    if manual_line != "":
+        return manual_line
+
+    return ""
 
 def market_k_pitchers(market):
     props = market.get("pitcher_strikeouts", {}) if market else {}
@@ -240,9 +258,22 @@ def get_market_k_pitchers(market):
 
 def pitcher_k_analysis(projected, line):
     if line == "" or line is None:
-        return {"edge": "", "recommendation": "No K Lean", "confidence": ""}
-    edge = round(f(projected) - f(line), 1)
-    return {"edge": edge, "recommendation": f"{'Over' if edge > 0 else 'Under'} {line} Ks", "confidence": confidence_from_edge(edge, 1.2)}
+        return {
+            "edge": "",
+            "recommendation": "K Line Missing",
+            "confidence": "",
+        }
+
+    projected_num = f(projected)
+    line_num = f(line)
+
+    edge = round(projected_num - line_num, 1)
+
+    return {
+        "edge": edge,
+        "recommendation": f"{'Over' if edge >= 0 else 'Under'} {line_num:g} Ks",
+        "confidence": confidence_from_edge(edge, 1.2),
+    }
 
 
 def max_abs(*values):
@@ -280,8 +311,13 @@ def export_game_projections():
         away_team = game.get("away_team", "")
         home_team = game.get("home_team", "")
 
-        away_hitters = game.get("hitters", {}).get("away", [])
-        home_hitters = game.get("hitters", {}).get("home", [])
+        hitters = game.get("hitters", {})
+
+        if isinstance(hitters, list):
+            hitters = {"away": hitters[: len(hitters) // 2], "home": hitters[len(hitters) // 2 :]}
+
+        away_hitters = hitters.get("away", [])
+        home_hitters = hitters.get("home", [])
 
         away_pitcher = get_pitcher_for_team(game, away_team)
         home_pitcher = get_pitcher_for_team(game, home_team)
@@ -333,19 +369,8 @@ def export_game_projections():
         away_ks = projected_ks(away_pitcher)
         home_ks = projected_ks(home_pitcher)
 
-        market_away_k, market_home_k = get_market_k_pitchers(market)
-
-        if market_away_k:
-            away_pitcher_name = market_away_k["name"]
-            away_k_line = market_away_k["line"]
-        else:
-            away_k_line = find_pitcher_k_line(away_pitcher_name, market)
-
-        if market_home_k:
-            home_pitcher_name = market_home_k["name"]
-            home_k_line = market_home_k["line"]
-        else:
-            home_k_line = find_pitcher_k_line(home_pitcher_name, market)
+        away_k_line = find_pitcher_k_line(away_pitcher_name, market)
+        home_k_line = find_pitcher_k_line(home_pitcher_name, market)
 
         if market and away_pitcher_name not in ["TBD", "TBA"] and away_k_line == "":
             missing_k_props.append(

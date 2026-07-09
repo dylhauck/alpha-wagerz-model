@@ -71,7 +71,13 @@ def validate_score_distribution():
     games = load_json(ALL_GAMES_FILE, default=[])
     hitters = []
     for game in games:
-        for side in ["away", "home"]: hitters.extend(game.get("hitters", {}).get(side, []))
+        hitters_obj = game.get("hitters", {})
+
+    if isinstance(hitters_obj, dict):
+        for side in ["away", "home"]:
+            hitters.extend(hitters_obj.get(side, []))
+    elif isinstance(hitters_obj, list):
+        hitters.extend(hitters_obj)
     print("\n🔥 Score Distribution"); print("="*56)
     issues = []
     if not hitters: print("⚠️ No hitters found in all_games.json"); return {"distribution_issues":1}
