@@ -36,7 +36,14 @@ def build_metrics_from_file(raw_file, output_file, label):
         return pd.DataFrame()
 
     df = pd.read_csv(raw_file, low_memory=False)
-    df = df[df["pitcher"].notna()]
+    df = df[df["pitcher"].notna()].copy()
+
+    # Statcast player_name is usually the BATTER name.
+    # For pitcher rows, use pitcher_name if available; otherwise keep player_name.
+    if "pitcher_name" in df.columns:
+        df["pitcher_display_name"] = df["pitcher_name"]
+    else:
+        df["pitcher_display_name"] = df["player_name"]
 
     df["is_bip"] = df["type"] == "X"
     df["is_called_strike"] = df["description"].str.contains("called_strike", na=False)
@@ -62,7 +69,7 @@ def build_metrics_from_file(raw_file, output_file, label):
 
     df["is_pa"] = df["events"].isin(pa_events)
 
-    grouped = df.groupby(["pitcher", "player_name"], dropna=False).agg(
+    grouped = df.groupby(["pitcher", "pitcher_display_name"], dropna=False).agg(
         Pitches=("pitch_type", "count"),
         BF=("is_pa", "sum"),
         BIP=("is_bip", "sum"),
@@ -82,6 +89,8 @@ def build_metrics_from_file(raw_file, output_file, label):
         AvgLA=("launch_angle", "mean"),
         FBv=("release_speed", "mean"),
     ).reset_index()
+
+    grouped = grouped.rename(columns={"pitcher_display_name": "player_name"})
 
     grouped["CSW%"] = safe_rate(grouped["CSW"], grouped["Pitches"], 100)
     grouped["SwStr%"] = safe_rate(grouped["SwStr"], grouped["Pitches"], 100)
