@@ -80,53 +80,53 @@ def alpha_score(hitter, pitcher=None, game=None):
     recent = score_recent_form(hitter)
 
     matchup = (
-        power * 0.34
-        + pitcher_score * 0.25
+        pitcher_score * 0.38
+        + power * 0.24
         + pitch_type * 0.18
-        + contact * 0.08
-        + recent * 0.07
-        + weather * 0.04
-        + park * 0.04
+        + contact * 0.10
+        + recent * 0.04
+        + weather * 0.03
+        + park * 0.03
     )
 
     ceiling = (
-        power * 0.42
-        + pitcher_score * 0.20
+        pitcher_score * 0.30
+        + power * 0.30
         + pitch_type * 0.16
-        + recent * 0.10
-        + weather * 0.06
-        + park * 0.06
+        + weather * 0.08
+        + park * 0.08
+        + recent * 0.08
     )
 
     khr = (
-        power * 0.38
-        + pitcher_score * 0.24
-        + pitch_type * 0.18
-        + recent * 0.08
-        + park * 0.06
-        + weather * 0.06
+        pitcher_score * 0.36
+        + power * 0.30
+        + pitch_type * 0.16
+        + park * 0.07
+        + weather * 0.07
+        + recent * 0.04
     )
 
     zone_fit = (
-        pitch_type * 0.48
-        + pitcher_score * 0.22
-        + contact * 0.18
-        + power * 0.12
+        pitcher_score * 0.34
+        + pitch_type * 0.34
+        + power * 0.18
+        + contact * 0.14
     )
 
-    matchup = boost_score(matchup, midpoint=56, strength=1.35)
-    ceiling = boost_score(ceiling, midpoint=58, strength=1.30)
-    khr = boost_score(khr, midpoint=56, strength=1.32)
+    matchup = boost_score(matchup, midpoint=55, strength=1.42)
+    ceiling = boost_score(ceiling, midpoint=57, strength=1.36)
+    khr = boost_score(khr, midpoint=55, strength=1.40)
 
     bonus = elite_bonus(power, pitcher_score, pitch_type, weather, park, recent)
 
     likely = (
-        matchup * 0.36
-        + ceiling * 0.24
-        + khr * 0.20
-        + recent * 0.10
+        matchup * 0.42
+        + ceiling * 0.20
+        + khr * 0.22
         + team * 0.05
         + bullpen * 0.05
+        + recent * 0.04
         + bonus
     )
 

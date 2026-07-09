@@ -449,11 +449,7 @@ def parse_pitcher_strikeouts(event_props):
     if not event_props:
         return props
 
-    bookmakers = sorted(
-        event_props.get("bookmakers", []),
-        key=lambda book: priority_rank(book.get("key")),
-        reverse=True,
-    )
+    bookmakers = event_props.get("bookmakers", []) or []
 
     for book in bookmakers:
         market = market_by_key(book, "pitcher_strikeouts")
@@ -461,19 +457,33 @@ def parse_pitcher_strikeouts(event_props):
             continue
 
         for outcome in market.get("outcomes", []):
-            player = outcome.get("description") or outcome.get("name")
+            player = outcome.get("description") or outcome.get("player") or outcome.get("name")
             side = outcome.get("name")
             point = outcome.get("point")
             price = outcome.get("price")
 
-            merge_pitcher_prop(
-                props,
-                player,
-                side,
-                point,
-                price,
-                book_key=book.get("key"),
-            )
+            if not player or point is None:
+                continue
+
+            key = normalize_player_name(player)
+
+            if key not in props:
+                props[key] = {
+                    "player": player,
+                    "normalized_name": key,
+                    "line": point,
+                    "over_price": None,
+                    "under_price": None,
+                    "bookmaker": book.get("title"),
+                    "bookmaker_key": book.get("key"),
+                }
+
+            props[key]["line"] = point
+
+            if side == "Over":
+                props[key]["over_price"] = price
+            elif side == "Under":
+                props[key]["under_price"] = price
 
     return props
 

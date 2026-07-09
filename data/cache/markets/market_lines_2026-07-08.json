@@ -1,6 +1,6 @@
 [
   {
-    "game_id": "823280",
+    "game_id": "823279",
     "game": "Arizona Diamondbacks @ San Diego Padres",
     "away_team": "Arizona Diamondbacks",
     "home_team": "San Diego Padres",
@@ -36,7 +36,7 @@
     "market_status": "cached"
   },
   {
-    "game_id": "824254",
+    "game_id": "824253",
     "game": "Athletics @ Detroit Tigers",
     "away_team": "Athletics",
     "home_team": "Detroit Tigers",
@@ -72,7 +72,7 @@
     "market_status": "cached"
   },
   {
-    "game_id": "823361",
+    "game_id": "823360",
     "game": "Atlanta Braves @ Pittsburgh Pirates",
     "away_team": "Atlanta Braves",
     "home_team": "Pittsburgh Pirates",
@@ -108,7 +108,7 @@
     "market_status": "cached"
   },
   {
-    "game_id": "824579",
+    "game_id": "824578",
     "game": "Boston Red Sox @ Chicago White Sox",
     "away_team": "Boston Red Sox",
     "home_team": "Chicago White Sox",
@@ -144,7 +144,7 @@
     "market_status": "cached"
   },
   {
-    "game_id": "824820",
+    "game_id": "824815",
     "game": "Chicago Cubs @ Baltimore Orioles",
     "away_team": "Chicago Cubs",
     "home_team": "Baltimore Orioles",
@@ -197,7 +197,7 @@
     "market_status": "cached"
   },
   {
-    "game_id": "823687",
+    "game_id": "823684",
     "game": "Cleveland Guardians @ Minnesota Twins",
     "away_team": "Cleveland Guardians",
     "home_team": "Minnesota Twins",
@@ -233,7 +233,7 @@
     "market_status": "cached"
   },
   {
-    "game_id": "823929",
+    "game_id": "823928",
     "game": "Colorado Rockies @ Los Angeles Dodgers",
     "away_team": "Colorado Rockies",
     "home_team": "Los Angeles Dodgers",
@@ -269,7 +269,7 @@
     "market_status": "cached"
   },
   {
-    "game_id": "822713",
+    "game_id": "822710",
     "game": "Houston Astros @ Washington Nationals",
     "away_team": "Houston Astros",
     "home_team": "Washington Nationals",
@@ -305,7 +305,7 @@
     "market_status": "cached"
   },
   {
-    "game_id": "823607",
+    "game_id": "823605",
     "game": "Kansas City Royals @ New York Mets",
     "away_team": "Kansas City Royals",
     "home_team": "New York Mets",
@@ -341,7 +341,7 @@
     "market_status": "cached"
   },
   {
-    "game_id": "822881",
+    "game_id": "822880",
     "game": "Los Angeles Angels @ Texas Rangers",
     "away_team": "Los Angeles Angels",
     "home_team": "Texas Rangers",
@@ -377,7 +377,7 @@
     "market_status": "cached"
   },
   {
-    "game_id": "823035",
+    "game_id": "823032",
     "game": "Milwaukee Brewers @ St. Louis Cardinals",
     "away_team": "Milwaukee Brewers",
     "home_team": "St. Louis Cardinals",
@@ -413,43 +413,7 @@
     "market_status": "cached"
   },
   {
-    "game_id": "823062",
-    "game": "Milwaukee Brewers @ St. Louis Cardinals",
-    "away_team": "Milwaukee Brewers",
-    "home_team": "St. Louis Cardinals",
-    "bookmaker": "DraftKings",
-    "bookmaker_key": "draftkings",
-    "odds_event_id": "e885d80c0e3339f69c0a7c1b898c173e",
-    "moneyline": {
-      "away": -143,
-      "home": 119
-    },
-    "spread": {
-      "away": -1.5,
-      "away_price": 124,
-      "home": 1.5,
-      "home_price": -149
-    },
-    "total": 8.0,
-    "game_total": {
-      "line": 8.0,
-      "over_price": -110,
-      "under_price": -109
-    },
-    "team_totals": {
-      "away": "",
-      "away_over_price": "",
-      "away_under_price": "",
-      "home": "",
-      "home_over_price": "",
-      "home_under_price": ""
-    },
-    "pitcher_strikeouts": {},
-    "market_source": "cache",
-    "market_status": "cached"
-  },
-  {
-    "game_id": "822956",
+    "game_id": "822957",
     "game": "New York Yankees @ Tampa Bay Rays",
     "away_team": "New York Yankees",
     "home_team": "Tampa Bay Rays",
@@ -485,7 +449,7 @@
     "market_status": "cached"
   },
   {
-    "game_id": "824495",
+    "game_id": "824496",
     "game": "Philadelphia Phillies @ Cincinnati Reds",
     "away_team": "Philadelphia Phillies",
     "home_team": "Cincinnati Reds",
@@ -521,7 +485,7 @@
     "market_status": "cached"
   },
   {
-    "game_id": "823847",
+    "game_id": "823848",
     "game": "Seattle Mariners @ Miami Marlins",
     "away_team": "Seattle Mariners",
     "home_team": "Miami Marlins",
@@ -557,7 +521,7 @@
     "market_status": "cached"
   },
   {
-    "game_id": "823203",
+    "game_id": "823202",
     "game": "Toronto Blue Jays @ San Francisco Giants",
     "away_team": "Toronto Blue Jays",
     "home_team": "San Francisco Giants",
