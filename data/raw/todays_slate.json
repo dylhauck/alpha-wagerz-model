@@ -8,7 +8,7 @@
     "away_sp": "Aaron Nola",
     "home_sp": "Jack Flaherty",
     "venue": "Comerica Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-10T22:40:00Z",
     "game_time": "5:40 PM",
     "game_time_sort": "17:40"
@@ -22,7 +22,7 @@
     "away_sp": "Brandon Sproat",
     "home_sp": "Braxton Ashcraft",
     "venue": "PNC Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-10T22:40:00Z",
     "game_time": "5:40 PM",
     "game_time_sort": "17:40"
@@ -36,7 +36,7 @@
     "away_sp": "Ryan Weathers",
     "home_sp": "Carson Palmquist",
     "venue": "Nationals Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-10T22:45:00Z",
     "game_time": "5:45 PM",
     "game_time_sort": "17:45"
@@ -50,7 +50,7 @@
     "away_sp": "Luinder Avila",
     "home_sp": "Brandon Young",
     "venue": "Oriole Park at Camden Yards",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-10T23:05:00Z",
     "game_time": "6:05 PM",
     "game_time_sort": "18:05"
@@ -64,7 +64,7 @@
     "away_sp": "Shota Imanaga",
     "home_sp": "Hunter Greene",
     "venue": "Great American Ball Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-10T23:10:00Z",
     "game_time": "6:10 PM",
     "game_time_sort": "18:10"
@@ -78,7 +78,7 @@
     "away_sp": "Luis Castillo",
     "home_sp": "Nick Martinez",
     "venue": "Tropicana Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-10T23:10:00Z",
     "game_time": "6:10 PM",
     "game_time_sort": "18:10"
@@ -92,7 +92,7 @@
     "away_sp": "Parker Messick",
     "home_sp": "Sandy Alcantara",
     "venue": "loanDepot park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-10T23:10:00Z",
     "game_time": "6:10 PM",
     "game_time_sort": "18:10"
@@ -106,7 +106,7 @@
     "away_sp": "Sonny Gray",
     "home_sp": "Nolan McLean",
     "venue": "Citi Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-10T23:15:00Z",
     "game_time": "6:15 PM",
     "game_time_sort": "18:15"
@@ -120,7 +120,7 @@
     "away_sp": "Jacob Lopez",
     "home_sp": "Sean Burke",
     "venue": "Rate Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-10T23:40:00Z",
     "game_time": "6:40 PM",
     "game_time_sort": "18:40"
@@ -134,7 +134,7 @@
     "away_sp": "Hunter Brown",
     "home_sp": "Cal Quantrill",
     "venue": "Globe Life Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-11T00:05:00Z",
     "game_time": "7:05 PM",
     "game_time_sort": "19:05"
@@ -148,7 +148,7 @@
     "away_sp": "Grayson Rodriguez",
     "home_sp": "Zebby Matthews",
     "venue": "Target Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-11T00:10:00Z",
     "game_time": "7:10 PM",
     "game_time_sort": "19:10"
@@ -162,7 +162,7 @@
     "away_sp": "Chris Sale",
     "home_sp": "Kyle Leahy",
     "venue": "Busch Stadium",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-11T00:15:00Z",
     "game_time": "7:15 PM",
     "game_time_sort": "19:15"
@@ -188,9 +188,9 @@
     "away_team": "Arizona Diamondbacks",
     "home_team": "Los Angeles Dodgers",
     "away_sp": "Eduardo Rodriguez",
-    "home_sp": "Shohei Ohtani",
+    "home_sp": "Kyle Hurt",
     "venue": "UNIQLO Field at Dodger Stadium",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-07-11T02:10:00Z",
     "game_time": "9:10 PM",
     "game_time_sort": "21:10"

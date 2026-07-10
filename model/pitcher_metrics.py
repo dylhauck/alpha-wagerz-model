@@ -10,6 +10,8 @@ OUTPUT_LAST_30_FILE = Path("data/processed/pitcher_metrics_last_30_days.csv")
 OUTPUT_SEASON_FILE = Path("data/processed/pitcher_metrics_season.csv")
 OUTPUT_LONGTERM_FILE = Path("data/processed/pitcher_metrics_longterm.csv")
 
+BATTED_BALL_TYPES = {"ground_ball", "line_drive", "fly_ball", "popup"}
+
 
 def safe_rate(numerator, denominator, multiplier=1):
     numerator = numerator.fillna(0)
@@ -45,18 +47,34 @@ def build_metrics_from_file(raw_file, output_file, label):
     else:
         df["pitcher_display_name"] = df["player_name"]
 
-    df["is_bip"] = df["type"] == "X"
+    df["bb_type"] = df["bb_type"].fillna("").astype(str)
+
+    df["is_bip"] = (
+    df["bb_type"].isin(BATTED_BALL_TYPES)
+    & df["launch_speed"].notna()
+    & df["launch_angle"].notna()
+)
+
     df["is_called_strike"] = df["description"].str.contains("called_strike", na=False)
     df["is_swinging_strike"] = df["description"].str.contains("swinging_strike", na=False)
     df["is_csw"] = df["is_called_strike"] | df["is_swinging_strike"]
     df["is_ball"] = df["description"].str.contains("ball", na=False)
-    df["is_hard_hit"] = df["launch_speed"] >= 95
-    df["is_barrel"] = df.apply(is_barrel, axis=1)
-    df["is_fly_ball"] = df["bb_type"].isin(["fly_ball", "popup"])
-    df["is_ground_ball"] = df["bb_type"] == "ground_ball"
+
+    df["is_hard_hit"] = df["is_bip"] & (df["launch_speed"] >= 95)
+    df["is_barrel"] = df["is_bip"] & df.apply(is_barrel, axis=1)
+
+    df["is_fly_ball"] = df["is_bip"] & (df["bb_type"] == "fly_ball")
+    df["is_ground_ball"] = df["is_bip"] & (df["bb_type"] == "ground_ball")
+
     df["is_hr"] = df["events"] == "home_run"
     df["is_k"] = df["events"].isin(["strikeout", "strikeout_double_play"])
     df["is_bb"] = df["events"].isin(["walk", "intent_walk"])
+
+    df["Pitcher xwOBAcon"] = np.where(
+    df["is_bip"],
+    df["estimated_woba_using_speedangle"],
+    np.nan,
+)
 
     pa_events = [
         "single", "double", "triple", "home_run",
@@ -77,7 +95,7 @@ def build_metrics_from_file(raw_file, output_file, label):
         K=("is_k", "sum"),
         BB=("is_bb", "sum"),
         xwOBA=("estimated_woba_using_speedangle", "mean"),
-        xwOBAcon=("estimated_woba_using_speedangle", "mean"),
+        xwOBAcon=("Pitcher xwOBAcon", "mean"),
         CSW=("is_csw", "sum"),
         SwStr=("is_swinging_strike", "sum"),
         Ball=("is_ball", "sum"),
@@ -131,13 +149,6 @@ def build_metrics_from_file(raw_file, output_file, label):
         + grouped["xwOBAcon"].fillna(0) * 60
     ).clip(0, 100)
 
-    grouped = grouped.rename(
-        columns={
-            "xwOBA": "Pitcher xwOBA",
-            "xwOBAcon": "Pitcher xwOBAcon",
-        }
-    )
-
     final = grouped[
         [
             "pitcher",
@@ -148,8 +159,8 @@ def build_metrics_from_file(raw_file, output_file, label):
             "HR",
             "K",
             "BB",
-            "Pitcher xwOBA",
-            "Pitcher xwOBAcon",
+            "xwOBA",
+            "xwOBAcon",
             "CSW%",
             "SwStr%",
             "Ball%",

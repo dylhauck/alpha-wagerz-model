@@ -123,6 +123,8 @@ def blend_metrics(last_30, season, longterm):
                     pass
 
         blended[field] = total / weight_total if weight_total else ""
+        if field in ["Pitches", "BIP", "PA", "AB"]:
+            blended[field] = round(blended[field]) if blended[field] != "" else ""
 
     for source in [last_30, season, longterm]:
         if source:

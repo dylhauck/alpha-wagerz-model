@@ -6,9 +6,9 @@
     "away_team": "Arizona Diamondbacks",
     "home_team": "Los Angeles Dodgers",
     "away_sp": "Eduardo Rodriguez",
-    "home_sp": "Shohei Ohtani",
+    "home_sp": "Kyle Hurt",
     "venue": "UNIQLO Field at Dodger Stadium",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/823927.json"
   },
   {
@@ -20,7 +20,7 @@
     "away_sp": "Jacob Lopez",
     "home_sp": "Sean Burke",
     "venue": "Rate Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/824575.json"
   },
   {
@@ -32,7 +32,7 @@
     "away_sp": "Chris Sale",
     "home_sp": "Kyle Leahy",
     "venue": "Busch Stadium",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/823033.json"
   },
   {
@@ -44,7 +44,7 @@
     "away_sp": "Sonny Gray",
     "home_sp": "Nolan McLean",
     "venue": "Citi Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/823604.json"
   },
   {
@@ -56,7 +56,7 @@
     "away_sp": "Shota Imanaga",
     "home_sp": "Hunter Greene",
     "venue": "Great American Ball Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/824493.json"
   },
   {
@@ -68,7 +68,7 @@
     "away_sp": "Parker Messick",
     "home_sp": "Sandy Alcantara",
     "venue": "loanDepot park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/823845.json"
   },
   {
@@ -92,7 +92,7 @@
     "away_sp": "Hunter Brown",
     "home_sp": "Cal Quantrill",
     "venue": "Globe Life Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/822878.json"
   },
   {
@@ -104,7 +104,7 @@
     "away_sp": "Luinder Avila",
     "home_sp": "Brandon Young",
     "venue": "Oriole Park at Camden Yards",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/824817.json"
   },
   {
@@ -116,7 +116,7 @@
     "away_sp": "Grayson Rodriguez",
     "home_sp": "Zebby Matthews",
     "venue": "Target Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/823685.json"
   },
   {
@@ -128,7 +128,7 @@
     "away_sp": "Brandon Sproat",
     "home_sp": "Braxton Ashcraft",
     "venue": "PNC Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/823357.json"
   },
   {
@@ -140,7 +140,7 @@
     "away_sp": "Ryan Weathers",
     "home_sp": "Carson Palmquist",
     "venue": "Nationals Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/822709.json"
   },
   {
@@ -152,7 +152,7 @@
     "away_sp": "Aaron Nola",
     "home_sp": "Jack Flaherty",
     "venue": "Comerica Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/824252.json"
   },
   {
@@ -164,7 +164,7 @@
     "away_sp": "Luis Castillo",
     "home_sp": "Nick Martinez",
     "venue": "Tropicana Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/822955.json"
   },
   {

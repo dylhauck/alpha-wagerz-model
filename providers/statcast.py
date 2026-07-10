@@ -49,7 +49,7 @@ def get_statcast_season_events():
     )
 
 
-def get_statcast_longterm_events(years_back=3):
+def get_statcast_longterm_events(years_back=1):
     end_date = date.today()
     start_date = date(end_date.year - years_back, 3, 1)
 
@@ -67,7 +67,7 @@ def get_all_statcast_events():
     print("\n📊 Pulling Current Season Statcast...")
     get_statcast_season_events()
 
-    print("\n📊 Pulling Long-Term Statcast (5 Seasons)...")
+    print("\n📊 Pulling Long-Term Statcast (1 Seasons)...")
     get_statcast_longterm_events()
 
 
