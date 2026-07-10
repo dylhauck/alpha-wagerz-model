@@ -60,13 +60,48 @@ def get_pitcher_for_team(game, team):
     return next((p for p in game.get("pitchers", []) if p.get("Team") == team), None)
 
 
-def projected_ks(pitcher):
+def hitter_k_risk_score(hitters):
+    if not hitters:
+        return 50
+
+    scores = []
+
+    for h in hitters:
+        swstr = f(h.get("SwStr%"), 10)
+        khr = f(h.get("kHR"), 50)
+        matchup = f(h.get("Matchup"), 50)
+
+        score = (
+            swstr * 3.0
+            + khr * 0.45
+            + matchup * 0.25
+        )
+
+        scores.append(score)
+
+    return clamp(avg(scores, 50), 20, 90)
+
+
+def projected_ks(pitcher, opponent_hitters):
     if not pitcher:
         return ""
+
     k_score = f(pitcher.get("Strikeout Score"), 50)
     swstr = f(pitcher.get("SwStr%"), 10)
     csw = f(pitcher.get("CSW%"), 28)
-    ks = 3.8 + ((k_score - 50) / 50) * 4.2 + ((swstr - 10) * 0.12) + ((csw - 28) * 0.08)
+    ball = f(pitcher.get("Ball%"), 34)
+
+    matchup_score = hitter_k_risk_score(opponent_hitters)
+
+    ks = (
+        3.2
+        + ((k_score - 50) / 50) * 2.6
+        + ((matchup_score - 50) / 50) * 3.0
+        + ((swstr - 10) * 0.10)
+        + ((csw - 28) * 0.07)
+        - ((ball - 34) * 0.04)
+    )
+
     return round(max(1.5, min(12.5, ks)), 1)
 
 
@@ -300,6 +335,20 @@ def best_lean_from_projection(p):
     return candidates[0][2]
 
 
+def get_game_hitters(game, side):
+    hitters = game.get("hitters", {})
+
+    if isinstance(hitters, dict):
+        return hitters.get(side, [])
+
+    if side == "away":
+        return game.get("away_hitters", [])
+
+    if side == "home":
+        return game.get("home_hitters", [])
+
+    return []
+
 def export_game_projections():
     games = load_json(ALL_GAMES_FILE, default=[])
     market_by_game_id, market_by_matchup = get_market_lookup()
@@ -311,13 +360,8 @@ def export_game_projections():
         away_team = game.get("away_team", "")
         home_team = game.get("home_team", "")
 
-        hitters = game.get("hitters", {})
-
-        if isinstance(hitters, list):
-            hitters = {"away": hitters[: len(hitters) // 2], "home": hitters[len(hitters) // 2 :]}
-
-        away_hitters = hitters.get("away", [])
-        home_hitters = hitters.get("home", [])
+        away_hitters = get_game_hitters(game, "away")
+        home_hitters = get_game_hitters(game, "home")
 
         away_pitcher = get_pitcher_for_team(game, away_team)
         home_pitcher = get_pitcher_for_team(game, home_team)
@@ -366,8 +410,8 @@ def export_game_projections():
         away_pitcher_name = away_pitcher.get("Pitcher", "TBD") if away_pitcher else "TBD"
         home_pitcher_name = home_pitcher.get("Pitcher", "TBD") if home_pitcher else "TBD"
 
-        away_ks = projected_ks(away_pitcher)
-        home_ks = projected_ks(home_pitcher)
+        away_ks = projected_ks(away_pitcher, home_hitters)
+        home_ks = projected_ks(home_pitcher, away_hitters)
 
         away_k_line = find_pitcher_k_line(away_pitcher_name, market)
         home_k_line = find_pitcher_k_line(home_pitcher_name, market)

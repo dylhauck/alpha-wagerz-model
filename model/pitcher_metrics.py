@@ -4,9 +4,11 @@ import pandas as pd
 
 RAW_LAST_30_FILE = Path("data/raw/statcast/statcast_last_30_days.csv")
 RAW_SEASON_FILE = Path("data/raw/statcast/statcast_season.csv")
+RAW_LONGTERM_FILE = Path("data/raw/statcast/statcast_longterm.csv")
 
 OUTPUT_LAST_30_FILE = Path("data/processed/pitcher_metrics_last_30_days.csv")
 OUTPUT_SEASON_FILE = Path("data/processed/pitcher_metrics_season.csv")
+OUTPUT_LONGTERM_FILE = Path("data/processed/pitcher_metrics_longterm.csv")
 
 
 def safe_rate(numerator, denominator, multiplier=1):
@@ -38,8 +40,6 @@ def build_metrics_from_file(raw_file, output_file, label):
     df = pd.read_csv(raw_file, low_memory=False)
     df = df[df["pitcher"].notna()].copy()
 
-    # Statcast player_name is usually the BATTER name.
-    # For pitcher rows, use pitcher_name if available; otherwise keep player_name.
     if "pitcher_name" in df.columns:
         df["pitcher_display_name"] = df["pitcher_name"]
     else:
@@ -64,7 +64,7 @@ def build_metrics_from_file(raw_file, output_file, label):
         "field_error", "strikeout", "strikeout_double_play",
         "fielders_choice", "fielders_choice_out",
         "double_play", "triple_play",
-        "walk", "intent_walk", "hit_by_pitch", "sac_fly", "sac_bunt"
+        "walk", "intent_walk", "hit_by_pitch", "sac_fly", "sac_bunt",
     ]
 
     df["is_pa"] = df["events"].isin(pa_events)
@@ -131,35 +131,44 @@ def build_metrics_from_file(raw_file, output_file, label):
         + grouped["xwOBAcon"].fillna(0) * 60
     ).clip(0, 100)
 
-    final = grouped[[
-        "pitcher",
-        "player_name",
-        "Pitches",
-        "BF",
-        "IP",
-        "HR",
-        "K",
-        "BB",
-        "xwOBA",
-        "xwOBAcon",
-        "CSW%",
-        "SwStr%",
-        "Ball%",
-        "PulledBrl%",
-        "Brl/BIP%",
-        "FB%",
-        "GB%",
-        "HH%",
-        "K%",
-        "BB%",
-        "HR/9",
-        "AvgEV",
-        "AvgLA",
-        "FBv",
-        "Pitch Score",
-        "Strikeout Score",
-        "HR Vulnerability",
-    ]].copy()
+    grouped = grouped.rename(
+        columns={
+            "xwOBA": "Pitcher xwOBA",
+            "xwOBAcon": "Pitcher xwOBAcon",
+        }
+    )
+
+    final = grouped[
+        [
+            "pitcher",
+            "player_name",
+            "Pitches",
+            "BF",
+            "IP",
+            "HR",
+            "K",
+            "BB",
+            "Pitcher xwOBA",
+            "Pitcher xwOBAcon",
+            "CSW%",
+            "SwStr%",
+            "Ball%",
+            "PulledBrl%",
+            "Brl/BIP%",
+            "FB%",
+            "GB%",
+            "HH%",
+            "K%",
+            "BB%",
+            "HR/9",
+            "AvgEV",
+            "AvgLA",
+            "FBv",
+            "Pitch Score",
+            "Strikeout Score",
+            "HR Vulnerability",
+        ]
+    ].copy()
 
     final = final.replace([np.inf, -np.inf], 0).fillna(0)
 
@@ -185,7 +194,13 @@ def build_pitcher_metrics():
         "season",
     )
 
-    return last_30, season
+    longterm = build_metrics_from_file(
+        RAW_LONGTERM_FILE,
+        OUTPUT_LONGTERM_FILE,
+        "longterm",
+    )
+
+    return last_30, season, longterm
 
 
 if __name__ == "__main__":

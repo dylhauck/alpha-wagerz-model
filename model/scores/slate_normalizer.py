@@ -47,12 +47,26 @@ def boost_elite(score, midpoint=62, strength=1.22):
     return round(clamp(boosted), 1)
 
 
+def get_game_hitters(game, side):
+    hitters = game.get("hitters", {})
+
+    if isinstance(hitters, dict):
+        return hitters.get(side, [])
+
+    if side == "away":
+        return game.get("away_hitters", [])
+
+    if side == "home":
+        return game.get("home_hitters", [])
+
+    return []
+
 def normalize_slate_hitters(games):
     all_hitters = []
 
     for game in games:
         for side in ["away", "home"]:
-            for hitter in game.get("hitters", {}).get(side, []):
+            for hitter in get_game_hitters(game, side):
                 all_hitters.append(hitter)
 
     if not all_hitters:

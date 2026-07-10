@@ -36,7 +36,6 @@ from model.export_hr_graphic_data import export_hr_graphic_data
 from graphics.create_hr_targets_graphic import create_graphic
 from model.export_game_projections import export_game_projections
 from providers.market import build_market_lines
-from providers.market import build_market_lines
 
 def run_full_update():
     print("🐺 Starting Alpha Wagerz full update...")
@@ -54,7 +53,6 @@ def run_full_update():
 
     print("\n🌤️ Weather")
     build_weather_file()
-    attach_weather_to_games()
 
     print("\n⚾ Metrics")
     build_hitter_metrics()
@@ -68,14 +66,18 @@ def run_full_update():
 
     print("\n🔗 Attachments")
 
-    attach_pitcher_metrics_to_games()
-    attach_pitch_type_matchups()
+    attach_weather_to_games()
     attach_team_context()
     attach_bullpen_context()
-    attach_hitter_metrics_to_games()
-    enrich_players_in_games()
-    attach_game_times()          # NEW
     attach_team_standings()
+    attach_game_times()
+
+    attach_hitter_metrics_to_games()
+    attach_pitch_type_matchups()
+
+    attach_pitcher_metrics_to_games()
+
+    enrich_players_in_games()
 
     print("\n💰 Market Lines")
     build_market_lines()
@@ -92,8 +94,8 @@ def run_full_update():
     validate_pipeline()
     validate_model_features()
 
-    #print("\n📄 Google Sheets")
-    #update_full_slate_sheets()
+    print("\n📄 Google Sheets")
+    update_full_slate_sheets()
 
     print("\n🗄️ Saving history")
     save_daily_history()

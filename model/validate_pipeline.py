@@ -15,6 +15,20 @@ def load_json(filepath):
         return json.load(f)
 
 
+def get_game_hitters(game, side):
+    hitters = game.get("hitters", {})
+
+    if isinstance(hitters, dict):
+        return hitters.get(side, [])
+
+    if side == "away":
+        return game.get("away_hitters", [])
+
+    if side == "home":
+        return game.get("home_hitters", [])
+
+    return []
+
 def validate_pipeline():
     errors = []
     warnings = []
@@ -57,8 +71,8 @@ def validate_pipeline():
         if not game.get("away_sp") or not game.get("home_sp"):
             warnings.append(f"{game_name}: missing probable pitcher")
 
-        away_hitters = game.get("hitters", {}).get("away", [])
-        home_hitters = game.get("hitters", {}).get("home", [])
+        away_hitters = get_game_hitters(game, "away")
+        home_hitters = get_game_hitters(game, "home")
 
         if not away_hitters:
             warnings.append(f"{game_name}: missing away hitters")

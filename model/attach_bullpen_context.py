@@ -68,7 +68,15 @@ def attach_bullpen_context():
             opponent_abbr = TEAM_NAME_TO_ABBR.get(opponent_team, "")
             bullpen = lookup.get(opponent_abbr, {})
 
-            for hitter in game.get("hitters", {}).get(side, []):
+            hitters = game.get("hitters", {})
+
+            if isinstance(hitters, list):
+                hitters = {
+                    "away": game.get("away_hitters", []),
+                    "home": game.get("home_hitters", []),
+             }
+
+        for hitter in hitters.get(side, []):
                 hitter["Bullpen"] = clean_value(bullpen.get("Bullpen Score", ""))
                 hitter["Bullpen xwOBA"] = clean_value(bullpen.get("xwOBA", ""))
                 hitter["Bullpen HR/Pitch%"] = clean_value(bullpen.get("HR/Pitch%", ""))

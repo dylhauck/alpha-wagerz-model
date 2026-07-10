@@ -72,6 +72,20 @@ def enrich_pitcher(pitcher, by_id, by_name):
     return pitcher
 
 
+def get_game_hitters(game, side):
+    hitters = game.get("hitters", {})
+
+    if isinstance(hitters, dict):
+        return hitters.get(side, [])
+
+    if side == "away":
+        return game.get("away_hitters", [])
+
+    if side == "home":
+        return game.get("home_hitters", [])
+
+    return []
+
 def enrich_players_in_games():
     by_id, by_name = build_player_lookup()
 
@@ -84,7 +98,7 @@ def enrich_players_in_games():
             team = game.get("away_team") if side == "away" else game.get("home_team")
             team_abbr = ""
 
-            for hitter in game.get("hitters", {}).get(side, []):
+            for hitter in get_game_hitters(game, side):
                 hitter["Team"] = team
                 hitter["Team Abbr"] = team_abbr
                 enrich_hitter(hitter, by_id, by_name)

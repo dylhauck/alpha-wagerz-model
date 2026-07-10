@@ -100,30 +100,49 @@ def find_one_metrics(hitter, by_name, by_id):
     return {}
 
 
+def blend_metrics(last_30, season, longterm):
+    sources = [
+        (last_30 or {}, 0.40),
+        (season or {}, 0.35),
+        (longterm or {}, 0.25),
+    ]
+
+    blended = {}
+
+    for field in METRIC_FIELDS:
+        total = 0
+        weight_total = 0
+
+        for metrics, weight in sources:
+            value = metrics.get(field, "")
+            if value not in ["", None]:
+                try:
+                    total += float(value) * weight
+                    weight_total += weight
+                except Exception:
+                    pass
+
+        blended[field] = total / weight_total if weight_total else ""
+
+    for source in [last_30, season, longterm]:
+        if source:
+            blended["batter"] = source.get("batter", "")
+            blended["player_name"] = source.get("player_name", "")
+            break
+
+    return blended
+
+
 def find_metrics_bundle(hitter, lookup):
-    last_30 = find_one_metrics(
-        hitter,
-        lookup["last_30_by_name"],
-        lookup["last_30_by_id"],
-    )
+    last_30 = find_one_metrics(hitter, lookup["last_30_by_name"], lookup["last_30_by_id"])
+    season = find_one_metrics(hitter, lookup["season_by_name"], lookup["season_by_id"])
+    longterm = find_one_metrics(hitter, lookup["longterm_by_name"], lookup["longterm_by_id"])
 
-    season = find_one_metrics(
-        hitter,
-        lookup["season_by_name"],
-        lookup["season_by_id"],
-    )
+    base = blend_metrics(last_30, season, longterm)
 
-    longterm = find_one_metrics(
-        hitter,
-        lookup["longterm_by_name"],
-        lookup["longterm_by_id"],
-    )
-
-    # Main displayed metrics should use long-term baseline first.
-    # This keeps stars from looking broken because of one small recent sample.
-    base = longterm or season or last_30
-
-    if longterm:
+    if last_30 and season and longterm:
+        source = "Blended"
+    elif longterm:
         source = "Longterm"
     elif season:
         source = "Season"

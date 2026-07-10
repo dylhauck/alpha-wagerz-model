@@ -68,7 +68,15 @@ def attach_team_context():
             abbr = TEAM_NAME_TO_ABBR.get(team_name, "")
             team_metrics = lookup.get(abbr, {})
 
-            for hitter in game.get("hitters", {}).get(side, []):
+            hitters = game.get("hitters", {})
+
+            if isinstance(hitters, list):
+                hitters = {
+                "away": game.get("away_hitters", []),
+                "home": game.get("home_hitters", []),
+    }
+
+            for hitter in hitters.get(side, []):
                 hitter["Team Offense"] = clean_value(
                     team_metrics.get("Team Offense Score", "")
                 )
