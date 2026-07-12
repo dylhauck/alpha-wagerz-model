@@ -454,6 +454,9 @@ def export_game_projections():
             "away_pitcher": away_pitcher_name,
             "home_pitcher": home_pitcher_name,
 
+            "away_pitcher_throws": away_pitcher.get("Throws", "") if away_pitcher else "",
+            "home_pitcher_throws": home_pitcher.get("Throws", "") if home_pitcher else "",
+
             "away_projected_ks": away_ks,
             "home_projected_ks": home_ks,
 

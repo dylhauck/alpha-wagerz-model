@@ -36,6 +36,7 @@ from model.export_hr_graphic_data import export_hr_graphic_data
 from graphics.create_hr_targets_graphic import create_graphic
 from model.export_game_projections import export_game_projections
 from providers.market import build_market_lines
+from providers.espn_injuries import build_injury_report
 
 def run_full_update():
     print("🐺 Starting Alpha Wagerz full update...")
@@ -47,6 +48,9 @@ def run_full_update():
     print("\n🗓️ Slate / lineups")
     update_today()
     build_team_context_file()
+
+    print("\n🏥 Injury report")
+    build_injury_report()
 
     print("\n📊 Statcast")
     get_statcast_batter_events()

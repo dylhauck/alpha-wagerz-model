@@ -1,16 +1,16 @@
 game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status,game_date_utc,game_time,game_time_sort
-824252,2026-07-10,Philadelphia Phillies @ Detroit Tigers,Philadelphia Phillies,Detroit Tigers,Aaron Nola,Jack Flaherty,Comerica Park,Pre-Game,2026-07-10T22:40:00Z,5:40 PM,17:40
-823357,2026-07-10,Milwaukee Brewers @ Pittsburgh Pirates,Milwaukee Brewers,Pittsburgh Pirates,Brandon Sproat,Braxton Ashcraft,PNC Park,Pre-Game,2026-07-10T22:40:00Z,5:40 PM,17:40
-822709,2026-07-10,New York Yankees @ Washington Nationals,New York Yankees,Washington Nationals,Ryan Weathers,Carson Palmquist,Nationals Park,Pre-Game,2026-07-10T22:45:00Z,5:45 PM,17:45
-824817,2026-07-10,Kansas City Royals @ Baltimore Orioles,Kansas City Royals,Baltimore Orioles,Luinder Avila,Brandon Young,Oriole Park at Camden Yards,Pre-Game,2026-07-10T23:05:00Z,6:05 PM,18:05
-824493,2026-07-10,Chicago Cubs @ Cincinnati Reds,Chicago Cubs,Cincinnati Reds,Shota Imanaga,Hunter Greene,Great American Ball Park,Pre-Game,2026-07-10T23:10:00Z,6:10 PM,18:10
-822955,2026-07-10,Seattle Mariners @ Tampa Bay Rays,Seattle Mariners,Tampa Bay Rays,Luis Castillo,Nick Martinez,Tropicana Field,Pre-Game,2026-07-10T23:10:00Z,6:10 PM,18:10
-823845,2026-07-10,Cleveland Guardians @ Miami Marlins,Cleveland Guardians,Miami Marlins,Parker Messick,Sandy Alcantara,loanDepot park,Pre-Game,2026-07-10T23:10:00Z,6:10 PM,18:10
-823604,2026-07-10,Boston Red Sox @ New York Mets,Boston Red Sox,New York Mets,Sonny Gray,Nolan McLean,Citi Field,Pre-Game,2026-07-10T23:15:00Z,6:15 PM,18:15
-824575,2026-07-10,Athletics @ Chicago White Sox,Athletics,Chicago White Sox,Jacob Lopez,Sean Burke,Rate Field,Pre-Game,2026-07-10T23:40:00Z,6:40 PM,18:40
-822878,2026-07-10,Houston Astros @ Texas Rangers,Houston Astros,Texas Rangers,Hunter Brown,Cal Quantrill,Globe Life Field,Pre-Game,2026-07-11T00:05:00Z,7:05 PM,19:05
-823685,2026-07-10,Los Angeles Angels @ Minnesota Twins,Los Angeles Angels,Minnesota Twins,Grayson Rodriguez,Zebby Matthews,Target Field,Pre-Game,2026-07-11T00:10:00Z,7:10 PM,19:10
-823033,2026-07-10,Atlanta Braves @ St. Louis Cardinals,Atlanta Braves,St. Louis Cardinals,Chris Sale,Kyle Leahy,Busch Stadium,Pre-Game,2026-07-11T00:15:00Z,7:15 PM,19:15
-823278,2026-07-10,Toronto Blue Jays @ San Diego Padres,Toronto Blue Jays,San Diego Padres,Shane Bieber,JP Sears,Petco Park,Scheduled,2026-07-11T01:40:00Z,8:40 PM,20:40
-823927,2026-07-10,Arizona Diamondbacks @ Los Angeles Dodgers,Arizona Diamondbacks,Los Angeles Dodgers,Eduardo Rodriguez,Kyle Hurt,UNIQLO Field at Dodger Stadium,Pre-Game,2026-07-11T02:10:00Z,9:10 PM,21:10
-823200,2026-07-10,Colorado Rockies @ San Francisco Giants,Colorado Rockies,San Francisco Giants,Tanner Gordon,Robbie Ray,Oracle Park,Scheduled,2026-07-11T02:15:00Z,9:15 PM,21:15
+823358,2026-07-12,Milwaukee Brewers @ Pittsburgh Pirates,Milwaukee Brewers,Pittsburgh Pirates,Robert Gasser,Paul Skenes,PNC Park,Scheduled,2026-07-12T16:15:00Z,11:15 AM,11:15
+824814,2026-07-12,Kansas City Royals @ Baltimore Orioles,Kansas City Royals,Baltimore Orioles,Seth Lugo,Shane Baz,Oriole Park at Camden Yards,Scheduled,2026-07-12T17:35:00Z,12:35 PM,12:35
+822708,2026-07-12,New York Yankees @ Washington Nationals,New York Yankees,Washington Nationals,Will Warren,Cade Cavalli,Nationals Park,Scheduled,2026-07-12T17:35:00Z,12:35 PM,12:35
+824491,2026-07-12,Chicago Cubs @ Cincinnati Reds,Chicago Cubs,Cincinnati Reds,Matthew Boyd,Andrew Abbott,Great American Ball Park,Scheduled,2026-07-12T17:40:00Z,12:40 PM,12:40
+823602,2026-07-12,Boston Red Sox @ New York Mets,Boston Red Sox,New York Mets,Payton Tolle,Zach Thornton,Citi Field,Scheduled,2026-07-12T17:40:00Z,12:40 PM,12:40
+822951,2026-07-12,Seattle Mariners @ Tampa Bay Rays,Seattle Mariners,Tampa Bay Rays,Emerson Hancock,Ian Seymour,Tropicana Field,Scheduled,2026-07-12T17:40:00Z,12:40 PM,12:40
+824250,2026-07-12,Philadelphia Phillies @ Detroit Tigers,Philadelphia Phillies,Detroit Tigers,Zack Wheeler,Tarik Skubal,Comerica Park,Scheduled,2026-07-12T17:40:00Z,12:40 PM,12:40
+823842,2026-07-12,Cleveland Guardians @ Miami Marlins,Cleveland Guardians,Miami Marlins,Joey Cantillo,Tyler Phillips,loanDepot park,Scheduled,2026-07-12T17:40:00Z,12:40 PM,12:40
+823681,2026-07-12,Los Angeles Angels @ Minnesota Twins,Los Angeles Angels,Minnesota Twins,José Soriano,Taj Bradley,Target Field,Scheduled,2026-07-12T18:10:00Z,1:10 PM,13:10
+824574,2026-07-12,Athletics @ Chicago White Sox,Athletics,Chicago White Sox,J.T. Ginn,Noah Schultz,Rate Field,Scheduled,2026-07-12T18:10:00Z,1:10 PM,13:10
+823029,2026-07-12,Atlanta Braves @ St. Louis Cardinals,Atlanta Braves,St. Louis Cardinals,JR Ritchie,Dustin May,Busch Stadium,Scheduled,2026-07-12T18:15:00Z,1:15 PM,13:15
+822876,2026-07-12,Houston Astros @ Texas Rangers,Houston Astros,Texas Rangers,Cristian Javier,MacKenzie Gore,Globe Life Field,Scheduled,2026-07-12T18:35:00Z,1:35 PM,13:35
+823199,2026-07-12,Colorado Rockies @ San Francisco Giants,Colorado Rockies,San Francisco Giants,Michael Lorenzen,Trevor McDonald,Oracle Park,Scheduled,2026-07-12T20:05:00Z,3:05 PM,15:05
+823925,2026-07-12,Arizona Diamondbacks @ Los Angeles Dodgers,Arizona Diamondbacks,Los Angeles Dodgers,Mitch Bratt,Emmet Sheehan,UNIQLO Field at Dodger Stadium,Scheduled,2026-07-12T20:10:00Z,3:10 PM,15:10
+823274,2026-07-12,Toronto Blue Jays @ San Diego Padres,Toronto Blue Jays,San Diego Padres,Kevin Gausman,Germán Márquez,Petco Park,Scheduled,2026-07-12T20:10:00Z,3:10 PM,15:10

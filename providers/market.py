@@ -1,6 +1,8 @@
 import os
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, time, timedelta, timezone
 from pathlib import Path
+from typing import Any
+from zoneinfo import ZoneInfo
 
 import requests
 from dotenv import load_dotenv
@@ -8,33 +10,32 @@ from dotenv import load_dotenv
 from utils.json_utils import load_json, save_json
 from utils.player_name import normalize_player_name
 
+
 load_dotenv(dotenv_path=Path.cwd() / ".env")
 
-API_KEY = os.getenv("THE_ODDS_API_KEY")
+API_KEY = os.getenv("ODDS_API_IO_KEY")
+BASE_URL = os.getenv(
+    "ODDS_API_IO_BASE",
+    "https://api.odds-api.io/v3",
+).rstrip("/")
+
+MARKET_TIMEZONE = os.getenv(
+    "MARKET_TIMEZONE",
+    "America/Chicago",
+)
 
 ALL_GAMES_FILE = Path("data/processed/all_games.json")
 OUTPUT_FILE = Path("data/processed/market_lines.json")
 CACHE_DIR = Path("data/cache/markets")
 CACHE_FILE = CACHE_DIR / "latest_market_lines.json"
 
-BASE_URL = "https://api.the-odds-api.com/v4/sports/baseball_mlb"
-
-BOOK_PRIORITY = [
-    "draftkings",
-    "fanduel",
-    "fanatics",
-    "betmgm",
-    "caesars",
-    "espnbet",
-    "bet365",
-    "pointsbetus",
-    "betrivers",
-    "betonlineag",
-]
+BOOKMAKERS = ["FanDuel", "DraftKings"]
+REQUEST_TIMEOUT = 45
 
 TEAM_ALIASES = {
     "athletics": "oakland athletics",
     "oakland athletics": "oakland athletics",
+    "the athletics": "oakland athletics",
     "la dodgers": "los angeles dodgers",
     "los angeles dodgers": "los angeles dodgers",
     "la angels": "los angeles angels",
@@ -45,10 +46,10 @@ TEAM_ALIASES = {
     "new york yankees": "new york yankees",
     "ny mets": "new york mets",
     "new york mets": "new york mets",
-    "chicago white sox": "chicago white sox",
     "chi white sox": "chicago white sox",
-    "chicago cubs": "chicago cubs",
+    "chicago white sox": "chicago white sox",
     "chi cubs": "chicago cubs",
+    "chicago cubs": "chicago cubs",
     "kc royals": "kansas city royals",
     "kansas city royals": "kansas city royals",
     "tb rays": "tampa bay rays",
@@ -60,319 +61,272 @@ TEAM_ALIASES = {
     "arizona diamondbacks": "arizona diamondbacks",
 }
 
+def today_event_window():
+    local_tz = ZoneInfo(MARKET_TIMEZONE)
+    local_today = datetime.now(local_tz).date()
 
-def normalize(value):
+    local_start = datetime.combine(
+        local_today,
+        time.min,
+        tzinfo=local_tz,
+    )
+
+    local_end = local_start + timedelta(days=1)
+
+    utc_start = local_start.astimezone(timezone.utc)
+    utc_end = local_end.astimezone(timezone.utc)
+
+    return (
+        utc_start.isoformat().replace("+00:00", "Z"),
+        utc_end.isoformat().replace("+00:00", "Z"),
+    )
+
+def normalize(value: Any) -> str:
     return str(value or "").strip().lower()
 
 
-def team_key(name):
+def team_key(name: Any) -> str:
     key = normalize(name)
     key = key.replace(".", "")
     key = key.replace("&", "and")
-    key = key.replace("the ", "")
     key = " ".join(key.split())
+
+    if key.startswith("the "):
+        key = key[4:]
+
     return TEAM_ALIASES.get(key, key)
 
 
-def game_key(away_team, home_team):
+def game_key(away_team: Any, home_team: Any) -> str:
     return f"{team_key(away_team)}@{team_key(home_team)}"
 
 
-def priority_rank(book_key):
-    if book_key in BOOK_PRIORITY:
-        return len(BOOK_PRIORITY) - BOOK_PRIORITY.index(book_key)
-    return 0
+def to_float(value: Any, default=None):
+    try:
+        if value in ("", None):
+            return default
+        return float(value)
+    except (TypeError, ValueError):
+        return default
 
 
-def market_count(book):
-    wanted = {"h2h", "spreads", "totals", "team_totals", "pitcher_strikeouts"}
-    keys = {market.get("key") for market in book.get("markets", [])}
-    return len(keys.intersection(wanted))
+def decimal_to_american(value: Any):
+    decimal = to_float(value)
 
-
-def pick_bookmaker(bookmakers, required_market_key=None):
-    if not bookmakers:
+    if decimal is None or decimal <= 1:
         return None
 
-    candidates = bookmakers
+    if decimal >= 2:
+        return round((decimal - 1) * 100)
 
-    if required_market_key:
-        candidates = [
-            book
-            for book in bookmakers
-            if any(market.get("key") == required_market_key for market in book.get("markets", []))
-        ]
-
-        if not candidates:
-            return None
-
-    return sorted(
-        candidates,
-        key=lambda book: (market_count(book), priority_rank(book.get("key"))),
-        reverse=True,
-    )[0]
+    return round(-100 / (decimal - 1))
 
 
-def market_by_key(book, key):
-    if not book:
-        return None
-
-    for market in book.get("markets", []):
-        if market.get("key") == key:
-            return market
-
-    return None
-
-
-def outcome_for_team(market, team):
-    if not market:
-        return {}
-
-    target = team_key(team)
-
-    for outcome in market.get("outcomes", []):
-        if team_key(outcome.get("name")) == target:
-            return outcome
-
-    return {}
-
-
-def find_matching_game(api_game, local_games):
-    api_away = team_key(api_game.get("away_team"))
-    api_home = team_key(api_game.get("home_team"))
-
-    for game in local_games:
-        local_away = team_key(game.get("away_team"))
-        local_home = team_key(game.get("home_team"))
-
-        if local_away == api_away and local_home == api_home:
-            return game
-
-        if local_away == api_home and local_home == api_away:
-            return game
-
-    return None
-
-
-def slate_windows():
-    now = datetime.now(timezone.utc)
-    start_midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
-    start_mlb = now.replace(hour=8, minute=0, second=0, microsecond=0)
-
-    return [
-        (start_midnight, start_midnight + timedelta(hours=24)),
-        (start_mlb, start_mlb + timedelta(hours=24)),
-    ]
-
-
-def dedupe_by_id(items):
-    seen = {}
-
-    for item in items:
-        item_id = item.get("id")
-        if item_id:
-            seen[item_id] = item
-
-    return list(seen.values())
-
-
-def api_available():
-    return bool(API_KEY)
-
-
-def get_json(url, params):
+def get_json(path: str, params: dict[str, Any]):
     if not API_KEY:
-        raise RuntimeError("THE_ODDS_API_KEY missing from .env")
+        raise RuntimeError(
+            "ODDS_API_IO_KEY is missing from .env. "
+            "Add ODDS_API_IO_KEY=your_key and reopen the terminal."
+        )
 
-    params = dict(params)
-    params["apiKey"] = API_KEY
+    query = dict(params)
+    query["apiKey"] = API_KEY
 
-    response = requests.get(url, params=params, timeout=30)
+    response = requests.get(
+        f"{BASE_URL}/{path.lstrip('/')}",
+        params=query,
+        timeout=REQUEST_TIMEOUT,
+    )
 
     if response.status_code == 401:
-        raise RuntimeError("Odds API unauthorized. Check THE_ODDS_API_KEY.")
-
-    if response.status_code == 402:
-        raise RuntimeError("Odds API quota exceeded or payment required.")
-
+        raise RuntimeError("Odds-API.io unauthorized. Check ODDS_API_IO_KEY.")
+    if response.status_code in (402, 403):
+        raise RuntimeError(
+            "Odds-API.io rejected this request. Check your plan and bookmaker access."
+        )
     if response.status_code == 429:
-        raise RuntimeError("Odds API rate limit exceeded.")
+        raise RuntimeError("Odds-API.io rate limit exceeded.")
 
     if response.status_code >= 400:
-        print("⚠️ Odds API request failed")
+        print("⚠️ Odds-API.io request failed")
         print("URL:", response.url)
         print("Status:", response.status_code)
-        print("Body:", response.text[:800])
+        print("Body:", response.text[:1200])
 
     response.raise_for_status()
     return response.json()
 
 
-def safe_get_json(url, params, fallback):
+def safe_load_json(path: Path, default):
+    if not path.exists():
+        return default
+
     try:
-        return get_json(url, params)
-    except Exception as e:
-        print(f"⚠️ Odds API request skipped/failed: {e}")
-        return fallback
+        return load_json(path, default=default)
+    except Exception as exc:
+        print(f"⚠️ Could not read {path}: {exc}")
+        return default
 
 
-def fetch_main_markets_from_api():
-    all_games = []
+def local_slate_window():
+    tz = ZoneInfo(MARKET_TIMEZONE)
+    local_now = datetime.now(tz)
+    local_start = local_now.replace(hour=0, minute=0, second=0, microsecond=0)
+    local_end = local_start + timedelta(days=1)
 
-    for commence_from, commence_to in slate_windows():
-        games = get_json(
-            f"{BASE_URL}/odds",
-            {
-                "regions": "us,us2",
-                "markets": "h2h,spreads,totals",
-                "oddsFormat": "american",
-                "commenceTimeFrom": commence_from.isoformat().replace("+00:00", "Z"),
-                "commenceTimeTo": commence_to.isoformat().replace("+00:00", "Z"),
-            },
-        )
+    utc_start = local_start.astimezone(timezone.utc)
+    utc_end = local_end.astimezone(timezone.utc)
 
-        all_games.extend(games)
-
-    return dedupe_by_id(all_games)
+    return (
+        utc_start.isoformat().replace("+00:00", "Z"),
+        utc_end.isoformat().replace("+00:00", "Z"),
+    )
 
 
-def fetch_events_from_api():
-    all_events = []
+def fetch_today_events():
+    start, end = today_event_window()
 
-    for commence_from, commence_to in slate_windows():
-        events = safe_get_json(
-            f"{BASE_URL}/events",
-            {
-                "commenceTimeFrom": commence_from.isoformat().replace("+00:00", "Z"),
-                "commenceTimeTo": commence_to.isoformat().replace("+00:00", "Z"),
-            },
-            [],
-        )
+    payload = get_json(
+        "events",
+        {
+            "sport": "baseball",
+            "league": "usa-mlb",
+            "status": "pending",
+            "from": start,
+            "to": end,
+        },
+    )
 
-        all_events.extend(events)
+    if isinstance(payload, list):
+        return payload
 
-    return dedupe_by_id(all_events)
+    if isinstance(payload, dict):
+        for key in ("events", "data", "results", "items"):
+            value = payload.get(key)
+
+            if isinstance(value, list):
+                return value
+
+    return []
 
 
-def fetch_event_main_markets_from_api(event_id):
+def fetch_event_odds(event_id):
     if not event_id:
         return {}
 
-    return safe_get_json(
-        f"{BASE_URL}/events/{event_id}/odds",
+    payload = get_json(
+        "odds",
         {
-            "regions": "us,us2",
-            "markets": "h2h,spreads,totals",
-            "oddsFormat": "american",
+            "eventId": event_id,
+            "bookmakers": ",".join(BOOKMAKERS),
         },
-        {},
     )
 
-
-def fetch_event_props_from_api(event_id):
-    if not event_id:
-        return {}
-
-    data = safe_get_json(
-        f"{BASE_URL}/events/{event_id}/odds",
-        {
-            "regions": "us,us2",
-            "markets": "team_totals,pitcher_strikeouts",
-            "oddsFormat": "american",
-        },
-        {},
-    )
-
-    if data and data.get("bookmakers"):
-        return data
-
-    team_totals = safe_get_json(
-        f"{BASE_URL}/events/{event_id}/odds",
-        {
-            "regions": "us,us2",
-            "markets": "team_totals",
-            "oddsFormat": "american",
-        },
-        {},
-    )
-
-    k_props = safe_get_json(
-        f"{BASE_URL}/events/{event_id}/odds",
-        {
-            "regions": "us,us2",
-            "markets": "pitcher_strikeouts",
-            "oddsFormat": "american",
-        },
-        {},
-    )
-
-    return merge_event_prop_payloads(team_totals, k_props)
+    return payload if isinstance(payload, dict) else {}
 
 
-def merge_event_prop_payloads(*payloads):
-    merged = {}
+def find_matching_game(api_event, local_games, used_game_ids):
+    api_away = team_key(api_event.get("away"))
+    api_home = team_key(api_event.get("home"))
 
-    for payload in payloads:
-        if not payload:
+    candidates = []
+
+    for game in local_games:
+        game_id = str(game.get("game_id") or "")
+        if game_id in used_game_ids:
             continue
 
-        if not merged:
-            merged = {
-                "id": payload.get("id"),
-                "sport_key": payload.get("sport_key"),
-                "home_team": payload.get("home_team"),
-                "away_team": payload.get("away_team"),
-                "bookmakers": [],
-            }
+        local_away = team_key(game.get("away_team"))
+        local_home = team_key(game.get("home_team"))
 
-        by_book = {book.get("key"): book for book in merged.get("bookmakers", [])}
+        if local_away == api_away and local_home == api_home:
+            candidates.append(game)
 
-        for book in payload.get("bookmakers", []):
-            key = book.get("key")
-            if not key:
-                continue
+    if candidates:
+        return candidates[0]
 
-            if key not in by_book:
-                by_book[key] = {
-                    "key": key,
-                    "title": book.get("title"),
-                    "markets": [],
-                }
-                merged["bookmakers"].append(by_book[key])
-
-            existing_market_keys = {m.get("key") for m in by_book[key].get("markets", [])}
-
-            for market in book.get("markets", []):
-                if market.get("key") not in existing_market_keys:
-                    by_book[key]["markets"].append(market)
-                    existing_market_keys.add(market.get("key"))
-
-    return merged
+    return None
 
 
-def parse_game_total(totals_market):
-    if not totals_market:
-        return {"line": None, "over_price": None, "under_price": None}
+def get_book_markets(odds_payload, bookmaker):
+    bookmakers = odds_payload.get("bookmakers", {})
 
-    parsed = {"line": None, "over_price": None, "under_price": None}
+    if not isinstance(bookmakers, dict):
+        return []
 
-    for outcome in totals_market.get("outcomes", []):
-        name = outcome.get("name")
-        point = outcome.get("point")
-        price = outcome.get("price")
-
-        if point is not None:
-            parsed["line"] = point
-
-        if name == "Over":
-            parsed["over_price"] = price
-        elif name == "Under":
-            parsed["under_price"] = price
-
-    return parsed
+    markets = bookmakers.get(bookmaker, [])
+    return markets if isinstance(markets, list) else []
 
 
-def parse_team_totals(event_props, away_team, home_team):
+def find_market(markets, exact_name):
+    target = normalize(exact_name)
+
+    for market in markets:
+        if normalize(market.get("name")) == target:
+            return market
+
+    return None
+
+
+def first_odds_row(market):
+    if not market:
+        return {}
+
+    odds = market.get("odds", [])
+    if isinstance(odds, list) and odds:
+        return odds[0]
+
+    return {}
+
+
+def first_available_market(odds_payload, market_name):
+    for bookmaker in BOOKMAKERS:
+        market = find_market(get_book_markets(odds_payload, bookmaker), market_name)
+        if market:
+            return bookmaker, market
+
+    return "", None
+
+
+def parse_moneyline(odds_payload):
+    bookmaker, market = first_available_market(odds_payload, "ML")
+    row = first_odds_row(market)
+
+    return {
+        "bookmaker": bookmaker,
+        "away": decimal_to_american(row.get("away")),
+        "home": decimal_to_american(row.get("home")),
+    }
+
+
+def parse_spread(odds_payload):
+    bookmaker, market = first_available_market(odds_payload, "Spread")
+    row = first_odds_row(market)
+
+    hdp = to_float(row.get("hdp"))
+
+    return {
+        "bookmaker": bookmaker,
+        "away": -hdp if hdp is not None else None,
+        "away_price": decimal_to_american(row.get("away")),
+        "home": hdp,
+        "home_price": decimal_to_american(row.get("home")),
+    }
+
+
+def parse_game_total(odds_payload):
+    bookmaker, market = first_available_market(odds_payload, "Totals")
+    row = first_odds_row(market)
+
+    return {
+        "bookmaker": bookmaker,
+        "line": to_float(row.get("hdp")),
+        "over_price": decimal_to_american(row.get("over")),
+        "under_price": decimal_to_american(row.get("under")),
+    }
+
+
+def parse_team_totals(odds_payload):
     result = {
         "away": None,
         "away_over_price": None,
@@ -382,205 +336,127 @@ def parse_team_totals(event_props, away_team, home_team):
         "home_under_price": None,
     }
 
-    if not event_props:
-        return result
+    for bookmaker in BOOKMAKERS:
+        markets = get_book_markets(odds_payload, bookmaker)
+        away_market = find_market(markets, "Team Total (Runs) Away")
+        home_market = find_market(markets, "Team Total (Runs) Home")
 
-    book = pick_bookmaker(event_props.get("bookmakers", []), required_market_key="team_totals")
-    market = market_by_key(book, "team_totals")
+        if away_market:
+            row = first_odds_row(away_market)
+            result["away"] = to_float(row.get("hdp"))
+            result["away_over_price"] = decimal_to_american(row.get("over"))
+            result["away_under_price"] = decimal_to_american(row.get("under"))
 
-    if not market:
-        return result
+        if home_market:
+            row = first_odds_row(home_market)
+            result["home"] = to_float(row.get("hdp"))
+            result["home_over_price"] = decimal_to_american(row.get("over"))
+            result["home_under_price"] = decimal_to_american(row.get("under"))
 
-    for outcome in market.get("outcomes", []):
-        team = outcome.get("description") or outcome.get("name")
-        side = outcome.get("name")
-        point = outcome.get("point")
-        price = outcome.get("price")
-
-        if team_key(team) == team_key(away_team):
-            if side == "Over":
-                result["away"] = point
-                result["away_over_price"] = price
-            elif side == "Under":
-                result["away_under_price"] = price
-
-        if team_key(team) == team_key(home_team):
-            if side == "Over":
-                result["home"] = point
-                result["home_over_price"] = price
-            elif side == "Under":
-                result["home_under_price"] = price
+        if away_market or home_market:
+            break
 
     return result
 
 
-def merge_pitcher_prop(props, player, side, point, price, book_key=None):
-    if not player or point is None:
-        return
+def extract_player_from_prop_label(label):
+    suffix = "(Pitcher Strikeouts)"
+    value = str(label or "").strip()
 
-    player_clean = str(player).strip()
-    player_key = normalize_player_name(player_clean)
+    if not value.endswith(suffix):
+        return ""
 
-    if not player_key:
-        return
-
-    if player_key not in props:
-        props[player_key] = {
-            "player": player_clean,
-            "line": point,
-            "over_price": None,
-            "under_price": None,
-            "bookmaker_key": book_key,
-            "normalized_name": player_key,
-        }
-
-    if props[player_key].get("line") is None:
-        props[player_key]["line"] = point
-
-    if side == "Over" and props[player_key].get("over_price") is None:
-        props[player_key]["over_price"] = price
-    elif side == "Under" and props[player_key].get("under_price") is None:
-        props[player_key]["under_price"] = price
+    return value[: -len(suffix)].strip()
 
 
-def parse_pitcher_strikeouts(event_props):
+def parse_pitcher_strikeouts(odds_payload):
     props = {}
 
-    if not event_props:
-        return props
+    for bookmaker in BOOKMAKERS:
+        markets = get_book_markets(odds_payload, bookmaker)
+        player_props = find_market(markets, "Player Props")
 
-    bookmakers = event_props.get("bookmakers", []) or []
-
-    for book in bookmakers:
-        market = market_by_key(book, "pitcher_strikeouts")
-        if not market:
+        if not player_props:
             continue
 
-        for outcome in market.get("outcomes", []):
-            player = outcome.get("description") or outcome.get("player") or outcome.get("name")
-            side = outcome.get("name")
-            point = outcome.get("point")
-            price = outcome.get("price")
+        rows = player_props.get("odds", [])
+        if not isinstance(rows, list):
+            continue
 
-            if not player or point is None:
+        for row in rows:
+            player = extract_player_from_prop_label(row.get("label"))
+            line = to_float(row.get("hdp"))
+
+            if not player or line is None:
                 continue
 
-            key = normalize_player_name(player)
+            normalized_name = normalize_player_name(player)
+            if not normalized_name or normalized_name in props:
+                continue
 
-            if key not in props:
-                props[key] = {
-                    "player": player,
-                    "normalized_name": key,
-                    "line": point,
-                    "over_price": None,
-                    "under_price": None,
-                    "bookmaker": book.get("title"),
-                    "bookmaker_key": book.get("key"),
-                }
-
-            props[key]["line"] = point
-
-            if side == "Over":
-                props[key]["over_price"] = price
-            elif side == "Under":
-                props[key]["under_price"] = price
+            props[normalized_name] = {
+                "player": player,
+                "normalized_name": normalized_name,
+                "line": line,
+                "over_price": decimal_to_american(row.get("over")),
+                "under_price": decimal_to_american(row.get("under")),
+                "bookmaker": bookmaker,
+                "bookmaker_key": bookmaker.lower().replace(" ", ""),
+                "market_name": "Pitcher Strikeouts",
+            }
 
     return props
 
 
-def market_payload_from_api(api_game, local_game, event_props=None):
-    event_props = event_props or {}
+def build_live_payload(api_event, local_game, odds_payload):
+    moneyline = parse_moneyline(odds_payload)
+    spread = parse_spread(odds_payload)
+    game_total = parse_game_total(odds_payload)
+    team_totals = parse_team_totals(odds_payload)
+    pitcher_props = parse_pitcher_strikeouts(odds_payload)
 
-    book = pick_bookmaker(api_game.get("bookmakers", []))
-    if not book:
-        return None
-
-    away_team = local_game.get("away_team")
-    home_team = local_game.get("home_team")
-
-    h2h = market_by_key(book, "h2h")
-    spreads = market_by_key(book, "spreads")
-    totals = market_by_key(book, "totals")
-
-    away_ml = outcome_for_team(h2h, away_team)
-    home_ml = outcome_for_team(h2h, home_team)
-
-    away_spread = outcome_for_team(spreads, away_team)
-    home_spread = outcome_for_team(spreads, home_team)
-
-    game_total = parse_game_total(totals)
-
-    pitcher_props = parse_pitcher_strikeouts(event_props)
-    team_totals = parse_team_totals(event_props, away_team, home_team)
+    main_bookmaker = (
+        moneyline.get("bookmaker")
+        or spread.get("bookmaker")
+        or game_total.get("bookmaker")
+        or ""
+    )
 
     return {
         "game_id": local_game.get("game_id"),
         "game": local_game.get("game"),
-        "away_team": away_team,
-        "home_team": home_team,
-        "bookmaker": book.get("title"),
-        "bookmaker_key": book.get("key"),
-        "odds_event_id": api_game.get("id") or event_props.get("id"),
+        "away_team": local_game.get("away_team"),
+        "home_team": local_game.get("home_team"),
+        "bookmaker": main_bookmaker,
+        "bookmaker_key": main_bookmaker.lower().replace(" ", ""),
+        "odds_event_id": api_event.get("id"),
         "moneyline": {
-            "away": away_ml.get("price"),
-            "home": home_ml.get("price"),
+            "away": moneyline.get("away"),
+            "home": moneyline.get("home"),
         },
         "spread": {
-            "away": away_spread.get("point"),
-            "away_price": away_spread.get("price"),
-            "home": home_spread.get("point"),
-            "home_price": home_spread.get("price"),
+            "away": spread.get("away"),
+            "away_price": spread.get("away_price"),
+            "home": spread.get("home"),
+            "home_price": spread.get("home_price"),
         },
         "total": game_total.get("line"),
-        "game_total": game_total,
+        "game_total": {
+            "line": game_total.get("line"),
+            "over_price": game_total.get("over_price"),
+            "under_price": game_total.get("under_price"),
+        },
         "team_totals": team_totals,
         "pitcher_strikeouts": pitcher_props,
-        "market_source": "the_odds_api",
+        "market_source": "odds_api_io",
         "market_status": "live",
+        "market_updated_at": datetime.now(timezone.utc)
+        .isoformat(timespec="seconds")
+        .replace("+00:00", "Z"),
     }
 
 
-def load_cache():
-    if CACHE_FILE.exists():
-        return load_json(CACHE_FILE, default=[])
-
-    if OUTPUT_FILE.exists():
-        return load_json(OUTPUT_FILE, default=[])
-
-    return []
-
-
-def cache_lookup():
-    rows = load_cache()
-    by_game = {}
-
-    for row in rows:
-        key = game_key(row.get("away_team"), row.get("home_team"))
-        if key:
-            by_game[key] = row
-
-    return by_game
-
-
-def cached_payload_for_game(game, cached_by_game):
-    key = game_key(game.get("away_team"), game.get("home_team"))
-    cached = cached_by_game.get(key)
-
-    if not cached:
-        return None
-
-    payload = dict(cached)
-    payload["game_id"] = game.get("game_id")
-    payload["game"] = game.get("game")
-    payload["away_team"] = game.get("away_team")
-    payload["home_team"] = game.get("home_team")
-    payload["market_source"] = cached.get("market_source", "cache")
-    payload["market_status"] = "cached"
-
-    return payload
-
-
-def unavailable_payload_for_game(game, reason):
+def unavailable_payload(game, reason):
     return {
         "game_id": game.get("game_id"),
         "game": game.get("game"),
@@ -590,9 +466,18 @@ def unavailable_payload_for_game(game, reason):
         "bookmaker_key": "",
         "odds_event_id": "",
         "moneyline": {"away": None, "home": None},
-        "spread": {"away": None, "away_price": None, "home": None, "home_price": None},
+        "spread": {
+            "away": None,
+            "away_price": None,
+            "home": None,
+            "home_price": None,
+        },
         "total": None,
-        "game_total": {"line": None, "over_price": None, "under_price": None},
+        "game_total": {
+            "line": None,
+            "over_price": None,
+            "under_price": None,
+        },
         "team_totals": {
             "away": None,
             "away_over_price": None,
@@ -607,72 +492,112 @@ def unavailable_payload_for_game(game, reason):
     }
 
 
+def has_usable_market_data(payload):
+    if not isinstance(payload, dict):
+        return False
+
+    if payload.get("market_source") == "unavailable":
+        return False
+
+    moneyline = payload.get("moneyline", {}) or {}
+    game_total = payload.get("game_total", {}) or {}
+    pitcher_props = payload.get("pitcher_strikeouts", {}) or {}
+
+    return bool(
+        moneyline.get("away") is not None
+        or moneyline.get("home") is not None
+        or game_total.get("line") is not None
+        or pitcher_props
+    )
+
+
+def load_cache_lookup():
+    rows = safe_load_json(CACHE_FILE, [])
+
+    if not rows:
+        rows = safe_load_json(OUTPUT_FILE, [])
+
+    lookup = {}
+
+    if not isinstance(rows, list):
+        return lookup
+
+    for row in rows:
+        if not has_usable_market_data(row):
+            continue
+
+        key = game_key(row.get("away_team"), row.get("home_team"))
+        lookup.setdefault(key, []).append(row)
+
+    return lookup
+
+
+def cached_payload(game, cache_lookup):
+    key = game_key(game.get("away_team"), game.get("home_team"))
+    candidates = cache_lookup.get(key, [])
+
+    if not candidates:
+        return None
+
+    cached = candidates.pop(0)
+    payload = dict(cached)
+    payload["game_id"] = game.get("game_id")
+    payload["game"] = game.get("game")
+    payload["away_team"] = game.get("away_team")
+    payload["home_team"] = game.get("home_team")
+    payload["market_status"] = "cached"
+
+    return payload
+
+
 def save_cache(output):
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
     save_json(output, CACHE_FILE)
 
-    today = datetime.now().strftime("%Y-%m-%d")
+    today = datetime.now(ZoneInfo(MARKET_TIMEZONE)).strftime("%Y-%m-%d")
     save_json(output, CACHE_DIR / f"market_lines_{today}.json")
 
 
 def build_market_lines():
-    local_games = load_json(ALL_GAMES_FILE, default=[])
-    cached_by_game = cache_lookup()
+    local_games = safe_load_json(ALL_GAMES_FILE, [])
 
+    if not isinstance(local_games, list):
+        raise RuntimeError(f"{ALL_GAMES_FILE} must contain a JSON list.")
+
+    cache = load_cache_lookup()
     output_by_game_id = {}
-
+    used_game_ids = set()
     api_failed = False
-    api_games = []
-    api_events = []
 
-    if api_available():
-        try:
-            api_games = fetch_main_markets_from_api()
-            api_events = fetch_events_from_api()
-        except Exception as e:
-            api_failed = True
-            print(f"⚠️ Odds API unavailable. Using cache where possible. Reason: {e}")
-    else:
-        api_failed = True
-        print("⚠️ No THE_ODDS_API_KEY found. Using cache where possible.")
-
-    print(f"💰 Odds API returned {len(api_games)} main market games")
-    print(f"📅 Odds API returned {len(api_events)} events")
-
-    if not api_failed:
-        for api_game in api_games:
-            local_game = find_matching_game(api_game, local_games)
-
-            if not local_game:
-                continue
-
-            event_props = fetch_event_props_from_api(api_game.get("id"))
-            payload = market_payload_from_api(api_game, local_game, event_props)
-
-            if payload:
-                output_by_game_id[str(local_game.get("game_id"))] = payload
+    try:
+        api_events = fetch_today_events()
+        print(f"📅 Odds-API.io returned {len(api_events)} pending MLB events today")
 
         for api_event in api_events:
-            local_game = find_matching_game(api_event, local_games)
+            local_game = find_matching_game(api_event, local_games, used_game_ids)
 
             if not local_game:
+                print(
+                    "⚠️ Could not match odds event: "
+                    f"{api_event.get('away')} @ {api_event.get('home')}"
+                )
                 continue
+
+            odds_payload = fetch_event_odds(api_event.get("id"))
+            payload = build_live_payload(api_event, local_game, odds_payload)
 
             game_id = str(local_game.get("game_id"))
+            output_by_game_id[game_id] = payload
+            used_game_ids.add(game_id)
 
-            if game_id in output_by_game_id:
-                continue
+            print(
+                f"   {local_game.get('game')}: "
+                f"{len(payload['pitcher_strikeouts'])} pitcher K props"
+            )
 
-            event_main = fetch_event_main_markets_from_api(api_event.get("id"))
-            event_props = fetch_event_props_from_api(api_event.get("id"))
-
-            if not event_main or not event_main.get("bookmakers"):
-                continue
-
-            payload = market_payload_from_api(event_main, local_game, event_props)
-
-            if payload:
-                output_by_game_id[game_id] = payload
+    except Exception as exc:
+        api_failed = True
+        print(f"⚠️ Odds-API.io failed: {exc}")
 
     for game in local_games:
         game_id = str(game.get("game_id"))
@@ -680,14 +605,13 @@ def build_market_lines():
         if game_id in output_by_game_id:
             continue
 
-        cached = cached_payload_for_game(game, cached_by_game)
+        cached = cached_payload(game, cache)
 
         if cached:
             output_by_game_id[game_id] = cached
-            continue
-
-        reason = "api_quota_or_unavailable" if api_failed else "not_returned_by_provider"
-        output_by_game_id[game_id] = unavailable_payload_for_game(game, reason)
+        else:
+            reason = "api_unavailable" if api_failed else "not_returned_by_provider"
+            output_by_game_id[game_id] = unavailable_payload(game, reason)
 
     output = list(output_by_game_id.values())
 
@@ -695,12 +619,19 @@ def build_market_lines():
     save_json(output, OUTPUT_FILE)
     save_cache(output)
 
-    live = sum(1 for item in output if item.get("market_status") == "live")
-    cached = sum(1 for item in output if item.get("market_status") == "cached")
-    unavailable = sum(1 for item in output if item.get("market_source") == "unavailable")
+    live_count = sum(
+        1 for item in output if item.get("market_status") == "live"
+    )
+    cached_count = sum(
+        1 for item in output if item.get("market_status") == "cached"
+    )
+    prop_count = sum(
+        len(item.get("pitcher_strikeouts", {})) for item in output
+    )
 
     print(f"✅ Saved market lines for {len(output)} games")
-    print(f"   Live: {live} | Cached: {cached} | Unavailable: {unavailable}")
+    print(f"   Live: {live_count} | Cached: {cached_count}")
+    print(f"   Pitcher K props: {prop_count}")
     print(f"📁 {OUTPUT_FILE}")
 
     return output

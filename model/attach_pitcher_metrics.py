@@ -74,6 +74,13 @@ PITCHER_COUNT_FIELDS = [
     "HR",
     "K",
     "BB",
+    "CSW",
+    "SwStr",
+    "Ball",
+    "Barrels",
+    "HH",
+    "FB",
+    "GB",
 ]
 
 PITCHER_AVERAGE_FIELDS = [
@@ -89,6 +96,7 @@ PITCHER_SCORE_FIELDS = [
     "Strikeout Score",
     "HR Vulnerability",
 ]
+
 
 def find_one_pitcher_metrics(name, pitcher_id, by_name, by_id):
     if pitcher_id and str(pitcher_id) in by_id:
@@ -111,6 +119,7 @@ def metric_value(metrics, field):
     if value not in ["", None] and not pd.isna(value):
         return value
 
+    # Temporary compatibility with previously generated CSV files.
     aliases = {
         "xwOBA": ["Pitcher xwOBA"],
         "xwOBAcon": ["Pitcher xwOBAcon"],
@@ -124,9 +133,10 @@ def metric_value(metrics, field):
 
     return ""
 
-def blend_average_field(sources, field):
-    weighted_total = 0.0
-    weight_total = 0.0
+
+def weighted_count(sources, field):
+    total = 0.0
+    found = False
 
     for metrics, weight in sources:
         value = metric_value(metrics, field)
@@ -135,41 +145,51 @@ def blend_average_field(sources, field):
             continue
 
         try:
-            numeric = float(value)
+            total += float(value) * weight
+            found = True
         except Exception:
             continue
 
-        weighted_total += numeric * weight
-        weight_total += weight
-
-    if weight_total == 0:
-        return ""
-
-    return weighted_total / weight_total
+    return total if found else None
 
 
-def blend_count_field(sources, field):
-    weighted_total = 0.0
-    found_value = False
+def weighted_average(sources, field, sample_field=None):
+    numerator = 0.0
+    denominator = 0.0
 
-    for metrics, weight in sources:
+    for metrics, period_weight in sources:
         value = metric_value(metrics, field)
 
         if value in ["", None]:
             continue
 
         try:
-            numeric = float(value)
+            numeric_value = float(value)
         except Exception:
             continue
 
-        weighted_total += numeric * weight
-        found_value = True
+        sample_weight = 1.0
 
-    if not found_value:
+        if sample_field:
+            sample = metric_value(metrics, sample_field)
+
+            try:
+                sample_weight = float(sample)
+            except Exception:
+                sample_weight = 0.0
+
+            if sample_weight <= 0:
+                continue
+
+        total_weight = period_weight * sample_weight
+
+        numerator += numeric_value * total_weight
+        denominator += total_weight
+
+    if denominator == 0:
         return ""
 
-    return round(weighted_total)
+    return numerator / denominator
 
 
 def blend_pitcher_metrics(last_30, season, longterm):
@@ -181,135 +201,163 @@ def blend_pitcher_metrics(last_30, season, longterm):
 
     blended = {}
 
+    raw_counts = {}
+
     for field in PITCHER_COUNT_FIELDS:
-        blended[field] = blend_count_field(sources, field)
+        raw_counts[field] = weighted_count(sources, field)
 
-    for field in PITCHER_AVERAGE_FIELDS:
-        blended[field] = blend_average_field(sources, field)
+    whole_number_fields = [
+        "Pitches",
+        "BF",
+        "BIP",
+        "HR",
+        "K",
+        "BB",
+        "CSW",
+        "SwStr",
+        "Ball",
+        "Barrels",
+        "HH",
+        "FB",
+        "GB",
+    ]
 
+    for field in whole_number_fields:
+        value = raw_counts.get(field)
+
+        blended[field] = (
+            round(value)
+            if value is not None
+            else ""
+        )
+
+    weighted_pitches = raw_counts.get("Pitches") or 0
+    weighted_bf = raw_counts.get("BF") or 0
+    weighted_bip = raw_counts.get("BIP") or 0
+    weighted_hr = raw_counts.get("HR") or 0
+    weighted_k = raw_counts.get("K") or 0
+    weighted_bb = raw_counts.get("BB") or 0
+
+    weighted_csw = raw_counts.get("CSW") or 0
+    weighted_swstr = raw_counts.get("SwStr") or 0
+    weighted_ball = raw_counts.get("Ball") or 0
+
+    weighted_barrels = raw_counts.get("Barrels") or 0
+    weighted_hh = raw_counts.get("HH") or 0
+    weighted_fb = raw_counts.get("FB") or 0
+    weighted_gb = raw_counts.get("GB") or 0
+
+    # Rebuild every rate from weighted raw event totals.
+    blended["CSW%"] = (
+        round(weighted_csw / weighted_pitches * 100, 2)
+        if weighted_pitches > 0
+        else ""
+    )
+
+    blended["SwStr%"] = (
+        round(weighted_swstr / weighted_pitches * 100, 2)
+        if weighted_pitches > 0
+        else ""
+    )
+
+    blended["Ball%"] = (
+        round(weighted_ball / weighted_pitches * 100, 2)
+        if weighted_pitches > 0
+        else ""
+    )
+
+    blended["Brl/BIP%"] = (
+        round(weighted_barrels / weighted_bip * 100, 2)
+        if weighted_bip > 0
+        else ""
+    )
+
+    blended["HH%"] = (
+        round(weighted_hh / weighted_bip * 100, 2)
+        if weighted_bip > 0
+        else ""
+    )
+
+    blended["FB%"] = (
+        round(weighted_fb / weighted_bip * 100, 2)
+        if weighted_bip > 0
+        else ""
+    )
+
+    blended["GB%"] = (
+        round(weighted_gb / weighted_bip * 100, 2)
+        if weighted_bip > 0
+        else ""
+    )
+
+    # Preserve your current pitcher pulled-barrel behavior.
+    blended["PulledBrl%"] = blended["Brl/BIP%"]
+
+    blended["K%"] = (
+        round(weighted_k / weighted_bf * 100, 2)
+        if weighted_bf > 0
+        else ""
+    )
+
+    blended["BB%"] = (
+        round(weighted_bb / weighted_bf * 100, 2)
+        if weighted_bf > 0
+        else ""
+    )
+
+    weighted_ip = weighted_bf / 3 if weighted_bf > 0 else 0
+
+    blended["IP"] = (
+        round(weighted_ip, 1)
+        if weighted_ip > 0
+        else ""
+    )
+
+    blended["HR/9"] = (
+        round(weighted_hr / weighted_ip * 9, 2)
+        if weighted_ip > 0
+        else ""
+    )
+
+    # Contact metrics weighted by tracked BIP.
+    blended["xwOBA"] = weighted_average(
+        sources,
+        "xwOBA",
+        "BIP",
+    )
+
+    blended["xwOBAcon"] = weighted_average(
+        sources,
+        "xwOBAcon",
+        "BIP",
+    )
+
+    blended["AvgEV"] = weighted_average(
+        sources,
+        "AvgEV",
+        "BIP",
+    )
+
+    blended["AvgLA"] = weighted_average(
+        sources,
+        "AvgLA",
+        "BIP",
+    )
+
+    # Velocity weighted by pitches.
+    blended["FBv"] = weighted_average(
+        sources,
+        "FBv",
+        "Pitches",
+    )
+
+    # These are recalculated again in pitcher_detail.py,
+    # but retaining them here keeps the object complete.
     for field in PITCHER_SCORE_FIELDS:
-        blended[field] = blend_average_field(sources, field)
-
-    weighted_bip = 0.0
-    weighted_pitches = 0.0
-    weighted_bf = 0.0
-    weighted_ip = 0.0
-
-    weighted_fb = 0.0
-    weighted_gb = 0.0
-    weighted_hh = 0.0
-    weighted_barrels = 0.0
-    weighted_pulled_barrels = 0.0
-
-    weighted_csw = 0.0
-    weighted_swstr = 0.0
-    weighted_balls = 0.0
-
-    weighted_k = 0.0
-    weighted_bb = 0.0
-    weighted_hr = 0.0
-
-    for metrics, weight in sources:
-        source_bip = f(metric_value(metrics, "BIP"), 0)
-        source_pitches = f(metric_value(metrics, "Pitches"), 0)
-        source_bf = f(metric_value(metrics, "BF"), 0)
-        source_ip = f(metric_value(metrics, "IP"), 0)
-        source_hr = f(metric_value(metrics, "HR"), 0)
-        source_k = f(metric_value(metrics, "K"), 0)
-        source_bb = f(metric_value(metrics, "BB"), 0)
-
-        weighted_bip += source_bip * weight
-        weighted_pitches += source_pitches * weight
-        weighted_bf += source_bf * weight
-        weighted_ip += source_ip * weight
-
-        weighted_hr += source_hr * weight
-        weighted_k += source_k * weight
-        weighted_bb += source_bb * weight
-
-        if source_bip > 0:
-            source_fb_rate = f(metric_value(metrics, "FB%"), 0) / 100
-            source_gb_rate = f(metric_value(metrics, "GB%"), 0) / 100
-            source_hh_rate = f(metric_value(metrics, "HH%"), 0) / 100
-            source_barrel_rate = f(metric_value(metrics, "Brl/BIP%"), 0) / 100
-            source_pulled_barrel_rate = (
-                f(metric_value(metrics, "PulledBrl%"), 0) / 100
-            )
-
-            weighted_fb += source_bip * source_fb_rate * weight
-            weighted_gb += source_bip * source_gb_rate * weight
-            weighted_hh += source_bip * source_hh_rate * weight
-            weighted_barrels += source_bip * source_barrel_rate * weight
-            weighted_pulled_barrels += (
-                source_bip * source_pulled_barrel_rate * weight
-            )
-
-        if source_pitches > 0:
-            source_csw_rate = f(metric_value(metrics, "CSW%"), 0) / 100
-            source_swstr_rate = f(metric_value(metrics, "SwStr%"), 0) / 100
-            source_ball_rate = f(metric_value(metrics, "Ball%"), 0) / 100
-
-            weighted_csw += source_pitches * source_csw_rate * weight
-            weighted_swstr += source_pitches * source_swstr_rate * weight
-            weighted_balls += source_pitches * source_ball_rate * weight
-
-    blended["Pitches"] = round(weighted_pitches) if weighted_pitches else ""
-    blended["BF"] = round(weighted_bf) if weighted_bf else ""
-    blended["BIP"] = round(weighted_bip) if weighted_bip else ""
-    blended["HR"] = round(weighted_hr) if weighted_hr else 0
-    blended["K"] = round(weighted_k) if weighted_k else 0
-    blended["BB"] = round(weighted_bb) if weighted_bb else 0
-
-    if weighted_bip > 0:
-        blended["FB%"] = round(weighted_fb / weighted_bip * 100, 2)
-        blended["GB%"] = round(weighted_gb / weighted_bip * 100, 2)
-        blended["HH%"] = round(weighted_hh / weighted_bip * 100, 2)
-        blended["Brl/BIP%"] = round(
-            weighted_barrels / weighted_bip * 100,
-            2,
+        blended[field] = weighted_average(
+            sources,
+            field,
         )
-        blended["PulledBrl%"] = round(
-            weighted_pulled_barrels / weighted_bip * 100,
-            2,
-        )
-    else:
-        blended["FB%"] = ""
-        blended["GB%"] = ""
-        blended["HH%"] = ""
-        blended["Brl/BIP%"] = ""
-        blended["PulledBrl%"] = ""
-
-    if weighted_pitches > 0:
-        blended["CSW%"] = round(
-            weighted_csw / weighted_pitches * 100,
-            2,
-        )
-        blended["SwStr%"] = round(
-            weighted_swstr / weighted_pitches * 100,
-            2,
-        )
-        blended["Ball%"] = round(
-            weighted_balls / weighted_pitches * 100,
-            2,
-        )
-    else:
-        blended["CSW%"] = ""
-        blended["SwStr%"] = ""
-        blended["Ball%"] = ""
-
-    if weighted_bf > 0:
-        blended["K%"] = round(weighted_k / weighted_bf * 100, 2)
-        blended["BB%"] = round(weighted_bb / weighted_bf * 100, 2)
-    else:
-        blended["K%"] = ""
-        blended["BB%"] = ""
-
-    blended["IP"] = round(weighted_ip, 1) if weighted_ip else ""
-
-    if weighted_ip > 0:
-        blended["HR/9"] = round(weighted_hr / weighted_ip * 9, 2)
-    else:
-        blended["HR/9"] = ""
 
     for source in [last_30, season, longterm]:
         if source:
@@ -318,7 +366,6 @@ def blend_pitcher_metrics(last_30, season, longterm):
             break
 
     return blended
-
 
 def find_metrics(name, pitcher_id, lookup):
     last_30 = find_one_pitcher_metrics(name, pitcher_id, lookup["last_30_by_name"], lookup["last_30_by_id"])
@@ -421,6 +468,7 @@ def format_pitcher(name, team, opponent, lookup, pitcher_id=None, opponent_hitte
 
         "Pitches": clean_value(metrics.get("Pitches", "")),
         "BF": clean_value(metrics.get("BF", "")),
+        "BIP": clean_value(metrics.get("BIP", "")),
         "IP": clean_value(metrics.get("IP", "")),
 
         "HR Vulnerability": clean_value(metrics.get("HR Vulnerability", "")),
@@ -429,6 +477,14 @@ def format_pitcher(name, team, opponent, lookup, pitcher_id=None, opponent_hitte
 
         "xwOBA": clean_value(metrics.get("xwOBA", "")),
         "xwOBAcon": clean_value(metrics.get("xwOBAcon", "")),
+
+        "CSW": clean_value(metrics.get("CSW", "")),
+        "SwStr": clean_value(metrics.get("SwStr", "")),
+        "Ball": clean_value(metrics.get("Ball", "")),
+        "Barrels": clean_value(metrics.get("Barrels", "")),
+        "HH": clean_value(metrics.get("HH", "")),
+        "FB": clean_value(metrics.get("FB", "")),
+        "GB": clean_value(metrics.get("GB", "")),
 
         "CSW%": clean_value(metrics.get("CSW%", "")),
         "SwStr%": clean_value(metrics.get("SwStr%", "")),

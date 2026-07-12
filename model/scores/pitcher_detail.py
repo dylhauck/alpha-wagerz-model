@@ -10,6 +10,16 @@ def safe_float(value, default=0):
 def clamp(value, low=0, high=100):
     return max(low, min(high, value))
 
+def normalize_score(value, low, high):
+    if high <= low:
+        return 50
+
+    return clamp(
+        ((value - low) / (high - low)) * 100,
+        0,
+        100,
+    )
+
 
 def score_fly_ball_profile(pitcher):
     pitcher_fb = safe_float(pitcher.get("FB%"))
@@ -32,30 +42,49 @@ def score_fly_ball_profile(pitcher):
         - 35
     )
 
-    return round(clamp(score, 5, 95), 1)
+    return round(clamp(score, 5, 70), 1)
 
 
 def score_barrel_profile(pitcher):
     pitcher_brl = safe_float(pitcher.get("Brl/BIP%"))
     pitcher_hh = safe_float(pitcher.get("HH%"))
     pitcher_xwobacon = safe_float(pitcher.get("xwOBAcon"))
-    hr9 = safe_float(pitcher.get("HR/9"))
+    pitcher_hr9 = safe_float(pitcher.get("HR/9"))
 
-    opp_brl = safe_float(pitcher.get("Opponent Brl/BIP%"), 8)
-    opp_pulled_brl = safe_float(pitcher.get("Opponent PulledBrl%"), 4)
-    opp_hh = safe_float(pitcher.get("Opponent HH%"), 39)
-    opp_xwobacon = safe_float(pitcher.get("Opponent xwOBAcon"), 0.360)
+    opponent_brl = safe_float(
+        pitcher.get("Opponent Brl/BIP%"),
+        8,
+    )
+    opponent_pulled_brl = safe_float(
+        pitcher.get("Opponent PulledBrl%"),
+        4,
+    )
+    opponent_hh = safe_float(
+        pitcher.get("Opponent HH%"),
+        39,
+    )
+    opponent_xwobacon = safe_float(
+        pitcher.get("Opponent xwOBAcon"),
+        0.360,
+    )
+
+    pitcher_profile = (
+        normalize_score(pitcher_brl, 2, 16) * 0.40
+        + normalize_score(pitcher_hh, 25, 55) * 0.20
+        + normalize_score(pitcher_xwobacon, 0.250, 0.475) * 0.25
+        + normalize_score(pitcher_hr9, 0.25, 2.25) * 0.15
+    )
+
+    matchup_profile = (
+        normalize_score(opponent_brl, 2, 16) * 0.40
+        + normalize_score(opponent_pulled_brl, 0.5, 10) * 0.25
+        + normalize_score(opponent_hh, 25, 55) * 0.15
+        + normalize_score(opponent_xwobacon, 0.250, 0.475) * 0.20
+    )
 
     score = (
-        pitcher_brl * 3.75
-        + pitcher_hh * 0.80
-        + pitcher_xwobacon * 130
-        + hr9 * 5.5
-        + opp_brl * 3.25
-        + opp_pulled_brl * 2.75
-        + opp_hh * 0.70
-        + opp_xwobacon * 115
-        - 95
+        pitcher_profile * 0.60
+        + matchup_profile * 0.40
     )
 
     return round(clamp(score, 5, 95), 1)
