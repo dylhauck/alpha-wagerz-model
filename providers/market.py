@@ -258,11 +258,28 @@ def get_book_markets(odds_payload, bookmaker):
     return markets if isinstance(markets, list) else []
 
 
+def market_name_key(value: Any) -> str:
+    key = normalize(value)
+    key = key.replace("&", "and")
+    key = re.sub(r"[^a-z0-9]+", " ", key)
+    return " ".join(key.split())
+
+
 def find_market(markets, exact_name):
-    target = normalize(exact_name)
+    target = market_name_key(exact_name)
 
     for market in markets:
-        if normalize(market.get("name")) == target:
+        if market_name_key(market.get("name")) == target:
+            return market
+
+    return None
+
+
+def find_market_any(markets, names):
+    targets = {market_name_key(name) for name in names}
+
+    for market in markets:
+        if market_name_key(market.get("name")) in targets:
             return market
 
     return None
@@ -279,9 +296,19 @@ def first_odds_row(market):
     return {}
 
 
-def first_available_market(odds_payload, market_name):
+def first_available_market(odds_payload, market_names):
+    names = (
+        [market_names]
+        if isinstance(market_names, str)
+        else list(market_names)
+    )
+
     for bookmaker in BOOKMAKERS:
-        market = find_market(get_book_markets(odds_payload, bookmaker), market_name)
+        market = find_market_any(
+            get_book_markets(odds_payload, bookmaker),
+            names,
+        )
+
         if market:
             return bookmaker, market
 
@@ -289,7 +316,10 @@ def first_available_market(odds_payload, market_name):
 
 
 def parse_moneyline(odds_payload):
-    bookmaker, market = first_available_market(odds_payload, "ML")
+    bookmaker, market = first_available_market(
+        odds_payload,
+        ["ML", "Moneyline", "Money Line"],
+    )
     row = first_odds_row(market)
 
     return {
@@ -300,7 +330,10 @@ def parse_moneyline(odds_payload):
 
 
 def parse_spread(odds_payload):
-    bookmaker, market = first_available_market(odds_payload, "Spread")
+    bookmaker, market = first_available_market(
+        odds_payload,
+        ["Spread", "Run Line", "Runline"],
+    )
     row = first_odds_row(market)
 
     hdp = to_float(row.get("hdp"))
@@ -315,7 +348,10 @@ def parse_spread(odds_payload):
 
 
 def parse_game_total(odds_payload):
-    bookmaker, market = first_available_market(odds_payload, "Totals")
+    bookmaker, market = first_available_market(
+        odds_payload,
+        ["Totals", "Total", "Game Total"],
+    )
     row = first_odds_row(market)
 
     return {
@@ -336,37 +372,173 @@ def parse_team_totals(odds_payload):
         "home_under_price": None,
     }
 
+    away_names = [
+        "Team Total Away",
+        "Team Totals Away",
+        "Away Team Total",
+        "Away Team Totals",
+        "Team Total (Runs) Away",
+        "Team Total Runs Away",
+    ]
+    home_names = [
+        "Team Total Home",
+        "Team Totals Home",
+        "Home Team Total",
+        "Home Team Totals",
+        "Team Total (Runs) Home",
+        "Team Total Runs Home",
+    ]
+
     for bookmaker in BOOKMAKERS:
         markets = get_book_markets(odds_payload, bookmaker)
-        away_market = find_market(markets, "Team Total (Runs) Away")
-        home_market = find_market(markets, "Team Total (Runs) Home")
 
-        if away_market:
+        away_market = find_market_any(markets, away_names)
+        home_market = find_market_any(markets, home_names)
+
+        if away_market and result["away"] is None:
             row = first_odds_row(away_market)
             result["away"] = to_float(row.get("hdp"))
             result["away_over_price"] = decimal_to_american(row.get("over"))
             result["away_under_price"] = decimal_to_american(row.get("under"))
 
-        if home_market:
+        if home_market and result["home"] is None:
             row = first_odds_row(home_market)
             result["home"] = to_float(row.get("hdp"))
             result["home_over_price"] = decimal_to_american(row.get("over"))
             result["home_under_price"] = decimal_to_american(row.get("under"))
 
-        if away_market or home_market:
+        if result["away"] is not None and result["home"] is not None:
             break
 
     return result
 
 
 def extract_player_from_prop_label(label):
-    suffix = "(Pitcher Strikeouts)"
     value = str(label or "").strip()
 
-    if not value.endswith(suffix):
+    if not value:
         return ""
 
-    return value[: -len(suffix)].strip()
+    patterns = [
+        r"\s*\(Pitcher Strikeouts\)\s*$",
+        r"\s*\(Strikeouts\)\s*$",
+        r"\s*-\s*Pitcher Strikeouts\s*$",
+        r"\s*-\s*Strikeouts\s*$",
+        r"\s+Pitcher Strikeouts\s*$",
+        r"\s+Strikeouts\s*$",
+    ]
+
+    cleaned = value
+
+    for pattern in patterns:
+        cleaned = re.sub(
+            pattern,
+            "",
+            cleaned,
+            flags=re.IGNORECASE,
+        ).strip()
+
+    if cleaned != value:
+        return cleaned
+
+    return ""
+
+
+def is_pitcher_strikeout_market(market):
+    name = market_name_key(market.get("name"))
+
+    return any(
+        marker in name
+        for marker in [
+            "pitcher strikeout",
+            "player strikeout",
+            "strikeouts pitcher",
+        ]
+    )
+
+
+def row_is_pitcher_strikeout(row, market):
+    label = str(row.get("label") or "").lower()
+    market_name = market_name_key(market.get("name"))
+
+    return (
+        "pitcher strikeout" in label
+        or "(strikeouts)" in label
+        or "pitcher strikeout" in market_name
+        or "player strikeout" in market_name
+    )
+
+
+def player_name_from_prop_row(row, market):
+    for key in (
+        "player",
+        "playerName",
+        "participant",
+        "participantName",
+        "description",
+    ):
+        value = str(row.get(key) or "").strip()
+
+        if value:
+            return value
+
+    label = str(row.get("label") or "").strip()
+    extracted = extract_player_from_prop_label(label)
+
+    if extracted:
+        return extracted
+
+    # Dedicated pitcher-strikeout markets sometimes use the raw label as
+    # the player name.
+    if is_pitcher_strikeout_market(market):
+        lowered = label.lower()
+
+        if (
+            label
+            and lowered not in {"over", "under"}
+            and not re.fullmatch(r"[ou]\s*\d+(?:\.\d+)?", lowered)
+        ):
+            return label
+
+    return ""
+
+
+def merge_pitcher_prop(
+    props,
+    player,
+    line,
+    over_price,
+    under_price,
+    bookmaker,
+):
+    normalized_name = normalize_player_name(player)
+
+    if not normalized_name or line is None:
+        return
+
+    existing = props.get(normalized_name)
+
+    if existing is None:
+        props[normalized_name] = {
+            "player": player,
+            "normalized_name": normalized_name,
+            "line": line,
+            "over_price": over_price,
+            "under_price": under_price,
+            "bookmaker": bookmaker,
+            "bookmaker_key": bookmaker.lower().replace(" ", ""),
+            "market_name": "Pitcher Strikeouts",
+        }
+        return
+
+    if existing.get("line") is None:
+        existing["line"] = line
+
+    if existing.get("over_price") is None and over_price is not None:
+        existing["over_price"] = over_price
+
+    if existing.get("under_price") is None and under_price is not None:
+        existing["under_price"] = under_price
 
 
 def parse_pitcher_strikeouts(odds_payload):
@@ -374,38 +546,59 @@ def parse_pitcher_strikeouts(odds_payload):
 
     for bookmaker in BOOKMAKERS:
         markets = get_book_markets(odds_payload, bookmaker)
-        player_props = find_market(markets, "Player Props")
 
-        if not player_props:
-            continue
+        for market in markets:
+            market_key = market_name_key(market.get("name"))
 
-        rows = player_props.get("odds", [])
-        if not isinstance(rows, list):
-            continue
-
-        for row in rows:
-            player = extract_player_from_prop_label(row.get("label"))
-            line = to_float(row.get("hdp"))
-
-            if not player or line is None:
+            # The API may return all props inside "Player Props", or it may
+            # return a dedicated pitcher-strikeout market.
+            if (
+                market_key != "player props"
+                and not is_pitcher_strikeout_market(market)
+            ):
                 continue
 
-            normalized_name = normalize_player_name(player)
-            if not normalized_name or normalized_name in props:
+            rows = market.get("odds", [])
+
+            if not isinstance(rows, list):
                 continue
 
-            props[normalized_name] = {
-                "player": player,
-                "normalized_name": normalized_name,
-                "line": line,
-                "over_price": decimal_to_american(row.get("over")),
-                "under_price": decimal_to_american(row.get("under")),
-                "bookmaker": bookmaker,
-                "bookmaker_key": bookmaker.lower().replace(" ", ""),
-                "market_name": "Pitcher Strikeouts",
-            }
+            for row in rows:
+                if not row_is_pitcher_strikeout(row, market):
+                    continue
+
+                player = player_name_from_prop_row(row, market)
+                line = to_float(
+                    row.get("hdp")
+                    if row.get("hdp") is not None
+                    else row.get("line")
+                )
+
+                if not player or line is None:
+                    continue
+
+                merge_pitcher_prop(
+                    props=props,
+                    player=player,
+                    line=line,
+                    over_price=decimal_to_american(row.get("over")),
+                    under_price=decimal_to_american(row.get("under")),
+                    bookmaker=bookmaker,
+                )
 
     return props
+
+
+def market_names_by_bookmaker(odds_payload):
+    result = {}
+
+    for bookmaker in BOOKMAKERS:
+        result[bookmaker] = [
+            str(market.get("name") or "")
+            for market in get_book_markets(odds_payload, bookmaker)
+        ]
+
+    return result
 
 
 def build_live_payload(api_event, local_game, odds_payload):
@@ -590,10 +783,28 @@ def build_market_lines():
             output_by_game_id[game_id] = payload
             used_game_ids.add(game_id)
 
+            team_totals = payload.get("team_totals", {}) or {}
+            has_team_totals = bool(
+                team_totals.get("away") is not None
+                or team_totals.get("home") is not None
+            )
+
             print(
                 f"   {local_game.get('game')}: "
-                f"{len(payload['pitcher_strikeouts'])} pitcher K props"
+                f"{len(payload['pitcher_strikeouts'])} pitcher K props | "
+                f"team totals: {'yes' if has_team_totals else 'no'}"
             )
+
+            if (
+                not payload["pitcher_strikeouts"]
+                or not has_team_totals
+                or payload.get("total") is None
+                or not payload.get("moneyline", {}).get("away")
+            ):
+                print(
+                    "      Markets returned:",
+                    market_names_by_bookmaker(odds_payload),
+                )
 
     except Exception as exc:
         api_failed = True
