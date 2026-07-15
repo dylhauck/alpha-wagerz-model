@@ -98,13 +98,13 @@ def run_full_update():
     validate_pipeline()
     validate_model_features()
 
-    print("\n📄 Google Sheets")
-    update_full_slate_sheets()
-
     print("\n🗄️ Saving history")
     save_daily_history()
 
     print("\n🌐 Publishing web data")
     publish_to_web()
+
+    print("\n📄 Google Sheets")
+    update_full_slate_sheets()
 
     print("\n✅ Alpha Wagerz full update complete.")

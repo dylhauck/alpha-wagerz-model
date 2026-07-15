@@ -198,7 +198,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 592626,Joc Pederson,140,Texas Rangers,TEX,DH,Designated Hitter,L,L
 673962,Josh Jung,140,Texas Rangers,TEX,3B,Third Base,R,R
 679822,Justin Foscue,140,Texas Rangers,TEX,2B,Second Base,R,R
-677958,Kumar Rocker,140,Texas Rangers,TEX,P,Pitcher,,
+677958,Kumar Rocker,140,Texas Rangers,TEX,P,Pitcher,R,R
 543309,Kyle Higashioka,140,Texas Rangers,TEX,C,Catcher,R,R
 669022,MacKenzie Gore,140,Texas Rangers,TEX,P,Pitcher,L,L
 543135,Nathan Eovaldi,140,Texas Rangers,TEX,P,Pitcher,R,R
@@ -466,7 +466,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 814439,Ryan Waldschmidt,109,Arizona Diamondbacks,AZ,CF,Outfielder,R,R
 664199,Taylor Clarke,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
 694374,Tim Tawa,109,Arizona Diamondbacks,AZ,LF,Outfielder,R,R
-694371,Tommy Troy,109,Arizona Diamondbacks,AZ,LF,Outfielder,R,R
 668939,Adley Rutschman,110,Baltimore Orioles,BAL,C,Catcher,S,R
 544150,Albert Suárez,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 552640,Andrew Kittredge,110,Baltimore Orioles,BAL,P,Pitcher,R,R
@@ -732,7 +731,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 690925,Clayton Beeter,120,Washington Nationals,WSH,P,Pitcher,R,R
 678554,Curtis Mead,120,Washington Nationals,WSH,3B,Third Base,R,R
 695734,Daylen Lile,120,Washington Nationals,WSH,LF,Outfielder,L,R
-686452,Drew Millas,120,Washington Nationals,WSH,C,Catcher,S,R
 686611,Dylan Crews,120,Washington Nationals,WSH,RF,Outfielder,R,R
 656492,Foster Griffin,120,Washington Nationals,WSH,P,Pitcher,R,L
 696285,Jacob Young,120,Washington Nationals,WSH,CF,Outfielder,R,R
@@ -742,6 +740,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 664875,Justin Lawrence,120,Washington Nationals,WSH,P,Pitcher,R,R
 660688,Keibert Ruiz,120,Washington Nationals,WSH,C,Catcher,S,R
 671277,Luis García Jr.,120,Washington Nationals,WSH,1B,First Base,L,R
+668820,Max Kranick,120,Washington Nationals,WSH,P,Pitcher,R,R
 683083,Nasim Nuñez,120,Washington Nationals,WSH,2B,Second Base,S,R
 687377,Orlando Ribalta,120,Washington Nationals,WSH,P,Pitcher,R,R
 676571,PJ Poulin,120,Washington Nationals,WSH,P,Pitcher,R,L
@@ -759,8 +758,8 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 642207,Devin Williams,121,New York Mets,NYM,P,Pitcher,R,R
 676572,Eric Wagaman,121,New York Mets,NYM,1B,First Base,R,R
 682626,Francisco Alvarez,121,New York Mets,NYM,C,Catcher,R,R
-596019,Francisco Lindor,121,New York Mets,NYM,SS,Shortstop,S,R
-642547,Freddy Peralta,121,New York Mets,NYM,P,Pitcher,R,R
+596019,Francisco Lindor,121,New York Mets,NYM,SS,Shortstop,,
+642547,Freddy Peralta,121,New York Mets,NYM,P,Pitcher,,
 623211,Huascar Brazobán,121,New York Mets,NYM,P,Pitcher,R,R
 676724,Jared Young,121,New York Mets,NYM,1B,First Base,L,R
 593871,Jorge Polanco,121,New York Mets,NYM,DH,Designated Hitter,S,R

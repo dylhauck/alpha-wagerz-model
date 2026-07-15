@@ -327,8 +327,9 @@ def create_weather_graphic():
     rows = load_json(WEATHER_FILE, default=[])
 
     if not rows:
-        raise RuntimeError(f"No weather rows found at {WEATHER_FILE}")
-
+        print(f"⏭️ No weather rows found at {WEATHER_FILE}. Skipping weather graphic.")
+        return None
+    
     rows = sorted(
         rows,
         key=lambda r: (

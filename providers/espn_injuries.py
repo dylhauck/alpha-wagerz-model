@@ -14,6 +14,44 @@ MLB_TEAMS_URL = "https://statsapi.mlb.com/api/v1/teams"
 MLB_TRANSACTIONS_URL = "https://statsapi.mlb.com/api/v1/transactions"
 MLB_PEOPLE_URL = "https://statsapi.mlb.com/api/v1/people"
 
+ESPN_ROSTER_URL = (
+    "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/"
+    "teams/{team_slug}/roster"
+)
+
+ESPN_TEAMS = {
+    "ari": "Arizona Diamondbacks",
+    "atl": "Atlanta Braves",
+    "bal": "Baltimore Orioles",
+    "bos": "Boston Red Sox",
+    "chc": "Chicago Cubs",
+    "chw": "Chicago White Sox",
+    "cin": "Cincinnati Reds",
+    "cle": "Cleveland Guardians",
+    "col": "Colorado Rockies",
+    "det": "Detroit Tigers",
+    "hou": "Houston Astros",
+    "kc": "Kansas City Royals",
+    "laa": "Los Angeles Angels",
+    "lad": "Los Angeles Dodgers",
+    "mia": "Miami Marlins",
+    "mil": "Milwaukee Brewers",
+    "min": "Minnesota Twins",
+    "nym": "New York Mets",
+    "nyy": "New York Yankees",
+    "oak": "Athletics",
+    "phi": "Philadelphia Phillies",
+    "pit": "Pittsburgh Pirates",
+    "sd": "San Diego Padres",
+    "sf": "San Francisco Giants",
+    "sea": "Seattle Mariners",
+    "stl": "St. Louis Cardinals",
+    "tb": "Tampa Bay Rays",
+    "tex": "Texas Rangers",
+    "tor": "Toronto Blue Jays",
+    "wsh": "Washington Nationals",
+}
+
 OUTPUT_FILE = Path("data/processed/injury_report.json")
 
 REQUEST_TIMEOUT = 30
@@ -472,21 +510,384 @@ def build_current_status_rows() -> list[dict[str, Any]]:
     return rows
 
 
+
+def normalized_name(value: Any) -> str:
+    return re.sub(
+        r"[^a-z0-9]+",
+        " ",
+        clean_text(value).lower(),
+    ).strip()
+
+
+def iter_espn_athletes(payload: dict[str, Any]):
+    for group in payload.get("athletes", []):
+        if not isinstance(group, dict):
+            continue
+
+        group_position = clean_text(group.get("position"))
+
+        for athlete in group.get("items", []):
+            if not isinstance(athlete, dict):
+                continue
+
+            yield athlete, group_position
+
+
+def value_text(value: Any) -> str:
+    if isinstance(value, dict):
+        preferred_keys = [
+            "displayName",
+            "name",
+            "shortName",
+            "description",
+            "detail",
+            "details",
+            "shortComment",
+            "longComment",
+            "comment",
+            "status",
+            "type",
+            "returnDate",
+            "date",
+        ]
+
+        parts = [
+            value_text(value.get(key))
+            for key in preferred_keys
+            if value.get(key) not in (None, "", [], {})
+        ]
+
+        if parts:
+            return clean_text(" ".join(parts))
+
+        return clean_text(
+            " ".join(
+                value_text(item)
+                for item in value.values()
+                if item not in (None, "", [], {})
+            )
+        )
+
+    if isinstance(value, list):
+        return clean_text(
+            " ".join(
+                value_text(item)
+                for item in value
+                if item not in (None, "", [], {})
+            )
+        )
+
+    return clean_text(value)
+
+
+def collect_espn_injury_text(athlete: dict[str, Any]) -> str:
+    candidates: list[Any] = []
+
+    for key, value in athlete.items():
+        lowered = clean_text(key).lower()
+
+        if any(
+            marker in lowered
+            for marker in [
+                "injur",
+                "status",
+                "availability",
+            ]
+        ):
+            candidates.append(value)
+
+    return clean_text(" ".join(value_text(item) for item in candidates))
+
+
+def is_espn_injury_status(text: str) -> bool:
+    lowered = text.lower()
+
+    healthy_markers = [
+        "active",
+        "healthy",
+        "available",
+        "no injury",
+    ]
+
+    injury_markers = [
+        "day-to-day",
+        "day to day",
+        "dtd",
+        "questionable",
+        "doubtful",
+        "out",
+        "injured",
+        "injury",
+        "il",
+        "disabled list",
+        "soreness",
+        "tightness",
+        "strain",
+        "sprain",
+        "inflammation",
+        "fracture",
+        "concussion",
+        "illness",
+        "surgery",
+    ]
+
+    if any(marker in lowered for marker in injury_markers):
+        return True
+
+    if any(marker in lowered for marker in healthy_markers):
+        return False
+
+    return False
+
+
+def espn_availability(text: str) -> str:
+    lowered = text.lower()
+
+    if any(
+        marker in lowered
+        for marker in [
+            "day-to-day",
+            "day to day",
+            "dtd",
+            "questionable",
+        ]
+    ):
+        return "DTD"
+
+    return "OUT"
+
+
+def espn_status_label(text: str) -> str:
+    lowered = text.lower()
+
+    if any(
+        marker in lowered
+        for marker in [
+            "day-to-day",
+            "day to day",
+            "dtd",
+            "questionable",
+        ]
+    ):
+        return "Day-To-Day"
+
+    if "doubtful" in lowered:
+        return "Doubtful"
+
+    if "out" in lowered:
+        return "Out"
+
+    return "Injury"
+
+
+def fetch_espn_roster_injuries() -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    errors: list[str] = []
+
+    session = requests.Session()
+    session.headers.update(
+        {
+            "Accept": "application/json",
+            "User-Agent": "Alpha-Wagerz/1.0",
+        }
+    )
+
+    for team_slug, team_name in ESPN_TEAMS.items():
+        url = ESPN_ROSTER_URL.format(team_slug=team_slug)
+
+        try:
+            response = session.get(
+                url,
+                timeout=REQUEST_TIMEOUT,
+            )
+            response.raise_for_status()
+            payload = response.json()
+        except Exception as exc:
+            errors.append(f"{team_slug}: {exc}")
+            continue
+
+        for athlete, group_position in iter_espn_athletes(payload):
+            injury_text = collect_espn_injury_text(athlete)
+
+            if not injury_text or not is_espn_injury_status(injury_text):
+                continue
+
+            position = athlete.get("position") or {}
+            position_text = (
+                clean_text(position.get("abbreviation"))
+                if isinstance(position, dict)
+                else clean_text(position)
+            )
+
+            if not position_text:
+                position_text = group_position
+
+            athlete_name = clean_text(
+                athlete.get("fullName")
+                or athlete.get("displayName")
+            )
+
+            if not athlete_name:
+                continue
+
+            availability = espn_availability(injury_text)
+
+            rows.append(
+                {
+                    "team": team_name,
+                    "player_id": None,
+                    "espn_id": clean_text(athlete.get("id")),
+                    "player": athlete_name,
+                    "position": position_text,
+                    "availability": availability,
+                    "espn_status": espn_status_label(injury_text),
+                    "injury": parse_injury(injury_text),
+                    "estimated_return": "Unknown",
+                    "comment": injury_text,
+                    "source": "ESPN API",
+                    "source_type": "injury",
+                    "transaction_date": "",
+                }
+            )
+
+    if not rows and errors:
+        raise RuntimeError(
+            "ESPN roster API returned no injury rows. "
+            + " | ".join(errors[:5])
+        )
+
+    deduped: dict[tuple[str, str], dict[str, Any]] = {}
+
+    for row in rows:
+        key = (
+            normalized_name(row.get("team")),
+            normalized_name(row.get("player")),
+        )
+        deduped[key] = row
+
+    return list(deduped.values())
+
+
+def merge_injury_rows(
+    espn_rows: list[dict[str, Any]],
+    mlb_rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    merged: dict[tuple[str, str], dict[str, Any]] = {}
+
+    # MLB Transactions stays authoritative for:
+    # - official injured-list placements
+    # - OUT statuses
+    # - suspensions
+    for row in mlb_rows:
+        key = (
+            normalized_name(row.get("team")),
+            normalized_name(row.get("player")),
+        )
+        merged[key] = dict(row)
+
+    # ESPN only supplements genuine day-to-day players.
+    # It cannot overwrite an official MLB OUT or suspension record.
+    for espn_row in espn_rows:
+        if espn_row.get("availability") != "DTD":
+            continue
+
+        key = (
+            normalized_name(espn_row.get("team")),
+            normalized_name(espn_row.get("player")),
+        )
+
+        existing = merged.get(key)
+
+        if existing and existing.get("source_type") == "suspension":
+            continue
+
+        if existing and existing.get("availability") == "OUT":
+            continue
+
+        combined = dict(existing or {})
+        combined.update(espn_row)
+
+        if existing:
+            combined["player_id"] = existing.get("player_id")
+            combined["position"] = (
+                espn_row.get("position")
+                or existing.get("position")
+                or ""
+            )
+            combined["transaction_date"] = existing.get(
+                "transaction_date",
+                "",
+            )
+            combined["source"] = "ESPN API + MLB Transactions"
+        else:
+            combined.setdefault("player_id", None)
+            combined.setdefault("transaction_date", "")
+            combined["source"] = "ESPN API"
+
+        merged[key] = combined
+
+    rows = list(merged.values())
+
+    rows.sort(
+        key=lambda row: (
+            row.get("team", ""),
+            0 if row.get("availability") == "DTD" else 1,
+            row.get("player", ""),
+        )
+    )
+
+    return rows
+
+
 def build_injury_report():
-    players = build_current_status_rows()
+    espn_rows: list[dict[str, Any]] = []
+    espn_error = ""
+
+    try:
+        espn_rows = fetch_espn_roster_injuries()
+        print(f"   ESPN API injuries: {len(espn_rows)}")
+    except Exception as exc:
+        espn_error = str(exc)
+        print(f"⚠️ ESPN API injury pull failed: {exc}")
+
+    mlb_rows = build_current_status_rows()
+    print(f"   MLB transaction injuries/suspensions: {len(mlb_rows)}")
+
+    players = merge_injury_rows(
+        espn_rows,
+        mlb_rows,
+    )
+
+    dtd_count = sum(
+        1
+        for player in players
+        if player.get("availability") == "DTD"
+    )
+    out_count = sum(
+        1
+        for player in players
+        if player.get("availability") == "OUT"
+    )
 
     payload = {
         "generated_at": datetime.now()
         .astimezone()
         .isoformat(timespec="seconds"),
-        "primary_source": "MLB Transactions",
-        "espn_available": False,
-        "espn_error": "",
+        "primary_source": (
+            "ESPN API + MLB Transactions"
+            if espn_rows
+            else "MLB Transactions"
+        ),
+        "espn_available": bool(espn_rows),
+        "espn_error": espn_error,
         "player_count": len(players),
+        "dtd_count": dtd_count,
+        "out_count": out_count,
         "players": players,
         "notes": (
-            "Estimated return values are official eligibility dates derived "
-            "from IL placement length when MLB provides enough information."
+            "Day-to-day statuses are read from ESPN's structured roster API. "
+            "Official injured-list and suspension records are supplemented "
+            "from MLB Transactions."
         ),
     }
 
@@ -501,8 +902,8 @@ def build_injury_report():
     )
 
     print(
-        f"✅ Saved MLB injury report for "
-        f"{len(players)} players"
+        f"✅ Saved injury report for {len(players)} players "
+        f"({dtd_count} DTD, {out_count} OUT)"
     )
     print(f"📁 {OUTPUT_FILE}")
 

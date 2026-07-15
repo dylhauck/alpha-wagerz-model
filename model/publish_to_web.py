@@ -13,6 +13,7 @@ FILES_TO_PUBLISH = [
     "hr_targets.json",
     "game_projections.json",
     "market_lines.json",
+    "injury_report.json",
 ]
 
 
