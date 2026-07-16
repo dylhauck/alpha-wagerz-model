@@ -1,0 +1,1217 @@
+[
+  {
+    "game_id": "824766",
+    "date": "2026-07-17",
+    "game": "Tampa Bay Rays @ Boston Red Sox",
+    "away_team": "Tampa Bay Rays",
+    "home_team": "Boston Red Sox",
+    "away_team_id": 139,
+    "home_team_id": 111,
+    "away_sp": "Griffin Jax",
+    "away_sp_id": 643377,
+    "home_sp": "",
+    "home_sp_id": "",
+    "venue": "Fenway Park",
+    "status": "Scheduled",
+    "game_date_utc": "2026-07-17T17:35:00Z",
+    "game_time": "12:35 PM",
+    "game_time_sort": "12:35",
+    "away_hitters": [],
+    "home_hitters": [],
+    "hitters": [],
+    "pitchers": [],
+    "away_pitcher": {},
+    "home_pitcher": {},
+    "weather": {
+      "game_id": "824766",
+      "game": "Tampa Bay Rays @ Boston Red Sox",
+      "venue": "Fenway Park",
+      "temperature": 75.2,
+      "humidity": 18,
+      "conditions": "Clear Sky",
+      "wind_direction": "NEUTRAL",
+      "wind_speed": 8.8,
+      "wind_degrees": 304,
+      "roof": "open",
+      "forecast_time_utc": "2026-07-17T18:00:00+00:00"
+    },
+    "market": {
+      "game_id": "824766",
+      "game": "Tampa Bay Rays @ Boston Red Sox",
+      "away_team": "Tampa Bay Rays",
+      "home_team": "Boston Red Sox",
+      "bookmaker": "",
+      "bookmaker_key": "",
+      "odds_event_id": 71409220,
+      "moneyline": {
+        "away": "",
+        "home": ""
+      },
+      "spread": {
+        "away": "",
+        "away_price": "",
+        "home": "",
+        "home_price": ""
+      },
+      "total": "",
+      "game_total": {
+        "line": "",
+        "over_price": "",
+        "under_price": ""
+      },
+      "team_totals": {
+        "away": "",
+        "away_over_price": "",
+        "away_under_price": "",
+        "home": "",
+        "home_over_price": "",
+        "home_under_price": ""
+      },
+      "pitcher_strikeouts": {},
+      "market_source": "odds_api_io",
+      "market_status": "live",
+      "market_updated_at": "2026-07-16T06:04:31Z"
+    },
+    "projection": {},
+    "slate_summary": {
+      "top_hr_target": "",
+      "top_pitcher": "",
+      "alpha_game_rating": "",
+      "notes": ""
+    }
+  },
+  {
+    "game_id": "823524",
+    "date": "2026-07-17",
+    "game": "Los Angeles Dodgers @ New York Yankees",
+    "away_team": "Los Angeles Dodgers",
+    "home_team": "New York Yankees",
+    "away_team_id": 119,
+    "home_team_id": 147,
+    "away_sp": "",
+    "away_sp_id": "",
+    "home_sp": "",
+    "home_sp_id": "",
+    "venue": "Yankee Stadium",
+    "status": "Scheduled",
+    "game_date_utc": "2026-07-17T23:05:00Z",
+    "game_time": "6:05 PM",
+    "game_time_sort": "18:05",
+    "away_hitters": [],
+    "home_hitters": [],
+    "hitters": [],
+    "pitchers": [],
+    "away_pitcher": {},
+    "home_pitcher": {},
+    "weather": {
+      "game_id": "823524",
+      "game": "Los Angeles Dodgers @ New York Yankees",
+      "venue": "Yankee Stadium",
+      "temperature": 81.4,
+      "humidity": 33,
+      "conditions": "Broken Clouds",
+      "wind_direction": "NEUTRAL",
+      "wind_speed": 8.8,
+      "wind_degrees": 178,
+      "roof": "open",
+      "forecast_time_utc": "2026-07-18T00:00:00+00:00"
+    },
+    "market": {
+      "game_id": "823524",
+      "game": "Los Angeles Dodgers @ New York Yankees",
+      "away_team": "Los Angeles Dodgers",
+      "home_team": "New York Yankees",
+      "bookmaker": "FanDuel",
+      "bookmaker_key": "fanduel",
+      "odds_event_id": 63303845,
+      "moneyline": {
+        "away": -108,
+        "home": -108
+      },
+      "spread": {
+        "away": "",
+        "away_price": "",
+        "home": "",
+        "home_price": ""
+      },
+      "total": "",
+      "game_total": {
+        "line": "",
+        "over_price": "",
+        "under_price": ""
+      },
+      "team_totals": {
+        "away": "",
+        "away_over_price": "",
+        "away_under_price": "",
+        "home": "",
+        "home_over_price": "",
+        "home_under_price": ""
+      },
+      "pitcher_strikeouts": {},
+      "market_source": "odds_api_io",
+      "market_status": "live",
+      "market_updated_at": "2026-07-16T06:04:31Z"
+    },
+    "projection": {},
+    "slate_summary": {
+      "top_hr_target": "",
+      "top_pitcher": "",
+      "alpha_game_rating": "",
+      "notes": ""
+    }
+  },
+  {
+    "game_id": "824414",
+    "date": "2026-07-17",
+    "game": "Pittsburgh Pirates @ Cleveland Guardians",
+    "away_team": "Pittsburgh Pirates",
+    "home_team": "Cleveland Guardians",
+    "away_team_id": 134,
+    "home_team_id": 114,
+    "away_sp": "Jared Jones",
+    "away_sp_id": 683003,
+    "home_sp": "Gavin Williams",
+    "home_sp_id": 668909,
+    "venue": "Progressive Field",
+    "status": "Scheduled",
+    "game_date_utc": "2026-07-17T23:10:00Z",
+    "game_time": "6:10 PM",
+    "game_time_sort": "18:10",
+    "away_hitters": [],
+    "home_hitters": [],
+    "hitters": [],
+    "pitchers": [],
+    "away_pitcher": {},
+    "home_pitcher": {},
+    "weather": {
+      "game_id": "824414",
+      "game": "Pittsburgh Pirates @ Cleveland Guardians",
+      "venue": "Progressive Field",
+      "temperature": 80.4,
+      "humidity": 58,
+      "conditions": "Broken Clouds",
+      "wind_direction": "OUT",
+      "wind_speed": 0.5,
+      "wind_degrees": 257,
+      "roof": "open",
+      "forecast_time_utc": "2026-07-18T00:00:00+00:00"
+    },
+    "market": {
+      "game_id": "824414",
+      "game": "Pittsburgh Pirates @ Cleveland Guardians",
+      "away_team": "Pittsburgh Pirates",
+      "home_team": "Cleveland Guardians",
+      "bookmaker": "FanDuel",
+      "bookmaker_key": "fanduel",
+      "odds_event_id": 63301597,
+      "moneyline": {
+        "away": 106,
+        "home": -123
+      },
+      "spread": {
+        "away": "",
+        "away_price": "",
+        "home": "",
+        "home_price": ""
+      },
+      "total": "",
+      "game_total": {
+        "line": "",
+        "over_price": "",
+        "under_price": ""
+      },
+      "team_totals": {
+        "away": "",
+        "away_over_price": "",
+        "away_under_price": "",
+        "home": "",
+        "home_over_price": "",
+        "home_under_price": ""
+      },
+      "pitcher_strikeouts": {},
+      "market_source": "odds_api_io",
+      "market_status": "live",
+      "market_updated_at": "2026-07-16T06:04:31Z"
+    },
+    "projection": {},
+    "slate_summary": {
+      "top_hr_target": "",
+      "top_pitcher": "",
+      "alpha_game_rating": "",
+      "notes": ""
+    }
+  },
+  {
+    "game_id": "824737",
+    "date": "2026-07-17",
+    "game": "Tampa Bay Rays @ Boston Red Sox",
+    "away_team": "Tampa Bay Rays",
+    "home_team": "Boston Red Sox",
+    "away_team_id": 139,
+    "home_team_id": 111,
+    "away_sp": "",
+    "away_sp_id": "",
+    "home_sp": "",
+    "home_sp_id": "",
+    "venue": "Fenway Park",
+    "status": "Scheduled",
+    "game_date_utc": "2026-07-17T23:10:00Z",
+    "game_time": "6:10 PM",
+    "game_time_sort": "18:10",
+    "away_hitters": [],
+    "home_hitters": [],
+    "hitters": [],
+    "pitchers": [],
+    "away_pitcher": {},
+    "home_pitcher": {},
+    "weather": {
+      "game_id": "824737",
+      "game": "Tampa Bay Rays @ Boston Red Sox",
+      "venue": "Fenway Park",
+      "temperature": 75.3,
+      "humidity": 37,
+      "conditions": "Few Clouds",
+      "wind_direction": "IN",
+      "wind_speed": 1.0,
+      "wind_degrees": 37,
+      "roof": "open",
+      "forecast_time_utc": "2026-07-18T00:00:00+00:00"
+    },
+    "market": {
+      "game_id": "824737",
+      "game": "Tampa Bay Rays @ Boston Red Sox",
+      "away_team": "Tampa Bay Rays",
+      "home_team": "Boston Red Sox",
+      "bookmaker": "",
+      "bookmaker_key": "",
+      "odds_event_id": 63301563,
+      "moneyline": {
+        "away": "",
+        "home": ""
+      },
+      "spread": {
+        "away": "",
+        "away_price": "",
+        "home": "",
+        "home_price": ""
+      },
+      "total": "",
+      "game_total": {
+        "line": "",
+        "over_price": "",
+        "under_price": ""
+      },
+      "team_totals": {
+        "away": "",
+        "away_over_price": "",
+        "away_under_price": "",
+        "home": "",
+        "home_over_price": "",
+        "home_under_price": ""
+      },
+      "pitcher_strikeouts": {},
+      "market_source": "odds_api_io",
+      "market_status": "live",
+      "market_updated_at": "2026-07-16T06:04:31Z"
+    },
+    "projection": {},
+    "slate_summary": {
+      "top_hr_target": "",
+      "top_pitcher": "",
+      "alpha_game_rating": "",
+      "notes": ""
+    }
+  },
+  {
+    "game_id": "822789",
+    "date": "2026-07-17",
+    "game": "Chicago White Sox @ Toronto Blue Jays",
+    "away_team": "Chicago White Sox",
+    "home_team": "Toronto Blue Jays",
+    "away_team_id": 145,
+    "home_team_id": 141,
+    "away_sp": "Anthony Kay",
+    "away_sp_id": 641743,
+    "home_sp": "Spencer Miles",
+    "home_sp_id": 693686,
+    "venue": "Rogers Centre",
+    "status": "Scheduled",
+    "game_date_utc": "2026-07-17T23:15:00Z",
+    "game_time": "6:15 PM",
+    "game_time_sort": "18:15",
+    "away_hitters": [],
+    "home_hitters": [],
+    "hitters": [],
+    "pitchers": [],
+    "away_pitcher": {},
+    "home_pitcher": {},
+    "weather": {
+      "game_id": "822789",
+      "game": "Chicago White Sox @ Toronto Blue Jays",
+      "venue": "Rogers Centre",
+      "temperature": 77.5,
+      "humidity": 51,
+      "conditions": "Overcast Clouds",
+      "wind_direction": "OUT TOWARDS LF",
+      "wind_speed": 5.1,
+      "wind_degrees": 183,
+      "roof": "retractable",
+      "forecast_time_utc": "2026-07-18T00:00:00+00:00"
+    },
+    "market": {
+      "game_id": "822789",
+      "game": "Chicago White Sox @ Toronto Blue Jays",
+      "away_team": "Chicago White Sox",
+      "home_team": "Toronto Blue Jays",
+      "bookmaker": "FanDuel",
+      "bookmaker_key": "fanduel",
+      "odds_event_id": 63301771,
+      "moneyline": {
+        "away": 112,
+        "home": -132
+      },
+      "spread": {
+        "away": "",
+        "away_price": "",
+        "home": "",
+        "home_price": ""
+      },
+      "total": "",
+      "game_total": {
+        "line": "",
+        "over_price": "",
+        "under_price": ""
+      },
+      "team_totals": {
+        "away": "",
+        "away_over_price": "",
+        "away_under_price": "",
+        "home": "",
+        "home_over_price": "",
+        "home_under_price": ""
+      },
+      "pitcher_strikeouts": {},
+      "market_source": "odds_api_io",
+      "market_status": "live",
+      "market_updated_at": "2026-07-16T06:04:31Z"
+    },
+    "projection": {},
+    "slate_summary": {
+      "top_hr_target": "",
+      "top_pitcher": "",
+      "alpha_game_rating": "",
+      "notes": ""
+    }
+  },
+  {
+    "game_id": "824901",
+    "date": "2026-07-17",
+    "game": "Texas Rangers @ Atlanta Braves",
+    "away_team": "Texas Rangers",
+    "home_team": "Atlanta Braves",
+    "away_team_id": 140,
+    "home_team_id": 144,
+    "away_sp": "",
+    "away_sp_id": "",
+    "home_sp": "Chris Sale",
+    "home_sp_id": 519242,
+    "venue": "Truist Park",
+    "status": "Scheduled",
+    "game_date_utc": "2026-07-17T23:15:00Z",
+    "game_time": "6:15 PM",
+    "game_time_sort": "18:15",
+    "away_hitters": [],
+    "home_hitters": [],
+    "hitters": [],
+    "pitchers": [],
+    "away_pitcher": {},
+    "home_pitcher": {},
+    "weather": {
+      "game_id": "824901",
+      "game": "Texas Rangers @ Atlanta Braves",
+      "venue": "Truist Park",
+      "temperature": 85.1,
+      "humidity": 60,
+      "conditions": "Light Rain",
+      "wind_direction": "NEUTRAL",
+      "wind_speed": 10.2,
+      "wind_degrees": 305,
+      "roof": "open",
+      "forecast_time_utc": "2026-07-18T00:00:00+00:00"
+    },
+    "market": {
+      "game_id": "824901",
+      "game": "Texas Rangers @ Atlanta Braves",
+      "away_team": "Texas Rangers",
+      "home_team": "Atlanta Braves",
+      "bookmaker": "",
+      "bookmaker_key": "",
+      "odds_event_id": 63303483,
+      "moneyline": {
+        "away": "",
+        "home": ""
+      },
+      "spread": {
+        "away": "",
+        "away_price": "",
+        "home": "",
+        "home_price": ""
+      },
+      "total": "",
+      "game_total": {
+        "line": "",
+        "over_price": "",
+        "under_price": ""
+      },
+      "team_totals": {
+        "away": "",
+        "away_over_price": "",
+        "away_under_price": "",
+        "home": "",
+        "home_over_price": "",
+        "home_under_price": ""
+      },
+      "pitcher_strikeouts": {},
+      "market_source": "odds_api_io",
+      "market_status": "live",
+      "market_updated_at": "2026-07-16T06:04:32Z"
+    },
+    "projection": {},
+    "slate_summary": {
+      "top_hr_target": "",
+      "top_pitcher": "",
+      "alpha_game_rating": "",
+      "notes": ""
+    }
+  },
+  {
+    "game_id": "823766",
+    "date": "2026-07-17",
+    "game": "Miami Marlins @ Milwaukee Brewers",
+    "away_team": "Miami Marlins",
+    "home_team": "Milwaukee Brewers",
+    "away_team_id": 146,
+    "home_team_id": 158,
+    "away_sp": "",
+    "away_sp_id": "",
+    "home_sp": "",
+    "home_sp_id": "",
+    "venue": "American Family Field",
+    "status": "Scheduled",
+    "game_date_utc": "2026-07-17T23:40:00Z",
+    "game_time": "6:40 PM",
+    "game_time_sort": "18:40",
+    "away_hitters": [],
+    "home_hitters": [],
+    "hitters": [],
+    "pitchers": [],
+    "away_pitcher": {},
+    "home_pitcher": {},
+    "weather": {
+      "game_id": "823766",
+      "game": "Miami Marlins @ Milwaukee Brewers",
+      "venue": "American Family Field",
+      "temperature": 82.1,
+      "humidity": 70,
+      "conditions": "Light Rain",
+      "wind_direction": "OUT",
+      "wind_speed": 3.1,
+      "wind_degrees": 249,
+      "roof": "retractable",
+      "forecast_time_utc": "2026-07-18T00:00:00+00:00"
+    },
+    "market": {
+      "game_id": "823766",
+      "game": "Miami Marlins @ Milwaukee Brewers",
+      "away_team": "Miami Marlins",
+      "home_team": "Milwaukee Brewers",
+      "bookmaker": "",
+      "bookmaker_key": "",
+      "odds_event_id": 63299289,
+      "moneyline": {
+        "away": "",
+        "home": ""
+      },
+      "spread": {
+        "away": "",
+        "away_price": "",
+        "home": "",
+        "home_price": ""
+      },
+      "total": "",
+      "game_total": {
+        "line": "",
+        "over_price": "",
+        "under_price": ""
+      },
+      "team_totals": {
+        "away": "",
+        "away_over_price": "",
+        "away_under_price": "",
+        "home": "",
+        "home_over_price": "",
+        "home_under_price": ""
+      },
+      "pitcher_strikeouts": {},
+      "market_source": "odds_api_io",
+      "market_status": "live",
+      "market_updated_at": "2026-07-16T06:04:32Z"
+    },
+    "projection": {},
+    "slate_summary": {
+      "top_hr_target": "",
+      "top_pitcher": "",
+      "alpha_game_rating": "",
+      "notes": ""
+    }
+  },
+  {
+    "game_id": "824655",
+    "date": "2026-07-17",
+    "game": "Minnesota Twins @ Chicago Cubs",
+    "away_team": "Minnesota Twins",
+    "home_team": "Chicago Cubs",
+    "away_team_id": 142,
+    "home_team_id": 112,
+    "away_sp": "",
+    "away_sp_id": "",
+    "home_sp": "Colin Rea",
+    "home_sp_id": 607067,
+    "venue": "Wrigley Field",
+    "status": "Scheduled",
+    "game_date_utc": "2026-07-18T00:05:00Z",
+    "game_time": "7:05 PM",
+    "game_time_sort": "19:05",
+    "away_hitters": [],
+    "home_hitters": [],
+    "hitters": [],
+    "pitchers": [],
+    "away_pitcher": {},
+    "home_pitcher": {},
+    "weather": {
+      "game_id": "824655",
+      "game": "Minnesota Twins @ Chicago Cubs",
+      "venue": "Wrigley Field",
+      "temperature": 86.0,
+      "humidity": 57,
+      "conditions": "Broken Clouds",
+      "wind_direction": "IN",
+      "wind_speed": 1.9,
+      "wind_degrees": 60,
+      "roof": "open",
+      "forecast_time_utc": "2026-07-18T00:00:00+00:00"
+    },
+    "market": {
+      "game_id": "824655",
+      "game": "Minnesota Twins @ Chicago Cubs",
+      "away_team": "Minnesota Twins",
+      "home_team": "Chicago Cubs",
+      "bookmaker": "",
+      "bookmaker_key": "",
+      "odds_event_id": 63302499,
+      "moneyline": {
+        "away": "",
+        "home": ""
+      },
+      "spread": {
+        "away": "",
+        "away_price": "",
+        "home": "",
+        "home_price": ""
+      },
+      "total": "",
+      "game_total": {
+        "line": "",
+        "over_price": "",
+        "under_price": ""
+      },
+      "team_totals": {
+        "away": "",
+        "away_over_price": "",
+        "away_under_price": "",
+        "home": "",
+        "home_over_price": "",
+        "home_under_price": ""
+      },
+      "pitcher_strikeouts": {},
+      "market_source": "odds_api_io",
+      "market_status": "live",
+      "market_updated_at": "2026-07-16T06:04:32Z"
+    },
+    "projection": {},
+    "slate_summary": {
+      "top_hr_target": "",
+      "top_pitcher": "",
+      "alpha_game_rating": "",
+      "notes": ""
+    }
+  },
+  {
+    "game_id": "824170",
+    "date": "2026-07-17",
+    "game": "Baltimore Orioles @ Houston Astros",
+    "away_team": "Baltimore Orioles",
+    "home_team": "Houston Astros",
+    "away_team_id": 110,
+    "home_team_id": 117,
+    "away_sp": "",
+    "away_sp_id": "",
+    "home_sp": "",
+    "home_sp_id": "",
+    "venue": "Daikin Park",
+    "status": "Scheduled",
+    "game_date_utc": "2026-07-18T00:10:00Z",
+    "game_time": "7:10 PM",
+    "game_time_sort": "19:10",
+    "away_hitters": [],
+    "home_hitters": [],
+    "hitters": [],
+    "pitchers": [],
+    "away_pitcher": {},
+    "home_pitcher": {},
+    "weather": {
+      "game_id": "824170",
+      "game": "Baltimore Orioles @ Houston Astros",
+      "venue": "Daikin Park",
+      "temperature": 89.0,
+      "humidity": 59,
+      "conditions": "Broken Clouds",
+      "wind_direction": "OUT TOWARDS LF",
+      "wind_speed": 12.5,
+      "wind_degrees": 161,
+      "roof": "retractable",
+      "forecast_time_utc": "2026-07-18T00:00:00+00:00"
+    },
+    "market": {
+      "game_id": "824170",
+      "game": "Baltimore Orioles @ Houston Astros",
+      "away_team": "Baltimore Orioles",
+      "home_team": "Houston Astros",
+      "bookmaker": "",
+      "bookmaker_key": "",
+      "odds_event_id": 63303587,
+      "moneyline": {
+        "away": "",
+        "home": ""
+      },
+      "spread": {
+        "away": "",
+        "away_price": "",
+        "home": "",
+        "home_price": ""
+      },
+      "total": "",
+      "game_total": {
+        "line": "",
+        "over_price": "",
+        "under_price": ""
+      },
+      "team_totals": {
+        "away": "",
+        "away_over_price": "",
+        "away_under_price": "",
+        "home": "",
+        "home_over_price": "",
+        "home_under_price": ""
+      },
+      "pitcher_strikeouts": {},
+      "market_source": "odds_api_io",
+      "market_status": "live",
+      "market_updated_at": "2026-07-16T06:04:33Z"
+    },
+    "projection": {},
+    "slate_summary": {
+      "top_hr_target": "",
+      "top_pitcher": "",
+      "alpha_game_rating": "",
+      "notes": ""
+    }
+  },
+  {
+    "game_id": "824090",
+    "date": "2026-07-17",
+    "game": "San Diego Padres @ Kansas City Royals",
+    "away_team": "San Diego Padres",
+    "home_team": "Kansas City Royals",
+    "away_team_id": 135,
+    "home_team_id": 118,
+    "away_sp": "Michael King",
+    "away_sp_id": 650633,
+    "home_sp": "Seth Lugo",
+    "home_sp_id": 607625,
+    "venue": "Kauffman Stadium",
+    "status": "Scheduled",
+    "game_date_utc": "2026-07-18T00:10:00Z",
+    "game_time": "7:10 PM",
+    "game_time_sort": "19:10",
+    "away_hitters": [],
+    "home_hitters": [],
+    "hitters": [],
+    "pitchers": [],
+    "away_pitcher": {},
+    "home_pitcher": {},
+    "weather": {
+      "game_id": "824090",
+      "game": "San Diego Padres @ Kansas City Royals",
+      "venue": "Kauffman Stadium",
+      "temperature": 85.4,
+      "humidity": 61,
+      "conditions": "Clear Sky",
+      "wind_direction": "OUT",
+      "wind_speed": 8.2,
+      "wind_degrees": 191,
+      "roof": "open",
+      "forecast_time_utc": "2026-07-18T00:00:00+00:00"
+    },
+    "market": {
+      "game_id": "824090",
+      "game": "San Diego Padres @ Kansas City Royals",
+      "away_team": "San Diego Padres",
+      "home_team": "Kansas City Royals",
+      "bookmaker": "FanDuel",
+      "bookmaker_key": "fanduel",
+      "odds_event_id": 63300967,
+      "moneyline": {
+        "away": 102,
+        "home": -120
+      },
+      "spread": {
+        "away": "",
+        "away_price": "",
+        "home": "",
+        "home_price": ""
+      },
+      "total": "",
+      "game_total": {
+        "line": "",
+        "over_price": "",
+        "under_price": ""
+      },
+      "team_totals": {
+        "away": "",
+        "away_over_price": "",
+        "away_under_price": "",
+        "home": "",
+        "home_over_price": "",
+        "home_under_price": ""
+      },
+      "pitcher_strikeouts": {},
+      "market_source": "odds_api_io",
+      "market_status": "live",
+      "market_updated_at": "2026-07-16T06:04:32Z"
+    },
+    "projection": {},
+    "slate_summary": {
+      "top_hr_target": "",
+      "top_pitcher": "",
+      "alpha_game_rating": "",
+      "notes": ""
+    }
+  },
+  {
+    "game_id": "824332",
+    "date": "2026-07-17",
+    "game": "Cincinnati Reds @ Colorado Rockies",
+    "away_team": "Cincinnati Reds",
+    "home_team": "Colorado Rockies",
+    "away_team_id": 113,
+    "home_team_id": 115,
+    "away_sp": "Brady Singer",
+    "away_sp_id": 663903,
+    "home_sp": "",
+    "home_sp_id": "",
+    "venue": "Coors Field",
+    "status": "Scheduled",
+    "game_date_utc": "2026-07-18T00:40:00Z",
+    "game_time": "7:40 PM",
+    "game_time_sort": "19:40",
+    "away_hitters": [],
+    "home_hitters": [],
+    "hitters": [],
+    "pitchers": [],
+    "away_pitcher": {},
+    "home_pitcher": {},
+    "weather": {
+      "game_id": "824332",
+      "game": "Cincinnati Reds @ Colorado Rockies",
+      "venue": "Coors Field",
+      "temperature": 95.8,
+      "humidity": 13,
+      "conditions": "Clear Sky",
+      "wind_direction": "NEUTRAL",
+      "wind_speed": 13.6,
+      "wind_degrees": 90,
+      "roof": "open",
+      "forecast_time_utc": "2026-07-18T00:00:00+00:00"
+    },
+    "market": {
+      "game_id": "824332",
+      "game": "Cincinnati Reds @ Colorado Rockies",
+      "away_team": "Cincinnati Reds",
+      "home_team": "Colorado Rockies",
+      "bookmaker": "",
+      "bookmaker_key": "",
+      "odds_event_id": 63300983,
+      "moneyline": {
+        "away": "",
+        "home": ""
+      },
+      "spread": {
+        "away": "",
+        "away_price": "",
+        "home": "",
+        "home_price": ""
+      },
+      "total": "",
+      "game_total": {
+        "line": "",
+        "over_price": "",
+        "under_price": ""
+      },
+      "team_totals": {
+        "away": "",
+        "away_over_price": "",
+        "away_under_price": "",
+        "home": "",
+        "home_over_price": "",
+        "home_under_price": ""
+      },
+      "pitcher_strikeouts": {},
+      "market_source": "odds_api_io",
+      "market_status": "live",
+      "market_updated_at": "2026-07-16T06:04:33Z"
+    },
+    "projection": {},
+    "slate_summary": {
+      "top_hr_target": "",
+      "top_pitcher": "",
+      "alpha_game_rating": "",
+      "notes": ""
+    }
+  },
+  {
+    "game_id": "824009",
+    "date": "2026-07-17",
+    "game": "Detroit Tigers @ Los Angeles Angels",
+    "away_team": "Detroit Tigers",
+    "home_team": "Los Angeles Angels",
+    "away_team_id": 116,
+    "home_team_id": 108,
+    "away_sp": "Troy Melton",
+    "away_sp_id": 675512,
+    "home_sp": "",
+    "home_sp_id": "",
+    "venue": "Angel Stadium",
+    "status": "Scheduled",
+    "game_date_utc": "2026-07-18T01:38:00Z",
+    "game_time": "8:38 PM",
+    "game_time_sort": "20:38",
+    "away_hitters": [],
+    "home_hitters": [],
+    "hitters": [],
+    "pitchers": [],
+    "away_pitcher": {},
+    "home_pitcher": {},
+    "weather": {
+      "game_id": "824009",
+      "game": "Detroit Tigers @ Los Angeles Angels",
+      "venue": "Angel Stadium",
+      "temperature": 75.1,
+      "humidity": 60,
+      "conditions": "Clear Sky",
+      "wind_direction": "OUT",
+      "wind_speed": 9.4,
+      "wind_degrees": 194,
+      "roof": "open",
+      "forecast_time_utc": "2026-07-18T03:00:00+00:00"
+    },
+    "market": {
+      "game_id": "824009",
+      "game": "Detroit Tigers @ Los Angeles Angels",
+      "away_team": "Detroit Tigers",
+      "home_team": "Los Angeles Angels",
+      "bookmaker": "",
+      "bookmaker_key": "",
+      "odds_event_id": 63303347,
+      "moneyline": {
+        "away": "",
+        "home": ""
+      },
+      "spread": {
+        "away": "",
+        "away_price": "",
+        "home": "",
+        "home_price": ""
+      },
+      "total": "",
+      "game_total": {
+        "line": "",
+        "over_price": "",
+        "under_price": ""
+      },
+      "team_totals": {
+        "away": "",
+        "away_over_price": "",
+        "away_under_price": "",
+        "home": "",
+        "home_over_price": "",
+        "home_under_price": ""
+      },
+      "pitcher_strikeouts": {},
+      "market_source": "odds_api_io",
+      "market_status": "live",
+      "market_updated_at": "2026-07-16T06:04:33Z"
+    },
+    "projection": {},
+    "slate_summary": {
+      "top_hr_target": "",
+      "top_pitcher": "",
+      "alpha_game_rating": "",
+      "notes": ""
+    }
+  },
+  {
+    "game_id": "825060",
+    "date": "2026-07-17",
+    "game": "St. Louis Cardinals @ Arizona Diamondbacks",
+    "away_team": "St. Louis Cardinals",
+    "home_team": "Arizona Diamondbacks",
+    "away_team_id": 138,
+    "home_team_id": 109,
+    "away_sp": "",
+    "away_sp_id": "",
+    "home_sp": "",
+    "home_sp_id": "",
+    "venue": "Chase Field",
+    "status": "Scheduled",
+    "game_date_utc": "2026-07-18T01:40:00Z",
+    "game_time": "8:40 PM",
+    "game_time_sort": "20:40",
+    "away_hitters": [],
+    "home_hitters": [],
+    "hitters": [],
+    "pitchers": [],
+    "away_pitcher": {},
+    "home_pitcher": {},
+    "weather": {
+      "game_id": "825060",
+      "game": "St. Louis Cardinals @ Arizona Diamondbacks",
+      "venue": "Chase Field",
+      "temperature": 87.7,
+      "humidity": 42,
+      "conditions": "Broken Clouds",
+      "wind_direction": "OUT TOWARDS LF",
+      "wind_speed": 3.9,
+      "wind_degrees": 138,
+      "roof": "retractable",
+      "forecast_time_utc": "2026-07-18T03:00:00+00:00"
+    },
+    "market": {
+      "game_id": "825060",
+      "game": "St. Louis Cardinals @ Arizona Diamondbacks",
+      "away_team": "St. Louis Cardinals",
+      "home_team": "Arizona Diamondbacks",
+      "bookmaker": "",
+      "bookmaker_key": "",
+      "odds_event_id": 63303013,
+      "moneyline": {
+        "away": "",
+        "home": ""
+      },
+      "spread": {
+        "away": "",
+        "away_price": "",
+        "home": "",
+        "home_price": ""
+      },
+      "total": "",
+      "game_total": {
+        "line": "",
+        "over_price": "",
+        "under_price": ""
+      },
+      "team_totals": {
+        "away": "",
+        "away_over_price": "",
+        "away_under_price": "",
+        "home": "",
+        "home_over_price": "",
+        "home_under_price": ""
+      },
+      "pitcher_strikeouts": {},
+      "market_source": "odds_api_io",
+      "market_status": "live",
+      "market_updated_at": "2026-07-16T06:04:33Z"
+    },
+    "projection": {},
+    "slate_summary": {
+      "top_hr_target": "",
+      "top_pitcher": "",
+      "alpha_game_rating": "",
+      "notes": ""
+    }
+  },
+  {
+    "game_id": "824981",
+    "date": "2026-07-17",
+    "game": "Washington Nationals @ Athletics",
+    "away_team": "Washington Nationals",
+    "home_team": "Athletics",
+    "away_team_id": 120,
+    "home_team_id": 133,
+    "away_sp": "",
+    "away_sp_id": "",
+    "home_sp": "",
+    "home_sp_id": "",
+    "venue": "Sutter Health Park",
+    "status": "Scheduled",
+    "game_date_utc": "2026-07-18T01:40:00Z",
+    "game_time": "8:40 PM",
+    "game_time_sort": "20:40",
+    "away_hitters": [],
+    "home_hitters": [],
+    "hitters": [],
+    "pitchers": [],
+    "away_pitcher": {},
+    "home_pitcher": {},
+    "weather": {
+      "game_id": "824981",
+      "game": "Washington Nationals @ Athletics",
+      "venue": "Sutter Health Park",
+      "temperature": 73.2,
+      "humidity": 40,
+      "conditions": "Clear Sky",
+      "wind_direction": "OUT TOWARDS LF",
+      "wind_speed": 14.2,
+      "wind_degrees": 202,
+      "roof": "open",
+      "forecast_time_utc": "2026-07-18T03:00:00+00:00"
+    },
+    "market": {
+      "game_id": "824981",
+      "game": "Washington Nationals @ Athletics",
+      "away_team": "Washington Nationals",
+      "home_team": "Athletics",
+      "bookmaker": "",
+      "bookmaker_key": "",
+      "odds_event_id": 63301293,
+      "moneyline": {
+        "away": "",
+        "home": ""
+      },
+      "spread": {
+        "away": "",
+        "away_price": "",
+        "home": "",
+        "home_price": ""
+      },
+      "total": "",
+      "game_total": {
+        "line": "",
+        "over_price": "",
+        "under_price": ""
+      },
+      "team_totals": {
+        "away": "",
+        "away_over_price": "",
+        "away_under_price": "",
+        "home": "",
+        "home_over_price": "",
+        "home_under_price": ""
+      },
+      "pitcher_strikeouts": {},
+      "market_source": "odds_api_io",
+      "market_status": "live",
+      "market_updated_at": "2026-07-16T06:04:33Z"
+    },
+    "projection": {},
+    "slate_summary": {
+      "top_hr_target": "",
+      "top_pitcher": "",
+      "alpha_game_rating": "",
+      "notes": ""
+    }
+  },
+  {
+    "game_id": "823115",
+    "date": "2026-07-17",
+    "game": "San Francisco Giants @ Seattle Mariners",
+    "away_team": "San Francisco Giants",
+    "home_team": "Seattle Mariners",
+    "away_team_id": 137,
+    "home_team_id": 136,
+    "away_sp": "Landen Roupp",
+    "away_sp_id": 694738,
+    "home_sp": "",
+    "home_sp_id": "",
+    "venue": "T-Mobile Park",
+    "status": "Scheduled",
+    "game_date_utc": "2026-07-18T02:10:00Z",
+    "game_time": "9:10 PM",
+    "game_time_sort": "21:10",
+    "away_hitters": [],
+    "home_hitters": [],
+    "hitters": [],
+    "pitchers": [],
+    "away_pitcher": {},
+    "home_pitcher": {},
+    "weather": {
+      "game_id": "823115",
+      "game": "San Francisco Giants @ Seattle Mariners",
+      "venue": "T-Mobile Park",
+      "temperature": 67.9,
+      "humidity": 55,
+      "conditions": "Clear Sky",
+      "wind_direction": "NEUTRAL",
+      "wind_speed": 8.2,
+      "wind_degrees": 357,
+      "roof": "retractable",
+      "forecast_time_utc": "2026-07-18T03:00:00+00:00"
+    },
+    "market": {
+      "game_id": "823115",
+      "game": "San Francisco Giants @ Seattle Mariners",
+      "away_team": "San Francisco Giants",
+      "home_team": "Seattle Mariners",
+      "bookmaker": "",
+      "bookmaker_key": "",
+      "odds_event_id": 63302551,
+      "moneyline": {
+        "away": "",
+        "home": ""
+      },
+      "spread": {
+        "away": "",
+        "away_price": "",
+        "home": "",
+        "home_price": ""
+      },
+      "total": "",
+      "game_total": {
+        "line": "",
+        "over_price": "",
+        "under_price": ""
+      },
+      "team_totals": {
+        "away": "",
+        "away_over_price": "",
+        "away_under_price": "",
+        "home": "",
+        "home_over_price": "",
+        "home_under_price": ""
+      },
+      "pitcher_strikeouts": {},
+      "market_source": "odds_api_io",
+      "market_status": "live",
+      "market_updated_at": "2026-07-16T06:04:34Z"
+    },
+    "projection": {},
+    "slate_summary": {
+      "top_hr_target": "",
+      "top_pitcher": "",
+      "alpha_game_rating": "",
+      "notes": ""
+    }
+  }
+]

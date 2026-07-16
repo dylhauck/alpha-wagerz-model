@@ -805,7 +805,31 @@ def merge_injury_rows(
             continue
 
         combined = dict(existing or {})
-        combined.update(espn_row)
+
+        # Preserve MLB values if ESPN doesn't provide anything useful.
+        for key, value in espn_row.items():
+            if (
+                key == "estimated_return"
+                and (
+                    value == "Unknown"
+                    or value == ""
+                    or value is None
+                )
+            ):
+                continue
+
+            if (
+                key == "injury"
+                and (
+                    value == "Undisclosed"
+                    or value == ""
+                    or value is None
+                )
+            ):
+                continue
+
+            combined[key] = value
+
 
         if existing:
             combined["player_id"] = existing.get("player_id")

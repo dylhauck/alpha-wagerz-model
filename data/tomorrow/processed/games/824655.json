@@ -1,0 +1,23 @@
+{
+  "game_id": "824655",
+  "date": "2026-07-17",
+  "game": "Minnesota Twins @ Chicago Cubs",
+  "away_team": "Minnesota Twins",
+  "home_team": "Chicago Cubs",
+  "away_sp": "",
+  "home_sp": "Colin Rea",
+  "venue": "Wrigley Field",
+  "status": "Scheduled",
+  "game_date_utc": "2026-07-18T00:05:00Z",
+  "game_time": "7:05 PM",
+  "game_time_sort": "19:05",
+  "slate_summary": {
+    "top_hr_target": "",
+    "top_pitcher": "",
+    "alpha_game_rating": "",
+    "notes": ""
+  },
+  "hitters": [],
+  "pitchers": [],
+  "weather": {}
+}

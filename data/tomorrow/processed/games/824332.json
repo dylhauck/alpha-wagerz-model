@@ -1,0 +1,23 @@
+{
+  "game_id": "824332",
+  "date": "2026-07-17",
+  "game": "Cincinnati Reds @ Colorado Rockies",
+  "away_team": "Cincinnati Reds",
+  "home_team": "Colorado Rockies",
+  "away_sp": "Brady Singer",
+  "home_sp": "",
+  "venue": "Coors Field",
+  "status": "Scheduled",
+  "game_date_utc": "2026-07-18T00:40:00Z",
+  "game_time": "7:40 PM",
+  "game_time_sort": "19:40",
+  "slate_summary": {
+    "top_hr_target": "",
+    "top_pitcher": "",
+    "alpha_game_rating": "",
+    "notes": ""
+  },
+  "hitters": [],
+  "pitchers": [],
+  "weather": {}
+}

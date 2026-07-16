@@ -1,0 +1,23 @@
+{
+  "game_id": "824981",
+  "date": "2026-07-17",
+  "game": "Washington Nationals @ Athletics",
+  "away_team": "Washington Nationals",
+  "home_team": "Athletics",
+  "away_sp": "",
+  "home_sp": "",
+  "venue": "Sutter Health Park",
+  "status": "Scheduled",
+  "game_date_utc": "2026-07-18T01:40:00Z",
+  "game_time": "8:40 PM",
+  "game_time_sort": "20:40",
+  "slate_summary": {
+    "top_hr_target": "",
+    "top_pitcher": "",
+    "alpha_game_rating": "",
+    "notes": ""
+  },
+  "hitters": [],
+  "pitchers": [],
+  "weather": {}
+}

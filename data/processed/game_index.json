@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "game_id": "823440",
+    "date": "2026-07-16",
+    "game": "New York Mets @ Philadelphia Phillies",
+    "away_team": "New York Mets",
+    "home_team": "Philadelphia Phillies",
+    "away_sp": "Christian Scott",
+    "home_sp": "Aaron Nola",
+    "venue": "Citizens Bank Park",
+    "status": "Scheduled",
+    "file": "data/processed/games/823440.json"
+  }
+]

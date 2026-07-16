@@ -1,9 +1,9 @@
 player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,throws
-650644,Aaron Civale,133,Athletics,ATH,P,Pitcher,R,R
 675961,Alika Williams,133,Athletics,ATH,SS,Shortstop,R,R
-661531,Brian Serven,133,Athletics,ATH,C,Catcher,R,R
+669620,Brady Basso,133,Athletics,ATH,P,Pitcher,R,L
 666126,Carlos Cortes,133,Athletics,ATH,RF,Outfielder,L,S
 687515,Colby Thomas,133,Athletics,ATH,RF,Outfielder,R,R
+622268,Donovan Walton,133,Athletics,ATH,3B,Third Base,L,R
 665660,Elvis Alvarado,133,Athletics,ATH,P,Pitcher,R,R
 695611,Gage Jump,133,Athletics,ATH,P,Pitcher,L,L
 703607,Henry Bolte,133,Athletics,ATH,CF,Outfielder,R,R
@@ -14,7 +14,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 805779,Jacob Wilson,133,Athletics,ATH,SS,Shortstop,R,R
 643446,Jeff McNeil,133,Athletics,ATH,2B,Second Base,L,R
 605488,Jeffrey Springs,133,Athletics,ATH,P,Pitcher,L,L
-608841,Joey Meneses,133,Athletics,ATH,1B,First Base,R,R
 641680,Jonah Heim,133,Athletics,ATH,C,Catcher,S,R
 660761,José Suarez,133,Athletics,ATH,P,Pitcher,L,L
 811965,Joshua Kuroda-Grauer,133,Athletics,ATH,SS,Shortstop,R,R
@@ -22,9 +21,9 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 671732,Lawrence Butler,133,Athletics,ATH,RF,Outfielder,L,R
 665622,Luis Medina,133,Athletics,ATH,P,Pitcher,R,R
 643410,Mark Leiter Jr.,133,Athletics,ATH,P,Pitcher,R,R
-686930,Mason Barnett,133,Athletics,ATH,P,Pitcher,R,R
 669127,Shea Langeliers,133,Athletics,ATH,C,Catcher,R,R
 691016,Tyler Soderstrom,133,Athletics,ATH,LF,Outfielder,L,R
+814305,Yunior Tur,133,Athletics,ATH,P,Pitcher,R,R
 699008,Antwone Kelly,134,Pittsburgh Pirates,PIT,P,Pitcher,R,R
 695257,Billy Cook,134,Pittsburgh Pirates,PIT,RF,Outfielder,R,R
 685126,Brandon Eisert,134,Pittsburgh Pirates,PIT,P,Pitcher,L,L
@@ -61,6 +60,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 701538,Jackson Merrill,135,San Diego Padres,SD,CF,Outfielder,L,R
 630105,Jake Cronenworth,135,San Diego Padres,SD,2B,Second Base,L,R
 687749,Jase Bowen,135,San Diego Padres,SD,RF,Outfielder,R,R
+666745,Jhony Brito,135,San Diego Padres,SD,P,Pitcher,R,R
 606996,Kyle Hart,135,San Diego Padres,SD,P,Pitcher,L,L
 669134,Luis Campusano,135,San Diego Padres,SD,C,Catcher,R,R
 650859,Luis Rengifo,135,San Diego Padres,SD,3B,Third Base,S,R
@@ -74,7 +74,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 823550,Sung-Mun Song,135,San Diego Padres,SD,2B,Second Base,L,R
 664034,Ty France,135,San Diego Padres,SD,1B,First Base,R,R
 621111,Walker Buehler,135,San Diego Padres,SD,P,Pitcher,R,R
-593974,Wandy Peralta,135,San Diego Padres,SD,P,Pitcher,L,L
 593428,Xander Bogaerts,135,San Diego Padres,SD,SS,Shortstop,R,R
 673513,Yuki Matsui,135,San Diego Padres,SD,P,Pitcher,L,L
 662253,Andrés Muñoz,136,Seattle Mariners,SEA,P,Pitcher,R,R
@@ -758,8 +757,8 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 642207,Devin Williams,121,New York Mets,NYM,P,Pitcher,R,R
 676572,Eric Wagaman,121,New York Mets,NYM,1B,First Base,R,R
 682626,Francisco Alvarez,121,New York Mets,NYM,C,Catcher,R,R
-596019,Francisco Lindor,121,New York Mets,NYM,SS,Shortstop,,
-642547,Freddy Peralta,121,New York Mets,NYM,P,Pitcher,,
+596019,Francisco Lindor,121,New York Mets,NYM,SS,Shortstop,S,R
+642547,Freddy Peralta,121,New York Mets,NYM,P,Pitcher,R,R
 623211,Huascar Brazobán,121,New York Mets,NYM,P,Pitcher,R,R
 676724,Jared Young,121,New York Mets,NYM,1B,First Base,L,R
 593871,Jorge Polanco,121,New York Mets,NYM,DH,Designated Hitter,S,R

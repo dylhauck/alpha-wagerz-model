@@ -1,0 +1,23 @@
+{
+  "game_id": "822789",
+  "date": "2026-07-17",
+  "game": "Chicago White Sox @ Toronto Blue Jays",
+  "away_team": "Chicago White Sox",
+  "home_team": "Toronto Blue Jays",
+  "away_sp": "Anthony Kay",
+  "home_sp": "Spencer Miles",
+  "venue": "Rogers Centre",
+  "status": "Scheduled",
+  "game_date_utc": "2026-07-17T23:15:00Z",
+  "game_time": "6:15 PM",
+  "game_time_sort": "18:15",
+  "slate_summary": {
+    "top_hr_target": "",
+    "top_pitcher": "",
+    "alpha_game_rating": "",
+    "notes": ""
+  },
+  "hitters": [],
+  "pitchers": [],
+  "weather": {}
+}

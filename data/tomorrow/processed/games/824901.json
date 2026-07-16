@@ -1,0 +1,23 @@
+{
+  "game_id": "824901",
+  "date": "2026-07-17",
+  "game": "Texas Rangers @ Atlanta Braves",
+  "away_team": "Texas Rangers",
+  "home_team": "Atlanta Braves",
+  "away_sp": "",
+  "home_sp": "Chris Sale",
+  "venue": "Truist Park",
+  "status": "Scheduled",
+  "game_date_utc": "2026-07-17T23:15:00Z",
+  "game_time": "6:15 PM",
+  "game_time_sort": "18:15",
+  "slate_summary": {
+    "top_hr_target": "",
+    "top_pitcher": "",
+    "alpha_game_rating": "",
+    "notes": ""
+  },
+  "hitters": [],
+  "pitchers": [],
+  "weather": {}
+}

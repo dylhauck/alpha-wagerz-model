@@ -1,0 +1,23 @@
+{
+  "game_id": "824170",
+  "date": "2026-07-17",
+  "game": "Baltimore Orioles @ Houston Astros",
+  "away_team": "Baltimore Orioles",
+  "home_team": "Houston Astros",
+  "away_sp": "",
+  "home_sp": "",
+  "venue": "Daikin Park",
+  "status": "Scheduled",
+  "game_date_utc": "2026-07-18T00:10:00Z",
+  "game_time": "7:10 PM",
+  "game_time_sort": "19:10",
+  "slate_summary": {
+    "top_hr_target": "",
+    "top_pitcher": "",
+    "alpha_game_rating": "",
+    "notes": ""
+  },
+  "hitters": [],
+  "pitchers": [],
+  "weather": {}
+}

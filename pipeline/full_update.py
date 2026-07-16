@@ -37,6 +37,7 @@ from graphics.create_hr_targets_graphic import create_graphic
 from model.export_game_projections import export_game_projections
 from providers.market import build_market_lines
 from providers.espn_injuries import build_injury_report
+from pipeline.tomorrow_update import run_tomorrow_update
 
 def run_full_update():
     print("🐺 Starting Alpha Wagerz full update...")
@@ -103,6 +104,9 @@ def run_full_update():
 
     print("\n🌐 Publishing web data")
     publish_to_web()
+
+    print("\n🌙 Tomorrow's Slate")
+    run_tomorrow_update()
 
     print("\n📄 Google Sheets")
     update_full_slate_sheets()

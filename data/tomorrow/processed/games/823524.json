@@ -1,0 +1,23 @@
+{
+  "game_id": "823524",
+  "date": "2026-07-17",
+  "game": "Los Angeles Dodgers @ New York Yankees",
+  "away_team": "Los Angeles Dodgers",
+  "home_team": "New York Yankees",
+  "away_sp": "",
+  "home_sp": "",
+  "venue": "Yankee Stadium",
+  "status": "Scheduled",
+  "game_date_utc": "2026-07-17T23:05:00Z",
+  "game_time": "6:05 PM",
+  "game_time_sort": "18:05",
+  "slate_summary": {
+    "top_hr_target": "",
+    "top_pitcher": "",
+    "alpha_game_rating": "",
+    "notes": ""
+  },
+  "hitters": [],
+  "pitchers": [],
+  "weather": {}
+}

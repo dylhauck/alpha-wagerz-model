@@ -1,0 +1,23 @@
+{
+  "game_id": "823115",
+  "date": "2026-07-17",
+  "game": "San Francisco Giants @ Seattle Mariners",
+  "away_team": "San Francisco Giants",
+  "home_team": "Seattle Mariners",
+  "away_sp": "Landen Roupp",
+  "home_sp": "",
+  "venue": "T-Mobile Park",
+  "status": "Scheduled",
+  "game_date_utc": "2026-07-18T02:10:00Z",
+  "game_time": "9:10 PM",
+  "game_time_sort": "21:10",
+  "slate_summary": {
+    "top_hr_target": "",
+    "top_pitcher": "",
+    "alpha_game_rating": "",
+    "notes": ""
+  },
+  "hitters": [],
+  "pitchers": [],
+  "weather": {}
+}

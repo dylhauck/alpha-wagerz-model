@@ -1,0 +1,23 @@
+{
+  "game_id": "824737",
+  "date": "2026-07-17",
+  "game": "Tampa Bay Rays @ Boston Red Sox",
+  "away_team": "Tampa Bay Rays",
+  "home_team": "Boston Red Sox",
+  "away_sp": "",
+  "home_sp": "",
+  "venue": "Fenway Park",
+  "status": "Scheduled",
+  "game_date_utc": "2026-07-17T23:10:00Z",
+  "game_time": "6:10 PM",
+  "game_time_sort": "18:10",
+  "slate_summary": {
+    "top_hr_target": "",
+    "top_pitcher": "",
+    "alpha_game_rating": "",
+    "notes": ""
+  },
+  "hitters": [],
+  "pitchers": [],
+  "weather": {}
+}

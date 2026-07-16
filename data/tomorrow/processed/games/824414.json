@@ -1,0 +1,23 @@
+{
+  "game_id": "824414",
+  "date": "2026-07-17",
+  "game": "Pittsburgh Pirates @ Cleveland Guardians",
+  "away_team": "Pittsburgh Pirates",
+  "home_team": "Cleveland Guardians",
+  "away_sp": "Jared Jones",
+  "home_sp": "Gavin Williams",
+  "venue": "Progressive Field",
+  "status": "Scheduled",
+  "game_date_utc": "2026-07-17T23:10:00Z",
+  "game_time": "6:10 PM",
+  "game_time_sort": "18:10",
+  "slate_summary": {
+    "top_hr_target": "",
+    "top_pitcher": "",
+    "alpha_game_rating": "",
+    "notes": ""
+  },
+  "hitters": [],
+  "pitchers": [],
+  "weather": {}
+}
