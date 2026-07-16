@@ -34,6 +34,25 @@ from model.publish_tomorrow_to_web import (
     publish_tomorrow_to_web,
 )
 
+from providers.lineups_tomorrow import (
+    build_tomorrow_lineups,
+)
+
+from model.attach_lineups_tomorrow import (
+    attach_tomorrow_lineups_to_games,
+)
+
+from model.attach_tomorrow_player_metrics import (
+    attach_tomorrow_player_metrics,
+)
+
+from model.normalize_tomorrow_games import (
+    normalize_tomorrow_games,
+)
+
+from model.finalize_tomorrow_games import (
+    finalize_tomorrow_games,
+)
 
 def run_tomorrow_update():
     print()
@@ -52,7 +71,16 @@ def run_tomorrow_update():
     print("📂 Tomorrow game files")
     build_tomorrow_game_files()
     build_tomorrow_game_index()
-    build_tomorrow_all_games()
+
+    print()
+    print("📋 Tomorrow lineups")
+    build_tomorrow_lineups()
+    attach_tomorrow_lineups_to_games()
+
+    print()
+    print("🧬 Finalizing tomorrow players")
+    finalize_tomorrow_games()
+
 
     print()
     print("🌤️ Tomorrow weather")

@@ -84,12 +84,14 @@ def run_full_update():
 
     enrich_players_in_games()
 
+    print("\n🏗️ Building combined game data")
+    build_all_games()
+
     print("\n💰 Market Lines")
     build_market_lines()
 
     print("\n🏆 Outputs")
     build_rankings()
-    build_all_games()
     export_game_projections()
     export_hr_graphic_data()
     create_graphic()
@@ -99,9 +101,6 @@ def run_full_update():
     validate_pipeline()
     validate_model_features()
 
-    print("\n🗄️ Saving history")
-    save_daily_history()
-
     print("\n🌐 Publishing web data")
     publish_to_web()
 
@@ -110,5 +109,8 @@ def run_full_update():
 
     print("\n📄 Google Sheets")
     update_full_slate_sheets()
+    
+    print("\n🗄️ Saving history")
+    save_daily_history()
 
     print("\n✅ Alpha Wagerz full update complete.")

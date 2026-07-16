@@ -266,7 +266,9 @@ def format_date(
     if value is None:
         return "Unknown"
 
-    return value.strftime("%b %-d, %Y")
+    month = value.strftime("%b")
+
+    return f"{month} {value.day}, {value.year}"
 
 
 def estimated_return_from_transaction(
