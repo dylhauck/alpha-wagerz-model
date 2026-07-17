@@ -54,7 +54,7 @@
       }
     },
     "market_source": "odds_api_io",
-    "market_status": "live",
+    "market_status": "cached",
     "market_updated_at": "2026-07-16T18:19:45Z"
   }
 ]

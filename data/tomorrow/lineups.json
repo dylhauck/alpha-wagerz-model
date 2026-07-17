@@ -3206,11 +3206,26 @@
     "away_team": "Baltimore Orioles",
     "home_team_id": 117,
     "home_team": "Houston Astros",
-    "away_sp_id": "",
-    "away_sp": "",
-    "home_sp_id": "",
-    "home_sp": "",
+    "away_sp_id": 665152,
+    "away_sp": "Dean Kremer",
+    "home_sp_id": 663567,
+    "home_sp": "Peter Lambert",
     "away_hitters": [
+      {
+        "id": 687952,
+        "player_id": 687952,
+        "Player ID": 687952,
+        "name": "Christian Encarnacion-Strand",
+        "Player": "Christian Encarnacion-Strand",
+        "team_id": 110,
+        "Team ID": 110,
+        "team": "Baltimore Orioles",
+        "Team": "Baltimore Orioles",
+        "position": "1B",
+        "Position": "1B",
+        "batting_order": "",
+        "lineup_source": "active_roster"
+      },
       {
         "id": 624413,
         "player_id": 624413,
@@ -3253,21 +3268,6 @@
         "Team": "Baltimore Orioles",
         "position": "2B",
         "Position": "2B",
-        "batting_order": "",
-        "lineup_source": "active_roster"
-      },
-      {
-        "id": 677942,
-        "player_id": 677942,
-        "Player ID": 677942,
-        "name": "Blaze Alexander",
-        "Player": "Blaze Alexander",
-        "team_id": 110,
-        "Team ID": 110,
-        "team": "Baltimore Orioles",
-        "Team": "Baltimore Orioles",
-        "position": "3B",
-        "Position": "3B",
         "batting_order": "",
         "lineup_source": "active_roster"
       },
@@ -4435,8 +4435,8 @@
     "home_team": "Los Angeles Angels",
     "away_sp_id": 675512,
     "away_sp": "Troy Melton",
-    "home_sp_id": "",
-    "home_sp": "",
+    "home_sp_id": 672282,
+    "home_sp": "Reid Detmers",
     "away_hitters": [
       {
         "id": 679529,
@@ -4844,8 +4844,8 @@
     "home_team": "Arizona Diamondbacks",
     "away_sp_id": "",
     "away_sp": "",
-    "home_sp_id": "",
-    "home_sp": "",
+    "home_sp_id": 518876,
+    "home_sp": "Merrill Kelly",
     "away_hitters": [
       {
         "id": 676475,

@@ -261,7 +261,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 605400,Aaron Nola,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
 660604,Alan Rangel,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
 664761,Alec Bohm,143,Philadelphia Phillies,PHI,3B,Third Base,R,R
-641745,Brad Keller,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
 669016,Brandon Marsh,143,Philadelphia Phillies,PHI,LF,Outfielder,L,R
 547180,Bryce Harper,143,Philadelphia Phillies,PHI,1B,First Base,L,R
 681082,Bryson Stott,143,Philadelphia Phillies,PHI,2B,Second Base,L,R
@@ -281,6 +280,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 676661,Max Lazar,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
 689147,Orion Kerkering,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
 665561,Rafael Marchán,143,Philadelphia Phillies,PHI,C,Catcher,S,R
+686751,Seth Johnson,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
 641835,Tim Mayza,143,Philadelphia Phillies,PHI,P,Pitcher,L,L
 607208,Trea Turner,143,Philadelphia Phillies,PHI,SS,Shortstop,R,R
 554430,Zack Wheeler,143,Philadelphia Phillies,PHI,P,Pitcher,L,R
@@ -469,8 +469,8 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 544150,Albert Suárez,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 552640,Andrew Kittredge,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 689296,Anthony Nunez,110,Baltimore Orioles,BAL,P,Pitcher,S,R
-677942,Blaze Alexander,110,Baltimore Orioles,BAL,3B,Third Base,R,R
 687064,Brandon Young,110,Baltimore Orioles,BAL,P,Pitcher,R,R
+687952,Christian Encarnacion-Strand,110,Baltimore Orioles,BAL,1B,First Base,R,R
 691723,Coby Mayo,110,Baltimore Orioles,BAL,3B,Third Base,R,R
 681297,Colton Cowser,110,Baltimore Orioles,BAL,CF,Outfielder,L,R
 665152,Dean Kremer,110,Baltimore Orioles,BAL,P,Pitcher,R,R
@@ -765,9 +765,9 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 673540,Kodai Senga,121,New York Mets,NYM,P,Pitcher,L,R
 620443,Luis Torrens,121,New York Mets,NYM,C,Catcher,R,R
 596133,Luke Weaver,121,New York Mets,NYM,P,Pitcher,R,R
+543760,Marcus Semien,121,New York Mets,NYM,2B,Second Base,R,R
 690997,Nolan McLean,121,New York Mets,NYM,P,Pitcher,R,R
 640455,Sean Manaea,121,New York Mets,NYM,P,Pitcher,R,L
 621438,Tyrone Taylor,121,New York Mets,NYM,CF,Outfielder,R,R
 675540,Xzavion Curry,121,New York Mets,NYM,P,Pitcher,R,R
 804267,Zach Thornton,121,New York Mets,NYM,P,Pitcher,L,L
-670097,Zack Short,121,New York Mets,NYM,SS,Shortstop,R,R

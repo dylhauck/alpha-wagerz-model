@@ -1,6 +1,8 @@
 from __future__ import annotations
 
-from providers.mlb_tomorrow import build_tomorrow_slate
+from providers.mlb_tomorrow import (
+    build_tomorrow_slate,
+)
 from providers.weather_tomorrow import (
     build_tomorrow_weather_file,
 )
@@ -13,9 +15,6 @@ from scripts.build_tomorrow_game_files import (
 )
 from scripts.build_tomorrow_game_index import (
     build_tomorrow_game_index,
-)
-from scripts.build_all_games_tomorrow import (
-    build_tomorrow_all_games,
 )
 
 from model.attach_weather_tomorrow import (
@@ -52,7 +51,13 @@ from model.normalize_tomorrow_games import (
 
 from model.finalize_tomorrow_games import (
     finalize_tomorrow_games,
+    build_final_tomorrow_all_games,
 )
+
+from model.fill_tomorrow_player_details import (
+    fill_tomorrow_player_details,
+)
+
 
 def run_tomorrow_update():
     print()
@@ -66,6 +71,7 @@ def run_tomorrow_update():
         print(
             "ℹ️ No MLB games were returned for tomorrow."
         )
+        return
 
     print()
     print("📂 Tomorrow game files")
@@ -81,6 +87,16 @@ def run_tomorrow_update():
     print("🧬 Finalizing tomorrow players")
     finalize_tomorrow_games()
 
+    print()
+    print("🤚 Filling tomorrow handedness")
+    fill_tomorrow_player_details()
+
+    # Rebuild all_games.json from the completed individual
+    # game files. This preserves hitters, pitchers, metrics,
+    # Bats, Throws, and Game values.
+    print()
+    print("📦 Updating tomorrow all-games data")
+    build_final_tomorrow_all_games()
 
     print()
     print("🌤️ Tomorrow weather")
