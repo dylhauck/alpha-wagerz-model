@@ -301,17 +301,17 @@ def attach_hitter_metrics_to_games():
 
         save_json(game, file)
 
-    games_to_save = []
+        games_to_save = []
 
-    for file in GAMES_DIR.glob("*.json"):
-        game = load_json(file, default={})
+        for file in GAMES_DIR.glob("*.json"):
+            game = load_json(file, default={})
         if game:
             games_to_save.append((file, game))
 
-    if games_to_save:
-        normalized_games = normalize_slate_hitters([game for _, game in games_to_save])
-    else:
-        return
+        if games_to_save:
+            normalized_games = normalize_slate_hitters([game for _, game in games_to_save])
+        else:
+            return
 
     for (file, _), game in zip(games_to_save, normalized_games):
         save_json(game, file)

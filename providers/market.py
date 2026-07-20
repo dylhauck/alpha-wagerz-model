@@ -422,11 +422,17 @@ def extract_player_from_prop_label(label):
 
     patterns = [
         r"\s*\(Pitcher Strikeouts\)\s*$",
+        r"\s*\(Pitcher Strikeout\)\s*$",
         r"\s*\(Strikeouts\)\s*$",
+        r"\s*\(Strikeout\)\s*$",
         r"\s*-\s*Pitcher Strikeouts\s*$",
+        r"\s*-\s*Pitcher Strikeout\s*$",
         r"\s*-\s*Strikeouts\s*$",
+        r"\s*-\s*Strikeout\s*$",
         r"\s+Pitcher Strikeouts\s*$",
+        r"\s+Pitcher Strikeout\s*$",
         r"\s+Strikeouts\s*$",
+        r"\s+Strikeout\s*$",
     ]
 
     cleaned = value
@@ -459,15 +465,37 @@ def is_pitcher_strikeout_market(market):
 
 
 def row_is_pitcher_strikeout(row, market):
-    label = str(row.get("label") or "").lower()
+    label = market_name_key(row.get("label"))
     market_name = market_name_key(market.get("name"))
 
-    return (
-        "pitcher strikeout" in label
-        or "(strikeouts)" in label
-        or "pitcher strikeout" in market_name
+    dedicated_market = (
+        "pitcher strikeout" in market_name
         or "player strikeout" in market_name
+        or "pitcher total strikeout" in market_name
+        or market_name in {
+            "pitcher strikeouts",
+            "player strikeouts",
+            "strikeouts pitcher",
+        }
     )
+
+    if dedicated_market:
+        return True
+
+    if market_name == "player props":
+        return any(
+            marker in label
+            for marker in (
+                "pitcher strikeout",
+                "pitcher strikeouts",
+                "strikeout pitcher",
+                "strikeouts pitcher",
+                " strikeout",
+                " strikeouts",
+            )
+        )
+
+    return False
 
 
 def player_name_from_prop_row(row, market):
@@ -751,6 +779,60 @@ def save_cache(output):
     today = datetime.now(ZoneInfo(MARKET_TIMEZONE)).strftime("%Y-%m-%d")
     save_json(output, CACHE_DIR / f"market_lines_{today}.json")
 
+def merge_live_with_cached(
+    live_payload,
+    cached_payload,
+):
+    if not cached_payload:
+        return live_payload
+
+    merged = dict(cached_payload)
+    merged.update(live_payload)
+
+    live_team_totals = (
+        live_payload.get("team_totals", {})
+        or {}
+    )
+
+    cached_team_totals = (
+        cached_payload.get("team_totals", {})
+        or {}
+    )
+
+    merged["team_totals"] = {
+        key: (
+            live_team_totals.get(key)
+            if live_team_totals.get(key) is not None
+            else cached_team_totals.get(key)
+        )
+        for key in (
+            "away",
+            "away_over_price",
+            "away_under_price",
+            "home",
+            "home_over_price",
+            "home_under_price",
+        )
+    }
+
+    live_pitcher_props = (
+        live_payload.get("pitcher_strikeouts", {})
+        or {}
+    )
+
+    cached_pitcher_props = (
+        cached_payload.get("pitcher_strikeouts", {})
+        or {}
+    )
+
+    merged["pitcher_strikeouts"] = {
+        **cached_pitcher_props,
+        **live_pitcher_props,
+    }
+
+    merged["market_status"] = "live"
+
+    return merged
 
 def build_market_lines():
     local_games = safe_load_json(ALL_GAMES_FILE, [])
@@ -778,7 +860,21 @@ def build_market_lines():
                 continue
 
             odds_payload = fetch_event_odds(api_event.get("id"))
-            payload = build_live_payload(api_event, local_game, odds_payload)
+            payload = build_live_payload(
+                api_event,
+                local_game,
+                odds_payload,
+            )
+
+            cached = cached_payload(
+                local_game,
+                cache,
+            )
+
+            payload = merge_live_with_cached(
+                payload,
+                cached,
+            )
 
             game_id = str(local_game.get("game_id"))
             output_by_game_id[game_id] = payload

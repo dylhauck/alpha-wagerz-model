@@ -163,5 +163,4 @@ def normalize_slate_hitters(games):
         hitter["HR Form"] = round(recent, 1)
         hitter["kHR"] = round(khr, 1)
         hitter["Likely"] = round(alpha, 1)
-
     return games

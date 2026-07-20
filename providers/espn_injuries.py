@@ -52,7 +52,9 @@ ESPN_TEAMS = {
     "wsh": "Washington Nationals",
 }
 
-OUTPUT_FILE = Path("data/processed/injury_report.json")
+OUTPUT_FILE = Path(
+    r"C:\Users\dhauc\Desktop\alpha-wagerz-web\public\data\injury_report.json"
+)
 
 REQUEST_TIMEOUT = 30
 
@@ -793,25 +795,21 @@ def merge_injury_rows(
         if espn_row.get("availability") != "DTD":
             continue
 
-        key = (
+        player_key = (
             normalized_name(espn_row.get("team")),
             normalized_name(espn_row.get("player")),
         )
 
-        existing = merged.get(key)
+        existing = merged.get(player_key)
 
         if existing and existing.get("source_type") == "suspension":
             continue
 
-        if existing and existing.get("availability") == "OUT":
-            continue
-
         combined = dict(existing or {})
 
-        # Preserve MLB values if ESPN doesn't provide anything useful.
-        for key, value in espn_row.items():
+        for field_name, value in espn_row.items():
             if (
-                key == "estimated_return"
+                field_name == "estimated_return"
                 and (
                     value == "Unknown"
                     or value == ""
@@ -821,7 +819,7 @@ def merge_injury_rows(
                 continue
 
             if (
-                key == "injury"
+                field_name == "injury"
                 and (
                     value == "Undisclosed"
                     or value == ""
@@ -830,7 +828,7 @@ def merge_injury_rows(
             ):
                 continue
 
-            combined[key] = value
+            combined[field_name] = value
 
 
         if existing:
@@ -850,7 +848,7 @@ def merge_injury_rows(
             combined.setdefault("transaction_date", "")
             combined["source"] = "ESPN API"
 
-        merged[key] = combined
+        merged[player_key] = combined
 
     rows = list(merged.values())
 
@@ -872,6 +870,7 @@ def build_injury_report():
     try:
         espn_rows = fetch_espn_roster_injuries()
         print(f"   ESPN API injuries: {len(espn_rows)}")
+
     except Exception as exc:
         espn_error = str(exc)
         print(f"⚠️ ESPN API injury pull failed: {exc}")
@@ -926,6 +925,13 @@ def build_injury_report():
         payload,
         OUTPUT_FILE,
     )
+
+    print(f"ABSOLUTE OUTPUT PATH: {OUTPUT_FILE.resolve()}")
+    print(f"DTD PLAYERS SAVED: {[
+    player['player']
+    for player in players
+    if player.get('availability') == 'DTD'
+]}")
 
     print(
         f"✅ Saved injury report for {len(players)} players "
