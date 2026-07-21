@@ -1,16 +1,16 @@
 game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status,game_date_utc,game_time,game_time_sort
-824410,2026-07-20,Minnesota Twins @ Cleveland Guardians,Minnesota Twins,Cleveland Guardians,Joe Ryan,Tanner Bibee,Progressive Field,Pre-Game,2026-07-20T22:40:00Z,5:40 PM,17:40
-823522,2026-07-20,Pittsburgh Pirates @ New York Yankees,Pittsburgh Pirates,New York Yankees,Braxton Ashcraft,Ryan Weathers,Yankee Stadium,Pre-Game,2026-07-20T23:05:00Z,6:05 PM,18:05
-822788,2026-07-20,Tampa Bay Rays @ Toronto Blue Jays,Tampa Bay Rays,Toronto Blue Jays,Nick Martinez,Dylan Cease,Rogers Centre,Pre-Game,2026-07-20T23:07:00Z,6:07 PM,18:07
-824736,2026-07-20,Baltimore Orioles @ Boston Red Sox,Baltimore Orioles,Boston Red Sox,Shane Baz,Payton Tolle,Fenway Park,Pre-Game,2026-07-20T23:10:00Z,6:10 PM,18:10
-823436,2026-07-20,Los Angeles Dodgers @ Philadelphia Phillies,Los Angeles Dodgers,Philadelphia Phillies,Emmet Sheehan,Cristopher Sánchez,Citizens Bank Park,Pre-Game,2026-07-20T23:10:00Z,6:10 PM,18:10
-824898,2026-07-20,San Diego Padres @ Atlanta Braves,San Diego Padres,Atlanta Braves,JP Sears,Bryce Elder,Truist Park,Pre-Game,2026-07-20T23:15:00Z,6:15 PM,18:15
-824087,2026-07-20,San Francisco Giants @ Kansas City Royals,San Francisco Giants,Kansas City Royals,Trevor McDonald,Michael Wacha,Kauffman Stadium,Pre-Game,2026-07-20T23:40:00Z,6:40 PM,18:40
-823762,2026-07-20,New York Mets @ Milwaukee Brewers,New York Mets,Milwaukee Brewers,Freddy Peralta,Jacob Misiorowski,American Family Field,Pre-Game,2026-07-20T23:40:00Z,6:40 PM,18:40
-824654,2026-07-20,Detroit Tigers @ Chicago Cubs,Detroit Tigers,Chicago Cubs,Jack Flaherty,Jameson Taillon,Wrigley Field,Pre-Game,2026-07-21T00:05:00Z,7:05 PM,19:05
-822874,2026-07-20,Chicago White Sox @ Texas Rangers,Chicago White Sox,Texas Rangers,Erick Fedde,Jacob deGrom,Globe Life Field,Pre-Game,2026-07-21T00:05:00Z,7:05 PM,19:05
-824167,2026-07-20,Miami Marlins @ Houston Astros,Miami Marlins,Houston Astros,Janson Junk,Ronel Blanco,Daikin Park,Pre-Game,2026-07-21T00:10:00Z,7:10 PM,19:10
-824328,2026-07-20,Washington Nationals @ Colorado Rockies,Washington Nationals,Colorado Rockies,Andrew Alvarez,Kyle Freeland,Coors Field,Pre-Game,2026-07-21T00:40:00Z,7:40 PM,19:40
-825058,2026-07-20,Athletics @ Arizona Diamondbacks,Athletics,Arizona Diamondbacks,Jeffrey Springs,Mitch Bratt,Chase Field,Scheduled,2026-07-21T01:40:00Z,8:40 PM,20:40
-823112,2026-07-20,Cincinnati Reds @ Seattle Mariners,Cincinnati Reds,Seattle Mariners,Andrew Abbott,George Kirby,T-Mobile Park,Pre-Game,2026-07-21T01:40:00Z,8:40 PM,20:40
-824006,2026-07-20,St. Louis Cardinals @ Los Angeles Angels,St. Louis Cardinals,Los Angeles Angels,Kyle Leahy,José Soriano,Angel Stadium,Scheduled,2026-07-21T02:10:00Z,9:10 PM,21:10
+824409,2026-07-21,Minnesota Twins @ Cleveland Guardians,Minnesota Twins,Cleveland Guardians,Kendry Rojas,Parker Messick,Progressive Field,Pre-Game,2026-07-21T22:40:00Z,5:40 PM,17:40
+823437,2026-07-21,Los Angeles Dodgers @ Philadelphia Phillies,Los Angeles Dodgers,Philadelphia Phillies,Justin Wrobleski,Zack Wheeler,Citizens Bank Park,Pre-Game,2026-07-21T22:40:00Z,5:40 PM,17:40
+822787,2026-07-21,Tampa Bay Rays @ Toronto Blue Jays,Tampa Bay Rays,Toronto Blue Jays,Drew Rasmussen,Kevin Gausman,Rogers Centre,Pre-Game,2026-07-21T23:07:00Z,6:07 PM,18:07
+824735,2026-07-21,Baltimore Orioles @ Boston Red Sox,Baltimore Orioles,Boston Red Sox,Kyle Bradish,Eduardo Rivera,Fenway Park,Pre-Game,2026-07-21T23:10:00Z,6:10 PM,18:10
+824895,2026-07-21,San Diego Padres @ Atlanta Braves,San Diego Padres,Atlanta Braves,Walker Buehler,Reynaldo López,Truist Park,Pre-Game,2026-07-21T23:15:00Z,6:15 PM,18:15
+824085,2026-07-21,San Francisco Giants @ Kansas City Royals,San Francisco Giants,Kansas City Royals,Tyler Mahle,Luinder Avila,Kauffman Stadium,Pre-Game,2026-07-21T23:40:00Z,6:40 PM,18:40
+823760,2026-07-21,New York Mets @ Milwaukee Brewers,New York Mets,Milwaukee Brewers,Zac Thornton,Brandon Sproat,American Family Field,Pre-Game,2026-07-21T23:40:00Z,6:40 PM,18:40
+824652,2026-07-21,Detroit Tigers @ Chicago Cubs,Detroit Tigers,Chicago Cubs,Framber Valdez,David Peterson,Wrigley Field,Pre-Game,2026-07-22T00:05:00Z,7:05 PM,19:05
+822871,2026-07-21,Chicago White Sox @ Texas Rangers,Chicago White Sox,Texas Rangers,Noah Schultz,Kumar Rocker,Globe Life Field,Pre-Game,2026-07-22T00:05:00Z,7:05 PM,19:05
+824165,2026-07-21,Miami Marlins @ Houston Astros,Miami Marlins,Houston Astros,Tyler Phillips,Tatsuya Imai,Daikin Park,Pre-Game,2026-07-22T00:10:00Z,7:10 PM,19:10
+824329,2026-07-21,Washington Nationals @ Colorado Rockies,Washington Nationals,Colorado Rockies,Carson Palmquist,Michael Lorenzen,Coors Field,Pre-Game,2026-07-22T00:40:00Z,7:40 PM,19:40
+824005,2026-07-21,St. Louis Cardinals @ Los Angeles Angels,St. Louis Cardinals,Los Angeles Angels,Matthew Liberatore,Walbert Ureña,Angel Stadium,Pre-Game,2026-07-22T01:38:00Z,8:38 PM,20:38
+825056,2026-07-21,Athletics @ Arizona Diamondbacks,Athletics,Arizona Diamondbacks,Jack Perkins,Kohl Drake,Chase Field,Scheduled,2026-07-22T01:40:00Z,8:40 PM,20:40
+823114,2026-07-21,Cincinnati Reds @ Seattle Mariners,Cincinnati Reds,Seattle Mariners,Chase Burns,Luis Castillo,T-Mobile Park,Pre-Game,2026-07-22T01:40:00Z,8:40 PM,20:40
+823519,2026-07-21,Pittsburgh Pirates @ New York Yankees,Pittsburgh Pirates,New York Yankees,Bubba Chandler,Will Warren,Yankee Stadium,Postponed,2026-07-21T23:05:00Z,6:05 PM,18:05
