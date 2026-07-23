@@ -323,6 +323,11 @@ def parse_moneyline(odds_payload):
     )
     row = first_odds_row(market)
 
+    print("RUN LINE DEBUG")
+    print("Bookmaker:", bookmaker)
+    print("Market:", market)
+    print("Row:", row)
+
     return {
         "bookmaker": bookmaker,
         "away": decimal_to_american(row.get("away")),
@@ -331,13 +336,43 @@ def parse_moneyline(odds_payload):
 
 
 def parse_spread(odds_payload):
-    bookmaker, market = first_available_market(
-        odds_payload,
-        ["Spread", "Run Line", "Runline"],
-    )
-    row = first_odds_row(market)
+    bookmaker = ""
+    market = None
 
+    # First, look specifically for a real MLB run-line market.
+    for market_name in ("Run Line", "Runline"):
+        bookmaker, market = first_available_market(
+            odds_payload,
+            [market_name],
+        )
+
+        if market:
+            break
+
+    # Only use the generic Spread market if no run-line market exists.
+    if not market:
+        bookmaker, market = first_available_market(
+            odds_payload,
+            ["Spread"],
+        )
+
+    row = first_odds_row(market)
     hdp = to_float(row.get("hdp"))
+
+    print("RUN LINE DEBUG")
+    print("Bookmaker:", bookmaker)
+    print("Market:", market)
+    print("Row:", row)
+
+    # Prevent obviously incorrect baseball run lines like 4.5 or 6.5.
+    if hdp is not None and abs(hdp) > 3:
+        print(
+            f"⚠️ Rejected suspicious MLB run line: "
+            f"{bookmaker} | "
+            f"{market.get('name') if market else ''} | "
+            f"{hdp}"
+        )
+        hdp = None
 
     return {
         "bookmaker": bookmaker,

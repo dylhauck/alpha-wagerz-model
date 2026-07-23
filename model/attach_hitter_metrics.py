@@ -3,7 +3,6 @@ import pandas as pd
 
 from model.scores.alpha import alpha_score
 from utils.json_utils import load_json, save_json, clean_value
-from model.scores.hitter_detail import attach_hitter_detail_scores
 from model.scores.slate_normalizer import normalize_slate_hitters
 
 GAMES_DIR = Path("data/processed/games")
@@ -265,7 +264,12 @@ def format_hitter(hitter_input, lookup, game, side):
     hitter["Confidence"] = clean_value(scores.get("Confidence", ""))
     hitter["Reasons"] = scores.get("Reasons", [])
 
-    hitter = attach_hitter_detail_scores(hitter)
+    hitter["Matchup"] = clean_value(scores.get("Matchup", ""))
+    hitter["Test Score"] = clean_value(scores.get("Test Score", ""))
+    hitter["Ceiling"] = clean_value(scores.get("Ceiling", ""))
+    hitter["Zone Fit"] = clean_value(scores.get("Zone Fit", ""))
+    hitter["HR Form"] = clean_value(scores.get("HR Form", ""))
+    hitter["kHR"] = clean_value(scores.get("kHR", ""))
 
     return hitter
 
