@@ -193,7 +193,6 @@ def total_analysis(projected_total, market):
     lean = f"Over {total_line}" if edge > 0 else f"Under {total_line}" if edge < 0 else "No Strong Total Lean"
     return {"total_lean": lean, "total_recommendation": lean, "total_edge": edge, "total_confidence": confidence_from_edge(edge, 1.2)}
 
-
 def team_total_analysis(away_team, home_team, away_runs, home_runs, market):
     team_totals = market.get("team_totals", {}) if market else {}
     away_line, home_line = team_totals.get("away"), team_totals.get("home")

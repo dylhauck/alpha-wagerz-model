@@ -118,11 +118,11 @@ def normalize_slate_hitters(games):
         ceiling = boost_elite(ceiling, midpoint=62, strength=1.25)
 
         zone_fit = weighted_score([
-            (pitch_type, 0.52),
-            (pitcher, 0.22),
-            (contact, 0.16),
-            (power, 0.10),
-        ])
+    (pitch_type, 0.75),
+    (pitcher, 0.10),
+    (contact, 0.10),
+    (power, 0.05),
+])
 
         khr = weighted_score([
             (power, 0.36),

@@ -24,7 +24,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 669127,Shea Langeliers,133,Athletics,ATH,C,Catcher,R,R
 695720,Tommy White,133,Athletics,ATH,3B,Third Base,R,R
 691016,Tyler Soderstrom,133,Athletics,ATH,LF,Outfielder,L,R
-814305,Yunior Tur,133,Athletics,ATH,P,Pitcher,R,R
 695257,Billy Cook,134,Pittsburgh Pirates,PIT,CF,Outfielder,R,R
 685126,Brandon Eisert,134,Pittsburgh Pirates,PIT,P,Pitcher,L,L
 664040,Brandon Lowe,134,Pittsburgh Pirates,PIT,2B,Second Base,L,R
@@ -349,6 +348,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 676083,Janson Junk,146,Miami Marlins,MIA,P,Pitcher,R,R
 691594,Javier Sanoja,146,Miami Marlins,MIA,3B,Third Base,R,R
 691788,Joe Mack,146,Miami Marlins,MIA,C,Catcher,L,R
+667463,John King,146,Miami Marlins,MIA,P,Pitcher,L,L
 669065,Kyle Stowers,146,Miami Marlins,MIA,LF,Outfielder,L,L
 669199,Lake Bachar,146,Miami Marlins,MIA,P,Pitcher,R,R
 677870,Leo Jiménez,146,Miami Marlins,MIA,3B,Third Base,R,R
@@ -361,7 +361,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 663969,Tyler Phillips,146,Miami Marlins,MIA,P,Pitcher,R,R
 676604,Tyler Zuber,146,Miami Marlins,MIA,P,Pitcher,R,R
 669364,Xavier Edwards,146,Miami Marlins,MIA,2B,Second Base,S,R
-694350,Zach Brzykcy,146,Miami Marlins,MIA,P,Pitcher,R,R
 645305,Ali Sánchez,147,New York Yankees,NYY,C,Catcher,R,R
 642708,Amed Rosario,147,New York Yankees,NYY,3B,Third Base,R,R
 683409,Angel Chivilli,147,New York Yankees,NYY,P,Pitcher,R,R
@@ -530,7 +529,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 592791,Jameson Taillon,112,Chicago Cubs,CHC,P,Pitcher,R,R
 665871,Javier Assad,112,Chicago Cubs,CHC,P,Pitcher,R,R
 681909,Justin Dean,112,Chicago Cubs,CHC,CF,Outfielder,R,R
-682634,Kevin Alcántara,112,Chicago Cubs,CHC,DH,Designated Hitter,R,R
 571510,Matthew Boyd,112,Chicago Cubs,CHC,P,Pitcher,L,L
 683737,Michael Busch,112,Chicago Cubs,CHC,1B,First Base,L,R
 624424,Michael Conforto,112,Chicago Cubs,CHC,DH,Designated Hitter,L,R

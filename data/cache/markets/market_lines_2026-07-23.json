@@ -1,63 +1,5 @@
 [
   {
-    "game_id": "824247",
-    "game": "Kansas City Royals @ Detroit Tigers",
-    "away_team": "Kansas City Royals",
-    "home_team": "Detroit Tigers",
-    "bookmaker": "FanDuel",
-    "bookmaker_key": "fanduel",
-    "odds_event_id": 63302219,
-    "moneyline": {
-      "away": 194,
-      "home": -233
-    },
-    "spread": {
-      "away": "",
-      "away_price": -1667,
-      "home": "",
-      "home_price": 800
-    },
-    "total": 6.5,
-    "game_total": {
-      "line": 6.5,
-      "over_price": -263,
-      "under_price": 196
-    },
-    "team_totals": {
-      "away": 4.5,
-      "away_over_price": 200,
-      "away_under_price": -263,
-      "home": 4.5,
-      "home_over_price": -122,
-      "home_under_price": -104
-    },
-    "pitcher_strikeouts": {
-      "randy dobnak": {
-        "player": "Randy Dobnak",
-        "normalized_name": "randy dobnak",
-        "line": 3.5,
-        "over_price": 139,
-        "under_price": -179,
-        "bookmaker": "DraftKings",
-        "bookmaker_key": "draftkings",
-        "market_name": "Pitcher Strikeouts"
-      },
-      "troy melton": {
-        "player": "Troy Melton",
-        "normalized_name": "troy melton",
-        "line": 5.5,
-        "over_price": -156,
-        "under_price": 122,
-        "bookmaker": "DraftKings",
-        "bookmaker_key": "draftkings",
-        "market_name": "Pitcher Strikeouts"
-      }
-    },
-    "market_source": "odds_api_io",
-    "market_status": "live",
-    "market_updated_at": "2026-07-23T21:44:07Z"
-  },
-  {
     "game_id": "823042",
     "game": "Arizona Diamondbacks @ St. Louis Cardinals",
     "away_team": "Arizona Diamondbacks",
@@ -114,6 +56,64 @@
     "market_source": "odds_api_io",
     "market_status": "cached",
     "market_updated_at": "2026-07-23T20:09:26Z"
+  },
+  {
+    "game_id": "824247",
+    "game": "Kansas City Royals @ Detroit Tigers",
+    "away_team": "Kansas City Royals",
+    "home_team": "Detroit Tigers",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63302219,
+    "moneyline": {
+      "away": 194,
+      "home": -233
+    },
+    "spread": {
+      "away": "",
+      "away_price": -1667,
+      "home": "",
+      "home_price": 800
+    },
+    "total": 6.5,
+    "game_total": {
+      "line": 6.5,
+      "over_price": -263,
+      "under_price": 196
+    },
+    "team_totals": {
+      "away": 4.5,
+      "away_over_price": 200,
+      "away_under_price": -263,
+      "home": 4.5,
+      "home_over_price": -122,
+      "home_under_price": -104
+    },
+    "pitcher_strikeouts": {
+      "randy dobnak": {
+        "player": "Randy Dobnak",
+        "normalized_name": "randy dobnak",
+        "line": 3.5,
+        "over_price": 139,
+        "under_price": -179,
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "troy melton": {
+        "player": "Troy Melton",
+        "normalized_name": "troy melton",
+        "line": 5.5,
+        "over_price": -156,
+        "under_price": 122,
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "cached",
+    "market_updated_at": "2026-07-23T21:44:07Z"
   },
   {
     "game_id": "824406",

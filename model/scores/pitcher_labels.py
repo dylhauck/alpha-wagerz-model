@@ -12,12 +12,13 @@ def pitcher_risk_label(pitcher):
     brl = safe_float(pitcher.get("Brl/BIP%"))
     fb = safe_float(pitcher.get("FB%"))
 
-    if hr_vuln >= 70 or brl >= 12:
+    if hr_vuln >= 50 or brl >= 10.0 or fb >= 48:
         return "High HR Risk"
-    if hr_vuln >= 55 or fb >= 45:
-        return "Moderate HR Risk"
-    return "Low HR Risk"
 
+    if hr_vuln >= 30 or brl >= 7.5 or fb >= 40:
+        return "Moderate HR Risk"
+
+    return "Low HR Risk"
 
 def strikeout_label(pitcher):
     k_score = safe_float(pitcher.get("Strikeout Score"))

@@ -1,6 +1,16 @@
 game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status,game_date_utc,game_time,game_time_sort
-824893,2026-07-23,San Diego Padres @ Atlanta Braves,San Diego Padres,Atlanta Braves,Kyle Hart,Chris Sale,Truist Park,Final,2026-07-23T16:15:00Z,11:15 AM,11:15
-824406,2026-07-23,Minnesota Twins @ Cleveland Guardians,Minnesota Twins,Cleveland Guardians,Taj Bradley,Gavin Williams,Progressive Field,Final,2026-07-23T17:10:00Z,12:10 PM,12:10
-822785,2026-07-23,Tampa Bay Rays @ Toronto Blue Jays,Tampa Bay Rays,Toronto Blue Jays,Casey Legumina,Shane Bieber,Rogers Centre,Final,2026-07-23T19:07:00Z,2:07 PM,14:07
-823042,2026-07-23,Arizona Diamondbacks @ St. Louis Cardinals,Arizona Diamondbacks,St. Louis Cardinals,Brandon Pfaadt,Michael McGreevy,Busch Stadium,In Progress,2026-07-23T21:15:00Z,4:15 PM,16:15
-824247,2026-07-23,Kansas City Royals @ Detroit Tigers,Kansas City Royals,Detroit Tigers,Randy Dobnak,Troy Melton,Comerica Park,Pre-Game,2026-07-23T22:40:00Z,5:40 PM,17:40
+823759,2026-07-24,Colorado Rockies @ Milwaukee Brewers,Colorado Rockies,Milwaukee Brewers,Tomoyuki Sugano,Shane Drohan,American Family Field,Scheduled,2026-07-24T20:10:00Z,3:10 PM,15:10
+824248,2026-07-24,Kansas City Royals @ Detroit Tigers,Kansas City Royals,Detroit Tigers,Beck Way,Tarik Skubal,Comerica Park,Scheduled,2026-07-24T22:40:00Z,5:40 PM,17:40
+823352,2026-07-24,Chicago Cubs @ Pittsburgh Pirates,Chicago Cubs,Pittsburgh Pirates,Matthew Boyd,Jared Jones,PNC Park,Scheduled,2026-07-24T22:40:00Z,5:40 PM,17:40
+822707,2026-07-24,Arizona Diamondbacks @ Washington Nationals,Arizona Diamondbacks,Washington Nationals,Eduardo Rodriguez,Carson Palmquist,Nationals Park,Scheduled,2026-07-24T22:45:00Z,5:45 PM,17:45
+823434,2026-07-24,New York Yankees @ Philadelphia Phillies,New York Yankees,Philadelphia Phillies,Will Warren,Jesús Luzardo,Citizens Bank Park,Scheduled,2026-07-24T22:45:00Z,5:45 PM,17:45
+824812,2026-07-24,Atlanta Braves @ Baltimore Orioles,Atlanta Braves,Baltimore Orioles,Grant Holmes,,Oriole Park at Camden Yards,Scheduled,2026-07-24T23:05:00Z,6:05 PM,18:05
+823601,2026-07-24,Los Angeles Dodgers @ New York Mets,Los Angeles Dodgers,New York Mets,Roki Sasaki,Sean Manaea,Citi Field,Scheduled,2026-07-24T23:10:00Z,6:10 PM,18:10
+822952,2026-07-24,Cleveland Guardians @ Tampa Bay Rays,Cleveland Guardians,Tampa Bay Rays,Joey Cantillo,Shane McClanahan,Tropicana Field,Scheduled,2026-07-24T23:10:00Z,6:10 PM,18:10
+823843,2026-07-24,San Diego Padres @ Miami Marlins,San Diego Padres,Miami Marlins,Germán Márquez,,loanDepot park,Scheduled,2026-07-24T23:10:00Z,6:10 PM,18:10
+824733,2026-07-24,Toronto Blue Jays @ Boston Red Sox,Toronto Blue Jays,Boston Red Sox,Trey Yesavage,Patrick Sandoval,Fenway Park,Scheduled,2026-07-24T23:15:00Z,6:15 PM,18:15
+824573,2026-07-24,Houston Astros @ Chicago White Sox,Houston Astros,Chicago White Sox,Spencer Arrighetti,Davis Martin,Rate Field,Scheduled,2026-07-24T23:40:00Z,6:40 PM,18:40
+822872,2026-07-24,Seattle Mariners @ Texas Rangers,Seattle Mariners,Texas Rangers,Bryce Miller,MacKenzie Gore,Globe Life Field,Scheduled,2026-07-25T00:05:00Z,7:05 PM,19:05
+823680,2026-07-24,Athletics @ Minnesota Twins,Athletics,Minnesota Twins,Jacob Lopez,Zebby Matthews,Target Field,Scheduled,2026-07-25T00:10:00Z,7:10 PM,19:10
+823031,2026-07-24,Cincinnati Reds @ St. Louis Cardinals,Cincinnati Reds,St. Louis Cardinals,Rhett Lowder,Dustin May,Busch Stadium,Scheduled,2026-07-25T00:15:00Z,7:15 PM,19:15
+823196,2026-07-24,Los Angeles Angels @ San Francisco Giants,Los Angeles Angels,San Francisco Giants,Grayson Rodriguez,Logan Webb,Oracle Park,Scheduled,2026-07-25T02:15:00Z,9:15 PM,21:15

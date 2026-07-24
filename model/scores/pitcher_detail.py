@@ -177,7 +177,9 @@ def score_pitch_score(pitcher):
         + opp_matchup * 0.10
     )
 
-    return round(clamp(score, 5, 95), 1)
+    scaled_score = 25 + ((score - 20) / 30) * 70
+
+    return round(clamp(scaled_score, 25, 95), 1)
 
 
 def attach_pitcher_detail_scores(pitcher):
