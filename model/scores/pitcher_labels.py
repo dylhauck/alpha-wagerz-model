@@ -12,9 +12,9 @@ def pitcher_risk_label(pitcher):
     brl = safe_float(pitcher.get("Brl/BIP%"))
     fb = safe_float(pitcher.get("FB%"))
 
-    if hr_vuln >= 70 or brl >= 12:
+    if hr_vuln >= 40:
         return "High HR Risk"
-    if hr_vuln >= 55 or fb >= 45:
+    if hr_vuln >= 30:
         return "Moderate HR Risk"
     return "Low HR Risk"
 

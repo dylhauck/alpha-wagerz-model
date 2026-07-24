@@ -19,12 +19,12 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 660761,José Suarez,133,Athletics,ATH,P,Pitcher,L,L
 671732,Lawrence Butler,133,Athletics,ATH,RF,Outfielder,L,R
 665622,Luis Medina,133,Athletics,ATH,P,Pitcher,R,R
+806960,Luis Morales,133,Athletics,ATH,P,Pitcher,R,R
 686930,Mason Barnett,133,Athletics,ATH,P,Pitcher,R,R
 691777,Max Muncy,133,Athletics,ATH,3B,Third Base,R,R
 669127,Shea Langeliers,133,Athletics,ATH,C,Catcher,R,R
 695720,Tommy White,133,Athletics,ATH,3B,Third Base,R,R
 691016,Tyler Soderstrom,133,Athletics,ATH,LF,Outfielder,L,R
-814305,Yunior Tur,133,Athletics,ATH,P,Pitcher,R,R
 695257,Billy Cook,134,Pittsburgh Pirates,PIT,CF,Outfielder,R,R
 685126,Brandon Eisert,134,Pittsburgh Pirates,PIT,P,Pitcher,L,L
 664040,Brandon Lowe,134,Pittsburgh Pirates,PIT,2B,Second Base,L,R
@@ -279,7 +279,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 656941,Kyle Schwarber,143,Philadelphia Phillies,PHI,DH,Designated Hitter,L,R
 676661,Max Lazar,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
 689147,Orion Kerkering,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
-665561,Rafael Marchán,143,Philadelphia Phillies,PHI,C,Catcher,S,R
+668721,Payton Henry,143,Philadelphia Phillies,PHI,C,Catcher,R,R
 686751,Seth Johnson,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
 641835,Tim Mayza,143,Philadelphia Phillies,PHI,P,Pitcher,L,L
 607208,Trea Turner,143,Philadelphia Phillies,PHI,SS,Shortstop,R,R
@@ -349,6 +349,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 676083,Janson Junk,146,Miami Marlins,MIA,P,Pitcher,R,R
 691594,Javier Sanoja,146,Miami Marlins,MIA,3B,Third Base,R,R
 691788,Joe Mack,146,Miami Marlins,MIA,C,Catcher,L,R
+667463,John King,146,Miami Marlins,MIA,P,Pitcher,L,L
 669065,Kyle Stowers,146,Miami Marlins,MIA,LF,Outfielder,L,L
 669199,Lake Bachar,146,Miami Marlins,MIA,P,Pitcher,R,R
 677870,Leo Jiménez,146,Miami Marlins,MIA,3B,Third Base,R,R
@@ -361,7 +362,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 663969,Tyler Phillips,146,Miami Marlins,MIA,P,Pitcher,R,R
 676604,Tyler Zuber,146,Miami Marlins,MIA,P,Pitcher,R,R
 669364,Xavier Edwards,146,Miami Marlins,MIA,2B,Second Base,S,R
-694350,Zach Brzykcy,146,Miami Marlins,MIA,P,Pitcher,R,R
 645305,Ali Sánchez,147,New York Yankees,NYY,C,Catcher,R,R
 642708,Amed Rosario,147,New York Yankees,NYY,3B,Third Base,R,R
 683409,Angel Chivilli,147,New York Yankees,NYY,P,Pitcher,R,R
@@ -392,7 +392,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 682842,Abner Uribe,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 683734,Andrew Vaughn,158,Milwaukee Brewers,MIL,1B,First Base,R,R
 663368,Blake Perkins,158,Milwaukee Brewers,MIL,CF,Outfielder,S,R
-669699,Braden Shewmake,158,Milwaukee Brewers,MIL,SS,Shortstop,L,R
 687075,Brandon Sproat,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 668930,Brice Turang,158,Milwaukee Brewers,MIL,2B,Second Base,L,R
 669060,Bryse Wilson,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
@@ -400,6 +399,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 592885,Christian Yelich,158,Milwaukee Brewers,MIL,DH,Designated Hitter,L,R
 806198,Cooper Pratt,158,Milwaukee Brewers,MIL,SS,Shortstop,R,R
 684974,Craig Yoho,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
+666152,David Hamilton,158,Milwaukee Brewers,MIL,3B,Third Base,L,R
 669003,Garrett Mitchell,158,Milwaukee Brewers,MIL,CF,Outfielder,L,R
 596142,Gary Sánchez,158,Milwaukee Brewers,MIL,C,Catcher,R,R
 681982,Grant Anderson,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
@@ -480,6 +480,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 683002,Gunnar Henderson,110,Baltimore Orioles,BAL,SS,Shortstop,L,R
 702616,Jackson Holliday,110,Baltimore Orioles,BAL,2B,Second Base,L,R
 669236,Jeremiah Jackson,110,Baltimore Orioles,BAL,2B,Second Base,R,R
+677020,Josh Walker,110,Baltimore Orioles,BAL,P,Pitcher,L,L
 680694,Kyle Bradish,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 665750,Leody Taveras,110,Baltimore Orioles,BAL,CF,Outfielder,S,R
 624413,Pete Alonso,110,Baltimore Orioles,BAL,1B,First Base,R,R
@@ -527,10 +528,10 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 668970,Gavin Hollowell,112,Chicago Cubs,CHC,P,Pitcher,R,R
 664023,Ian Happ,112,Chicago Cubs,CHC,LF,Outfielder,S,R
 657097,Jacob Webb,112,Chicago Cubs,CHC,P,Pitcher,R,R
+701649,James Triantos,112,Chicago Cubs,CHC,2B,Second Base,R,R
 592791,Jameson Taillon,112,Chicago Cubs,CHC,P,Pitcher,R,R
 665871,Javier Assad,112,Chicago Cubs,CHC,P,Pitcher,R,R
 681909,Justin Dean,112,Chicago Cubs,CHC,CF,Outfielder,R,R
-682634,Kevin Alcántara,112,Chicago Cubs,CHC,DH,Designated Hitter,R,R
 571510,Matthew Boyd,112,Chicago Cubs,CHC,P,Pitcher,L,L
 683737,Michael Busch,112,Chicago Cubs,CHC,1B,First Base,L,R
 624424,Michael Conforto,112,Chicago Cubs,CHC,DH,Designated Hitter,L,R
@@ -569,12 +570,12 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 670770,TJ Friedl,113,Cincinnati Reds,CIN,CF,Outfielder,L,L
 622088,Tejay Antone,113,Cincinnati Reds,CIN,P,Pitcher,R,R
 663886,Tyler Stephenson,113,Cincinnati Reds,CIN,C,Catcher,R,R
+682657,Angel Martínez,114,Cleveland Guardians,CLE,LF,Outfielder,S,R
 595978,Austin Hedges,114,Cleveland Guardians,CLE,C,Catcher,R,R
 677587,Brayan Rocchio,114,Cleveland Guardians,CLE,SS,Shortstop,S,R
 671922,Cade Smith,114,Cleveland Guardians,CLE,P,Pitcher,R,R
 800050,Chase DeLauter,114,Cleveland Guardians,CLE,RF,Outfielder,L,L
 670059,Colin Holderman,114,Cleveland Guardians,CLE,P,Pitcher,R,R
-682177,Daniel Schneemann,114,Cleveland Guardians,CLE,CF,Outfielder,L,R
 681807,David Fry,114,Cleveland Guardians,CLE,RF,Outfielder,R,R
 681870,Erik Sabrowski,114,Cleveland Guardians,CLE,P,Pitcher,R,L
 680916,Franco Aleman,114,Cleveland Guardians,CLE,P,Pitcher,R,R
@@ -593,8 +594,8 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 677944,Slade Cecconi,114,Cleveland Guardians,CLE,P,Pitcher,R,R
 680757,Steven Kwan,114,Cleveland Guardians,CLE,CF,Outfielder,L,L
 676440,Tanner Bibee,114,Cleveland Guardians,CLE,P,Pitcher,R,R
+682120,Tim Herrin,114,Cleveland Guardians,CLE,P,Pitcher,L,L
 683953,Travis Bazzana,114,Cleveland Guardians,CLE,2B,Second Base,L,R
-702021,Will Dion,114,Cleveland Guardians,CLE,P,Pitcher,L,L
 622608,Antonio Senzatela,115,Colorado Rockies,COL,P,Pitcher,R,R
 690924,Braxton Fulford,115,Colorado Rockies,COL,DH,Designated Hitter,R,R
 657514,Brennan Bernardino,115,Colorado Rockies,COL,P,Pitcher,L,L
@@ -678,7 +679,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 694360,Beck Way,118,Kansas City Royals,KC,P,Pitcher,R,R
 695600,Carter Jensen,118,Kansas City Royals,KC,C,Catcher,L,R
 663738,Daniel Lynch IV,118,Kansas City Royals,KC,P,Pitcher,L,L
-669212,Eli Morgan,118,Kansas City Royals,KC,P,Pitcher,R,R
 686555,Isaac Collins,118,Kansas City Royals,KC,LF,Outfielder,S,R
 695506,Jac Caglianone,118,Kansas City Royals,KC,RF,Outfielder,L,L
 670167,John Schreiber,118,Kansas City Royals,KC,P,Pitcher,R,R
@@ -690,6 +690,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 621381,Matt Strahm,118,Kansas City Royals,KC,P,Pitcher,R,L
 686681,Michael Massey,118,Kansas City Royals,KC,2B,Second Base,L,R
 608379,Michael Wacha,118,Kansas City Royals,KC,P,Pitcher,R,R
+663878,Nate Pearson,118,Kansas City Royals,KC,P,Pitcher,R,R
 679845,Nick Loftin,118,Kansas City Royals,KC,3B,Third Base,R,R
 702070,Noah Cameron,118,Kansas City Royals,KC,P,Pitcher,L,L
 677976,Randy Dobnak,118,Kansas City Royals,KC,P,Pitcher,R,R
