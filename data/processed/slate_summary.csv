@@ -1,16 +1,11 @@
 game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status,game_date_utc,game_time,game_time_sort
-823759,2026-07-24,Colorado Rockies @ Milwaukee Brewers,Colorado Rockies,Milwaukee Brewers,Tomoyuki Sugano,Shane Drohan,American Family Field,In Progress,2026-07-24T20:10:00Z,3:10 PM,15:10
-824248,2026-07-24,Kansas City Royals @ Detroit Tigers,Kansas City Royals,Detroit Tigers,Beck Way,Tarik Skubal,Comerica Park,Pre-Game,2026-07-24T22:40:00Z,5:40 PM,17:40
-823352,2026-07-24,Chicago Cubs @ Pittsburgh Pirates,Chicago Cubs,Pittsburgh Pirates,Matthew Boyd,Jared Jones,PNC Park,Pre-Game,2026-07-24T22:40:00Z,5:40 PM,17:40
-822707,2026-07-24,Arizona Diamondbacks @ Washington Nationals,Arizona Diamondbacks,Washington Nationals,Eduardo Rodriguez,Carson Palmquist,Nationals Park,Pre-Game,2026-07-24T22:45:00Z,5:45 PM,17:45
-823434,2026-07-24,New York Yankees @ Philadelphia Phillies,New York Yankees,Philadelphia Phillies,Cam Schlittler,Jesús Luzardo,Citizens Bank Park,Pre-Game,2026-07-24T22:45:00Z,5:45 PM,17:45
-824812,2026-07-24,Atlanta Braves @ Baltimore Orioles,Atlanta Braves,Baltimore Orioles,Grant Holmes,Trevor Rogers,Oriole Park at Camden Yards,Pre-Game,2026-07-24T23:05:00Z,6:05 PM,18:05
-823601,2026-07-24,Los Angeles Dodgers @ New York Mets,Los Angeles Dodgers,New York Mets,Roki Sasaki,Sean Manaea,Citi Field,Pre-Game,2026-07-24T23:10:00Z,6:10 PM,18:10
-822952,2026-07-24,Cleveland Guardians @ Tampa Bay Rays,Cleveland Guardians,Tampa Bay Rays,Joey Cantillo,Shane McClanahan,Tropicana Field,Pre-Game,2026-07-24T23:10:00Z,6:10 PM,18:10
-823843,2026-07-24,San Diego Padres @ Miami Marlins,San Diego Padres,Miami Marlins,Germán Márquez,Ryan Gusto,loanDepot park,Pre-Game,2026-07-24T23:10:00Z,6:10 PM,18:10
-824733,2026-07-24,Toronto Blue Jays @ Boston Red Sox,Toronto Blue Jays,Boston Red Sox,Trey Yesavage,Patrick Sandoval,Fenway Park,Pre-Game,2026-07-24T23:15:00Z,6:15 PM,18:15
-824573,2026-07-24,Houston Astros @ Chicago White Sox,Houston Astros,Chicago White Sox,Spencer Arrighetti,Davis Martin,Rate Field,Pre-Game,2026-07-24T23:40:00Z,6:40 PM,18:40
-822872,2026-07-24,Seattle Mariners @ Texas Rangers,Seattle Mariners,Texas Rangers,Bryce Miller,MacKenzie Gore,Globe Life Field,Pre-Game,2026-07-25T00:05:00Z,7:05 PM,19:05
-823680,2026-07-24,Athletics @ Minnesota Twins,Athletics,Minnesota Twins,Jacob Lopez,Zebby Matthews,Target Field,Pre-Game,2026-07-25T00:10:00Z,7:10 PM,19:10
-823031,2026-07-24,Cincinnati Reds @ St. Louis Cardinals,Cincinnati Reds,St. Louis Cardinals,Rhett Lowder,Dustin May,Busch Stadium,Pre-Game,2026-07-25T00:15:00Z,7:15 PM,19:15
-823196,2026-07-24,Los Angeles Angels @ San Francisco Giants,Los Angeles Angels,San Francisco Giants,Grayson Rodriguez,Logan Webb,Oracle Park,Scheduled,2026-07-25T02:15:00Z,9:15 PM,21:15
+822946,2026-07-30,Texas Rangers @ Tampa Bay Rays,Texas Rangers,Tampa Bay Rays,Cole Winn,Shane McClanahan,Tropicana Field,Final,2026-07-30T16:10:00Z,11:10 AM,11:10
+823674,2026-07-30,Kansas City Royals @ Minnesota Twins,Kansas City Royals,Minnesota Twins,Noah Cameron,Bailey Ober,Target Field,Final,2026-07-30T17:40:00Z,12:40 PM,12:40
+824568,2026-07-30,New York Yankees @ Chicago White Sox,New York Yankees,Chicago White Sox,Ryan Weathers,Sean Burke,Rate Field,Final,2026-07-30T18:10:00Z,1:10 PM,13:10
+823023,2026-07-30,Chicago Cubs @ St. Louis Cardinals,Chicago Cubs,St. Louis Cardinals,Javier Assad,Andre Pallante,Busch Stadium,Final,2026-07-30T18:15:00Z,1:15 PM,13:15
+824488,2026-07-30,Pittsburgh Pirates @ Cincinnati Reds,Pittsburgh Pirates,Cincinnati Reds,Yohan Ramírez,Rhett Lowder,Great American Ball Park,Pre-Game,2026-07-30T23:10:00Z,6:10 PM,18:10
+823595,2026-07-30,Miami Marlins @ New York Mets,Miami Marlins,New York Mets,Eury Pérez,Nolan McLean,Citi Field,Pre-Game,2026-07-30T23:10:00Z,6:10 PM,18:10
+824894,2026-07-30,Washington Nationals @ Atlanta Braves,Washington Nationals,Atlanta Braves,Jake Irvin,Grant Holmes,Truist Park,Pre-Game,2026-07-30T23:15:00Z,6:15 PM,18:15
+824974,2026-07-30,Boston Red Sox @ Athletics,Boston Red Sox,Athletics,Sonny Gray,Mason Barnett,Sutter Health Park,Scheduled,2026-07-31T01:40:00Z,8:40 PM,20:40
+823271,2026-07-30,San Francisco Giants @ San Diego Padres,San Francisco Giants,San Diego Padres,,JP Sears,Petco Park,Pre-Game,2026-07-31T01:40:00Z,8:40 PM,20:40
+823921,2026-07-30,Seattle Mariners @ Los Angeles Dodgers,Seattle Mariners,Los Angeles Dodgers,Bryan Woo,Roki Sasaki,UNIQLO Field at Dodger Stadium,Scheduled,2026-07-31T02:10:00Z,9:10 PM,21:10

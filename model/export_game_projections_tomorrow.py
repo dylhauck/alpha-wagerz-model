@@ -56,6 +56,103 @@ def project_team_runs(team_hitters, opponent_pitcher, weather_score, park_score)
     return round(max(1.5, min(8.5, offense_runs(run_score))), 1)
 
 
+def rate_to_score(value, low, high, default=50):
+    numeric = f(value, None)
+    if numeric is None:
+        return default
+
+    # Some rate stats may arrive as decimals (0.185) or percentages (18.5).
+    if 0 <= numeric <= 1:
+        numeric *= 100
+        low *= 100
+        high *= 100
+
+    if high == low:
+        return default
+
+    return clamp(((numeric - low) / (high - low)) * 100)
+
+
+def team_total_offense_score(hitters):
+    """Independent team-offense input used only by the game-total model."""
+    if not hitters:
+        return 50
+
+    top = sorted(
+        hitters,
+        key=lambda hitter: f(hitter.get("Likely"), 0),
+        reverse=True,
+    )[:7]
+
+    player_scores = []
+
+    for hitter in top:
+        likely = f(hitter.get("Likely"), 50)
+        iso = rate_to_score(hitter.get("ISO"), 0.100, 0.300)
+        xwoba = rate_to_score(hitter.get("xwOBA"), 0.280, 0.400)
+        barrel = rate_to_score(hitter.get("Brl/BIP%"), 3.0, 15.0)
+        hard_hit = rate_to_score(hitter.get("HH%"), 25.0, 55.0)
+
+        player_scores.append(
+            likely * 0.35
+            + iso * 0.20
+            + xwoba * 0.20
+            + barrel * 0.15
+            + hard_hit * 0.10
+        )
+
+    return clamp(avg(player_scores, 50))
+
+
+def project_game_total(
+    away_hitters,
+    home_hitters,
+    away_pitcher,
+    home_pitcher,
+    weather_score,
+    park_score,
+):
+    """
+    Build the game-total projection independently from the two team-run estimates.
+
+    This function does not use the sportsbook total and does not alter pitcher-K
+    projections or pitcher-K market lines.
+    """
+    away_offense = team_total_offense_score(away_hitters)
+    home_offense = team_total_offense_score(home_hitters)
+    offense_score = avg([away_offense, home_offense], 50)
+
+    away_starter = pitcher_score(away_pitcher)
+    home_starter = pitcher_score(home_pitcher)
+    starter_score = avg([away_starter, home_starter], 50)
+
+    away_hr_vulnerability = (
+        f(away_pitcher.get("HR Vulnerability"), 50)
+        if away_pitcher
+        else 50
+    )
+    home_hr_vulnerability = (
+        f(home_pitcher.get("HR Vulnerability"), 50)
+        if home_pitcher
+        else 50
+    )
+    hr_vulnerability = avg(
+        [away_hr_vulnerability, home_hr_vulnerability],
+        50,
+    )
+
+    # Neutral MLB scoring baseline. Every adjustment below comes from model data,
+    # never from the sportsbook game-total line.
+    projected_total = 8.6
+    projected_total += (offense_score - 50) * 0.045
+    projected_total += (50 - starter_score) * 0.035
+    projected_total += (hr_vulnerability - 50) * 0.025
+    projected_total += (weather_score - 50) * 0.018
+    projected_total += (park_score - 50) * 0.018
+
+    return round(max(5.5, min(13.5, projected_total)), 1)
+
+
 def get_pitcher_for_team(game, team):
     return next((p for p in game.get("pitchers", []) if p.get("Team") == team), None)
 
@@ -390,7 +487,14 @@ def export_tomorrow_game_projections():
             park_score,
         )
 
-        total = round(away_runs + home_runs, 1)
+        total = project_game_total(
+            away_hitters,
+            home_hitters,
+            away_pitcher,
+            home_pitcher,
+            weather_score,
+            park_score,
+        )
         margin = round(away_runs - home_runs, 1)
         away_wp, home_wp = win_probability(away_runs, home_runs)
 
