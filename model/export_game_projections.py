@@ -243,21 +243,64 @@ def find_market(game, by_game_id, by_matchup):
     return by_matchup.get(f"{norm(game.get('away_team'))}@{norm(game.get('home_team'))}", {})
 
 
-def moneyline_analysis(away_team, home_team, away_wp, home_wp, market):
+def moneyline_analysis(
+    away_team,
+    home_team,
+    away_wp,
+    home_wp,
+    market,
+):
     moneyline = market.get("moneyline", {}) if market else {}
-    away_ml, home_ml = moneyline.get("away"), moneyline.get("home")
-    away_market_prob, home_market_prob = american_to_implied_prob(away_ml), american_to_implied_prob(home_ml)
-    away_edge = None if away_market_prob is None else round(away_wp - away_market_prob, 1)
-    home_edge = None if home_market_prob is None else round(home_wp - home_market_prob, 1)
-    if away_edge is None and home_edge is None:
-        lean = away_team if away_wp >= home_wp else home_team
-        return {"moneyline_lean": lean, "moneyline_recommendation": f"{lean} ML", "moneyline_edge": "", "moneyline_confidence": "", "away_moneyline_edge": "", "home_moneyline_edge": ""}
-    if (away_edge if away_edge is not None else -999) >= (home_edge if home_edge is not None else -999):
-        lean, edge = away_team, away_edge
-    else:
-        lean, edge = home_team, home_edge
-    return {"moneyline_lean": lean, "moneyline_recommendation": f"{lean} ML", "moneyline_edge": edge, "moneyline_confidence": confidence_from_edge(edge, 8), "away_moneyline_edge": away_edge if away_edge is not None else "", "home_moneyline_edge": home_edge if home_edge is not None else ""}
 
+    away_ml = moneyline.get("away")
+    home_ml = moneyline.get("home")
+
+    away_market_prob = american_to_implied_prob(away_ml)
+    home_market_prob = american_to_implied_prob(home_ml)
+
+    away_edge = (
+        None
+        if away_market_prob is None
+        else round(away_wp - away_market_prob, 1)
+    )
+
+    home_edge = (
+        None
+        if home_market_prob is None
+        else round(home_wp - home_market_prob, 1)
+    )
+
+    if away_wp >= home_wp:
+        lean = away_team
+        selected_edge = away_edge
+        selected_probability = away_wp
+    else:
+        lean = home_team
+        selected_edge = home_edge
+        selected_probability = home_wp
+
+    return {
+        "moneyline_lean": lean,
+        "moneyline_recommendation": f"{lean} ML",
+        "moneyline_edge": (
+            selected_edge
+            if selected_edge is not None
+            else ""
+        ),
+        "moneyline_confidence": round(
+            clamp(selected_probability, 50, 95)
+        ),
+        "away_moneyline_edge": (
+            away_edge
+            if away_edge is not None
+            else ""
+        ),
+        "home_moneyline_edge": (
+            home_edge
+            if home_edge is not None
+            else ""
+        ),
+    }
 
 def format_spread(value):
     num = f(value, None)
