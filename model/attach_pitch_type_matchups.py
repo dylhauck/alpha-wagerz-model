@@ -169,24 +169,52 @@ def score_hitter_vs_arsenal(hitter, pitcher_id, arsenal_lookup, hitter_pt_lookup
         pitcher_grade = safe_float(pitch.get("Pitch Arsenal Grade"), 50)
         pitcher_xhr = safe_float(pitch.get("xHR/Pitch%"))
 
-        hitter_row = hitter_pt_lookup.get((str(hitter_id), pitch_type))
-        hitter_score = safe_float(hitter_row.get("PitchTypeScore", 50), 50) if hitter_row else 50
+        hitter_row = hitter_pt_lookup.get(
+            (str(hitter_id), pitch_type)
+)
 
-        matchup_score = (
-            hitter_score * 0.55
-            + pitcher_grade * 0.35
-            + pitcher_xhr * 10
+    hitter_score = (
+        safe_float(
+            hitter_row.get("PitchTypeScore", 50),
+            50,
         )
+        if hitter_row
+        else 50
+    )
 
-        weighted_score += matchup_score * usage
-        weighted_xhr += pitcher_xhr * usage
-        total_usage += usage
+    # A high arsenal grade means the pitch is stronger,
+    # so invert it to measure vulnerability for the hitter.
+    pitcher_vulnerability = max(
+        0,
+        min(100, 100 - pitcher_grade),
+    )
 
-        if bucket in family_scores:
+    # Convert xHR per pitch into a controlled 0–100 score.
+    xhr_score = max(
+        0,
+        min(100, pitcher_xhr * 10),
+    )
+
+    matchup_score = (
+        hitter_score * 0.60
+        + pitcher_vulnerability * 0.30
+        + xhr_score * 0.10
+    )
+
+    matchup_score = max(
+        0,
+        min(100, matchup_score),
+    )
+
+    weighted_score += matchup_score * usage
+    weighted_xhr += pitcher_xhr * usage
+    total_usage += usage
+
+    if bucket in family_scores:
             family_scores[bucket]["score"] += matchup_score * usage
             family_scores[bucket]["usage"] += usage
 
-        matchups.append({
+    matchups.append({
             "pitch_type": pitch_type,
             "pitch_family": pitch_family,
             "usage": round(usage, 1),

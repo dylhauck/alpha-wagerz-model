@@ -1,3 +1,5 @@
+from model.scores.recent_form import get_hr_form_trend
+
 def f(value, default=0):
     try:
         if value == "" or value is None:
@@ -94,41 +96,41 @@ def normalize_slate_hitters(games):
         recent = scale_score(hitter.get("Recent"), recent_values, 30, 95)
 
         matchup = weighted_score([
-            (power, 0.28),
-            (pitcher, 0.26),
+            (power, 0.10),
+            (pitcher, 0.52),
             (pitch_type, 0.20),
             (contact, 0.10),
-            (team, 0.05),
+            (recent, 0.05),
             (bullpen, 0.04),
-            (weather, 0.04),
-            (park, 0.03),
+            (weather, 0.015),
+            (park, 0.015),
         ])
 
         matchup = boost_elite(matchup, midpoint=60, strength=1.35)
 
         ceiling = weighted_score([
-            (power, 0.40),
-            (pitcher, 0.22),
-            (pitch_type, 0.16),
-            (recent, 0.10),
-            (weather, 0.06),
-            (park, 0.06),
+            (power, 0.35),
+            (pitcher, 0.25),
+            (pitch_type, 0.15),
+            (weather, 0.10),
+            (park, 0.10),
+            (recent, 0.05),
         ])
 
         ceiling = boost_elite(ceiling, midpoint=62, strength=1.25)
 
         zone_fit = weighted_score([
-            (pitch_type, 0.52),
-            (pitcher, 0.22),
-            (contact, 0.16),
-            (power, 0.10),
+            (pitch_type, 0.60),
+            (pitcher, 0.25),
+            (contact, 0.10),
+            (power, 0.05),
         ])
 
         khr = weighted_score([
-            (power, 0.36),
-            (pitcher, 0.26),
+            (power, 0.30),
+            (pitcher, 0.25),
             (pitch_type, 0.20),
-            (recent, 0.08),
+            (recent, 0.15),
             (park, 0.05),
             (weather, 0.05),
         ])
@@ -136,12 +138,12 @@ def normalize_slate_hitters(games):
         khr = boost_elite(khr, midpoint=60, strength=1.30)
 
         alpha = weighted_score([
-            (matchup, 0.36),
-            (ceiling, 0.24),
-            (khr, 0.20),
-            (recent, 0.12),
-            (team, 0.04),
-            (bullpen, 0.04),
+            (matchup, 0.25),
+            (zone_fit, 0.25),
+            (ceiling, 0.25),
+            (khr, 0.15),
+            (team, 0.05),
+            (bullpen, 0.05),
         ])
 
         alpha = boost_elite(alpha, midpoint=61, strength=1.22)
@@ -161,6 +163,7 @@ def normalize_slate_hitters(games):
         hitter["Ceiling"] = round(ceiling, 1)
         hitter["Zone Fit"] = round(zone_fit, 1)
         hitter["HR Form"] = round(recent, 1)
+        hitter["HR Form Trend"] = get_hr_form_trend(hitter)
         hitter["kHR"] = round(khr, 1)
         hitter["Likely"] = round(alpha, 1)
     return games

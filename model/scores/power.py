@@ -14,22 +14,51 @@ def f(value):
 def scale(value, bad, elite):
     if elite == bad:
         return 50
-    return clamp((value - bad) / (elite - bad) * 100)
+
+    return clamp(
+        ((value - bad) / (elite - bad)) * 100
+    )
+
+
+def launch_score(launch_angle):
+    if 12 <= launch_angle <= 30:
+        return 100
+
+    if (
+        8 <= launch_angle < 12
+        or 30 < launch_angle <= 36
+    ):
+        return 75
+
+    if (
+        4 <= launch_angle < 8
+        or 36 < launch_angle <= 42
+    ):
+        return 45
+
+    return 20
 
 
 def score_power(hitter):
     iso = f(hitter.get("ISO"))
-    hh = f(hitter.get("HH%"))
-    brl = f(hitter.get("Brl/BIP%"))
-    pulled = f(hitter.get("PulledBrl%"))
     xwobacon = f(hitter.get("xwOBAcon"))
+    barrel = f(hitter.get("Brl/BIP%"))
+    pulled_barrel = f(hitter.get("PulledBrl%"))
+    hard_hit = f(hitter.get("HH%"))
+    fly_ball = f(hitter.get("FB%"))
+    launch_angle = f(hitter.get("LA"))
 
     score = (
-        scale(iso, 0.080, 0.280) * 0.25 +
-        scale(xwobacon, 0.280, 0.520) * 0.25 +
-        scale(brl, 4.0, 18.0) * 0.22 +
-        scale(hh, 32.0, 60.0) * 0.18 +
-        scale(pulled, 2.0, 12.0) * 0.10
+        scale(iso, 0.080, 0.300) * 0.22
+        + scale(xwobacon, 0.280, 0.540) * 0.18
+        + scale(barrel, 3.0, 18.0) * 0.24
+        + scale(pulled_barrel, 1.0, 11.0) * 0.16
+        + scale(hard_hit, 30.0, 58.0) * 0.10
+        + scale(fly_ball, 18.0, 45.0) * 0.05
+        + launch_score(launch_angle) * 0.05
     )
 
-    return round(clamp(score), 1)
+    return round(
+        clamp(score),
+        1,
+    )

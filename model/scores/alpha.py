@@ -6,6 +6,10 @@ from model.scores.park import score_park
 from model.scores.recent_form import score_recent_form
 from model.scores.confidence import score_confidence, build_score_reasons
 
+from model.scores.recent_form import (
+    score_recent_form,
+    get_hr_form_trend,
+)
 
 def clamp(value, low=0, high=100):
     return max(low, min(high, value))
@@ -80,13 +84,13 @@ def alpha_score(hitter, pitcher=None, game=None):
     recent = score_recent_form(hitter)
 
     matchup = (
-        pitcher_score * 0.38
-        + power * 0.24
-        + pitch_type * 0.18
+        pitcher_score * 0.52
+        + power * 0.10
+        + pitch_type * 0.20
         + contact * 0.10
-        + recent * 0.04
-        + weather * 0.03
-        + park * 0.03
+        + recent * 0.05
+        + weather * 0.015
+        + park * 0.015
     )
 
     ceiling = (
@@ -147,6 +151,7 @@ def alpha_score(hitter, pitcher=None, game=None):
         "Ceiling": round(ceiling, 1),
         "Zone Fit": round(zone_fit, 1),
         "HR Form": round(recent, 1),
+        "HR Form Trend": get_hr_form_trend(hitter),
         "kHR": round(khr, 1),
         "Likely": round(likely, 1),
     }
