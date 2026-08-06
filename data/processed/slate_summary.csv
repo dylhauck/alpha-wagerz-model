@@ -1,16 +1,12 @@
 game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status,game_date_utc,game_time,game_time_sort
-824158,2026-08-05,Toronto Blue Jays @ Houston Astros,Toronto Blue Jays,Houston Astros,Jameson Taillon,Hunter Brown,Daikin Park,Final,2026-08-05T18:10:00Z,1:10 PM,13:10
-824646,2026-08-05,Los Angeles Dodgers @ Chicago Cubs,Los Angeles Dodgers,Chicago Cubs,Eric Lauer,Shota Imanaga,Wrigley Field,Game Over,2026-08-05T18:20:00Z,1:20 PM,13:20
-822866,2026-08-05,San Francisco Giants @ Texas Rangers,San Francisco Giants,Texas Rangers,Carson Whisenhunt,Cody Bradford,Globe Life Field,Final,2026-08-05T18:35:00Z,1:35 PM,13:35
-824322,2026-08-05,Tampa Bay Rays @ Colorado Rockies,Tampa Bay Rays,Colorado Rockies,Nick Martinez,Tomoyuki Sugano,Coors Field,In Progress,2026-08-05T19:10:00Z,2:10 PM,14:10
-824806,2026-08-05,Los Angeles Angels @ Baltimore Orioles,Los Angeles Angels,Baltimore Orioles,Reid Detmers,Trevor Rogers,Oriole Park at Camden Yards,Pre-Game,2026-08-05T22:35:00Z,5:35 PM,17:35
-824402,2026-08-05,New York Mets @ Cleveland Guardians,New York Mets,Cleveland Guardians,Christian Scott,Tanner Bibee,Progressive Field,Pre-Game,2026-08-05T22:40:00Z,5:40 PM,17:40
-824482,2026-08-05,Athletics @ Cincinnati Reds,Athletics,Cincinnati Reds,Jacob Lopez,Rhett Lowder,Great American Ball Park,Pre-Game,2026-08-05T22:40:00Z,5:40 PM,17:40
-823429,2026-08-05,Washington Nationals @ Philadelphia Phillies,Washington Nationals,Philadelphia Phillies,Jake Irvin,Andrew Painter,Citizens Bank Park,Pre-Game,2026-08-05T22:40:00Z,5:40 PM,17:40
-823516,2026-08-05,St. Louis Cardinals @ New York Yankees,St. Louis Cardinals,New York Yankees,Andre Pallante,Will Warren,Yankee Stadium,Pre-Game,2026-08-05T23:05:00Z,6:05 PM,18:05
-824728,2026-08-05,Chicago White Sox @ Boston Red Sox,Chicago White Sox,Boston Red Sox,Sean Burke,Sonny Gray,Fenway Park,Pre-Game,2026-08-05T23:10:00Z,6:10 PM,18:10
-824889,2026-08-05,Miami Marlins @ Atlanta Braves,Miami Marlins,Atlanta Braves,Eury Pérez,Bryce Elder,Truist Park,Pre-Game,2026-08-05T23:15:00Z,6:15 PM,18:15
-824082,2026-08-05,Minnesota Twins @ Kansas City Royals,Minnesota Twins,Kansas City Royals,Dean Kremer,Noah Cameron,Kauffman Stadium,Pre-Game,2026-08-05T23:40:00Z,6:40 PM,18:40
-823753,2026-08-05,Pittsburgh Pirates @ Milwaukee Brewers,Pittsburgh Pirates,Milwaukee Brewers,Paul Skenes,Kyle Harrison,American Family Field,Pre-Game,2026-08-05T23:40:00Z,6:40 PM,18:40
-825052,2026-08-05,San Diego Padres @ Arizona Diamondbacks,San Diego Padres,Arizona Diamondbacks,Casey Mize,Mitch Bratt,Chase Field,Scheduled,2026-08-06T01:40:00Z,8:40 PM,20:40
-823106,2026-08-05,Detroit Tigers @ Seattle Mariners,Detroit Tigers,Seattle Mariners,Drew Anderson,Bryan Woo,T-Mobile Park,Scheduled,2026-08-06T01:40:00Z,8:40 PM,20:40
+824804,2026-08-06,Los Angeles Angels @ Baltimore Orioles,Los Angeles Angels,Baltimore Orioles,Ryan Johnson,Brandon Young,Oriole Park at Camden Yards,Final,2026-08-06T16:35:00Z,11:35 AM,11:35
+824481,2026-08-06,Athletics @ Cincinnati Reds,Athletics,Cincinnati Reds,Mason Barnett,Andrew Abbott,Great American Ball Park,Final,2026-08-06T16:40:00Z,11:40 AM,11:40
+824401,2026-08-06,New York Mets @ Cleveland Guardians,New York Mets,Cleveland Guardians,Nolan McLean,Foster Griffin,Progressive Field,Final,2026-08-06T17:10:00Z,12:10 PM,12:10
+823754,2026-08-06,Pittsburgh Pirates @ Milwaukee Brewers,Pittsburgh Pirates,Milwaukee Brewers,Braxton Ashcraft,Dustin May,American Family Field,Final,2026-08-06T18:10:00Z,1:10 PM,13:10
+824664,2026-08-06,Toronto Blue Jays @ Chicago Cubs,Toronto Blue Jays,Chicago Cubs,Dylan Cease,David Peterson,Wrigley Field,Game Over,2026-08-06T18:20:00Z,1:20 PM,13:20
+823105,2026-08-06,Detroit Tigers @ Seattle Mariners,Detroit Tigers,Seattle Mariners,Framber Valdez,Bryce Miller,T-Mobile Park,In Progress,2026-08-06T20:10:00Z,3:10 PM,15:10
+823430,2026-08-06,Washington Nationals @ Philadelphia Phillies,Washington Nationals,Philadelphia Phillies,Miles Mikolas,Cristopher Sánchez,Citizens Bank Park,Warmup,2026-08-06T22:05:00Z,5:05 PM,17:05
+824729,2026-08-06,Chicago White Sox @ Boston Red Sox,Chicago White Sox,Boston Red Sox,Luis Castillo,Ranger Suarez,Fenway Park,Pre-Game,2026-08-06T23:10:00Z,6:10 PM,18:10
+824885,2026-08-06,Miami Marlins @ Atlanta Braves,Miami Marlins,Atlanta Braves,Janson Junk,Martín Pérez,Truist Park,Pre-Game,2026-08-06T23:15:00Z,6:15 PM,18:15
+824080,2026-08-06,Minnesota Twins @ Kansas City Royals,Minnesota Twins,Kansas City Royals,Bailey Ober,Michael Wacha,Kauffman Stadium,Pre-Game,2026-08-06T23:40:00Z,6:40 PM,18:40
+825053,2026-08-06,San Diego Padres @ Arizona Diamondbacks,San Diego Padres,Arizona Diamondbacks,Walker Buehler,Kohl Drake,Chase Field,Scheduled,2026-08-07T01:40:00Z,8:40 PM,20:40

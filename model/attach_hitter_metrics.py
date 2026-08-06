@@ -269,6 +269,9 @@ def format_hitter(hitter_input, lookup, game, side):
     hitter["Ceiling"] = clean_value(scores.get("Ceiling", ""))
     hitter["Zone Fit"] = clean_value(scores.get("Zone Fit", ""))
     hitter["HR Form"] = clean_value(scores.get("HR Form", ""))
+    hitter["HR Form Trend"] = clean_value(
+    scores.get("HR Form Trend", "flat")
+)
     hitter["kHR"] = clean_value(scores.get("kHR", ""))
 
     return hitter

@@ -333,37 +333,251 @@ def parse_moneyline(odds_payload):
         "home": decimal_to_american(row.get("home")),
     }
 
+def find_standard_mlb_run_line_row(market):
+    """
+    Find the sportsbook's standard MLB run line.
+
+    The API's hdp value represents the home-team handicap.
+    Its opposite belongs to the away team.
+
+    Examples:
+        hdp = 1.5
+        home = +1.5
+        away = -1.5
+
+        hdp = -1.5
+        home = -1.5
+        away = +1.5
+    """
+    if not market:
+        return {}
+
+    rows = market.get("odds", [])
+
+    if not isinstance(rows, list):
+        return {}
+
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+
+        hdp = to_float(row.get("hdp"))
+
+        if hdp is None:
+            continue
+
+        if abs(abs(hdp) - 1.5) < 0.001:
+            return row
+
+    return {}
 
 def parse_spread(odds_payload):
-    bookmaker, market = first_available_market(
-        odds_payload,
-        ["Spread", "Run Line", "Runline"],
-    )
-    row = first_odds_row(market)
+    """
+    Pull the exact standard MLB run line.
 
-    hdp = to_float(row.get("hdp"))
+    Bookmaker priority:
+        1. FanDuel
+        2. DraftKings
+
+    The run-line side is taken directly from the API's hdp
+    value and is never inferred from the moneyline.
+    """
+    market_names = (
+        "Run Line",
+        "Runline",
+        "Spread",
+    )
+
+    for bookmaker in BOOKMAKERS:
+        markets = get_book_markets(
+            odds_payload,
+            bookmaker,
+        )
+
+        for market_name in market_names:
+            market = find_market(
+                markets,
+                market_name,
+            )
+
+            if not market:
+                continue
+
+            row = find_standard_mlb_run_line_row(
+                market
+            )
+
+            if not row:
+                continue
+
+            hdp = to_float(row.get("hdp"))
+
+            if hdp is None:
+                continue
+
+            return {
+                "bookmaker": bookmaker,
+
+                # API hdp is the home-team line.
+                "away": -hdp,
+                "away_price": decimal_to_american(
+                    row.get("away")
+                ),
+
+                "home": hdp,
+                "home_price": decimal_to_american(
+                    row.get("home")
+                ),
+            }
+
+    print(
+        "⚠️ No standard FanDuel or DraftKings "
+        "MLB run line was available"
+    )
 
     return {
-        "bookmaker": bookmaker,
-        "away": -hdp if hdp is not None else None,
-        "away_price": decimal_to_american(row.get("away")),
-        "home": hdp,
-        "home_price": decimal_to_american(row.get("home")),
+        "bookmaker": "",
+        "away": None,
+        "away_price": None,
+        "home": None,
+        "home_price": None,
     }
 
+def find_main_game_total_row(market):
+    """
+    Choose the sportsbook's main MLB game total rather than
+    blindly taking the first alternate-total row.
+
+    The main total is normally the row whose Over and Under
+    decimal prices are closest to balanced market pricing.
+    """
+    if not market:
+        return {}
+
+    rows = market.get("odds", [])
+
+    if not isinstance(rows, list):
+        return {}
+
+    candidates = []
+
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+
+        line = to_float(row.get("hdp"))
+        over_decimal = to_float(row.get("over"))
+        under_decimal = to_float(row.get("under"))
+
+        if line is None:
+            continue
+
+        # Reject values that clearly are not realistic MLB totals.
+        if line < 5.5 or line > 15.0:
+            continue
+
+        if over_decimal is None or under_decimal is None:
+            continue
+
+        if over_decimal <= 1 or under_decimal <= 1:
+            continue
+
+        # A standard main market is usually priced close to
+        # even on both sides, around decimal odds of 1.91.
+        balance_difference = abs(
+            over_decimal - under_decimal
+        )
+
+        distance_from_standard_price = (
+            abs(over_decimal - 1.91)
+            + abs(under_decimal - 1.91)
+        )
+
+        selection_score = (
+            balance_difference * 2
+            + distance_from_standard_price
+        )
+
+        candidates.append(
+            (
+                selection_score,
+                row,
+            )
+        )
+
+    if not candidates:
+        return {}
+
+    candidates.sort(
+        key=lambda item: item[0]
+    )
+
+    return candidates[0][1]
 
 def parse_game_total(odds_payload):
-    bookmaker, market = first_available_market(
-        odds_payload,
-        ["Totals", "Total", "Game Total"],
+    """
+    Pull the exact main MLB game total.
+
+    Bookmaker priority:
+        1. FanDuel
+        2. DraftKings
+
+    Alternate totals are ignored.
+    """
+    market_names = (
+        "Totals",
+        "Total",
+        "Game Total",
     )
-    row = first_odds_row(market)
+
+    for bookmaker in BOOKMAKERS:
+        markets = get_book_markets(
+            odds_payload,
+            bookmaker,
+        )
+
+        for market_name in market_names:
+            market = find_market(
+                markets,
+                market_name,
+            )
+
+            if not market:
+                continue
+
+            row = find_main_game_total_row(
+                market
+            )
+
+            if not row:
+                continue
+
+            line = to_float(row.get("hdp"))
+
+            if line is None:
+                continue
+
+            return {
+                "bookmaker": bookmaker,
+                "line": line,
+                "over_price": decimal_to_american(
+                    row.get("over")
+                ),
+                "under_price": decimal_to_american(
+                    row.get("under")
+                ),
+            }
+
+    print(
+        "⚠️ No main FanDuel or DraftKings "
+        "MLB game total was available"
+    )
 
     return {
-        "bookmaker": bookmaker,
-        "line": to_float(row.get("hdp")),
-        "over_price": decimal_to_american(row.get("over")),
-        "under_price": decimal_to_american(row.get("under")),
+        "bookmaker": "",
+        "line": None,
+        "over_price": None,
+        "under_price": None,
     }
 
 

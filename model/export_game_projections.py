@@ -183,23 +183,49 @@ def projected_ks(pitcher, opponent_hitters):
     if not pitcher:
         return ""
 
-    k_score = f(pitcher.get("Strikeout Score"), 50)
-    swstr = f(pitcher.get("SwStr%"), 10)
-    csw = f(pitcher.get("CSW%"), 28)
-    ball = f(pitcher.get("Ball%"), 34)
-
-    matchup_score = hitter_k_risk_score(opponent_hitters)
-
-    ks = (
-        3.2
-        + ((k_score - 50) / 50) * 2.6
-        + ((matchup_score - 50) / 50) * 3.0
-        + ((swstr - 10) * 0.10)
-        + ((csw - 28) * 0.07)
-        - ((ball - 34) * 0.04)
+    k_score = f(
+        pitcher.get("Strikeout Score"),
+        50,
     )
 
-    return round(max(1.5, min(12.5, ks)), 1)
+    swstr = f(
+        pitcher.get("SwStr%"),
+        10,
+    )
+
+    csw = f(
+        pitcher.get("CSW%"),
+        28,
+    )
+
+    ball = f(
+        pitcher.get("Ball%"),
+        34,
+    )
+
+    matchup_score = hitter_k_risk_score(
+        opponent_hitters
+    )
+
+    # Start from a realistic MLB starter baseline.
+    ks = 5.2
+
+    # Elite strikeout pitchers now receive enough separation
+    # from average and low-strikeout starters.
+    ks += ((k_score - 50) / 50) * 4.5
+
+    # Today's opponent still matters heavily.
+    ks += ((matchup_score - 50) / 50) * 2.8
+
+    # Pitch-quality adjustments.
+    ks += (swstr - 10) * 0.18
+    ks += (csw - 28) * 0.12
+    ks -= (ball - 34) * 0.05
+
+    return round(
+        max(1.5, min(13.5, ks)),
+        1,
+    )
 
 
 def win_probability(away_runs, home_runs):
