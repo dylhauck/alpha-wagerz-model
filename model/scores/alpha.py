@@ -103,12 +103,12 @@ def alpha_score(hitter, pitcher=None, game=None):
     )
 
     khr = (
-        pitcher_score * 0.36
-        + power * 0.30
-        + pitch_type * 0.16
-        + park * 0.07
-        + weather * 0.07
-        + recent * 0.04
+        pitcher_score * 0.40
+        + power * 0.20
+        + pitch_type * 0.25
+        + park * 0.03
+        + weather * 0.02
+        + recent * 0.10
     )
 
     zone_fit = (

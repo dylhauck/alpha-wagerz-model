@@ -576,6 +576,74 @@ def parse_game_total(odds_payload):
         "under_price": None,
     }
 
+def find_main_team_total_row(market):
+    """
+    Select the sportsbook's main team total rather than
+    an alternate team-total line.
+    """
+    if not market:
+        return {}
+
+    rows = market.get("odds", [])
+
+    if not isinstance(rows, list):
+        return {}
+
+    candidates = []
+
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+
+        line = to_float(row.get("hdp"))
+        over_decimal = to_float(row.get("over"))
+        under_decimal = to_float(row.get("under"))
+
+        if line is None:
+            continue
+
+        # Reasonable MLB team-total range.
+        if line < 1.5 or line > 8.5:
+            continue
+
+        if over_decimal is None or under_decimal is None:
+            continue
+
+        if over_decimal <= 1 or under_decimal <= 1:
+            continue
+
+        # Main line should generally have the most balanced
+        # Over/Under pricing.
+        balance_difference = abs(
+            over_decimal - under_decimal
+        )
+
+        distance_from_standard_price = (
+            abs(over_decimal - 1.91)
+            + abs(under_decimal - 1.91)
+        )
+
+        selection_score = (
+            balance_difference * 2
+            + distance_from_standard_price
+        )
+
+        candidates.append(
+            (
+                selection_score,
+                row,
+            )
+        )
+
+    if not candidates:
+        return {}
+
+    candidates.sort(
+        key=lambda item: item[0]
+    )
+
+    return candidates[0][1]
+
 def parse_team_totals(odds_payload):
     result = {
         "away": None,
@@ -584,6 +652,8 @@ def parse_team_totals(odds_payload):
         "home": None,
         "home_over_price": None,
         "home_under_price": None,
+        "away_bookmaker": "",
+        "home_bookmaker": "",
     }
 
     away_names = [
@@ -594,6 +664,7 @@ def parse_team_totals(odds_payload):
         "Team Total (Runs) Away",
         "Team Total Runs Away",
     ]
+
     home_names = [
         "Team Total Home",
         "Team Totals Home",
@@ -603,25 +674,77 @@ def parse_team_totals(odds_payload):
         "Team Total Runs Home",
     ]
 
+    # FanDuel first, DraftKings fallback.
     for bookmaker in BOOKMAKERS:
-        markets = get_book_markets(odds_payload, bookmaker)
+        markets = get_book_markets(
+            odds_payload,
+            bookmaker,
+        )
 
-        away_market = find_market_any(markets, away_names)
-        home_market = find_market_any(markets, home_names)
+        if result["away"] is None:
+            away_market = find_market_any(
+                markets,
+                away_names,
+            )
 
-        if away_market and result["away"] is None:
-            row = first_odds_row(away_market)
-            result["away"] = to_float(row.get("hdp"))
-            result["away_over_price"] = decimal_to_american(row.get("over"))
-            result["away_under_price"] = decimal_to_american(row.get("under"))
+            if away_market:
+                row = find_main_team_total_row(
+                    away_market
+                )
 
-        if home_market and result["home"] is None:
-            row = first_odds_row(home_market)
-            result["home"] = to_float(row.get("hdp"))
-            result["home_over_price"] = decimal_to_american(row.get("over"))
-            result["home_under_price"] = decimal_to_american(row.get("under"))
+                if row:
+                    result["away"] = to_float(
+                        row.get("hdp")
+                    )
 
-        if result["away"] is not None and result["home"] is not None:
+                    result["away_over_price"] = (
+                        decimal_to_american(
+                            row.get("over")
+                        )
+                    )
+
+                    result["away_under_price"] = (
+                        decimal_to_american(
+                            row.get("under")
+                        )
+                    )
+
+                    result["away_bookmaker"] = bookmaker
+
+        if result["home"] is None:
+            home_market = find_market_any(
+                markets,
+                home_names,
+            )
+
+            if home_market:
+                row = find_main_team_total_row(
+                    home_market
+                )
+
+                if row:
+                    result["home"] = to_float(
+                        row.get("hdp")
+                    )
+
+                    result["home_over_price"] = (
+                        decimal_to_american(
+                            row.get("over")
+                        )
+                    )
+
+                    result["home_under_price"] = (
+                        decimal_to_american(
+                            row.get("under")
+                        )
+                    )
+
+                    result["home_bookmaker"] = bookmaker
+
+        if (
+            result["away"] is not None
+            and result["home"] is not None
+        ):
             break
 
     return result

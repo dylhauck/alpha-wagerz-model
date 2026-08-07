@@ -63,6 +63,81 @@ def get_game_hitters(game, side):
 
     return []
 
+def score_hr_arsenal_fit(hitter, fallback=50):
+    """
+    Build an HR-specific arsenal score from today's opposing
+    pitch mix and the hitter's pitch-family matchup results.
+    """
+
+    pitch_type_score = f(
+        hitter.get("Pitch Type Score"),
+        fallback,
+    )
+
+    fastball = f(
+        hitter.get("Fastball Matchup"),
+        None,
+    )
+
+    breaking = f(
+        hitter.get("Breaking Ball Matchup"),
+        None,
+    )
+
+    offspeed = f(
+        hitter.get("Offspeed Matchup"),
+        None,
+    )
+
+    xhr_matchup = f(
+        hitter.get("xHR Matchup"),
+        None,
+    )
+
+    family_scores = [
+        score
+        for score in [
+            fastball,
+            breaking,
+            offspeed,
+        ]
+        if score is not None
+    ]
+
+    if family_scores:
+        average_family = (
+            sum(family_scores) /
+            len(family_scores)
+        )
+
+        best_family = max(family_scores)
+    else:
+        average_family = pitch_type_score
+        best_family = pitch_type_score
+
+    # xHR Matchup is stored on a much smaller scale than
+    # the 0–100 matchup scores, so convert it to 0–100.
+    if xhr_matchup is None:
+        xhr_score = pitch_type_score
+    else:
+        xhr_score = clamp(
+            xhr_matchup * 10,
+            0,
+            100,
+        )
+
+    arsenal_fit = weighted_score([
+        (pitch_type_score, 0.40),
+        (average_family, 0.20),
+        (best_family, 0.20),
+        (xhr_score, 0.20),
+    ])
+
+    return round(
+        clamp(arsenal_fit),
+        1,
+    )
+
 def normalize_slate_hitters(games):
     all_hitters = []
 
@@ -94,6 +169,11 @@ def normalize_slate_hitters(games):
         weather = scale_score(hitter.get("Weather"), weather_values, 40, 92)
         park = scale_score(hitter.get("Park"), park_values, 40, 92)
         recent = scale_score(hitter.get("Recent"), recent_values, 30, 95)
+
+        hr_arsenal_fit = score_hr_arsenal_fit(
+           hitter,
+            fallback=pitch_type,
+        )
 
         matchup = weighted_score([
             (power, 0.10),
@@ -127,14 +207,25 @@ def normalize_slate_hitters(games):
         ])
 
         khr = weighted_score([
-            (power, 0.30),
-            (pitcher, 0.25),
-            (pitch_type, 0.20),
-            (recent, 0.15),
-            (park, 0.05),
-            (weather, 0.05),
-        ])
+    # Today's specific opposing-pitcher vulnerability.
+    (pitcher, 0.30),
 
+    # Detailed arsenal and pitch-family HR fit.
+    (hr_arsenal_fit, 0.30),
+
+    # Overall pitch-type score remains relevant.
+    (pitch_type, 0.15),
+
+    # Raw power matters, but no longer dominates.
+    (power, 0.15),
+
+    # Current HR form.
+    (recent, 0.05),
+
+    # Game environment.
+    (park, 0.025),
+    (weather, 0.025),
+])
         khr = boost_elite(khr, midpoint=60, strength=1.30)
 
         alpha = weighted_score([
