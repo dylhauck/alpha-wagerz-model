@@ -163,20 +163,34 @@ def hitter_k_risk_score(hitters):
 
     scores = []
 
-    for h in hitters:
-        swstr = f(h.get("SwStr%"), 10)
-        khr = f(h.get("kHR"), 50)
-        matchup = f(h.get("Matchup"), 50)
-
-        score = (
-            swstr * 3.0
-            + khr * 0.45
-            + matchup * 0.25
+    for hitter in hitters:
+        swstr = f(
+            hitter.get("SwStr%"),
+            10,
         )
 
-        scores.append(score)
+        # Convert hitter swinging-strike rate into
+        # a 0-100 strikeout-risk score.
+        #
+        # ~5%  = very difficult to strike out
+        # ~10% = average
+        # ~15% = high K risk
+        # ~20% = extreme K risk
+        swstr_score = clamp(
+            50 + ((swstr - 10) * 5),
+            0,
+            100,
+        )
 
-    return clamp(avg(scores, 50), 20, 90)
+        scores.append(swstr_score)
+
+    if not scores:
+        return 50
+
+    return round(
+        sum(scores) / len(scores),
+        1,
+    )
 
 
 def projected_ks(pitcher, opponent_hitters):
@@ -207,26 +221,24 @@ def projected_ks(pitcher, opponent_hitters):
         opponent_hitters
     )
 
-    # Start from a realistic MLB starter baseline.
-    ks = 5.2
+    # Neutral MLB starter baseline.
+    ks = 4.4
 
-    # Elite strikeout pitchers now receive enough separation
-    # from average and low-strikeout starters.
-    ks += ((k_score - 50) / 50) * 4.5
+    # Pitcher's underlying strikeout ability.
+    ks += ((k_score - 50) / 50) * 3.6
 
-    # Today's opponent still matters heavily.
-    ks += ((matchup_score - 50) / 50) * 2.8
+    # Today's opponent strikeout matchup.
+    ks += ((matchup_score - 50) / 50) * 2.4
 
     # Pitch-quality adjustments.
-    ks += (swstr - 10) * 0.18
-    ks += (csw - 28) * 0.12
-    ks -= (ball - 34) * 0.05
+    ks += (swstr - 10) * 0.14
+    ks += (csw - 28) * 0.09
+    ks -= (ball - 34) * 0.04
 
     return round(
         max(1.5, min(13.5, ks)),
         1,
     )
-
 
 def win_probability(away_runs, home_runs):
     diff = away_runs - home_runs
