@@ -1,0 +1,4302 @@
+[
+  {
+    "game_id": "824239",
+    "game": "Chicago White Sox @ Detroit Tigers",
+    "away_team": "Chicago White Sox",
+    "home_team": "Detroit Tigers",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63302255,
+    "moneyline": {
+      "away": 126,
+      "home": -136
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -178,
+      "home": -1.5,
+      "home_price": 146
+    },
+    "total": 7.5,
+    "game_total": {
+      "line": 7.5,
+      "over_price": -122,
+      "under_price": 100
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": -108,
+      "away_under_price": -118,
+      "home": 3.5,
+      "home_over_price": -148,
+      "home_under_price": 116
+    },
+    "pitcher_strikeouts": {
+      "jackson jobe": {
+        "player": "Jackson Jobe",
+        "normalized_name": "jackson jobe",
+        "line": 4.5,
+        "over_price": -111,
+        "under_price": -115,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "munetaka murakami": {
+        "player": "Munetaka Murakami",
+        "normalized_name": "munetaka murakami",
+        "line": 0.5,
+        "over_price": -588,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "colson montgomery": {
+        "player": "Colson Montgomery",
+        "normalized_name": "colson montgomery",
+        "line": 0.5,
+        "over_price": -526,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "spencer torkelson": {
+        "player": "Spencer Torkelson",
+        "normalized_name": "spencer torkelson",
+        "line": 0.5,
+        "over_price": -303,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "braden montgomery": {
+        "player": "Braden Montgomery",
+        "normalized_name": "braden montgomery",
+        "line": 0.5,
+        "over_price": -345,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "dillon dingler": {
+        "player": "Dillon Dingler",
+        "normalized_name": "dillon dingler",
+        "line": 0.5,
+        "over_price": -238,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "drew romo": {
+        "player": "Drew Romo",
+        "normalized_name": "drew romo",
+        "line": 0.5,
+        "over_price": -217,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "miguel vargas": {
+        "player": "Miguel Vargas",
+        "normalized_name": "miguel vargas",
+        "line": 0.5,
+        "over_price": -238,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "gleyber torres": {
+        "player": "Gleyber Torres",
+        "normalized_name": "gleyber torres",
+        "line": 0.5,
+        "over_price": -182,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "chase meidroth": {
+        "player": "Chase Meidroth",
+        "normalized_name": "chase meidroth",
+        "line": 0.5,
+        "over_price": -217,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "max clark": {
+        "player": "Max Clark",
+        "normalized_name": "max clark",
+        "line": 0.5,
+        "over_price": -147,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "javier baez": {
+        "player": "Javier Baez",
+        "normalized_name": "javier baez",
+        "line": 0.5,
+        "over_price": -156,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ben malgeri": {
+        "player": "Ben Malgeri",
+        "normalized_name": "ben malgeri",
+        "line": 0.5,
+        "over_price": -196,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "kevin mcgonigle": {
+        "player": "Kevin McGonigle",
+        "normalized_name": "kevin mcgonigle",
+        "line": 0.5,
+        "over_price": -222,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "sam antonacci": {
+        "player": "Sam Antonacci",
+        "normalized_name": "sam antonacci",
+        "line": 0.5,
+        "over_price": -179,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "tristan peters": {
+        "player": "Tristan Peters",
+        "normalized_name": "tristan peters",
+        "line": 0.5,
+        "over_price": -161,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "andrew benintendi": {
+        "player": "Andrew Benintendi",
+        "normalized_name": "andrew benintendi",
+        "line": 0.5,
+        "over_price": -185,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "hao yu lee": {
+        "player": "Hao-Yu Lee",
+        "normalized_name": "hao yu lee",
+        "line": 0.5,
+        "over_price": -189,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "corey julks": {
+        "player": "Corey Julks",
+        "normalized_name": "corey julks",
+        "line": 0.5,
+        "over_price": -149,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "zach mckinstry": {
+        "player": "Zach McKinstry",
+        "normalized_name": "zach mckinstry",
+        "line": 1.5,
+        "over_price": 850,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "colt keith": {
+        "player": "Colt Keith",
+        "normalized_name": "colt keith",
+        "line": 0.5,
+        "over_price": -137,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "troy melton": {
+        "player": "Troy Melton",
+        "normalized_name": "troy melton",
+        "line": 5.5,
+        "over_price": 114,
+        "under_price": -146,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "anthony kay": {
+        "player": "Anthony Kay",
+        "normalized_name": "anthony kay",
+        "line": 4.5,
+        "over_price": 110,
+        "under_price": -140,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "eduardo valencia": {
+        "player": "Eduardo Valencia",
+        "normalized_name": "eduardo valencia",
+        "line": 0.5,
+        "over_price": -476,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jake rogers": {
+        "player": "Jake Rogers",
+        "normalized_name": "jake rogers",
+        "line": 0.5,
+        "over_price": -345,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-15T15:58:23Z"
+  },
+  {
+    "game_id": "824644",
+    "game": "St. Louis Cardinals @ Chicago Cubs",
+    "away_team": "St. Louis Cardinals",
+    "home_team": "Chicago Cubs",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63301913,
+    "moneyline": {
+      "away": 166,
+      "home": -180
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -137,
+      "home": -1.5,
+      "home_price": 114
+    },
+    "total": 9.0,
+    "game_total": {
+      "line": 9.0,
+      "over_price": -102,
+      "under_price": -120
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": -122,
+      "away_under_price": -104,
+      "home": 4.5,
+      "home_over_price": -128,
+      "home_under_price": 100
+    },
+    "pitcher_strikeouts": {
+      "clay holmes": {
+        "player": "Clay Holmes",
+        "normalized_name": "clay holmes",
+        "line": 3.5,
+        "over_price": -136,
+        "under_price": 106,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "matthew liberatore": {
+        "player": "Matthew Liberatore",
+        "normalized_name": "matthew liberatore",
+        "line": 4.5,
+        "over_price": 100,
+        "under_price": -128,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "pete crow armstrong": {
+        "player": "Pete Crow-Armstrong",
+        "normalized_name": "pete crow armstrong",
+        "line": 0.5,
+        "over_price": -217,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "michael busch": {
+        "player": "Michael Busch",
+        "normalized_name": "michael busch",
+        "line": 0.5,
+        "over_price": -161,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "alex bregman": {
+        "player": "Alex Bregman",
+        "normalized_name": "alex bregman",
+        "line": 0.5,
+        "over_price": 121,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "bryan torres": {
+        "player": "Bryan Torres",
+        "normalized_name": "bryan torres",
+        "line": 0.5,
+        "over_price": -167,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jose fermin stl": {
+        "player": "Jose Fermin (STL)",
+        "normalized_name": "jose fermin stl",
+        "line": 0.5,
+        "over_price": -132,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "masyn winn": {
+        "player": "Masyn Winn",
+        "normalized_name": "masyn winn",
+        "line": 0.5,
+        "over_price": -159,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "alec burleson": {
+        "player": "Alec Burleson",
+        "normalized_name": "alec burleson",
+        "line": 0.5,
+        "over_price": -135,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "pedro ramirez": {
+        "player": "Pedro Ramirez",
+        "normalized_name": "pedro ramirez",
+        "line": 0.5,
+        "over_price": -119,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jordan walker": {
+        "player": "Jordan Walker",
+        "normalized_name": "jordan walker",
+        "line": 0.5,
+        "over_price": -263,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "seiya suzuki": {
+        "player": "Seiya Suzuki",
+        "normalized_name": "seiya suzuki",
+        "line": 0.5,
+        "over_price": -196,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jimmy crooks": {
+        "player": "Jimmy Crooks",
+        "normalized_name": "jimmy crooks",
+        "line": 0.5,
+        "over_price": -250,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ivan herrera": {
+        "player": "Ivan Herrera",
+        "normalized_name": "ivan herrera",
+        "line": 0.5,
+        "over_price": -185,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "tyrone taylor": {
+        "player": "Tyrone Taylor",
+        "normalized_name": "tyrone taylor",
+        "line": 0.5,
+        "over_price": -154,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "carson kelly": {
+        "player": "Carson Kelly",
+        "normalized_name": "carson kelly",
+        "line": 0.5,
+        "over_price": -145,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "nathan church": {
+        "player": "Nathan Church",
+        "normalized_name": "nathan church",
+        "line": 0.5,
+        "over_price": -182,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "nico hoerner": {
+        "player": "Nico Hoerner",
+        "normalized_name": "nico hoerner",
+        "line": 0.5,
+        "over_price": 158,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "dansby swanson": {
+        "player": "Dansby Swanson",
+        "normalized_name": "dansby swanson",
+        "line": 0.5,
+        "over_price": -208,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jj wetherholt": {
+        "player": "JJ Wetherholt",
+        "normalized_name": "jj wetherholt",
+        "line": 0.5,
+        "over_price": -208,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ian happ": {
+        "player": "Ian Happ",
+        "normalized_name": "ian happ",
+        "line": 0.5,
+        "over_price": -222,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "cesar prieto": {
+        "player": "Cesar Prieto",
+        "normalized_name": "cesar prieto",
+        "line": 0.5,
+        "over_price": -147,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "michael mcgreevy": {
+        "player": "Michael McGreevy",
+        "normalized_name": "michael mcgreevy",
+        "line": 3.5,
+        "over_price": 102,
+        "under_price": -130,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "matthew boyd": {
+        "player": "Matthew Boyd",
+        "normalized_name": "matthew boyd",
+        "line": 4.5,
+        "over_price": -108,
+        "under_price": -118,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "joshua baez": {
+        "player": "Joshua Baez",
+        "normalized_name": "joshua baez",
+        "line": 0.5,
+        "over_price": -286,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "everson pereira": {
+        "player": "Everson Pereira",
+        "normalized_name": "everson pereira",
+        "line": 0.5,
+        "over_price": -227,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "pedro pages": {
+        "player": "Pedro Pages",
+        "normalized_name": "pedro pages",
+        "line": 0.5,
+        "over_price": -182,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "michael conforto": {
+        "player": "Michael Conforto",
+        "normalized_name": "michael conforto",
+        "line": 0.5,
+        "over_price": -135,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "blaze jordan": {
+        "player": "Blaze Jordan",
+        "normalized_name": "blaze jordan",
+        "line": 0.5,
+        "over_price": -125,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "miguel amaya": {
+        "player": "Miguel Amaya",
+        "normalized_name": "miguel amaya",
+        "line": 0.5,
+        "over_price": 103,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-15T15:58:23Z"
+  },
+  {
+    "game_id": "822775",
+    "game": "New York Yankees @ Toronto Blue Jays",
+    "away_team": "New York Yankees",
+    "home_team": "Toronto Blue Jays",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63302539,
+    "moneyline": {
+      "away": -168,
+      "home": 156
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": 102,
+      "home": 1.5,
+      "home_price": -122
+    },
+    "total": 7.5,
+    "game_total": {
+      "line": 7.5,
+      "over_price": 100,
+      "under_price": -122
+    },
+    "team_totals": {
+      "away": 4.5,
+      "away_over_price": 112,
+      "away_under_price": -140,
+      "home": 2.5,
+      "home_over_price": -142,
+      "home_under_price": 112
+    },
+    "pitcher_strikeouts": {
+      "shane bieber": {
+        "player": "Shane Bieber",
+        "normalized_name": "shane bieber",
+        "line": 5.5,
+        "over_price": 136,
+        "under_price": -174,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "gerrit cole": {
+        "player": "Gerrit Cole",
+        "normalized_name": "gerrit cole",
+        "line": 5.5,
+        "over_price": 126,
+        "under_price": -162,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "spencer jones": {
+        "player": "Spencer Jones",
+        "normalized_name": "spencer jones",
+        "line": 0.5,
+        "over_price": -714,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "kazuma okamoto": {
+        "player": "Kazuma Okamoto",
+        "normalized_name": "kazuma okamoto",
+        "line": 0.5,
+        "over_price": -526,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jazz chisholm": {
+        "player": "Jazz Chisholm",
+        "normalized_name": "jazz chisholm",
+        "line": 0.5,
+        "over_price": -500,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ben rice": {
+        "player": "Ben Rice",
+        "normalized_name": "ben rice",
+        "line": 0.5,
+        "over_price": -455,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "heliot ramos": {
+        "player": "Heliot Ramos",
+        "normalized_name": "heliot ramos",
+        "line": 0.5,
+        "over_price": -455,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ryan mcmahon": {
+        "player": "Ryan McMahon",
+        "normalized_name": "ryan mcmahon",
+        "line": 0.5,
+        "over_price": -526,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "brett bateman": {
+        "player": "Brett Bateman",
+        "normalized_name": "brett bateman",
+        "line": 0.5,
+        "over_price": -400,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "trent grisham": {
+        "player": "Trent Grisham",
+        "normalized_name": "trent grisham",
+        "line": 0.5,
+        "over_price": -323,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jesus sanchez": {
+        "player": "Jesus Sanchez",
+        "normalized_name": "jesus sanchez",
+        "line": 0.5,
+        "over_price": -323,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "austin wells": {
+        "player": "Austin Wells",
+        "normalized_name": "austin wells",
+        "line": 0.5,
+        "over_price": -263,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "george lombard": {
+        "player": "George Lombard Jr.",
+        "normalized_name": "george lombard",
+        "line": 0.5,
+        "over_price": -345,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "andres gimenez": {
+        "player": "Andres Gimenez",
+        "normalized_name": "andres gimenez",
+        "line": 0.5,
+        "over_price": -233,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "george springer": {
+        "player": "George Springer",
+        "normalized_name": "george springer",
+        "line": 0.5,
+        "over_price": -169,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "nathan lukes": {
+        "player": "Nathan Lukes",
+        "normalized_name": "nathan lukes",
+        "line": 0.5,
+        "over_price": -161,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "vladimir guerrero": {
+        "player": "Vladimir Guerrero Jr.",
+        "normalized_name": "vladimir guerrero",
+        "line": 0.5,
+        "over_price": -145,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "luis garcia nyy": {
+        "player": "Luis Garcia (NYY)",
+        "normalized_name": "luis garcia nyy",
+        "line": 0.5,
+        "over_price": -217,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ernie clement": {
+        "player": "Ernie Clement",
+        "normalized_name": "ernie clement",
+        "line": 0.5,
+        "over_price": 150,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "alejandro kirk": {
+        "player": "Alejandro Kirk",
+        "normalized_name": "alejandro kirk",
+        "line": 0.5,
+        "over_price": -167,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "cam schlittler": {
+        "player": "Cam Schlittler",
+        "normalized_name": "cam schlittler",
+        "line": 6.5,
+        "over_price": 122,
+        "under_price": -156,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "brandon valenzuela": {
+        "player": "Brandon Valenzuela",
+        "normalized_name": "brandon valenzuela",
+        "line": 0.5,
+        "over_price": -476,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "charles mcadoo": {
+        "player": "Charles McAdoo",
+        "normalized_name": "charles mcadoo",
+        "line": 0.5,
+        "over_price": -185,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "josh smith": {
+        "player": "Josh Smith",
+        "normalized_name": "josh smith",
+        "line": 0.5,
+        "over_price": -167,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-15T15:58:23Z"
+  },
+  {
+    "game_id": "823184",
+    "game": "Colorado Rockies @ San Francisco Giants",
+    "away_team": "Colorado Rockies",
+    "home_team": "San Francisco Giants",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63302189,
+    "moneyline": {
+      "away": 148,
+      "home": -160
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -160,
+      "home": -1.5,
+      "home_price": 132
+    },
+    "total": 7.5,
+    "game_total": {
+      "line": 7.5,
+      "over_price": -110,
+      "under_price": -110
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": 114,
+      "away_under_price": -146,
+      "home": 4.5,
+      "home_over_price": 124,
+      "home_under_price": -158
+    },
+    "pitcher_strikeouts": {
+      "kyle freeland": {
+        "player": "Kyle Freeland",
+        "normalized_name": "kyle freeland",
+        "line": 5.5,
+        "over_price": 124,
+        "under_price": -158,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "landen roupp": {
+        "player": "Landen Roupp",
+        "normalized_name": "landen roupp",
+        "line": 5.5,
+        "over_price": -108,
+        "under_price": -115,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "willi castro": {
+        "player": "Willi Castro",
+        "normalized_name": "willi castro",
+        "line": 0.5,
+        "over_price": -256,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "bryce eldridge": {
+        "player": "Bryce Eldridge",
+        "normalized_name": "bryce eldridge",
+        "line": 0.5,
+        "over_price": -286,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "connor norby": {
+        "player": "Connor Norby",
+        "normalized_name": "connor norby",
+        "line": 0.5,
+        "over_price": -250,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "victor bericoto": {
+        "player": "Victor Bericoto",
+        "normalized_name": "victor bericoto",
+        "line": 0.5,
+        "over_price": -139,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "rafael devers": {
+        "player": "Rafael Devers",
+        "normalized_name": "rafael devers",
+        "line": 0.5,
+        "over_price": -233,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "osleivis basabe": {
+        "player": "Osleivis Basabe",
+        "normalized_name": "osleivis basabe",
+        "line": 0.5,
+        "over_price": -222,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jake mccarthy": {
+        "player": "Jake McCarthy",
+        "normalized_name": "jake mccarthy",
+        "line": 0.5,
+        "over_price": -159,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "buddy kennedy": {
+        "player": "Buddy Kennedy",
+        "normalized_name": "buddy kennedy",
+        "line": 0.5,
+        "over_price": -167,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "christian koss": {
+        "player": "Christian Koss",
+        "normalized_name": "christian koss",
+        "line": 0.5,
+        "over_price": -120,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "t j rumfield": {
+        "player": "T.J. Rumfield",
+        "normalized_name": "t j rumfield",
+        "line": 0.5,
+        "over_price": -156,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "andrew knizner": {
+        "player": "Andrew Knizner",
+        "normalized_name": "andrew knizner",
+        "line": 0.5,
+        "over_price": -114,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jung hoo lee": {
+        "player": "Jung Hoo Lee",
+        "normalized_name": "jung hoo lee",
+        "line": 0.5,
+        "over_price": 140,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "hunter goodman": {
+        "player": "Hunter Goodman",
+        "normalized_name": "hunter goodman",
+        "line": 0.5,
+        "over_price": -476,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "zac veen": {
+        "player": "Zac Veen",
+        "normalized_name": "zac veen",
+        "line": 0.5,
+        "over_price": -263,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "grant mccray": {
+        "player": "Grant McCray",
+        "normalized_name": "grant mccray",
+        "line": 0.5,
+        "over_price": -250,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "mickey moniak": {
+        "player": "Mickey Moniak",
+        "normalized_name": "mickey moniak",
+        "line": 0.5,
+        "over_price": -227,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "cole carrigg": {
+        "player": "Cole Carrigg",
+        "normalized_name": "cole carrigg",
+        "line": 0.5,
+        "over_price": -227,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ezequiel tovar": {
+        "player": "Ezequiel Tovar",
+        "normalized_name": "ezequiel tovar",
+        "line": 0.5,
+        "over_price": -167,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "logan webb": {
+        "player": "Logan Webb",
+        "normalized_name": "logan webb",
+        "line": 5.5,
+        "over_price": 100,
+        "under_price": -128,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "michael lorenzen": {
+        "player": "Michael Lorenzen",
+        "normalized_name": "michael lorenzen",
+        "line": 3.5,
+        "over_price": 118,
+        "under_price": -150,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "willy adames": {
+        "player": "Willy Adames",
+        "normalized_name": "willy adames",
+        "line": 0.5,
+        "over_price": -333,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "drew cavanaugh": {
+        "player": "Drew Cavanaugh",
+        "normalized_name": "drew cavanaugh",
+        "line": 0.5,
+        "over_price": -185,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "drew gilbert": {
+        "player": "Drew Gilbert",
+        "normalized_name": "drew gilbert",
+        "line": 0.5,
+        "over_price": -106,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-15T15:58:23Z"
+  },
+  {
+    "game_id": "823588",
+    "game": "Washington Nationals @ New York Mets",
+    "away_team": "Washington Nationals",
+    "home_team": "New York Mets",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63299127,
+    "moneyline": {
+      "away": 124,
+      "home": -134
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -192,
+      "home": -1.5,
+      "home_price": 158
+    },
+    "total": 8.0,
+    "game_total": {
+      "line": 8.0,
+      "over_price": -105,
+      "under_price": -115
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": -113,
+      "away_under_price": -113,
+      "home": 4.5,
+      "home_over_price": 120,
+      "home_under_price": -154
+    },
+    "pitcher_strikeouts": {
+      "robert stock": {
+        "player": "Robert Stock",
+        "normalized_name": "robert stock",
+        "line": 3.5,
+        "over_price": -142,
+        "under_price": 112,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "andrew alvarez": {
+        "player": "Andrew Alvarez",
+        "normalized_name": "andrew alvarez",
+        "line": 4.5,
+        "over_price": 110,
+        "under_price": -140,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "cj abrams": {
+        "player": "CJ Abrams",
+        "normalized_name": "cj abrams",
+        "line": 0.5,
+        "over_price": -370,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "dylan crews": {
+        "player": "Dylan Crews",
+        "normalized_name": "dylan crews",
+        "line": 0.5,
+        "over_price": -303,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "gabriel arias": {
+        "player": "Gabriel Arias",
+        "normalized_name": "gabriel arias",
+        "line": 0.5,
+        "over_price": -333,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jose tena": {
+        "player": "Jose Tena",
+        "normalized_name": "jose tena",
+        "line": 0.5,
+        "over_price": -286,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "abimelec ortiz": {
+        "player": "Abimelec Ortiz",
+        "normalized_name": "abimelec ortiz",
+        "line": 0.5,
+        "over_price": -278,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "francisco lindor": {
+        "player": "Francisco Lindor",
+        "normalized_name": "francisco lindor",
+        "line": 1.5,
+        "over_price": 363,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jorge polanco": {
+        "player": "Jorge Polanco",
+        "normalized_name": "jorge polanco",
+        "line": 0.5,
+        "over_price": -141,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "marcus semien": {
+        "player": "Marcus Semien",
+        "normalized_name": "marcus semien",
+        "line": 0.5,
+        "over_price": -123,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "carson benge": {
+        "player": "Carson Benge",
+        "normalized_name": "carson benge",
+        "line": 0.5,
+        "over_price": -167,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jorbit vivas": {
+        "player": "Jorbit Vivas",
+        "normalized_name": "jorbit vivas",
+        "line": 0.5,
+        "over_price": -120,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "keibert ruiz": {
+        "player": "Keibert Ruiz",
+        "normalized_name": "keibert ruiz",
+        "line": 0.5,
+        "over_price": 141,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "nasim nunez": {
+        "player": "Nasim Nunez",
+        "normalized_name": "nasim nunez",
+        "line": 0.5,
+        "over_price": -192,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "bo bichette": {
+        "player": "Bo Bichette",
+        "normalized_name": "bo bichette",
+        "line": 0.5,
+        "over_price": -122,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "aj ewing": {
+        "player": "AJ Ewing",
+        "normalized_name": "aj ewing",
+        "line": 0.5,
+        "over_price": -278,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "daylen lile": {
+        "player": "Daylen Lile",
+        "normalized_name": "daylen lile",
+        "line": 0.5,
+        "over_price": -172,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "francisco alvarez": {
+        "player": "Francisco Alvarez",
+        "normalized_name": "francisco alvarez",
+        "line": 0.5,
+        "over_price": -204,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "luis robert": {
+        "player": "Luis Robert",
+        "normalized_name": "luis robert",
+        "line": 0.5,
+        "over_price": -222,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jacob young": {
+        "player": "Jacob Young",
+        "normalized_name": "jacob young",
+        "line": 0.5,
+        "over_price": -128,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "brad lord": {
+        "player": "Brad Lord",
+        "normalized_name": "brad lord",
+        "line": 3.5,
+        "over_price": 126,
+        "under_price": -162,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "sean manaea": {
+        "player": "Sean Manaea",
+        "normalized_name": "sean manaea",
+        "line": 5.5,
+        "over_price": -150,
+        "under_price": 118,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "brady house": {
+        "player": "Brady House",
+        "normalized_name": "brady house",
+        "line": 0.5,
+        "over_price": -400,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "harry ford": {
+        "player": "Harry Ford",
+        "normalized_name": "harry ford",
+        "line": 0.5,
+        "over_price": -333,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "andres chaparro": {
+        "player": "Andres Chaparro",
+        "normalized_name": "andres chaparro",
+        "line": 0.5,
+        "over_price": -263,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "andrew pinckney": {
+        "player": "Andrew Pinckney",
+        "normalized_name": "andrew pinckney",
+        "line": 0.5,
+        "over_price": -250,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "brett baty": {
+        "player": "Brett Baty",
+        "normalized_name": "brett baty",
+        "line": 0.5,
+        "over_price": -208,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jared young": {
+        "player": "Jared Young",
+        "normalized_name": "jared young",
+        "line": 0.5,
+        "over_price": -169,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-15T15:58:24Z"
+  },
+  {
+    "game_id": "822941",
+    "game": "Baltimore Orioles @ Tampa Bay Rays",
+    "away_team": "Baltimore Orioles",
+    "home_team": "Tampa Bay Rays",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63302941,
+    "moneyline": {
+      "away": 132,
+      "home": -142
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -194,
+      "home": -1.5,
+      "home_price": 160
+    },
+    "total": 7.5,
+    "game_total": {
+      "line": 7.5,
+      "over_price": 100,
+      "under_price": -122
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": 108,
+      "away_under_price": -138,
+      "home": 3.5,
+      "home_over_price": -128,
+      "home_under_price": 100
+    },
+    "pitcher_strikeouts": {
+      "coby mayo": {
+        "player": "Coby Mayo",
+        "normalized_name": "coby mayo",
+        "line": 0.5,
+        "over_price": -476,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jonathan aranda": {
+        "player": "Jonathan Aranda",
+        "normalized_name": "jonathan aranda",
+        "line": 0.5,
+        "over_price": -270,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "victor mesa": {
+        "player": "Victor Mesa Jr.",
+        "normalized_name": "victor mesa",
+        "line": 0.5,
+        "over_price": -217,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "chandler simpson": {
+        "player": "Chandler Simpson",
+        "normalized_name": "chandler simpson",
+        "line": 0.5,
+        "over_price": 137,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "junior caminero": {
+        "player": "Junior Caminero",
+        "normalized_name": "junior caminero",
+        "line": 0.5,
+        "over_price": -250,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "pete alonso": {
+        "player": "Pete Alonso",
+        "normalized_name": "pete alonso",
+        "line": 0.5,
+        "over_price": -435,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "carlos narvaez": {
+        "player": "Carlos Narvaez",
+        "normalized_name": "carlos narvaez",
+        "line": 0.5,
+        "over_price": -238,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "leody taveras": {
+        "player": "Leody Taveras",
+        "normalized_name": "leody taveras",
+        "line": 0.5,
+        "over_price": -286,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "tyler oneill": {
+        "player": "Tyler O'Neill",
+        "normalized_name": "tyler oneill",
+        "line": 0.5,
+        "over_price": -435,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "christian franklin": {
+        "player": "Christian Franklin",
+        "normalized_name": "christian franklin",
+        "line": 0.5,
+        "over_price": -500,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "taylor walls": {
+        "player": "Taylor Walls",
+        "normalized_name": "taylor walls",
+        "line": 0.5,
+        "over_price": -233,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "gunnar henderson": {
+        "player": "Gunnar Henderson",
+        "normalized_name": "gunnar henderson",
+        "line": 0.5,
+        "over_price": -333,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "yandy diaz": {
+        "player": "Yandy Diaz",
+        "normalized_name": "yandy diaz",
+        "line": 0.5,
+        "over_price": -152,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "christian encarnacion strand": {
+        "player": "Christian Encarnacion-Strand",
+        "normalized_name": "christian encarnacion strand",
+        "line": 0.5,
+        "over_price": -345,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "cedric mullins": {
+        "player": "Cedric Mullins",
+        "normalized_name": "cedric mullins",
+        "line": 0.5,
+        "over_price": -204,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "liam hicks": {
+        "player": "Liam Hicks",
+        "normalized_name": "liam hicks",
+        "line": 0.5,
+        "over_price": 115,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jackson holliday": {
+        "player": "Jackson Holliday",
+        "normalized_name": "jackson holliday",
+        "line": 0.5,
+        "over_price": -333,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "richie palacios": {
+        "player": "Richie Palacios",
+        "normalized_name": "richie palacios",
+        "line": 0.5,
+        "over_price": -111,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "chris bassitt": {
+        "player": "Chris Bassitt",
+        "normalized_name": "chris bassitt",
+        "line": 2.5,
+        "over_price": -186,
+        "under_price": 144,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "kyle bradish": {
+        "player": "Kyle Bradish",
+        "normalized_name": "kyle bradish",
+        "line": 4.5,
+        "over_price": -113,
+        "under_price": -113,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ian seymour": {
+        "player": "Ian Seymour",
+        "normalized_name": "ian seymour",
+        "line": 6.5,
+        "over_price": -111,
+        "under_price": -115,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jonny deluca": {
+        "player": "Jonny DeLuca",
+        "normalized_name": "jonny deluca",
+        "line": 0.5,
+        "over_price": -185,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-15T15:58:24Z"
+  },
+  {
+    "game_id": "824480",
+    "game": "Miami Marlins @ Cincinnati Reds",
+    "away_team": "Miami Marlins",
+    "home_team": "Cincinnati Reds",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63301475,
+    "moneyline": {
+      "away": -102,
+      "home": -106
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": 152,
+      "home": 1.5,
+      "home_price": -184
+    },
+    "total": 9.5,
+    "game_total": {
+      "line": 9.5,
+      "over_price": 102,
+      "under_price": -124
+    },
+    "team_totals": {
+      "away": 4.5,
+      "away_over_price": -113,
+      "away_under_price": -113,
+      "home": 4.5,
+      "home_over_price": 102,
+      "home_under_price": -130
+    },
+    "pitcher_strikeouts": {
+      "chase burns": {
+        "player": "Chase Burns",
+        "normalized_name": "chase burns",
+        "line": 6.5,
+        "over_price": -106,
+        "under_price": -120,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "sandy alcantara": {
+        "player": "Sandy Alcantara",
+        "normalized_name": "sandy alcantara",
+        "line": 5.5,
+        "over_price": -140,
+        "under_price": 110,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "griffin conine": {
+        "player": "Griffin Conine",
+        "normalized_name": "griffin conine",
+        "line": 0.5,
+        "over_price": -556,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "heriberto hernandez": {
+        "player": "Heriberto Hernandez",
+        "normalized_name": "heriberto hernandez",
+        "line": 0.5,
+        "over_price": -357,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "eugenio suarez": {
+        "player": "Eugenio Suarez",
+        "normalized_name": "eugenio suarez",
+        "line": 0.5,
+        "over_price": -476,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "owen caissie": {
+        "player": "Owen Caissie",
+        "normalized_name": "owen caissie",
+        "line": 0.5,
+        "over_price": -455,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "tyler stephenson": {
+        "player": "Tyler Stephenson",
+        "normalized_name": "tyler stephenson",
+        "line": 0.5,
+        "over_price": -303,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "elly de la cruz": {
+        "player": "Elly De La Cruz",
+        "normalized_name": "elly de la cruz",
+        "line": 0.5,
+        "over_price": -417,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "matt mclain": {
+        "player": "Matt McLain",
+        "normalized_name": "matt mclain",
+        "line": 0.5,
+        "over_price": -417,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "sal stewart": {
+        "player": "Sal Stewart",
+        "normalized_name": "sal stewart",
+        "line": 0.5,
+        "over_price": -294,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "joe mack": {
+        "player": "Joe Mack",
+        "normalized_name": "joe mack",
+        "line": 0.5,
+        "over_price": -270,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "dane myers": {
+        "player": "Dane Myers",
+        "normalized_name": "dane myers",
+        "line": 0.5,
+        "over_price": -333,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "esteury ruiz": {
+        "player": "Esteury Ruiz",
+        "normalized_name": "esteury ruiz",
+        "line": 0.5,
+        "over_price": -175,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jakob marsee": {
+        "player": "Jakob Marsee",
+        "normalized_name": "jakob marsee",
+        "line": 0.5,
+        "over_price": -222,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jj bleday": {
+        "player": "JJ Bleday",
+        "normalized_name": "jj bleday",
+        "line": 0.5,
+        "over_price": -270,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "xavier edwards": {
+        "player": "Xavier Edwards",
+        "normalized_name": "xavier edwards",
+        "line": 0.5,
+        "over_price": -143,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "hector rodriguez": {
+        "player": "Hector Rodriguez",
+        "normalized_name": "hector rodriguez",
+        "line": 0.5,
+        "over_price": -278,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "otto lopez": {
+        "player": "Otto Lopez",
+        "normalized_name": "otto lopez",
+        "line": 0.5,
+        "over_price": 113,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "kebryan hayes": {
+        "player": "Ke'Bryan Hayes",
+        "normalized_name": "kebryan hayes",
+        "line": 0.5,
+        "over_price": -104,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "javier sanoja": {
+        "player": "Javier Sanoja",
+        "normalized_name": "javier sanoja",
+        "line": 0.5,
+        "over_price": 117,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "michael toglia": {
+        "player": "Michael Toglia",
+        "normalized_name": "michael toglia",
+        "line": 0.5,
+        "over_price": -400,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "noelvi marte": {
+        "player": "Noelvi Marte",
+        "normalized_name": "noelvi marte",
+        "line": 0.5,
+        "over_price": -161,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "brady singer": {
+        "player": "Brady Singer",
+        "normalized_name": "brady singer",
+        "line": 4.5,
+        "over_price": -146,
+        "under_price": 114,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ryan gusto": {
+        "player": "Ryan Gusto",
+        "normalized_name": "ryan gusto",
+        "line": 4.5,
+        "over_price": -118,
+        "under_price": -108,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "agustin ramirez": {
+        "player": "Agustin Ramirez",
+        "normalized_name": "agustin ramirez",
+        "line": 0.5,
+        "over_price": -204,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-15T15:58:25Z"
+  },
+  {
+    "game_id": "824157",
+    "game": "Seattle Mariners @ Houston Astros",
+    "away_team": "Seattle Mariners",
+    "home_team": "Houston Astros",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63300933,
+    "moneyline": {
+      "away": 110,
+      "home": -120
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -205,
+      "home": -1.5,
+      "home_price": 172
+    },
+    "total": 8.5,
+    "game_total": {
+      "line": 8.5,
+      "over_price": -118,
+      "under_price": -104
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": -148,
+      "away_under_price": 116,
+      "home": 4.5,
+      "home_over_price": 110,
+      "home_under_price": -140
+    },
+    "pitcher_strikeouts": {
+      "peter lambert": {
+        "player": "Peter Lambert",
+        "normalized_name": "peter lambert",
+        "line": 4.5,
+        "over_price": -150,
+        "under_price": 118,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "george kirby": {
+        "player": "George Kirby",
+        "normalized_name": "george kirby",
+        "line": 4.5,
+        "over_price": -162,
+        "under_price": 126,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "cal raleigh": {
+        "player": "Cal Raleigh",
+        "normalized_name": "cal raleigh",
+        "line": 0.5,
+        "over_price": -333,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "randy arozarena": {
+        "player": "Randy Arozarena",
+        "normalized_name": "randy arozarena",
+        "line": 0.5,
+        "over_price": -345,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "taylor ward": {
+        "player": "Taylor Ward",
+        "normalized_name": "taylor ward",
+        "line": 0.5,
+        "over_price": -294,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "taylor trammell": {
+        "player": "Taylor Trammell",
+        "normalized_name": "taylor trammell",
+        "line": 0.5,
+        "over_price": -357,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "dominic canzone": {
+        "player": "Dominic Canzone",
+        "normalized_name": "dominic canzone",
+        "line": 0.5,
+        "over_price": -256,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jeremy pena": {
+        "player": "Jeremy Pena",
+        "normalized_name": "jeremy pena",
+        "line": 0.5,
+        "over_price": -192,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "julio rodriguez": {
+        "player": "Julio Rodriguez",
+        "normalized_name": "julio rodriguez",
+        "line": 0.5,
+        "over_price": -294,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "christian walker": {
+        "player": "Christian Walker",
+        "normalized_name": "christian walker",
+        "line": 0.5,
+        "over_price": -208,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "cam smith": {
+        "player": "Cam Smith",
+        "normalized_name": "cam smith",
+        "line": 0.5,
+        "over_price": -196,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "leo rivas": {
+        "player": "Leo Rivas",
+        "normalized_name": "leo rivas",
+        "line": 0.5,
+        "over_price": -208,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "daulton varsho": {
+        "player": "Daulton Varsho",
+        "normalized_name": "daulton varsho",
+        "line": 0.5,
+        "over_price": -182,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "nick allen": {
+        "player": "Nick Allen",
+        "normalized_name": "nick allen",
+        "line": 0.5,
+        "over_price": -182,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "yordan alvarez": {
+        "player": "Yordan Alvarez",
+        "normalized_name": "yordan alvarez",
+        "line": 0.5,
+        "over_price": -213,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "isaac paredes": {
+        "player": "Isaac Paredes",
+        "normalized_name": "isaac paredes",
+        "line": 0.5,
+        "over_price": -116,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "cole young": {
+        "player": "Cole Young",
+        "normalized_name": "cole young",
+        "line": 0.5,
+        "over_price": -156,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "brendan donovan": {
+        "player": "Brendan Donovan",
+        "normalized_name": "brendan donovan",
+        "line": 0.5,
+        "over_price": -119,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "josh naylor": {
+        "player": "Josh Naylor",
+        "normalized_name": "josh naylor",
+        "line": 0.5,
+        "over_price": 107,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "yainer diaz": {
+        "player": "Yainer Diaz",
+        "normalized_name": "yainer diaz",
+        "line": 0.5,
+        "over_price": 106,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "hayden wesneski": {
+        "player": "Hayden Wesneski",
+        "normalized_name": "hayden wesneski",
+        "line": 4.5,
+        "over_price": 124,
+        "under_price": -160,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "emerson hancock": {
+        "player": "Emerson Hancock",
+        "normalized_name": "emerson hancock",
+        "line": 4.5,
+        "over_price": -113,
+        "under_price": -113,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "brock rodden": {
+        "player": "Brock Rodden",
+        "normalized_name": "brock rodden",
+        "line": 0.5,
+        "over_price": -227,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "victor robles": {
+        "player": "Victor Robles",
+        "normalized_name": "victor robles",
+        "line": 0.5,
+        "over_price": -185,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jose altuve": {
+        "player": "Jose Altuve",
+        "normalized_name": "jose altuve",
+        "line": 0.5,
+        "over_price": -152,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-15T15:58:25Z"
+  },
+  {
+    "game_id": "824400",
+    "game": "San Diego Padres @ Cleveland Guardians",
+    "away_team": "San Diego Padres",
+    "home_team": "Cleveland Guardians",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63301869,
+    "moneyline": {
+      "away": 106,
+      "home": -116
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": 172,
+      "home": 1.5,
+      "home_price": -210
+    },
+    "total": 8.5,
+    "game_total": {
+      "line": 8.5,
+      "over_price": -110,
+      "under_price": -110
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": -142,
+      "away_under_price": 112,
+      "home": 4.5,
+      "home_over_price": 120,
+      "home_under_price": -154
+    },
+    "pitcher_strikeouts": {
+      "gavin williams": {
+        "player": "Gavin Williams",
+        "normalized_name": "gavin williams",
+        "line": 7.5,
+        "over_price": 124,
+        "under_price": -158,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "michael king": {
+        "player": "Michael King",
+        "normalized_name": "michael king",
+        "line": 3.5,
+        "over_price": -162,
+        "under_price": 126,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jake cronenworth": {
+        "player": "Jake Cronenworth",
+        "normalized_name": "jake cronenworth",
+        "line": 0.5,
+        "over_price": -196,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "manny machado": {
+        "player": "Manny Machado",
+        "normalized_name": "manny machado",
+        "line": 0.5,
+        "over_price": -385,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jackson merrill": {
+        "player": "Jackson Merrill",
+        "normalized_name": "jackson merrill",
+        "line": 0.5,
+        "over_price": -333,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ty france": {
+        "player": "Ty France",
+        "normalized_name": "ty france",
+        "line": 0.5,
+        "over_price": -370,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "fernando tatis": {
+        "player": "Fernando Tatis Jr.",
+        "normalized_name": "fernando tatis",
+        "line": 0.5,
+        "over_price": -385,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "nathaniel lowe": {
+        "player": "Nathaniel Lowe",
+        "normalized_name": "nathaniel lowe",
+        "line": 0.5,
+        "over_price": -323,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "luis campusano": {
+        "player": "Luis Campusano",
+        "normalized_name": "luis campusano",
+        "line": 0.5,
+        "over_price": -278,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "xander bogaerts": {
+        "player": "Xander Bogaerts",
+        "normalized_name": "xander bogaerts",
+        "line": 0.5,
+        "over_price": -189,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "gavin sheets": {
+        "player": "Gavin Sheets",
+        "normalized_name": "gavin sheets",
+        "line": 0.5,
+        "over_price": -238,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jo adell": {
+        "player": "Jo Adell",
+        "normalized_name": "jo adell",
+        "line": 0.5,
+        "over_price": -200,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "travis bazzana": {
+        "player": "Travis Bazzana",
+        "normalized_name": "travis bazzana",
+        "line": 0.5,
+        "over_price": -233,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "angel martinez": {
+        "player": "Angel Martinez",
+        "normalized_name": "angel martinez",
+        "line": 0.5,
+        "over_price": -208,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "patrick bailey": {
+        "player": "Patrick Bailey",
+        "normalized_name": "patrick bailey",
+        "line": 0.5,
+        "over_price": -200,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "luis rengifo": {
+        "player": "Luis Rengifo",
+        "normalized_name": "luis rengifo",
+        "line": 0.5,
+        "over_price": -263,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "chase delauter": {
+        "player": "Chase DeLauter",
+        "normalized_name": "chase delauter",
+        "line": 0.5,
+        "over_price": -169,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jose ramirez": {
+        "player": "Jose Ramirez",
+        "normalized_name": "jose ramirez",
+        "line": 0.5,
+        "over_price": -125,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "brayan rocchio": {
+        "player": "Brayan Rocchio",
+        "normalized_name": "brayan rocchio",
+        "line": 0.5,
+        "over_price": -114,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "steven kwan": {
+        "player": "Steven Kwan",
+        "normalized_name": "steven kwan",
+        "line": 0.5,
+        "over_price": 105,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "joey cantillo": {
+        "player": "Joey Cantillo",
+        "normalized_name": "joey cantillo",
+        "line": 5.5,
+        "over_price": 116,
+        "under_price": -148,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "austin hays": {
+        "player": "Austin Hays",
+        "normalized_name": "austin hays",
+        "line": 0.5,
+        "over_price": -476,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "angel genao": {
+        "player": "Angel Genao",
+        "normalized_name": "angel genao",
+        "line": 0.5,
+        "over_price": -200,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-15T15:58:25Z"
+  },
+  {
+    "game_id": "823671",
+    "game": "Philadelphia Phillies @ Minnesota Twins",
+    "away_team": "Philadelphia Phillies",
+    "home_team": "Minnesota Twins",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63302513,
+    "moneyline": {
+      "away": -126,
+      "home": 118
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": 122,
+      "home": 1.5,
+      "home_price": -146
+    },
+    "total": 8.0,
+    "game_total": {
+      "line": 8.0,
+      "over_price": -115,
+      "under_price": -105
+    },
+    "team_totals": {
+      "away": 4.5,
+      "away_over_price": 112,
+      "away_under_price": -142,
+      "home": 3.5,
+      "home_over_price": -111,
+      "home_under_price": -115
+    },
+    "pitcher_strikeouts": {
+      "jesus luzardo": {
+        "player": "Jesus Luzardo",
+        "normalized_name": "jesus luzardo",
+        "line": 6.5,
+        "over_price": -102,
+        "under_price": -125,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "connor prielipp": {
+        "player": "Connor Prielipp",
+        "normalized_name": "connor prielipp",
+        "line": 5.5,
+        "over_price": 114,
+        "under_price": -146,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "kyle schwarber": {
+        "player": "Kyle Schwarber",
+        "normalized_name": "kyle schwarber",
+        "line": 0.5,
+        "over_price": -667,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "bryce harper": {
+        "player": "Bryce Harper",
+        "normalized_name": "bryce harper",
+        "line": 0.5,
+        "over_price": -345,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "bryan de la cruz": {
+        "player": "Bryan De La Cruz",
+        "normalized_name": "bryan de la cruz",
+        "line": 0.5,
+        "over_price": -333,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "kaelen culpepper": {
+        "player": "Kaelen Culpepper",
+        "normalized_name": "kaelen culpepper",
+        "line": 0.5,
+        "over_price": -345,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ryan jeffers": {
+        "player": "Ryan Jeffers",
+        "normalized_name": "ryan jeffers",
+        "line": 0.5,
+        "over_price": -256,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "derek hill": {
+        "player": "Derek Hill",
+        "normalized_name": "derek hill",
+        "line": 0.5,
+        "over_price": -323,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "trea turner": {
+        "player": "Trea Turner",
+        "normalized_name": "trea turner",
+        "line": 1.5,
+        "over_price": 245,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "j t realmuto": {
+        "player": "J.T. Realmuto",
+        "normalized_name": "j t realmuto",
+        "line": 0.5,
+        "over_price": -244,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "edmundo sosa": {
+        "player": "Edmundo Sosa",
+        "normalized_name": "edmundo sosa",
+        "line": 0.5,
+        "over_price": -227,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "austin martin": {
+        "player": "Austin Martin",
+        "normalized_name": "austin martin",
+        "line": 1.5,
+        "over_price": 306,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "brooks lee": {
+        "player": "Brooks Lee",
+        "normalized_name": "brooks lee",
+        "line": 1.5,
+        "over_price": 343,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "alec bohm": {
+        "player": "Alec Bohm",
+        "normalized_name": "alec bohm",
+        "line": 0.5,
+        "over_price": -130,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "luis arraez": {
+        "player": "Luis Arraez",
+        "normalized_name": "luis arraez",
+        "line": 0.5,
+        "over_price": 159,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "byron buxton": {
+        "player": "Byron Buxton",
+        "normalized_name": "byron buxton",
+        "line": 0.5,
+        "over_price": -455,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "royce lewis": {
+        "player": "Royce Lewis",
+        "normalized_name": "royce lewis",
+        "line": 0.5,
+        "over_price": -400,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "kody clemens": {
+        "player": "Kody Clemens",
+        "normalized_name": "kody clemens",
+        "line": 0.5,
+        "over_price": -333,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "josh bell": {
+        "player": "Josh Bell",
+        "normalized_name": "josh bell",
+        "line": 0.5,
+        "over_price": -286,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "luke keaschall": {
+        "player": "Luke Keaschall",
+        "normalized_name": "luke keaschall",
+        "line": 0.5,
+        "over_price": -196,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-15T15:58:26Z"
+  },
+  {
+    "game_id": "823347",
+    "game": "Boston Red Sox @ Pittsburgh Pirates",
+    "away_team": "Boston Red Sox",
+    "home_team": "Pittsburgh Pirates",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63301299,
+    "moneyline": {
+      "away": -120,
+      "home": 110
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": 136,
+      "home": 1.5,
+      "home_price": -164
+    },
+    "total": 7.5,
+    "game_total": {
+      "line": 7.5,
+      "over_price": -118,
+      "under_price": -104
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": -148,
+      "away_under_price": 116,
+      "home": 3.5,
+      "home_over_price": -106,
+      "home_under_price": -120
+    },
+    "pitcher_strikeouts": {
+      "jake bennett": {
+        "player": "Jake Bennett",
+        "normalized_name": "jake bennett",
+        "line": 4.5,
+        "over_price": 114,
+        "under_price": -146,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "bubba chandler": {
+        "player": "Bubba Chandler",
+        "normalized_name": "bubba chandler",
+        "line": 4.5,
+        "over_price": 114,
+        "under_price": -146,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "brandon lowe": {
+        "player": "Brandon Lowe",
+        "normalized_name": "brandon lowe",
+        "line": 0.5,
+        "over_price": -400,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "willson contreras": {
+        "player": "Willson Contreras",
+        "normalized_name": "willson contreras",
+        "line": 0.5,
+        "over_price": -526,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jarren duran": {
+        "player": "Jarren Duran",
+        "normalized_name": "jarren duran",
+        "line": 0.5,
+        "over_price": -500,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "esmerlyn valdez": {
+        "player": "Esmerlyn Valdez",
+        "normalized_name": "esmerlyn valdez",
+        "line": 0.5,
+        "over_price": -476,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "nick sogard": {
+        "player": "Nick Sogard",
+        "normalized_name": "nick sogard",
+        "line": 0.5,
+        "over_price": -333,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "wilyer abreu": {
+        "player": "Wilyer Abreu",
+        "normalized_name": "wilyer abreu",
+        "line": 0.5,
+        "over_price": -385,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ceddanne rafaela": {
+        "player": "Ceddanne Rafaela",
+        "normalized_name": "ceddanne rafaela",
+        "line": 0.5,
+        "over_price": -250,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "bryan reynolds": {
+        "player": "Bryan Reynolds",
+        "normalized_name": "bryan reynolds",
+        "line": 0.5,
+        "over_price": -303,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "andruw monasterio": {
+        "player": "Andruw Monasterio",
+        "normalized_name": "andruw monasterio",
+        "line": 0.5,
+        "over_price": -250,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "adley rutschman": {
+        "player": "Adley Rutschman",
+        "normalized_name": "adley rutschman",
+        "line": 0.5,
+        "over_price": -263,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "henry davis": {
+        "player": "Henry Davis",
+        "normalized_name": "henry davis",
+        "line": 0.5,
+        "over_price": -172,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ronny simon": {
+        "player": "Ronny Simon",
+        "normalized_name": "ronny simon",
+        "line": 0.5,
+        "over_price": -156,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "caleb durbin": {
+        "player": "Caleb Durbin",
+        "normalized_name": "caleb durbin",
+        "line": 0.5,
+        "over_price": -147,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jake mangum": {
+        "player": "Jake Mangum",
+        "normalized_name": "jake mangum",
+        "line": 0.5,
+        "over_price": -119,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "nick gonzales": {
+        "player": "Nick Gonzales",
+        "normalized_name": "nick gonzales",
+        "line": 0.5,
+        "over_price": -149,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jared triolo": {
+        "player": "Jared Triolo",
+        "normalized_name": "jared triolo",
+        "line": 0.5,
+        "over_price": -119,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "spencer horwitz": {
+        "player": "Spencer Horwitz",
+        "normalized_name": "spencer horwitz",
+        "line": 0.5,
+        "over_price": -172,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "masataka yoshida": {
+        "player": "Masataka Yoshida",
+        "normalized_name": "masataka yoshida",
+        "line": 0.5,
+        "over_price": -139,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jared jones": {
+        "player": "Jared Jones",
+        "normalized_name": "jared jones",
+        "line": 4.5,
+        "over_price": -136,
+        "under_price": 106,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "sonny gray": {
+        "player": "Sonny Gray",
+        "normalized_name": "sonny gray",
+        "line": 5.5,
+        "over_price": 102,
+        "under_price": -130,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jacob gonzalez": {
+        "player": "Jacob Gonzalez",
+        "normalized_name": "jacob gonzalez",
+        "line": 0.5,
+        "over_price": -175,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-15T15:58:26Z"
+  },
+  {
+    "game_id": "823914",
+    "game": "Milwaukee Brewers @ Los Angeles Dodgers",
+    "away_team": "Milwaukee Brewers",
+    "home_team": "Los Angeles Dodgers",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63301355,
+    "moneyline": {
+      "away": -128,
+      "home": 118
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": 128,
+      "home": 1.5,
+      "home_price": -154
+    },
+    "total": 7.5,
+    "game_total": {
+      "line": 7.5,
+      "over_price": -104,
+      "under_price": -118
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": -140,
+      "away_under_price": 110,
+      "home": 3.5,
+      "home_over_price": 112,
+      "home_under_price": -142
+    },
+    "pitcher_strikeouts": {
+      "yoshinobu yamamoto": {
+        "player": "Yoshinobu Yamamoto",
+        "normalized_name": "yoshinobu yamamoto",
+        "line": 6.5,
+        "over_price": -128,
+        "under_price": 100,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "robert gasser": {
+        "player": "Robert Gasser",
+        "normalized_name": "robert gasser",
+        "line": 4.5,
+        "over_price": 112,
+        "under_price": -140,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "garrett mitchell": {
+        "player": "Garrett Mitchell",
+        "normalized_name": "garrett mitchell",
+        "line": 0.5,
+        "over_price": -667,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jake bauers": {
+        "player": "Jake Bauers",
+        "normalized_name": "jake bauers",
+        "line": 0.5,
+        "over_price": -476,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jackson chourio": {
+        "player": "Jackson Chourio",
+        "normalized_name": "jackson chourio",
+        "line": 0.5,
+        "over_price": -370,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "gary sanchez": {
+        "player": "Gary Sanchez",
+        "normalized_name": "gary sanchez",
+        "line": 0.5,
+        "over_price": -357,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "shohei ohtani": {
+        "player": "Shohei Ohtani",
+        "normalized_name": "shohei ohtani",
+        "line": 0.5,
+        "over_price": -1000,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "christian yelich": {
+        "player": "Christian Yelich",
+        "normalized_name": "christian yelich",
+        "line": 0.5,
+        "over_price": -357,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "david hamilton": {
+        "player": "David Hamilton",
+        "normalized_name": "david hamilton",
+        "line": 0.5,
+        "over_price": -250,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "william contreras": {
+        "player": "William Contreras",
+        "normalized_name": "william contreras",
+        "line": 0.5,
+        "over_price": -172,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "andrew vaughn": {
+        "player": "Andrew Vaughn",
+        "normalized_name": "andrew vaughn",
+        "line": 0.5,
+        "over_price": -185,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "andy pages": {
+        "player": "Andy Pages",
+        "normalized_name": "andy pages",
+        "line": 0.5,
+        "over_price": -435,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "teoscar hernandez": {
+        "player": "Teoscar Hernandez",
+        "normalized_name": "teoscar hernandez",
+        "line": 0.5,
+        "over_price": -500,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "kyle tucker": {
+        "player": "Kyle Tucker",
+        "normalized_name": "kyle tucker",
+        "line": 0.5,
+        "over_price": -476,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "freddie freeman": {
+        "player": "Freddie Freeman",
+        "normalized_name": "freddie freeman",
+        "line": 0.5,
+        "over_price": -526,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "hunter feduccia": {
+        "player": "Hunter Feduccia",
+        "normalized_name": "hunter feduccia",
+        "line": 0.5,
+        "over_price": -385,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "joey ortiz": {
+        "player": "Joey Ortiz",
+        "normalized_name": "joey ortiz",
+        "line": 0.5,
+        "over_price": -128,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "tommy edman": {
+        "player": "Tommy Edman",
+        "normalized_name": "tommy edman",
+        "line": 0.5,
+        "over_price": -345,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "mookie betts": {
+        "player": "Mookie Betts",
+        "normalized_name": "mookie betts",
+        "line": 0.5,
+        "over_price": -185,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "miguel rojas": {
+        "player": "Miguel Rojas",
+        "normalized_name": "miguel rojas",
+        "line": 0.5,
+        "over_price": 153,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "justin wrobleski": {
+        "player": "Justin Wrobleski",
+        "normalized_name": "justin wrobleski",
+        "line": 4.5,
+        "over_price": -174,
+        "under_price": 136,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jacob misiorowski": {
+        "player": "Jacob Misiorowski",
+        "normalized_name": "jacob misiorowski",
+        "line": 8.5,
+        "over_price": -122,
+        "under_price": -104,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "max muncy lad": {
+        "player": "Max Muncy (LAD)",
+        "normalized_name": "max muncy lad",
+        "line": 0.5,
+        "over_price": -909,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "luis lara": {
+        "player": "Luis Lara",
+        "normalized_name": "luis lara",
+        "line": 0.5,
+        "over_price": -263,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "brandon lockridge": {
+        "player": "Brandon Lockridge",
+        "normalized_name": "brandon lockridge",
+        "line": 0.5,
+        "over_price": -238,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-15T15:58:26Z"
+  },
+  {
+    "game_id": "824884",
+    "game": "Arizona Diamondbacks @ Atlanta Braves",
+    "away_team": "Arizona Diamondbacks",
+    "home_team": "Atlanta Braves",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63299133,
+    "moneyline": {
+      "away": 122,
+      "home": -132
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -166,
+      "home": -1.5,
+      "home_price": 138
+    },
+    "total": 9.0,
+    "game_total": {
+      "line": 9.0,
+      "over_price": -110,
+      "under_price": -110
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": -148,
+      "away_under_price": 116,
+      "home": 4.5,
+      "home_over_price": -111,
+      "home_under_price": -115
+    },
+    "pitcher_strikeouts": {
+      "chris sale": {
+        "player": "Chris Sale",
+        "normalized_name": "chris sale",
+        "line": 6.5,
+        "over_price": -120,
+        "under_price": -106,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "brandon pfaadt": {
+        "player": "Brandon Pfaadt",
+        "normalized_name": "brandon pfaadt",
+        "line": 3.5,
+        "over_price": -113,
+        "under_price": -113,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "tim tawa": {
+        "player": "Tim Tawa",
+        "normalized_name": "tim tawa",
+        "line": 0.5,
+        "over_price": -400,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "corbin carroll": {
+        "player": "Corbin Carroll",
+        "normalized_name": "corbin carroll",
+        "line": 0.5,
+        "over_price": -256,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "tyler locklear": {
+        "player": "Tyler Locklear",
+        "normalized_name": "tyler locklear",
+        "line": 1.5,
+        "over_price": 134,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "geraldo perdomo": {
+        "player": "Geraldo Perdomo",
+        "normalized_name": "geraldo perdomo",
+        "line": 0.5,
+        "over_price": -141,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ryan waldschmidt": {
+        "player": "Ryan Waldschmidt",
+        "normalized_name": "ryan waldschmidt",
+        "line": 0.5,
+        "over_price": -278,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "austin riley": {
+        "player": "Austin Riley",
+        "normalized_name": "austin riley",
+        "line": 0.5,
+        "over_price": -250,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ronald acuna": {
+        "player": "Ronald Acuna Jr.",
+        "normalized_name": "ronald acuna",
+        "line": 0.5,
+        "over_price": -256,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ildemaro vargas": {
+        "player": "Ildemaro Vargas",
+        "normalized_name": "ildemaro vargas",
+        "line": 0.5,
+        "over_price": 103,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "matt olson": {
+        "player": "Matt Olson",
+        "normalized_name": "matt olson",
+        "line": 0.5,
+        "over_price": -233,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "drake baldwin": {
+        "player": "Drake Baldwin",
+        "normalized_name": "drake baldwin",
+        "line": 0.5,
+        "over_price": -141,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "mike yastrzemski": {
+        "player": "Mike Yastrzemski",
+        "normalized_name": "mike yastrzemski",
+        "line": 0.5,
+        "over_price": 111,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ozzie albies": {
+        "player": "Ozzie Albies",
+        "normalized_name": "ozzie albies",
+        "line": 0.5,
+        "over_price": 111,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jim jarvis": {
+        "player": "Jim Jarvis",
+        "normalized_name": "jim jarvis",
+        "line": 0.5,
+        "over_price": 137,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ketel marte": {
+        "player": "Ketel Marte",
+        "normalized_name": "ketel marte",
+        "line": 0.5,
+        "over_price": -200,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "michael harris": {
+        "player": "Michael Harris",
+        "normalized_name": "michael harris",
+        "line": 0.5,
+        "over_price": -123,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "mauricio dubon": {
+        "player": "Mauricio Dubon",
+        "normalized_name": "mauricio dubon",
+        "line": 0.5,
+        "over_price": 142,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "gabriel moreno": {
+        "player": "Gabriel Moreno",
+        "normalized_name": "gabriel moreno",
+        "line": 0.5,
+        "over_price": -192,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "nolan arenado": {
+        "player": "Nolan Arenado",
+        "normalized_name": "nolan arenado",
+        "line": 0.5,
+        "over_price": -244,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "eduardo rodriguez": {
+        "player": "Eduardo Rodriguez",
+        "normalized_name": "eduardo rodriguez",
+        "line": 4.5,
+        "over_price": 116,
+        "under_price": -148,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "grant holmes": {
+        "player": "Grant Holmes",
+        "normalized_name": "grant holmes",
+        "line": 3.5,
+        "over_price": -146,
+        "under_price": 114,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "sean murphy": {
+        "player": "Sean Murphy",
+        "normalized_name": "sean murphy",
+        "line": 0.5,
+        "over_price": -222,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "max kepler": {
+        "player": "Max Kepler",
+        "normalized_name": "max kepler",
+        "line": 0.5,
+        "over_price": -200,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "lars nootbaar": {
+        "player": "Lars Nootbaar",
+        "normalized_name": "lars nootbaar",
+        "line": 0.5,
+        "over_price": -156,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "lane thomas": {
+        "player": "Lane Thomas",
+        "normalized_name": "lane thomas",
+        "line": 0.5,
+        "over_price": -127,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-15T15:58:27Z"
+  },
+  {
+    "game_id": "823990",
+    "game": "Kansas City Royals @ Los Angeles Angels",
+    "away_team": "Kansas City Royals",
+    "home_team": "Los Angeles Angels",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63301263,
+    "moneyline": {
+      "away": 134,
+      "home": -144
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -172,
+      "home": -1.5,
+      "home_price": 142
+    },
+    "total": 8.0,
+    "game_total": {
+      "line": 8.0,
+      "over_price": -105,
+      "under_price": -115
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": 100,
+      "away_under_price": -128,
+      "home": 4.5,
+      "home_over_price": 120,
+      "home_under_price": -154
+    },
+    "pitcher_strikeouts": {
+      "grayson rodriguez": {
+        "player": "Grayson Rodriguez",
+        "normalized_name": "grayson rodriguez",
+        "line": 5.5,
+        "over_price": 128,
+        "under_price": -164,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "seth lugo": {
+        "player": "Seth Lugo",
+        "normalized_name": "seth lugo",
+        "line": 4.5,
+        "over_price": -132,
+        "under_price": 104,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "zach neto": {
+        "player": "Zach Neto",
+        "normalized_name": "zach neto",
+        "line": 0.5,
+        "over_price": -244,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "denzer guzman": {
+        "player": "Denzer Guzman",
+        "normalized_name": "denzer guzman",
+        "line": 0.5,
+        "over_price": -149,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "vaughn grissom": {
+        "player": "Vaughn Grissom",
+        "normalized_name": "vaughn grissom",
+        "line": 0.5,
+        "over_price": 100,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "nick loftin": {
+        "player": "Nick Loftin",
+        "normalized_name": "nick loftin",
+        "line": 0.5,
+        "over_price": -233,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "carter jensen": {
+        "player": "Carter Jensen",
+        "normalized_name": "carter jensen",
+        "line": 0.5,
+        "over_price": -526,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "mike trout": {
+        "player": "Mike Trout",
+        "normalized_name": "mike trout",
+        "line": 0.5,
+        "over_price": -233,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jac caglianone": {
+        "player": "Jac Caglianone",
+        "normalized_name": "jac caglianone",
+        "line": 0.5,
+        "over_price": -526,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "isaac collins": {
+        "player": "Isaac Collins",
+        "normalized_name": "isaac collins",
+        "line": 0.5,
+        "over_price": -263,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "john rave": {
+        "player": "John Rave",
+        "normalized_name": "john rave",
+        "line": 0.5,
+        "over_price": -256,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "bobby witt": {
+        "player": "Bobby Witt Jr.",
+        "normalized_name": "bobby witt",
+        "line": 0.5,
+        "over_price": -250,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "salvador perez": {
+        "player": "Salvador Perez",
+        "normalized_name": "salvador perez",
+        "line": 0.5,
+        "over_price": -250,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "kyle isbel": {
+        "player": "Kyle Isbel",
+        "normalized_name": "kyle isbel",
+        "line": 0.5,
+        "over_price": -227,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "michael massey": {
+        "player": "Michael Massey",
+        "normalized_name": "michael massey",
+        "line": 0.5,
+        "over_price": -244,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "nolan schanuel": {
+        "player": "Nolan Schanuel",
+        "normalized_name": "nolan schanuel",
+        "line": 0.5,
+        "over_price": 138,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "wade meckler": {
+        "player": "Wade Meckler",
+        "normalized_name": "wade meckler",
+        "line": 0.5,
+        "over_price": -152,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "oswald peraza": {
+        "player": "Oswald Peraza",
+        "normalized_name": "oswald peraza",
+        "line": 0.5,
+        "over_price": -189,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "moises ballesteros": {
+        "player": "Moises Ballesteros",
+        "normalized_name": "moises ballesteros",
+        "line": 0.5,
+        "over_price": 104,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "josh lowe": {
+        "player": "Josh Lowe",
+        "normalized_name": "josh lowe",
+        "line": 0.5,
+        "over_price": -147,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "randy dobnak": {
+        "player": "Randy Dobnak",
+        "normalized_name": "randy dobnak",
+        "line": 3.5,
+        "over_price": 132,
+        "under_price": -170,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "reid detmers": {
+        "player": "Reid Detmers",
+        "normalized_name": "reid detmers",
+        "line": 6.5,
+        "over_price": 112,
+        "under_price": -142,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "starling marte": {
+        "player": "Starling Marte",
+        "normalized_name": "starling marte",
+        "line": 0.5,
+        "over_price": -213,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "tyler tolbert": {
+        "player": "Tyler Tolbert",
+        "normalized_name": "tyler tolbert",
+        "line": 0.5,
+        "over_price": -217,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "tyler heineman": {
+        "player": "Tyler Heineman",
+        "normalized_name": "tyler heineman",
+        "line": 0.5,
+        "over_price": 124,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-15T15:58:27Z"
+  },
+  {
+    "game_id": "824966",
+    "game": "Texas Rangers @ Athletics",
+    "away_team": "Texas Rangers",
+    "home_team": "Athletics",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63300993,
+    "moneyline": {
+      "away": -140,
+      "home": 130
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": 106,
+      "home": 1.5,
+      "home_price": -128
+    },
+    "total": 9.5,
+    "game_total": {
+      "line": 9.5,
+      "over_price": 100,
+      "under_price": -122
+    },
+    "team_totals": {
+      "away": 4.5,
+      "away_over_price": -136,
+      "away_under_price": 106,
+      "home": 3.5,
+      "home_over_price": -142,
+      "home_under_price": 112
+    },
+    "pitcher_strikeouts": {
+      "gage jump": {
+        "player": "Gage Jump",
+        "normalized_name": "gage jump",
+        "line": 6.5,
+        "over_price": 110,
+        "under_price": -140,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "kumar rocker": {
+        "player": "Kumar Rocker",
+        "normalized_name": "kumar rocker",
+        "line": 4.5,
+        "over_price": 100,
+        "under_price": -128,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "wyatt langford": {
+        "player": "Wyatt Langford",
+        "normalized_name": "wyatt langford",
+        "line": 0.5,
+        "over_price": -238,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ezequiel duran": {
+        "player": "Ezequiel Duran",
+        "normalized_name": "ezequiel duran",
+        "line": 0.5,
+        "over_price": -208,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "corey seager": {
+        "player": "Corey Seager",
+        "normalized_name": "corey seager",
+        "line": 0.5,
+        "over_price": -208,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jake burger": {
+        "player": "Jake Burger",
+        "normalized_name": "jake burger",
+        "line": 0.5,
+        "over_price": -256,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "justin foscue": {
+        "player": "Justin Foscue",
+        "normalized_name": "justin foscue",
+        "line": 0.5,
+        "over_price": -256,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "zack gelof": {
+        "player": "Zack Gelof",
+        "normalized_name": "zack gelof",
+        "line": 0.5,
+        "over_price": -556,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "lawrence butler": {
+        "player": "Lawrence Butler",
+        "normalized_name": "lawrence butler",
+        "line": 0.5,
+        "over_price": -333,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "henry bolte": {
+        "player": "Henry Bolte",
+        "normalized_name": "henry bolte",
+        "line": 0.5,
+        "over_price": -400,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "brandon nimmo": {
+        "player": "Brandon Nimmo",
+        "normalized_name": "brandon nimmo",
+        "line": 0.5,
+        "over_price": -192,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "tyler soderstrom": {
+        "player": "Tyler Soderstrom",
+        "normalized_name": "tyler soderstrom",
+        "line": 0.5,
+        "over_price": -222,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "elias diaz": {
+        "player": "Elias Diaz",
+        "normalized_name": "elias diaz",
+        "line": 0.5,
+        "over_price": -185,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "cameron cauley": {
+        "player": "Cameron Cauley",
+        "normalized_name": "cameron cauley",
+        "line": 0.5,
+        "over_price": -196,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jonah heim": {
+        "player": "Jonah Heim",
+        "normalized_name": "jonah heim",
+        "line": 0.5,
+        "over_price": -179,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "carlos cortes": {
+        "player": "Carlos Cortes",
+        "normalized_name": "carlos cortes",
+        "line": 0.5,
+        "over_price": -116,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "donovan walton": {
+        "player": "Donovan Walton",
+        "normalized_name": "donovan walton",
+        "line": 0.5,
+        "over_price": -123,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "nicky lopez": {
+        "player": "Nicky Lopez",
+        "normalized_name": "nicky lopez",
+        "line": 0.5,
+        "over_price": 122,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jeff mcneil": {
+        "player": "Jeff McNeil",
+        "normalized_name": "jeff mcneil",
+        "line": 0.5,
+        "over_price": 136,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jacob wilson": {
+        "player": "Jacob Wilson",
+        "normalized_name": "jacob wilson",
+        "line": 0.5,
+        "over_price": 119,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "mackenzie gore": {
+        "player": "MacKenzie Gore",
+        "normalized_name": "mackenzie gore",
+        "line": 6.5,
+        "over_price": 128,
+        "under_price": -164,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "j t ginn": {
+        "player": "J.T. Ginn",
+        "normalized_name": "j t ginn",
+        "line": 4.5,
+        "over_price": -111,
+        "under_price": -115,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "tommy white": {
+        "player": "Tommy White",
+        "normalized_name": "tommy white",
+        "line": 0.5,
+        "over_price": -286,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "joc pederson": {
+        "player": "Joc Pederson",
+        "normalized_name": "joc pederson",
+        "line": 0.5,
+        "over_price": -213,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "max muncy ath": {
+        "player": "Max Muncy (ATH)",
+        "normalized_name": "max muncy ath",
+        "line": 0.5,
+        "over_price": -286,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "evan carter": {
+        "player": "Evan Carter",
+        "normalized_name": "evan carter",
+        "line": 0.5,
+        "over_price": -192,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "alika williams": {
+        "player": "Alika Williams",
+        "normalized_name": "alika williams",
+        "line": 0.5,
+        "over_price": -161,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-15T15:58:27Z"
+  }
+]

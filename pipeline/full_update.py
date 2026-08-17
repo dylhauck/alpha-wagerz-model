@@ -39,8 +39,17 @@ from providers.market import build_market_lines
 from providers.espn_injuries import build_injury_report
 from pipeline.tomorrow_update import run_tomorrow_update
 
+# NFL
+from providers.nfl_data import build_all_nfl_data
+from providers.nfl_matchups import build_nfl_matchups
+
+
 def run_full_update():
     print("🐺 Starting Alpha Wagerz full update...")
+
+    # =========================================================
+    # MLB
+    # =========================================================
 
     print("\n📚 Reference data")
     build_reference_files()
@@ -109,8 +118,18 @@ def run_full_update():
 
     print("\n📄 Google Sheets")
     update_full_slate_sheets()
-    
+
     print("\n🗄️ Saving history")
     save_daily_history()
+
+    # =========================================================
+    # NFL
+    # =========================================================
+
+    print("\n🏈 NFL Data")
+    build_all_nfl_data()
+
+    print("\n⚔️ NFL Matchup History")
+    build_nfl_matchups()
 
     print("\n✅ Alpha Wagerz full update complete.")
