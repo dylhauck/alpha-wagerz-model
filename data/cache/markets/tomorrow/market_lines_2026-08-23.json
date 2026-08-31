@@ -1,123 +1,12 @@
 [
   {
-    "game_id": "822929",
-    "game": "New York Mets @ Tampa Bay Rays",
-    "away_team": "New York Mets",
-    "home_team": "Tampa Bay Rays",
-    "bookmaker": "",
-    "bookmaker_key": "",
-    "odds_event_id": 63302451,
-    "moneyline": {
-      "away": "",
-      "home": ""
-    },
-    "spread": {
-      "away": "",
-      "away_price": "",
-      "home": "",
-      "home_price": ""
-    },
-    "total": "",
-    "game_total": {
-      "line": "",
-      "over_price": "",
-      "under_price": ""
-    },
-    "team_totals": {
-      "away": "",
-      "away_over_price": "",
-      "away_under_price": "",
-      "home": "",
-      "home_over_price": "",
-      "home_under_price": ""
-    },
-    "pitcher_strikeouts": {},
-    "market_source": "odds_api_io",
-    "market_status": "live",
-    "market_updated_at": "2026-08-31T06:24:19Z"
-  },
-  {
-    "game_id": "824472",
-    "game": "San Diego Padres @ Cincinnati Reds",
-    "away_team": "San Diego Padres",
-    "home_team": "Cincinnati Reds",
-    "bookmaker": "",
-    "bookmaker_key": "",
-    "odds_event_id": 63303111,
-    "moneyline": {
-      "away": "",
-      "home": ""
-    },
-    "spread": {
-      "away": "",
-      "away_price": "",
-      "home": "",
-      "home_price": ""
-    },
-    "total": "",
-    "game_total": {
-      "line": "",
-      "over_price": "",
-      "under_price": ""
-    },
-    "team_totals": {
-      "away": "",
-      "away_over_price": "",
-      "away_under_price": "",
-      "home": "",
-      "home_over_price": "",
-      "home_under_price": ""
-    },
-    "pitcher_strikeouts": {},
-    "market_source": "odds_api_io",
-    "market_status": "live",
-    "market_updated_at": "2026-08-31T06:24:19Z"
-  },
-  {
-    "game_id": "823340",
-    "game": "San Francisco Giants @ Pittsburgh Pirates",
-    "away_team": "San Francisco Giants",
-    "home_team": "Pittsburgh Pirates",
-    "bookmaker": "",
-    "bookmaker_key": "",
-    "odds_event_id": 63303237,
-    "moneyline": {
-      "away": "",
-      "home": ""
-    },
-    "spread": {
-      "away": "",
-      "away_price": "",
-      "home": "",
-      "home_price": ""
-    },
-    "total": "",
-    "game_total": {
-      "line": "",
-      "over_price": "",
-      "under_price": ""
-    },
-    "team_totals": {
-      "away": "",
-      "away_over_price": "",
-      "away_under_price": "",
-      "home": "",
-      "home_over_price": "",
-      "home_under_price": ""
-    },
-    "pitcher_strikeouts": {},
-    "market_source": "odds_api_io",
-    "market_status": "live",
-    "market_updated_at": "2026-08-31T06:24:20Z"
-  },
-  {
-    "game_id": "824391",
-    "game": "Toronto Blue Jays @ Cleveland Guardians",
+    "game_id": "823507",
+    "game": "Toronto Blue Jays @ New York Yankees",
     "away_team": "Toronto Blue Jays",
-    "home_team": "Cleveland Guardians",
+    "home_team": "New York Yankees",
     "bookmaker": "",
     "bookmaker_key": "",
-    "odds_event_id": 63303509,
+    "odds_event_id": 63301579,
     "moneyline": {
       "away": "",
       "home": ""
@@ -145,16 +34,16 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-08-31T06:24:20Z"
+    "market_updated_at": "2026-08-22T17:35:52Z"
   },
   {
-    "game_id": "824716",
-    "game": "Seattle Mariners @ Boston Red Sox",
-    "away_team": "Seattle Mariners",
-    "home_team": "Boston Red Sox",
+    "game_id": "824799",
+    "game": "Tampa Bay Rays @ Baltimore Orioles",
+    "away_team": "Tampa Bay Rays",
+    "home_team": "Baltimore Orioles",
     "bookmaker": "",
     "bookmaker_key": "",
-    "odds_event_id": 63301887,
+    "odds_event_id": 63303067,
     "moneyline": {
       "away": "",
       "home": ""
@@ -182,16 +71,16 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-08-31T06:24:21Z"
+    "market_updated_at": "2026-08-22T17:35:53Z"
   },
   {
-    "game_id": "822687",
-    "game": "Atlanta Braves @ Washington Nationals",
-    "away_team": "Atlanta Braves",
-    "home_team": "Washington Nationals",
+    "game_id": "823421",
+    "game": "St. Louis Cardinals @ Philadelphia Phillies",
+    "away_team": "St. Louis Cardinals",
+    "home_team": "Philadelphia Phillies",
     "bookmaker": "",
     "bookmaker_key": "",
-    "odds_event_id": 63303639,
+    "odds_event_id": 63303229,
     "moneyline": {
       "away": "",
       "home": ""
@@ -219,53 +108,90 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-08-31T06:24:21Z"
+    "market_updated_at": "2026-08-22T17:35:53Z"
   },
   {
-    "game_id": "823661",
-    "game": "Detroit Tigers @ Minnesota Twins",
+    "game_id": "823827",
+    "game": "Washington Nationals @ Miami Marlins",
+    "away_team": "Washington Nationals",
+    "home_team": "Miami Marlins",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": 63302841,
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-22T17:35:53Z"
+  },
+  {
+    "game_id": "824558",
+    "game": "New York Mets @ Chicago White Sox",
+    "away_team": "New York Mets",
+    "home_team": "Chicago White Sox",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": 63301011,
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-22T17:35:53Z"
+  },
+  {
+    "game_id": "824071",
+    "game": "Detroit Tigers @ Kansas City Royals",
     "away_team": "Detroit Tigers",
-    "home_team": "Minnesota Twins",
-    "bookmaker": "",
-    "bookmaker_key": "",
-    "odds_event_id": 63299307,
-    "moneyline": {
-      "away": "",
-      "home": ""
-    },
-    "spread": {
-      "away": "",
-      "away_price": "",
-      "home": "",
-      "home_price": ""
-    },
-    "total": "",
-    "game_total": {
-      "line": "",
-      "over_price": "",
-      "under_price": ""
-    },
-    "team_totals": {
-      "away": "",
-      "away_over_price": "",
-      "away_under_price": "",
-      "home": "",
-      "home_over_price": "",
-      "home_under_price": ""
-    },
-    "pitcher_strikeouts": {},
-    "market_source": "odds_api_io",
-    "market_status": "live",
-    "market_updated_at": "2026-08-31T06:24:22Z"
-  },
-  {
-    "game_id": "824070",
-    "game": "Miami Marlins @ Kansas City Royals",
-    "away_team": "Miami Marlins",
     "home_team": "Kansas City Royals",
     "bookmaker": "",
     "bookmaker_key": "",
-    "odds_event_id": 63303227,
+    "odds_event_id": 63299359,
     "moneyline": {
       "away": "",
       "home": ""
@@ -293,90 +219,16 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-08-31T06:24:22Z"
+    "market_updated_at": "2026-08-22T17:35:53Z"
   },
   {
-    "game_id": "824633",
-    "game": "Milwaukee Brewers @ Chicago Cubs",
-    "away_team": "Milwaukee Brewers",
-    "home_team": "Chicago Cubs",
-    "bookmaker": "",
-    "bookmaker_key": "",
-    "odds_event_id": 63303575,
-    "moneyline": {
-      "away": "",
-      "home": ""
-    },
-    "spread": {
-      "away": "",
-      "away_price": "",
-      "home": "",
-      "home_price": ""
-    },
-    "total": "",
-    "game_total": {
-      "line": "",
-      "over_price": "",
-      "under_price": ""
-    },
-    "team_totals": {
-      "away": "",
-      "away_over_price": "",
-      "away_under_price": "",
-      "home": "",
-      "home_over_price": "",
-      "home_under_price": ""
-    },
-    "pitcher_strikeouts": {},
-    "market_source": "odds_api_io",
-    "market_status": "live",
-    "market_updated_at": "2026-08-31T06:24:23Z"
-  },
-  {
-    "game_id": "822854",
-    "game": "Athletics @ Texas Rangers",
+    "game_id": "824150",
+    "game": "Athletics @ Houston Astros",
     "away_team": "Athletics",
-    "home_team": "Texas Rangers",
-    "bookmaker": "",
-    "bookmaker_key": "",
-    "odds_event_id": 63301659,
-    "moneyline": {
-      "away": "",
-      "home": ""
-    },
-    "spread": {
-      "away": "",
-      "away_price": "",
-      "home": "",
-      "home_price": ""
-    },
-    "total": "",
-    "game_total": {
-      "line": "",
-      "over_price": "",
-      "under_price": ""
-    },
-    "team_totals": {
-      "away": "",
-      "away_over_price": "",
-      "away_under_price": "",
-      "home": "",
-      "home_over_price": "",
-      "home_under_price": ""
-    },
-    "pitcher_strikeouts": {},
-    "market_source": "odds_api_io",
-    "market_status": "live",
-    "market_updated_at": "2026-08-31T06:24:23Z"
-  },
-  {
-    "game_id": "824148",
-    "game": "Chicago White Sox @ Houston Astros",
-    "away_team": "Chicago White Sox",
     "home_team": "Houston Astros",
     "bookmaker": "",
     "bookmaker_key": "",
-    "odds_event_id": 63303301,
+    "odds_event_id": 63302373,
     "moneyline": {
       "away": "",
       "home": ""
@@ -404,16 +256,53 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-08-31T06:24:24Z"
+    "market_updated_at": "2026-08-22T17:35:54Z"
   },
   {
-    "game_id": "824313",
-    "game": "Baltimore Orioles @ Colorado Rockies",
-    "away_team": "Baltimore Orioles",
+    "game_id": "822856",
+    "game": "Los Angeles Angels @ Texas Rangers",
+    "away_team": "Los Angeles Angels",
+    "home_team": "Texas Rangers",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": 63303395,
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-22T17:35:54Z"
+  },
+  {
+    "game_id": "824315",
+    "game": "Cleveland Guardians @ Colorado Rockies",
+    "away_team": "Cleveland Guardians",
     "home_team": "Colorado Rockies",
     "bookmaker": "",
     "bookmaker_key": "",
-    "odds_event_id": 63301009,
+    "odds_event_id": 63299459,
     "moneyline": {
       "away": "",
       "home": ""
@@ -441,16 +330,16 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-08-31T06:24:24Z"
+    "market_updated_at": "2026-08-22T17:35:54Z"
   },
   {
-    "game_id": "823984",
-    "game": "New York Yankees @ Los Angeles Angels",
-    "away_team": "New York Yankees",
-    "home_team": "Los Angeles Angels",
+    "game_id": "824720",
+    "game": "San Francisco Giants @ Boston Red Sox",
+    "away_team": "San Francisco Giants",
+    "home_team": "Boston Red Sox",
     "bookmaker": "",
     "bookmaker_key": "",
-    "odds_event_id": 63301037,
+    "odds_event_id": 63300975,
     "moneyline": {
       "away": "",
       "home": ""
@@ -478,53 +367,16 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-08-31T06:24:25Z"
+    "market_updated_at": "2026-08-22T17:35:55Z"
   },
   {
-    "game_id": "825038",
-    "game": "Philadelphia Phillies @ Arizona Diamondbacks",
-    "away_team": "Philadelphia Phillies",
-    "home_team": "Arizona Diamondbacks",
-    "bookmaker": "",
-    "bookmaker_key": "",
-    "odds_event_id": 63301565,
-    "moneyline": {
-      "away": "",
-      "home": ""
-    },
-    "spread": {
-      "away": "",
-      "away_price": "",
-      "home": "",
-      "home_price": ""
-    },
-    "total": "",
-    "game_total": {
-      "line": "",
-      "over_price": "",
-      "under_price": ""
-    },
-    "team_totals": {
-      "away": "",
-      "away_over_price": "",
-      "away_under_price": "",
-      "home": "",
-      "home_over_price": "",
-      "home_under_price": ""
-    },
-    "pitcher_strikeouts": {},
-    "market_source": "odds_api_io",
-    "market_status": "live",
-    "market_updated_at": "2026-08-31T06:24:25Z"
-  },
-  {
-    "game_id": "823908",
-    "game": "St. Louis Cardinals @ Los Angeles Dodgers",
-    "away_team": "St. Louis Cardinals",
+    "game_id": "823909",
+    "game": "Pittsburgh Pirates @ Los Angeles Dodgers",
+    "away_team": "Pittsburgh Pirates",
     "home_team": "Los Angeles Dodgers",
     "bookmaker": "",
     "bookmaker_key": "",
-    "odds_event_id": 63299319,
+    "odds_event_id": 63299409,
     "moneyline": {
       "away": "",
       "home": ""
@@ -552,6 +404,154 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-08-31T06:24:26Z"
+    "market_updated_at": "2026-08-22T17:35:55Z"
+  },
+  {
+    "game_id": "823099",
+    "game": "Chicago Cubs @ Seattle Mariners",
+    "away_team": "Chicago Cubs",
+    "home_team": "Seattle Mariners",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": 63299423,
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-22T17:35:55Z"
+  },
+  {
+    "game_id": "823258",
+    "game": "Minnesota Twins @ San Diego Padres",
+    "away_team": "Minnesota Twins",
+    "home_team": "San Diego Padres",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": 63303051,
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-22T17:35:55Z"
+  },
+  {
+    "game_id": "825043",
+    "game": "Cincinnati Reds @ Arizona Diamondbacks",
+    "away_team": "Cincinnati Reds",
+    "home_team": "Arizona Diamondbacks",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": 63302681,
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-22T17:35:55Z"
+  },
+  {
+    "game_id": "823745",
+    "game": "Atlanta Braves @ Milwaukee Brewers",
+    "away_team": "Atlanta Braves",
+    "home_team": "Milwaukee Brewers",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": 63303127,
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-08-22T17:35:56Z"
   }
 ]

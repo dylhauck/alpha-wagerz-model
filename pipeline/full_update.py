@@ -1,4 +1,5 @@
 from graphics.create_weather_graphic import create_weather_graphic
+from model.nfl.injury_context import build_nfl_injury_context
 from providers.mlb_reference import build_reference_files
 from providers.mlb_players import build_player_reference
 from providers.statcast import get_statcast_batter_events
@@ -42,7 +43,21 @@ from pipeline.tomorrow_update import run_tomorrow_update
 # NFL
 from providers.nfl_data import build_all_nfl_data
 from providers.nfl_matchups import build_nfl_matchups
+from providers.nfl_injuries import build_nfl_injuries
+from providers.nfl_weather import build_nfl_weather
+from providers.nfl_market import build_nfl_market
 
+from model.nfl.team_metrics import build_team_metrics
+from model.nfl.player_metrics import build_nfl_player_metrics
+from model.nfl.matchup_metrics import build_nfl_matchup_metrics
+from model.nfl.injury_context import build_nfl_injury_context
+from model.nfl.game_projections import build_nfl_game_projections
+from model.nfl.player_projections import build_nfl_player_projections
+from model.nfl.edge_engine import build_nfl_edges
+from providers.nfl_player_props import build_nfl_player_props
+from model.nfl.player_prop_edges import build_nfl_player_prop_edges
+from providers.nfl_odds import build_nfl_odds
+from model.nfl.rankings import build_nfl_rankings
 
 def run_full_update():
     print("🐺 Starting Alpha Wagerz full update...")
@@ -129,7 +144,52 @@ def run_full_update():
     print("\n🏈 NFL Data")
     build_all_nfl_data()
 
+    print("\n🏥 NFL Injuries")
+    build_nfl_injuries()
+
+    print("\n📊 NFL Team Metrics")
+    build_team_metrics()
+
+    print("\n👤 NFL Player Metrics")
+    build_nfl_player_metrics()
+
     print("\n⚔️ NFL Matchup History")
     build_nfl_matchups()
 
+    print("\n🧠 NFL Matchup Metrics")
+    build_nfl_matchup_metrics()
+
+    print("\n🏥 NFL Injury Context")
+    build_nfl_injury_context()
+
+    print("\n🌦️ NFL Weather")
+    build_nfl_weather()
+
+    print("\n🎯 NFL Game Projections")
+    build_nfl_game_projections()
+
+    print("\n🏃 NFL Player Projections")
+    build_nfl_player_projections()
+
+    print("\n📡 Live NFL Odds")
+    build_nfl_odds()
+
+    print("\n💰 NFL Market")
+    build_nfl_market()
+
+    print("\n📈 NFL Edges & Confidence")
+    build_nfl_edges()
+
+    print("\n🏷️ NFL Player Props")
+    build_nfl_player_props()
+
+    print("\n🎯 NFL Player Prop Edges")
+    build_nfl_player_prop_edges()
+
+    print("\n🏆 NFL Rankings / Best Bets")
+    build_nfl_rankings()
+
     print("\n✅ Alpha Wagerz full update complete.")
+
+if __name__ == "__main__":
+    run_full_update()

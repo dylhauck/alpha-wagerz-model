@@ -1,12 +1,13 @@
 game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status,game_date_utc,game_time,game_time_sort
-824514,2026-08-17,St. Louis Cardinals @ Cincinnati Reds,St. Louis Cardinals,Cincinnati Reds,,,Great American Ball Park,Scheduled,2026-08-17T17:40:00Z,12:40 PM,12:40
-824478,2026-08-17,St. Louis Cardinals @ Cincinnati Reds,St. Louis Cardinals,Cincinnati Reds,,Rhett Lowder,Great American Ball Park,Scheduled,2026-08-17T22:40:00Z,5:40 PM,17:40
-822939,2026-08-17,Baltimore Orioles @ Tampa Bay Rays,Baltimore Orioles,Tampa Bay Rays,Brandon Young,Shane McClanahan,Tropicana Field,Scheduled,2026-08-17T22:05:00Z,5:05 PM,17:05
-823427,2026-08-17,Miami Marlins @ Philadelphia Phillies,Miami Marlins,Philadelphia Phillies,Janson Junk,Cristopher Sánchez,Citizens Bank Park,Scheduled,2026-08-17T22:40:00Z,5:40 PM,17:40
-823343,2026-08-17,Detroit Tigers @ Pittsburgh Pirates,Detroit Tigers,Pittsburgh Pirates,Framber Valdez,Carmen Mlodzinski,PNC Park,Scheduled,2026-08-17T23:05:00Z,6:05 PM,18:05
-824725,2026-08-17,Arizona Diamondbacks @ Boston Red Sox,Arizona Diamondbacks,Boston Red Sox,Mitch Bratt,,Fenway Park,Scheduled,2026-08-17T23:10:00Z,6:10 PM,18:10
-823589,2026-08-17,San Diego Padres @ New York Mets,San Diego Padres,New York Mets,Walker Buehler,Nolan McLean,Citi Field,Scheduled,2026-08-17T23:10:00Z,6:10 PM,18:10
-824077,2026-08-17,Athletics @ Kansas City Royals,Athletics,Kansas City Royals,Mason Barnett,Michael Wacha,Kauffman Stadium,Scheduled,2026-08-17T23:40:00Z,6:40 PM,18:40
-823668,2026-08-17,Atlanta Braves @ Minnesota Twins,Atlanta Braves,Minnesota Twins,Martín Pérez,Bailey Ober,Target Field,Scheduled,2026-08-17T23:40:00Z,6:40 PM,18:40
-824641,2026-08-17,Chicago White Sox @ Chicago Cubs,Chicago White Sox,Chicago Cubs,Luis Castillo,Shota Imanaga,Wrigley Field,Scheduled,2026-08-18T00:05:00Z,7:05 PM,19:05
-824320,2026-08-17,Los Angeles Dodgers @ Colorado Rockies,Los Angeles Dodgers,Colorado Rockies,Blake Snell,Tomoyuki Sugano,Coors Field,Scheduled,2026-08-18T00:40:00Z,7:40 PM,19:40
+824911,2026-08-31,San Francisco Giants @ Atlanta Braves,San Francisco Giants,Atlanta Braves,Anthony Molina,Bryce Elder,Truist Park,Scheduled,2026-08-31T22:05:00Z,5:05 PM,17:05
+824473,2026-08-31,San Diego Padres @ Cincinnati Reds,San Diego Padres,Cincinnati Reds,Michael King,Brady Singer,Great American Ball Park,Scheduled,2026-08-31T22:40:00Z,5:40 PM,17:40
+822932,2026-08-31,New York Mets @ Tampa Bay Rays,New York Mets,Tampa Bay Rays,Robert Stock,Ian Seymour,Tropicana Field,Scheduled,2026-08-31T22:40:00Z,5:40 PM,17:40
+824719,2026-08-31,Seattle Mariners @ Boston Red Sox,Seattle Mariners,Boston Red Sox,George Kirby,Payton Tolle,Fenway Park,Scheduled,2026-08-31T22:45:00Z,5:45 PM,17:45
+822689,2026-08-31,Miami Marlins @ Washington Nationals,Miami Marlins,Washington Nationals,Ryan Gusto,Will Dion,Nationals Park,Scheduled,2026-08-31T22:45:00Z,5:45 PM,17:45
+823663,2026-08-31,Detroit Tigers @ Minnesota Twins,Detroit Tigers,Minnesota Twins,Jackson Jobe,Taj Bradley,Target Field,Scheduled,2026-08-31T23:40:00Z,6:40 PM,18:40
+824635,2026-08-31,Milwaukee Brewers @ Chicago Cubs,Milwaukee Brewers,Chicago Cubs,Kyle Harrison,Clay Holmes,Wrigley Field,Scheduled,2026-08-31T23:40:00Z,6:40 PM,18:40
+822855,2026-08-31,Athletics @ Texas Rangers,Athletics,Texas Rangers,Gage Jump,Jacob deGrom,Globe Life Field,Scheduled,2026-09-01T00:05:00Z,7:05 PM,19:05
+824149,2026-08-31,Chicago White Sox @ Houston Astros,Chicago White Sox,Houston Astros,Anthony Kay,Peter Lambert,Daikin Park,Scheduled,2026-09-01T00:10:00Z,7:10 PM,19:10
+824314,2026-08-31,Baltimore Orioles @ Colorado Rockies,Baltimore Orioles,Colorado Rockies,,Tanner Gordon,Coors Field,Scheduled,2026-09-01T00:40:00Z,7:40 PM,19:40
+823982,2026-08-31,New York Yankees @ Los Angeles Angels,New York Yankees,Los Angeles Angels,Elmer Rodríguez,Walbert Ureña,Angel Stadium,Scheduled,2026-09-01T01:38:00Z,8:38 PM,20:38
+825040,2026-08-31,Philadelphia Phillies @ Arizona Diamondbacks,Philadelphia Phillies,Arizona Diamondbacks,Aaron Nola,,Chase Field,Scheduled,2026-09-01T01:40:00Z,8:40 PM,20:40

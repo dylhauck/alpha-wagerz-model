@@ -1,0 +1,362 @@
+[
+  {
+    "game_id": "823828",
+    "game": "Boston Red Sox @ Miami Marlins",
+    "away_team": "Boston Red Sox",
+    "home_team": "Miami Marlins",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": "",
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "unavailable",
+    "market_status": "not_returned_by_provider"
+  },
+  {
+    "game_id": "825041",
+    "game": "Chicago Cubs @ Arizona Diamondbacks",
+    "away_team": "Chicago Cubs",
+    "home_team": "Arizona Diamondbacks",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": "",
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "unavailable",
+    "market_status": "not_returned_by_provider"
+  },
+  {
+    "game_id": "823183",
+    "game": "Cincinnati Reds @ San Francisco Giants",
+    "away_team": "Cincinnati Reds",
+    "home_team": "San Francisco Giants",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": "",
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "unavailable",
+    "market_status": "not_returned_by_provider"
+  },
+  {
+    "game_id": "823992",
+    "game": "Cleveland Guardians @ Los Angeles Angels",
+    "away_team": "Cleveland Guardians",
+    "home_team": "Los Angeles Angels",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": "",
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "unavailable",
+    "market_status": "not_returned_by_provider"
+  },
+  {
+    "game_id": "822695",
+    "game": "Colorado Rockies @ Washington Nationals",
+    "away_team": "Colorado Rockies",
+    "home_team": "Washington Nationals",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": "",
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "unavailable",
+    "market_status": "not_returned_by_provider"
+  },
+  {
+    "game_id": "824964",
+    "game": "Minnesota Twins @ Athletics",
+    "away_team": "Minnesota Twins",
+    "home_team": "Athletics",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": "",
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "unavailable",
+    "market_status": "not_returned_by_provider"
+  },
+  {
+    "game_id": "823097",
+    "game": "Philadelphia Phillies @ Seattle Mariners",
+    "away_team": "Philadelphia Phillies",
+    "home_team": "Seattle Mariners",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": "",
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "unavailable",
+    "market_status": "not_returned_by_provider"
+  },
+  {
+    "game_id": "823260",
+    "game": "Pittsburgh Pirates @ San Diego Padres",
+    "away_team": "Pittsburgh Pirates",
+    "home_team": "San Diego Padres",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": "",
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "unavailable",
+    "market_status": "not_returned_by_provider"
+  },
+  {
+    "game_id": "824235",
+    "game": "Tampa Bay Rays @ Detroit Tigers",
+    "away_team": "Tampa Bay Rays",
+    "home_team": "Detroit Tigers",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": "",
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "unavailable",
+    "market_status": "not_returned_by_provider"
+  },
+  {
+    "game_id": "824557",
+    "game": "Texas Rangers @ Chicago White Sox",
+    "away_team": "Texas Rangers",
+    "home_team": "Chicago White Sox",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": "",
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "unavailable",
+    "market_status": "not_returned_by_provider"
+  }
+]
