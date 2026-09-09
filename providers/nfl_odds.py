@@ -52,7 +52,7 @@ BOOKMAKERS = [
     value.strip()
     for value in os.getenv(
         "NFL_ODDS_API_IO_BOOKMAKERS",
-        "FanDuel,DraftKings,BetMGM,Caesars",
+        "FanDuel,DraftKings",
     ).split(",")
     if value.strip()
 ]
@@ -457,6 +457,103 @@ def first_number(
     return None
 
 
+def decimal_to_american(
+    decimal_odds: float | None,
+) -> float | None:
+    if decimal_odds is None or decimal_odds <= 1.0:
+        return None
+
+    if decimal_odds >= 2.0:
+        american = (
+            (decimal_odds - 1.0)
+            * 100.0
+        )
+    else:
+        american = (
+            -100.0
+            / (decimal_odds - 1.0)
+        )
+
+    return float(round(american))
+
+
+def balanced_two_way_row(
+    rows: list[dict[str, Any]],
+) -> dict[str, Any] | None:
+    """
+    Odds-API.io can return alternate lines inside one Totals/Team Total
+    market. The primary line is the row whose two-way prices are closest
+    to balanced after converting decimal prices to implied probabilities.
+    """
+    candidates = []
+
+    for index, row in enumerate(rows):
+        line = first_number(
+            row,
+            "hdp",
+            "line",
+            "point",
+        )
+        over = first_number(
+            row,
+            "over",
+            "overOdds",
+            "over_odds",
+        )
+        under = first_number(
+            row,
+            "under",
+            "underOdds",
+            "under_odds",
+        )
+
+        if (
+            line is None
+            or over is None
+            or under is None
+            or over <= 1.0
+            or under <= 1.0
+        ):
+            continue
+
+        over_probability = 1.0 / over
+        under_probability = 1.0 / under
+
+        balance = abs(
+            over_probability
+            - under_probability
+        )
+
+        # Secondary tie-breaker favors normal two-way pricing near even
+        # money rather than extreme alternate lines.
+        distance_from_even = (
+            abs(over - 2.0)
+            + abs(under - 2.0)
+        )
+
+        candidates.append(
+            (
+                balance,
+                distance_from_even,
+                index,
+                row,
+            )
+        )
+
+    if not candidates:
+        return None
+
+    candidates.sort(
+        key=lambda item: (
+            item[0],
+            item[1],
+            item[2],
+        )
+    )
+
+    return candidates[0][3]
+
+
 def normalize_featured_markets(
     bookmaker: str,
     markets: list[dict[str, Any]],
@@ -490,63 +587,65 @@ def normalize_featured_markets(
             away_price = None
             home_price = None
 
+            # Odds-API.io NFL response:
+            # {"home": "1.556", "away": "2.520"}
             for row in rows:
+                direct_away = first_number(
+                    row,
+                    "away",
+                )
+                direct_home = first_number(
+                    row,
+                    "home",
+                )
+
+                if (
+                    direct_away is not None
+                    or direct_home is not None
+                ):
+                    away_price = decimal_to_american(
+                        direct_away
+                    )
+                    home_price = decimal_to_american(
+                        direct_home
+                    )
+                    break
+
                 label = clean_text(
                     row.get("label")
                     or row.get("name")
                 )
 
+                row_price = first_number(
+                    row,
+                    "odds",
+                    "price",
+                    "value",
+                )
+
                 if (
                     normalize_team(label)
-                    == normalize_team(
-                        away_name
-                    )
+                    == normalize_team(away_name)
+                    or label.lower()
+                    in {"away", "2"}
                 ):
-                    away_price = first_number(
-                        row,
-                        "odds",
-                        "price",
-                        "value",
+                    away_price = decimal_to_american(
+                        row_price
                     )
 
                 elif (
                     normalize_team(label)
-                    == normalize_team(
-                        home_name
-                    )
+                    == normalize_team(home_name)
+                    or label.lower()
+                    in {"home", "1"}
                 ):
-                    home_price = first_number(
-                        row,
-                        "odds",
-                        "price",
-                        "value",
-                    )
-
-                elif label.lower() in {
-                    "away",
-                    "2",
-                }:
-                    away_price = first_number(
-                        row,
-                        "odds",
-                        "price",
-                        "value",
-                    )
-
-                elif label.lower() in {
-                    "home",
-                    "1",
-                }:
-                    home_price = first_number(
-                        row,
-                        "odds",
-                        "price",
-                        "value",
+                    home_price = decimal_to_american(
+                        row_price
                     )
 
             if (
                 away_price is not None
-                or home_price is not None
+                and home_price is not None
             ):
                 output["moneyline"] = {
                     "away": away_price,
@@ -557,75 +656,52 @@ def normalize_featured_markets(
         # SPREAD
         # -------------------------
 
-        elif (
-            "spread" in key
-            or "handicap" in key
-        ) and not any(
-            token in key
-            for token in (
-                "player",
-                "quarter",
-                "half",
-            )
-        ):
+        elif key in {
+            "spread",
+            "handicap",
+        }:
             away_line = None
             home_line = None
             away_price = None
             home_price = None
 
+            # Odds-API.io NFL response:
+            # {"hdp": -3.5, "home": "1.962", "away": "1.847"}
+            # hdp is the HOME spread. The away spread is its inverse.
             for row in rows:
-                label = clean_text(
-                    row.get("label")
-                    or row.get("name")
+                raw_home_line = first_number(
+                    row,
+                    "hdp",
+                    "line",
+                    "point",
+                )
+                direct_away_price = first_number(
+                    row,
+                    "away",
+                )
+                direct_home_price = first_number(
+                    row,
+                    "home",
                 )
 
                 if (
-                    normalize_team(label)
-                    == normalize_team(
-                        away_name
-                    )
-                    or label.lower()
-                    == "away"
+                    raw_home_line is not None
+                    and direct_away_price is not None
+                    and direct_home_price is not None
                 ):
-                    away_line = first_number(
-                        row,
-                        "hdp",
-                        "line",
-                        "point",
+                    home_line = raw_home_line
+                    away_line = -raw_home_line
+                    away_price = decimal_to_american(
+                        direct_away_price
                     )
-
-                    away_price = first_number(
-                        row,
-                        "odds",
-                        "price",
-                        "value",
+                    home_price = decimal_to_american(
+                        direct_home_price
                     )
-
-                elif (
-                    normalize_team(label)
-                    == normalize_team(
-                        home_name
-                    )
-                    or label.lower()
-                    == "home"
-                ):
-                    home_line = first_number(
-                        row,
-                        "hdp",
-                        "line",
-                        "point",
-                    )
-
-                    home_price = first_number(
-                        row,
-                        "odds",
-                        "price",
-                        "value",
-                    )
+                    break
 
             if (
                 away_line is not None
-                or home_line is not None
+                and home_line is not None
             ):
                 output["spread"] = {
                     "away": away_line,
@@ -635,7 +711,7 @@ def normalize_featured_markets(
                 }
 
         # -------------------------
-        # TOTAL
+        # GAME TOTAL
         # -------------------------
 
         elif key in {
@@ -644,80 +720,120 @@ def normalize_featured_markets(
             "over under",
             "over/under",
         }:
-            line = None
-            over_price = None
-            under_price = None
+            row = balanced_two_way_row(
+                rows
+            )
 
-            for row in rows:
-                line = (
-                    line
-                    if line is not None
-                    else first_number(
+            if row is not None:
+                line = first_number(
+                    row,
+                    "hdp",
+                    "line",
+                    "point",
+                )
+                over_decimal = first_number(
+                    row,
+                    "over",
+                    "overOdds",
+                    "over_odds",
+                )
+                under_decimal = first_number(
+                    row,
+                    "under",
+                    "underOdds",
+                    "under_odds",
+                )
+
+                if line is not None:
+                    output["game_total"] = {
+                        "line": line,
+                        "over_price": decimal_to_american(
+                            over_decimal
+                        ),
+                        "under_price": decimal_to_american(
+                            under_decimal
+                        ),
+                    }
+
+        # -------------------------
+        # POSTED TEAM TOTALS
+        # -------------------------
+
+        elif key in {
+            "team total home",
+            "team total points home",
+        }:
+            row = balanced_two_way_row(
+                rows
+            )
+
+            if row is not None:
+                output.setdefault(
+                    "team_total",
+                    {},
+                )["home"] = {
+                    "line": first_number(
                         row,
                         "hdp",
                         "line",
                         "point",
-                    )
-                )
-
-                over_price = (
-                    over_price
-                    if over_price is not None
-                    else first_number(
-                        row,
-                        "over",
-                        "overOdds",
-                        "over_odds",
-                    )
-                )
-
-                under_price = (
-                    under_price
-                    if under_price is not None
-                    else first_number(
-                        row,
-                        "under",
-                        "underOdds",
-                        "under_odds",
-                    )
-                )
-
-                label = clean_text(
-                    row.get("label")
-                    or row.get("name")
-                ).lower()
-
-                if label == "over":
-                    over_price = (
+                    ),
+                    "over_price": decimal_to_american(
                         first_number(
                             row,
-                            "odds",
-                            "price",
-                            "value",
+                            "over",
+                            "overOdds",
+                            "over_odds",
                         )
-                        or over_price
-                    )
-
-                elif label == "under":
-                    under_price = (
+                    ),
+                    "under_price": decimal_to_american(
                         first_number(
                             row,
-                            "odds",
-                            "price",
-                            "value",
+                            "under",
+                            "underOdds",
+                            "under_odds",
                         )
-                        or under_price
-                    )
+                    ),
+                }
 
-            if line is not None:
-                output["game_total"] = {
-                    "line": line,
-                    "over_price": over_price,
-                    "under_price": under_price,
+        elif key in {
+            "team total away",
+            "team total points away",
+        }:
+            row = balanced_two_way_row(
+                rows
+            )
+
+            if row is not None:
+                output.setdefault(
+                    "team_total",
+                    {},
+                )["away"] = {
+                    "line": first_number(
+                        row,
+                        "hdp",
+                        "line",
+                        "point",
+                    ),
+                    "over_price": decimal_to_american(
+                        first_number(
+                            row,
+                            "over",
+                            "overOdds",
+                            "over_odds",
+                        )
+                    ),
+                    "under_price": decimal_to_american(
+                        first_number(
+                            row,
+                            "under",
+                            "underOdds",
+                            "under_odds",
+                        )
+                    ),
                 }
 
     return output
-
 
 PROP_MARKET_MAP = {
     "passing yards": "passing_yards",
@@ -939,6 +1055,13 @@ def normalize_event_odds(
         all_props.extend(
             props
         )
+
+    normalized_books.sort(
+        key=lambda book: BOOKMAKER_PRIORITY.get(
+            clean_text(book.get("key")).lower(),
+            len(BOOKMAKER_PRIORITY),
+        )
+    )
 
     return {
         "event_id": (

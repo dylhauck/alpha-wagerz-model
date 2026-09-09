@@ -1,0 +1,1089 @@
+[
+  {
+    "game_id": "824424",
+    "game": "Detroit Tigers @ Cleveland Guardians",
+    "away_team": "Detroit Tigers",
+    "home_team": "Cleveland Guardians",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 72099056,
+    "moneyline": {
+      "away": 112,
+      "home": -132
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -205,
+      "home": -1.5,
+      "home_price": 168
+    },
+    "total": 8.5,
+    "game_total": {
+      "line": 8.5,
+      "over_price": -105,
+      "under_price": -115
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": -130,
+      "away_under_price": 102,
+      "home": 4.5,
+      "home_over_price": 116,
+      "home_under_price": -148,
+      "away_bookmaker": "FanDuel",
+      "home_bookmaker": "FanDuel"
+    },
+    "pitcher_strikeouts": {
+      "keider montero": {
+        "player": "Keider Montero",
+        "normalized_name": "keider montero",
+        "line": 2.5,
+        "over_price": -164,
+        "under_price": 128,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "logan allen": {
+        "player": "Logan Allen",
+        "normalized_name": "logan allen",
+        "line": 3.5,
+        "over_price": 118,
+        "under_price": -150,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "logan allen cle": {
+        "player": "Logan Allen (CLE)",
+        "normalized_name": "logan allen cle",
+        "line": 3.5,
+        "over_price": 124,
+        "under_price": -159,
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-09-04T05:42:17Z"
+  },
+  {
+    "game_id": "824471",
+    "game": "Milwaukee Brewers @ Cincinnati Reds",
+    "away_team": "Milwaukee Brewers",
+    "home_team": "Cincinnati Reds",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63303777,
+    "moneyline": {
+      "away": -162,
+      "home": 136
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": -104,
+      "home": 1.5,
+      "home_price": -115
+    },
+    "total": 9.5,
+    "game_total": {
+      "line": 9.5,
+      "over_price": -108,
+      "under_price": -112
+    },
+    "team_totals": {
+      "away": 5.5,
+      "away_over_price": 106,
+      "away_under_price": -136,
+      "home": 3.5,
+      "home_over_price": -142,
+      "home_under_price": 112,
+      "away_bookmaker": "FanDuel",
+      "home_bookmaker": "FanDuel"
+    },
+    "pitcher_strikeouts": {
+      "shane drohan": {
+        "player": "Shane Drohan",
+        "normalized_name": "shane drohan",
+        "line": 5.5,
+        "over_price": 108,
+        "under_price": -138,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "rhett lowder": {
+        "player": "Rhett Lowder",
+        "normalized_name": "rhett lowder",
+        "line": 3.5,
+        "over_price": -150,
+        "under_price": 118,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-09-04T05:42:17Z"
+  },
+  {
+    "game_id": "823418",
+    "game": "Atlanta Braves @ Philadelphia Phillies",
+    "away_team": "Atlanta Braves",
+    "home_team": "Philadelphia Phillies",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63301381,
+    "moneyline": {
+      "away": -108,
+      "home": -108
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": 164,
+      "home": 1.5,
+      "home_price": -200
+    },
+    "total": 6.5,
+    "game_total": {
+      "line": 6.5,
+      "over_price": -120,
+      "under_price": -102
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": 106,
+      "away_under_price": -136,
+      "home": 2.5,
+      "home_over_price": -160,
+      "home_under_price": 124,
+      "away_bookmaker": "FanDuel",
+      "home_bookmaker": "FanDuel"
+    },
+    "pitcher_strikeouts": {
+      "chris sale": {
+        "player": "Chris Sale",
+        "normalized_name": "chris sale",
+        "line": 6.5,
+        "over_price": -156,
+        "under_price": 122,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "cristopher sanchez": {
+        "player": "Cristopher Sanchez",
+        "normalized_name": "cristopher sanchez",
+        "line": 6.5,
+        "over_price": -120,
+        "under_price": -106,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-09-04T05:42:17Z"
+  },
+  {
+    "game_id": "823338",
+    "game": "Los Angeles Angels @ Pittsburgh Pirates",
+    "away_team": "Los Angeles Angels",
+    "home_team": "Pittsburgh Pirates",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63300885,
+    "moneyline": {
+      "away": 164,
+      "home": -196
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -134,
+      "home": -1.5,
+      "home_price": 112
+    },
+    "total": 8.5,
+    "game_total": {
+      "line": 8.5,
+      "over_price": -104,
+      "under_price": -118
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": 104,
+      "away_under_price": -132,
+      "home": 4.5,
+      "home_over_price": -111,
+      "home_under_price": -115,
+      "away_bookmaker": "FanDuel",
+      "home_bookmaker": "FanDuel"
+    },
+    "pitcher_strikeouts": {
+      "jared jones": {
+        "player": "Jared Jones",
+        "normalized_name": "jared jones",
+        "line": 5.5,
+        "over_price": -125,
+        "under_price": -102,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ryan johnson": {
+        "player": "Ryan Johnson",
+        "normalized_name": "ryan johnson",
+        "line": 3.5,
+        "over_price": -106,
+        "under_price": -120,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ryan johnson laa": {
+        "player": "Ryan Johnson (LAA)",
+        "normalized_name": "ryan johnson laa",
+        "line": 3.5,
+        "over_price": -133,
+        "under_price": 103,
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-09-04T05:42:17Z"
+  },
+  {
+    "game_id": "824797",
+    "game": "Boston Red Sox @ Baltimore Orioles",
+    "away_team": "Boston Red Sox",
+    "home_team": "Baltimore Orioles",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63302043,
+    "moneyline": {
+      "away": -118,
+      "home": 100
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": 140,
+      "home": 1.5,
+      "home_price": -170
+    },
+    "total": 8.5,
+    "game_total": {
+      "line": 8.5,
+      "over_price": -102,
+      "under_price": -120
+    },
+    "team_totals": {
+      "away": 4.5,
+      "away_over_price": 114,
+      "away_under_price": -146,
+      "home": 3.5,
+      "home_over_price": -122,
+      "home_under_price": -104,
+      "away_bookmaker": "FanDuel",
+      "home_bookmaker": "FanDuel"
+    },
+    "pitcher_strikeouts": {
+      "ranger suarez": {
+        "player": "Ranger Suarez",
+        "normalized_name": "ranger suarez",
+        "line": 5.5,
+        "over_price": 102,
+        "under_price": -130,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "shane baz": {
+        "player": "Shane Baz",
+        "normalized_name": "shane baz",
+        "line": 4.5,
+        "over_price": -136,
+        "under_price": 106,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jarren duran": {
+        "player": "Jarren Duran",
+        "normalized_name": "jarren duran",
+        "line": 0.5,
+        "over_price": -370,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "coby mayo": {
+        "player": "Coby Mayo",
+        "normalized_name": "coby mayo",
+        "line": 0.5,
+        "over_price": -323,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "roman anthony": {
+        "player": "Roman Anthony",
+        "normalized_name": "roman anthony",
+        "line": 0.5,
+        "over_price": -294,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "christian encarnacion strand": {
+        "player": "Christian Encarnacion-Strand",
+        "normalized_name": "christian encarnacion strand",
+        "line": 0.5,
+        "over_price": -333,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "luis robert": {
+        "player": "Luis Robert",
+        "normalized_name": "luis robert",
+        "line": 0.5,
+        "over_price": -294,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "pete alonso": {
+        "player": "Pete Alonso",
+        "normalized_name": "pete alonso",
+        "line": 0.5,
+        "over_price": -294,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "trevor story": {
+        "player": "Trevor Story",
+        "normalized_name": "trevor story",
+        "line": 0.5,
+        "over_price": -294,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "wilyer abreu": {
+        "player": "Wilyer Abreu",
+        "normalized_name": "wilyer abreu",
+        "line": 0.5,
+        "over_price": -250,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "blaze alexander": {
+        "player": "Blaze Alexander",
+        "normalized_name": "blaze alexander",
+        "line": 0.5,
+        "over_price": -250,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "nick sogard": {
+        "player": "Nick Sogard",
+        "normalized_name": "nick sogard",
+        "line": 0.5,
+        "over_price": -217,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "leody taveras": {
+        "player": "Leody Taveras",
+        "normalized_name": "leody taveras",
+        "line": 0.5,
+        "over_price": -213,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "carlos narvaez": {
+        "player": "Carlos Narvaez",
+        "normalized_name": "carlos narvaez",
+        "line": 0.5,
+        "over_price": -213,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "gunnar henderson": {
+        "player": "Gunnar Henderson",
+        "normalized_name": "gunnar henderson",
+        "line": 0.5,
+        "over_price": -179,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "michael gasper": {
+        "player": "Michael Gasper",
+        "normalized_name": "michael gasper",
+        "line": 0.5,
+        "over_price": -175,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "dylan beavers": {
+        "player": "Dylan Beavers",
+        "normalized_name": "dylan beavers",
+        "line": 0.5,
+        "over_price": -182,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "adley rutschman": {
+        "player": "Adley Rutschman",
+        "normalized_name": "adley rutschman",
+        "line": 0.5,
+        "over_price": -169,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "eli white": {
+        "player": "Eli White",
+        "normalized_name": "eli white",
+        "line": 0.5,
+        "over_price": -154,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "caleb durbin": {
+        "player": "Caleb Durbin",
+        "normalized_name": "caleb durbin",
+        "line": 0.5,
+        "over_price": 111,
+        "under_price": "",
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-09-04T05:42:18Z"
+  },
+  {
+    "game_id": "823824",
+    "game": "Chicago Cubs @ Miami Marlins",
+    "away_team": "Chicago Cubs",
+    "home_team": "Miami Marlins",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63301195,
+    "moneyline": {
+      "away": -134,
+      "home": 114
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": 126,
+      "home": 1.5,
+      "home_price": -152
+    },
+    "total": 8.0,
+    "game_total": {
+      "line": 8.0,
+      "over_price": -105,
+      "under_price": -115
+    },
+    "team_totals": {
+      "away": 4.5,
+      "away_over_price": 116,
+      "away_under_price": -148,
+      "home": 3.5,
+      "home_over_price": 100,
+      "home_under_price": -128,
+      "away_bookmaker": "FanDuel",
+      "home_bookmaker": "FanDuel"
+    },
+    "pitcher_strikeouts": {
+      "janson junk": {
+        "player": "Janson Junk",
+        "normalized_name": "janson junk",
+        "line": 3.5,
+        "over_price": 118,
+        "under_price": -150,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "shota imanaga": {
+        "player": "Shota Imanaga",
+        "normalized_name": "shota imanaga",
+        "line": 5.5,
+        "over_price": 124,
+        "under_price": -158,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-09-04T05:42:18Z"
+  },
+  {
+    "game_id": "823579",
+    "game": "San Francisco Giants @ New York Mets",
+    "away_team": "San Francisco Giants",
+    "home_team": "New York Mets",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63300931,
+    "moneyline": {
+      "away": 158,
+      "home": -188
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -142,
+      "home": -1.5,
+      "home_price": 118
+    },
+    "total": 8.5,
+    "game_total": {
+      "line": 8.5,
+      "over_price": 100,
+      "under_price": -122
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": 102,
+      "away_under_price": -130,
+      "home": 4.5,
+      "home_over_price": 100,
+      "home_under_price": -128,
+      "away_bookmaker": "FanDuel",
+      "home_bookmaker": "FanDuel"
+    },
+    "pitcher_strikeouts": {
+      "matt wilkinson": {
+        "player": "Matt Wilkinson",
+        "normalized_name": "matt wilkinson",
+        "line": 4.5,
+        "over_price": 124,
+        "under_price": -160,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "nolan mclean": {
+        "player": "Nolan McLean",
+        "normalized_name": "nolan mclean",
+        "line": 6.5,
+        "over_price": 118,
+        "under_price": -150,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-09-04T05:42:18Z"
+  },
+  {
+    "game_id": "824387",
+    "game": "Detroit Tigers @ Cleveland Guardians",
+    "away_team": "Detroit Tigers",
+    "home_team": "Cleveland Guardians",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63303697,
+    "moneyline": {
+      "away": 116,
+      "home": -136
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -192,
+      "home": -1.5,
+      "home_price": 158
+    },
+    "total": 8.5,
+    "game_total": {
+      "line": 8.5,
+      "over_price": -105,
+      "under_price": -115
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": -128,
+      "away_under_price": 100,
+      "home": 4.5,
+      "home_over_price": 114,
+      "home_under_price": -146,
+      "away_bookmaker": "FanDuel",
+      "home_bookmaker": "FanDuel"
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-09-04T05:42:18Z"
+  },
+  {
+    "game_id": "824554",
+    "game": "Minnesota Twins @ Chicago White Sox",
+    "away_team": "Minnesota Twins",
+    "home_team": "Chicago White Sox",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63301461,
+    "moneyline": {
+      "away": 102,
+      "home": -120
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": 168,
+      "home": 1.5,
+      "home_price": -205
+    },
+    "total": 9.0,
+    "game_total": {
+      "line": 9.0,
+      "over_price": -115,
+      "under_price": -105
+    },
+    "team_totals": {
+      "away": 4.5,
+      "away_over_price": 100,
+      "away_under_price": -128,
+      "home": 4.5,
+      "home_over_price": -102,
+      "home_under_price": -125,
+      "away_bookmaker": "FanDuel",
+      "home_bookmaker": "FanDuel"
+    },
+    "pitcher_strikeouts": {
+      "zebby matthews": {
+        "player": "Zebby Matthews",
+        "normalized_name": "zebby matthews",
+        "line": 4.5,
+        "over_price": 112,
+        "under_price": -142,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "erick fedde": {
+        "player": "Erick Fedde",
+        "normalized_name": "erick fedde",
+        "line": 3.5,
+        "over_price": 134,
+        "under_price": -172,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-09-04T05:42:19Z"
+  },
+  {
+    "game_id": "822852",
+    "game": "Tampa Bay Rays @ Texas Rangers",
+    "away_team": "Tampa Bay Rays",
+    "home_team": "Texas Rangers",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63303469,
+    "moneyline": {
+      "away": -106,
+      "home": -110
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": 152,
+      "home": 1.5,
+      "home_price": -184
+    },
+    "total": 8.0,
+    "game_total": {
+      "line": 8.0,
+      "over_price": -115,
+      "under_price": -105
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": -142,
+      "away_under_price": 112,
+      "home": 3.5,
+      "home_over_price": -138,
+      "home_under_price": 108,
+      "away_bookmaker": "FanDuel",
+      "home_bookmaker": "FanDuel"
+    },
+    "pitcher_strikeouts": {
+      "nick martinez": {
+        "player": "Nick Martinez",
+        "normalized_name": "nick martinez",
+        "line": 3.5,
+        "over_price": 128,
+        "under_price": -164,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-09-04T05:42:19Z"
+  },
+  {
+    "game_id": "824067",
+    "game": "Toronto Blue Jays @ Kansas City Royals",
+    "away_team": "Toronto Blue Jays",
+    "home_team": "Kansas City Royals",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63301409,
+    "moneyline": {
+      "away": 102,
+      "home": -120
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": 160,
+      "home": 1.5,
+      "home_price": -194
+    },
+    "total": 9.5,
+    "game_total": {
+      "line": 9.5,
+      "over_price": -120,
+      "under_price": -102
+    },
+    "team_totals": {
+      "away": 4.5,
+      "away_over_price": -118,
+      "away_under_price": -108,
+      "home": 4.5,
+      "home_over_price": -128,
+      "home_under_price": 100,
+      "away_bookmaker": "FanDuel",
+      "home_bookmaker": "FanDuel"
+    },
+    "pitcher_strikeouts": {
+      "daniel lynch": {
+        "player": "Daniel Lynch",
+        "normalized_name": "daniel lynch",
+        "line": 2.5,
+        "over_price": 130,
+        "under_price": -166,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "jameson taillon": {
+        "player": "Jameson Taillon",
+        "normalized_name": "jameson taillon",
+        "line": 2.5,
+        "over_price": -128,
+        "under_price": 100,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-09-04T05:42:19Z"
+  },
+  {
+    "game_id": "824146",
+    "game": "Arizona Diamondbacks @ Houston Astros",
+    "away_team": "Arizona Diamondbacks",
+    "home_team": "Houston Astros",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63302253,
+    "moneyline": {
+      "away": 116,
+      "home": -136
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": -200,
+      "home": -1.5,
+      "home_price": 164
+    },
+    "total": 8.5,
+    "game_total": {
+      "line": 8.5,
+      "over_price": -128,
+      "under_price": 104
+    },
+    "team_totals": {
+      "away": 4.5,
+      "away_over_price": 112,
+      "away_under_price": -142,
+      "home": 4.5,
+      "home_over_price": -102,
+      "home_under_price": -125,
+      "away_bookmaker": "FanDuel",
+      "home_bookmaker": "FanDuel"
+    },
+    "pitcher_strikeouts": {
+      "cristian javier": {
+        "player": "Cristian Javier",
+        "normalized_name": "cristian javier",
+        "line": 4.5,
+        "over_price": 120,
+        "under_price": -154,
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "merrill kelly": {
+        "player": "Merrill Kelly",
+        "normalized_name": "merrill kelly",
+        "line": 4.5,
+        "over_price": 125,
+        "under_price": -161,
+        "bookmaker": "DraftKings",
+        "bookmaker_key": "draftkings",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-09-04T05:42:19Z"
+  },
+  {
+    "game_id": "824311",
+    "game": "St. Louis Cardinals @ Colorado Rockies",
+    "away_team": "St. Louis Cardinals",
+    "home_team": "Colorado Rockies",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63302239,
+    "moneyline": {
+      "away": -136,
+      "home": 116
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": 112,
+      "home": 1.5,
+      "home_price": -134
+    },
+    "total": 11.5,
+    "game_total": {
+      "line": 11.5,
+      "over_price": -106,
+      "under_price": -114
+    },
+    "team_totals": {
+      "away": 5.5,
+      "away_over_price": -138,
+      "away_under_price": 108,
+      "home": 4.5,
+      "home_over_price": -142,
+      "home_under_price": 112,
+      "away_bookmaker": "FanDuel",
+      "home_bookmaker": "FanDuel"
+    },
+    "pitcher_strikeouts": {
+      "andre pallante": {
+        "player": "Andre Pallante",
+        "normalized_name": "andre pallante",
+        "line": 2.5,
+        "over_price": -136,
+        "under_price": 106,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "ryan feltner": {
+        "player": "Ryan Feltner",
+        "normalized_name": "ryan feltner",
+        "line": 3.5,
+        "over_price": -125,
+        "under_price": -102,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-09-04T05:42:19Z"
+  },
+  {
+    "game_id": "823256",
+    "game": "New York Yankees @ San Diego Padres",
+    "away_team": "New York Yankees",
+    "home_team": "San Diego Padres",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63301989,
+    "moneyline": {
+      "away": -132,
+      "home": 112
+    },
+    "spread": {
+      "away": -1.5,
+      "away_price": 126,
+      "home": 1.5,
+      "home_price": -152
+    },
+    "total": 7.5,
+    "game_total": {
+      "line": 7.5,
+      "over_price": -110,
+      "under_price": -110
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": -146,
+      "away_under_price": 114,
+      "home": 3.5,
+      "home_over_price": 110,
+      "home_under_price": -140,
+      "away_bookmaker": "FanDuel",
+      "home_bookmaker": "FanDuel"
+    },
+    "pitcher_strikeouts": {
+      "walker buehler": {
+        "player": "Walker Buehler",
+        "normalized_name": "walker buehler",
+        "line": 4.5,
+        "over_price": -111,
+        "under_price": -115,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "max fried": {
+        "player": "Max Fried",
+        "normalized_name": "max fried",
+        "line": 4.5,
+        "over_price": 116,
+        "under_price": -148,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      }
+    },
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-09-04T05:42:20Z"
+  },
+  {
+    "game_id": "823093",
+    "game": "Athletics @ Seattle Mariners",
+    "away_team": "Athletics",
+    "home_team": "Seattle Mariners",
+    "bookmaker": "DraftKings",
+    "bookmaker_key": "draftkings",
+    "odds_event_id": 63302289,
+    "moneyline": {
+      "away": 180,
+      "home": -222
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": 7.5,
+    "game_total": {
+      "line": 7.5,
+      "over_price": 109,
+      "under_price": -132
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": "",
+      "away_bookmaker": "",
+      "home_bookmaker": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-09-04T05:42:20Z"
+  },
+  {
+    "game_id": "823905",
+    "game": "Washington Nationals @ Los Angeles Dodgers",
+    "away_team": "Washington Nationals",
+    "home_team": "Los Angeles Dodgers",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
+    "odds_event_id": 63303651,
+    "moneyline": {
+      "away": 245,
+      "home": -300
+    },
+    "spread": {
+      "away": 1.5,
+      "away_price": 108,
+      "home": -1.5,
+      "home_price": -130
+    },
+    "total": 8.5,
+    "game_total": {
+      "line": 8.5,
+      "over_price": -102,
+      "under_price": -120
+    },
+    "team_totals": {
+      "away": 2.5,
+      "away_over_price": -140,
+      "away_under_price": 110,
+      "home": 4.5,
+      "home_over_price": -140,
+      "home_under_price": 110,
+      "away_bookmaker": "FanDuel",
+      "home_bookmaker": "FanDuel"
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "odds_api_io",
+    "market_status": "live",
+    "market_updated_at": "2026-09-04T05:42:20Z"
+  }
+]

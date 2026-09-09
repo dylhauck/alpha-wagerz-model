@@ -423,7 +423,7 @@ def normalize_game_market(
         and home_team_total is not None
     ):
         available_markets.append(
-            "team_total"
+            "implied_team_total"
         )
 
     return {
@@ -571,6 +571,33 @@ def normalize_game_market(
             ),
         },
 
+        "implied_team_totals": {
+            "away": away_team_total,
+            "home": home_team_total,
+            "source": (
+                "derived_from_live_spread_and_total"
+                if (
+                    away_team_total is not None
+                    and home_team_total is not None
+                )
+                else None
+            ),
+        },
+
+        "posted_team_totals": {
+            "away": {
+                "line": None,
+                "over_price": None,
+                "under_price": None,
+            },
+            "home": {
+                "line": None,
+                "over_price": None,
+                "under_price": None,
+            },
+            "source": None,
+        },
+
         "available_markets": (
             available_markets
         ),
@@ -645,12 +672,60 @@ def build_live_market(
         if isinstance(markets, dict)
         else {}
     )
+    team_total = (
+        markets.get("team_total", {})
+        if isinstance(markets, dict)
+        else {}
+    )
+
+    away_team_total_market = (
+        team_total.get("away", {})
+        if isinstance(team_total, dict)
+        else {}
+    )
+    home_team_total_market = (
+        team_total.get("home", {})
+        if isinstance(team_total, dict)
+        else {}
+    )
 
     away_moneyline = f(moneyline.get("away"))
     home_moneyline = f(moneyline.get("home"))
     away_spread = f(spread.get("away"))
     home_spread = f(spread.get("home"))
     total_line = f(total.get("line"))
+
+    posted_away_team_total = f(
+        away_team_total_market.get(
+            "line"
+        )
+    )
+    posted_home_team_total = f(
+        home_team_total_market.get(
+            "line"
+        )
+    )
+
+    posted_away_over_price = f(
+        away_team_total_market.get(
+            "over_price"
+        )
+    )
+    posted_away_under_price = f(
+        away_team_total_market.get(
+            "under_price"
+        )
+    )
+    posted_home_over_price = f(
+        home_team_total_market.get(
+            "over_price"
+        )
+    )
+    posted_home_under_price = f(
+        home_team_total_market.get(
+            "under_price"
+        )
+    )
 
     (
         away_no_vig_probability,
@@ -680,8 +755,21 @@ def build_live_market(
     if total_line is not None:
         available_markets.append("game_total")
 
-    if away_team_total is not None and home_team_total is not None:
-        available_markets.append("team_total")
+    if (
+        posted_away_team_total is not None
+        or posted_home_team_total is not None
+    ):
+        available_markets.append(
+            "team_total"
+        )
+
+    if (
+        away_team_total is not None
+        and home_team_total is not None
+    ):
+        available_markets.append(
+            "implied_team_total"
+        )
 
     return {
         "game_id": slate_game.get("game_id") or live_game.get("event_id"),
@@ -741,9 +829,51 @@ def build_live_market(
         },
 
         "team_totals": {
-            "away": away_team_total,
-            "home": home_team_total,
-            "source": "derived_from_live_spread_and_total",
+            "away": posted_away_team_total,
+            "home": posted_home_team_total,
+            "source": (
+                "sportsbook"
+                if (
+                    posted_away_team_total is not None
+                    or posted_home_team_total is not None
+                )
+                else None
+            ),
+        },
+
+        "posted_team_totals": {
+            "away": {
+                "line": (
+                    posted_away_team_total
+                ),
+                "over_price": (
+                    posted_away_over_price
+                ),
+                "under_price": (
+                    posted_away_under_price
+                ),
+            },
+            "home": {
+                "line": (
+                    posted_home_team_total
+                ),
+                "over_price": (
+                    posted_home_over_price
+                ),
+                "under_price": (
+                    posted_home_under_price
+                ),
+            },
+            "source": (
+                "sportsbook"
+                if (
+                    posted_away_team_total
+                    is not None
+                    or posted_home_team_total
+                    is not None
+                )
+                else None
+            ),
         },
 
         "available_markets": available_markets,

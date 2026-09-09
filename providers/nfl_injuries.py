@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import json
+import re
 import ssl
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
+from html import unescape
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 from urllib.request import Request, urlopen
@@ -13,37 +15,15 @@ import certifi
 
 MODEL_ROOT = Path(__file__).resolve().parents[1]
 NFL_DIR = MODEL_ROOT / "data" / "processed" / "nfl"
-WEB_NFL_DIR = (
-    MODEL_ROOT.parent
-    / "alpha-wagerz-web"
-    / "public"
-    / "data"
-    / "nfl"
-)
+WEB_NFL_DIR = MODEL_ROOT.parent / "alpha-wagerz-web" / "public" / "data" / "nfl"
 
 OUTPUT_FILE = NFL_DIR / "injuries.json"
 WEB_OUTPUT_FILE = WEB_NFL_DIR / "injuries.json"
 ROSTERS_FILE = NFL_DIR / "rosters.json"
 
 CURRENT_SEASON = 2026
-
-ESPN_TEAMS_URL = (
-    "https://site.api.espn.com/apis/site/v2/"
-    "sports/football/nfl/teams"
-)
-
-ESPN_LEAGUE_INJURIES_URL = (
-    "https://site.api.espn.com/apis/site/v2/"
-    "sports/football/nfl/injuries"
-)
-
-ESPN_TEAM_INJURIES_URL = (
-    "https://site.api.espn.com/apis/site/v2/"
-    "sports/football/nfl/teams/{team_id}/injuries"
-)
-
-REQUEST_TIMEOUT = 6
-MAX_WORKERS = 8
+ESPN_INJURIES_PAGE = "https://www.espn.com/nfl/injuries"
+REQUEST_TIMEOUT = 15
 
 TEAM_ALIASES = {
     "LA": "LAR",
@@ -54,9 +34,49 @@ TEAM_ALIASES = {
     "STL": "LAR",
 }
 
+TEAM_NAME_TO_ABBR = {
+    "Arizona Cardinals": "ARI",
+    "Atlanta Falcons": "ATL",
+    "Baltimore Ravens": "BAL",
+    "Buffalo Bills": "BUF",
+    "Carolina Panthers": "CAR",
+    "Chicago Bears": "CHI",
+    "Cincinnati Bengals": "CIN",
+    "Cleveland Browns": "CLE",
+    "Dallas Cowboys": "DAL",
+    "Denver Broncos": "DEN",
+    "Detroit Lions": "DET",
+    "Green Bay Packers": "GB",
+    "Houston Texans": "HOU",
+    "Indianapolis Colts": "IND",
+    "Jacksonville Jaguars": "JAX",
+    "Kansas City Chiefs": "KC",
+    "Las Vegas Raiders": "LV",
+    "Los Angeles Chargers": "LAC",
+    "Los Angeles Rams": "LAR",
+    "Miami Dolphins": "MIA",
+    "Minnesota Vikings": "MIN",
+    "New England Patriots": "NE",
+    "New Orleans Saints": "NO",
+    "New York Giants": "NYG",
+    "New York Jets": "NYJ",
+    "Philadelphia Eagles": "PHI",
+    "Pittsburgh Steelers": "PIT",
+    "San Francisco 49ers": "SF",
+    "Seattle Seahawks": "SEA",
+    "Tampa Bay Buccaneers": "TB",
+    "Tennessee Titans": "TEN",
+    "Washington Commanders": "WAS",
+}
+
+TEAM_NAME_LOOKUP = {
+    re.sub(r"\s+", " ", name).strip().lower(): abbr
+    for name, abbr in TEAM_NAME_TO_ABBR.items()
+}
+
 
 def clean(value: Any) -> str:
-    return str(value or "").strip()
+    return re.sub(r"\s+", " ", str(value or "")).strip()
 
 
 def first_nonempty(*values: Any) -> str:
@@ -74,7 +94,6 @@ def normalize_team(value: Any) -> str:
 
 def normalize_status(value: Any) -> str:
     status = clean(value).upper()
-
     aliases = {
         "Q": "QUESTIONABLE",
         "QUES": "QUESTIONABLE",
@@ -83,62 +102,33 @@ def normalize_status(value: Any) -> str:
         "DOUBTFUL": "DOUBTFUL",
         "O": "OUT",
         "OUT": "OUT",
-
         "IR": "IR",
         "INJURED RESERVE": "IR",
         "INJURED-RESERVE": "IR",
         "RESERVE/INJURED": "IR",
         "RESERVE-INJURED": "IR",
-
         "PUP": "PUP",
         "PHYSICALLY UNABLE TO PERFORM": "PUP",
         "RESERVE/PUP": "PUP",
-
         "NFI": "NFI",
         "NON-FOOTBALL INJURY": "NFI",
         "NON FOOTBALL INJURY": "NFI",
         "RESERVE/NFI": "NFI",
-
         "PROBABLE": "PROBABLE",
         "ACTIVE": "ACTIVE",
     }
-
-    return aliases.get(status, status)
-
-
-def normalize_practice_status(value: Any) -> str:
-    status = clean(value).upper()
-
-    aliases = {
-        "DNP": "DNP",
-        "DID NOT PARTICIPATE": "DNP",
-        "LIMITED": "LIMITED",
-        "LIMITED PARTICIPATION": "LIMITED",
-        "LP": "LIMITED",
-        "FULL": "FULL",
-        "FULL PARTICIPATION": "FULL",
-        "FP": "FULL",
-    }
-
     return aliases.get(status, status)
 
 
 def save_json(payload: Any, path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-
     with path.open("w", encoding="utf-8") as handle:
-        json.dump(
-            payload,
-            handle,
-            indent=2,
-            ensure_ascii=False,
-        )
+        json.dump(payload, handle, indent=2, ensure_ascii=False)
 
 
 def load_json(path: Path, default: Any):
     if not path.exists():
         return default
-
     try:
         with path.open("r", encoding="utf-8") as handle:
             return json.load(handle)
@@ -146,374 +136,357 @@ def load_json(path: Path, default: Any):
         return default
 
 
-def fetch_json(url: str) -> dict[str, Any]:
+def fetch_html(url: str) -> str:
     request = Request(
         url,
         headers={
-            "Accept": "application/json",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Cache-Control": "no-cache",
+            "Pragma": "no-cache",
             "User-Agent": (
-                "Mozilla/5.0 Alpha-Wagerz-NFL-Injuries/1.0"
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/140.0.0.0 Safari/537.36"
             ),
         },
     )
-
-    ssl_context = ssl.create_default_context(
-        cafile=certifi.where()
-    )
-
+    ssl_context = ssl.create_default_context(cafile=certifi.where())
     with urlopen(
         request,
         timeout=REQUEST_TIMEOUT,
         context=ssl_context,
     ) as response:
-        return json.loads(
-            response.read().decode("utf-8")
-        )
+        charset = response.headers.get_content_charset() or "utf-8"
+        return response.read().decode(charset, errors="replace")
 
 
-def parse_espn_teams(
-    payload: dict[str, Any],
-) -> list[dict[str, str]]:
-    teams: list[dict[str, str]] = []
+def extract_player_id_from_href(href: str) -> str:
+    href = clean(href)
+    if not href:
+        return ""
 
-    for sport in payload.get("sports", []):
-        if not isinstance(sport, dict):
+    for pattern in (
+        r"/player/_/id/(\d+)",
+        r"/id/(\d+)(?:/|$)",
+        r"[?&]id=(\d+)(?:&|$)",
+    ):
+        match = re.search(pattern, href)
+        if match:
+            return match.group(1)
+
+    return ""
+
+
+INJURY_ACRONYMS = {
+    "ACL",
+    "MCL",
+    "PCL",
+    "UCL",
+    "LCL",
+    "AC",
+    "SC",
+}
+
+STATUS_ONLY_INJURY_VALUES = {
+    "",
+    "OUT",
+    "IR",
+    "INJURED RESERVE",
+    "INJURED-RESERVE",
+    "RESERVE/INJURED",
+    "RESERVE-INJURED",
+    "QUESTIONABLE",
+    "DOUBTFUL",
+    "PROBABLE",
+    "ACTIVE",
+    "PUP",
+    "RESERVE/PUP",
+    "NFI",
+    "RESERVE/NFI",
+    "INJURY",
+}
+
+
+def format_injury_label(value: Any) -> str:
+    text = clean(value)
+
+    if not text:
+        return "Undisclosed"
+
+    if text.upper() in STATUS_ONLY_INJURY_VALUES:
+        return "Undisclosed"
+
+    words = re.split(r"(\s+|-)", text)
+    formatted: list[str] = []
+
+    for word in words:
+        if not word or word.isspace() or word == "-":
+            formatted.append(word)
             continue
 
-        for league in sport.get("leagues", []):
-            if not isinstance(league, dict):
-                continue
+        stripped = re.sub(r"[^A-Za-z]", "", word).upper()
 
-            for entry in league.get("teams", []):
-                if not isinstance(entry, dict):
-                    continue
+        if stripped in INJURY_ACRONYMS:
+            suffix_match = re.search(r"([^A-Za-z]+)$", word)
+            suffix = suffix_match.group(1) if suffix_match else ""
+            formatted.append(stripped + suffix)
+        else:
+            formatted.append(
+                word[:1].upper() + word[1:].lower()
+            )
 
-                team = entry.get("team", entry)
-
-                if not isinstance(team, dict):
-                    continue
-
-                team_id = clean(team.get("id"))
-                abbr = normalize_team(
-                    first_nonempty(
-                        team.get("abbreviation"),
-                        team.get("shortDisplayName"),
-                    )
-                )
-
-                if team_id and abbr:
-                    teams.append(
-                        {
-                            "id": team_id,
-                            "abbr": abbr,
-                        }
-                    )
-
-    return teams
-
-
-def extract_status(raw: dict[str, Any]) -> str:
-    status = raw.get("status")
-
-    if isinstance(status, dict):
-        status = first_nonempty(
-            status.get("name"),
-            status.get("description"),
-            status.get("abbreviation"),
-            status.get("type"),
-        )
-
-    return normalize_status(status)
-
-
-def extract_practice_status(
-    raw: dict[str, Any],
-) -> str:
-    value = (
-        raw.get("practiceStatus")
-        or raw.get("practice_status")
-    )
-
-    if isinstance(value, dict):
-        value = first_nonempty(
-            value.get("name"),
-            value.get("description"),
-            value.get("abbreviation"),
-        )
-
-    return normalize_practice_status(value)
+    result = "".join(formatted).strip()
+    return result or "Undisclosed"
 
 
 def extract_injury_description(
-    raw: dict[str, Any],
+    comment: str,
+    status_raw: Any = "",
 ) -> str:
-    details = raw.get("details")
-    detail_text = ""
+    """
+    Return the most specific injury description ESPN actually provides.
 
-    if isinstance(details, dict):
-        detail_text = first_nonempty(
-            details.get("detail"),
-            details.get("type"),
-            details.get("location"),
-            details.get("side"),
-        )
+    Do not infer a diagnosis. Prefer a specific diagnosis/condition if ESPN
+    explicitly states one; otherwise use the useful parenthetical body part
+    ESPN provides. If neither exists, return Undisclosed.
+    """
+    comment = clean(comment)
 
-    return first_nonempty(
-        raw.get("shortComment"),
-        raw.get("longComment"),
-        raw.get("description"),
-        raw.get("injury"),
-        raw.get("type"),
-        detail_text,
+    if not comment:
+        return "Undisclosed"
+
+    patterns = (
+        r"\b(?:torn|ruptured)\s+(?:left\s+|right\s+)?(?:ACL|MCL|PCL|LCL|UCL|Achilles|meniscus|pectoral)\b",
+        r"\b(?:ACL|MCL|PCL|LCL|UCL|meniscus|Achilles|pectoral)\s+(?:tear|rupture|sprain|strain)\b",
+        r"\bhigh[- ]ankle sprain\b",
+        r"\b(?:left\s+|right\s+)?ankle sprain\b",
+        r"\b(?:left\s+|right\s+)?hamstring strain\b",
+        r"\b(?:left\s+|right\s+)?groin strain\b",
+        r"\b(?:left\s+|right\s+)?calf strain\b",
+        r"\b(?:left\s+|right\s+)?quad(?:riceps)? strain\b",
+        r"\b(?:left\s+|right\s+)?shoulder sprain\b",
+        r"\b(?:left\s+|right\s+)?wrist sprain\b",
+        r"\b(?:left\s+|right\s+)?knee sprain\b",
+        r"\b(?:left\s+|right\s+)?foot sprain\b",
+        r"\b(?:left\s+|right\s+)?hip flexor strain\b",
+        r"\b(?:left\s+|right\s+)?abdominal strain\b",
+        r"\bturf toe\b",
+        r"\bplantar fasciitis\b",
+        r"\bconcussion\b",
+        r"\b(?:left\s+|right\s+)?(?:hand|wrist|arm|elbow|shoulder|chest|rib|back|neck|hip|groin|hamstring|quad|calf|knee|ankle|foot|toe)\s+(?:fracture|sprain|strain|tear)\b",
+        r"\bfractured\s+(?:left\s+|right\s+)?(?:hand|wrist|arm|elbow|shoulder|rib|hip|knee|ankle|foot|toe)\b",
+        r"\bbroken\s+(?:left\s+|right\s+)?(?:hand|wrist|arm|elbow|shoulder|rib|hip|knee|ankle|foot|toe)\b",
+        r"\bdislocated\s+(?:left\s+|right\s+)?(?:shoulder|elbow|finger|hip|knee)\b",
     )
 
+    for pattern in patterns:
+        match = re.search(pattern, comment, flags=re.IGNORECASE)
+        if match:
+            return format_injury_label(match.group(0))
 
-def normalize_espn_row(
-    team_abbr: str,
-    raw: dict[str, Any],
-) -> dict[str, Any]:
-    athlete = raw.get("athlete")
+    # ESPN commonly places the injury/body part in parentheses after the name.
+    for raw_candidate in re.findall(r"\(([^()]{2,80})\)", comment):
+        candidate = clean(raw_candidate)
 
-    if not isinstance(athlete, dict):
-        athlete = {}
+        if not candidate:
+            continue
 
-    position = athlete.get("position")
+        if candidate.upper() in {
+            "AP",
+            "IR",
+            "NFI",
+            "PUP",
+            "NFL",
+            "OUT",
+            "QUESTIONABLE",
+            "DOUBTFUL",
+            "PROBABLE",
+            "ACTIVE",
+        }:
+            continue
 
-    if not isinstance(position, dict):
-        position = {}
-
-    player_id = first_nonempty(
-        athlete.get("id"),
-        raw.get("athleteId"),
-        raw.get("playerId"),
-        raw.get("player_id"),
-    )
-
-    player = first_nonempty(
-        athlete.get("fullName"),
-        athlete.get("displayName"),
-        athlete.get("shortName"),
-        raw.get("player"),
-        raw.get("player_name"),
-        raw.get("name"),
-    )
-
-    pos = first_nonempty(
-        position.get("abbreviation"),
-        position.get("name"),
-        raw.get("position"),
-        raw.get("pos"),
-    ).upper()
-
-    status = extract_status(raw)
-    practice_status = extract_practice_status(raw)
-    injury = extract_injury_description(raw)
-
-    if not status and injury:
-        status = "INJURY"
-
-    return {
-        "player_id": player_id,
-        "espn_id": player_id,
-        "player": player,
-        "team": normalize_team(team_abbr),
-        "position": pos,
-        "status": status,
-        "practice_status": practice_status,
-        "injury": injury,
-        "source": "ESPN",
-        "source_updated": first_nonempty(
-            raw.get("date"),
-            raw.get("lastUpdated"),
-            raw.get("updated"),
-        ),
-    }
-
-
-def injury_like_dict(node: dict[str, Any]) -> bool:
-    athlete = node.get("athlete")
-
-    if isinstance(athlete, dict):
-        if first_nonempty(
-            athlete.get("fullName"),
-            athlete.get("displayName"),
-            athlete.get("shortName"),
-            athlete.get("id"),
+        if re.fullmatch(
+            r"(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)?\.?\s*"
+            r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)"
+            r"\.?\s+\d{1,2}(?:,\s*\d{4})?",
+            candidate,
+            flags=re.IGNORECASE,
         ):
-            return True
-
-    return bool(
-        first_nonempty(
-            node.get("player"),
-            node.get("player_name"),
-        )
-        and any(
-            key in node
-            for key in (
-                "status",
-                "practiceStatus",
-                "practice_status",
-                "injury",
-                "details",
-                "description",
-                "shortComment",
-                "longComment",
-            )
-        )
-    )
-
-
-def collect_injury_dicts(
-    node: Any,
-) -> list[dict[str, Any]]:
-    found: list[dict[str, Any]] = []
-
-    if isinstance(node, dict):
-        if injury_like_dict(node):
-            found.append(node)
-
-        for value in node.values():
-            if isinstance(value, (dict, list)):
-                found.extend(
-                    collect_injury_dicts(value)
-                )
-
-    elif isinstance(node, list):
-        for value in node:
-            found.extend(
-                collect_injury_dicts(value)
-            )
-
-    return found
-
-
-def parse_league_injuries(
-    payload: dict[str, Any],
-) -> list[dict[str, Any]]:
-    rows: list[dict[str, Any]] = []
-
-    groups = payload.get("injuries", [])
-
-    if not isinstance(groups, list):
-        return rows
-
-    for group in groups:
-        if not isinstance(group, dict):
             continue
 
-        team = group.get("team")
-
-        if not isinstance(team, dict):
-            team = {}
-
-        team_abbr = normalize_team(
-            first_nonempty(
-                team.get("abbreviation"),
-                group.get("teamAbbreviation"),
-                group.get("team_abbr"),
-            )
-        )
-
-        if not team_abbr:
+        if re.fullmatch(
+            r"\d{1,2}[-/]\d{1,2}(?:[-/]\d{2,4})?",
+            candidate,
+        ):
             continue
 
-        injuries = group.get("injuries", [])
+        return format_injury_label(candidate)
 
-        if not isinstance(injuries, list):
-            injuries = collect_injury_dicts(group)
-
-        for raw in injuries:
-            if not isinstance(raw, dict):
-                continue
-
-            row = normalize_espn_row(
-                team_abbr,
-                raw,
-            )
-
-            if row["player"]:
-                rows.append(row)
-
-    return rows
-
-
-def fetch_one_team(
-    team: dict[str, str],
-) -> tuple[list[dict[str, Any]], str]:
-    url = ESPN_TEAM_INJURIES_URL.format(
-        team_id=team["id"]
+    generic_match = re.search(
+        r"\b(?:left\s+|right\s+)?"
+        r"(?:head|face|neck|shoulder|arm|elbow|forearm|wrist|hand|finger|"
+        r"chest|rib|back|abdomen|abdominal|hip|groin|hamstring|quad|thigh|"
+        r"knee|calf|shin|ankle|foot|toe)\s+injury\b",
+        comment,
+        flags=re.IGNORECASE,
     )
 
-    try:
-        payload = fetch_json(url)
+    if generic_match:
+        value = re.sub(
+            r"\s+injury$",
+            "",
+            generic_match.group(0),
+            flags=re.IGNORECASE,
+        )
+        return format_injury_label(value)
 
-        raw_rows = collect_injury_dicts(payload)
+    return "Undisclosed"
 
-        rows: list[dict[str, Any]] = []
 
-        for raw in raw_rows:
-            row = normalize_espn_row(
-                team["abbr"],
-                raw,
+class ESPNInjuriesHTMLParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.current_team = ""
+        self.rows: list[dict[str, Any]] = []
+
+        self.tag_stack: list[str] = []
+        self.text_stack: list[list[str]] = []
+        self.class_stack: list[str] = []
+
+        self.in_tr = False
+        self.in_td = False
+        self.current_cells: list[str] = []
+        self.current_cell_text: list[str] = []
+        self.current_player_href = ""
+        self.first_player_link_seen = False
+
+    def handle_starttag(
+        self,
+        tag: str,
+        attrs: list[tuple[str, str | None]],
+    ) -> None:
+        attrs_dict = {key: value or "" for key, value in attrs}
+        self.tag_stack.append(tag)
+        self.text_stack.append([])
+        self.class_stack.append(attrs_dict.get("class", ""))
+
+        if tag == "tr":
+            self.in_tr = True
+            self.current_cells = []
+            self.current_player_href = ""
+            self.first_player_link_seen = False
+
+        elif tag == "td" and self.in_tr:
+            self.in_td = True
+            self.current_cell_text = []
+
+        elif tag == "a" and self.in_tr and not self.first_player_link_seen:
+            href = attrs_dict.get("href", "")
+            if "/nfl/player/" in href or "/player/_/id/" in href:
+                self.current_player_href = href
+                self.first_player_link_seen = True
+
+    def handle_data(self, data: str) -> None:
+        text = clean(unescape(data))
+        if not text:
+            return
+
+        if self.text_stack:
+            self.text_stack[-1].append(text)
+
+        if self.in_td:
+            self.current_cell_text.append(text)
+
+        team = TEAM_NAME_LOOKUP.get(text.lower())
+        if team:
+            self.current_team = team
+
+    def handle_endtag(self, tag: str) -> None:
+        if self.tag_stack:
+            start_tag = self.tag_stack.pop()
+            texts = self.text_stack.pop()
+            class_name = self.class_stack.pop()
+            captured = clean(" ".join(texts))
+
+            if self.text_stack and captured:
+                self.text_stack[-1].append(captured)
+
+            if start_tag == tag and captured and "Table__Title" in class_name:
+                team = TEAM_NAME_LOOKUP.get(captured.lower())
+                if team:
+                    self.current_team = team
+
+        if tag == "td" and self.in_td:
+            self.current_cells.append(
+                clean(" ".join(self.current_cell_text))
             )
+            self.current_cell_text = []
+            self.in_td = False
 
-            if not row["player"]:
-                continue
+        elif tag == "tr" and self.in_tr:
+            self._finish_row()
+            self.in_tr = False
+            self.in_td = False
+            self.current_cells = []
+            self.current_cell_text = []
+            self.current_player_href = ""
+            self.first_player_link_seen = False
 
-            if not (
-                row["status"]
-                or row["practice_status"]
-                or row["injury"]
-            ):
-                continue
+    def _finish_row(self) -> None:
+        cells = [clean(cell) for cell in self.current_cells]
 
-            rows.append(row)
+        if not self.current_team or len(cells) < 4:
+            return
 
-        return rows, ""
+        if cells[0].upper() in {"NAME", "PLAYER"}:
+            return
 
-    except Exception as exc:
-        return [], f'{team["abbr"]}: {exc}'
+        player = cells[0]
+        position = cells[1] if len(cells) > 1 else ""
+        return_date = cells[2] if len(cells) > 2 else ""
+        status_raw = cells[3] if len(cells) > 3 else ""
+        comment = cells[4] if len(cells) > 4 else ""
+
+        status = normalize_status(status_raw)
+        if not player or not status:
+            return
+
+        player_id = extract_player_id_from_href(
+            self.current_player_href
+        )
+        injury_description = extract_injury_description(
+            comment,
+            status_raw,
+        )
+
+        self.rows.append(
+            {
+                "player_id": player_id,
+                "espn_id": player_id,
+                "player": player,
+                "team": normalize_team(self.current_team),
+                "position": position.upper(),
+                "status": status,
+                "practice_status": "",
+                "injury": injury_description,
+                "detail": comment,
+                "estimated_return_date": return_date,
+                "source": "ESPN",
+                "source_updated": "",
+            }
+        )
 
 
-def fetch_team_injuries_fast(
-    teams: list[dict[str, str]],
-) -> tuple[list[dict[str, Any]], list[str]]:
-    rows: list[dict[str, Any]] = []
-    errors: list[str] = []
-
-    with ThreadPoolExecutor(
-        max_workers=MAX_WORKERS
-    ) as executor:
-        futures = {
-            executor.submit(
-                fetch_one_team,
-                team,
-            ): team
-            for team in teams
-        }
-
-        for future in as_completed(futures):
-            team = futures[future]
-
-            try:
-                team_rows, error = future.result()
-            except Exception as exc:
-                team_rows = []
-                error = (
-                    f'{team["abbr"]}: {exc}'
-                )
-
-            rows.extend(team_rows)
-
-            if error:
-                errors.append(error)
-
-    return rows, errors
+def parse_espn_injuries_html(html: str) -> list[dict[str, Any]]:
+    parser = ESPNInjuriesHTMLParser()
+    parser.feed(html)
+    parser.close()
+    return parser.rows
 
 
 def roster_injury_status(value: Any) -> str:
     raw = clean(value).upper()
-
     if not raw:
         return ""
 
@@ -536,10 +509,7 @@ def roster_injury_status(value: Any) -> str:
     ):
         return "IR"
 
-    if (
-        "PUP" in raw
-        or "PHYSICALLY UNABLE" in raw
-    ):
+    if "PUP" in raw or "PHYSICALLY UNABLE" in raw:
         return "PUP"
 
     if (
@@ -552,43 +522,21 @@ def roster_injury_status(value: Any) -> str:
     return ""
 
 
-def extract_roster_rows(
-    payload: Any,
-) -> list[dict[str, Any]]:
+def extract_roster_rows(payload: Any) -> list[dict[str, Any]]:
     if isinstance(payload, list):
-        return [
-            row
-            for row in payload
-            if isinstance(row, dict)
-        ]
+        return [row for row in payload if isinstance(row, dict)]
 
     if isinstance(payload, dict):
-        for key in (
-            "players",
-            "rosters",
-            "roster",
-            "data",
-        ):
+        for key in ("players", "rosters", "roster", "data"):
             value = payload.get(key)
-
             if isinstance(value, list):
-                return [
-                    row
-                    for row in value
-                    if isinstance(row, dict)
-                ]
+                return [row for row in value if isinstance(row, dict)]
 
     return []
 
 
 def build_roster_reserve_injuries() -> list[dict[str, Any]]:
-    rows = extract_roster_rows(
-        load_json(
-            ROSTERS_FILE,
-            default=[],
-        )
-    )
-
+    rows = extract_roster_rows(load_json(ROSTERS_FILE, default=[]))
     results: list[dict[str, Any]] = []
 
     for row in rows:
@@ -599,10 +547,7 @@ def build_roster_reserve_injuries() -> list[dict[str, Any]]:
             row.get("injury_status"),
         )
 
-        status = roster_injury_status(
-            raw_status
-        )
-
+        status = roster_injury_status(raw_status)
         if not status:
             continue
 
@@ -632,9 +577,7 @@ def build_roster_reserve_injuries() -> list[dict[str, Any]]:
                     row.get("gsis_id"),
                     row.get("id"),
                 ),
-                "espn_id": first_nonempty(
-                    row.get("espn_id")
-                ),
+                "espn_id": first_nonempty(row.get("espn_id")),
                 "player": player,
                 "team": team,
                 "position": first_nonempty(
@@ -644,12 +587,15 @@ def build_roster_reserve_injuries() -> list[dict[str, Any]]:
                 ).upper(),
                 "status": status,
                 "practice_status": "",
-                "injury": first_nonempty(
-                    row.get("injury"),
-                    row.get("injury_description"),
-                    row.get("body_part"),
-                    raw_status,
+                "injury": format_injury_label(
+                    first_nonempty(
+                        row.get("injury"),
+                        row.get("injury_description"),
+                        row.get("body_part"),
+                    )
                 ),
+                "detail": "",
+                "estimated_return_date": "",
                 "source": "NFL roster",
                 "source_updated": "",
             }
@@ -682,15 +628,11 @@ def injury_priority(
 ) -> tuple[int, int]:
     return (
         STATUS_PRIORITY.get(
-            clean(
-                injury.get("status")
-            ).upper(),
+            clean(injury.get("status")).upper(),
             10,
         ),
         SOURCE_PRIORITY.get(
-            clean(
-                injury.get("source")
-            ),
+            clean(injury.get("source")),
             0,
         ),
     )
@@ -711,15 +653,12 @@ def merge_missing_fields(
         "status",
         "practice_status",
         "injury",
+        "detail",
+        "estimated_return_date",
         "source_updated",
     ):
-        if not clean(
-            merged.get(key)
-        ):
-            merged[key] = other.get(
-                key,
-                "",
-            )
+        if not clean(merged.get(key)):
+            merged[key] = other.get(key, "")
 
     return merged
 
@@ -727,63 +666,30 @@ def merge_missing_fields(
 def deduplicate(
     injuries: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
-    deduped: dict[
-        tuple[str, str],
-        dict[str, Any]
-    ] = {}
+    deduped: dict[tuple[str, str], dict[str, Any]] = {}
 
     for injury in injuries:
-        team = normalize_team(
-            injury.get("team")
-        )
-
-        player_id = clean(
-            injury.get("player_id")
-        )
-
-        player = clean(
-            injury.get("player")
-        ).lower()
-
-        identity = (
-            player_id
-            if player_id
-            else player
-        )
+        team = normalize_team(injury.get("team"))
+        player_id = clean(injury.get("player_id"))
+        player = clean(injury.get("player")).lower()
+        identity = player_id if player_id else player
 
         if not team or not identity:
             continue
 
-        key = (
-            team,
-            identity,
-        )
-
+        key = (team, identity)
         current = deduped.get(key)
 
         if current is None:
             deduped[key] = injury
             continue
 
-        if injury_priority(
-            injury
-        ) > injury_priority(
-            current
-        ):
-            deduped[key] = merge_missing_fields(
-                injury,
-                current,
-            )
+        if injury_priority(injury) > injury_priority(current):
+            deduped[key] = merge_missing_fields(injury, current)
         else:
-            deduped[key] = merge_missing_fields(
-                current,
-                injury,
-            )
+            deduped[key] = merge_missing_fields(current, injury)
 
-    rows = list(
-        deduped.values()
-    )
-
+    rows = list(deduped.values())
     rows.sort(
         key=lambda row: (
             row.get("team", ""),
@@ -791,7 +697,6 @@ def deduplicate(
             row.get("player", ""),
         )
     )
-
     return rows
 
 
@@ -801,10 +706,7 @@ def build_team_summary(
     teams: dict[str, dict[str, Any]] = {}
 
     for injury in injuries:
-        team = normalize_team(
-            injury.get("team")
-        )
-
+        team = normalize_team(injury.get("team"))
         if not team:
             continue
 
@@ -824,10 +726,7 @@ def build_team_summary(
         )
 
         summary["total"] += 1
-
-        status = clean(
-            injury.get("status")
-        ).upper()
+        status = clean(injury.get("status")).upper()
 
         mapping = {
             "OUT": "out",
@@ -838,94 +737,68 @@ def build_team_summary(
             "NFI": "nfi",
         }
 
-        summary[
-            mapping.get(
-                status,
-                "other",
-            )
-        ] += 1
+        summary[mapping.get(status, "other")] += 1
 
     return teams
 
 
+def existing_nonempty_output() -> dict[str, Any]:
+    for path in (OUTPUT_FILE, WEB_OUTPUT_FILE):
+        payload = load_json(path, default={})
+
+        if (
+            isinstance(payload, dict)
+            and isinstance(payload.get("injuries"), list)
+            and payload.get("injuries")
+        ):
+            return payload
+
+    return {}
+
+
 def build_nfl_injuries():
-    print(
-        "\n🏥 BUILDING NFL INJURY DATA\n"
-    )
+    print("\n🏥 BUILDING NFL INJURY DATA\n")
 
-    generated_at = (
-        datetime.now(
-            timezone.utc
-        ).isoformat()
-    )
-
+    generated_at = datetime.now(timezone.utc).isoformat()
     errors: list[str] = []
-    espn_rows: list[
-        dict[str, Any]
-    ] = []
-    teams: list[
-        dict[str, str]
-    ] = []
+    espn_rows: list[dict[str, Any]] = []
 
-    # 1) Fastest source: one league-wide request.
     try:
-        league_payload = fetch_json(
-            ESPN_LEAGUE_INJURIES_URL
-        )
-
-        espn_rows = parse_league_injuries(
-            league_payload
-        )
+        html = fetch_html(ESPN_INJURIES_PAGE)
+        espn_rows = parse_espn_injuries_html(html)
 
         print(
-            f"   ESPN league injury rows: "
-            f"{len(espn_rows)}"
+            f"   ESPN page injury rows: {len(espn_rows)}"
         )
+
+        if not espn_rows:
+            errors.append(
+                "ESPN injuries page loaded but no injury rows were parsed"
+            )
 
     except Exception as exc:
         errors.append(
-            f"league endpoint: {exc}"
+            f"ESPN injuries page: {exc}"
         )
 
-    # 2) If league endpoint is empty, use all team endpoints concurrently.
-    if not espn_rows:
-        try:
-            teams_payload = fetch_json(
-                ESPN_TEAMS_URL
-            )
+    roster_rows = build_roster_reserve_injuries()
 
-            teams = parse_espn_teams(
-                teams_payload
-            )
-
-            print(
-                f"   ESPN teams discovered: "
-                f"{len(teams)}"
-            )
-
-            espn_rows, team_errors = (
-                fetch_team_injuries_fast(
-                    teams
-                )
-            )
-
-            errors.extend(
-                team_errors
-            )
-
-            print(
-                f"   ESPN team injury rows: "
-                f"{len(espn_rows)}"
-            )
-
-        except Exception as exc:
-            errors.append(
-                f"team discovery: {exc}"
-            )
-
-    roster_rows = (
-        build_roster_reserve_injuries()
+    print(
+        f"   Roster reserve rows: {len(roster_rows)}"
     )
+
+    if not espn_rows and not roster_rows:
+        previous = existing_nonempty_output()
+
+        if previous:
+            print(
+                "   ⚠️ No fresh rows available; preserving existing non-empty injuries.json."
+            )
+
+            for error in errors[:5]:
+                print(f"      ⚠️ {error}")
+
+            return previous
 
     injuries = deduplicate(
         [
@@ -934,9 +807,7 @@ def build_nfl_injuries():
         ]
     )
 
-    team_summary = build_team_summary(
-        injuries
-    )
+    team_summary = build_team_summary(injuries)
 
     status_counts = {
         "OUT": 0,
@@ -956,19 +827,13 @@ def build_nfl_injuries():
     }
 
     for injury in injuries:
-        status = clean(
-            injury.get("status")
-        ).upper()
-
+        status = clean(injury.get("status")).upper()
         if status in status_counts:
             status_counts[status] += 1
         else:
             status_counts["OTHER"] += 1
 
-        source = clean(
-            injury.get("source")
-        )
-
+        source = clean(injury.get("source"))
         if source in source_counts:
             source_counts[source] += 1
         else:
@@ -977,91 +842,45 @@ def build_nfl_injuries():
     output = {
         "season": CURRENT_SEASON,
         "generated_at": generated_at,
-
         "source": {
-            "primary": (
-                "ESPN Site API"
-            ),
-            "fallback": (
-                "processed NFL roster reserve designations"
-            ),
-            "league_url": (
-                ESPN_LEAGUE_INJURIES_URL
-            ),
-            "team_url_template": (
-                ESPN_TEAM_INJURIES_URL
-            ),
+            "primary": "ESPN NFL injuries page",
+            "fallback": "processed NFL roster reserve designations",
+            "url": ESPN_INJURIES_PAGE,
             "errors": errors,
         },
-
-        "injury_count": len(
-            injuries
-        ),
-
-        "team_count": len(
-            team_summary
-        ),
-
+        "injury_count": len(injuries),
+        "team_count": len(team_summary),
         "provider_counts": {
-            "espn_raw": len(
-                espn_rows
-            ),
-            "roster_reserve_raw": len(
-                roster_rows
-            ),
-            "final": len(
-                injuries
-            ),
+            "espn_raw": len(espn_rows),
+            "roster_reserve_raw": len(roster_rows),
+            "final": len(injuries),
         },
-
         "status_counts": status_counts,
         "source_counts": source_counts,
         "teams": team_summary,
         "injuries": injuries,
     }
 
-    save_json(
-        output,
-        OUTPUT_FILE,
-    )
-
-    save_json(
-        output,
-        WEB_OUTPUT_FILE,
-    )
+    save_json(output, OUTPUT_FILE)
+    save_json(output, WEB_OUTPUT_FILE)
 
     print(
-        f"   Roster reserve rows: "
-        f"{len(roster_rows)}"
+        f"   Final injuries: {len(injuries)}"
     )
-
     print(
-        f"   Final injuries: "
-        f"{len(injuries)}"
+        f"   Teams with injuries: {len(team_summary)}"
     )
 
     if errors:
         print(
-            f"   Endpoint errors: "
-            f"{len(errors)}"
+            f"   Source warnings: {len(errors)}"
         )
-
         for error in errors[:5]:
-            print(
-                f"      ⚠️ {error}"
-            )
+            print(f"      ⚠️ {error}")
 
-    print(
-        f"\n   model: {OUTPUT_FILE}"
-    )
-
-    print(
-        f"   web:   {WEB_OUTPUT_FILE}"
-    )
-
-    print(
-        "\n✅ NFL INJURY DATA COMPLETE\n"
-    )
+    print(f"\n   model: {OUTPUT_FILE}")
+    print(f"   web:   {WEB_OUTPUT_FILE}")
+    print("\n✅ NFL INJURY DATA COMPLETE\n")
 
     return output
 

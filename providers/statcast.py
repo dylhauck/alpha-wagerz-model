@@ -49,7 +49,7 @@ def get_statcast_season_events():
     )
 
 
-def get_statcast_longterm_events(years_back=1):
+def get_statcast_longterm_events(years_back=3):
     end_date = date.today()
     start_date = date(end_date.year - years_back, 3, 1)
 
