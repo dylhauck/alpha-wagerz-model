@@ -1,16 +1,11 @@
 game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status,game_date_utc,game_time,game_time_sort
-824224,2026-09-12,Colorado Rockies @ Detroit Tigers,Colorado Rockies,Detroit Tigers,Tanner Gordon,Andrew Sears,Comerica Park,Warmup,2026-09-12T17:10:00Z,12:10 PM,12:10
-823496,2026-09-12,New York Mets @ New York Yankees,New York Mets,New York Yankees,Zac Thornton,Gerrit Cole,Yankee Stadium,Pre-Game,2026-09-12T17:35:00Z,12:35 PM,12:35
-824630,2026-09-12,Pittsburgh Pirates @ Chicago Cubs,Pittsburgh Pirates,Chicago Cubs,Paul Skenes,Clay Holmes,Wrigley Field,Pre-Game,2026-09-12T18:20:00Z,1:20 PM,13:20
-822768,2026-09-12,Baltimore Orioles @ Toronto Blue Jays,Baltimore Orioles,Toronto Blue Jays,Kyle Bradish,Spencer Miles,Rogers Centre,Pre-Game,2026-09-12T19:07:00Z,2:07 PM,14:07
-822685,2026-09-12,Los Angeles Angels @ Washington Nationals,Los Angeles Angels,Washington Nationals,Walbert Ureña,Andrew Alvarez,Nationals Park,Scheduled,2026-09-12T20:05:00Z,3:05 PM,15:05
-823170,2026-09-12,San Diego Padres @ San Francisco Giants,San Diego Padres,San Francisco Giants,Michael King,Cesar Perdomo,Oracle Park,Pre-Game,2026-09-12T20:05:00Z,3:05 PM,15:05
-824712,2026-09-12,Kansas City Royals @ Boston Red Sox,Kansas City Royals,Boston Red Sox,Randy Dobnak,Ranger Suarez,Fenway Park,Pre-Game,2026-09-12T20:10:00Z,3:10 PM,15:10
-823657,2026-09-12,Cleveland Guardians @ Minnesota Twins,Cleveland Guardians,Minnesota Twins,Daniel Espino,Connor Prielipp,Target Field,Scheduled,2026-09-12T20:10:00Z,3:10 PM,15:10
-823819,2026-09-12,Los Angeles Dodgers @ Miami Marlins,Los Angeles Dodgers,Miami Marlins,Tyler Glasnow,Tyler Phillips,loanDepot park,Scheduled,2026-09-12T20:10:00Z,3:10 PM,15:10
-822927,2026-09-12,Houston Astros @ Tampa Bay Rays,Houston Astros,Tampa Bay Rays,Peter Lambert,Ian Seymour,Tropicana Field,Scheduled,2026-09-12T22:10:00Z,5:10 PM,17:10
-823737,2026-09-12,Cincinnati Reds @ Milwaukee Brewers,Cincinnati Reds,Milwaukee Brewers,Brady Singer,,American Family Field,Scheduled,2026-09-12T23:10:00Z,6:10 PM,18:10
-824870,2026-09-12,Philadelphia Phillies @ Atlanta Braves,Philadelphia Phillies,Atlanta Braves,,Tyler Mahle,Truist Park,Scheduled,2026-09-12T23:15:00Z,6:15 PM,18:15
-823009,2026-09-12,Chicago White Sox @ St. Louis Cardinals,Chicago White Sox,St. Louis Cardinals,Sean Newcomb,Kyle Leahy,Busch Stadium,Scheduled,2026-09-12T23:15:00Z,6:15 PM,18:15
-825035,2026-09-12,Texas Rangers @ Arizona Diamondbacks,Texas Rangers,Arizona Diamondbacks,Kumar Rocker,Brandon Pfaadt,Chase Field,Scheduled,2026-09-13T00:10:00Z,7:10 PM,19:10
-824955,2026-09-12,Seattle Mariners @ Athletics,Seattle Mariners,Athletics,Bryan Woo,Gage Jump,Sutter Health Park,Scheduled,2026-09-13T01:40:00Z,8:40 PM,20:40
+824465,2026-09-14,Los Angeles Dodgers @ Cincinnati Reds,Los Angeles Dodgers,Cincinnati Reds,Tarik Skubal,Nick Lodolo,Great American Ball Park,Scheduled,2026-09-14T22:40:00Z,5:40 PM,17:40
+824386,2026-09-14,Chicago White Sox @ Cleveland Guardians,Chicago White Sox,Cleveland Guardians,Sean Newcomb,Gavin Williams,Progressive Field,Scheduled,2026-09-14T22:40:00Z,5:40 PM,17:40
+822765,2026-09-14,Detroit Tigers @ Toronto Blue Jays,Detroit Tigers,Toronto Blue Jays,Troy Melton,José Soriano,Rogers Centre,Scheduled,2026-09-14T23:07:00Z,6:07 PM,18:07
+823575,2026-09-14,Baltimore Orioles @ New York Mets,Baltimore Orioles,New York Mets,Brandon Young,Jonah Tong,Citi Field,Scheduled,2026-09-14T23:10:00Z,6:10 PM,18:10
+824629,2026-09-14,Atlanta Braves @ Chicago Cubs,Atlanta Braves,Chicago Cubs,Reynaldo López,David Peterson,Wrigley Field,Scheduled,2026-09-14T23:40:00Z,6:40 PM,18:40
+823656,2026-09-14,New York Yankees @ Minnesota Twins,New York Yankees,Minnesota Twins,Will Warren,Dean Kremer,Target Field,Scheduled,2026-09-14T23:40:00Z,6:40 PM,18:40
+823006,2026-09-14,San Francisco Giants @ St. Louis Cardinals,San Francisco Giants,St. Louis Cardinals,Landen Roupp,Quinn Mathews,Busch Stadium,Scheduled,2026-09-14T23:45:00Z,6:45 PM,18:45
+824308,2026-09-14,San Diego Padres @ Colorado Rockies,San Diego Padres,Colorado Rockies,Casey Mize,Tomoyuki Sugano,Coors Field,Scheduled,2026-09-15T00:40:00Z,7:40 PM,19:40
+823981,2026-09-14,Seattle Mariners @ Los Angeles Angels,Seattle Mariners,Los Angeles Angels,Kade Anderson,Reid Detmers,Angel Stadium,Scheduled,2026-09-15T01:38:00Z,8:38 PM,20:38
+825034,2026-09-14,Miami Marlins @ Arizona Diamondbacks,Miami Marlins,Arizona Diamondbacks,Sandy Alcantara,Corbin Burnes,Chase Field,Scheduled,2026-09-15T01:40:00Z,8:40 PM,20:40
