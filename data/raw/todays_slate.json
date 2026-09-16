@@ -8,7 +8,7 @@
     "away_sp": "Anthony Kay",
     "home_sp": "Parker Messick",
     "venue": "Progressive Field",
-    "status": "Game Over",
+    "status": "Final",
     "game_date_utc": "2026-09-16T17:10:00Z",
     "game_time": "12:10 PM",
     "game_time_sort": "12:10"
@@ -22,7 +22,7 @@
     "away_sp": "Anthony Molina",
     "home_sp": "Matthew Liberatore",
     "venue": "Busch Stadium",
-    "status": "Manager challenge",
+    "status": "In Progress",
     "game_date_utc": "2026-09-16T17:15:00Z",
     "game_time": "12:15 PM",
     "game_time_sort": "12:15"
@@ -120,7 +120,7 @@
     "away_sp": "Chris Bassitt",
     "home_sp": "Xzavion Curry",
     "venue": "Citi Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-16T23:10:00Z",
     "game_time": "6:10 PM",
     "game_time_sort": "18:10"
@@ -148,7 +148,7 @@
     "away_sp": "Jake Bennett",
     "home_sp": "MacKenzie Gore",
     "venue": "Globe Life Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-17T00:05:00Z",
     "game_time": "7:05 PM",
     "game_time_sort": "19:05"
@@ -162,7 +162,7 @@
     "away_sp": "Daniel Lynch IV",
     "home_sp": "Cristian Javier",
     "venue": "Daikin Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-17T00:10:00Z",
     "game_time": "7:10 PM",
     "game_time_sort": "19:10"

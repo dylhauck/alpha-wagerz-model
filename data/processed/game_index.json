@@ -32,7 +32,7 @@
     "away_sp": "Chris Bassitt",
     "home_sp": "Xzavion Curry",
     "venue": "Citi Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/823576.json"
   },
   {
@@ -44,7 +44,7 @@
     "away_sp": "Jake Bennett",
     "home_sp": "MacKenzie Gore",
     "venue": "Globe Life Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/822846.json"
   },
   {
@@ -56,7 +56,7 @@
     "away_sp": "Anthony Kay",
     "home_sp": "Parker Messick",
     "venue": "Progressive Field",
-    "status": "Game Over",
+    "status": "Final",
     "file": "data/processed/games/824382.json"
   },
   {
@@ -80,7 +80,7 @@
     "away_sp": "Daniel Lynch IV",
     "home_sp": "Cristian Javier",
     "venue": "Daikin Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/824140.json"
   },
   {
@@ -164,7 +164,7 @@
     "away_sp": "Anthony Molina",
     "home_sp": "Matthew Liberatore",
     "venue": "Busch Stadium",
-    "status": "Manager challenge",
+    "status": "In Progress",
     "file": "data/processed/games/823004.json"
   },
   {

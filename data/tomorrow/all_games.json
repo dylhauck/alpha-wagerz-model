@@ -2538,12 +2538,12 @@
       "game_id": "823334",
       "game": "Milwaukee Brewers @ Pittsburgh Pirates",
       "venue": "PNC Park",
-      "temperature": 81.7,
-      "humidity": 73,
+      "temperature": 82.6,
+      "humidity": 81,
       "conditions": "Light Rain",
       "wind_direction": "NEUTRAL",
-      "wind_speed": 5.5,
-      "wind_degrees": 267,
+      "wind_speed": 7.0,
+      "wind_degrees": 270,
       "roof": "open",
       "forecast_time_utc": "2026-09-17T18:00:00+00:00"
     },
@@ -5103,7 +5103,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-16T19:58:33Z"
+      "market_updated_at": "2026-09-16T20:21:54Z"
     }
   },
   {
@@ -7680,12 +7680,12 @@
       "game_id": "824464",
       "game": "Los Angeles Dodgers @ Cincinnati Reds",
       "venue": "Great American Ball Park",
-      "temperature": 88.1,
-      "humidity": 57,
-      "conditions": "Light Rain",
-      "wind_direction": "NEUTRAL",
-      "wind_speed": 5.1,
-      "wind_degrees": 298,
+      "temperature": 96.1,
+      "humidity": 45,
+      "conditions": "Few Clouds",
+      "wind_direction": "OUT TOWARDS RF",
+      "wind_speed": 7.2,
+      "wind_degrees": 280,
       "roof": "open",
       "forecast_time_utc": "2026-09-17T18:00:00+00:00"
     },
@@ -10280,7 +10280,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-16T19:58:33Z"
+      "market_updated_at": "2026-09-16T20:21:54Z"
     }
   },
   {
@@ -12823,12 +12823,12 @@
       "game_id": "822924",
       "game": "Athletics @ Tampa Bay Rays",
       "venue": "Tropicana Field",
-      "temperature": 88.1,
-      "humidity": 53,
-      "conditions": "Light Rain",
+      "temperature": 94.2,
+      "humidity": 51,
+      "conditions": "Few Clouds",
       "wind_direction": "IN",
-      "wind_speed": 11.1,
-      "wind_degrees": 79,
+      "wind_speed": 11.0,
+      "wind_degrees": 66,
       "roof": "dome",
       "forecast_time_utc": "2026-09-17T18:00:00+00:00"
     },
@@ -15389,7 +15389,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-16T19:58:33Z"
+      "market_updated_at": "2026-09-16T20:21:55Z"
     }
   },
   {
@@ -17937,12 +17937,12 @@
       "game_id": "824305",
       "game": "San Diego Padres @ Colorado Rockies",
       "venue": "Coors Field",
-      "temperature": 78.5,
-      "humidity": 37,
+      "temperature": 77.4,
+      "humidity": 47,
       "conditions": "Broken Clouds",
-      "wind_direction": "IN",
-      "wind_speed": 2.1,
-      "wind_degrees": 16,
+      "wind_direction": "NEUTRAL",
+      "wind_speed": 2.3,
+      "wind_degrees": 61,
       "roof": "open",
       "forecast_time_utc": "2026-09-17T18:00:00+00:00"
     },
@@ -20508,7 +20508,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-16T19:58:34Z"
+      "market_updated_at": "2026-09-16T20:21:55Z"
     }
   },
   {
@@ -23051,12 +23051,12 @@
       "game_id": "824141",
       "game": "Kansas City Royals @ Houston Astros",
       "venue": "Daikin Park",
-      "temperature": 84.6,
-      "humidity": 75,
+      "temperature": 87.3,
+      "humidity": 67,
       "conditions": "Overcast Clouds",
       "wind_direction": "NEUTRAL",
-      "wind_speed": 2.8,
-      "wind_degrees": 81,
+      "wind_speed": 5.3,
+      "wind_degrees": 92,
       "roof": "retractable",
       "forecast_time_utc": "2026-09-18T00:00:00+00:00"
     },
@@ -25617,7 +25617,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-16T19:58:34Z"
+      "market_updated_at": "2026-09-16T20:21:55Z"
     }
   },
   {
@@ -28159,12 +28159,12 @@
       "game_id": "823573",
       "game": "Philadelphia Phillies @ New York Mets",
       "venue": "Citi Field",
-      "temperature": 75.3,
+      "temperature": 70.6,
       "humidity": 73,
-      "conditions": "Broken Clouds",
-      "wind_direction": "NEUTRAL",
-      "wind_speed": 4.6,
-      "wind_degrees": 142,
+      "conditions": "Scattered Clouds",
+      "wind_direction": "OUT TOWARDS LF",
+      "wind_speed": 5.4,
+      "wind_degrees": 186,
       "roof": "open",
       "forecast_time_utc": "2026-09-18T00:00:00+00:00"
     },
@@ -30724,7 +30724,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-16T19:58:34Z"
+      "market_updated_at": "2026-09-16T20:21:55Z"
     }
   },
   {
@@ -33266,12 +33266,12 @@
       "game_id": "824548",
       "game": "Detroit Tigers @ Chicago White Sox",
       "venue": "Rate Field",
-      "temperature": 70.0,
-      "humidity": 91,
-      "conditions": "Overcast Clouds",
-      "wind_direction": "NEUTRAL",
-      "wind_speed": 5.5,
-      "wind_degrees": 22,
+      "temperature": 73.8,
+      "humidity": 93,
+      "conditions": "Light Rain",
+      "wind_direction": "OUT TOWARDS RF",
+      "wind_speed": 6.0,
+      "wind_degrees": 11,
       "roof": "open",
       "forecast_time_utc": "2026-09-18T00:00:00+00:00"
     },
@@ -35831,7 +35831,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-16T19:58:35Z"
+      "market_updated_at": "2026-09-16T20:21:56Z"
     }
   },
   {
@@ -38377,12 +38377,12 @@
       "game_id": "822845",
       "game": "Boston Red Sox @ Texas Rangers",
       "venue": "Globe Life Field",
-      "temperature": 95.5,
-      "humidity": 35,
-      "conditions": "Clear Sky",
+      "temperature": 94.4,
+      "humidity": 32,
+      "conditions": "Scattered Clouds",
       "wind_direction": "NEUTRAL",
-      "wind_speed": 7.2,
-      "wind_degrees": 124,
+      "wind_speed": 6.5,
+      "wind_degrees": 112,
       "roof": "retractable",
       "forecast_time_utc": "2026-09-18T00:00:00+00:00"
     },
@@ -40946,7 +40946,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-16T19:58:35Z"
+      "market_updated_at": "2026-09-16T20:21:56Z"
     }
   },
   {
@@ -43487,12 +43487,12 @@
       "game_id": "823978",
       "game": "Minnesota Twins @ Los Angeles Angels",
       "venue": "Angel Stadium",
-      "temperature": 71.1,
-      "humidity": 65,
+      "temperature": 72.0,
+      "humidity": 62,
       "conditions": "Clear Sky",
       "wind_direction": "OUT",
-      "wind_speed": 3.6,
-      "wind_degrees": 235,
+      "wind_speed": 3.8,
+      "wind_degrees": 249,
       "roof": "open",
       "forecast_time_utc": "2026-09-18T03:00:00+00:00"
     },
@@ -46051,7 +46051,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-16T19:58:35Z"
+      "market_updated_at": "2026-09-16T20:21:56Z"
     }
   }
 ]
