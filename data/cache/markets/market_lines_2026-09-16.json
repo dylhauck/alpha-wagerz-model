@@ -55,7 +55,7 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:29:04Z"
+    "market_updated_at": "2026-09-16T21:50:46Z"
   },
   {
     "game_id": "822926",
@@ -113,7 +113,7 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:29:04Z"
+    "market_updated_at": "2026-09-16T21:50:46Z"
   },
   {
     "game_id": "824467",
@@ -191,7 +191,7 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:29:04Z"
+    "market_updated_at": "2026-09-16T21:50:47Z"
   },
   {
     "game_id": "822680",
@@ -249,7 +249,7 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:29:05Z"
+    "market_updated_at": "2026-09-16T21:50:47Z"
   },
   {
     "game_id": "823576",
@@ -277,11 +277,11 @@
     },
     "team_totals": {
       "away": 4.5,
-      "away_over_price": 104,
-      "away_under_price": -132,
+      "away_over_price": 102,
+      "away_under_price": -130,
       "home": 4.5,
-      "home_over_price": 100,
-      "home_under_price": -128
+      "home_over_price": 102,
+      "home_under_price": -130
     },
     "pitcher_strikeouts": {
       "jonah tong": {
@@ -337,7 +337,7 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:29:05Z"
+    "market_updated_at": "2026-09-16T21:50:47Z"
   },
   {
     "game_id": "824626",
@@ -415,7 +415,7 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:29:05Z"
+    "market_updated_at": "2026-09-16T21:50:47Z"
   },
   {
     "game_id": "822846",
@@ -473,7 +473,7 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:29:06Z"
+    "market_updated_at": "2026-09-16T21:50:48Z"
   },
   {
     "game_id": "824140",
@@ -531,7 +531,7 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:29:06Z"
+    "market_updated_at": "2026-09-16T21:50:48Z"
   },
   {
     "game_id": "824306",
@@ -547,22 +547,22 @@
     },
     "spread": {
       "away": -1.5,
-      "away_price": -114,
+      "away_price": -115,
       "home": 1.5,
-      "home_price": -105
+      "home_price": -104
     },
-    "total": 11.5,
+    "total": 11.0,
     "game_total": {
-      "line": 11.5,
-      "over_price": 110,
-      "under_price": -134
+      "line": 11.0,
+      "over_price": -106,
+      "under_price": -114
     },
     "team_totals": {
       "away": 5.5,
-      "away_over_price": -138,
-      "away_under_price": 108,
+      "away_over_price": -132,
+      "away_under_price": 104,
       "home": 4.5,
-      "home_over_price": -115,
+      "home_over_price": -113,
       "home_under_price": -113
     },
     "pitcher_strikeouts": {
@@ -600,8 +600,8 @@
         "player": "Robbie Ray",
         "normalized_name": "robbie ray",
         "line": 4.5,
-        "over_price": 108,
-        "under_price": -138,
+        "over_price": 106,
+        "under_price": -136,
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
@@ -609,7 +609,7 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:29:06Z"
+    "market_updated_at": "2026-09-16T21:50:48Z"
   },
   {
     "game_id": "823979",
@@ -625,9 +625,9 @@
     },
     "spread": {
       "away": -1.5,
-      "away_price": 125,
+      "away_price": 126,
       "home": 1.5,
-      "home_price": -150
+      "home_price": -152
     },
     "total": 7.5,
     "game_total": {
@@ -637,11 +637,11 @@
     },
     "team_totals": {
       "away": 4.5,
-      "away_over_price": 112,
-      "away_under_price": -142,
+      "away_over_price": 114,
+      "away_under_price": -146,
       "home": 3.5,
-      "home_over_price": 104,
-      "home_under_price": -132
+      "home_over_price": 100,
+      "home_under_price": -128
     },
     "pitcher_strikeouts": {
       "reid detmers": {
@@ -687,7 +687,7 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:29:07Z"
+    "market_updated_at": "2026-09-16T21:50:48Z"
   },
   {
     "game_id": "825031",
@@ -765,7 +765,7 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:29:07Z"
+    "market_updated_at": "2026-09-16T21:50:49Z"
   },
   {
     "game_id": "824382",

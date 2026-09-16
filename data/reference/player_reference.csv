@@ -480,7 +480,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 669203,Corbin Burnes,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
 682998,Corbin Carroll,109,Arizona Diamondbacks,AZ,RF,Outfielder,L,L
 642701,Dennis Santana,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
-571882,Derek Law,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
 593958,Eduardo Rodriguez,109,Arizona Diamondbacks,AZ,P,Pitcher,L,L
 672515,Gabriel Moreno,109,Arizona Diamondbacks,AZ,C,Catcher,R,R
 672695,Geraldo Perdomo,109,Arizona Diamondbacks,AZ,SS,Shortstop,S,R
@@ -500,6 +499,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 571448,Nolan Arenado,109,Arizona Diamondbacks,AZ,3B,Third Base,R,R
 656976,Pavin Smith,109,Arizona Diamondbacks,AZ,1B,First Base,L,L
 814439,Ryan Waldschmidt,109,Arizona Diamondbacks,AZ,CF,Outfielder,R,R
+669194,Ryne Nelson,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
 664199,Taylor Clarke,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
 694374,Tim Tawa,109,Arizona Diamondbacks,AZ,1B,First Base,R,R
 668678,Zac Gallen,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R

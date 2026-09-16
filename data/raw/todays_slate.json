@@ -36,7 +36,7 @@
     "away_sp": "Carlos Rod\u00f3n",
     "home_sp": "Zebby Matthews",
     "venue": "Target Field",
-    "status": "In Progress",
+    "status": "Final",
     "game_date_utc": "2026-09-16T17:40:00Z",
     "game_time": "12:40 PM",
     "game_time_sort": "12:40"
@@ -50,7 +50,7 @@
     "away_sp": "Keider Montero",
     "home_sp": "Max Scherzer",
     "venue": "Rogers Centre",
-    "status": "In Progress",
+    "status": "Game Over",
     "game_date_utc": "2026-09-16T19:07:00Z",
     "game_time": "2:07 PM",
     "game_time_sort": "14:07"
@@ -190,7 +190,7 @@
     "away_sp": "George Kirby",
     "home_sp": "Yusei Kikuchi",
     "venue": "Angel Stadium",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-17T01:38:00Z",
     "game_time": "8:38 PM",
     "game_time_sort": "20:38"

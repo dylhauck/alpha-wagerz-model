@@ -2,142 +2,142 @@
   "hr_targets": [
     {
       "Category": "HR Target",
-      "Player/Team": "Teoscar Hernández",
-      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
-      "Score": 78.7,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Josue De Paula",
-      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
-      "Score": 77.8,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Max Muncy",
-      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
-      "Score": 77.0,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
       "Player/Team": "Nelson Velázquez",
       "Game": "Kansas City Royals @ Houston Astros",
-      "Score": 69.0,
+      "Score": 80.2,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Teoscar Hernández",
+      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
+      "Score": 78.6,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Jackson Merrill",
       "Game": "San Diego Padres @ Colorado Rockies",
-      "Score": 68.3,
+      "Score": 78.6,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Elly De La Cruz",
+      "Player/Team": "Josue De Paula",
       "Game": "Los Angeles Dodgers @ Cincinnati Reds",
-      "Score": 67.2,
+      "Score": 77.5,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Fernando Tatis Jr.",
       "Game": "San Diego Padres @ Colorado Rockies",
-      "Score": 67.1,
+      "Score": 77.1,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Max Muncy",
+      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
+      "Score": 76.9,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Riley Greene",
       "Game": "Detroit Tigers @ Chicago White Sox",
-      "Score": 66.4,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Will Smith",
-      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
-      "Score": 63.0,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Mookie Betts",
-      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
-      "Score": 61.6,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Kyle Tucker",
-      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
-      "Score": 61.0,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Enrique Hernández",
-      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
-      "Score": 59.4,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Freddie Freeman",
-      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
-      "Score": 58.8,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Emmanuel Rodriguez",
-      "Game": "Minnesota Twins @ Los Angeles Angels",
-      "Score": 57.6,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Eugenio Suárez",
-      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
-      "Score": 57.5,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Alex Freeland",
-      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
-      "Score": 57.4,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Sal Stewart",
-      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
-      "Score": 57.0,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Carter Jensen",
-      "Game": "Kansas City Royals @ Houston Astros",
-      "Score": 56.6,
+      "Score": 76.9,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Yordan Alvarez",
       "Game": "Kansas City Royals @ Houston Astros",
-      "Score": 56.4,
+      "Score": 73.8,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Hunter Feduccia",
+      "Player/Team": "Rafael Flores Jr.",
+      "Game": "Milwaukee Brewers @ Pittsburgh Pirates",
+      "Score": 69.7,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Kyle Schwarber",
+      "Game": "Philadelphia Phillies @ New York Mets",
+      "Score": 69.2,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Emmanuel Rodriguez",
+      "Game": "Minnesota Twins @ Los Angeles Angels",
+      "Score": 68.1,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Victor Mesa Jr.",
+      "Game": "Athletics @ Tampa Bay Rays",
+      "Score": 67.8,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Bryan Reynolds",
+      "Game": "Milwaukee Brewers @ Pittsburgh Pirates",
+      "Score": 67.6,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Oneil Cruz",
+      "Game": "Milwaukee Brewers @ Pittsburgh Pirates",
+      "Score": 67.2,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Juan Soto",
+      "Game": "Philadelphia Phillies @ New York Mets",
+      "Score": 67.0,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Elly De La Cruz",
       "Game": "Los Angeles Dodgers @ Cincinnati Reds",
-      "Score": 55.1,
+      "Score": 66.9,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Carter Jensen",
+      "Game": "Kansas City Royals @ Houston Astros",
+      "Score": 66.7,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Mike Trout",
+      "Game": "Minnesota Twins @ Los Angeles Angels",
+      "Score": 66.7,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Junior Caminero",
+      "Game": "Athletics @ Tampa Bay Rays",
+      "Score": 66.0,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Corey Seager",
+      "Game": "Boston Red Sox @ Texas Rangers",
+      "Score": 65.9,
       "Notes": ""
     }
   ],

@@ -68,7 +68,7 @@
     "away_sp": "Keider Montero",
     "home_sp": "Max Scherzer",
     "venue": "Rogers Centre",
-    "status": "In Progress",
+    "status": "Game Over",
     "file": "data/processed/games/822763.json"
   },
   {
@@ -128,7 +128,7 @@
     "away_sp": "Carlos Rod\u00f3n",
     "home_sp": "Zebby Matthews",
     "venue": "Target Field",
-    "status": "In Progress",
+    "status": "Final",
     "file": "data/processed/games/823655.json"
   },
   {
@@ -176,7 +176,7 @@
     "away_sp": "George Kirby",
     "home_sp": "Yusei Kikuchi",
     "venue": "Angel Stadium",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/823979.json"
   }
 ]
