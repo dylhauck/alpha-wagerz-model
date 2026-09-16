@@ -148,6 +148,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 666277,George Soriano,138,St. Louis Cardinals,STL,P,Pitcher,R,R
 700669,Gordon Graceffo,138,St. Louis Cardinals,STL,P,Pitcher,R,R
 671056,Iván Herrera,138,St. Louis Cardinals,STL,DH,Designated Hitter,R,R
+802139,JJ Wetherholt,138,St. Louis Cardinals,STL,2B,Second Base,L,R
 691023,Jordan Walker,138,St. Louis Cardinals,STL,RF,Outfielder,R,R
 665877,José Fermín,138,St. Louis Cardinals,STL,LF,Outfielder,R,R
 695491,Joshua Báez,138,St. Louis Cardinals,STL,LF,Outfielder,R,R
@@ -162,7 +163,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 669357,Nolan Gorman,138,St. Louis Cardinals,STL,3B,Third Base,L,R
 686780,Pedro Pagés,138,St. Louis Cardinals,STL,C,Catcher,R,R
 687273,Quinn Mathews,138,St. Louis Cardinals,STL,P,Pitcher,L,L
-602104,Ramón Urías,138,St. Louis Cardinals,STL,3B,Third Base,R,R
 676617,Riley O'Brien,138,St. Louis Cardinals,STL,P,Pitcher,R,R
 592773,Ryne Stanek,138,St. Louis Cardinals,STL,P,Pitcher,R,R
 695336,Thomas Saggese,138,St. Louis Cardinals,STL,LF,Outfielder,R,R
@@ -345,7 +345,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 695657,Colson Montgomery,145,Chicago White Sox,CWS,SS,Shortstop,L,R
 689818,David Sandlin,145,Chicago White Sox,CWS,P,Pitcher,R,R
 663436,Davis Martin,145,Chicago White Sox,CWS,P,Pitcher,L,R
-700337,Edgar Quero,145,Chicago White Sox,CWS,C,Catcher,S,R
 607200,Erick Fedde,145,Chicago White Sox,CWS,P,Pitcher,R,R
 691799,Grant Taylor,145,Chicago White Sox,CWS,P,Pitcher,R,R
 696146,Hagen Smith,145,Chicago White Sox,CWS,P,Pitcher,L,L
@@ -361,6 +360,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 803011,Sam Antonacci,145,Chicago White Sox,CWS,LF,Outfielder,L,R
 680732,Sean Burke,145,Chicago White Sox,CWS,P,Pitcher,R,R
 656794,Sean Newcomb,145,Chicago White Sox,CWS,P,Pitcher,L,L
+502054,Tommy Pham,145,Chicago White Sox,CWS,LF,Outfielder,R,R
 670950,Trevor Richards,145,Chicago White Sox,CWS,P,Pitcher,R,R
 671976,Tristan Peters,145,Chicago White Sox,CWS,CF,Outfielder,L,R
 682663,Agustín Ramírez,146,Miami Marlins,MIA,DH,Designated Hitter,R,R
@@ -369,7 +369,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 806188,Cade Gibson,146,Miami Marlins,MIA,P,Pitcher,L,L
 676534,Calvin Faucher,146,Miami Marlins,MIA,P,Pitcher,R,R
 690978,Dax Fulton,146,Miami Marlins,MIA,P,Pitcher,L,L
-691277,Deyvison De Los Santos,146,Miami Marlins,MIA,3B,Third Base,R,R
+691277,Deyvison De Los Santos,146,Miami Marlins,MIA,1B,First Base,R,R
 665923,Esteury Ruiz,146,Miami Marlins,MIA,RF,Outfielder,R,R
 691587,Eury Pérez,146,Miami Marlins,MIA,P,Pitcher,R,R
 688363,Graham Pauley,146,Miami Marlins,MIA,3B,Third Base,L,R
@@ -378,7 +378,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 667652,Jack Ralston,146,Miami Marlins,MIA,P,Pitcher,R,R
 805300,Jakob Marsee,146,Miami Marlins,MIA,CF,Outfielder,L,L
 676083,Janson Junk,146,Miami Marlins,MIA,P,Pitcher,R,R
-691858,Jared Serna,146,Miami Marlins,MIA,SS,Shortstop,R,R
+691858,Jared Serna,146,Miami Marlins,MIA,2B,Second Base,R,R
 691594,Javier Sanoja,146,Miami Marlins,MIA,3B,Third Base,R,R
 691788,Joe Mack,146,Miami Marlins,MIA,C,Catcher,L,R
 694795,Josh Ekness,146,Miami Marlins,MIA,P,Pitcher,R,R
@@ -397,7 +397,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 683011,Anthony Volpe,147,New York Yankees,NYY,SS,Shortstop,R,R
 669224,Austin Wells,147,New York Yankees,NYY,C,Catcher,L,R
 700250,Ben Rice,147,New York Yankees,NYY,DH,Designated Hitter,L,R
-690440,Bradley Hanner,147,New York Yankees,NYY,P,Pitcher,R,R
 687396,Brent Headrick,147,New York Yankees,NYY,P,Pitcher,L,L
 693645,Cam Schlittler,147,New York Yankees,NYY,P,Pitcher,R,R
 607074,Carlos Rodón,147,New York Yankees,NYY,P,Pitcher,L,L

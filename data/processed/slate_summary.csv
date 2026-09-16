@@ -1,6 +1,6 @@
 game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status,game_date_utc,game_time,game_time_sort
-824382,2026-09-16,Chicago White Sox @ Cleveland Guardians,Chicago White Sox,Cleveland Guardians,Anthony Kay,Parker Messick,Progressive Field,Scheduled,2026-09-16T17:10:00Z,12:10 PM,12:10
-823004,2026-09-16,San Francisco Giants @ St. Louis Cardinals,San Francisco Giants,St. Louis Cardinals,Anthony Molina,Matthew Liberatore,Busch Stadium,Scheduled,2026-09-16T17:15:00Z,12:15 PM,12:15
+824382,2026-09-16,Chicago White Sox @ Cleveland Guardians,Chicago White Sox,Cleveland Guardians,Anthony Kay,Parker Messick,Progressive Field,Pre-Game,2026-09-16T17:10:00Z,12:10 PM,12:10
+823004,2026-09-16,San Francisco Giants @ St. Louis Cardinals,San Francisco Giants,St. Louis Cardinals,Anthony Molina,Matthew Liberatore,Busch Stadium,Pre-Game,2026-09-16T17:15:00Z,12:15 PM,12:15
 823655,2026-09-16,New York Yankees @ Minnesota Twins,New York Yankees,Minnesota Twins,Carlos Rodón,Zebby Matthews,Target Field,Scheduled,2026-09-16T17:40:00Z,12:40 PM,12:40
 822763,2026-09-16,Detroit Tigers @ Toronto Blue Jays,Detroit Tigers,Toronto Blue Jays,Keider Montero,Max Scherzer,Rogers Centre,Scheduled,2026-09-16T19:07:00Z,2:07 PM,14:07
 824467,2026-09-16,Los Angeles Dodgers @ Cincinnati Reds,Los Angeles Dodgers,Cincinnati Reds,Blake Snell,Andrew Abbott,Great American Ball Park,Scheduled,2026-09-16T22:40:00Z,5:40 PM,17:40
