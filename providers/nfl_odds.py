@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import gzip
 import json
 import os
 from datetime import datetime, timedelta, timezone
@@ -224,10 +225,26 @@ def api_get(
             request,
             timeout=30,
         ) as response:
+            raw = response.read()
+
+            content_encoding = (
+                response.headers.get(
+                    "Content-Encoding",
+                    "",
+                ).lower()
+            )
+
+            # Odds-API.io may return a gzip-compressed
+            # response. Detect it either from the HTTP
+            # header or directly from the gzip magic bytes.
+            if (
+                "gzip" in content_encoding
+                or raw[:2] == b"\x1f\x8b"
+            ):
+                raw = gzip.decompress(raw)
+
             return json.loads(
-                response.read().decode(
-                    "utf-8"
-                )
+                raw.decode("utf-8")
             )
 
     except HTTPError as exc:
