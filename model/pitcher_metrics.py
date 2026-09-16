@@ -115,9 +115,15 @@ def build_metrics_from_file(raw_file, output_file, label):
         & (df["launch_speed"] >= 95)
     )
 
+    # Vectorized version of is_barrel(). Preserves the existing pitcher
+    # definition exactly: EV >= 98 and launch angle between 26 and 30.
+    ev = pd.to_numeric(df["launch_speed"], errors="coerce")
+    la = pd.to_numeric(df["launch_angle"], errors="coerce")
+
     df["is_barrel"] = (
         df["is_bip"]
-        & df.apply(is_barrel, axis=1)
+        & ev.ge(98)
+        & la.between(26, 30, inclusive="both")
     )
 
     # Do not count popups as fly balls.

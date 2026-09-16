@@ -152,7 +152,19 @@ def build_metrics_from_file(raw_file, output_file, label):
     df["batter"] = df["batter"].astype(int).astype(str)
 
     df["player_name_from_ref"] = df["batter"].map(player_lookup).fillna("")
-    df["player_name_from_csv"] = df["player_name"].apply(clean_statcast_name)
+    # Vectorized Statcast "Last, First" -> "First Last" cleanup.
+    csv_names = df["player_name"].fillna("").astype(str).str.strip()
+    has_comma = csv_names.str.contains(",", regex=False)
+    split_names = csv_names.str.split(",", n=1, expand=True)
+    if split_names.shape[1] > 1:
+        cleaned_names = (
+            split_names[1].fillna("").str.strip()
+            + " "
+            + split_names[0].fillna("").str.strip()
+        ).str.strip()
+        df["player_name_from_csv"] = csv_names.where(~has_comma, cleaned_names)
+    else:
+        df["player_name_from_csv"] = csv_names
 
     df["player_name"] = np.where(
         df["player_name_from_ref"] != "",
@@ -182,10 +194,43 @@ def build_metrics_from_file(raw_file, output_file, label):
     # Kasper-style FB% is fly balls, not popups credited as good fly balls.
     df["is_fly_ball"] = df["is_bip"] & (df["bb_type"] == "fly_ball")
 
-    df["is_barrel"] = df["is_bip"] & df.apply(is_barrel, axis=1)
-    df["is_pulled"] = df["is_bip"] & df.apply(is_pulled, axis=1)
+    # Vectorized barrel calculation. This is mathematically identical to is_barrel()
+    # but avoids Python row-by-row apply() across millions of Statcast pitches.
+    ev = pd.to_numeric(df["launch_speed"], errors="coerce")
+    la = pd.to_numeric(df["launch_angle"], errors="coerce")
+    expand = ev - 98
+    barrel_lower = (26 - (expand * 1.5)).clip(lower=8)
+    barrel_upper = (30 + (expand * 1.5)).clip(upper=50)
+
+    df["is_barrel"] = (
+        df["is_bip"]
+        & ev.ge(98)
+        & la.ge(barrel_lower)
+        & la.le(barrel_upper)
+    )
+
+    # Vectorized spray-angle / pull calculation. This preserves the exact
+    # constants, handedness rules, and +/-10 degree thresholds in is_pulled().
+    hc_x = pd.to_numeric(df["hc_x"], errors="coerce")
+    hc_y = pd.to_numeric(df["hc_y"], errors="coerce")
+    spray = np.degrees(np.arctan2(hc_x - 125.42, 198.27 - hc_y))
+    stand = df["stand"].fillna("").astype(str).str.upper()
+
+    df["is_pulled"] = (
+        df["is_bip"]
+        & spray.notna()
+        & (
+            (stand.eq("R") & spray.lt(-10))
+            | (stand.eq("L") & spray.gt(10))
+        )
+    )
+
     df["is_pulled_barrel"] = df["is_barrel"] & df["is_pulled"]
-    df["total_bases"] = df["events"].apply(total_bases)
+    df["total_bases"] = (
+        df["events"]
+        .map({"single": 1, "double": 2, "triple": 3, "home_run": 4})
+        .fillna(0)
+    )
 
     df["xwoba_contact_value"] = np.where(
         df["is_bip"],
