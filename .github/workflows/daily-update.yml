@@ -40,6 +40,16 @@ jobs:
           cache: "pip"
           cache-dependency-path: alpha-wagerz-model/requirements.txt
 
+      - name: Restore Statcast data cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            alpha-wagerz-model/data/raw/statcast/statcast_season.csv
+            alpha-wagerz-model/data/raw/statcast/statcast_longterm.csv
+          key: statcast-data-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            statcast-data-${{ runner.os }}-
+
       - name: Install Python dependencies
         working-directory: alpha-wagerz-model
         run: |
