@@ -51,6 +51,13 @@
     },
     {
       "Category": "HR Target",
+      "Player/Team": "Riley Greene",
+      "Game": "Detroit Tigers @ Chicago White Sox",
+      "Score": 66.4,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
       "Player/Team": "Will Smith",
       "Game": "Los Angeles Dodgers @ Cincinnati Reds",
       "Score": 63.0,
@@ -121,13 +128,6 @@
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Riley Greene",
-      "Game": "Detroit Tigers @ Chicago White Sox",
-      "Score": 56.6,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
       "Player/Team": "Yordan Alvarez",
       "Game": "Kansas City Royals @ Houston Astros",
       "Score": 56.4,
@@ -147,6 +147,13 @@
       "Player/Team": "Kyle Harrison",
       "Game": "Milwaukee Brewers @ Pittsburgh Pirates",
       "Score": 60.8,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "Aaron Nola",
+      "Game": "Philadelphia Phillies @ New York Mets",
+      "Score": 60.1,
       "Notes": ""
     },
     {
@@ -221,6 +228,13 @@
     },
     {
       "Category": "Pitcher K Target",
+      "Player/Team": "Erick Fedde",
+      "Game": "Detroit Tigers @ Chicago White Sox",
+      "Score": 51.0,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
       "Player/Team": "",
       "Game": "Milwaukee Brewers @ Pittsburgh Pirates",
       "Score": 28.4,
@@ -237,20 +251,6 @@
       "Category": "Pitcher K Target",
       "Player/Team": "",
       "Game": "Kansas City Royals @ Houston Astros",
-      "Score": 28.4,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "",
-      "Game": "Philadelphia Phillies @ New York Mets",
-      "Score": 28.4,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "",
-      "Game": "Detroit Tigers @ Chicago White Sox",
       "Score": 28.4,
       "Notes": ""
     },

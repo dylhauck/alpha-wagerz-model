@@ -2204,8 +2204,8 @@
     "away_team": "Philadelphia Phillies",
     "home_team_id": 121,
     "home_team": "New York Mets",
-    "away_sp_id": "",
-    "away_sp": "",
+    "away_sp_id": 605400,
+    "away_sp": "Aaron Nola",
     "home_sp_id": 690997,
     "home_sp": "Nolan McLean",
     "away_hitters": [
@@ -2645,8 +2645,8 @@
     "home_team": "Chicago White Sox",
     "away_sp_id": 664285,
     "away_sp": "Framber Valdez",
-    "home_sp_id": "",
-    "home_sp": "",
+    "home_sp_id": 607200,
+    "home_sp": "Erick Fedde",
     "away_hitters": [
       {
         "id": 679529,
