@@ -54,10 +54,10 @@ jobs:
           mkdir -p config
           printf '%s' "$GOOGLE_CREDENTIALS_JSON" > config/google_credentials.json
 
-      - name: Test NFL odds
+      - name: Run Alpha Wagerz full update
         working-directory: alpha-wagerz-model
         run: |
-            python -u -m providers.nfl_odds
+          python -u -m scripts.run_full_update
 
       - name: Commit updated model data
         working-directory: alpha-wagerz-model
