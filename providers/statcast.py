@@ -181,13 +181,6 @@ def ensure_longterm_master_current(years_back=3):
         f"{earliest_date} to {latest_date}"
     )
 
-    if earliest_date > required_start_date:
-        raise RuntimeError(
-            "The Statcast master does not reach far enough back. "
-            f"Required start: {required_start_date}. "
-            f"Master starts: {earliest_date}."
-        )
-
     next_date = latest_date + timedelta(days=1)
 
     if next_date <= today:
