@@ -8,7 +8,7 @@
     "away_sp": "Anthony Kay",
     "home_sp": "Parker Messick",
     "venue": "Progressive Field",
-    "status": "Pre-Game",
+    "status": "Game Over",
     "game_date_utc": "2026-09-16T17:10:00Z",
     "game_time": "12:10 PM",
     "game_time_sort": "12:10"
@@ -22,7 +22,7 @@
     "away_sp": "Anthony Molina",
     "home_sp": "Matthew Liberatore",
     "venue": "Busch Stadium",
-    "status": "Pre-Game",
+    "status": "Manager challenge",
     "game_date_utc": "2026-09-16T17:15:00Z",
     "game_time": "12:15 PM",
     "game_time_sort": "12:15"
@@ -36,7 +36,7 @@
     "away_sp": "Carlos Rod\u00f3n",
     "home_sp": "Zebby Matthews",
     "venue": "Target Field",
-    "status": "Scheduled",
+    "status": "In Progress",
     "game_date_utc": "2026-09-16T17:40:00Z",
     "game_time": "12:40 PM",
     "game_time_sort": "12:40"
@@ -50,7 +50,7 @@
     "away_sp": "Keider Montero",
     "home_sp": "Max Scherzer",
     "venue": "Rogers Centre",
-    "status": "Scheduled",
+    "status": "In Progress",
     "game_date_utc": "2026-09-16T19:07:00Z",
     "game_time": "2:07 PM",
     "game_time_sort": "14:07"
@@ -64,7 +64,7 @@
     "away_sp": "Blake Snell",
     "home_sp": "Andrew Abbott",
     "venue": "Great American Ball Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-16T22:40:00Z",
     "game_time": "5:40 PM",
     "game_time_sort": "17:40"
@@ -78,7 +78,7 @@
     "away_sp": "Brady Basso",
     "home_sp": "Nick Martinez",
     "venue": "Tropicana Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-16T22:40:00Z",
     "game_time": "5:40 PM",
     "game_time_sort": "17:40"
@@ -92,7 +92,7 @@
     "away_sp": "Logan Henderson",
     "home_sp": "Jared Jones",
     "venue": "PNC Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-16T22:40:00Z",
     "game_time": "5:40 PM",
     "game_time_sort": "17:40"
@@ -106,7 +106,7 @@
     "away_sp": "Zack Wheeler",
     "home_sp": "Jared Simpson",
     "venue": "Nationals Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-16T22:45:00Z",
     "game_time": "5:45 PM",
     "game_time_sort": "17:45"
@@ -118,7 +118,7 @@
     "away_team": "Baltimore Orioles",
     "home_team": "New York Mets",
     "away_sp": "Chris Bassitt",
-    "home_sp": "Robert Stock",
+    "home_sp": "Xzavion Curry",
     "venue": "Citi Field",
     "status": "Scheduled",
     "game_date_utc": "2026-09-16T23:10:00Z",

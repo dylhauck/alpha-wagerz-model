@@ -2,37 +2,23 @@
   "hr_targets": [
     {
       "Category": "HR Target",
-      "Player/Team": "Randal Grichuk",
-      "Game": "Detroit Tigers @ Chicago White Sox",
-      "Score": 74.3,
+      "Player/Team": "Teoscar Hernández",
+      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
+      "Score": 78.7,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Riley Greene",
-      "Game": "Detroit Tigers @ Chicago White Sox",
-      "Score": 74.1,
+      "Player/Team": "Josue De Paula",
+      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
+      "Score": 77.8,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Munetaka Murakami",
-      "Game": "Detroit Tigers @ Chicago White Sox",
-      "Score": 73.3,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Colson Montgomery",
-      "Game": "Detroit Tigers @ Chicago White Sox",
-      "Score": 72.2,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Kyle Teel",
-      "Game": "Detroit Tigers @ Chicago White Sox",
-      "Score": 71.7,
+      "Player/Team": "Max Muncy",
+      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
+      "Score": 77.0,
       "Notes": ""
     },
     {
@@ -51,9 +37,9 @@
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Teoscar Hernández",
+      "Player/Team": "Elly De La Cruz",
       "Game": "Los Angeles Dodgers @ Cincinnati Reds",
-      "Score": 67.9,
+      "Score": 67.2,
       "Notes": ""
     },
     {
@@ -65,65 +51,37 @@
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Miguel Vargas",
-      "Game": "Detroit Tigers @ Chicago White Sox",
-      "Score": 66.5,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Josue De Paula",
+      "Player/Team": "Will Smith",
       "Game": "Los Angeles Dodgers @ Cincinnati Reds",
-      "Score": 63.5,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Tristan Peters",
-      "Game": "Detroit Tigers @ Chicago White Sox",
       "Score": 63.0,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Andrew Benintendi",
-      "Game": "Detroit Tigers @ Chicago White Sox",
+      "Player/Team": "Mookie Betts",
+      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
       "Score": 61.6,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Max Muncy",
+      "Player/Team": "Kyle Tucker",
       "Game": "Los Angeles Dodgers @ Cincinnati Reds",
-      "Score": 61.5,
+      "Score": 61.0,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Brenton Doyle",
-      "Game": "Detroit Tigers @ Chicago White Sox",
-      "Score": 60.4,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Eduardo Valencia",
-      "Game": "Detroit Tigers @ Chicago White Sox",
-      "Score": 58.5,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Elly De La Cruz",
+      "Player/Team": "Enrique Hernández",
       "Game": "Los Angeles Dodgers @ Cincinnati Reds",
-      "Score": 58.0,
+      "Score": 59.4,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Jake Rogers",
-      "Game": "Detroit Tigers @ Chicago White Sox",
-      "Score": 57.8,
+      "Player/Team": "Freddie Freeman",
+      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
+      "Score": 58.8,
       "Notes": ""
     },
     {
@@ -135,13 +93,62 @@
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Hao-Yu Lee",
-      "Game": "Detroit Tigers @ Chicago White Sox",
+      "Player/Team": "Eugenio Suárez",
+      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
+      "Score": 57.5,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Alex Freeland",
+      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
+      "Score": 57.4,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Sal Stewart",
+      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
       "Score": 57.0,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Carter Jensen",
+      "Game": "Kansas City Royals @ Houston Astros",
+      "Score": 56.6,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Riley Greene",
+      "Game": "Detroit Tigers @ Chicago White Sox",
+      "Score": 56.6,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Yordan Alvarez",
+      "Game": "Kansas City Royals @ Houston Astros",
+      "Score": 56.4,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Hunter Feduccia",
+      "Game": "Los Angeles Dodgers @ Cincinnati Reds",
+      "Score": 55.1,
       "Notes": ""
     }
   ],
   "pitchers": [
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "Kyle Harrison",
+      "Game": "Milwaukee Brewers @ Pittsburgh Pirates",
+      "Score": 60.8,
+      "Notes": ""
+    },
     {
       "Category": "Pitcher K Target",
       "Player/Team": "Sonny Gray",
@@ -161,6 +168,13 @@
       "Player/Team": "Michael King",
       "Game": "San Diego Padres @ Colorado Rockies",
       "Score": 59.1,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "Taj Bradley",
+      "Game": "Minnesota Twins @ Los Angeles Angels",
+      "Score": 58.6,
       "Notes": ""
     },
     {
@@ -189,13 +203,6 @@
       "Player/Team": "Brady Singer",
       "Game": "Los Angeles Dodgers @ Cincinnati Reds",
       "Score": 56.4,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "Dustin May",
-      "Game": "Milwaukee Brewers @ Pittsburgh Pirates",
-      "Score": 55.8,
       "Notes": ""
     },
     {
@@ -251,13 +258,6 @@
       "Category": "Pitcher K Target",
       "Player/Team": "",
       "Game": "Boston Red Sox @ Texas Rangers",
-      "Score": 28.4,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "",
-      "Game": "Minnesota Twins @ Los Angeles Angels",
       "Score": 28.4,
       "Notes": ""
     },

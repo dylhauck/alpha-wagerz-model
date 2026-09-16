@@ -256,6 +256,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 702193,Andrew Morris,142,Minnesota Twins,MIN,P,Pitcher,R,R
 668885,Austin Martin,142,Minnesota Twins,MIN,RF,Outfielder,R,R
 641927,Bailey Ober,142,Minnesota Twins,MIN,P,Pitcher,R,R
+805346,Ben Ross,142,Minnesota Twins,MIN,SS,Shortstop,R,R
 686797,Brooks Lee,142,Minnesota Twins,MIN,3B,Third Base,S,R
 687570,Connor Prielipp,142,Minnesota Twins,MIN,P,Pitcher,L,L
 665152,Dean Kremer,142,Minnesota Twins,MIN,P,Pitcher,R,R
@@ -263,7 +264,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 656546,Jeff Hoffman,142,Minnesota Twins,MIN,P,Pitcher,R,R
 657746,Joe Ryan,142,Minnesota Twins,MIN,P,Pitcher,R,R
 605137,Josh Bell,142,Minnesota Twins,MIN,DH,Designated Hitter,S,R
-701785,Kaelen Culpepper,142,Minnesota Twins,MIN,SS,Shortstop,R,R
 665019,Kody Clemens,142,Minnesota Twins,MIN,2B,Second Base,L,R
 681892,Kody Funderburk,142,Minnesota Twins,MIN,P,Pitcher,L,L
 807712,Luke Keaschall,142,Minnesota Twins,MIN,2B,Second Base,R,R
@@ -400,6 +400,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 687396,Brent Headrick,147,New York Yankees,NYY,P,Pitcher,L,L
 693645,Cam Schlittler,147,New York Yankees,NYY,P,Pitcher,R,R
 607074,Carlos Rodón,147,New York Yankees,NYY,P,Pitcher,L,L
+657376,Clarke Schmidt,147,New York Yankees,NYY,P,Pitcher,R,R
 641355,Cody Bellinger,147,New York Yankees,NYY,LF,Outfielder,L,L
 670280,David Bednar,147,New York Yankees,NYY,P,Pitcher,L,R
 806146,George Lombard Jr.,147,New York Yankees,NYY,SS,Shortstop,R,R
@@ -818,12 +819,12 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 681035,Christian Scott,121,New York Mets,NYM,P,Pitcher,R,R
 666624,Christopher Morel,121,New York Mets,NYM,1B,First Base,R,R
 665506,Cristian Pache,121,New York Mets,NYM,OF,Outfield,R,R
-650960,Daniel Duarte,121,New York Mets,NYM,P,Pitcher,R,R
 673380,Dedniel Núñez,121,New York Mets,NYM,P,Pitcher,R,R
 682626,Francisco Alvarez,121,New York Mets,NYM,C,Catcher,R,R
 596019,Francisco Lindor,121,New York Mets,NYM,SS,Shortstop,S,R
 674073,Jack Weisenburger,121,New York Mets,NYM,P,Pitcher,R,R
 676724,Jared Young,121,New York Mets,NYM,1B,First Base,L,R
+642376,Jefry Yan,121,New York Mets,NYM,P,Pitcher,L,L
 804636,Jonah Tong,121,New York Mets,NYM,P,Pitcher,R,R
 702752,Jonathan Pintaro,121,New York Mets,NYM,P,Pitcher,R,R
 665742,Juan Soto,121,New York Mets,NYM,LF,Outfielder,L,L
@@ -834,7 +835,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 681320,Nate Lavender,121,New York Mets,NYM,P,Pitcher,L,L
 703492,Nick Morabito,121,New York Mets,NYM,LF,Outfielder,R,R
 690997,Nolan McLean,121,New York Mets,NYM,P,Pitcher,R,R
-476594,Robert Stock,121,New York Mets,NYM,P,Pitcher,L,R
 640455,Sean Manaea,121,New York Mets,NYM,P,Pitcher,R,L
 668964,Tobias Myers,121,New York Mets,NYM,P,Pitcher,R,R
+675540,Xzavion Curry,121,New York Mets,NYM,P,Pitcher,R,R
 804267,Zac Thornton,121,New York Mets,NYM,P,Pitcher,L,L

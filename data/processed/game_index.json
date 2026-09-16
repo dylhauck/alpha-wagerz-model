@@ -8,7 +8,7 @@
     "away_sp": "Brady Basso",
     "home_sp": "Nick Martinez",
     "venue": "Tropicana Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/822926.json"
   },
   {
@@ -30,7 +30,7 @@
     "away_team": "Baltimore Orioles",
     "home_team": "New York Mets",
     "away_sp": "Chris Bassitt",
-    "home_sp": "Robert Stock",
+    "home_sp": "Xzavion Curry",
     "venue": "Citi Field",
     "status": "Scheduled",
     "file": "data/processed/games/823576.json"
@@ -56,7 +56,7 @@
     "away_sp": "Anthony Kay",
     "home_sp": "Parker Messick",
     "venue": "Progressive Field",
-    "status": "Pre-Game",
+    "status": "Game Over",
     "file": "data/processed/games/824382.json"
   },
   {
@@ -68,7 +68,7 @@
     "away_sp": "Keider Montero",
     "home_sp": "Max Scherzer",
     "venue": "Rogers Centre",
-    "status": "Scheduled",
+    "status": "In Progress",
     "file": "data/processed/games/822763.json"
   },
   {
@@ -92,7 +92,7 @@
     "away_sp": "Blake Snell",
     "home_sp": "Andrew Abbott",
     "venue": "Great American Ball Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/824467.json"
   },
   {
@@ -116,7 +116,7 @@
     "away_sp": "Logan Henderson",
     "home_sp": "Jared Jones",
     "venue": "PNC Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/823332.json"
   },
   {
@@ -128,7 +128,7 @@
     "away_sp": "Carlos Rod\u00f3n",
     "home_sp": "Zebby Matthews",
     "venue": "Target Field",
-    "status": "Scheduled",
+    "status": "In Progress",
     "file": "data/processed/games/823655.json"
   },
   {
@@ -140,7 +140,7 @@
     "away_sp": "Zack Wheeler",
     "home_sp": "Jared Simpson",
     "venue": "Nationals Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/822680.json"
   },
   {
@@ -164,7 +164,7 @@
     "away_sp": "Anthony Molina",
     "home_sp": "Matthew Liberatore",
     "venue": "Busch Stadium",
-    "status": "Pre-Game",
+    "status": "Manager challenge",
     "file": "data/processed/games/823004.json"
   },
   {

@@ -34,7 +34,7 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T15:17:26Z"
+    "market_updated_at": "2026-09-16T19:58:33Z"
   },
   {
     "game_id": "824464",
@@ -71,31 +71,31 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T15:17:27Z"
+    "market_updated_at": "2026-09-16T19:58:33Z"
   },
   {
     "game_id": "822924",
     "game": "Athletics @ Tampa Bay Rays",
     "away_team": "Athletics",
     "home_team": "Tampa Bay Rays",
-    "bookmaker": "",
-    "bookmaker_key": "",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
     "odds_event_id": 63302419,
     "moneyline": {
-      "away": "",
-      "home": ""
+      "away": 220,
+      "home": -270
     },
     "spread": {
-      "away": "",
-      "away_price": "",
-      "home": "",
-      "home_price": ""
+      "away": 1.5,
+      "away_price": -110,
+      "home": -1.5,
+      "home_price": -110
     },
-    "total": "",
+    "total": 7.5,
     "game_total": {
-      "line": "",
-      "over_price": "",
-      "under_price": ""
+      "line": 7.5,
+      "over_price": -124,
+      "under_price": 102
     },
     "team_totals": {
       "away": "",
@@ -108,31 +108,31 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T15:17:27Z"
+    "market_updated_at": "2026-09-16T19:58:33Z"
   },
   {
     "game_id": "824305",
     "game": "San Diego Padres @ Colorado Rockies",
     "away_team": "San Diego Padres",
     "home_team": "Colorado Rockies",
-    "bookmaker": "",
-    "bookmaker_key": "",
+    "bookmaker": "FanDuel",
+    "bookmaker_key": "fanduel",
     "odds_event_id": 63303185,
     "moneyline": {
-      "away": "",
-      "home": ""
+      "away": -158,
+      "home": 134
     },
     "spread": {
-      "away": "",
-      "away_price": "",
-      "home": "",
-      "home_price": ""
+      "away": -1.5,
+      "away_price": -104,
+      "home": 1.5,
+      "home_price": -115
     },
-    "total": "",
+    "total": 10.5,
     "game_total": {
-      "line": "",
-      "over_price": "",
-      "under_price": ""
+      "line": 10.5,
+      "over_price": -138,
+      "under_price": 112
     },
     "team_totals": {
       "away": "",
@@ -145,7 +145,7 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T15:17:28Z"
+    "market_updated_at": "2026-09-16T19:58:34Z"
   },
   {
     "game_id": "824141",
@@ -182,7 +182,7 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T15:17:28Z"
+    "market_updated_at": "2026-09-16T19:58:34Z"
   },
   {
     "game_id": "823573",
@@ -219,7 +219,7 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T15:17:29Z"
+    "market_updated_at": "2026-09-16T19:58:34Z"
   },
   {
     "game_id": "824548",
@@ -256,7 +256,7 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T15:17:29Z"
+    "market_updated_at": "2026-09-16T19:58:35Z"
   },
   {
     "game_id": "822845",
@@ -293,7 +293,7 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T15:17:29Z"
+    "market_updated_at": "2026-09-16T19:58:35Z"
   },
   {
     "game_id": "823978",
@@ -330,6 +330,6 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T15:17:30Z"
+    "market_updated_at": "2026-09-16T19:58:35Z"
   }
 ]

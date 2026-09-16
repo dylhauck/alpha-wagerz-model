@@ -9,8 +9,8 @@
     "away_team": "Milwaukee Brewers",
     "home_team_id": 134,
     "home_team": "Pittsburgh Pirates",
-    "away_sp_id": 669160,
-    "away_sp": "Dustin May",
+    "away_sp_id": 690986,
+    "away_sp": "Kyle Harrison",
     "home_sp_id": "",
     "home_sp": "",
     "away_hitters": [
@@ -3521,8 +3521,8 @@
     "away_team": "Minnesota Twins",
     "home_team_id": 108,
     "home_team": "Los Angeles Angels",
-    "away_sp_id": "",
-    "away_sp": "",
+    "away_sp_id": 671737,
+    "away_sp": "Taj Bradley",
     "home_sp_id": "",
     "home_sp": "",
     "away_hitters": [
@@ -3707,11 +3707,11 @@
         "lineup_source": "active_roster"
       },
       {
-        "id": 701785,
-        "player_id": 701785,
-        "Player ID": 701785,
-        "name": "Kaelen Culpepper",
-        "Player": "Kaelen Culpepper",
+        "id": 805346,
+        "player_id": 805346,
+        "Player ID": 805346,
+        "name": "Ben Ross",
+        "Player": "Ben Ross",
         "team_id": 142,
         "Team ID": 142,
         "team": "Minnesota Twins",
