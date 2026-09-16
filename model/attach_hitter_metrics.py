@@ -281,7 +281,18 @@ def attach_hitter_metrics_to_games():
     lookup = build_metrics_lookup()
     missing = []
 
-    for file in GAMES_DIR.glob("*.json"):
+    # Snapshot the game files once. The old implementation rescanned and
+    # reloaded the entire slate from disk inside the per-game loop.
+    game_files = list(GAMES_DIR.glob("*.json"))
+
+    if not game_files:
+        print("⚠️ No game files found for hitter metric attachment")
+        return
+
+    games_to_save = []
+
+    # Attach metrics and calculate Alpha scores once per hitter/game.
+    for file in game_files:
         game = load_json(file, default={})
 
         if not game:
@@ -304,26 +315,30 @@ def attach_hitter_metrics_to_games():
         for side in ["away", "home"]:
             for hitter in game["hitters"][side]:
                 if hitter.get("Metric Source") == "Missing":
-                    missing.append(f"{game.get('game', file.name)}: {hitter.get('Player')}")
+                    missing.append(
+                        f"{game.get('game', file.name)}: "
+                        f"{hitter.get('Player')}"
+                    )
 
-        save_json(game, file)
+        games_to_save.append((file, game))
 
-        games_to_save = []
+    if not games_to_save:
+        return
 
-        for file in GAMES_DIR.glob("*.json"):
-            game = load_json(file, default={})
-        if game:
-            games_to_save.append((file, game))
-
-        if games_to_save:
-            normalized_games = normalize_slate_hitters([game for _, game in games_to_save])
-        else:
-            return
+    # Normalize the complete slate exactly once after every game has its
+    # hitter metrics. This preserves the same slate-wide normalization
+    # behavior without repeatedly rereading/re-normalizing all game files.
+    normalized_games = normalize_slate_hitters(
+        [game for _, game in games_to_save]
+    )
 
     for (file, _), game in zip(games_to_save, normalized_games):
         save_json(game, file)
 
-    print("✅ Attached hitter metrics using longterm baseline + last-30 recent form")
+    print(
+        "✅ Attached hitter metrics using "
+        "longterm baseline + last-30 recent form"
+    )
 
     if missing:
         print(f"⚠️ Hitters with no metrics found: {len(missing)}")
