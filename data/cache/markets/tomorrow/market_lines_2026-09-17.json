@@ -34,7 +34,7 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:13:01Z"
+    "market_updated_at": "2026-09-16T21:31:10Z"
   },
   {
     "game_id": "824464",
@@ -71,7 +71,7 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:13:01Z"
+    "market_updated_at": "2026-09-16T21:31:10Z"
   },
   {
     "game_id": "822924",
@@ -108,7 +108,7 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:13:01Z"
+    "market_updated_at": "2026-09-16T21:31:10Z"
   },
   {
     "game_id": "824305",
@@ -145,7 +145,7 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:13:01Z"
+    "market_updated_at": "2026-09-16T21:31:11Z"
   },
   {
     "game_id": "824141",
@@ -182,7 +182,7 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:13:02Z"
+    "market_updated_at": "2026-09-16T21:31:11Z"
   },
   {
     "game_id": "823573",
@@ -219,7 +219,7 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:13:02Z"
+    "market_updated_at": "2026-09-16T21:31:11Z"
   },
   {
     "game_id": "824548",
@@ -256,7 +256,7 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:13:02Z"
+    "market_updated_at": "2026-09-16T21:31:12Z"
   },
   {
     "game_id": "822845",
@@ -293,7 +293,7 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:13:02Z"
+    "market_updated_at": "2026-09-16T21:31:12Z"
   },
   {
     "game_id": "823978",
@@ -330,6 +330,6 @@
     "pitcher_strikeouts": {},
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-09-16T21:13:03Z"
+    "market_updated_at": "2026-09-16T21:31:12Z"
   }
 ]
