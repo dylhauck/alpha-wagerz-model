@@ -1,0 +1,87 @@
+name: Alpha Wagerz Daily Update
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+      timezone: "America/Chicago"
+
+  workflow_dispatch:
+
+jobs:
+  daily-update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+
+    env:
+      ODDS_API_IO_KEY: ${{ secrets.ODDS_API_IO_KEY }}
+      OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+
+    steps:
+      - name: Checkout model repository
+        uses: actions/checkout@v6
+        with:
+          repository: dylhauck/alpha-wagerz-model
+          token: ${{ secrets.ALPHA_WAGERZ_PAT }}
+          path: alpha-wagerz-model
+          fetch-depth: 0
+
+      - name: Checkout website repository
+        uses: actions/checkout@v6
+        with:
+          repository: dylhauck/alpha-wagerz-web
+          token: ${{ secrets.ALPHA_WAGERZ_PAT }}
+          path: alpha-wagerz-web
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: alpha-wagerz-model/requirements.txt
+
+      - name: Install Python dependencies
+        working-directory: alpha-wagerz-model
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Create Google credentials file
+        working-directory: alpha-wagerz-model
+        env:
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+        run: |
+          mkdir -p config
+          printf '%s' "$GOOGLE_CREDENTIALS_JSON" > config/google_credentials.json
+
+      - name: Run Alpha Wagerz full update
+        working-directory: alpha-wagerz-model
+        run: python -m scripts.run_full_update
+
+      - name: Commit updated model data
+        working-directory: alpha-wagerz-model
+        run: |
+          git config user.name "Alpha Wagerz Automation"
+          git config user.email "actions@github.com"
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No model repository changes."
+          else
+            git commit -m "Automated daily Alpha Wagerz update"
+            git push origin main
+          fi
+
+      - name: Commit updated website data
+        working-directory: alpha-wagerz-web
+        run: |
+          git config user.name "Alpha Wagerz Automation"
+          git config user.email "actions@github.com"
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No website repository changes."
+          else
+            git commit -m "Automated daily Alpha Wagerz data update"
+            git push origin main
+          fi
