@@ -15,6 +15,9 @@ jobs:
     env:
       ODDS_API_IO_KEY: ${{ secrets.ODDS_API_IO_KEY }}
       OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_ENDPOINT_URL: ${{ secrets.R2_ENDPOINT_URL }}
 
     steps:
       - name: Checkout model repository
@@ -40,21 +43,27 @@ jobs:
           cache: "pip"
           cache-dependency-path: alpha-wagerz-model/requirements.txt
 
-      - name: Restore Statcast data cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            alpha-wagerz-model/data/raw/statcast/statcast_season.csv
-            alpha-wagerz-model/data/raw/statcast/statcast_longterm.csv
-          key: statcast-data-${{ runner.os }}-${{ github.run_id }}
-          restore-keys: |
-            statcast-data-${{ runner.os }}-
-
       - name: Install Python dependencies
         working-directory: alpha-wagerz-model
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
+      - name: Download Statcast master from R2
+        run: |
+          mkdir -p alpha-wagerz-model/data/raw/statcast
+          aws s3 cp \
+            s3://alpha-wagerz-statcast/statcast_longterm.zip \
+            /tmp/statcast_longterm.zip \
+            --endpoint-url "$R2_ENDPOINT_URL"
+
+          unzip -o /tmp/statcast_longterm.zip \
+            -d alpha-wagerz-model/data/raw/statcast
+
+          test -f alpha-wagerz-model/data/raw/statcast/statcast_longterm.csv
+
+          echo "Statcast master restored from R2."
+          ls -lh alpha-wagerz-model/data/raw/statcast/statcast_longterm.csv
 
       - name: Create Google credentials file
         working-directory: alpha-wagerz-model
@@ -69,12 +78,33 @@ jobs:
         run: |
           python -u -m scripts.run_full_update
 
+      - name: Save updated Statcast master to R2
+        run: |
+          rm -f /tmp/statcast_longterm.zip
+
+          cd alpha-wagerz-model/data/raw/statcast
+          zip -j -9 /tmp/statcast_longterm.zip statcast_longterm.csv
+          cd ../../../..
+
+          aws s3 cp \
+            /tmp/statcast_longterm.zip \
+            s3://alpha-wagerz-statcast/statcast_longterm.zip \
+            --endpoint-url "$R2_ENDPOINT_URL"
+
+          echo "Updated Statcast master saved to R2."
+
       - name: Commit updated model data
         working-directory: alpha-wagerz-model
         run: |
           git config user.name "Alpha Wagerz Automation"
           git config user.email "actions@github.com"
           git add -A
+
+          git reset -- \
+            data/raw/statcast/statcast_longterm.csv \
+            data/raw/statcast/statcast_season.csv \
+            data/raw/statcast/statcast_last_30_days.csv \
+            2>/dev/null || true
 
           if git diff --cached --quiet; then
             echo "No model repository changes."
