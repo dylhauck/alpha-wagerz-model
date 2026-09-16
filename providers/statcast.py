@@ -9,8 +9,9 @@ RAW_DIR = Path("data/raw/statcast")
 LAST_30_FILE = RAW_DIR / "statcast_last_30_days.csv"
 SEASON_FILE = RAW_DIR / "statcast_season.csv"
 LONGTERM_FILE = RAW_DIR / "statcast_longterm.csv"
+METADATA_FILE = RAW_DIR / "statcast_master_metadata.txt"
 
-READ_CHUNK_SIZE = 100_000
+READ_CHUNK_SIZE = 150_000
 
 _master_checked_for_date = None
 
@@ -31,29 +32,46 @@ def pull_statcast_range(start_date, end_date):
     )
 
     print(f"✅ Downloaded {len(df)} Statcast rows")
-
     return df
 
 
-def save_statcast(df, output_file):
+def read_metadata_date():
+    """
+    Read the newest game_date recorded for the R2 master.
+
+    This avoids scanning the entire 1.7+ GB CSV on normal daily runs.
+    The first optimized run may not have metadata yet; in that case
+    we scan the master once and create it.
+    """
+
+    if not METADATA_FILE.exists():
+        return None
+
+    try:
+        value = METADATA_FILE.read_text(encoding="utf-8").strip()
+        return date.fromisoformat(value)
+    except Exception:
+        return None
+
+
+def write_metadata_date(latest_date):
     RAW_DIR.mkdir(parents=True, exist_ok=True)
-    df.to_csv(output_file, index=False)
+    METADATA_FILE.write_text(
+        latest_date.isoformat(),
+        encoding="utf-8",
+    )
 
-    print(f"✅ Saved {len(df)} Statcast rows")
-    print(f"📁 {output_file}")
 
-
-def get_csv_date_range(csv_file):
+def scan_master_latest_date():
     """
-    Read only game_date in chunks so the 1.7+ GB long-term master
-    does not have to be loaded into memory just to find its range.
+    One-time fallback used only when metadata does not yet exist.
+    Reads only game_date in chunks.
     """
 
-    earliest = None
     latest = None
 
     for chunk in pd.read_csv(
-        csv_file,
+        LONGTERM_FILE,
         usecols=["game_date"],
         chunksize=READ_CHUNK_SIZE,
         low_memory=False,
@@ -66,25 +84,20 @@ def get_csv_date_range(csv_file):
         if dates.empty:
             continue
 
-        chunk_min = dates.min().date()
-        chunk_max = dates.max().date()
+        chunk_latest = dates.max().date()
 
-        if earliest is None or chunk_min < earliest:
-            earliest = chunk_min
+        if latest is None or chunk_latest > latest:
+            latest = chunk_latest
 
-        if latest is None or chunk_max > latest:
-            latest = chunk_max
-
-    return earliest, latest
+    return latest
 
 
-def append_new_statcast_rows(master_file, new_df):
+def append_new_statcast_rows(new_df):
     """
-    Append dates newer than the master without loading the historical
-    1.7+ GB CSV into memory.
+    Append only dates newer than the historical master.
 
-    Because the update begins on latest_game_date + 1, the appended
-    rows cannot overlap dates already present in the master.
+    The pull begins at latest_game_date + 1, so normal daily updates
+    do not overlap dates already stored in the master.
     """
 
     if new_df.empty:
@@ -93,7 +106,7 @@ def append_new_statcast_rows(master_file, new_df):
 
     master_columns = list(
         pd.read_csv(
-            master_file,
+            LONGTERM_FILE,
             nrows=0,
             low_memory=False,
         ).columns
@@ -102,19 +115,20 @@ def append_new_statcast_rows(master_file, new_df):
     new_columns = list(new_df.columns)
 
     missing_columns = [
-        column for column in master_columns
+        column
+        for column in master_columns
         if column not in new_columns
     ]
-
     extra_columns = [
-        column for column in new_columns
+        column
+        for column in new_columns
         if column not in master_columns
     ]
 
     if missing_columns or extra_columns:
         raise RuntimeError(
-            "Statcast schema changed. Refusing to append to the "
-            "historical master because that could corrupt the dataset. "
+            "Statcast schema changed. Refusing to append because that "
+            "could corrupt the historical master. "
             f"Missing columns: {missing_columns}. "
             f"New columns: {extra_columns}."
         )
@@ -122,7 +136,7 @@ def append_new_statcast_rows(master_file, new_df):
     new_df = new_df[master_columns]
 
     new_df.to_csv(
-        master_file,
+        LONGTERM_FILE,
         mode="a",
         header=False,
         index=False,
@@ -130,17 +144,16 @@ def append_new_statcast_rows(master_file, new_df):
 
     print(
         f"✅ Appended {len(new_df)} new rows to "
-        f"{master_file}"
+        f"{LONGTERM_FILE}"
     )
 
 
-def ensure_longterm_master_current(years_back=3):
+def ensure_longterm_master_current():
     """
-    Ensure the R2-restored long-term master exists and is current.
+    Make the R2-restored historical master current.
 
-    The GitHub workflow restores statcast_longterm.csv before the
-    pipeline starts. Normal daily runs therefore pull only dates newer
-    than the newest date already stored in the master.
+    Normal runs use the metadata file to know the newest stored date,
+    so they do not scan the entire historical CSV just to find it.
     """
 
     global _master_checked_for_date
@@ -152,12 +165,6 @@ def ensure_longterm_master_current(years_back=3):
 
     RAW_DIR.mkdir(parents=True, exist_ok=True)
 
-    required_start_date = date(
-        today.year - years_back,
-        3,
-        1,
-    )
-
     if not LONGTERM_FILE.exists():
         raise FileNotFoundError(
             f"{LONGTERM_FILE} was not found. "
@@ -165,21 +172,23 @@ def ensure_longterm_master_current(years_back=3):
             "master from R2 before running the model."
         )
 
-    print(f"♻️ Using Statcast master: {LONGTERM_FILE}")
+    latest_date = read_metadata_date()
 
-    earliest_date, latest_date = get_csv_date_range(
-        LONGTERM_FILE
-    )
-
-    if earliest_date is None or latest_date is None:
-        raise RuntimeError(
-            f"{LONGTERM_FILE} does not contain valid game_date data."
+    if latest_date is None:
+        print(
+            "ℹ️ Statcast metadata not found. "
+            "Scanning master once to initialize it..."
         )
+        latest_date = scan_master_latest_date()
 
-    print(
-        f"📅 Statcast master range: "
-        f"{earliest_date} to {latest_date}"
-    )
+        if latest_date is None:
+            raise RuntimeError(
+                f"{LONGTERM_FILE} does not contain valid game_date data."
+            )
+
+        write_metadata_date(latest_date)
+
+    print(f"📅 Statcast master newest date: {latest_date}")
 
     next_date = latest_date + timedelta(days=1)
 
@@ -189,41 +198,59 @@ def ensure_longterm_master_current(years_back=3):
             today,
         )
 
-        append_new_statcast_rows(
-            LONGTERM_FILE,
-            new_df,
-        )
+        append_new_statcast_rows(new_df)
+
+        if not new_df.empty and "game_date" in new_df.columns:
+            new_dates = pd.to_datetime(
+                new_df["game_date"],
+                errors="coerce",
+            ).dropna()
+
+            if not new_dates.empty:
+                latest_date = max(
+                    latest_date,
+                    new_dates.max().date(),
+                )
+
+        # Even on off-days/no-data days, keep the actual newest
+        # game_date rather than falsely advancing the metadata.
+        write_metadata_date(latest_date)
     else:
         print("✅ Statcast master is already current.")
 
     _master_checked_for_date = today
 
 
-def build_window_from_master(
-    output_file,
-    start_date,
-    end_date,
-):
+def build_recent_and_season_from_master(days_back=30):
     """
-    Build a smaller Statcast CSV from the long-term master in chunks.
+    Build last-30-days and current-season files in ONE pass through
+    the historical master.
 
-    This keeps memory usage controlled while preserving every row and
-    every column in the requested date window.
+    This replaces two separate full scans of the 1.7+ GB CSV.
     """
 
     ensure_longterm_master_current()
 
-    RAW_DIR.mkdir(parents=True, exist_ok=True)
+    today = date.today()
+    recent_start = today - timedelta(days=days_back)
+    season_start = date(today.year, 3, 1)
 
-    temp_file = output_file.with_suffix(
-        output_file.suffix + ".tmp"
+    recent_temp = LAST_30_FILE.with_suffix(".csv.tmp")
+    season_temp = SEASON_FILE.with_suffix(".csv.tmp")
+
+    for temp_file in (recent_temp, season_temp):
+        if temp_file.exists():
+            temp_file.unlink()
+
+    recent_rows = 0
+    season_rows = 0
+    recent_header_written = False
+    season_header_written = False
+
+    print(
+        "📊 Building last-30-days and current-season Statcast "
+        "datasets in one master pass..."
     )
-
-    if temp_file.exists():
-        temp_file.unlink()
-
-    rows_written = 0
-    wrote_header = False
 
     for chunk in pd.read_csv(
         LONGTERM_FILE,
@@ -240,29 +267,47 @@ def build_window_from_master(
             errors="coerce",
         )
 
-        mask = (
-            parsed_dates.notna()
-            & (parsed_dates.dt.date >= start_date)
-            & (parsed_dates.dt.date <= end_date)
+        valid = parsed_dates.notna()
+
+        season_mask = (
+            valid
+            & (parsed_dates.dt.date >= season_start)
+            & (parsed_dates.dt.date <= today)
         )
 
-        window_chunk = chunk.loc[mask]
-
-        if window_chunk.empty:
-            continue
-
-        window_chunk.to_csv(
-            temp_file,
-            mode="a",
-            header=not wrote_header,
-            index=False,
+        recent_mask = (
+            valid
+            & (parsed_dates.dt.date >= recent_start)
+            & (parsed_dates.dt.date <= today)
         )
 
-        wrote_header = True
-        rows_written += len(window_chunk)
+        season_chunk = chunk.loc[season_mask]
+        recent_chunk = chunk.loc[recent_mask]
 
-    if not wrote_header:
-        columns = list(
+        if not season_chunk.empty:
+            season_chunk.to_csv(
+                season_temp,
+                mode="a",
+                header=not season_header_written,
+                index=False,
+            )
+            season_header_written = True
+            season_rows += len(season_chunk)
+
+        if not recent_chunk.empty:
+            recent_chunk.to_csv(
+                recent_temp,
+                mode="a",
+                header=not recent_header_written,
+                index=False,
+            )
+            recent_header_written = True
+            recent_rows += len(recent_chunk)
+
+    master_columns = None
+
+    if not season_header_written or not recent_header_written:
+        master_columns = list(
             pd.read_csv(
                 LONGTERM_FILE,
                 nrows=0,
@@ -270,96 +315,77 @@ def build_window_from_master(
             ).columns
         )
 
+    if not season_header_written:
         pd.DataFrame(
-            columns=columns
+            columns=master_columns
         ).to_csv(
-            temp_file,
+            season_temp,
             index=False,
         )
 
-    temp_file.replace(output_file)
+    if not recent_header_written:
+        pd.DataFrame(
+            columns=master_columns
+        ).to_csv(
+            recent_temp,
+            index=False,
+        )
 
-    print(f"✅ Saved {rows_written} Statcast rows")
-    print(f"📁 {output_file}")
+    season_temp.replace(SEASON_FILE)
+    recent_temp.replace(LAST_30_FILE)
 
-    return output_file
+    print(f"✅ Season rows: {season_rows}")
+    print(f"📁 {SEASON_FILE}")
+    print(f"✅ Last-{days_back}-days rows: {recent_rows}")
+    print(f"📁 {LAST_30_FILE}")
 
 
 def get_statcast_batter_events(days_back=30):
     """
-    Build the last-N-days dataset from the full historical master.
+    Ensure both derived datasets exist, then return the recent path.
 
-    No separate 30-day Baseball Savant download is required.
+    The project's downstream metric builders read the CSV files from
+    disk, so returning the path avoids loading a large dataframe here.
     """
 
-    end_date = date.today()
-    start_date = end_date - timedelta(days=days_back)
-
-    print(
-        f"📊 Building last-{days_back}-day Statcast "
-        f"dataset from master..."
+    build_recent_and_season_from_master(
+        days_back=days_back
     )
-
-    return build_window_from_master(
-        LAST_30_FILE,
-        start_date,
-        end_date,
-    )
+    return LAST_30_FILE
 
 
 def get_statcast_season_events():
     """
-    Build the current-season dataset from the full historical master.
-
-    No separate season-long Baseball Savant download is required.
+    The season file is produced together with the recent file during
+    the first Statcast call in the full update.
     """
 
-    end_date = date.today()
-    start_date = date(
-        end_date.year,
-        3,
-        1,
-    )
+    if not SEASON_FILE.exists():
+        build_recent_and_season_from_master()
 
-    print(
-        "📊 Building current-season Statcast "
-        "dataset from master..."
-    )
-
-    return build_window_from_master(
-        SEASON_FILE,
-        start_date,
-        end_date,
-    )
+    return SEASON_FILE
 
 
 def get_statcast_longterm_events(years_back=3):
     """
-    Keep the full long-term Statcast master current.
+    Preserve the complete historical master and update it forward.
 
-    The existing project convention is preserved:
-        March 1 of current_year - years_back
-        through today.
-
-    The master itself is persisted by the GitHub workflow in R2.
+    years_back is retained for compatibility with existing callers;
+    the persisted R2 master itself remains the source of truth.
     """
 
-    ensure_longterm_master_current(
-        years_back=years_back
-    )
-
+    ensure_longterm_master_current()
     return LONGTERM_FILE
 
 
 def get_all_statcast_events():
-    print("\n📊 Building Last 30 Days Statcast...")
-    get_statcast_batter_events()
+    print("\n📊 Updating Statcast master and derived datasets...")
+    build_recent_and_season_from_master(days_back=30)
 
-    print("\n📊 Building Current Season Statcast...")
-    get_statcast_season_events()
-
-    print("\n📊 Updating Long-Term Statcast...")
-    get_statcast_longterm_events()
+    print("\n📊 Statcast datasets ready:")
+    print(f"📁 {LAST_30_FILE}")
+    print(f"📁 {SEASON_FILE}")
+    print(f"📁 {LONGTERM_FILE}")
 
 
 if __name__ == "__main__":

@@ -52,6 +52,7 @@ jobs:
       - name: Download Statcast master from R2
         run: |
           mkdir -p alpha-wagerz-model/data/raw/statcast
+
           aws s3 cp \
             s3://alpha-wagerz-statcast/statcast_longterm.zip \
             /tmp/statcast_longterm.zip \
@@ -61,6 +62,16 @@ jobs:
             -d alpha-wagerz-model/data/raw/statcast
 
           test -f alpha-wagerz-model/data/raw/statcast/statcast_longterm.csv
+
+          # Metadata is tiny and may not exist on the first optimized run.
+          if aws s3 cp \
+            s3://alpha-wagerz-statcast/statcast_master_metadata.txt \
+            alpha-wagerz-model/data/raw/statcast/statcast_master_metadata.txt \
+            --endpoint-url "$R2_ENDPOINT_URL"; then
+            echo "Statcast metadata restored from R2."
+          else
+            echo "No Statcast metadata found yet; Python will create it."
+          fi
 
           echo "Statcast master restored from R2."
           ls -lh alpha-wagerz-model/data/raw/statcast/statcast_longterm.csv
@@ -82,8 +93,10 @@ jobs:
         run: |
           rm -f /tmp/statcast_longterm.zip
 
+          # Fast ZIP compression. The master remains lossless; this only
+          # trades a somewhat larger upload for much less CPU time.
           cd alpha-wagerz-model/data/raw/statcast
-          zip -j -9 /tmp/statcast_longterm.zip statcast_longterm.csv
+          zip -j -1 /tmp/statcast_longterm.zip statcast_longterm.csv
           cd ../../../..
 
           aws s3 cp \
@@ -91,7 +104,12 @@ jobs:
             s3://alpha-wagerz-statcast/statcast_longterm.zip \
             --endpoint-url "$R2_ENDPOINT_URL"
 
-          echo "Updated Statcast master saved to R2."
+          aws s3 cp \
+            alpha-wagerz-model/data/raw/statcast/statcast_master_metadata.txt \
+            s3://alpha-wagerz-statcast/statcast_master_metadata.txt \
+            --endpoint-url "$R2_ENDPOINT_URL"
+
+          echo "Updated Statcast master and metadata saved to R2."
 
       - name: Commit updated model data
         working-directory: alpha-wagerz-model
@@ -104,6 +122,7 @@ jobs:
             data/raw/statcast/statcast_longterm.csv \
             data/raw/statcast/statcast_season.csv \
             data/raw/statcast/statcast_last_30_days.csv \
+            data/raw/statcast/statcast_master_metadata.txt \
             2>/dev/null || true
 
           if git diff --cached --quiet; then
