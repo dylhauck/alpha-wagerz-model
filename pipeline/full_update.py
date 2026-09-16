@@ -2,7 +2,11 @@ from graphics.create_weather_graphic import create_weather_graphic
 from model.nfl.injury_context import build_nfl_injury_context
 from providers.mlb_reference import build_reference_files
 from providers.mlb_players import build_player_reference
-from providers.statcast import get_statcast_batter_events
+from providers.statcast import (
+    get_statcast_batter_events,
+    get_statcast_season_events,
+    get_statcast_longterm_events,
+)
 from providers.weather import build_weather_file
 from providers.pitch_mix import build_pitch_mix
 
@@ -78,7 +82,15 @@ def run_full_update():
     build_injury_report()
 
     print("\n📊 Statcast")
+
+    print("\n📊 Pulling Last 30 Days Statcast...")
     get_statcast_batter_events()
+
+    print("\n📊 Pulling Current Season Statcast...")
+    get_statcast_season_events()
+
+    print("\n📊 Pulling Long-Term Statcast...")
+    get_statcast_longterm_events()
 
     print("\n🌤️ Weather")
     build_weather_file()
