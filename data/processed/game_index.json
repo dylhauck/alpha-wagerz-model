@@ -20,7 +20,7 @@
     "away_sp": "JR Ritchie",
     "home_sp": "Shota Imanaga",
     "venue": "Wrigley Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/824626.json"
   },
   {
@@ -152,7 +152,7 @@
     "away_sp": "Robbie Ray",
     "home_sp": "Mason Adams",
     "venue": "Coors Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/824306.json"
   },
   {
@@ -164,7 +164,7 @@
     "away_sp": "Anthony Molina",
     "home_sp": "Matthew Liberatore",
     "venue": "Busch Stadium",
-    "status": "In Progress",
+    "status": "Final",
     "file": "data/processed/games/823004.json"
   },
   {

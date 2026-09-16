@@ -22,7 +22,7 @@
     "away_sp": "Anthony Molina",
     "home_sp": "Matthew Liberatore",
     "venue": "Busch Stadium",
-    "status": "In Progress",
+    "status": "Final",
     "game_date_utc": "2026-09-16T17:15:00Z",
     "game_time": "12:15 PM",
     "game_time_sort": "12:15"
@@ -134,7 +134,7 @@
     "away_sp": "JR Ritchie",
     "home_sp": "Shota Imanaga",
     "venue": "Wrigley Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-16T23:40:00Z",
     "game_time": "6:40 PM",
     "game_time_sort": "18:40"
@@ -176,7 +176,7 @@
     "away_sp": "Robbie Ray",
     "home_sp": "Mason Adams",
     "venue": "Coors Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-17T00:40:00Z",
     "game_time": "7:40 PM",
     "game_time_sort": "19:40"
