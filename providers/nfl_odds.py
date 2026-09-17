@@ -946,45 +946,84 @@ def normalize_player_props(
                 "point",
             )
 
-            over_odds = first_number(
+            # Odds-API.io returns sportsbook prices
+            # as DECIMAL odds. Normalize every player
+            # prop price to American odds here so all
+            # downstream files use one consistent format.
+            over_decimal = first_number(
                 row,
                 "over",
                 "overOdds",
                 "over_odds",
             )
 
-            under_odds = first_number(
+            under_decimal = first_number(
                 row,
                 "under",
                 "underOdds",
                 "under_odds",
             )
 
-            yes_odds = first_number(
+            yes_decimal = first_number(
                 row,
                 "yes",
                 "yesOdds",
                 "yes_odds",
             )
 
-            no_odds = first_number(
+            no_decimal = first_number(
                 row,
                 "no",
                 "noOdds",
                 "no_odds",
             )
 
+            # Anytime TD markets may expose the YES price
+            # as a generic odds/price/value field instead
+            # of an explicit yes field.
             if (
                 prop_type
                 == "anytime_touchdown"
-                and yes_odds is None
+                and yes_decimal is None
             ):
-                yes_odds = first_number(
+                yes_decimal = first_number(
                     row,
                     "odds",
                     "price",
                     "value",
                 )
+
+            over_odds = (
+                decimal_to_american(
+                    over_decimal
+                )
+                if over_decimal is not None
+                else None
+            )
+
+            under_odds = (
+                decimal_to_american(
+                    under_decimal
+                )
+                if under_decimal is not None
+                else None
+            )
+
+            yes_odds = (
+                decimal_to_american(
+                    yes_decimal
+                )
+                if yes_decimal is not None
+                else None
+            )
+
+            no_odds = (
+                decimal_to_american(
+                    no_decimal
+                )
+                if no_decimal is not None
+                else None
+            )
 
             props.append(
                 {
