@@ -448,10 +448,10 @@
     "away_team": "Kansas City Royals",
     "home_team_id": 134,
     "home_team": "Pittsburgh Pirates",
-    "away_sp_id": "",
-    "away_sp": "",
-    "home_sp_id": "",
-    "home_sp": "",
+    "away_sp_id": 677976,
+    "away_sp": "Randy Dobnak",
+    "home_sp_id": 694973,
+    "home_sp": "Paul Skenes",
     "away_hitters": [
       {
         "id": 686469,
@@ -1767,8 +1767,8 @@
     "home_team": "Tampa Bay Rays",
     "away_sp_id": "",
     "away_sp": "",
-    "home_sp_id": "",
-    "home_sp": "",
+    "home_sp_id": 693855,
+    "home_sp": "Ian Seymour",
     "away_hitters": [
       {
         "id": 575929,
@@ -2028,21 +2028,6 @@
         "lineup_source": "active_roster"
       },
       {
-        "id": 663611,
-        "player_id": 663611,
-        "Player ID": 663611,
-        "name": "Nick Madrigal",
-        "Player": "Nick Madrigal",
-        "team_id": 139,
-        "Team ID": 139,
-        "team": "Tampa Bay Rays",
-        "Team": "Tampa Bay Rays",
-        "position": "3B",
-        "Position": "3B",
-        "batting_order": "",
-        "lineup_source": "active_roster"
-      },
-      {
         "id": 689414,
         "player_id": 689414,
         "Player ID": 689414,
@@ -2183,6 +2168,21 @@
         "Player ID": 622761,
         "name": "Jorge Mateo",
         "Player": "Jorge Mateo",
+        "team_id": 139,
+        "Team ID": 139,
+        "team": "Tampa Bay Rays",
+        "Team": "Tampa Bay Rays",
+        "position": "SS",
+        "Position": "SS",
+        "batting_order": "",
+        "lineup_source": "active_roster"
+      },
+      {
+        "id": 670764,
+        "player_id": 670764,
+        "Player ID": 670764,
+        "name": "Taylor Walls",
+        "Player": "Taylor Walls",
         "team_id": 139,
         "Team ID": 139,
         "team": "Tampa Bay Rays",
@@ -6172,8 +6172,8 @@
     "home_team": "Los Angeles Dodgers",
     "away_sp_id": 702885,
     "away_sp": "Cesar Perdomo",
-    "home_sp_id": "",
-    "home_sp": "",
+    "home_sp_id": 607192,
+    "home_sp": "Tyler Glasnow",
     "away_hitters": [
       {
         "id": 801501,

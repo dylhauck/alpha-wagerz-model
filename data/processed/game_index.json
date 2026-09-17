@@ -8,7 +8,7 @@
     "away_sp": "Jeffrey Springs",
     "home_sp": "Drew Rasmussen",
     "venue": "Tropicana Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/822924.json"
   },
   {
@@ -56,7 +56,7 @@
     "away_sp": "Justin Wrobleski",
     "home_sp": "Brady Singer",
     "venue": "Great American Ball Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/824464.json"
   },
   {
@@ -68,7 +68,7 @@
     "away_sp": "Kyle Harrison",
     "home_sp": "Wilber Dotel",
     "venue": "PNC Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/823334.json"
   },
   {

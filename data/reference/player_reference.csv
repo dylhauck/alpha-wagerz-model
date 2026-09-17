@@ -187,11 +187,11 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 687330,Kevin Kelly,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 689414,Liam Hicks,139,Tampa Bay Rays,TB,C,Catcher,L,R
 663743,Nick Fortes,139,Tampa Bay Rays,TB,C,Catcher,R,R
-663611,Nick Madrigal,139,Tampa Bay Rays,TB,3B,Third Base,R,R
 607259,Nick Martinez,139,Tampa Bay Rays,TB,P,Pitcher,L,R
 680700,Richie Palacios,139,Tampa Bay Rays,TB,2B,Second Base,L,R
 668723,Ryan Vilade,139,Tampa Bay Rays,TB,RF,Outfielder,R,R
 571927,Steven Matz,139,Tampa Bay Rays,TB,P,Pitcher,R,L
+670764,Taylor Walls,139,Tampa Bay Rays,TB,SS,Shortstop,S,R
 694494,Ty Johnson,139,Tampa Bay Rays,TB,P,Pitcher,L,R
 683748,Victor Mesa Jr.,139,Tampa Bay Rays,TB,RF,Outfielder,L,L
 650490,Yandy Díaz,139,Tampa Bay Rays,TB,DH,Designated Hitter,R,R
@@ -760,7 +760,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 681911,Alex Vesia,119,Los Angeles Dodgers,LAD,P,Pitcher,L,L
 605483,Blake Snell,119,Los Angeles Dodgers,LAD,P,Pitcher,L,L
 595014,Blake Treinen,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
-676272,Bobby Miller,119,Los Angeles Dodgers,LAD,P,Pitcher,L,R
 592779,Brock Stewart,119,Los Angeles Dodgers,LAD,P,Pitcher,L,R
 672613,Eliezer Alfonzo,119,Los Angeles Dodgers,LAD,C,Catcher,S,R
 571771,Enrique Hernández,119,Los Angeles Dodgers,LAD,3B,Third Base,R,R
@@ -772,6 +771,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 680736,Justin Wrobleski,119,Los Angeles Dodgers,LAD,P,Pitcher,L,L
 663460,Kris Bubic,119,Los Angeles Dodgers,LAD,P,Pitcher,L,L
 663656,Kyle Tucker,119,Los Angeles Dodgers,LAD,RF,Outfielder,L,R
+689017,Landon Knack,119,Los Angeles Dodgers,LAD,P,Pitcher,L,R
 571970,Max Muncy,119,Los Angeles Dodgers,LAD,3B,Third Base,L,R
 500743,Miguel Rojas,119,Los Angeles Dodgers,LAD,2B,Second Base,R,R
 605141,Mookie Betts,119,Los Angeles Dodgers,LAD,SS,Shortstop,R,R

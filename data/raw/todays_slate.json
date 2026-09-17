@@ -8,7 +8,7 @@
     "away_sp": "Kyle Harrison",
     "home_sp": "Wilber Dotel",
     "venue": "PNC Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-17T16:35:00Z",
     "game_time": "11:35 AM",
     "game_time_sort": "11:35"
@@ -22,7 +22,7 @@
     "away_sp": "Justin Wrobleski",
     "home_sp": "Brady Singer",
     "venue": "Great American Ball Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-17T16:40:00Z",
     "game_time": "11:40 AM",
     "game_time_sort": "11:40"
@@ -36,7 +36,7 @@
     "away_sp": "Jeffrey Springs",
     "home_sp": "Drew Rasmussen",
     "venue": "Tropicana Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-17T17:10:00Z",
     "game_time": "12:10 PM",
     "game_time_sort": "12:10"

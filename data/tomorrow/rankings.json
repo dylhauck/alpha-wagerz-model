@@ -107,6 +107,13 @@
     },
     {
       "Category": "HR Target",
+      "Player/Team": "Rafael Flores Jr.",
+      "Game": "Kansas City Royals @ Pittsburgh Pirates",
+      "Score": 69.9,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
       "Player/Team": "Kody Clemens",
       "Game": "Minnesota Twins @ Los Angeles Angels",
       "Score": 69.8,
@@ -114,30 +121,23 @@
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Lars Nootbaar",
-      "Game": "New York Yankees @ Arizona Diamondbacks",
+      "Player/Team": "Carter Jensen",
+      "Game": "Kansas City Royals @ Pittsburgh Pirates",
+      "Score": 69.5,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Mickey Gasper",
+      "Game": "Boston Red Sox @ Tampa Bay Rays",
       "Score": 68.8,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Elly De La Cruz",
-      "Game": "Chicago Cubs @ Cincinnati Reds",
-      "Score": 68.3,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Max Muncy",
-      "Game": "San Francisco Giants @ Los Angeles Dodgers",
-      "Score": 68.3,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Bryce Harper",
-      "Game": "Philadelphia Phillies @ New York Mets",
-      "Score": 68.2,
+      "Player/Team": "Lars Nootbaar",
+      "Game": "New York Yankees @ Arizona Diamondbacks",
+      "Score": 68.8,
       "Notes": ""
     }
   ],
@@ -151,9 +151,23 @@
     },
     {
       "Category": "Pitcher K Target",
+      "Player/Team": "Tyler Glasnow",
+      "Game": "San Francisco Giants @ Los Angeles Dodgers",
+      "Score": 65.4,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
       "Player/Team": "Dylan Cease",
       "Game": "Toronto Blue Jays @ Texas Rangers",
       "Score": 65.0,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "Ian Seymour",
+      "Game": "Boston Red Sox @ Tampa Bay Rays",
+      "Score": 64.6,
       "Notes": ""
     },
     {
@@ -168,6 +182,13 @@
       "Player/Team": "Cade Cavalli",
       "Game": "Washington Nationals @ St. Louis Cardinals",
       "Score": 61.7,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "Paul Skenes",
+      "Game": "Kansas City Royals @ Pittsburgh Pirates",
+      "Score": 61.5,
       "Notes": ""
     },
     {
@@ -256,30 +277,9 @@
     },
     {
       "Category": "Pitcher K Target",
-      "Player/Team": "",
-      "Game": "Chicago Cubs @ Cincinnati Reds",
-      "Score": 28.4,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "",
+      "Player/Team": "Randy Dobnak",
       "Game": "Kansas City Royals @ Pittsburgh Pirates",
-      "Score": 28.4,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "",
-      "Game": "Kansas City Royals @ Pittsburgh Pirates",
-      "Score": 28.4,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "",
-      "Game": "Milwaukee Brewers @ Baltimore Orioles",
-      "Score": 28.4,
+      "Score": 51.8,
       "Notes": ""
     }
   ]
