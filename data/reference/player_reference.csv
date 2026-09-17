@@ -714,7 +714,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 686613,Hunter Brown,117,Houston Astros,HOU,P,Pitcher,R,R
 670623,Isaac Paredes,117,Houston Astros,HOU,3B,Third Base,R,R
 665161,Jeremy Peña,117,Houston Astros,HOU,SS,Shortstop,R,R
-694388,Joey Loperfido,117,Houston Astros,HOU,LF,Outfielder,L,R
 678489,Jorge Barrosa,117,Houston Astros,HOU,CF,Outfielder,S,L
 514888,Jose Altuve,117,Houston Astros,HOU,2B,Second Base,R,R
 623352,Josh Hader,117,Houston Astros,HOU,P,Pitcher,L,L
@@ -725,6 +724,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 663567,Peter Lambert,117,Houston Astros,HOU,P,Pitcher,R,R
 669854,Ronel Blanco,117,Houston Astros,HOU,P,Pitcher,R,R
 837227,Tatsuya Imai,117,Houston Astros,HOU,P,Pitcher,R,R
+666211,Taylor Trammell,117,Houston Astros,HOU,LF,Outfielder,L,L
 673237,Yainer Diaz,117,Houston Astros,HOU,C,Catcher,R,R
 670541,Yordan Alvarez,117,Houston Astros,HOU,DH,Designated Hitter,L,R
 656638,Alex Lange,118,Kansas City Royals,KC,P,Pitcher,R,R
@@ -786,7 +786,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 694673,Abimelec Ortiz,120,Washington Nationals,WSH,1B,First Base,L,L
 665953,Andrés Chaparro,120,Washington Nationals,WSH,1B,First Base,R,R
 674841,Andrew Alvarez,120,Washington Nationals,WSH,P,Pitcher,L,L
-687605,Andrew Pinckney,120,Washington Nationals,WSH,LF,Outfielder,R,R
 695418,Brad Lord,120,Washington Nationals,WSH,P,Pitcher,R,R
 691781,Brady House,120,Washington Nationals,WSH,3B,Third Base,R,R
 682928,CJ Abrams,120,Washington Nationals,WSH,SS,Shortstop,L,R
@@ -803,6 +802,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 688692,Jared Simpson,120,Washington Nationals,WSH,P,Pitcher,L,L
 678391,Jorbit Vivas,120,Washington Nationals,WSH,3B,Third Base,L,R
 677588,José Tena,120,Washington Nationals,WSH,DH,Designated Hitter,L,R
+680686,Josiah Gray,120,Washington Nationals,WSH,P,Pitcher,R,R
 660688,Keibert Ruiz,120,Washington Nationals,WSH,C,Catcher,S,R
 691384,Luis Perales,120,Washington Nationals,WSH,P,Pitcher,R,R
 683083,Nasim Nuñez,120,Washington Nationals,WSH,2B,Second Base,S,R
@@ -815,6 +815,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 681810,Austin Warren,121,New York Mets,NYM,P,Pitcher,R,R
 666182,Bo Bichette,121,New York Mets,NYM,3B,Third Base,R,R
 683146,Brett Baty,121,New York Mets,NYM,3B,Third Base,L,R
+687721,Cameron Weston,121,New York Mets,NYM,P,Pitcher,R,R
 701807,Carson Benge,121,New York Mets,NYM,RF,Outfielder,L,R
 681035,Christian Scott,121,New York Mets,NYM,P,Pitcher,R,R
 666624,Christopher Morel,121,New York Mets,NYM,1B,First Base,R,R
@@ -837,5 +838,4 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 690997,Nolan McLean,121,New York Mets,NYM,P,Pitcher,R,R
 640455,Sean Manaea,121,New York Mets,NYM,P,Pitcher,R,L
 668964,Tobias Myers,121,New York Mets,NYM,P,Pitcher,R,R
-675540,Xzavion Curry,121,New York Mets,NYM,P,Pitcher,R,R
 804267,Zac Thornton,121,New York Mets,NYM,P,Pitcher,L,L

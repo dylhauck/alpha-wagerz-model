@@ -8,7 +8,7 @@
     "away_sp": "Jeffrey Springs",
     "home_sp": "Drew Rasmussen",
     "venue": "Tropicana Field",
-    "status": "Pre-Game",
+    "status": "Final",
     "file": "data/processed/games/822924.json"
   },
   {
@@ -20,7 +20,7 @@
     "away_sp": "Sonny Gray",
     "home_sp": "Tyler Alexander",
     "venue": "Globe Life Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/822845.json"
   },
   {
@@ -32,7 +32,7 @@
     "away_sp": "Framber Valdez",
     "home_sp": "Erick Fedde",
     "venue": "Rate Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/824548.json"
   },
   {
@@ -42,9 +42,9 @@
     "away_team": "Kansas City Royals",
     "home_team": "Houston Astros",
     "away_sp": "Seth Lugo",
-    "home_sp": "",
+    "home_sp": "Miguel Ullola",
     "venue": "Daikin Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/824141.json"
   },
   {
@@ -56,7 +56,7 @@
     "away_sp": "Justin Wrobleski",
     "home_sp": "Brady Singer",
     "venue": "Great American Ball Park",
-    "status": "Pre-Game",
+    "status": "Final",
     "file": "data/processed/games/824464.json"
   },
   {
@@ -68,7 +68,7 @@
     "away_sp": "Kyle Harrison",
     "home_sp": "Wilber Dotel",
     "venue": "PNC Park",
-    "status": "Pre-Game",
+    "status": "Final",
     "file": "data/processed/games/823334.json"
   },
   {
@@ -92,7 +92,7 @@
     "away_sp": "Aaron Nola",
     "home_sp": "Nolan McLean",
     "venue": "Citi Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/823573.json"
   },
   {
@@ -104,7 +104,7 @@
     "away_sp": "Michael King",
     "home_sp": "Tanner Gordon",
     "venue": "Coors Field",
-    "status": "Scheduled",
+    "status": "In Progress",
     "file": "data/processed/games/824305.json"
   }
 ]

@@ -1326,8 +1326,8 @@
     "away_team": "Athletics",
     "home_team_id": 114,
     "home_team": "Cleveland Guardians",
-    "away_sp_id": "",
-    "away_sp": "",
+    "away_sp_id": 686930,
+    "away_sp": "Mason Barnett",
     "home_sp_id": 682982,
     "home_sp": "Daniel Espino",
     "away_hitters": [
@@ -1765,8 +1765,8 @@
     "away_team": "Boston Red Sox",
     "home_team_id": 139,
     "home_team": "Tampa Bay Rays",
-    "away_sp_id": "",
-    "away_sp": "",
+    "away_sp_id": 624133,
+    "away_sp": "Ranger Suarez",
     "home_sp_id": 693855,
     "home_sp": "Ian Seymour",
     "away_hitters": [
@@ -2645,8 +2645,8 @@
     "home_team": "Chicago White Sox",
     "away_sp_id": 808825,
     "away_sp": "Andrew Sears",
-    "home_sp_id": "",
-    "home_sp": "",
+    "home_sp_id": 689818,
+    "home_sp": "David Sandlin",
     "away_hitters": [
       {
         "id": 679529,
@@ -3523,8 +3523,8 @@
     "home_team": "Houston Astros",
     "away_sp_id": 641816,
     "away_sp": "Tyler Mahle",
-    "home_sp_id": "",
-    "home_sp": "",
+    "home_sp_id": 663567,
+    "home_sp": "Peter Lambert",
     "away_hitters": [
       {
         "id": 621566,
@@ -3859,21 +3859,6 @@
         "lineup_source": "active_roster"
       },
       {
-        "id": 694388,
-        "player_id": 694388,
-        "Player ID": 694388,
-        "name": "Joey Loperfido",
-        "Player": "Joey Loperfido",
-        "team_id": 117,
-        "Team ID": 117,
-        "team": "Houston Astros",
-        "Team": "Houston Astros",
-        "position": "LF",
-        "Position": "LF",
-        "batting_order": "",
-        "lineup_source": "active_roster"
-      },
-      {
         "id": 664774,
         "player_id": 664774,
         "Player ID": 664774,
@@ -3894,6 +3879,21 @@
         "Player ID": 676369,
         "name": "Nelson Vel\u00e1zquez",
         "Player": "Nelson Vel\u00e1zquez",
+        "team_id": 117,
+        "Team ID": 117,
+        "team": "Houston Astros",
+        "Team": "Houston Astros",
+        "position": "LF",
+        "Position": "LF",
+        "batting_order": "",
+        "lineup_source": "active_roster"
+      },
+      {
+        "id": 666211,
+        "player_id": 666211,
+        "Player ID": 666211,
+        "name": "Taylor Trammell",
+        "Player": "Taylor Trammell",
         "team_id": 117,
         "Team ID": 117,
         "team": "Houston Astros",
@@ -4551,21 +4551,6 @@
         "Team": "Washington Nationals",
         "position": "DH",
         "Position": "DH",
-        "batting_order": "",
-        "lineup_source": "active_roster"
-      },
-      {
-        "id": 687605,
-        "player_id": 687605,
-        "Player ID": 687605,
-        "name": "Andrew Pinckney",
-        "Player": "Andrew Pinckney",
-        "team_id": 120,
-        "Team ID": 120,
-        "team": "Washington Nationals",
-        "Team": "Washington Nationals",
-        "position": "LF",
-        "Position": "LF",
         "batting_order": "",
         "lineup_source": "active_roster"
       },
@@ -5294,8 +5279,8 @@
     "home_team": "San Diego Padres",
     "away_sp_id": 663969,
     "away_sp": "Tyler Phillips",
-    "home_sp_id": "",
-    "home_sp": "",
+    "home_sp_id": 601713,
+    "home_sp": "Nick Pivetta",
     "away_hitters": [
       {
         "id": 691277,
