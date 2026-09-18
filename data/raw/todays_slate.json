@@ -8,7 +8,7 @@
     "away_sp": "Clay Holmes",
     "home_sp": "Chase Burns",
     "venue": "Great American Ball Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-18T22:40:00Z",
     "game_time": "5:40 PM",
     "game_time_sort": "17:40"
@@ -22,7 +22,7 @@
     "away_sp": "Randy Dobnak",
     "home_sp": "Paul Skenes",
     "venue": "PNC Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-18T22:40:00Z",
     "game_time": "5:40 PM",
     "game_time_sort": "17:40"
@@ -34,7 +34,7 @@
     "away_team": "Milwaukee Brewers",
     "home_team": "Baltimore Orioles",
     "away_sp": "Dustin May",
-    "home_sp": "",
+    "home_sp": "Cade Povich",
     "venue": "Oriole Park at Camden Yards",
     "status": "Scheduled",
     "game_date_utc": "2026-09-18T23:05:00Z",
@@ -50,7 +50,7 @@
     "away_sp": "Mason Barnett",
     "home_sp": "Daniel Espino",
     "venue": "Progressive Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-18T23:10:00Z",
     "game_time": "6:10 PM",
     "game_time_sort": "18:10"
@@ -64,7 +64,7 @@
     "away_sp": "Ranger Suarez",
     "home_sp": "Ian Seymour",
     "venue": "Tropicana Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-18T23:10:00Z",
     "game_time": "6:10 PM",
     "game_time_sort": "18:10"
@@ -118,7 +118,7 @@
     "away_team": "Seattle Mariners",
     "home_team": "Colorado Rockies",
     "away_sp": "Bryan Woo",
-    "home_sp": "",
+    "home_sp": "Gabriel Hughes",
     "venue": "Coors Field",
     "status": "Scheduled",
     "game_date_utc": "2026-09-19T00:10:00Z",

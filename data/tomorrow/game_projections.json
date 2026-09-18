@@ -48,7 +48,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-18T09:24:01Z"
+      "market_updated_at": "2026-09-18T19:25:25Z"
     },
     "away_pitcher": "Robert Gasser",
     "home_pitcher": "",
@@ -135,7 +135,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-18T09:24:01Z"
+      "market_updated_at": "2026-09-18T19:25:26Z"
     },
     "away_pitcher": "",
     "home_pitcher": "Freddy Peralta",
@@ -182,22 +182,22 @@
     "away_team": "Philadelphia Phillies",
     "home_team": "New York Mets",
     "away_projected_runs": 3.5,
-    "home_projected_runs": 3.3,
-    "projected_total": 7.8,
-    "projected_margin": 0.2,
-    "away_win_probability": 52,
-    "home_win_probability": 48,
+    "home_projected_runs": 3.5,
+    "projected_total": 8.3,
+    "projected_margin": 0.0,
+    "away_win_probability": 50,
+    "home_win_probability": 50,
     "market": {
       "game_id": "823571",
       "game": "Philadelphia Phillies @ New York Mets",
       "away_team": "Philadelphia Phillies",
       "home_team": "New York Mets",
-      "bookmaker": "",
-      "bookmaker_key": "",
+      "bookmaker": "DraftKings",
+      "bookmaker_key": "draftkings",
       "odds_event_id": 63301199,
       "moneyline": {
-        "away": "",
-        "home": ""
+        "away": 100,
+        "home": -120
       },
       "spread": {
         "away": "",
@@ -205,11 +205,11 @@
         "home": "",
         "home_price": ""
       },
-      "total": "",
+      "total": 8.0,
       "game_total": {
-        "line": "",
-        "over_price": "",
-        "under_price": ""
+        "line": 8.0,
+        "over_price": -132,
+        "under_price": 109
       },
       "team_totals": {
         "away": "",
@@ -222,13 +222,13 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-18T09:24:01Z"
+      "market_updated_at": "2026-09-18T19:25:25Z"
     },
-    "away_pitcher": "",
+    "away_pitcher": "Andrew Painter",
     "home_pitcher": "Christian Scott",
-    "away_pitcher_throws": "",
+    "away_pitcher_throws": "R",
     "home_pitcher_throws": "R",
-    "away_projected_ks": 3.1,
+    "away_projected_ks": 5.2,
     "home_projected_ks": 5.2,
     "away_pitcher_k_line": "",
     "home_pitcher_k_line": "",
@@ -240,25 +240,25 @@
     "home_pitcher_k_confidence": "",
     "moneyline_lean": "Philadelphia Phillies",
     "moneyline_recommendation": "Philadelphia Phillies ML",
-    "moneyline_edge": "",
-    "moneyline_confidence": 52,
-    "away_moneyline_edge": "",
-    "home_moneyline_edge": "",
+    "moneyline_edge": 0.0,
+    "moneyline_confidence": 50,
+    "away_moneyline_edge": 0.0,
+    "home_moneyline_edge": -4.5,
     "spread_lean": "Philadelphia Phillies ",
     "spread_recommendation": "Philadelphia Phillies ",
-    "spread_edge": 0.2,
-    "spread_confidence": 53,
-    "away_spread_edge": 0.2,
-    "home_spread_edge": -0.2,
-    "total_lean": "Over ",
-    "total_recommendation": "Over ",
-    "total_edge": 7.8,
-    "total_confidence": 95,
+    "spread_edge": 0.0,
+    "spread_confidence": 50,
+    "away_spread_edge": 0.0,
+    "home_spread_edge": 0.0,
+    "total_lean": "Over 8.0",
+    "total_recommendation": "Over 8.0",
+    "total_edge": 0.3,
+    "total_confidence": 56,
     "away_team_total_edge": 3.5,
-    "home_team_total_edge": 3.3,
+    "home_team_total_edge": 3.5,
     "team_total_recommendation": "Philadelphia Phillies Over ",
     "team_total_confidence": 95,
-    "best_lean": "Over "
+    "best_lean": "Philadelphia Phillies Over "
   },
   {
     "game_id": "824380",
@@ -279,12 +279,12 @@
       "game": "Athletics @ Cleveland Guardians",
       "away_team": "Athletics",
       "home_team": "Cleveland Guardians",
-      "bookmaker": "",
-      "bookmaker_key": "",
+      "bookmaker": "DraftKings",
+      "bookmaker_key": "draftkings",
       "odds_event_id": 63299447,
       "moneyline": {
-        "away": "",
-        "home": ""
+        "away": 150,
+        "home": -185
       },
       "spread": {
         "away": "",
@@ -292,11 +292,11 @@
         "home": "",
         "home_price": ""
       },
-      "total": "",
+      "total": 8.0,
       "game_total": {
-        "line": "",
-        "over_price": "",
-        "under_price": ""
+        "line": 8.0,
+        "over_price": -120,
+        "under_price": 100
       },
       "team_totals": {
         "away": "",
@@ -309,7 +309,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-18T09:24:01Z"
+      "market_updated_at": "2026-09-18T19:25:26Z"
     },
     "away_pitcher": "Jacob Lopez",
     "home_pitcher": "Tanner Bibee",
@@ -327,25 +327,25 @@
     "home_pitcher_k_confidence": "",
     "moneyline_lean": "Athletics",
     "moneyline_recommendation": "Athletics ML",
-    "moneyline_edge": "",
+    "moneyline_edge": 11.0,
     "moneyline_confidence": 51,
-    "away_moneyline_edge": "",
-    "home_moneyline_edge": "",
+    "away_moneyline_edge": 11.0,
+    "home_moneyline_edge": -15.9,
     "spread_lean": "Athletics ",
     "spread_recommendation": "Athletics ",
     "spread_edge": 0.1,
     "spread_confidence": 52,
     "away_spread_edge": 0.1,
     "home_spread_edge": -0.1,
-    "total_lean": "Over ",
-    "total_recommendation": "Over ",
-    "total_edge": 8.1,
-    "total_confidence": 95,
+    "total_lean": "Over 8.0",
+    "total_recommendation": "Over 8.0",
+    "total_edge": 0.1,
+    "total_confidence": 52,
     "away_team_total_edge": 3.5,
     "home_team_total_edge": 3.4,
     "team_total_recommendation": "Athletics Over ",
     "team_total_confidence": 95,
-    "best_lean": "Over "
+    "best_lean": "Athletics Over "
   },
   {
     "game_id": "824461",
@@ -366,12 +366,12 @@
       "game": "Chicago Cubs @ Cincinnati Reds",
       "away_team": "Chicago Cubs",
       "home_team": "Cincinnati Reds",
-      "bookmaker": "",
-      "bookmaker_key": "",
+      "bookmaker": "DraftKings",
+      "bookmaker_key": "draftkings",
       "odds_event_id": 63301823,
       "moneyline": {
-        "away": "",
-        "home": ""
+        "away": -137,
+        "home": 113
       },
       "spread": {
         "away": "",
@@ -379,11 +379,11 @@
         "home": "",
         "home_price": ""
       },
-      "total": "",
+      "total": 9.5,
       "game_total": {
-        "line": "",
-        "over_price": "",
-        "under_price": ""
+        "line": 9.5,
+        "over_price": -111,
+        "under_price": -111
       },
       "team_totals": {
         "away": "",
@@ -396,7 +396,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-18T09:24:02Z"
+      "market_updated_at": "2026-09-18T19:25:27Z"
     },
     "away_pitcher": "Matthew Boyd",
     "home_pitcher": "Nick Lodolo",
@@ -414,25 +414,25 @@
     "home_pitcher_k_confidence": "",
     "moneyline_lean": "Chicago Cubs",
     "moneyline_recommendation": "Chicago Cubs ML",
-    "moneyline_edge": "",
+    "moneyline_edge": -6.8,
     "moneyline_confidence": 51,
-    "away_moneyline_edge": "",
-    "home_moneyline_edge": "",
+    "away_moneyline_edge": -6.8,
+    "home_moneyline_edge": 2.1,
     "spread_lean": "Chicago Cubs ",
     "spread_recommendation": "Chicago Cubs ",
     "spread_edge": 0.1,
     "spread_confidence": 52,
     "away_spread_edge": 0.1,
     "home_spread_edge": -0.1,
-    "total_lean": "Over ",
-    "total_recommendation": "Over ",
-    "total_edge": 9.3,
-    "total_confidence": 95,
+    "total_lean": "Under 9.5",
+    "total_recommendation": "Under 9.5",
+    "total_edge": -0.2,
+    "total_confidence": 54,
     "away_team_total_edge": 4.0,
     "home_team_total_edge": 3.9,
     "team_total_recommendation": "Chicago Cubs Over ",
     "team_total_confidence": 95,
-    "best_lean": "Over "
+    "best_lean": "Chicago Cubs Over "
   },
   {
     "game_id": "823330",
@@ -453,12 +453,12 @@
       "game": "Kansas City Royals @ Pittsburgh Pirates",
       "away_team": "Kansas City Royals",
       "home_team": "Pittsburgh Pirates",
-      "bookmaker": "",
-      "bookmaker_key": "",
+      "bookmaker": "DraftKings",
+      "bookmaker_key": "draftkings",
       "odds_event_id": 63301175,
       "moneyline": {
-        "away": "",
-        "home": ""
+        "away": 101,
+        "home": -122
       },
       "spread": {
         "away": "",
@@ -466,11 +466,11 @@
         "home": "",
         "home_price": ""
       },
-      "total": "",
+      "total": 8.0,
       "game_total": {
-        "line": "",
-        "over_price": "",
-        "under_price": ""
+        "line": 8.0,
+        "over_price": -116,
+        "under_price": -105
       },
       "team_totals": {
         "away": "",
@@ -483,7 +483,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-18T09:24:01Z"
+      "market_updated_at": "2026-09-18T19:25:26Z"
     },
     "away_pitcher": "Noah Cameron",
     "home_pitcher": "Bubba Chandler",
@@ -501,25 +501,25 @@
     "home_pitcher_k_confidence": "",
     "moneyline_lean": "Kansas City Royals",
     "moneyline_recommendation": "Kansas City Royals ML",
-    "moneyline_edge": "",
+    "moneyline_edge": 1.2,
     "moneyline_confidence": 51,
-    "away_moneyline_edge": "",
-    "home_moneyline_edge": "",
+    "away_moneyline_edge": 1.2,
+    "home_moneyline_edge": -6.0,
     "spread_lean": "Kansas City Royals ",
     "spread_recommendation": "Kansas City Royals ",
     "spread_edge": 0.1,
     "spread_confidence": 52,
     "away_spread_edge": 0.1,
     "home_spread_edge": -0.1,
-    "total_lean": "Over ",
-    "total_recommendation": "Over ",
-    "total_edge": 8.4,
-    "total_confidence": 95,
+    "total_lean": "Over 8.0",
+    "total_recommendation": "Over 8.0",
+    "total_edge": 0.4,
+    "total_confidence": 58,
     "away_team_total_edge": 3.6,
     "home_team_total_edge": 3.5,
     "team_total_recommendation": "Kansas City Royals Over ",
     "team_total_confidence": 95,
-    "best_lean": "Over "
+    "best_lean": "Kansas City Royals Over "
   },
   {
     "game_id": "822843",
@@ -540,12 +540,12 @@
       "game": "Toronto Blue Jays @ Texas Rangers",
       "away_team": "Toronto Blue Jays",
       "home_team": "Texas Rangers",
-      "bookmaker": "",
-      "bookmaker_key": "",
+      "bookmaker": "DraftKings",
+      "bookmaker_key": "draftkings",
       "odds_event_id": 63301201,
       "moneyline": {
-        "away": "",
-        "home": ""
+        "away": -108,
+        "home": -114
       },
       "spread": {
         "away": "",
@@ -553,11 +553,11 @@
         "home": "",
         "home_price": ""
       },
-      "total": "",
+      "total": 7.5,
       "game_total": {
-        "line": "",
-        "over_price": "",
-        "under_price": ""
+        "line": 7.5,
+        "over_price": -127,
+        "under_price": 104
       },
       "team_totals": {
         "away": "",
@@ -570,7 +570,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-18T09:24:02Z"
+      "market_updated_at": "2026-09-18T19:25:27Z"
     },
     "away_pitcher": "Jos\u00e9 Soriano",
     "home_pitcher": "Cal Quantrill",
@@ -588,25 +588,25 @@
     "home_pitcher_k_confidence": "",
     "moneyline_lean": "Toronto Blue Jays",
     "moneyline_recommendation": "Toronto Blue Jays ML",
-    "moneyline_edge": "",
+    "moneyline_edge": 0.1,
     "moneyline_confidence": 52,
-    "away_moneyline_edge": "",
-    "home_moneyline_edge": "",
+    "away_moneyline_edge": 0.1,
+    "home_moneyline_edge": -5.3,
     "spread_lean": "Toronto Blue Jays ",
     "spread_recommendation": "Toronto Blue Jays ",
     "spread_edge": 0.2,
     "spread_confidence": 53,
     "away_spread_edge": 0.2,
     "home_spread_edge": -0.2,
-    "total_lean": "Over ",
-    "total_recommendation": "Over ",
-    "total_edge": 8.5,
-    "total_confidence": 95,
+    "total_lean": "Over 7.5",
+    "total_recommendation": "Over 7.5",
+    "total_edge": 1.0,
+    "total_confidence": 71,
     "away_team_total_edge": 3.7,
     "home_team_total_edge": 3.5,
     "team_total_recommendation": "Toronto Blue Jays Over ",
     "team_total_confidence": 95,
-    "best_lean": "Over "
+    "best_lean": "Toronto Blue Jays Over "
   },
   {
     "game_id": "824137",
@@ -627,12 +627,12 @@
       "game": "Atlanta Braves @ Houston Astros",
       "away_team": "Atlanta Braves",
       "home_team": "Houston Astros",
-      "bookmaker": "",
-      "bookmaker_key": "",
+      "bookmaker": "DraftKings",
+      "bookmaker_key": "draftkings",
       "odds_event_id": 63303543,
       "moneyline": {
-        "away": "",
-        "home": ""
+        "away": -103,
+        "home": -118
       },
       "spread": {
         "away": "",
@@ -640,11 +640,11 @@
         "home": "",
         "home_price": ""
       },
-      "total": "",
+      "total": 8.0,
       "game_total": {
-        "line": "",
-        "over_price": "",
-        "under_price": ""
+        "line": 8.0,
+        "over_price": -132,
+        "under_price": 109
       },
       "team_totals": {
         "away": "",
@@ -657,7 +657,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-18T09:24:02Z"
+      "market_updated_at": "2026-09-18T19:25:28Z"
     },
     "away_pitcher": "Grant Holmes",
     "home_pitcher": "Hayden Wesneski",
@@ -675,25 +675,25 @@
     "home_pitcher_k_confidence": "",
     "moneyline_lean": "Houston Astros",
     "moneyline_recommendation": "Houston Astros ML",
-    "moneyline_edge": "",
+    "moneyline_edge": -3.1,
     "moneyline_confidence": 51,
-    "away_moneyline_edge": "",
-    "home_moneyline_edge": "",
+    "away_moneyline_edge": -1.7,
+    "home_moneyline_edge": -3.1,
     "spread_lean": "Houston Astros ",
     "spread_recommendation": "Houston Astros ",
     "spread_edge": 0.1,
     "spread_confidence": 52,
     "away_spread_edge": -0.1,
     "home_spread_edge": 0.1,
-    "total_lean": "Over ",
-    "total_recommendation": "Over ",
-    "total_edge": 8.7,
-    "total_confidence": 95,
+    "total_lean": "Over 8.0",
+    "total_recommendation": "Over 8.0",
+    "total_edge": 0.7,
+    "total_confidence": 65,
     "away_team_total_edge": 3.6,
     "home_team_total_edge": 3.7,
     "team_total_recommendation": "Houston Astros Over ",
     "team_total_confidence": 95,
-    "best_lean": "Over "
+    "best_lean": "Houston Astros Over "
   },
   {
     "game_id": "824545",
@@ -714,12 +714,12 @@
       "game": "Detroit Tigers @ Chicago White Sox",
       "away_team": "Detroit Tigers",
       "home_team": "Chicago White Sox",
-      "bookmaker": "",
-      "bookmaker_key": "",
+      "bookmaker": "DraftKings",
+      "bookmaker_key": "draftkings",
       "odds_event_id": 63303391,
       "moneyline": {
-        "away": "",
-        "home": ""
+        "away": 117,
+        "home": -143
       },
       "spread": {
         "away": "",
@@ -727,11 +727,11 @@
         "home": "",
         "home_price": ""
       },
-      "total": "",
+      "total": 8.0,
       "game_total": {
-        "line": "",
-        "over_price": "",
-        "under_price": ""
+        "line": 8.0,
+        "over_price": -116,
+        "under_price": -105
       },
       "team_totals": {
         "away": "",
@@ -744,7 +744,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-18T09:24:02Z"
+      "market_updated_at": "2026-09-18T19:25:27Z"
     },
     "away_pitcher": "Jackson Jobe",
     "home_pitcher": "Sean Burke",
@@ -762,25 +762,25 @@
     "home_pitcher_k_confidence": "",
     "moneyline_lean": "Chicago White Sox",
     "moneyline_recommendation": "Chicago White Sox ML",
-    "moneyline_edge": "",
+    "moneyline_edge": -7.8,
     "moneyline_confidence": 51,
-    "away_moneyline_edge": "",
-    "home_moneyline_edge": "",
+    "away_moneyline_edge": 2.9,
+    "home_moneyline_edge": -7.8,
     "spread_lean": "Chicago White Sox ",
     "spread_recommendation": "Chicago White Sox ",
     "spread_edge": 0.1,
     "spread_confidence": 52,
     "away_spread_edge": -0.1,
     "home_spread_edge": 0.1,
-    "total_lean": "Over ",
-    "total_recommendation": "Over ",
-    "total_edge": 8.7,
-    "total_confidence": 95,
+    "total_lean": "Over 8.0",
+    "total_recommendation": "Over 8.0",
+    "total_edge": 0.7,
+    "total_confidence": 65,
     "away_team_total_edge": 3.6,
     "home_team_total_edge": 3.7,
     "team_total_recommendation": "Chicago White Sox Over ",
     "team_total_confidence": 95,
-    "best_lean": "Over "
+    "best_lean": "Chicago White Sox Over "
   },
   {
     "game_id": "823003",
@@ -801,12 +801,12 @@
       "game": "Washington Nationals @ St. Louis Cardinals",
       "away_team": "Washington Nationals",
       "home_team": "St. Louis Cardinals",
-      "bookmaker": "",
-      "bookmaker_key": "",
+      "bookmaker": "DraftKings",
+      "bookmaker_key": "draftkings",
       "odds_event_id": 63301411,
       "moneyline": {
-        "away": "",
-        "home": ""
+        "away": 113,
+        "home": -137
       },
       "spread": {
         "away": "",
@@ -814,11 +814,11 @@
         "home": "",
         "home_price": ""
       },
-      "total": "",
+      "total": 9.0,
       "game_total": {
-        "line": "",
-        "over_price": "",
-        "under_price": ""
+        "line": 9.0,
+        "over_price": 104,
+        "under_price": -127
       },
       "team_totals": {
         "away": "",
@@ -831,7 +831,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-18T09:24:02Z"
+      "market_updated_at": "2026-09-18T19:25:28Z"
     },
     "away_pitcher": "Andrew Alvarez",
     "home_pitcher": "Michael McGreevy",
@@ -849,25 +849,25 @@
     "home_pitcher_k_confidence": "",
     "moneyline_lean": "Washington Nationals",
     "moneyline_recommendation": "Washington Nationals ML",
-    "moneyline_edge": "",
+    "moneyline_edge": 7.1,
     "moneyline_confidence": 54,
-    "away_moneyline_edge": "",
-    "home_moneyline_edge": "",
+    "away_moneyline_edge": 7.1,
+    "home_moneyline_edge": -11.8,
     "spread_lean": "Washington Nationals ",
     "spread_recommendation": "Washington Nationals ",
     "spread_edge": 0.3,
     "spread_confidence": 55,
     "away_spread_edge": 0.3,
     "home_spread_edge": -0.3,
-    "total_lean": "Over ",
-    "total_recommendation": "Over ",
-    "total_edge": 8.4,
-    "total_confidence": 95,
+    "total_lean": "Under 9.0",
+    "total_recommendation": "Under 9.0",
+    "total_edge": -0.6,
+    "total_confidence": 62,
     "away_team_total_edge": 3.7,
     "home_team_total_edge": 3.4,
     "team_total_recommendation": "Washington Nationals Over ",
     "team_total_confidence": 95,
-    "best_lean": "Over "
+    "best_lean": "Washington Nationals Over "
   },
   {
     "game_id": "825029",
@@ -888,12 +888,12 @@
       "game": "New York Yankees @ Arizona Diamondbacks",
       "away_team": "New York Yankees",
       "home_team": "Arizona Diamondbacks",
-      "bookmaker": "",
-      "bookmaker_key": "",
+      "bookmaker": "DraftKings",
+      "bookmaker_key": "draftkings",
       "odds_event_id": 63303401,
       "moneyline": {
-        "away": "",
-        "home": ""
+        "away": -164,
+        "home": 134
       },
       "spread": {
         "away": "",
@@ -901,11 +901,11 @@
         "home": "",
         "home_price": ""
       },
-      "total": "",
+      "total": 7.5,
       "game_total": {
-        "line": "",
-        "over_price": "",
-        "under_price": ""
+        "line": 7.5,
+        "over_price": 104,
+        "under_price": -127
       },
       "team_totals": {
         "away": "",
@@ -918,7 +918,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-18T09:24:02Z"
+      "market_updated_at": "2026-09-18T19:25:28Z"
     },
     "away_pitcher": "Cam Schlittler",
     "home_pitcher": "Brandon Pfaadt",
@@ -936,25 +936,25 @@
     "home_pitcher_k_confidence": "",
     "moneyline_lean": "New York Yankees",
     "moneyline_recommendation": "New York Yankees ML",
-    "moneyline_edge": "",
+    "moneyline_edge": -8.1,
     "moneyline_confidence": 54,
-    "away_moneyline_edge": "",
-    "home_moneyline_edge": "",
+    "away_moneyline_edge": -8.1,
+    "home_moneyline_edge": 3.3,
     "spread_lean": "New York Yankees ",
     "spread_recommendation": "New York Yankees ",
     "spread_edge": 0.3,
     "spread_confidence": 55,
     "away_spread_edge": 0.3,
     "home_spread_edge": -0.3,
-    "total_lean": "Over ",
-    "total_recommendation": "Over ",
-    "total_edge": 8.7,
-    "total_confidence": 95,
+    "total_lean": "Over 7.5",
+    "total_recommendation": "Over 7.5",
+    "total_edge": 1.2,
+    "total_confidence": 75,
     "away_team_total_edge": 3.8,
     "home_team_total_edge": 3.5,
     "team_total_recommendation": "New York Yankees Over ",
     "team_total_confidence": 95,
-    "best_lean": "Over "
+    "best_lean": "New York Yankees Over "
   },
   {
     "game_id": "824304",
@@ -964,12 +964,12 @@
     "venue": "Coors Field",
     "away_team": "Seattle Mariners",
     "home_team": "Colorado Rockies",
-    "away_projected_runs": 4.1,
+    "away_projected_runs": 3.8,
     "home_projected_runs": 3.9,
-    "projected_total": 9.3,
-    "projected_margin": 0.2,
-    "away_win_probability": 52,
-    "home_win_probability": 48,
+    "projected_total": 8.8,
+    "projected_margin": -0.1,
+    "away_win_probability": 49,
+    "home_win_probability": 51,
     "market": {
       "game_id": "824304",
       "game": "Seattle Mariners @ Colorado Rockies",
@@ -1005,14 +1005,14 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-18T09:24:02Z"
+      "market_updated_at": "2026-09-18T19:25:29Z"
     },
     "away_pitcher": "Bryce Miller",
-    "home_pitcher": "Gabriel Hughes",
+    "home_pitcher": "",
     "away_pitcher_throws": "R",
-    "home_pitcher_throws": "R",
+    "home_pitcher_throws": "",
     "away_projected_ks": 5.6,
-    "home_projected_ks": 4.2,
+    "home_projected_ks": 3.2,
     "away_pitcher_k_line": "",
     "home_pitcher_k_line": "",
     "away_pitcher_k_edge": "",
@@ -1021,25 +1021,25 @@
     "home_pitcher_k_recommendation": "K Line Missing",
     "away_pitcher_k_confidence": "",
     "home_pitcher_k_confidence": "",
-    "moneyline_lean": "Seattle Mariners",
-    "moneyline_recommendation": "Seattle Mariners ML",
+    "moneyline_lean": "Colorado Rockies",
+    "moneyline_recommendation": "Colorado Rockies ML",
     "moneyline_edge": "",
-    "moneyline_confidence": 52,
+    "moneyline_confidence": 51,
     "away_moneyline_edge": "",
     "home_moneyline_edge": "",
-    "spread_lean": "Seattle Mariners ",
-    "spread_recommendation": "Seattle Mariners ",
-    "spread_edge": 0.2,
-    "spread_confidence": 53,
-    "away_spread_edge": 0.2,
-    "home_spread_edge": -0.2,
+    "spread_lean": "Colorado Rockies ",
+    "spread_recommendation": "Colorado Rockies ",
+    "spread_edge": 0.1,
+    "spread_confidence": 52,
+    "away_spread_edge": -0.1,
+    "home_spread_edge": 0.1,
     "total_lean": "Over ",
     "total_recommendation": "Over ",
-    "total_edge": 9.3,
+    "total_edge": 8.8,
     "total_confidence": 95,
-    "away_team_total_edge": 4.1,
+    "away_team_total_edge": 3.8,
     "home_team_total_edge": 3.9,
-    "team_total_recommendation": "Seattle Mariners Over ",
+    "team_total_recommendation": "Colorado Rockies Over ",
     "team_total_confidence": 95,
     "best_lean": "Over "
   },
@@ -1062,12 +1062,12 @@
       "game": "Miami Marlins @ San Diego Padres",
       "away_team": "Miami Marlins",
       "home_team": "San Diego Padres",
-      "bookmaker": "",
-      "bookmaker_key": "",
+      "bookmaker": "DraftKings",
+      "bookmaker_key": "draftkings",
       "odds_event_id": 63299337,
       "moneyline": {
-        "away": "",
-        "home": ""
+        "away": 130,
+        "home": -159
       },
       "spread": {
         "away": "",
@@ -1075,11 +1075,11 @@
         "home": "",
         "home_price": ""
       },
-      "total": "",
+      "total": 7.5,
       "game_total": {
-        "line": "",
-        "over_price": "",
-        "under_price": ""
+        "line": 7.5,
+        "over_price": -116,
+        "under_price": -105
       },
       "team_totals": {
         "away": "",
@@ -1092,7 +1092,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-18T09:24:03Z"
+      "market_updated_at": "2026-09-18T19:25:29Z"
     },
     "away_pitcher": "Eury P\u00e9rez",
     "home_pitcher": "Casey Mize",
@@ -1110,25 +1110,25 @@
     "home_pitcher_k_confidence": "",
     "moneyline_lean": "Miami Marlins",
     "moneyline_recommendation": "Miami Marlins ML",
-    "moneyline_edge": "",
+    "moneyline_edge": 6.5,
     "moneyline_confidence": 50,
-    "away_moneyline_edge": "",
-    "home_moneyline_edge": "",
+    "away_moneyline_edge": 6.5,
+    "home_moneyline_edge": -11.4,
     "spread_lean": "Miami Marlins ",
     "spread_recommendation": "Miami Marlins ",
     "spread_edge": 0.0,
     "spread_confidence": 50,
     "away_spread_edge": 0.0,
     "home_spread_edge": 0.0,
-    "total_lean": "Over ",
-    "total_recommendation": "Over ",
-    "total_edge": 8.3,
-    "total_confidence": 95,
+    "total_lean": "Over 7.5",
+    "total_recommendation": "Over 7.5",
+    "total_edge": 0.8,
+    "total_confidence": 67,
     "away_team_total_edge": 3.5,
     "home_team_total_edge": 3.5,
     "team_total_recommendation": "Miami Marlins Over ",
     "team_total_confidence": 95,
-    "best_lean": "Over "
+    "best_lean": "Miami Marlins Over "
   },
   {
     "game_id": "823899",
@@ -1179,7 +1179,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-18T09:24:03Z"
+      "market_updated_at": "2026-09-18T19:25:29Z"
     },
     "away_pitcher": "",
     "home_pitcher": "Tarik Skubal",
@@ -1236,12 +1236,12 @@
       "game": "Minnesota Twins @ Los Angeles Angels",
       "away_team": "Minnesota Twins",
       "home_team": "Los Angeles Angels",
-      "bookmaker": "",
-      "bookmaker_key": "",
+      "bookmaker": "DraftKings",
+      "bookmaker_key": "draftkings",
       "odds_event_id": 63301653,
       "moneyline": {
-        "away": "",
-        "home": ""
+        "away": -108,
+        "home": -114
       },
       "spread": {
         "away": "",
@@ -1249,11 +1249,11 @@
         "home": "",
         "home_price": ""
       },
-      "total": "",
+      "total": 7.5,
       "game_total": {
-        "line": "",
-        "over_price": "",
-        "under_price": ""
+        "line": 7.5,
+        "over_price": 104,
+        "under_price": -127
       },
       "team_totals": {
         "away": "",
@@ -1266,7 +1266,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-18T09:24:03Z"
+      "market_updated_at": "2026-09-18T19:25:30Z"
     },
     "away_pitcher": "Joe Ryan",
     "home_pitcher": "Reid Detmers",
@@ -1284,24 +1284,24 @@
     "home_pitcher_k_confidence": "",
     "moneyline_lean": "Minnesota Twins",
     "moneyline_recommendation": "Minnesota Twins ML",
-    "moneyline_edge": "",
+    "moneyline_edge": -1.9,
     "moneyline_confidence": 50,
-    "away_moneyline_edge": "",
-    "home_moneyline_edge": "",
+    "away_moneyline_edge": -1.9,
+    "home_moneyline_edge": -3.3,
     "spread_lean": "Minnesota Twins ",
     "spread_recommendation": "Minnesota Twins ",
     "spread_edge": 0.0,
     "spread_confidence": 50,
     "away_spread_edge": 0.0,
     "home_spread_edge": 0.0,
-    "total_lean": "Over ",
-    "total_recommendation": "Over ",
-    "total_edge": 8.2,
-    "total_confidence": 95,
+    "total_lean": "Over 7.5",
+    "total_recommendation": "Over 7.5",
+    "total_edge": 0.7,
+    "total_confidence": 65,
     "away_team_total_edge": 3.5,
     "home_team_total_edge": 3.5,
     "team_total_recommendation": "Minnesota Twins Over ",
     "team_total_confidence": 95,
-    "best_lean": "Over "
+    "best_lean": "Minnesota Twins Over "
   }
 ]

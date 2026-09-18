@@ -58,23 +58,9 @@
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Lazaro Montes",
-      "Game": "Seattle Mariners @ Colorado Rockies",
-      "Score": 73.0,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
       "Player/Team": "Aaron Judge",
       "Game": "New York Yankees @ Arizona Diamondbacks",
       "Score": 72.7,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Cal Raleigh",
-      "Game": "Seattle Mariners @ Colorado Rockies",
-      "Score": 72.5,
       "Notes": ""
     },
     {
@@ -107,13 +93,6 @@
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Michael Arroyo",
-      "Game": "Seattle Mariners @ Colorado Rockies",
-      "Score": 71.6,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
       "Player/Team": "Daylen Lile",
       "Game": "Washington Nationals @ St. Louis Cardinals",
       "Score": 70.9,
@@ -138,6 +117,27 @@
       "Player/Team": "Pete Alonso",
       "Game": "Milwaukee Brewers @ Baltimore Orioles",
       "Score": 69.8,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Michael Conforto",
+      "Game": "Chicago Cubs @ Cincinnati Reds",
+      "Score": 69.8,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Kyle Schwarber",
+      "Game": "Philadelphia Phillies @ New York Mets",
+      "Score": 69.7,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Tommy Pham",
+      "Game": "Detroit Tigers @ Chicago White Sox",
+      "Score": 68.9,
       "Notes": ""
     }
   ],
@@ -242,6 +242,13 @@
     },
     {
       "Category": "Pitcher K Target",
+      "Player/Team": "Andrew Painter",
+      "Game": "Philadelphia Phillies @ New York Mets",
+      "Score": 57.5,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
       "Player/Team": "Noah Cameron",
       "Game": "Kansas City Royals @ Pittsburgh Pirates",
       "Score": 57.5,
@@ -273,13 +280,6 @@
       "Player/Team": "Hayden Wesneski",
       "Game": "Atlanta Braves @ Houston Astros",
       "Score": 57.3,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "Andrew Alvarez",
-      "Game": "Washington Nationals @ St. Louis Cardinals",
-      "Score": 56.5,
       "Notes": ""
     }
   ]

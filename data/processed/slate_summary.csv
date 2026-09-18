@@ -1,13 +1,13 @@
 game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status,game_date_utc,game_time,game_time_sort
-824463,2026-09-18,Chicago Cubs @ Cincinnati Reds,Chicago Cubs,Cincinnati Reds,Clay Holmes,Chase Burns,Great American Ball Park,Scheduled,2026-09-18T22:40:00Z,5:40 PM,17:40
-823331,2026-09-18,Kansas City Royals @ Pittsburgh Pirates,Kansas City Royals,Pittsburgh Pirates,Randy Dobnak,Paul Skenes,PNC Park,Scheduled,2026-09-18T22:40:00Z,5:40 PM,17:40
-824790,2026-09-18,Milwaukee Brewers @ Baltimore Orioles,Milwaukee Brewers,Baltimore Orioles,Dustin May,,Oriole Park at Camden Yards,Scheduled,2026-09-18T23:05:00Z,6:05 PM,18:05
-824383,2026-09-18,Athletics @ Cleveland Guardians,Athletics,Cleveland Guardians,Mason Barnett,Daniel Espino,Progressive Field,Scheduled,2026-09-18T23:10:00Z,6:10 PM,18:10
-822923,2026-09-18,Boston Red Sox @ Tampa Bay Rays,Boston Red Sox,Tampa Bay Rays,Ranger Suarez,Ian Seymour,Tropicana Field,Scheduled,2026-09-18T23:10:00Z,6:10 PM,18:10
+824463,2026-09-18,Chicago Cubs @ Cincinnati Reds,Chicago Cubs,Cincinnati Reds,Clay Holmes,Chase Burns,Great American Ball Park,Pre-Game,2026-09-18T22:40:00Z,5:40 PM,17:40
+823331,2026-09-18,Kansas City Royals @ Pittsburgh Pirates,Kansas City Royals,Pittsburgh Pirates,Randy Dobnak,Paul Skenes,PNC Park,Pre-Game,2026-09-18T22:40:00Z,5:40 PM,17:40
+824790,2026-09-18,Milwaukee Brewers @ Baltimore Orioles,Milwaukee Brewers,Baltimore Orioles,Dustin May,Cade Povich,Oriole Park at Camden Yards,Scheduled,2026-09-18T23:05:00Z,6:05 PM,18:05
+824383,2026-09-18,Athletics @ Cleveland Guardians,Athletics,Cleveland Guardians,Mason Barnett,Daniel Espino,Progressive Field,Pre-Game,2026-09-18T23:10:00Z,6:10 PM,18:10
+822923,2026-09-18,Boston Red Sox @ Tampa Bay Rays,Boston Red Sox,Tampa Bay Rays,Ranger Suarez,Ian Seymour,Tropicana Field,Pre-Game,2026-09-18T23:10:00Z,6:10 PM,18:10
 823572,2026-09-18,Philadelphia Phillies @ New York Mets,Philadelphia Phillies,New York Mets,,Zac Thornton,Citi Field,Scheduled,2026-09-18T23:15:00Z,6:15 PM,18:15
 824547,2026-09-18,Detroit Tigers @ Chicago White Sox,Detroit Tigers,Chicago White Sox,Andrew Sears,David Sandlin,Rate Field,Scheduled,2026-09-18T23:40:00Z,6:40 PM,18:40
 822847,2026-09-18,Toronto Blue Jays @ Texas Rangers,Toronto Blue Jays,Texas Rangers,Dylan Cease,Kumar Rocker,Globe Life Field,Scheduled,2026-09-19T00:05:00Z,7:05 PM,19:05
-824303,2026-09-18,Seattle Mariners @ Colorado Rockies,Seattle Mariners,Colorado Rockies,Bryan Woo,,Coors Field,Scheduled,2026-09-19T00:10:00Z,7:10 PM,19:10
+824303,2026-09-18,Seattle Mariners @ Colorado Rockies,Seattle Mariners,Colorado Rockies,Bryan Woo,Gabriel Hughes,Coors Field,Scheduled,2026-09-19T00:10:00Z,7:10 PM,19:10
 824138,2026-09-18,Atlanta Braves @ Houston Astros,Atlanta Braves,Houston Astros,Tyler Mahle,Peter Lambert,Daikin Park,Scheduled,2026-09-19T00:10:00Z,7:10 PM,19:10
 823005,2026-09-18,Washington Nationals @ St. Louis Cardinals,Washington Nationals,St. Louis Cardinals,Cade Cavalli,Kyle Leahy,Busch Stadium,Scheduled,2026-09-19T00:15:00Z,7:15 PM,19:15
 823977,2026-09-18,Minnesota Twins @ Los Angeles Angels,Minnesota Twins,Los Angeles Angels,Connor Prielipp,Grayson Rodriguez,Angel Stadium,Scheduled,2026-09-19T01:38:00Z,8:38 PM,20:38

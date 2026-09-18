@@ -8,7 +8,7 @@
     "away_sp": "Mason Barnett",
     "home_sp": "Daniel Espino",
     "venue": "Progressive Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/824383.json"
   },
   {
@@ -32,7 +32,7 @@
     "away_sp": "Ranger Suarez",
     "home_sp": "Ian Seymour",
     "venue": "Tropicana Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/822923.json"
   },
   {
@@ -44,7 +44,7 @@
     "away_sp": "Clay Holmes",
     "home_sp": "Chase Burns",
     "venue": "Great American Ball Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/824463.json"
   },
   {
@@ -68,7 +68,7 @@
     "away_sp": "Randy Dobnak",
     "home_sp": "Paul Skenes",
     "venue": "PNC Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/823331.json"
   },
   {
@@ -90,7 +90,7 @@
     "away_team": "Milwaukee Brewers",
     "home_team": "Baltimore Orioles",
     "away_sp": "Dustin May",
-    "home_sp": "",
+    "home_sp": "Cade Povich",
     "venue": "Oriole Park at Camden Yards",
     "status": "Scheduled",
     "file": "data/processed/games/824790.json"
@@ -150,7 +150,7 @@
     "away_team": "Seattle Mariners",
     "home_team": "Colorado Rockies",
     "away_sp": "Bryan Woo",
-    "home_sp": "",
+    "home_sp": "Gabriel Hughes",
     "venue": "Coors Field",
     "status": "Scheduled",
     "file": "data/processed/games/824303.json"
