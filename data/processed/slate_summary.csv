@@ -1,10 +1,16 @@
 game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status,game_date_utc,game_time,game_time_sort
-823334,2026-09-17,Milwaukee Brewers @ Pittsburgh Pirates,Milwaukee Brewers,Pittsburgh Pirates,Kyle Harrison,Wilber Dotel,PNC Park,Final,2026-09-17T16:35:00Z,11:35 AM,11:35
-824464,2026-09-17,Los Angeles Dodgers @ Cincinnati Reds,Los Angeles Dodgers,Cincinnati Reds,Justin Wrobleski,Brady Singer,Great American Ball Park,Final,2026-09-17T16:40:00Z,11:40 AM,11:40
-822924,2026-09-17,Athletics @ Tampa Bay Rays,Athletics,Tampa Bay Rays,Jeffrey Springs,Drew Rasmussen,Tropicana Field,Final,2026-09-17T17:10:00Z,12:10 PM,12:10
-824305,2026-09-17,San Diego Padres @ Colorado Rockies,San Diego Padres,Colorado Rockies,Michael King,Tanner Gordon,Coors Field,In Progress,2026-09-17T19:10:00Z,2:10 PM,14:10
-824141,2026-09-17,Kansas City Royals @ Houston Astros,Kansas City Royals,Houston Astros,Seth Lugo,Miguel Ullola,Daikin Park,Pre-Game,2026-09-17T23:15:00Z,6:15 PM,18:15
-823573,2026-09-17,Philadelphia Phillies @ New York Mets,Philadelphia Phillies,New York Mets,Aaron Nola,Nolan McLean,Citi Field,Pre-Game,2026-09-17T23:15:00Z,6:15 PM,18:15
-824548,2026-09-17,Detroit Tigers @ Chicago White Sox,Detroit Tigers,Chicago White Sox,Framber Valdez,Erick Fedde,Rate Field,Pre-Game,2026-09-17T23:40:00Z,6:40 PM,18:40
-822845,2026-09-17,Boston Red Sox @ Texas Rangers,Boston Red Sox,Texas Rangers,Sonny Gray,Tyler Alexander,Globe Life Field,Pre-Game,2026-09-18T00:05:00Z,7:05 PM,19:05
-823978,2026-09-17,Minnesota Twins @ Los Angeles Angels,Minnesota Twins,Los Angeles Angels,Taj Bradley,Walbert Ureña,Angel Stadium,Scheduled,2026-09-18T01:38:00Z,8:38 PM,20:38
+824463,2026-09-18,Chicago Cubs @ Cincinnati Reds,Chicago Cubs,Cincinnati Reds,Clay Holmes,Chase Burns,Great American Ball Park,Scheduled,2026-09-18T22:40:00Z,5:40 PM,17:40
+823331,2026-09-18,Kansas City Royals @ Pittsburgh Pirates,Kansas City Royals,Pittsburgh Pirates,Randy Dobnak,Paul Skenes,PNC Park,Scheduled,2026-09-18T22:40:00Z,5:40 PM,17:40
+824790,2026-09-18,Milwaukee Brewers @ Baltimore Orioles,Milwaukee Brewers,Baltimore Orioles,Dustin May,,Oriole Park at Camden Yards,Scheduled,2026-09-18T23:05:00Z,6:05 PM,18:05
+824383,2026-09-18,Athletics @ Cleveland Guardians,Athletics,Cleveland Guardians,Mason Barnett,Daniel Espino,Progressive Field,Scheduled,2026-09-18T23:10:00Z,6:10 PM,18:10
+822923,2026-09-18,Boston Red Sox @ Tampa Bay Rays,Boston Red Sox,Tampa Bay Rays,Ranger Suarez,Ian Seymour,Tropicana Field,Scheduled,2026-09-18T23:10:00Z,6:10 PM,18:10
+823572,2026-09-18,Philadelphia Phillies @ New York Mets,Philadelphia Phillies,New York Mets,,Zac Thornton,Citi Field,Scheduled,2026-09-18T23:15:00Z,6:15 PM,18:15
+824547,2026-09-18,Detroit Tigers @ Chicago White Sox,Detroit Tigers,Chicago White Sox,Andrew Sears,David Sandlin,Rate Field,Scheduled,2026-09-18T23:40:00Z,6:40 PM,18:40
+822847,2026-09-18,Toronto Blue Jays @ Texas Rangers,Toronto Blue Jays,Texas Rangers,Dylan Cease,Kumar Rocker,Globe Life Field,Scheduled,2026-09-19T00:05:00Z,7:05 PM,19:05
+824303,2026-09-18,Seattle Mariners @ Colorado Rockies,Seattle Mariners,Colorado Rockies,Bryan Woo,,Coors Field,Scheduled,2026-09-19T00:10:00Z,7:10 PM,19:10
+824138,2026-09-18,Atlanta Braves @ Houston Astros,Atlanta Braves,Houston Astros,Tyler Mahle,Peter Lambert,Daikin Park,Scheduled,2026-09-19T00:10:00Z,7:10 PM,19:10
+823005,2026-09-18,Washington Nationals @ St. Louis Cardinals,Washington Nationals,St. Louis Cardinals,Cade Cavalli,Kyle Leahy,Busch Stadium,Scheduled,2026-09-19T00:15:00Z,7:15 PM,19:15
+823977,2026-09-18,Minnesota Twins @ Los Angeles Angels,Minnesota Twins,Los Angeles Angels,Connor Prielipp,Grayson Rodriguez,Angel Stadium,Scheduled,2026-09-19T01:38:00Z,8:38 PM,20:38
+823252,2026-09-18,Miami Marlins @ San Diego Padres,Miami Marlins,San Diego Padres,Tyler Phillips,Nick Pivetta,Petco Park,Scheduled,2026-09-19T01:40:00Z,8:40 PM,20:40
+825032,2026-09-18,New York Yankees @ Arizona Diamondbacks,New York Yankees,Arizona Diamondbacks,Gerrit Cole,Eduardo Rodriguez,Chase Field,Scheduled,2026-09-19T01:40:00Z,8:40 PM,20:40
+823898,2026-09-18,San Francisco Giants @ Los Angeles Dodgers,San Francisco Giants,Los Angeles Dodgers,Cesar Perdomo,Tyler Glasnow,UNIQLO Field at Dodger Stadium,Scheduled,2026-09-19T02:15:00Z,9:15 PM,21:15
