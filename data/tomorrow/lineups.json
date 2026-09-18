@@ -1831,21 +1831,6 @@
         "lineup_source": "active_roster"
       },
       {
-        "id": 681230,
-        "player_id": 681230,
-        "Player ID": 681230,
-        "name": "BJ Murray Jr.",
-        "Player": "BJ Murray Jr.",
-        "team_id": 112,
-        "Team ID": 112,
-        "team": "Chicago Cubs",
-        "Team": "Chicago Cubs",
-        "position": "3B",
-        "Position": "3B",
-        "batting_order": "",
-        "lineup_source": "active_roster"
-      },
-      {
         "id": 672356,
         "player_id": 672356,
         "Player ID": 672356,
@@ -1977,6 +1962,21 @@
         "Team": "Chicago Cubs",
         "position": "RF",
         "Position": "RF",
+        "batting_order": "",
+        "lineup_source": "active_roster"
+      },
+      {
+        "id": 621020,
+        "player_id": 621020,
+        "Player ID": 621020,
+        "name": "Dansby Swanson",
+        "Player": "Dansby Swanson",
+        "team_id": 112,
+        "Team ID": 112,
+        "team": "Chicago Cubs",
+        "Team": "Chicago Cubs",
+        "position": "SS",
+        "Position": "SS",
         "batting_order": "",
         "lineup_source": "active_roster"
       }
@@ -4208,6 +4208,21 @@
         "lineup_source": "active_roster"
       },
       {
+        "id": 693409,
+        "player_id": 693409,
+        "Player ID": 693409,
+        "name": "C\u00e9sar Prieto",
+        "Player": "C\u00e9sar Prieto",
+        "team_id": 138,
+        "Team ID": 138,
+        "team": "St. Louis Cardinals",
+        "Team": "St. Louis Cardinals",
+        "position": "3B",
+        "Position": "3B",
+        "batting_order": "",
+        "lineup_source": "active_roster"
+      },
+      {
         "id": 669357,
         "player_id": 669357,
         "Player ID": 669357,
@@ -4303,21 +4318,6 @@
         "Player ID": 663494,
         "name": "Bryan Torres",
         "Player": "Bryan Torres",
-        "team_id": 138,
-        "Team ID": 138,
-        "team": "St. Louis Cardinals",
-        "Team": "St. Louis Cardinals",
-        "position": "LF",
-        "Position": "LF",
-        "batting_order": "",
-        "lineup_source": "active_roster"
-      },
-      {
-        "id": 695491,
-        "player_id": 695491,
-        "Player ID": 695491,
-        "name": "Joshua B\u00e1ez",
-        "Player": "Joshua B\u00e1ez",
         "team_id": 138,
         "Team ID": 138,
         "team": "St. Louis Cardinals",
