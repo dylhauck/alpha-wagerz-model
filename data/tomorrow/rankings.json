@@ -207,6 +207,13 @@
     },
     {
       "Category": "Pitcher K Target",
+      "Player/Team": "MacKenzie Gore",
+      "Game": "New York Mets @ Texas Rangers",
+      "Score": 58.9,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
       "Player/Team": "Cristian Javier",
       "Game": "Houston Astros @ Seattle Mariners",
       "Score": 58.9,
@@ -272,13 +279,6 @@
       "Category": "Pitcher K Target",
       "Player/Team": "Nick Martinez",
       "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 55.1,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "Chris Bassitt",
-      "Game": "Toronto Blue Jays @ Baltimore Orioles",
       "Score": 55.1,
       "Notes": ""
     }

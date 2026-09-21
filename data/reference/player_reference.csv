@@ -252,8 +252,8 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 643511,Tyler Rogers,141,Toronto Blue Jays,TOR,P,Pitcher,R,R
 665489,Vladimir Guerrero Jr.,141,Toronto Blue Jays,TOR,1B,First Base,R,R
 621345,A.J. Minter,142,Minnesota Twins,MIN,P,Pitcher,L,L
+693306,Aaron Sabato,142,Minnesota Twins,MIN,1B,First Base,R,R
 702176,Alan Roden,142,Minnesota Twins,MIN,RF,Outfielder,L,R
-656577,Alex Jackson,142,Minnesota Twins,MIN,C,Catcher,R,R
 702193,Andrew Morris,142,Minnesota Twins,MIN,P,Pitcher,R,R
 668885,Austin Martin,142,Minnesota Twins,MIN,RF,Outfielder,R,R
 641927,Bailey Ober,142,Minnesota Twins,MIN,P,Pitcher,R,R
@@ -790,6 +790,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 691781,Brady House,120,Washington Nationals,WSH,3B,Third Base,R,R
 682928,CJ Abrams,120,Washington Nationals,WSH,SS,Shortstop,L,R
 676917,Cade Cavalli,120,Washington Nationals,WSH,P,Pitcher,R,R
+687792,DJ Herz,120,Washington Nationals,WSH,P,Pitcher,R,L
 695734,Daylen Lile,120,Washington Nationals,WSH,LF,Outfielder,L,R
 686611,Dylan Crews,120,Washington Nationals,WSH,RF,Outfielder,R,R
 680899,Erik Tolman,120,Washington Nationals,WSH,P,Pitcher,L,L
@@ -799,7 +800,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 696285,Jacob Young,120,Washington Nationals,WSH,CF,Outfielder,R,R
 663623,Jake Irvin,120,Washington Nationals,WSH,P,Pitcher,R,R
 695578,James Wood,120,Washington Nationals,WSH,RF,Outfielder,L,R
-688692,Jared Simpson,120,Washington Nationals,WSH,P,Pitcher,L,L
 678391,Jorbit Vivas,120,Washington Nationals,WSH,3B,Third Base,L,R
 677588,José Tena,120,Washington Nationals,WSH,DH,Designated Hitter,L,R
 680686,Josiah Gray,120,Washington Nationals,WSH,P,Pitcher,R,R
