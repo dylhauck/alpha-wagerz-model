@@ -5153,14 +5153,14 @@
       "bookmaker_key": "fanduel",
       "odds_event_id": 71680528,
       "moneyline": {
-        "away": 110,
-        "home": -130
+        "away": 112,
+        "home": -132
       },
       "spread": {
         "away": 1.5,
-        "away_price": -220,
+        "away_price": -210,
         "home": -1.5,
-        "home_price": 180
+        "home_price": 172
       },
       "total": 7.5,
       "game_total": {
@@ -5179,7 +5179,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-21T18:07:36Z"
+      "market_updated_at": "2026-09-21T20:06:44Z"
     }
   },
   {
@@ -10348,7 +10348,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-21T18:07:37Z"
+      "market_updated_at": "2026-09-21T20:06:44Z"
     }
   },
   {
@@ -15525,7 +15525,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-21T18:07:37Z"
+      "market_updated_at": "2026-09-21T20:06:44Z"
     }
   },
   {
@@ -20694,7 +20694,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-21T18:07:37Z"
+      "market_updated_at": "2026-09-21T20:06:44Z"
     }
   },
   {
@@ -23272,12 +23272,12 @@
       "game_id": "824222",
       "game": "Washington Nationals @ Detroit Tigers",
       "venue": "Comerica Park",
-      "temperature": 58.6,
-      "humidity": 74,
-      "conditions": "Broken Clouds",
+      "temperature": 58.3,
+      "humidity": 75,
+      "conditions": "Overcast Clouds",
       "wind_direction": "NEUTRAL",
-      "wind_speed": 8.4,
-      "wind_degrees": 62,
+      "wind_speed": 8.2,
+      "wind_degrees": 60,
       "roof": "open",
       "forecast_time_utc": "2026-09-23T00:00:00+00:00"
     },
@@ -25873,7 +25873,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-21T18:07:37Z"
+      "market_updated_at": "2026-09-21T20:06:44Z"
     }
   },
   {
@@ -31040,7 +31040,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-21T18:07:38Z"
+      "market_updated_at": "2026-09-21T20:06:44Z"
     }
   },
   {
@@ -36202,9 +36202,9 @@
       },
       "spread": {
         "away": 1.5,
-        "away_price": -215,
+        "away_price": -220,
         "home": -1.5,
-        "home_price": 176
+        "home_price": 180
       },
       "total": 6.5,
       "game_total": {
@@ -36223,7 +36223,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-21T18:07:38Z"
+      "market_updated_at": "2026-09-21T20:06:44Z"
     }
   },
   {
@@ -41392,7 +41392,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-21T18:07:38Z"
+      "market_updated_at": "2026-09-21T20:06:45Z"
     }
   },
   {
@@ -46571,7 +46571,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-21T18:07:39Z"
+      "market_updated_at": "2026-09-21T20:06:45Z"
     }
   },
   {
@@ -51736,7 +51736,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-21T18:07:39Z"
+      "market_updated_at": "2026-09-21T20:06:45Z"
     }
   },
   {
@@ -54310,12 +54310,12 @@
       "game_id": "822840",
       "game": "New York Mets @ Texas Rangers",
       "venue": "Globe Life Field",
-      "temperature": 93.7,
+      "temperature": 94.7,
       "humidity": 41,
-      "conditions": "Few Clouds",
+      "conditions": "Scattered Clouds",
       "wind_direction": "IN",
-      "wind_speed": 7.5,
-      "wind_degrees": 45,
+      "wind_speed": 6.7,
+      "wind_degrees": 55,
       "roof": "retractable",
       "forecast_time_utc": "2026-09-23T00:00:00+00:00"
     },
@@ -56877,24 +56877,24 @@
       "game": "New York Mets @ Texas Rangers",
       "away_team": "New York Mets",
       "home_team": "Texas Rangers",
-      "bookmaker": "",
-      "bookmaker_key": "",
+      "bookmaker": "FanDuel",
+      "bookmaker_key": "fanduel",
       "odds_event_id": 63302641,
       "moneyline": {
-        "away": "",
-        "home": ""
+        "away": 122,
+        "home": -144
       },
       "spread": {
-        "away": "",
-        "away_price": "",
-        "home": "",
-        "home_price": ""
+        "away": 1.5,
+        "away_price": -178,
+        "home": -1.5,
+        "home_price": 146
       },
-      "total": "",
+      "total": 8.5,
       "game_total": {
-        "line": "",
-        "over_price": "",
-        "under_price": ""
+        "line": 8.5,
+        "over_price": 104,
+        "under_price": -128
       },
       "team_totals": {
         "away": "",
@@ -56907,7 +56907,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-21T18:07:39Z"
+      "market_updated_at": "2026-09-21T20:06:45Z"
     }
   },
   {
@@ -62084,7 +62084,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-21T18:07:40Z"
+      "market_updated_at": "2026-09-21T20:06:45Z"
     }
   },
   {
@@ -67273,7 +67273,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-21T18:07:40Z"
+      "market_updated_at": "2026-09-21T20:06:46Z"
     }
   },
   {
@@ -69844,12 +69844,12 @@
       "game_id": "824953",
       "game": "Los Angeles Angels @ Athletics",
       "venue": "Sutter Health Park",
-      "temperature": 70.7,
-      "humidity": 46,
+      "temperature": 68.6,
+      "humidity": 47,
       "conditions": "Clear Sky",
       "wind_direction": "OUT TOWARDS LF",
       "wind_speed": 7.2,
-      "wind_degrees": 192,
+      "wind_degrees": 187,
       "roof": "open",
       "forecast_time_utc": "2026-09-23T03:00:00+00:00"
     },
@@ -72438,7 +72438,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-21T18:07:40Z"
+      "market_updated_at": "2026-09-21T20:06:45Z"
     }
   },
   {
@@ -75015,12 +75015,12 @@
       "game_id": "823166",
       "game": "Minnesota Twins @ San Francisco Giants",
       "venue": "Oracle Park",
-      "temperature": 58.4,
-      "humidity": 88,
+      "temperature": 58.8,
+      "humidity": 87,
       "conditions": "Clear Sky",
-      "wind_direction": "OUT TOWARDS LF",
-      "wind_speed": 7.3,
-      "wind_degrees": 207,
+      "wind_direction": "NEUTRAL",
+      "wind_speed": 6.9,
+      "wind_degrees": 195,
       "roof": "open",
       "forecast_time_utc": "2026-09-23T03:00:00+00:00"
     },
@@ -77615,7 +77615,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-21T18:07:41Z"
+      "market_updated_at": "2026-09-21T20:06:46Z"
     }
   },
   {
@@ -82782,7 +82782,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-21T18:07:41Z"
+      "market_updated_at": "2026-09-21T20:06:46Z"
     }
   }
 ]
