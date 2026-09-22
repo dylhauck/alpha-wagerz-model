@@ -86,6 +86,13 @@
     },
     {
       "Category": "HR Target",
+      "Player/Team": "Spencer Jones",
+      "Game": "Tampa Bay Rays @ New York Yankees",
+      "Score": 68.3,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
       "Player/Team": "Brandon Lowe",
       "Game": "St. Louis Cardinals @ Pittsburgh Pirates",
       "Score": 68.0,
@@ -121,23 +128,16 @@
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Ronald Acuña Jr.",
-      "Game": "Cincinnati Reds @ Atlanta Braves",
+      "Player/Team": "Heliot Ramos",
+      "Game": "Tampa Bay Rays @ New York Yankees",
       "Score": 65.6,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Max Muncy",
-      "Game": "San Diego Padres @ Los Angeles Dodgers",
-      "Score": 65.5,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Kyle Schwarber",
-      "Game": "Milwaukee Brewers @ Philadelphia Phillies",
-      "Score": 65.0,
+      "Player/Team": "Ronald Acuña Jr.",
+      "Game": "Cincinnati Reds @ Atlanta Braves",
+      "Score": 65.6,
       "Notes": ""
     }
   ],
@@ -151,9 +151,23 @@
     },
     {
       "Category": "Pitcher K Target",
+      "Player/Team": "Ian Seymour",
+      "Game": "Tampa Bay Rays @ New York Yankees",
+      "Score": 63.8,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
       "Player/Team": "Logan Henderson",
       "Game": "Milwaukee Brewers @ Philadelphia Phillies",
       "Score": 62.3,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "Kevin Gausman",
+      "Game": "Miami Marlins @ Chicago Cubs",
+      "Score": 61.2,
       "Notes": ""
     },
     {
@@ -256,30 +270,16 @@
     },
     {
       "Category": "Pitcher K Target",
+      "Player/Team": "Chris Bassitt",
+      "Game": "Toronto Blue Jays @ Baltimore Orioles",
+      "Score": 55.1,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
       "Player/Team": "Seth Lugo",
       "Game": "Chicago White Sox @ Kansas City Royals",
       "Score": 54.2,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "Mason Adams",
-      "Game": "Arizona Diamondbacks @ Colorado Rockies",
-      "Score": 53.9,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "Cesar Perdomo",
-      "Game": "Minnesota Twins @ San Francisco Giants",
-      "Score": 51.0,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "Erick Fedde",
-      "Game": "Chicago White Sox @ Kansas City Royals",
-      "Score": 51.0,
       "Notes": ""
     }
   ]

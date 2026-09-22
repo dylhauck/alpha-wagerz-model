@@ -8,7 +8,7 @@
     "away_sp": "Nick Martinez",
     "home_sp": "Carlos Rod\u00f3n",
     "venue": "Yankee Stadium",
-    "status": "Scheduled",
+    "status": "Final",
     "game_date_utc": "2026-09-22T17:05:00Z",
     "game_time": "12:05 PM",
     "game_time_sort": "12:05"
@@ -28,29 +28,15 @@
     "game_time_sort": "18:05"
   },
   {
-    "game_id": 824785,
-    "date": "2026-09-22",
-    "game": "Toronto Blue Jays @ Baltimore Orioles",
-    "away_team": "Toronto Blue Jays",
-    "home_team": "Baltimore Orioles",
-    "away_sp": "Max Scherzer",
-    "home_sp": "Chris Bassitt",
-    "venue": "Oriole Park at Camden Yards",
-    "status": "Scheduled",
-    "game_date_utc": "2026-09-22T22:35:00Z",
-    "game_time": "5:35 PM",
-    "game_time_sort": "17:35"
-  },
-  {
     "game_id": 824222,
     "date": "2026-09-22",
     "game": "Washington Nationals @ Detroit Tigers",
     "away_team": "Washington Nationals",
     "home_team": "Detroit Tigers",
-    "away_sp": "Jackson Kent",
+    "away_sp": "Riley Cornelio",
     "home_sp": "Drew Anderson",
     "venue": "Comerica Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-22T22:40:00Z",
     "game_time": "5:40 PM",
     "game_time_sort": "17:40"
@@ -64,7 +50,7 @@
     "away_sp": "Andre Pallante",
     "home_sp": "Jared Jones",
     "venue": "PNC Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-22T22:40:00Z",
     "game_time": "5:40 PM",
     "game_time_sort": "17:40"
@@ -78,7 +64,7 @@
     "away_sp": "Dustin May",
     "home_sp": "Zack Wheeler",
     "venue": "Citizens Bank Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-22T22:40:00Z",
     "game_time": "5:40 PM",
     "game_time_sort": "17:40"
@@ -92,7 +78,7 @@
     "away_sp": "Parker Messick",
     "home_sp": "Payton Tolle",
     "venue": "Fenway Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-22T22:45:00Z",
     "game_time": "5:45 PM",
     "game_time_sort": "17:45"
@@ -106,7 +92,7 @@
     "away_sp": "Brandon Williamson",
     "home_sp": "JR Ritchie",
     "venue": "Truist Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-22T23:15:00Z",
     "game_time": "6:15 PM",
     "game_time_sort": "18:15"
@@ -120,7 +106,7 @@
     "away_sp": "Anthony Kay",
     "home_sp": "Daniel Lynch IV",
     "venue": "Kauffman Stadium",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-22T23:40:00Z",
     "game_time": "6:40 PM",
     "game_time_sort": "18:40"
@@ -132,9 +118,9 @@
     "away_team": "Miami Marlins",
     "home_team": "Chicago Cubs",
     "away_sp": "Janson Junk",
-    "home_sp": "",
+    "home_sp": "Shota Imanaga",
     "venue": "Wrigley Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-22T23:40:00Z",
     "game_time": "6:40 PM",
     "game_time_sort": "18:40"
@@ -148,7 +134,7 @@
     "away_sp": "Sean Manaea",
     "home_sp": "MacKenzie Gore",
     "venue": "Globe Life Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-23T00:05:00Z",
     "game_time": "7:05 PM",
     "game_time_sort": "19:05"
@@ -162,7 +148,7 @@
     "away_sp": "Michael Soroka",
     "home_sp": "Kyle Freeland",
     "venue": "Coors Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-23T00:40:00Z",
     "game_time": "7:40 PM",
     "game_time_sort": "19:40"
@@ -222,5 +208,19 @@
     "game_date_utc": "2026-09-23T02:10:00Z",
     "game_time": "9:10 PM",
     "game_time_sort": "21:10"
+  },
+  {
+    "game_id": 824785,
+    "date": "2026-09-22",
+    "game": "Toronto Blue Jays @ Baltimore Orioles",
+    "away_team": "Toronto Blue Jays",
+    "home_team": "Baltimore Orioles",
+    "away_sp": "Max Scherzer",
+    "home_sp": "Chris Bassitt",
+    "venue": "Oriole Park at Camden Yards",
+    "status": "Postponed",
+    "game_date_utc": "2026-09-22T22:35:00Z",
+    "game_time": "5:35 PM",
+    "game_time_sort": "17:35"
   }
 ]

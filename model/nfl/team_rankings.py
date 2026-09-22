@@ -8,6 +8,14 @@ from typing import Any
 
 import nflreadpy as nfl
 
+from nflreadpy.config import update_config
+
+update_config(
+    cache_mode="off",
+    verbose=False,
+    timeout=60,
+)
+
 
 # ============================================================
 # PATHS / CONFIG
@@ -15,7 +23,8 @@ import nflreadpy as nfl
 
 ROOT = Path(__file__).resolve().parents[2]
 
-MODEL_NFL_DIR = ROOT / "data" / "model" / "nfl"
+MODEL_NFL_DIR = ROOT / "data" / "processed" / "nfl"
+NFL_DIR = MODEL_NFL_DIR
 
 WEB_ROOT = ROOT.parent / "alpha-wagerz-web"
 WEB_NFL_DIR = WEB_ROOT / "public" / "data" / "nfl"
@@ -205,28 +214,66 @@ def _result(
     return "T"
 
 
-def _finished_regular_game(row: dict[str, Any]) -> bool:
+def _finished_regular_game(
+    row: dict[str, Any],
+) -> bool:
     """
-    Only completed 2026 REG games count toward standings/stats.
+    Return True only for completed games from the
+    current NFL regular season.
     """
 
-    season = _int(row.get("season"))
-    game_type = str(
-        row.get("game_type")
-        or row.get("season_type")
-        or ""
-    ).upper()
+    season = _int(
+        row.get("season")
+    )
 
     if season != CURRENT_SEASON:
         return False
 
-    if game_type not in {"REG", "REGULAR"}:
+    game_type = str(
+        row.get("game_type")
+        or row.get("season_type")
+        or ""
+    ).strip().upper()
+
+    if game_type not in {
+        "REG",
+        "REGULAR",
+        "REGULAR SEASON",
+    }:
         return False
 
-    away_score = row.get("away_score")
-    home_score = row.get("home_score")
+    away_score = row.get(
+        "away_score"
+    )
 
+    home_score = row.get(
+        "home_score"
+    )
+
+    # nflverse may represent missing numeric values
+    # as NaN rather than None.
     if away_score is None or home_score is None:
+        return False
+
+    try:
+        away_score = float(
+            away_score
+        )
+
+        home_score = float(
+            home_score
+        )
+    except (
+        TypeError,
+        ValueError,
+    ):
+        return False
+
+    # NaN check without requiring math/pandas.
+    if (
+        away_score != away_score
+        or home_score != home_score
+    ):
         return False
 
     return True
@@ -1026,6 +1073,32 @@ def build_nfl_team_rankings() -> dict[str, Any]:
         schedules
     )
 
+    current_rows = [
+        row
+        for row in schedule_rows
+        if _int(
+            row.get("season")
+        ) == CURRENT_SEASON
+    ]
+
+    print(
+        f"   2026 schedule rows loaded: "
+        f"{len(current_rows)}"
+    )
+
+    if current_rows:
+        sample = current_rows[0]
+
+        print(
+            "   Schedule sample: "
+            f"week={sample.get('week')} | "
+            f"type={sample.get('game_type')} | "
+            f"{sample.get('away_team')} "
+            f"{sample.get('away_score')} @ "
+            f"{sample.get('home_team')} "
+            f"{sample.get('home_score')}"
+        )
+
     completed_game_ids = _apply_schedule(
         teams,
         schedule_rows,
@@ -1147,8 +1220,162 @@ def build_nfl_team_rankings() -> dict[str, Any]:
         f"   ✓ {len(final_teams)} teams"
     )
 
+    attach_rankings_to_slates(
+        payload
+    )
+
     return payload
 
+def attach_rankings_to_slates(
+    payload: dict[str, Any],
+) -> None:
+    teams = payload.get("teams", [])
+
+    team_lookup = {
+        _normalize_team(team.get("team")): team
+        for team in teams
+        if isinstance(team, dict)
+        and team.get("team")
+    }
+
+    slate_files = [
+        NFL_DIR / "slate.json",
+        NFL_DIR / "next" / "slate.json",
+    ]
+
+    for slate_file in slate_files:
+        if not slate_file.exists():
+            continue
+
+        try:
+            slate_payload = json.loads(
+                slate_file.read_text(
+                    encoding="utf-8"
+                )
+            )
+        except Exception as exc:
+            print(
+                f"   ⚠️ Could not read "
+                f"{slate_file}: {exc}"
+            )
+            continue
+
+        games = slate_payload.get(
+            "games",
+            [],
+        )
+
+        if not isinstance(games, list):
+            continue
+
+        attached = 0
+
+        for game in games:
+            if not isinstance(game, dict):
+                continue
+
+            away = _normalize_team(
+                game.get("away_team")
+            )
+
+            home = _normalize_team(
+                game.get("home_team")
+            )
+
+            away_team = team_lookup.get(away)
+            home_team = team_lookup.get(home)
+
+            if away_team:
+                standings = away_team.get(
+                    "standings",
+                    {},
+                )
+
+                game["away_record"] = (
+                    standings.get("record")
+                    or "0-0"
+                )
+
+                game["away_nfl_rank"] = (
+                    standings.get("nfl_rank")
+                )
+
+                game["away_conference_rank"] = (
+                    standings.get(
+                        "conference_rank"
+                    )
+                )
+
+                game["away_division_rank"] = (
+                    standings.get(
+                        "division_rank"
+                    )
+                )
+
+            if home_team:
+                standings = home_team.get(
+                    "standings",
+                    {},
+                )
+
+                game["home_record"] = (
+                    standings.get("record")
+                    or "0-0"
+                )
+
+                game["home_nfl_rank"] = (
+                    standings.get("nfl_rank")
+                )
+
+                game["home_conference_rank"] = (
+                    standings.get(
+                        "conference_rank"
+                    )
+                )
+
+                game["home_division_rank"] = (
+                    standings.get(
+                        "division_rank"
+                    )
+                )
+
+            if away_team or home_team:
+                attached += 1
+
+        slate_file.write_text(
+            json.dumps(
+                slate_payload,
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
+
+        relative = slate_file.relative_to(
+            NFL_DIR
+        )
+
+        web_file = (
+            WEB_NFL_DIR
+            / relative
+        )
+
+        web_file.parent.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+
+        web_file.write_text(
+            json.dumps(
+                slate_payload,
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
+
+        print(
+            f"   ✓ Attached standings to "
+            f"{attached} games: {relative}"
+        )
 
 if __name__ == "__main__":
     build_nfl_team_rankings()
