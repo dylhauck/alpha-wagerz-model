@@ -13,9 +13,15 @@
     },
     "spread": {
       "away": 1.5,
+<<<<<<< HEAD
       "away_price": -194,
       "home": -1.5,
       "home_price": 160
+=======
+      "away_price": -200,
+      "home": -1.5,
+      "home_price": 164
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "total": 8.5,
     "game_total": {
@@ -25,11 +31,19 @@
     },
     "team_totals": {
       "away": 3.5,
+<<<<<<< HEAD
       "away_over_price": -132,
       "away_under_price": 100,
       "home": 4.5,
       "home_over_price": 110,
       "home_under_price": -141
+=======
+      "away_over_price": -125,
+      "away_under_price": -102,
+      "home": 3.5,
+      "home_over_price": -150,
+      "home_under_price": 118
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "pitcher_strikeouts": {
       "framber valdez": {
@@ -76,26 +90,44 @@
         "player": "Jackson Jobe",
         "normalized_name": "jackson jobe",
         "line": 4.5,
+<<<<<<< HEAD
         "over_price": -111,
         "under_price": -116,
         "bookmaker": "DraftKings",
         "bookmaker_key": "draftkings",
+=======
+        "over_price": -104,
+        "under_price": -122,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+>>>>>>> 7fdf8c0 (Daily slate update)
         "market_name": "Pitcher Strikeouts"
       },
       "sean burke": {
         "player": "Sean Burke",
         "normalized_name": "sean burke",
         "line": 5.5,
+<<<<<<< HEAD
         "over_price": 105,
         "under_price": -135,
         "bookmaker": "DraftKings",
         "bookmaker_key": "draftkings",
+=======
+        "over_price": 116,
+        "under_price": -148,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+>>>>>>> 7fdf8c0 (Daily slate update)
         "market_name": "Pitcher Strikeouts"
       }
     },
     "market_source": "odds_api_io",
     "market_status": "live",
+<<<<<<< HEAD
     "market_updated_at": "2026-09-19T09:07:06Z"
+=======
+    "market_updated_at": "2026-09-19T05:52:03Z"
+>>>>>>> 7fdf8c0 (Daily slate update)
   },
   {
     "game_id": "824788",
@@ -111,6 +143,7 @@
     },
     "spread": {
       "away": -1.5,
+<<<<<<< HEAD
       "away_price": 134,
       "home": 1.5,
       "home_price": -162
@@ -128,6 +161,25 @@
       "home": 3.5,
       "home_over_price": -116,
       "home_under_price": -116
+=======
+      "away_price": 132,
+      "home": 1.5,
+      "home_price": -160
+    },
+    "total": 7.5,
+    "game_total": {
+      "line": 7.5,
+      "over_price": -132,
+      "under_price": 104
+    },
+    "team_totals": {
+      "away": 4.5,
+      "away_over_price": 110,
+      "away_under_price": -140,
+      "home": 3.5,
+      "home_over_price": -113,
+      "home_under_price": -113
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "pitcher_strikeouts": {
       "dustin may": {
@@ -154,26 +206,44 @@
         "player": "Robert Gasser",
         "normalized_name": "robert gasser",
         "line": 5.5,
+<<<<<<< HEAD
         "over_price": -105,
         "under_price": -123,
         "bookmaker": "DraftKings",
         "bookmaker_key": "draftkings",
+=======
+        "over_price": -102,
+        "under_price": -125,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+>>>>>>> 7fdf8c0 (Daily slate update)
         "market_name": "Pitcher Strikeouts"
       },
       "trevor rogers": {
         "player": "Trevor Rogers",
         "normalized_name": "trevor rogers",
         "line": 5.5,
+<<<<<<< HEAD
         "over_price": -119,
         "under_price": -109,
         "bookmaker": "DraftKings",
         "bookmaker_key": "draftkings",
+=======
+        "over_price": 100,
+        "under_price": -128,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+>>>>>>> 7fdf8c0 (Daily slate update)
         "market_name": "Pitcher Strikeouts"
       }
     },
     "market_source": "odds_api_io",
     "market_status": "live",
+<<<<<<< HEAD
     "market_updated_at": "2026-09-19T09:07:06Z"
+=======
+    "market_updated_at": "2026-09-19T05:52:04Z"
+>>>>>>> 7fdf8c0 (Daily slate update)
   },
   {
     "game_id": "823571",
@@ -188,6 +258,7 @@
       "home": -120
     },
     "spread": {
+<<<<<<< HEAD
       "away": -1.5,
       "away_price": 172,
       "home": 1.5,
@@ -206,6 +277,26 @@
       "home": 3.5,
       "home_over_price": -140,
       "home_under_price": 110
+=======
+      "away": 1.5,
+      "away_price": -210,
+      "home": -1.5,
+      "home_price": 172
+    },
+    "total": 8.5,
+    "game_total": {
+      "line": 8.5,
+      "over_price": 100,
+      "under_price": -128
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": -130,
+      "away_under_price": 102,
+      "home": 3.5,
+      "home_over_price": -150,
+      "home_under_price": 118
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "pitcher_strikeouts": {
       "nolan mclean": {
@@ -242,8 +333,13 @@
         "player": "Andrew Painter",
         "normalized_name": "andrew painter",
         "line": 4.5,
+<<<<<<< HEAD
         "over_price": 124,
         "under_price": -160,
+=======
+        "over_price": 126,
+        "under_price": -162,
+>>>>>>> 7fdf8c0 (Daily slate update)
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
@@ -261,7 +357,11 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
+<<<<<<< HEAD
     "market_updated_at": "2026-09-19T09:07:06Z"
+=======
+    "market_updated_at": "2026-09-19T05:52:04Z"
+>>>>>>> 7fdf8c0 (Daily slate update)
   },
   {
     "game_id": "822921",
@@ -289,11 +389,19 @@
     },
     "team_totals": {
       "away": 3.5,
+<<<<<<< HEAD
       "away_over_price": -111,
       "away_under_price": -115,
       "home": 3.5,
       "home_over_price": -130,
       "home_under_price": 102
+=======
+      "away_over_price": -113,
+      "away_under_price": -113,
+      "home": 3.5,
+      "home_over_price": -132,
+      "home_under_price": 104
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "pitcher_strikeouts": {
       "ranger suarez": {
@@ -320,6 +428,7 @@
         "player": "Freddy Peralta",
         "normalized_name": "freddy peralta",
         "line": 4.5,
+<<<<<<< HEAD
         "over_price": -156,
         "under_price": 122,
         "bookmaker": "FanDuel",
@@ -335,11 +444,22 @@
         "bookmaker": "DraftKings",
         "bookmaker_key": "draftkings",
         "market_name": "Pitcher Strikeouts"
+=======
+        "over_price": -154,
+        "under_price": 120,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+>>>>>>> 7fdf8c0 (Daily slate update)
       }
     },
     "market_source": "odds_api_io",
     "market_status": "live",
+<<<<<<< HEAD
     "market_updated_at": "2026-09-19T09:07:06Z"
+=======
+    "market_updated_at": "2026-09-19T05:52:04Z"
+>>>>>>> 7fdf8c0 (Daily slate update)
   },
   {
     "game_id": "824380",
@@ -355,13 +475,20 @@
     },
     "spread": {
       "away": 1.5,
+<<<<<<< HEAD
       "away_price": -156,
       "home": -1.5,
       "home_price": 130
+=======
+      "away_price": -154,
+      "home": -1.5,
+      "home_price": 128
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "total": 8.5,
     "game_total": {
       "line": 8.5,
+<<<<<<< HEAD
       "over_price": 104,
       "under_price": -132
     },
@@ -372,6 +499,18 @@
       "home": 4.5,
       "home_over_price": 102,
       "home_under_price": -130
+=======
+      "over_price": 102,
+      "under_price": -130
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": 100,
+      "away_under_price": -128,
+      "home": 4.5,
+      "home_over_price": 100,
+      "home_under_price": -128
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "pitcher_strikeouts": {
       "mason barnett": {
@@ -388,8 +527,13 @@
         "player": "Jacob Lopez",
         "normalized_name": "jacob lopez",
         "line": 4.5,
+<<<<<<< HEAD
         "over_price": 112,
         "under_price": -142,
+=======
+        "over_price": 104,
+        "under_price": -132,
+>>>>>>> 7fdf8c0 (Daily slate update)
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
@@ -407,7 +551,11 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
+<<<<<<< HEAD
     "market_updated_at": "2026-09-19T09:07:07Z"
+=======
+    "market_updated_at": "2026-09-19T05:52:04Z"
+>>>>>>> 7fdf8c0 (Daily slate update)
   },
   {
     "game_id": "823330",
@@ -423,13 +571,20 @@
     },
     "spread": {
       "away": -1.5,
+<<<<<<< HEAD
       "away_price": 150,
       "home": 1.5,
       "home_price": -182
+=======
+      "away_price": 152,
+      "home": 1.5,
+      "home_price": -184
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "total": 8.5,
     "game_total": {
       "line": 8.5,
+<<<<<<< HEAD
       "over_price": 100,
       "under_price": -128
     },
@@ -440,6 +595,18 @@
       "home": 3.5,
       "home_over_price": -136,
       "home_under_price": 106
+=======
+      "over_price": -102,
+      "under_price": -125
+    },
+    "team_totals": {
+      "away": 3.5,
+      "away_over_price": -150,
+      "away_under_price": 118,
+      "home": 3.5,
+      "home_over_price": -140,
+      "home_under_price": 110
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "pitcher_strikeouts": {
       "randy dobnak": {
@@ -466,8 +633,13 @@
         "player": "Bubba Chandler",
         "normalized_name": "bubba chandler",
         "line": 4.5,
+<<<<<<< HEAD
         "over_price": 110,
         "under_price": -140,
+=======
+        "over_price": 112,
+        "under_price": -142,
+>>>>>>> 7fdf8c0 (Daily slate update)
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
@@ -476,8 +648,13 @@
         "player": "Noah Cameron",
         "normalized_name": "noah cameron",
         "line": 5.5,
+<<<<<<< HEAD
         "over_price": 128,
         "under_price": -164,
+=======
+        "over_price": 130,
+        "under_price": -166,
+>>>>>>> 7fdf8c0 (Daily slate update)
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
@@ -485,7 +662,11 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
+<<<<<<< HEAD
     "market_updated_at": "2026-09-19T09:07:07Z"
+=======
+    "market_updated_at": "2026-09-19T05:52:04Z"
+>>>>>>> 7fdf8c0 (Daily slate update)
   },
   {
     "game_id": "824461",
@@ -501,23 +682,39 @@
     },
     "spread": {
       "away": -1.5,
+<<<<<<< HEAD
       "away_price": 116,
       "home": 1.5,
       "home_price": -140
+=======
+      "away_price": 118,
+      "home": 1.5,
+      "home_price": -142
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "total": 9.5,
     "game_total": {
       "line": 9.5,
+<<<<<<< HEAD
       "over_price": -115,
       "under_price": -105
+=======
+      "over_price": -112,
+      "under_price": -108
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "team_totals": {
       "away": 5.5,
       "away_over_price": 112,
       "away_under_price": -142,
       "home": 4.5,
+<<<<<<< HEAD
       "home_over_price": 106,
       "home_under_price": -136
+=======
+      "home_over_price": 104,
+      "home_under_price": -132
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "pitcher_strikeouts": {
       "clay holmes": {
@@ -544,8 +741,13 @@
         "player": "Matthew Boyd",
         "normalized_name": "matthew boyd",
         "line": 4.5,
+<<<<<<< HEAD
         "over_price": -140,
         "under_price": 110,
+=======
+        "over_price": -142,
+        "under_price": 112,
+>>>>>>> 7fdf8c0 (Daily slate update)
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
@@ -554,8 +756,13 @@
         "player": "Nick Lodolo",
         "normalized_name": "nick lodolo",
         "line": 4.5,
+<<<<<<< HEAD
         "over_price": 106,
         "under_price": -136,
+=======
+        "over_price": 108,
+        "under_price": -138,
+>>>>>>> 7fdf8c0 (Daily slate update)
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
@@ -563,7 +770,11 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
+<<<<<<< HEAD
     "market_updated_at": "2026-09-19T09:07:07Z"
+=======
+    "market_updated_at": "2026-09-19T05:52:05Z"
+>>>>>>> 7fdf8c0 (Daily slate update)
   },
   {
     "game_id": "822843",
@@ -591,8 +802,13 @@
     },
     "team_totals": {
       "away": 4.5,
+<<<<<<< HEAD
       "away_over_price": 108,
       "away_under_price": -138,
+=======
+      "away_over_price": 112,
+      "away_under_price": -142,
+>>>>>>> 7fdf8c0 (Daily slate update)
       "home": 3.5,
       "home_over_price": -128,
       "home_under_price": 100
@@ -632,8 +848,13 @@
         "player": "Jose Soriano",
         "normalized_name": "jose soriano",
         "line": 5.5,
+<<<<<<< HEAD
         "over_price": 114,
         "under_price": -146,
+=======
+        "over_price": 112,
+        "under_price": -142,
+>>>>>>> 7fdf8c0 (Daily slate update)
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
@@ -641,7 +862,11 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
+<<<<<<< HEAD
     "market_updated_at": "2026-09-19T09:07:08Z"
+=======
+    "market_updated_at": "2026-09-19T05:52:05Z"
+>>>>>>> 7fdf8c0 (Daily slate update)
   },
   {
     "game_id": "824137",
@@ -669,8 +894,13 @@
     },
     "team_totals": {
       "away": 3.5,
+<<<<<<< HEAD
       "away_over_price": -154,
       "away_under_price": 120,
+=======
+      "away_over_price": -148,
+      "away_under_price": 116,
+>>>>>>> 7fdf8c0 (Daily slate update)
       "home": 3.5,
       "home_over_price": -148,
       "home_under_price": 116
@@ -710,8 +940,13 @@
         "player": "Hayden Wesneski",
         "normalized_name": "hayden wesneski",
         "line": 4.5,
+<<<<<<< HEAD
         "over_price": 112,
         "under_price": -142,
+=======
+        "over_price": 108,
+        "under_price": -138,
+>>>>>>> 7fdf8c0 (Daily slate update)
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
@@ -719,7 +954,11 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
+<<<<<<< HEAD
     "market_updated_at": "2026-09-19T09:07:08Z"
+=======
+    "market_updated_at": "2026-09-19T05:52:05Z"
+>>>>>>> 7fdf8c0 (Daily slate update)
   },
   {
     "game_id": "823003",
@@ -737,7 +976,11 @@
       "away": 1.5,
       "away_price": -205,
       "home": -1.5,
+<<<<<<< HEAD
       "home_price": 168
+=======
+      "home_price": 172
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "total": 8.5,
     "game_total": {
@@ -746,12 +989,21 @@
       "under_price": -102
     },
     "team_totals": {
+<<<<<<< HEAD
       "away": 3.5,
       "away_over_price": -150,
       "away_under_price": 118,
       "home": 4.5,
       "home_over_price": 102,
       "home_under_price": -130
+=======
+      "away": 4.5,
+      "away_over_price": 114,
+      "away_under_price": -146,
+      "home": 4.5,
+      "home_over_price": 106,
+      "home_under_price": -136
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "pitcher_strikeouts": {
       "cade cavalli": {
@@ -788,8 +1040,13 @@
         "player": "Michael McGreevy",
         "normalized_name": "michael mcgreevy",
         "line": 3.5,
+<<<<<<< HEAD
         "over_price": -138,
         "under_price": 108,
+=======
+        "over_price": -136,
+        "under_price": 106,
+>>>>>>> 7fdf8c0 (Daily slate update)
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
@@ -797,7 +1054,11 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
+<<<<<<< HEAD
     "market_updated_at": "2026-09-19T09:07:08Z"
+=======
+    "market_updated_at": "2026-09-19T05:52:05Z"
+>>>>>>> 7fdf8c0 (Daily slate update)
   },
   {
     "game_id": "825029",
@@ -825,11 +1086,19 @@
     },
     "team_totals": {
       "away": 3.5,
+<<<<<<< HEAD
       "away_over_price": -136,
       "away_under_price": 106,
       "home": 3.5,
       "home_over_price": 120,
       "home_under_price": -154
+=======
+      "away_over_price": -132,
+      "away_under_price": 104,
+      "home": 3.5,
+      "home_over_price": 116,
+      "home_under_price": -148
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "pitcher_strikeouts": {
       "gerrit cole": {
@@ -856,8 +1125,13 @@
         "player": "Brandon Pfaadt",
         "normalized_name": "brandon pfaadt",
         "line": 4.5,
+<<<<<<< HEAD
         "over_price": 102,
         "under_price": -130,
+=======
+        "over_price": 104,
+        "under_price": -132,
+>>>>>>> 7fdf8c0 (Daily slate update)
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
@@ -866,8 +1140,13 @@
         "player": "Cam Schlittler",
         "normalized_name": "cam schlittler",
         "line": 5.5,
+<<<<<<< HEAD
         "over_price": -158,
         "under_price": 124,
+=======
+        "over_price": -156,
+        "under_price": 122,
+>>>>>>> 7fdf8c0 (Daily slate update)
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
@@ -875,13 +1154,18 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
+<<<<<<< HEAD
     "market_updated_at": "2026-09-19T09:07:08Z"
+=======
+    "market_updated_at": "2026-09-19T05:52:05Z"
+>>>>>>> 7fdf8c0 (Daily slate update)
   },
   {
     "game_id": "824304",
     "game": "Seattle Mariners @ Colorado Rockies",
     "away_team": "Seattle Mariners",
     "home_team": "Colorado Rockies",
+<<<<<<< HEAD
     "bookmaker": "FanDuel",
     "bookmaker_key": "fanduel",
     "odds_event_id": 63302445,
@@ -900,6 +1184,26 @@
       "line": 10.5,
       "over_price": -122,
       "under_price": 100
+=======
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": 63302445,
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "team_totals": {
       "away": 5.5,
@@ -933,7 +1237,11 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
+<<<<<<< HEAD
     "market_updated_at": "2026-09-19T09:07:08Z"
+=======
+    "market_updated_at": "2026-09-19T05:52:06Z"
+>>>>>>> 7fdf8c0 (Daily slate update)
   },
   {
     "game_id": "823249",
@@ -949,23 +1257,39 @@
     },
     "spread": {
       "away": 1.5,
+<<<<<<< HEAD
       "away_price": -160,
       "home": -1.5,
       "home_price": 132
+=======
+      "away_price": -164,
+      "home": -1.5,
+      "home_price": 136
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "total": 7.5,
     "game_total": {
       "line": 7.5,
+<<<<<<< HEAD
       "over_price": -118,
       "under_price": -104
+=======
+      "over_price": -115,
+      "under_price": -105
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "team_totals": {
       "away": 3.5,
       "away_over_price": -102,
       "away_under_price": -125,
       "home": 3.5,
+<<<<<<< HEAD
       "home_over_price": -156,
       "home_under_price": 122
+=======
+      "home_over_price": -142,
+      "home_under_price": 112
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "pitcher_strikeouts": {
       "nick pivetta": {
@@ -1002,8 +1326,13 @@
         "player": "Eury Perez",
         "normalized_name": "eury perez",
         "line": 5.5,
+<<<<<<< HEAD
         "over_price": 132,
         "under_price": -170,
+=======
+        "over_price": 128,
+        "under_price": -166,
+>>>>>>> 7fdf8c0 (Daily slate update)
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
@@ -1011,13 +1340,18 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
+<<<<<<< HEAD
     "market_updated_at": "2026-09-19T09:07:09Z"
+=======
+    "market_updated_at": "2026-09-19T05:52:06Z"
+>>>>>>> 7fdf8c0 (Daily slate update)
   },
   {
     "game_id": "823899",
     "game": "San Francisco Giants @ Los Angeles Dodgers",
     "away_team": "San Francisco Giants",
     "home_team": "Los Angeles Dodgers",
+<<<<<<< HEAD
     "bookmaker": "FanDuel",
     "bookmaker_key": "fanduel",
     "odds_event_id": 63301435,
@@ -1044,6 +1378,34 @@
       "home": 4.5,
       "home_over_price": -116,
       "home_under_price": -116
+=======
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": 63301435,
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": 2.5,
+      "away_over_price": -132,
+      "away_under_price": 104,
+      "home": 4.5,
+      "home_over_price": -132,
+      "home_under_price": 104
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "pitcher_strikeouts": {
       "tyler glasnow": {
@@ -1069,7 +1431,11 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
+<<<<<<< HEAD
     "market_updated_at": "2026-09-19T09:07:09Z"
+=======
+    "market_updated_at": "2026-09-19T05:52:06Z"
+>>>>>>> 7fdf8c0 (Daily slate update)
   },
   {
     "game_id": "823976",
@@ -1085,9 +1451,15 @@
     },
     "spread": {
       "away": -1.5,
+<<<<<<< HEAD
       "away_price": 158,
       "home": 1.5,
       "home_price": -192
+=======
+      "away_price": 162,
+      "home": 1.5,
+      "home_price": -196
+>>>>>>> 7fdf8c0 (Daily slate update)
     },
     "total": 7.5,
     "game_total": {
@@ -1097,8 +1469,13 @@
     },
     "team_totals": {
       "away": 3.5,
+<<<<<<< HEAD
       "away_over_price": -113,
       "away_under_price": -113,
+=======
+      "away_over_price": -115,
+      "away_under_price": -111,
+>>>>>>> 7fdf8c0 (Daily slate update)
       "home": 3.5,
       "home_over_price": 100,
       "home_under_price": -128
@@ -1148,8 +1525,13 @@
         "player": "Joe Ryan",
         "normalized_name": "joe ryan",
         "line": 6.5,
+<<<<<<< HEAD
         "over_price": 114,
         "under_price": -146,
+=======
+        "over_price": 116,
+        "under_price": -148,
+>>>>>>> 7fdf8c0 (Daily slate update)
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
@@ -1167,6 +1549,10 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
+<<<<<<< HEAD
     "market_updated_at": "2026-09-19T09:07:09Z"
+=======
+    "market_updated_at": "2026-09-19T05:52:06Z"
+>>>>>>> 7fdf8c0 (Daily slate update)
   }
 ]

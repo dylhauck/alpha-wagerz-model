@@ -114,8 +114,8 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 668800,Andrew Knizner,137,San Francisco Giants,SF,C,Catcher,R,R
 683627,Anthony Molina,137,San Francisco Giants,SF,P,Pitcher,R,R
 694918,Blade Tidwell,137,San Francisco Giants,SF,P,Pitcher,R,R
+815589,Bo Davidson,137,San Francisco Giants,SF,LF,Outfielder,L,R
 695391,Brett Harris,137,San Francisco Giants,SF,3B,Third Base,R,R
-805811,Bryce Eldridge,137,San Francisco Giants,SF,DH,Designated Hitter,L,R
 693313,Carson Seymour,137,San Francisco Giants,SF,P,Pitcher,R,R
 702885,Cesar Perdomo,137,San Francisco Giants,SF,P,Pitcher,L,L
 683766,Christian Koss,137,San Francisco Giants,SF,SS,Shortstop,R,R
@@ -127,8 +127,11 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 671345,Jason Foley,137,San Francisco Giants,SF,P,Pitcher,R,R
 669270,Joel Kuhnel,137,San Francisco Giants,SF,P,Pitcher,R,R
 813841,Jonah Cox,137,San Francisco Giants,SF,CF,Outfielder,R,R
-808982,Jung Hoo Lee,137,San Francisco Giants,SF,RF,Outfielder,L,R
 694738,Landen Roupp,137,San Francisco Giants,SF,P,Pitcher,R,R
+<<<<<<< HEAD
+=======
+691785,Marcelo Mayer,137,San Francisco Giants,SF,2B,Second Base,L,R
+>>>>>>> 7fdf8c0 (Daily slate update)
 683363,Matt Wilkinson,137,San Francisco Giants,SF,P,Pitcher,R,L
 678545,Osleivis Basabe,137,San Francisco Giants,SF,2B,Second Base,R,R
 656529,Sam Hentges,137,San Francisco Giants,SF,P,Pitcher,L,L
@@ -676,7 +679,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 701162,Ben Malgeri,116,Detroit Tigers,DET,RF,Outfielder,R,R
 676428,Brant Hurter,116,Detroit Tigers,DET,P,Pitcher,L,L
 814430,Brett Callahan,116,Detroit Tigers,DET,LF,Outfielder,L,R
-690993,Colt Keith,116,Detroit Tigers,DET,3B,Third Base,L,R
 693307,Dillon Dingler,116,Detroit Tigers,DET,C,Catcher,R,R
 623454,Drew Anderson,116,Detroit Tigers,DET,P,Pitcher,R,R
 805427,Drew Sommers,116,Detroit Tigers,DET,P,Pitcher,L,L
@@ -684,6 +686,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 664285,Framber Valdez,116,Detroit Tigers,DET,P,Pitcher,R,L
 650402,Gleyber Torres,116,Detroit Tigers,DET,2B,Second Base,R,R
 701678,Hao-Yu Lee,116,Detroit Tigers,DET,2B,Second Base,R,R
+690291,Jace Jung,116,Detroit Tigers,DET,3B,Third Base,L,R
 695549,Jackson Jobe,116,Detroit Tigers,DET,P,Pitcher,R,R
 621097,Jacob Waguespack,116,Detroit Tigers,DET,P,Pitcher,R,R
 595879,Javier Báez,116,Detroit Tigers,DET,SS,Shortstop,R,R
@@ -695,7 +698,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 682985,Riley Greene,116,Detroit Tigers,DET,LF,Outfielder,L,L
 689981,River Ryan,116,Detroit Tigers,DET,P,Pitcher,R,R
 679529,Spencer Torkelson,116,Detroit Tigers,DET,1B,First Base,R,R
-675512,Troy Melton,116,Detroit Tigers,DET,P,Pitcher,R,R
 680744,Ty Madden,116,Detroit Tigers,DET,P,Pitcher,R,R
 663947,Tyler Holton,116,Detroit Tigers,DET,P,Pitcher,L,L
 641755,Tyler Kinley,116,Detroit Tigers,DET,P,Pitcher,R,R
@@ -754,17 +756,22 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 607625,Seth Lugo,118,Kansas City Royals,KC,P,Pitcher,R,R
 702352,Spencer Bivens,118,Kansas City Royals,KC,P,Pitcher,R,R
 674444,Steven Cruz,118,Kansas City Royals,KC,P,Pitcher,R,R
+664062,Tony Gonsolin,118,Kansas City Royals,KC,P,Pitcher,R,R
 686475,Tyler Tolbert,118,Kansas City Royals,KC,SS,Shortstop,R,R
 686469,Vinnie Pasquantino,118,Kansas City Royals,KC,1B,First Base,L,L
 669743,Alex Call,119,Los Angeles Dodgers,LAD,LF,Outfielder,R,R
 690976,Alex Freeland,119,Los Angeles Dodgers,LAD,2B,Second Base,S,R
 681911,Alex Vesia,119,Los Angeles Dodgers,LAD,P,Pitcher,L,L
+681624,Andy Pages,119,Los Angeles Dodgers,LAD,CF,Outfielder,R,R
 605483,Blake Snell,119,Los Angeles Dodgers,LAD,P,Pitcher,L,L
 595014,Blake Treinen,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
 592779,Brock Stewart,119,Los Angeles Dodgers,LAD,P,Pitcher,L,R
 621242,Edwin Díaz,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
+<<<<<<< HEAD
 672613,Eliezer Alfonzo,119,Los Angeles Dodgers,LAD,C,Catcher,S,R
 686218,Emmet Sheehan,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
+=======
+>>>>>>> 7fdf8c0 (Daily slate update)
 571771,Enrique Hernández,119,Los Angeles Dodgers,LAD,3B,Third Base,R,R
 623465,Evan Phillips,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
 518692,Freddie Freeman,119,Los Angeles Dodgers,LAD,1B,First Base,L,R
@@ -778,6 +785,10 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 571970,Max Muncy,119,Los Angeles Dodgers,LAD,3B,Third Base,L,R
 500743,Miguel Rojas,119,Los Angeles Dodgers,LAD,2B,Second Base,R,R
 605141,Mookie Betts,119,Los Angeles Dodgers,LAD,SS,Shortstop,R,R
+<<<<<<< HEAD
+=======
+808963,Roki Sasaki,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
+>>>>>>> 7fdf8c0 (Daily slate update)
 656945,Tanner Scott,119,Los Angeles Dodgers,LAD,P,Pitcher,R,L
 606192,Teoscar Hernández,119,Los Angeles Dodgers,LAD,LF,Outfielder,R,R
 669242,Tommy Edman,119,Los Angeles Dodgers,LAD,2B,Second Base,S,R
