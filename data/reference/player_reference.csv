@@ -128,10 +128,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 669270,Joel Kuhnel,137,San Francisco Giants,SF,P,Pitcher,R,R
 813841,Jonah Cox,137,San Francisco Giants,SF,CF,Outfielder,R,R
 694738,Landen Roupp,137,San Francisco Giants,SF,P,Pitcher,R,R
-<<<<<<< HEAD
-=======
 691785,Marcelo Mayer,137,San Francisco Giants,SF,2B,Second Base,L,R
->>>>>>> 7fdf8c0 (Daily slate update)
 683363,Matt Wilkinson,137,San Francisco Giants,SF,P,Pitcher,R,L
 678545,Osleivis Basabe,137,San Francisco Giants,SF,2B,Second Base,R,R
 656529,Sam Hentges,137,San Francisco Giants,SF,P,Pitcher,L,L
@@ -754,7 +751,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 677976,Randy Dobnak,118,Kansas City Royals,KC,P,Pitcher,R,R
 521692,Salvador Perez,118,Kansas City Royals,KC,DH,Designated Hitter,R,R
 607625,Seth Lugo,118,Kansas City Royals,KC,P,Pitcher,R,R
-702352,Spencer Bivens,118,Kansas City Royals,KC,P,Pitcher,R,R
 674444,Steven Cruz,118,Kansas City Royals,KC,P,Pitcher,R,R
 664062,Tony Gonsolin,118,Kansas City Royals,KC,P,Pitcher,R,R
 686475,Tyler Tolbert,118,Kansas City Royals,KC,SS,Shortstop,R,R
@@ -767,11 +763,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 595014,Blake Treinen,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
 592779,Brock Stewart,119,Los Angeles Dodgers,LAD,P,Pitcher,L,R
 621242,Edwin Díaz,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
-<<<<<<< HEAD
-672613,Eliezer Alfonzo,119,Los Angeles Dodgers,LAD,C,Catcher,S,R
-686218,Emmet Sheehan,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
-=======
->>>>>>> 7fdf8c0 (Daily slate update)
 571771,Enrique Hernández,119,Los Angeles Dodgers,LAD,3B,Third Base,R,R
 623465,Evan Phillips,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
 518692,Freddie Freeman,119,Los Angeles Dodgers,LAD,1B,First Base,L,R
@@ -785,10 +776,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 571970,Max Muncy,119,Los Angeles Dodgers,LAD,3B,Third Base,L,R
 500743,Miguel Rojas,119,Los Angeles Dodgers,LAD,2B,Second Base,R,R
 605141,Mookie Betts,119,Los Angeles Dodgers,LAD,SS,Shortstop,R,R
-<<<<<<< HEAD
-=======
 808963,Roki Sasaki,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
->>>>>>> 7fdf8c0 (Daily slate update)
 656945,Tanner Scott,119,Los Angeles Dodgers,LAD,P,Pitcher,R,L
 606192,Teoscar Hernández,119,Los Angeles Dodgers,LAD,LF,Outfielder,R,R
 669242,Tommy Edman,119,Los Angeles Dodgers,LAD,2B,Second Base,S,R

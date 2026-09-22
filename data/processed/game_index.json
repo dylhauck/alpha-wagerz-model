@@ -1,41 +1,5 @@
 [
   {
-<<<<<<< HEAD
-    "game_id": "823169",
-    "date": "2026-09-21",
-    "game": "Minnesota Twins @ San Francisco Giants",
-    "away_team": "Minnesota Twins",
-    "home_team": "San Francisco Giants",
-    "away_sp": "Zebby Matthews",
-    "home_sp": "Blade Tidwell",
-    "venue": "Oracle Park",
-    "status": "Scheduled",
-    "file": "data/processed/games/823169.json"
-  },
-  {
-    "game_id": "824787",
-    "date": "2026-09-21",
-    "game": "Toronto Blue Jays @ Baltimore Orioles",
-    "away_team": "Toronto Blue Jays",
-    "home_team": "Baltimore Orioles",
-    "away_sp": "Trey Yesavage",
-    "home_sp": "Shane Baz",
-    "venue": "Oriole Park at Camden Yards",
-    "status": "Pre-Game",
-    "file": "data/processed/games/824787.json"
-  },
-  {
-    "game_id": "824221",
-    "date": "2026-09-21",
-    "game": "Washington Nationals @ Detroit Tigers",
-    "away_team": "Washington Nationals",
-    "home_team": "Detroit Tigers",
-    "away_sp": "DJ Herz",
-    "home_sp": "River Ryan",
-    "venue": "Comerica Park",
-    "status": "Pre-Game",
-    "file": "data/processed/games/824221.json"
-=======
     "game_id": "824302",
     "date": "2026-09-22",
     "game": "Arizona Diamondbacks @ Colorado Rockies",
@@ -226,6 +190,5 @@
     "venue": "Comerica Park",
     "status": "Scheduled",
     "file": "data/processed/games/824222.json"
->>>>>>> 7fdf8c0 (Daily slate update)
   }
 ]

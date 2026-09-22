@@ -1,47 +1,5 @@
 [
   {
-<<<<<<< HEAD
-    "game_id": 824787,
-    "date": "2026-09-21",
-    "game": "Toronto Blue Jays @ Baltimore Orioles",
-    "away_team": "Toronto Blue Jays",
-    "home_team": "Baltimore Orioles",
-    "away_sp": "Trey Yesavage",
-    "home_sp": "Shane Baz",
-    "venue": "Oriole Park at Camden Yards",
-    "status": "Pre-Game",
-    "game_date_utc": "2026-09-21T22:35:00Z",
-    "game_time": "5:35 PM",
-    "game_time_sort": "17:35"
-  },
-  {
-    "game_id": 824221,
-    "date": "2026-09-21",
-    "game": "Washington Nationals @ Detroit Tigers",
-    "away_team": "Washington Nationals",
-    "home_team": "Detroit Tigers",
-    "away_sp": "DJ Herz",
-    "home_sp": "River Ryan",
-    "venue": "Comerica Park",
-    "status": "Pre-Game",
-    "game_date_utc": "2026-09-21T22:40:00Z",
-    "game_time": "5:40 PM",
-    "game_time_sort": "17:40"
-  },
-  {
-    "game_id": 823169,
-    "date": "2026-09-21",
-    "game": "Minnesota Twins @ San Francisco Giants",
-    "away_team": "Minnesota Twins",
-    "home_team": "San Francisco Giants",
-    "away_sp": "Zebby Matthews",
-    "home_sp": "Blade Tidwell",
-    "venue": "Oracle Park",
-    "status": "Scheduled",
-    "game_date_utc": "2026-09-22T01:45:00Z",
-    "game_time": "8:45 PM",
-    "game_time_sort": "20:45"
-=======
     "game_id": 823543,
     "date": "2026-09-22",
     "game": "Tampa Bay Rays @ New York Yankees",
@@ -264,6 +222,5 @@
     "game_date_utc": "2026-09-23T02:10:00Z",
     "game_time": "9:10 PM",
     "game_time_sort": "21:10"
->>>>>>> 7fdf8c0 (Daily slate update)
   }
 ]

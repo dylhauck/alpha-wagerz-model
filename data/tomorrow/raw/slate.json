@@ -1,27 +1,5 @@
 [
   {
-<<<<<<< HEAD
-    "game_id": "823543",
-    "date": "2026-09-22",
-    "game": "Tampa Bay Rays @ New York Yankees",
-    "away_team": "Tampa Bay Rays",
-    "home_team": "New York Yankees",
-    "away_team_id": 139,
-    "home_team_id": 147,
-    "away_sp": "Nick Martinez",
-    "away_sp_id": 607259,
-    "home_sp": "Carlos Rodón",
-    "home_sp_id": 607074,
-    "venue": "Yankee Stadium",
-    "status": "Scheduled",
-    "game_date_utc": "2026-09-22T17:05:00Z",
-    "game_time": "12:05 PM",
-    "game_time_sort": "12:05"
-  },
-  {
-    "game_id": "824785",
-    "date": "2026-09-22",
-=======
     "game_id": "824223",
     "date": "2026-09-23",
     "game": "Washington Nationals @ Detroit Tigers",
@@ -60,21 +38,11 @@
   {
     "game_id": "824784",
     "date": "2026-09-23",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game": "Toronto Blue Jays @ Baltimore Orioles",
     "away_team": "Toronto Blue Jays",
     "home_team": "Baltimore Orioles",
     "away_team_id": 141,
     "home_team_id": 110,
-<<<<<<< HEAD
-    "away_sp": "Max Scherzer",
-    "away_sp_id": 453286,
-    "home_sp": "Chris Bassitt",
-    "home_sp_id": 605135,
-    "venue": "Oriole Park at Camden Yards",
-    "status": "Scheduled",
-    "game_date_utc": "2026-09-22T22:35:00Z",
-=======
     "away_sp": "",
     "away_sp_id": null,
     "home_sp": "",
@@ -82,32 +50,17 @@
     "venue": "Oriole Park at Camden Yards",
     "status": "Scheduled",
     "game_date_utc": "2026-09-23T22:35:00Z",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game_time": "5:35 PM",
     "game_time_sort": "17:35"
   },
   {
-<<<<<<< HEAD
-    "game_id": "823412",
-    "date": "2026-09-22",
-=======
     "game_id": "823410",
     "date": "2026-09-23",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game": "Milwaukee Brewers @ Philadelphia Phillies",
     "away_team": "Milwaukee Brewers",
     "home_team": "Philadelphia Phillies",
     "away_team_id": 158,
     "home_team_id": 143,
-<<<<<<< HEAD
-    "away_sp": "Dustin May",
-    "away_sp_id": 669160,
-    "home_sp": "Zack Wheeler",
-    "home_sp_id": 554430,
-    "venue": "Citizens Bank Park",
-    "status": "Scheduled",
-    "game_date_utc": "2026-09-22T22:40:00Z",
-=======
     "away_sp": "Logan Henderson",
     "away_sp_id": 701656,
     "home_sp": "Aaron Nola",
@@ -115,32 +68,17 @@
     "venue": "Citizens Bank Park",
     "status": "Scheduled",
     "game_date_utc": "2026-09-23T22:40:00Z",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game_time": "5:40 PM",
     "game_time_sort": "17:40"
   },
   {
-<<<<<<< HEAD
-    "game_id": "823328",
-    "date": "2026-09-22",
-=======
     "game_id": "823327",
     "date": "2026-09-23",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game": "St. Louis Cardinals @ Pittsburgh Pirates",
     "away_team": "St. Louis Cardinals",
     "home_team": "Pittsburgh Pirates",
     "away_team_id": 138,
     "home_team_id": 134,
-<<<<<<< HEAD
-    "away_sp": "Andre Pallante",
-    "away_sp_id": 669467,
-    "home_sp": "Jared Jones",
-    "home_sp_id": 683003,
-    "venue": "PNC Park",
-    "status": "Scheduled",
-    "game_date_utc": "2026-09-22T22:40:00Z",
-=======
     "away_sp": "Matthew Liberatore",
     "away_sp_id": 669461,
     "home_sp": "",
@@ -148,63 +86,10 @@
     "venue": "PNC Park",
     "status": "Scheduled",
     "game_date_utc": "2026-09-23T22:40:00Z",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game_time": "5:40 PM",
     "game_time_sort": "17:40"
   },
   {
-<<<<<<< HEAD
-    "game_id": "824222",
-    "date": "2026-09-22",
-    "game": "Washington Nationals @ Detroit Tigers",
-    "away_team": "Washington Nationals",
-    "home_team": "Detroit Tigers",
-    "away_team_id": 120,
-    "home_team_id": 116,
-    "away_sp": "Jackson Kent",
-    "away_sp_id": 800600,
-    "home_sp": "Drew Anderson",
-    "home_sp_id": 623454,
-    "venue": "Comerica Park",
-    "status": "Scheduled",
-    "game_date_utc": "2026-09-22T22:40:00Z",
-    "game_time": "5:40 PM",
-    "game_time_sort": "17:40"
-  },
-  {
-    "game_id": "824709",
-    "date": "2026-09-22",
-    "game": "Cleveland Guardians @ Boston Red Sox",
-    "away_team": "Cleveland Guardians",
-    "home_team": "Boston Red Sox",
-    "away_team_id": 114,
-    "home_team_id": 111,
-    "away_sp": "Parker Messick",
-    "away_sp_id": 800048,
-    "home_sp": "Payton Tolle",
-    "home_sp_id": 801139,
-    "venue": "Fenway Park",
-    "status": "Scheduled",
-    "game_date_utc": "2026-09-22T22:45:00Z",
-    "game_time": "5:45 PM",
-    "game_time_sort": "17:45"
-  },
-  {
-    "game_id": "823494",
-    "date": "2026-09-22",
-    "game": "Tampa Bay Rays @ New York Yankees",
-    "away_team": "Tampa Bay Rays",
-    "home_team": "New York Yankees",
-    "away_team_id": 139,
-    "home_team_id": 147,
-    "away_sp": "Drew Rasmussen",
-    "away_sp_id": 656876,
-    "home_sp": "Max Fried",
-    "home_sp_id": 608331,
-    "venue": "Yankee Stadium",
-    "status": "Scheduled",
-    "game_date_utc": "2026-09-22T23:05:00Z",
-=======
     "game_id": "823492",
     "date": "2026-09-23",
     "game": "Tampa Bay Rays @ New York Yankees",
@@ -219,27 +104,10 @@
     "venue": "Yankee Stadium",
     "status": "Scheduled",
     "game_date_utc": "2026-09-23T23:05:00Z",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game_time": "6:05 PM",
     "game_time_sort": "18:05"
   },
   {
-<<<<<<< HEAD
-    "game_id": "824867",
-    "date": "2026-09-22",
-    "game": "Cincinnati Reds @ Atlanta Braves",
-    "away_team": "Cincinnati Reds",
-    "home_team": "Atlanta Braves",
-    "away_team_id": 113,
-    "home_team_id": 144,
-    "away_sp": "Brandon Williamson",
-    "away_sp_id": 682227,
-    "home_sp": "JR Ritchie",
-    "home_sp_id": 702275,
-    "venue": "Truist Park",
-    "status": "Scheduled",
-    "game_date_utc": "2026-09-22T23:15:00Z",
-=======
     "game_id": "824710",
     "date": "2026-09-23",
     "game": "Cleveland Guardians @ Boston Red Sox",
@@ -272,32 +140,17 @@
     "venue": "Truist Park",
     "status": "Scheduled",
     "game_date_utc": "2026-09-23T23:15:00Z",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game_time": "6:15 PM",
     "game_time_sort": "18:15"
   },
   {
-<<<<<<< HEAD
-    "game_id": "824061",
-    "date": "2026-09-22",
-=======
     "game_id": "824060",
     "date": "2026-09-23",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game": "Chicago White Sox @ Kansas City Royals",
     "away_team": "Chicago White Sox",
     "home_team": "Kansas City Royals",
     "away_team_id": 145,
     "home_team_id": 118,
-<<<<<<< HEAD
-    "away_sp": "Anthony Kay",
-    "away_sp_id": 641743,
-    "home_sp": "Daniel Lynch IV",
-    "home_sp_id": 663738,
-    "venue": "Kauffman Stadium",
-    "status": "Scheduled",
-    "game_date_utc": "2026-09-22T23:40:00Z",
-=======
     "away_sp": "Erick Fedde",
     "away_sp_id": 607200,
     "home_sp": "Seth Lugo",
@@ -305,64 +158,35 @@
     "venue": "Kauffman Stadium",
     "status": "Scheduled",
     "game_date_utc": "2026-09-23T23:40:00Z",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game_time": "6:40 PM",
     "game_time_sort": "18:40"
   },
   {
-<<<<<<< HEAD
-    "game_id": "824624",
-    "date": "2026-09-22",
-=======
     "game_id": "824625",
     "date": "2026-09-23",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game": "Miami Marlins @ Chicago Cubs",
     "away_team": "Miami Marlins",
     "home_team": "Chicago Cubs",
     "away_team_id": 146,
     "home_team_id": 112,
-<<<<<<< HEAD
-    "away_sp": "Janson Junk",
-    "away_sp_id": 676083,
-=======
     "away_sp": "Ryan Gusto",
     "away_sp_id": 687473,
->>>>>>> 7fdf8c0 (Daily slate update)
     "home_sp": "",
     "home_sp_id": null,
     "venue": "Wrigley Field",
     "status": "Scheduled",
-<<<<<<< HEAD
-    "game_date_utc": "2026-09-22T23:40:00Z",
-=======
     "game_date_utc": "2026-09-23T23:40:00Z",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game_time": "6:40 PM",
     "game_time_sort": "18:40"
   },
   {
-<<<<<<< HEAD
-    "game_id": "822840",
-    "date": "2026-09-22",
-=======
     "game_id": "822841",
     "date": "2026-09-23",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game": "New York Mets @ Texas Rangers",
     "away_team": "New York Mets",
     "home_team": "Texas Rangers",
     "away_team_id": 121,
     "home_team_id": 140,
-<<<<<<< HEAD
-    "away_sp": "Sean Manaea",
-    "away_sp_id": 640455,
-    "home_sp": "MacKenzie Gore",
-    "home_sp_id": 669022,
-    "venue": "Globe Life Field",
-    "status": "Scheduled",
-    "game_date_utc": "2026-09-23T00:05:00Z",
-=======
     "away_sp": "Nolan McLean",
     "away_sp_id": 690997,
     "home_sp": "",
@@ -370,32 +194,17 @@
     "venue": "Globe Life Field",
     "status": "Scheduled",
     "game_date_utc": "2026-09-24T00:05:00Z",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game_time": "7:05 PM",
     "game_time_sort": "19:05"
   },
   {
-<<<<<<< HEAD
-    "game_id": "824302",
-    "date": "2026-09-22",
-=======
     "game_id": "824301",
     "date": "2026-09-23",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game": "Arizona Diamondbacks @ Colorado Rockies",
     "away_team": "Arizona Diamondbacks",
     "home_team": "Colorado Rockies",
     "away_team_id": 109,
     "home_team_id": 115,
-<<<<<<< HEAD
-    "away_sp": "Michael Soroka",
-    "away_sp_id": 647336,
-    "home_sp": "Kyle Freeland",
-    "home_sp_id": 607536,
-    "venue": "Coors Field",
-    "status": "Scheduled",
-    "game_date_utc": "2026-09-23T00:40:00Z",
-=======
     "away_sp": "Merrill Kelly",
     "away_sp_id": 518876,
     "home_sp": "Mason Adams",
@@ -403,27 +212,10 @@
     "venue": "Coors Field",
     "status": "Scheduled",
     "game_date_utc": "2026-09-24T00:40:00Z",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game_time": "7:40 PM",
     "game_time_sort": "19:40"
   },
   {
-<<<<<<< HEAD
-    "game_id": "823089",
-    "date": "2026-09-22",
-    "game": "Houston Astros @ Seattle Mariners",
-    "away_team": "Houston Astros",
-    "home_team": "Seattle Mariners",
-    "away_team_id": 117,
-    "home_team_id": 136,
-    "away_sp": "Cristian Javier",
-    "away_sp_id": 664299,
-    "home_sp": "Logan Gilbert",
-    "home_sp_id": 669302,
-    "venue": "T-Mobile Park",
-    "status": "Scheduled",
-    "game_date_utc": "2026-09-23T01:40:00Z",
-=======
     "game_id": "824951",
     "date": "2026-09-23",
     "game": "Los Angeles Angels @ Athletics",
@@ -438,51 +230,10 @@
     "venue": "Sutter Health Park",
     "status": "Scheduled",
     "game_date_utc": "2026-09-24T01:40:00Z",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game_time": "8:40 PM",
     "game_time_sort": "20:40"
   },
   {
-<<<<<<< HEAD
-    "game_id": "824953",
-    "date": "2026-09-22",
-    "game": "Los Angeles Angels @ Athletics",
-    "away_team": "Los Angeles Angels",
-    "home_team": "Athletics",
-    "away_team_id": 108,
-    "home_team_id": 133,
-    "away_sp": "Yusei Kikuchi",
-    "away_sp_id": 579328,
-    "home_sp": "Brady Basso",
-    "home_sp_id": 669620,
-    "venue": "Sutter Health Park",
-    "status": "Scheduled",
-    "game_date_utc": "2026-09-23T01:40:00Z",
-    "game_time": "8:40 PM",
-    "game_time_sort": "20:40"
-  },
-  {
-    "game_id": "823166",
-    "date": "2026-09-22",
-    "game": "Minnesota Twins @ San Francisco Giants",
-    "away_team": "Minnesota Twins",
-    "home_team": "San Francisco Giants",
-    "away_team_id": 142,
-    "home_team_id": 137,
-    "away_sp": "Taj Bradley",
-    "away_sp_id": 671737,
-    "home_sp": "Anthony Molina",
-    "home_sp_id": 683627,
-    "venue": "Oracle Park",
-    "status": "Scheduled",
-    "game_date_utc": "2026-09-23T01:45:00Z",
-    "game_time": "8:45 PM",
-    "game_time_sort": "20:45"
-  },
-  {
-    "game_id": "823897",
-    "date": "2026-09-22",
-=======
     "game_id": "823086",
     "date": "2026-09-23",
     "game": "Houston Astros @ Seattle Mariners",
@@ -503,28 +254,18 @@
   {
     "game_id": "823894",
     "date": "2026-09-23",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game": "San Diego Padres @ Los Angeles Dodgers",
     "away_team": "San Diego Padres",
     "home_team": "Los Angeles Dodgers",
     "away_team_id": 135,
     "home_team_id": 119,
-<<<<<<< HEAD
-    "away_sp": "Michael King",
-    "away_sp_id": 650633,
-=======
     "away_sp": "Robbie Ray",
     "away_sp_id": 592662,
->>>>>>> 7fdf8c0 (Daily slate update)
     "home_sp": "",
     "home_sp_id": null,
     "venue": "UNIQLO Field at Dodger Stadium",
     "status": "Scheduled",
-<<<<<<< HEAD
-    "game_date_utc": "2026-09-23T02:10:00Z",
-=======
     "game_date_utc": "2026-09-24T02:10:00Z",
->>>>>>> 7fdf8c0 (Daily slate update)
     "game_time": "9:10 PM",
     "game_time_sort": "21:10"
   }
