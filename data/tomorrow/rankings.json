@@ -4,282 +4,282 @@
       "Category": "HR Target",
       "Player/Team": "Pete Crow-Armstrong",
       "Game": "Miami Marlins @ Chicago Cubs",
-      "Score": 77.3,
+      "Score": 77.2,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "James McCann",
-      "Game": "Arizona Diamondbacks @ Colorado Rockies",
-      "Score": 76.5,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Corbin Carroll",
-      "Game": "Arizona Diamondbacks @ Colorado Rockies",
-      "Score": 76.1,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Pavin Smith",
-      "Game": "Arizona Diamondbacks @ Colorado Rockies",
-      "Score": 73.6,
+      "Player/Team": "Matt Olson",
+      "Game": "Cincinnati Reds @ Atlanta Braves",
+      "Score": 75.3,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Rafael Flores Jr.",
       "Game": "St. Louis Cardinals @ Pittsburgh Pirates",
-      "Score": 71.0,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Emmanuel Rodriguez",
-      "Game": "Minnesota Twins @ San Francisco Giants",
-      "Score": 70.9,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Tommy Pham",
-      "Game": "Chicago White Sox @ Kansas City Royals",
-      "Score": 70.5,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Lars Nootbaar",
-      "Game": "Arizona Diamondbacks @ Colorado Rockies",
-      "Score": 70.3,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Michael Conforto",
-      "Game": "Miami Marlins @ Chicago Cubs",
-      "Score": 70.2,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Carter Jensen",
-      "Game": "Chicago White Sox @ Kansas City Royals",
-      "Score": 70.0,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Yohandy Morales",
-      "Game": "Washington Nationals @ Detroit Tigers",
-      "Score": 69.7,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Nelson Velázquez",
-      "Game": "Houston Astros @ Seattle Mariners",
-      "Score": 68.6,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Spencer Jones",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 68.3,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Brandon Lowe",
-      "Game": "St. Louis Cardinals @ Pittsburgh Pirates",
-      "Score": 68.0,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Jordan Lawlar",
-      "Game": "Arizona Diamondbacks @ Colorado Rockies",
-      "Score": 67.3,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Bryan Reynolds",
-      "Game": "St. Louis Cardinals @ Pittsburgh Pirates",
-      "Score": 66.1,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Elly De La Cruz",
-      "Game": "Cincinnati Reds @ Atlanta Braves",
-      "Score": 66.0,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Jake Bauers",
-      "Game": "Milwaukee Brewers @ Philadelphia Phillies",
-      "Score": 65.9,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Heliot Ramos",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 65.6,
+      "Score": 75.2,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Ronald Acuña Jr.",
       "Game": "Cincinnati Reds @ Atlanta Braves",
-      "Score": 65.6,
+      "Score": 74.5,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Jake Burger",
+      "Game": "New York Mets @ Texas Rangers",
+      "Score": 71.9,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Elly De La Cruz",
+      "Game": "Cincinnati Reds @ Atlanta Braves",
+      "Score": 71.2,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Brewer Hicklen",
+      "Game": "Cincinnati Reds @ Atlanta Braves",
+      "Score": 71.2,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Drake Baldwin",
+      "Game": "Cincinnati Reds @ Atlanta Braves",
+      "Score": 71.1,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Tommy Pham",
+      "Game": "Chicago White Sox @ Kansas City Royals",
+      "Score": 70.2,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Spencer Jones",
+      "Game": "Tampa Bay Rays @ New York Yankees",
+      "Score": 70.2,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Brandon Lowe",
+      "Game": "St. Louis Cardinals @ Pittsburgh Pirates",
+      "Score": 70.0,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Bryan Reynolds",
+      "Game": "St. Louis Cardinals @ Pittsburgh Pirates",
+      "Score": 70.0,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Corey Seager",
+      "Game": "New York Mets @ Texas Rangers",
+      "Score": 69.9,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Max Muncy",
+      "Game": "San Diego Padres @ Los Angeles Dodgers",
+      "Score": 69.3,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Michael Conforto",
+      "Game": "Miami Marlins @ Chicago Cubs",
+      "Score": 69.1,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Teoscar Hernández",
+      "Game": "San Diego Padres @ Los Angeles Dodgers",
+      "Score": 68.7,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Oneil Cruz",
+      "Game": "St. Louis Cardinals @ Pittsburgh Pirates",
+      "Score": 67.6,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Heliot Ramos",
+      "Game": "Tampa Bay Rays @ New York Yankees",
+      "Score": 67.5,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Jackson Merrill",
+      "Game": "San Diego Padres @ Los Angeles Dodgers",
+      "Score": 67.5,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Josue De Paula",
+      "Game": "San Diego Padres @ Los Angeles Dodgers",
+      "Score": 66.7,
       "Notes": ""
     }
   ],
   "pitchers": [
     {
       "Category": "Pitcher K Target",
-      "Player/Team": "Chris Sale",
-      "Game": "Cincinnati Reds @ Atlanta Braves",
-      "Score": 66.4,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "Ian Seymour",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 63.8,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "Logan Henderson",
-      "Game": "Milwaukee Brewers @ Philadelphia Phillies",
-      "Score": 62.3,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "Kevin Gausman",
-      "Game": "Miami Marlins @ Chicago Cubs",
-      "Score": 61.2,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "Walbert Ureña",
-      "Game": "Los Angeles Angels @ Athletics",
-      "Score": 60.7,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "Aaron Nola",
-      "Game": "Milwaukee Brewers @ Philadelphia Phillies",
-      "Score": 60.0,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "Sonny Gray",
-      "Game": "Cleveland Guardians @ Boston Red Sox",
-      "Score": 60.0,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "Gerrit Cole",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 58.8,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "George Kirby",
-      "Game": "Houston Astros @ Seattle Mariners",
-      "Score": 58.6,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "Nolan McLean",
-      "Game": "New York Mets @ Texas Rangers",
-      "Score": 57.6,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "Framber Valdez",
-      "Game": "Washington Nationals @ Detroit Tigers",
-      "Score": 57.3,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "Robbie Ray",
+      "Player/Team": "Tyler Glasnow",
       "Game": "San Diego Padres @ Los Angeles Dodgers",
-      "Score": 57.3,
+      "Score": 65.8,
       "Notes": ""
     },
     {
       "Category": "Pitcher K Target",
-      "Player/Team": "Ryan Gusto",
-      "Game": "Miami Marlins @ Chicago Cubs",
-      "Score": 56.6,
+      "Player/Team": "Cam Schlittler",
+      "Game": "Tampa Bay Rays @ New York Yankees",
+      "Score": 63.3,
       "Notes": ""
     },
     {
       "Category": "Pitcher K Target",
-      "Player/Team": "Jeffrey Springs",
-      "Game": "Los Angeles Angels @ Athletics",
-      "Score": 56.6,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "Matthew Liberatore",
+      "Player/Team": "Paul Skenes",
       "Game": "St. Louis Cardinals @ Pittsburgh Pirates",
-      "Score": 56.3,
+      "Score": 61.9,
       "Notes": ""
     },
     {
       "Category": "Pitcher K Target",
-      "Player/Team": "Foster Griffin",
-      "Game": "Cleveland Guardians @ Boston Red Sox",
+      "Player/Team": "Nick Pivetta",
+      "Game": "San Diego Padres @ Los Angeles Dodgers",
+      "Score": 60.2,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "Freddy Peralta",
+      "Game": "Tampa Bay Rays @ New York Yankees",
+      "Score": 59.8,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "Tyler Phillips",
+      "Game": "Miami Marlins @ Chicago Cubs",
+      "Score": 59.4,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "Tyler Mahle",
+      "Game": "Cincinnati Reds @ Atlanta Braves",
+      "Score": 56.8,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "Brady Singer",
+      "Game": "Cincinnati Reds @ Atlanta Braves",
       "Score": 56.2,
       "Notes": ""
     },
     {
       "Category": "Pitcher K Target",
-      "Player/Team": "Merrill Kelly",
+      "Player/Team": "Ranger Suarez",
+      "Game": "Cleveland Guardians @ Boston Red Sox",
+      "Score": 55.9,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "Kyle Leahy",
+      "Game": "St. Louis Cardinals @ Pittsburgh Pirates",
+      "Score": 55.6,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "Eduardo Rodriguez",
       "Game": "Arizona Diamondbacks @ Colorado Rockies",
-      "Score": 55.8,
+      "Score": 55.3,
       "Notes": ""
     },
     {
       "Category": "Pitcher K Target",
-      "Player/Team": "Andrew Abbott",
-      "Game": "Cincinnati Reds @ Atlanta Braves",
-      "Score": 55.2,
+      "Player/Team": "Zac Thornton",
+      "Game": "New York Mets @ Texas Rangers",
+      "Score": 52.7,
       "Notes": ""
     },
     {
       "Category": "Pitcher K Target",
-      "Player/Team": "Chris Bassitt",
-      "Game": "Toronto Blue Jays @ Baltimore Orioles",
-      "Score": 55.1,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "Seth Lugo",
+      "Player/Team": "Randy Dobnak",
       "Game": "Chicago White Sox @ Kansas City Royals",
-      "Score": 54.2,
+      "Score": 50.7,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "",
+      "Game": "Chicago White Sox @ Kansas City Royals",
+      "Score": 28.4,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "",
+      "Game": "Miami Marlins @ Chicago Cubs",
+      "Score": 28.4,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "",
+      "Game": "New York Mets @ Texas Rangers",
+      "Score": 28.4,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "",
+      "Game": "Arizona Diamondbacks @ Colorado Rockies",
+      "Score": 28.4,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "",
+      "Game": "Milwaukee Brewers @ Philadelphia Phillies",
+      "Score": 28.4,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "",
+      "Game": "Milwaukee Brewers @ Philadelphia Phillies",
+      "Score": 28.4,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "",
+      "Game": "Cleveland Guardians @ Boston Red Sox",
+      "Score": 28.4,
       "Notes": ""
     }
   ]

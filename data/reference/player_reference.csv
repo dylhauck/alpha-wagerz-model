@@ -113,8 +113,8 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 642215,Weston Wilson,136,Seattle Mariners,SEA,3B,Third Base,R,R
 668800,Andrew Knizner,137,San Francisco Giants,SF,C,Catcher,R,R
 683627,Anthony Molina,137,San Francisco Giants,SF,P,Pitcher,R,R
-694918,Blade Tidwell,137,San Francisco Giants,SF,P,Pitcher,R,R
 815589,Bo Davidson,137,San Francisco Giants,SF,LF,Outfielder,L,R
+694820,Braxton Roxby,137,San Francisco Giants,SF,P,Pitcher,R,R
 695391,Brett Harris,137,San Francisco Giants,SF,3B,Third Base,R,R
 693313,Carson Seymour,137,San Francisco Giants,SF,P,Pitcher,R,R
 702885,Cesar Perdomo,137,San Francisco Giants,SF,P,Pitcher,L,L
@@ -209,12 +209,12 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 594798,Jacob deGrom,140,Texas Rangers,TEX,P,Pitcher,L,R
 669394,Jake Burger,140,Texas Rangers,TEX,1B,First Base,R,R
 596001,Jakob Junis,140,Texas Rangers,TEX,P,Pitcher,R,R
-592626,Joc Pederson,140,Texas Rangers,TEX,DH,Designated Hitter,L,L
 656756,Jordan Montgomery,140,Texas Rangers,TEX,P,Pitcher,L,L
 673962,Josh Jung,140,Texas Rangers,TEX,3B,Third Base,R,R
 679822,Justin Foscue,140,Texas Rangers,TEX,2B,Second Base,R,R
 677958,Kumar Rocker,140,Texas Rangers,TEX,P,Pitcher,R,R
 669022,MacKenzie Gore,140,Texas Rangers,TEX,P,Pitcher,L,L
+680737,Michael Helman,140,Texas Rangers,TEX,CF,Outfielder,R,R
 543135,Nathan Eovaldi,140,Texas Rangers,TEX,P,Pitcher,R,R
 670032,Nicky Lopez,140,Texas Rangers,TEX,2B,Second Base,L,R
 682608,Peyton Gray,140,Texas Rangers,TEX,P,Pitcher,R,R
