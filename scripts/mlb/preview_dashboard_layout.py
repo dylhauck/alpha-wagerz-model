@@ -11,7 +11,7 @@ def load_json(filepath):
 
 
 def main():
-    game_index = load_json("data/processed/game_index.json")
+    game_index = load_json("data/processed/mlb/game_index.json")
     game_tabs = [game["game"] for game in game_index]
 
     game_id = input("Enter game_id: ").strip()
@@ -25,3 +25,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

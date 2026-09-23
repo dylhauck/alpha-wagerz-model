@@ -7,10 +7,10 @@ from model.mlb.scores.pitcher_detail import attach_pitcher_detail_scores
 from model.mlb.scores.pitcher_labels import attach_pitcher_labels
 from utils.json_utils import clean_value
 
-GAMES_DIR = Path("data/processed/games")
-PITCHER_METRICS_FILE = Path("data/processed/pitcher_metrics_last_30_days.csv")
-PITCHER_SEASON_METRICS_FILE = Path("data/processed/pitcher_metrics_season.csv")
-PITCHER_LONGTERM_METRICS_FILE = Path("data/processed/pitcher_metrics_longterm.csv")
+GAMES_DIR = Path("data/processed/mlb/games")
+PITCHER_METRICS_FILE = Path("data/processed/mlb/pitcher_metrics_last_30_days.csv")
+PITCHER_SEASON_METRICS_FILE = Path("data/processed/mlb/pitcher_metrics_season.csv")
+PITCHER_LONGTERM_METRICS_FILE = Path("data/processed/mlb/pitcher_metrics_longterm.csv")
 
 def load_json(filepath):
     with open(filepath, "r", encoding="utf-8") as f:
@@ -556,3 +556,4 @@ def attach_pitcher_metrics_to_games():
 
 if __name__ == "__main__":
     attach_pitcher_metrics_to_games()
+

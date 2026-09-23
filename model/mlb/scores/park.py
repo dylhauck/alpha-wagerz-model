@@ -1,7 +1,7 @@
 from pathlib import Path
 import pandas as pd
 
-PARK_FACTORS_FILE = Path("data/reference/park_factors.csv")
+PARK_FACTORS_FILE = Path("data/reference/mlb/park_factors.csv")
 
 
 def clamp(value, low=0, high=100):
@@ -55,3 +55,4 @@ def score_park(game=None, hitter=None):
     score += extreme_adjustments.get(venue, 0)
 
     return round(clamp(score), 1)
+

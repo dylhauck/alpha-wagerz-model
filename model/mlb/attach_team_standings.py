@@ -2,8 +2,8 @@ from pathlib import Path
 
 from utils.json_utils import load_json, save_json
 
-GAMES_DIR = Path("data/processed/games")
-TEAM_CONTEXT_FILE = Path("data/processed/team_context.json")
+GAMES_DIR = Path("data/processed/mlb/games")
+TEAM_CONTEXT_FILE = Path("data/processed/mlb/team_context.json")
 
 
 def attach_team_standings():
@@ -29,3 +29,4 @@ def attach_team_standings():
 
 if __name__ == "__main__":
     attach_team_standings()
+

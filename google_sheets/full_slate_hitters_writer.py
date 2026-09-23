@@ -5,7 +5,7 @@ from google.oauth2.service_account import Credentials
 
 SHEET_NAME = "Alpha Wagerz Model"
 CREDENTIALS_FILE = "config/google_credentials.json"
-ALL_GAMES_FILE = Path("data/processed/all_games.json")
+ALL_GAMES_FILE = Path("data/processed/mlb/all_games.json")
 
 HEADERS = [
     "Rank",
@@ -193,3 +193,4 @@ def update_full_slate_hitters_sheet():
 
 if __name__ == "__main__":
     update_full_slate_hitters_sheet()
+

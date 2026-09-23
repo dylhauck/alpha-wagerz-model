@@ -7,11 +7,11 @@ from utils.json_utils import load_json, save_json
 
 
 ALL_GAMES_FILE = Path(
-    "data/tomorrow/all_games.json"
+    "data/tomorrow/mlb/all_games.json"
 )
 
 WEATHER_FILE = Path(
-    "data/tomorrow/weather.json"
+    "data/tomorrow/mlb/weather.json"
 )
 
 
@@ -85,3 +85,4 @@ def attach_tomorrow_weather_to_games():
 
 if __name__ == "__main__":
     attach_tomorrow_weather_to_games()
+

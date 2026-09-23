@@ -3,8 +3,8 @@ import pandas as pd
 
 from utils.json_utils import load_json, save_json, clean_value
 
-GAMES_DIR = Path("data/processed/games")
-BULLPEN_FILE = Path("data/processed/bullpen_metrics_last_30_days.csv")
+GAMES_DIR = Path("data/processed/mlb/games")
+BULLPEN_FILE = Path("data/processed/mlb/bullpen_metrics_last_30_days.csv")
 
 
 TEAM_NAME_TO_ABBR = {
@@ -92,3 +92,4 @@ def attach_bullpen_context():
 
 if __name__ == "__main__":
     attach_bullpen_context()
+

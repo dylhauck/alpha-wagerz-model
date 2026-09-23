@@ -3,11 +3,11 @@ from pathlib import Path
 
 
 GAMES_DIR = Path(
-    "data/tomorrow/processed/games"
+    "data/tomorrow/mlb/processed/games"
 )
 
 PLAYER_REFERENCE_FILE = Path(
-    "data/processed/player_reference.json"
+    "data/processed/mlb/player_reference.json"
 )
 
 
@@ -391,3 +391,5 @@ def enrich_tomorrow_players_in_games():
 
 if __name__ == "__main__":
     enrich_tomorrow_players_in_games()
+
+

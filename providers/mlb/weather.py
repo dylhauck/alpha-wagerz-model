@@ -12,11 +12,11 @@ from utils.json_utils import save_json
 load_dotenv(dotenv_path=Path.cwd() / ".env")
 OPENWEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY")
 
-STADIUM_FILE = Path("data/reference/stadium_weather.csv")
+STADIUM_FILE = Path("data/reference/mlb/stadium_weather.csv")
 VENUE_ALIASES = {
     "uniqlo field at dodger stadium": "dodger stadium",
 }
-OUTPUT_FILE = Path("data/processed/weather.json")
+OUTPUT_FILE = Path("data/processed/mlb/weather.json")
 
 
 def normalize(value):
@@ -181,3 +181,5 @@ def build_weather_file():
 
 if __name__ == "__main__":
     build_weather_file()
+
+

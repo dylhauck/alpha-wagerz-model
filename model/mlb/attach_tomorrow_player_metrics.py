@@ -9,7 +9,7 @@ import model.mlb.enrich_players as enrich_players_module
 
 
 TOMORROW_GAMES_DIR = Path(
-    "data/tomorrow/processed/games"
+    "data/tomorrow/mlb/processed/games"
 )
 
 
@@ -127,3 +127,4 @@ def attach_tomorrow_player_metrics():
 
 if __name__ == "__main__":
     attach_tomorrow_player_metrics()
+

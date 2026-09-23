@@ -10,11 +10,11 @@ from utils.json_utils import load_json, save_json
 
 
 GAMES_DIR = Path(
-    "data/tomorrow/processed/games"
+    "data/tomorrow/mlb/processed/games"
 )
 
 PLAYER_REFERENCE_FILE = Path(
-    "data/processed/player_reference.json"
+    "data/processed/mlb/player_reference.json"
 )
 
 MLB_PEOPLE_URL = (
@@ -613,3 +613,5 @@ def fill_tomorrow_player_details() -> int:
 
 if __name__ == "__main__":
     fill_tomorrow_player_details()
+
+

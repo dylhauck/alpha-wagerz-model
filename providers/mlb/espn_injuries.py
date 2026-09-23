@@ -28,6 +28,7 @@ PROCESSED_OUTPUT_FILE = (
     MODEL_ROOT
     / "data"
     / "processed"
+    / "mlb"
     / "injury_report.json"
 )
 
@@ -685,4 +686,5 @@ def build_injury_report():
 
 if __name__ == "__main__":
     build_injury_report()
+
 

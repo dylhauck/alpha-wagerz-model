@@ -3,11 +3,11 @@ from pathlib import Path
 
 
 GAMES_DIR = Path(
-    "data/tomorrow/processed/games"
+    "data/tomorrow/mlb/processed/games"
 )
 
 OUTPUT_FILE = Path(
-    "data/tomorrow/processed/game_index.json"
+    "data/tomorrow/mlb/processed/game_index.json"
 )
 
 
@@ -111,3 +111,4 @@ def build_tomorrow_game_index():
 
 if __name__ == "__main__":
     build_tomorrow_game_index()
+

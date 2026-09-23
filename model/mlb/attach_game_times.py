@@ -1,8 +1,8 @@
 from pathlib import Path
 from utils.json_utils import load_json, save_json
 
-RAW_SLATE_FILE = Path("data/raw/todays_slate.json")
-GAMES_DIR = Path("data/processed/games")
+RAW_SLATE_FILE = Path("data/raw/mlb/todays_slate.json")
+GAMES_DIR = Path("data/processed/mlb/games")
 
 
 def attach_game_times():
@@ -39,3 +39,5 @@ def attach_game_times():
 
 if __name__ == "__main__":
     attach_game_times()
+
+

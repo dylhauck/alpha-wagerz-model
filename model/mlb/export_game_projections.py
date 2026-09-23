@@ -3,10 +3,10 @@ from providers.mlb import market
 from utils.json_utils import load_json, save_json
 from utils.player_name import normalize_player_name, player_last_name
 
-ALL_GAMES_FILE = Path("data/processed/all_games.json")
-MARKET_LINES_FILE = Path("data/processed/market_lines.json")
-OUTPUT_FILE = Path("data/processed/game_projections.json")
-K_LINES_OVERRIDE_FILE = Path("data/raw/k_lines_override.json")
+ALL_GAMES_FILE = Path("data/processed/mlb/all_games.json")
+MARKET_LINES_FILE = Path("data/processed/mlb/market_lines.json")
+OUTPUT_FILE = Path("data/processed/mlb/game_projections.json")
+K_LINES_OVERRIDE_FILE = Path("data/raw/mlb/k_lines_override.json")
 
 def f(value, default=0):
     try:
@@ -680,4 +680,6 @@ def export_game_projections():
 
 if __name__ == "__main__":
     export_game_projections()
+
+
 

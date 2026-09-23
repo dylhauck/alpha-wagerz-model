@@ -1,10 +1,10 @@
 import json
 from pathlib import Path
 
-GAMES_DIR = Path("data/processed/games")
-ALL_GAMES_FILE = Path("data/processed/all_games.json")
-WEATHER_FILE = Path("data/processed/weather.json")
-RANKINGS_FILE = Path("data/processed/rankings.json")
+GAMES_DIR = Path("data/processed/mlb/games")
+ALL_GAMES_FILE = Path("data/processed/mlb/all_games.json")
+WEATHER_FILE = Path("data/processed/mlb/weather.json")
+RANKINGS_FILE = Path("data/processed/mlb/rankings.json")
 
 
 def load_json(filepath):
@@ -34,7 +34,7 @@ def validate_pipeline():
     warnings = []
 
     if not GAMES_DIR.exists():
-        errors.append("Missing data/processed/games folder")
+        errors.append("Missing data/processed/mlb/games folder")
 
     game_files = list(GAMES_DIR.glob("*.json")) if GAMES_DIR.exists() else []
 
@@ -42,13 +42,13 @@ def validate_pipeline():
         errors.append("No processed game files found")
 
     if not ALL_GAMES_FILE.exists():
-        errors.append("Missing data/processed/all_games.json")
+        errors.append("Missing data/processed/mlb/all_games.json")
 
     if not WEATHER_FILE.exists():
-        warnings.append("Missing data/processed/weather.json")
+        warnings.append("Missing data/processed/mlb/weather.json")
 
     if not RANKINGS_FILE.exists():
-        warnings.append("Missing data/processed/rankings.json")
+        warnings.append("Missing data/processed/mlb/rankings.json")
 
     for file in game_files:
         game = load_json(file)
@@ -122,3 +122,4 @@ def validate_pipeline():
 
 if __name__ == "__main__":
     validate_pipeline()
+

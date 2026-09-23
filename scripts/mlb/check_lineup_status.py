@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 
-GAMES_DIR = Path("data/processed/games")
+GAMES_DIR = Path("data/processed/mlb/games")
 
 
 def load_json(filepath):
@@ -39,3 +39,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

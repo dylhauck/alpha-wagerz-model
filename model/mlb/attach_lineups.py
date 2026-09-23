@@ -1,8 +1,8 @@
 import json
 from pathlib import Path
 
-LINEUPS_FILE = Path("data/processed/lineups.json")
-GAMES_DIR = Path("data/processed/games")
+LINEUPS_FILE = Path("data/processed/mlb/lineups.json")
+GAMES_DIR = Path("data/processed/mlb/games")
 
 
 def load_json(filepath):
@@ -45,3 +45,4 @@ def attach_lineups_to_games():
 
 if __name__ == "__main__":
     attach_lineups_to_games()
+

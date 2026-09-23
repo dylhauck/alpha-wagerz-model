@@ -12,11 +12,11 @@ from utils.json_utils import save_json
 
 
 GAME_INDEX_FILE = Path(
-    "data/tomorrow/processed/game_index.json"
+    "data/tomorrow/mlb/processed/game_index.json"
 )
 
 OUTPUT_FILE = Path(
-    "data/tomorrow/lineups.json"
+    "data/tomorrow/mlb/lineups.json"
 )
 
 MLB_BASE_URL = "https://statsapi.mlb.com/api/v1"
@@ -542,3 +542,4 @@ def build_tomorrow_lineups() -> list[dict[str, Any]]:
 
 if __name__ == "__main__":
     build_tomorrow_lineups()
+

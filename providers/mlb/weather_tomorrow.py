@@ -16,14 +16,14 @@ load_dotenv(dotenv_path=Path.cwd() / ".env")
 
 OPENWEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY")
 
-STADIUM_FILE = Path("data/reference/stadium_weather.csv")
+STADIUM_FILE = Path("data/reference/mlb/stadium_weather.csv")
 
 TOMORROW_GAMES_FILE = Path(
-    "data/tomorrow/all_games.json"
+    "data/tomorrow/mlb/all_games.json"
 )
 
 OUTPUT_FILE = Path(
-    "data/tomorrow/weather.json"
+    "data/tomorrow/mlb/weather.json"
 )
 
 VENUE_ALIASES = {
@@ -353,3 +353,5 @@ def build_tomorrow_weather_file() -> list[dict[str, Any]]:
 
 if __name__ == "__main__":
     build_tomorrow_weather_file()
+
+

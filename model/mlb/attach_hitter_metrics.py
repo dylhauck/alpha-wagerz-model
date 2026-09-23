@@ -5,11 +5,11 @@ from model.mlb.scores.alpha import alpha_score
 from utils.json_utils import load_json, save_json, clean_value
 from model.mlb.scores.slate_normalizer import normalize_slate_hitters
 
-GAMES_DIR = Path("data/processed/games")
+GAMES_DIR = Path("data/processed/mlb/games")
 
-HITTER_METRICS_FILE = Path("data/processed/hitter_metrics_last_30_days.csv")
-HITTER_SEASON_METRICS_FILE = Path("data/processed/hitter_metrics_season.csv")
-HITTER_LONGTERM_METRICS_FILE = Path("data/processed/hitter_metrics_longterm.csv")
+HITTER_METRICS_FILE = Path("data/processed/mlb/hitter_metrics_last_30_days.csv")
+HITTER_SEASON_METRICS_FILE = Path("data/processed/mlb/hitter_metrics_season.csv")
+HITTER_LONGTERM_METRICS_FILE = Path("data/processed/mlb/hitter_metrics_longterm.csv")
 
 METRIC_FIELDS = [
     "Pitches",
@@ -348,3 +348,4 @@ def attach_hitter_metrics_to_games():
 
 if __name__ == "__main__":
     attach_hitter_metrics_to_games()
+

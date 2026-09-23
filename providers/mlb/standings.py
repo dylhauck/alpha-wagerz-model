@@ -4,7 +4,7 @@ from pathlib import Path
 
 from utils.json_utils import save_json
 
-OUTPUT_FILE = Path("data/processed/team_context.json")
+OUTPUT_FILE = Path("data/processed/mlb/team_context.json")
 
 STANDINGS_URL = "https://statsapi.mlb.com/api/v1/standings"
 
@@ -71,3 +71,4 @@ def build_team_context_file():
 
 if __name__ == "__main__":
     build_team_context_file()
+

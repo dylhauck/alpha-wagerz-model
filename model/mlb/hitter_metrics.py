@@ -3,14 +3,14 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-RAW_LAST_30_FILE = Path("data/raw/statcast/statcast_last_30_days.csv")
-RAW_SEASON_FILE = Path("data/raw/statcast/statcast_season.csv")
-RAW_LONGTERM_FILE = Path("data/raw/statcast/statcast_longterm.csv")
-PLAYER_REFERENCE_FILE = Path("data/reference/player_reference.csv")
+RAW_LAST_30_FILE = Path("data/raw/mlb/statcast/statcast_last_30_days.csv")
+RAW_SEASON_FILE = Path("data/raw/mlb/statcast/statcast_season.csv")
+RAW_LONGTERM_FILE = Path("data/raw/mlb/statcast/statcast_longterm.csv")
+PLAYER_REFERENCE_FILE = Path("data/reference/mlb/player_reference.csv")
 
-OUTPUT_LAST_30_FILE = Path("data/processed/hitter_metrics_last_30_days.csv")
-OUTPUT_SEASON_FILE = Path("data/processed/hitter_metrics_season.csv")
-OUTPUT_LONGTERM_FILE = Path("data/processed/hitter_metrics_longterm.csv")
+OUTPUT_LAST_30_FILE = Path("data/processed/mlb/hitter_metrics_last_30_days.csv")
+OUTPUT_SEASON_FILE = Path("data/processed/mlb/hitter_metrics_season.csv")
+OUTPUT_LONGTERM_FILE = Path("data/processed/mlb/hitter_metrics_longterm.csv")
 
 BATTED_BALL_TYPES = {"ground_ball", "line_drive", "fly_ball", "popup"}
 
@@ -390,4 +390,7 @@ def build_hitter_metrics():
 
 if __name__ == "__main__":
     build_hitter_metrics()
+
+
+
 

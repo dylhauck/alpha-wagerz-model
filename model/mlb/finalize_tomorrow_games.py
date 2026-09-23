@@ -12,15 +12,15 @@ import model.mlb.enrich_players as enrich_players_module
 
 
 TOMORROW_GAMES_DIR = Path(
-    "data/tomorrow/processed/games"
+    "data/tomorrow/mlb/processed/games"
 )
 
 TOMORROW_LINEUPS_FILE = Path(
-    "data/tomorrow/lineups.json"
+    "data/tomorrow/mlb/lineups.json"
 )
 
 TOMORROW_ALL_GAMES_FILE = Path(
-    "data/tomorrow/all_games.json"
+    "data/tomorrow/mlb/all_games.json"
 )
 
 
@@ -440,7 +440,7 @@ def finalize_tomorrow_games():
     if forced == 0:
         raise RuntimeError(
             "No tomorrow lineups were attached. "
-            "Check data/tomorrow/lineups.json."
+            "Check data/tomorrow/mlb/lineups.json."
         )
 
     configure_shared_modules()
@@ -479,3 +479,4 @@ def finalize_tomorrow_games():
 
 if __name__ == "__main__":
     finalize_tomorrow_games()
+

@@ -66,6 +66,7 @@ if __name__ == "__main__":
     from utils.file_utils import save_json
 
     slate = get_todays_slate()
-    save_json(slate, "data/raw/todays_slate.json")
+    save_json(slate, "data/raw/mlb/todays_slate.json")
 
-    print(f"Saved {len(slate)} games to data/raw/todays_slate.json")
+    print(f"Saved {len(slate)} games to data/raw/mlb/todays_slate.json")
+

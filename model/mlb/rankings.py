@@ -1,8 +1,8 @@
 import json
 from pathlib import Path
 
-GAMES_DIR = Path("data/processed/games")
-OUTPUT_FILE = Path("data/processed/rankings.json")
+GAMES_DIR = Path("data/processed/mlb/games")
+OUTPUT_FILE = Path("data/processed/mlb/rankings.json")
 
 
 def load_json(filepath):
@@ -77,3 +77,4 @@ def build_rankings():
 
 if __name__ == "__main__":
     build_rankings()
+

@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-WEATHER_THRESHOLDS_FILE = Path("data/reference/weather_thresholds.json")
+WEATHER_THRESHOLDS_FILE = Path("data/reference/mlb/weather_thresholds.json")
 
 DOME_ROOFS = {"dome", "closed"}
 RETRACTABLE_ROOFS = {"retractable"}
@@ -90,3 +90,4 @@ def score_weather(game=None):
         score = 50 + ((score - 50) * 0.55)
 
     return round(clamp(score), 1)
+

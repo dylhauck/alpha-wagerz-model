@@ -327,10 +327,10 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 643289,Mauricio Dubón,144,Atlanta Braves,ATL,LF,Outfielder,R,R
 671739,Michael Harris II,144,Atlanta Braves,ATL,CF,Outfielder,L,L
 573262,Mike Yastrzemski,144,Atlanta Braves,ATL,LF,Outfielder,L,L
-702566,Owen Murphy,144,Atlanta Braves,ATL,P,Pitcher,R,R
 645277,Ozzie Albies,144,Atlanta Braves,ATL,2B,Second Base,S,R
 628452,Raisel Iglesias,144,Atlanta Braves,ATL,P,Pitcher,R,R
 678061,Ray Kerr,144,Atlanta Braves,ATL,P,Pitcher,L,L
+663158,Robert Suarez,144,Atlanta Braves,ATL,P,Pitcher,R,R
 660670,Ronald Acuña Jr.,144,Atlanta Braves,ATL,RF,Outfielder,R,R
 669221,Sean Murphy,144,Atlanta Braves,ATL,C,Catcher,R,R
 641816,Tyler Mahle,144,Atlanta Braves,ATL,P,Pitcher,R,R
@@ -427,7 +427,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 668930,Brice Turang,158,Milwaukee Brewers,MIL,2B,Second Base,L,R
 694477,Chad Patrick,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 592885,Christian Yelich,158,Milwaukee Brewers,MIL,DH,Designated Hitter,L,R
-676467,Colton Gordon,158,Milwaukee Brewers,MIL,P,Pitcher,L,L
 806198,Cooper Pratt,158,Milwaukee Brewers,MIL,SS,Shortstop,R,R
 669084,DL Hall,158,Milwaukee Brewers,MIL,P,Pitcher,L,L
 666152,David Hamilton,158,Milwaukee Brewers,MIL,3B,Third Base,L,R
@@ -442,6 +441,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 690986,Kyle Harrison,158,Milwaukee Brewers,MIL,P,Pitcher,R,L
 701656,Logan Henderson,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 800325,Luis Lara,158,Milwaukee Brewers,MIL,RF,Outfielder,S,R
+680689,Lyon Richardson,158,Milwaukee Brewers,MIL,P,Pitcher,S,R
 688107,Robert Gasser,158,Milwaukee Brewers,MIL,P,Pitcher,L,L
 686217,Sal Frelick,158,Milwaukee Brewers,MIL,RF,Outfielder,L,R
 675660,Shane Drohan,158,Milwaukee Brewers,MIL,P,Pitcher,L,L

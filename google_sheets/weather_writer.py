@@ -5,7 +5,7 @@ from google.oauth2.service_account import Credentials
 
 SHEET_NAME = "Alpha Wagerz Model"
 CREDENTIALS_FILE = "config/google_credentials.json"
-WEATHER_FILE = Path("data/processed/weather.json")
+WEATHER_FILE = Path("data/processed/mlb/weather.json")
 
 HEADERS = [
     "Venue",
@@ -85,3 +85,4 @@ def update_weather_sheet():
 
 if __name__ == "__main__":
     update_weather_sheet()
+

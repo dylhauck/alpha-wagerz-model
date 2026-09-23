@@ -2,7 +2,7 @@ from pathlib import Path
 
 from utils.json_utils import load_json
 
-GAMES_DIR = Path("data/processed/games")
+GAMES_DIR = Path("data/processed/mlb/games")
 
 REQUIRED_HITTER_FIELDS = [
     "Player",
@@ -152,3 +152,4 @@ def validate_model_features():
 
 if __name__ == "__main__":
     validate_model_features()
+

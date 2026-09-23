@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 
-GAME_INDEX_FILE = Path("data/processed/game_index.json")
+GAME_INDEX_FILE = Path("data/processed/mlb/game_index.json")
 
 
 def load_json(filepath):
@@ -40,3 +40,4 @@ def preview_first_game():
 
 if __name__ == "__main__":
     preview_first_game()
+

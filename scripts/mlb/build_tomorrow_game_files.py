@@ -4,11 +4,11 @@ from pathlib import Path
 
 
 RAW_SLATE_FILE = Path(
-    "data/tomorrow/raw/slate.json"
+    "data/tomorrow/mlb/raw/slate.json"
 )
 
 OUTPUT_DIR = Path(
-    "data/tomorrow/processed/games"
+    "data/tomorrow/mlb/processed/games"
 )
 
 
@@ -109,3 +109,4 @@ def build_tomorrow_game_files():
 
 if __name__ == "__main__":
     build_tomorrow_game_files()
+

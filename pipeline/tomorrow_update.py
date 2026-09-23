@@ -59,11 +59,11 @@ from model.mlb.publish_tomorrow_to_web import (
 
 
 TOMORROW_GAMES_DIR = Path(
-    "data/tomorrow/processed/games"
+    "data/tomorrow/mlb/processed/games"
 )
 
 TOMORROW_ALL_GAMES_FILE = Path(
-    "data/tomorrow/all_games.json"
+    "data/tomorrow/mlb/all_games.json"
 )
 
 
@@ -119,7 +119,7 @@ def game_time_sort_value(
 
 def refresh_tomorrow_all_games() -> int:
     """
-    Rebuild data/tomorrow/all_games.json from the final corrected
+    Rebuild data/tomorrow/mlb/all_games.json from the final corrected
     processed game files.
 
     This preserves metrics, handedness, player IDs, lineups,
@@ -345,4 +345,5 @@ def run_tomorrow_update():
 
 if __name__ == "__main__":
     run_tomorrow_update()
+
 

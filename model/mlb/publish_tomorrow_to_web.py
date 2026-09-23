@@ -7,7 +7,7 @@ from pathlib import Path
 MODEL_ROOT = Path(__file__).resolve().parents[2]
 
 WEB_ROOT = MODEL_ROOT.parent / "alpha-wagerz-web"
-TOMORROW_DATA_DIR = MODEL_ROOT / "data" / "tomorrow"
+TOMORROW_DATA_DIR = MODEL_ROOT / "data" / "tomorrow" / "mlb"
 WEB_TOMORROW_DATA_DIR = WEB_ROOT / "public" / "data" / "tomorrow"
 
 FILES_TO_PUBLISH = [
@@ -62,4 +62,5 @@ def publish_tomorrow_to_web():
 
 if __name__ == "__main__":
     publish_tomorrow_to_web()
+
 

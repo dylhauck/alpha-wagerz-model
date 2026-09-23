@@ -8,8 +8,8 @@
     "away_sp": "Merrill Kelly",
     "home_sp": "Mason Adams",
     "venue": "Coors Field",
-    "status": "Scheduled",
-    "file": "data/processed/games/824301.json"
+    "status": "Pre-Game",
+    "file": "data/processed/mlb/games/824301.json"
   },
   {
     "game_id": "824060",
@@ -20,8 +20,8 @@
     "away_sp": "Bryan Hudson",
     "home_sp": "Seth Lugo",
     "venue": "Kauffman Stadium",
-    "status": "Scheduled",
-    "file": "data/processed/games/824060.json"
+    "status": "Pre-Game",
+    "file": "data/processed/mlb/games/824060.json"
   },
   {
     "game_id": "824868",
@@ -32,8 +32,8 @@
     "away_sp": "Andrew Abbott",
     "home_sp": "Chris Sale",
     "venue": "Truist Park",
-    "status": "Scheduled",
-    "file": "data/processed/games/824868.json"
+    "status": "Pre-Game",
+    "file": "data/processed/mlb/games/824868.json"
   },
   {
     "game_id": "824710",
@@ -44,8 +44,8 @@
     "away_sp": "Foster Griffin",
     "home_sp": "Sonny Gray",
     "venue": "Fenway Park",
-    "status": "Scheduled",
-    "file": "data/processed/games/824710.json"
+    "status": "Pre-Game",
+    "file": "data/processed/mlb/games/824710.json"
   },
   {
     "game_id": "823086",
@@ -57,7 +57,7 @@
     "home_sp": "George Kirby",
     "venue": "T-Mobile Park",
     "status": "Scheduled",
-    "file": "data/processed/games/823086.json"
+    "file": "data/processed/mlb/games/823086.json"
   },
   {
     "game_id": "824951",
@@ -69,7 +69,7 @@
     "home_sp": "Jeffrey Springs",
     "venue": "Sutter Health Park",
     "status": "Scheduled",
-    "file": "data/processed/games/824951.json"
+    "file": "data/processed/mlb/games/824951.json"
   },
   {
     "game_id": "824625",
@@ -81,7 +81,7 @@
     "home_sp": "Kevin Gausman",
     "venue": "Wrigley Field",
     "status": "Scheduled",
-    "file": "data/processed/games/824625.json"
+    "file": "data/processed/mlb/games/824625.json"
   },
   {
     "game_id": "823410",
@@ -92,8 +92,8 @@
     "away_sp": "Logan Henderson",
     "home_sp": "Aaron Nola",
     "venue": "Citizens Bank Park",
-    "status": "Scheduled",
-    "file": "data/processed/games/823410.json"
+    "status": "Pre-Game",
+    "file": "data/processed/mlb/games/823410.json"
   },
   {
     "game_id": "823168",
@@ -104,8 +104,8 @@
     "away_sp": "Connor Prielipp",
     "home_sp": "Cesar Perdomo",
     "venue": "Oracle Park",
-    "status": "Scheduled",
-    "file": "data/processed/games/823168.json"
+    "status": "In Progress",
+    "file": "data/processed/mlb/games/823168.json"
   },
   {
     "game_id": "822841",
@@ -117,7 +117,7 @@
     "home_sp": "Cody Bradford",
     "venue": "Globe Life Field",
     "status": "Scheduled",
-    "file": "data/processed/games/822841.json"
+    "file": "data/processed/mlb/games/822841.json"
   },
   {
     "game_id": "823894",
@@ -129,7 +129,7 @@
     "home_sp": "Yoshinobu Yamamoto",
     "venue": "UNIQLO Field at Dodger Stadium",
     "status": "Scheduled",
-    "file": "data/processed/games/823894.json"
+    "file": "data/processed/mlb/games/823894.json"
   },
   {
     "game_id": "823327",
@@ -140,8 +140,8 @@
     "away_sp": "Matthew Liberatore",
     "home_sp": "Lake Bachar",
     "venue": "PNC Park",
-    "status": "Scheduled",
-    "file": "data/processed/games/823327.json"
+    "status": "Pre-Game",
+    "file": "data/processed/mlb/games/823327.json"
   },
   {
     "game_id": "823492",
@@ -149,11 +149,11 @@
     "game": "Tampa Bay Rays @ New York Yankees",
     "away_team": "Tampa Bay Rays",
     "home_team": "New York Yankees",
-    "away_sp": "Ian Seymour",
+    "away_sp": "Mason Englert",
     "home_sp": "Gerrit Cole",
     "venue": "Yankee Stadium",
-    "status": "Scheduled",
-    "file": "data/processed/games/823492.json"
+    "status": "Pre-Game",
+    "file": "data/processed/mlb/games/823492.json"
   },
   {
     "game_id": "824784",
@@ -165,7 +165,7 @@
     "home_sp": "",
     "venue": "Oriole Park at Camden Yards",
     "status": "Scheduled",
-    "file": "data/processed/games/824784.json"
+    "file": "data/processed/mlb/games/824784.json"
   },
   {
     "game_id": "824785",
@@ -176,8 +176,8 @@
     "away_sp": "Max Scherzer",
     "home_sp": "Chris Bassitt",
     "venue": "Oriole Park at Camden Yards",
-    "status": "Pre-Game",
-    "file": "data/processed/games/824785.json"
+    "status": "In Progress",
+    "file": "data/processed/mlb/games/824785.json"
   },
   {
     "game_id": "824223",
@@ -188,7 +188,7 @@
     "away_sp": "Richard Lovelady",
     "home_sp": "Framber Valdez",
     "venue": "Comerica Park",
-    "status": "Pre-Game",
-    "file": "data/processed/games/824223.json"
+    "status": "Game Over",
+    "file": "data/processed/mlb/games/824223.json"
   }
 ]

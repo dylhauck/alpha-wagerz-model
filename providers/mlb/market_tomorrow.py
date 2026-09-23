@@ -25,9 +25,9 @@ MARKET_TIMEZONE = os.getenv(
     "America/Chicago",
 )
 
-ALL_GAMES_FILE = Path("data/tomorrow/all_games.json")
-OUTPUT_FILE = Path("data/tomorrow/market_lines.json")
-CACHE_DIR = Path("data/cache/markets/tomorrow")
+ALL_GAMES_FILE = Path("data/tomorrow/mlb/all_games.json")
+OUTPUT_FILE = Path("data/tomorrow/mlb/market_lines.json")
+CACHE_DIR = Path("data/cache/mlb/markets/tomorrow")
 CACHE_FILE = CACHE_DIR / "latest_tomorrow_market_lines.json"
 
 BOOKMAKERS = ["FanDuel", "DraftKings"]
@@ -1072,3 +1072,5 @@ def build_tomorrow_market_lines():
 
 if __name__ == "__main__":
     build_tomorrow_market_lines()
+
+

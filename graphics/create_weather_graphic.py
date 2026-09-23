@@ -11,7 +11,7 @@ if str(ROOT) not in sys.path:
 
 from utils.json_utils import load_json
 
-WEATHER_FILE = ROOT / "data/processed/weather.json"
+WEATHER_FILE = ROOT / "data/processed/mlb/weather.json"
 OUTPUT_DIR = ROOT / "graphics/weather"
 OUTPUT_FILE = OUTPUT_DIR / f"alpha_weather_edge_{datetime.now().strftime('%Y_%m_%d')}.png"
 
@@ -396,4 +396,5 @@ def create_weather_graphic():
 
 if __name__ == "__main__":
     create_weather_graphic()
+
 

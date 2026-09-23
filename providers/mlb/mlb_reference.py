@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 
 TEAMS_URL = "https://statsapi.mlb.com/api/v1/teams?sportId=1"
-OUTPUT_DIR = Path("data/reference")
+OUTPUT_DIR = Path("data/reference/mlb")
 
 
 def get_mlb_teams():
@@ -50,9 +50,12 @@ def build_reference_files():
     stadiums.to_csv(OUTPUT_DIR / "stadiums.csv", index=False)
 
     print(f"✅ Saved {len(df)} MLB teams")
-    print("📁 data/reference/mlb_teams.csv")
-    print("📁 data/reference/stadiums.csv")
+    print("📁 data/reference/mlb/mlb_teams.csv")
+    print("📁 data/reference/mlb/stadiums.csv")
 
 
 if __name__ == "__main__":
     build_reference_files()
+
+
+

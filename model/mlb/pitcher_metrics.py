@@ -4,13 +4,13 @@ import numpy as np
 import pandas as pd
 
 
-RAW_LAST_30_FILE = Path("data/raw/statcast/statcast_last_30_days.csv")
-RAW_SEASON_FILE = Path("data/raw/statcast/statcast_season.csv")
-RAW_LONGTERM_FILE = Path("data/raw/statcast/statcast_longterm.csv")
+RAW_LAST_30_FILE = Path("data/raw/mlb/statcast/statcast_last_30_days.csv")
+RAW_SEASON_FILE = Path("data/raw/mlb/statcast/statcast_season.csv")
+RAW_LONGTERM_FILE = Path("data/raw/mlb/statcast/statcast_longterm.csv")
 
-OUTPUT_LAST_30_FILE = Path("data/processed/pitcher_metrics_last_30_days.csv")
-OUTPUT_SEASON_FILE = Path("data/processed/pitcher_metrics_season.csv")
-OUTPUT_LONGTERM_FILE = Path("data/processed/pitcher_metrics_longterm.csv")
+OUTPUT_LAST_30_FILE = Path("data/processed/mlb/pitcher_metrics_last_30_days.csv")
+OUTPUT_SEASON_FILE = Path("data/processed/mlb/pitcher_metrics_season.csv")
+OUTPUT_LONGTERM_FILE = Path("data/processed/mlb/pitcher_metrics_longterm.csv")
 
 BATTED_BALL_TYPES = {
     "ground_ball",
@@ -419,3 +419,5 @@ def build_pitcher_metrics():
 
 if __name__ == "__main__":
     build_pitcher_metrics()
+
+

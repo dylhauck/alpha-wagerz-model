@@ -10,7 +10,7 @@ import requests
 
 MLB_SCHEDULE_URL = "https://statsapi.mlb.com/api/v1/schedule"
 
-OUTPUT_FILE = Path("data/tomorrow/raw/slate.json")
+OUTPUT_FILE = Path("data/tomorrow/mlb/raw/slate.json")
 
 CENTRAL_TIME = ZoneInfo("America/Chicago")
 UTC_TIME = ZoneInfo("UTC")
@@ -200,3 +200,4 @@ def build_tomorrow_slate() -> list[dict]:
 
 if __name__ == "__main__":
     build_tomorrow_slate()
+

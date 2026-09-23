@@ -2,20 +2,20 @@ from datetime import date
 from pathlib import Path
 import shutil
 
-HISTORY_DIR = Path("data/history")
+HISTORY_DIR = Path("data/history/mlb")
 TODAY = date.today().isoformat()
 
 FILES_TO_SAVE = [
-    "data/processed/all_games.json",
-    "data/processed/rankings.json",
-    "data/processed/slate_summary.csv",
-    "data/processed/weather.json",
-    "data/processed/hitter_metrics_last_30_days.csv",
-    "data/processed/pitcher_metrics_last_30_days.csv",
-    "data/processed/team_offense_last_30_days.csv",
-    "data/processed/bullpen_metrics_last_30_days.csv",
-    "data/processed/pitch_arsenal_last_30_days.csv",
-    "data/processed/pitcher_zone_allowed_last_30_days.csv",
+    "data/processed/mlb/all_games.json",
+    "data/processed/mlb/rankings.json",
+    "data/processed/mlb/slate_summary.csv",
+    "data/processed/mlb/weather.json",
+    "data/processed/mlb/hitter_metrics_last_30_days.csv",
+    "data/processed/mlb/pitcher_metrics_last_30_days.csv",
+    "data/processed/mlb/team_offense_last_30_days.csv",
+    "data/processed/mlb/bullpen_metrics_last_30_days.csv",
+    "data/processed/mlb/pitch_arsenal_last_30_days.csv",
+    "data/processed/mlb/pitcher_zone_allowed_last_30_days.csv",
 ]
 
 
@@ -40,3 +40,5 @@ def save_daily_history():
 
 if __name__ == "__main__":
     save_daily_history()
+
+

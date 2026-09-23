@@ -8,7 +8,7 @@
     "away_sp": "Richard Lovelady",
     "home_sp": "Framber Valdez",
     "venue": "Comerica Park",
-    "status": "Pre-Game",
+    "status": "Game Over",
     "game_date_utc": "2026-09-23T17:10:00Z",
     "game_time": "12:10 PM",
     "game_time_sort": "12:10"
@@ -22,7 +22,7 @@
     "away_sp": "Max Scherzer",
     "home_sp": "Chris Bassitt",
     "venue": "Oriole Park at Camden Yards",
-    "status": "Pre-Game",
+    "status": "In Progress",
     "game_date_utc": "2026-09-23T17:35:00Z",
     "game_time": "12:35 PM",
     "game_time_sort": "12:35"
@@ -50,7 +50,7 @@
     "away_sp": "Connor Prielipp",
     "home_sp": "Cesar Perdomo",
     "venue": "Oracle Park",
-    "status": "Scheduled",
+    "status": "In Progress",
     "game_date_utc": "2026-09-23T19:45:00Z",
     "game_time": "2:45 PM",
     "game_time_sort": "14:45"
@@ -64,7 +64,7 @@
     "away_sp": "Matthew Liberatore",
     "home_sp": "Lake Bachar",
     "venue": "PNC Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-23T22:40:00Z",
     "game_time": "5:40 PM",
     "game_time_sort": "17:40"
@@ -78,7 +78,7 @@
     "away_sp": "Logan Henderson",
     "home_sp": "Aaron Nola",
     "venue": "Citizens Bank Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-23T22:40:00Z",
     "game_time": "5:40 PM",
     "game_time_sort": "17:40"
@@ -89,10 +89,10 @@
     "game": "Tampa Bay Rays @ New York Yankees",
     "away_team": "Tampa Bay Rays",
     "home_team": "New York Yankees",
-    "away_sp": "Ian Seymour",
+    "away_sp": "Mason Englert",
     "home_sp": "Gerrit Cole",
     "venue": "Yankee Stadium",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-23T23:05:00Z",
     "game_time": "6:05 PM",
     "game_time_sort": "18:05"
@@ -106,7 +106,7 @@
     "away_sp": "Foster Griffin",
     "home_sp": "Sonny Gray",
     "venue": "Fenway Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-23T23:10:00Z",
     "game_time": "6:10 PM",
     "game_time_sort": "18:10"
@@ -120,7 +120,7 @@
     "away_sp": "Andrew Abbott",
     "home_sp": "Chris Sale",
     "venue": "Truist Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-23T23:15:00Z",
     "game_time": "6:15 PM",
     "game_time_sort": "18:15"
@@ -134,7 +134,7 @@
     "away_sp": "Bryan Hudson",
     "home_sp": "Seth Lugo",
     "venue": "Kauffman Stadium",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-23T23:40:00Z",
     "game_time": "6:40 PM",
     "game_time_sort": "18:40"
@@ -176,7 +176,7 @@
     "away_sp": "Merrill Kelly",
     "home_sp": "Mason Adams",
     "venue": "Coors Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-24T00:40:00Z",
     "game_time": "7:40 PM",
     "game_time_sort": "19:40"

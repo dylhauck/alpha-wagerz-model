@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 
-PROJECTED_FILE = Path("data/manual/projected_lineups.json")
+PROJECTED_FILE = Path("data/manual/mlb/projected_lineups.json")
 
 
 def load_json(filepath):
@@ -45,3 +45,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

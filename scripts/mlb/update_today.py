@@ -14,7 +14,7 @@ from scripts.mlb.build_game_index import build_game_index
 from model.mlb.attach_lineups import attach_lineups_to_games
 
 
-GAMES_DIR = Path("data/processed/games")
+GAMES_DIR = Path("data/processed/mlb/games")
 
 
 def clear_old_games():
@@ -38,10 +38,10 @@ def main():
 
     slate = get_todays_slate()
 
-    save_json(slate, "data/raw/todays_slate.json")
+    save_json(slate, "data/raw/mlb/todays_slate.json")
 
     pd.DataFrame(slate).to_csv(
-        "data/processed/slate_summary.csv",
+        "data/processed/mlb/slate_summary.csv",
         index=False,
     )
 
@@ -64,3 +64,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+

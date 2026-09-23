@@ -6,8 +6,8 @@ from typing import Any
 from utils.json_utils import load_json, save_json
 
 
-ALL_GAMES_FILE = Path("data/tomorrow/all_games.json")
-MARKET_FILE = Path("data/tomorrow/market_lines.json")
+ALL_GAMES_FILE = Path("data/tomorrow/mlb/all_games.json")
+MARKET_FILE = Path("data/tomorrow/mlb/market_lines.json")
 
 
 def clean_id(value: Any) -> str:
@@ -79,3 +79,4 @@ def attach_tomorrow_market_to_games():
 
 if __name__ == "__main__":
     attach_tomorrow_market_to_games()
+

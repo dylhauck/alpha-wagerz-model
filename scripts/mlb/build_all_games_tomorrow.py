@@ -5,8 +5,8 @@ from pathlib import Path
 from typing import Any
 
 
-SLATE_FILE = Path("data/tomorrow/raw/slate.json")
-OUTPUT_FILE = Path("data/tomorrow/all_games.json")
+SLATE_FILE = Path("data/tomorrow/mlb/raw/slate.json")
+OUTPUT_FILE = Path("data/tomorrow/mlb/all_games.json")
 
 
 def load_json(path: Path) -> Any:
@@ -133,3 +133,4 @@ def build_tomorrow_all_games() -> list[dict[str, Any]]:
 
 if __name__ == "__main__":
     build_tomorrow_all_games()
+

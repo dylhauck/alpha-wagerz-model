@@ -7,7 +7,7 @@ from utils.json_utils import load_json, save_json
 
 
 GAMES_DIR = Path(
-    "data/tomorrow/processed/games"
+    "data/tomorrow/mlb/processed/games"
 )
 
 
@@ -137,3 +137,4 @@ def finalize_tomorrow_structure() -> int:
 
 if __name__ == "__main__":
     finalize_tomorrow_structure()
+

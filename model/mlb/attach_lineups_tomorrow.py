@@ -6,11 +6,11 @@ from typing import Any
 
 
 LINEUPS_FILE = Path(
-    "data/tomorrow/lineups.json"
+    "data/tomorrow/mlb/lineups.json"
 )
 
 GAMES_DIR = Path(
-    "data/tomorrow/processed/games"
+    "data/tomorrow/mlb/processed/games"
 )
 
 
@@ -199,3 +199,4 @@ def attach_tomorrow_lineups_to_games() -> int:
 
 if __name__ == "__main__":
     attach_tomorrow_lineups_to_games()
+

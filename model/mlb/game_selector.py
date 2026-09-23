@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 
-GAME_INDEX_FILE = Path("data/processed/game_index.json")
+GAME_INDEX_FILE = Path("data/processed/mlb/game_index.json")
 
 
 def load_json(filepath):
@@ -30,3 +30,4 @@ def list_games():
 
     for game in games:
         print(f'{game["game_id"]} | {game["game"]} | {game["venue"]}')
+

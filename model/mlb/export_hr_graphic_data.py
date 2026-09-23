@@ -1,8 +1,8 @@
 from pathlib import Path
 from utils.json_utils import load_json, save_json
 
-ALL_GAMES_FILE = Path("data/processed/all_games.json")
-OUTPUT_FILE = Path("data/processed/hr_targets.json")
+ALL_GAMES_FILE = Path("data/processed/mlb/all_games.json")
+OUTPUT_FILE = Path("data/processed/mlb/hr_targets.json")
 
 
 def top_two(hitters):
@@ -63,3 +63,4 @@ def export_hr_graphic_data():
 
 if __name__ == "__main__":
     export_hr_graphic_data()
+

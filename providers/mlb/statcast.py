@@ -4,7 +4,7 @@ from pathlib import Path
 import pandas as pd
 from pybaseball import statcast
 
-RAW_DIR = Path("data/raw/statcast")
+RAW_DIR = Path("data/raw/mlb/statcast")
 
 LAST_30_FILE = RAW_DIR / "statcast_last_30_days.csv"
 SEASON_FILE = RAW_DIR / "statcast_season.csv"
@@ -390,4 +390,5 @@ def get_all_statcast_events():
 
 if __name__ == "__main__":
     get_all_statcast_events()
+
 

@@ -2,9 +2,9 @@ from pathlib import Path
 import pandas as pd
 
 FILES = [
-    Path("data/processed/hitter_metrics_last_30_days.csv"),
-    Path("data/processed/hitter_metrics_season.csv"),
-    Path("data/processed/hitter_metrics_longterm.csv"),
+    Path("data/processed/mlb/hitter_metrics_last_30_days.csv"),
+    Path("data/processed/mlb/hitter_metrics_season.csv"),
+    Path("data/processed/mlb/hitter_metrics_longterm.csv"),
 ]
 
 KEY_COLUMNS = [
@@ -53,4 +53,5 @@ def validate_metric_ranges():
 
 if __name__ == "__main__":
     validate_metric_ranges()
+
 

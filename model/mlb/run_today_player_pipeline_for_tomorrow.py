@@ -9,7 +9,7 @@ import model.mlb.attach_pitch_type_matchups as pitch_type_module
 
 
 TOMORROW_GAMES_DIR = Path(
-    "data/tomorrow/processed/games"
+    "data/tomorrow/mlb/processed/games"
 )
 
 
@@ -66,3 +66,4 @@ def run_today_player_pipeline_for_tomorrow():
 
 if __name__ == "__main__":
     run_today_player_pipeline_for_tomorrow()
+

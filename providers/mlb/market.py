@@ -25,9 +25,9 @@ MARKET_TIMEZONE = os.getenv(
     "America/Chicago",
 )
 
-ALL_GAMES_FILE = Path("data/processed/all_games.json")
-OUTPUT_FILE = Path("data/processed/market_lines.json")
-CACHE_DIR = Path("data/cache/markets")
+ALL_GAMES_FILE = Path("data/processed/mlb/all_games.json")
+OUTPUT_FILE = Path("data/processed/mlb/market_lines.json")
+CACHE_DIR = Path("data/cache/mlb/markets")
 CACHE_FILE = CACHE_DIR / "latest_market_lines.json"
 
 BOOKMAKERS = ["FanDuel", "DraftKings"]
@@ -1283,4 +1283,6 @@ def build_market_lines():
 
 if __name__ == "__main__":
     build_market_lines()
+
+
 

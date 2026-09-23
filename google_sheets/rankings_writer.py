@@ -5,7 +5,7 @@ from google.oauth2.service_account import Credentials
 
 SHEET_NAME = "Alpha Wagerz Model"
 CREDENTIALS_FILE = "config/google_credentials.json"
-RANKINGS_FILE = Path("data/processed/rankings.json")
+RANKINGS_FILE = Path("data/processed/mlb/rankings.json")
 
 HEADERS = ["Rank", "Category", "Player/Team", "Game", "Score", "Notes"]
 
@@ -87,3 +87,4 @@ def update_rankings_sheet():
 
 if __name__ == "__main__":
     update_rankings_sheet()
+

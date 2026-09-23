@@ -2,10 +2,10 @@ from pathlib import Path
 import pandas as pd
 from utils.json_utils import load_json
 
-ALL_GAMES_FILE = Path("data/processed/all_games.json")
-GAME_PROJECTIONS_FILE = Path("data/processed/game_projections.json")
-MARKET_LINES_FILE = Path("data/processed/market_lines.json")
-METRIC_FILES = [Path("data/processed/hitter_metrics_last_30_days.csv"), Path("data/processed/hitter_metrics_season.csv"), Path("data/processed/hitter_metrics_longterm.csv")]
+ALL_GAMES_FILE = Path("data/processed/mlb/all_games.json")
+GAME_PROJECTIONS_FILE = Path("data/processed/mlb/game_projections.json")
+MARKET_LINES_FILE = Path("data/processed/mlb/market_lines.json")
+METRIC_FILES = [Path("data/processed/mlb/hitter_metrics_last_30_days.csv"), Path("data/processed/mlb/hitter_metrics_season.csv"), Path("data/processed/mlb/hitter_metrics_longterm.csv")]
 METRIC_RANGE_COLUMNS = ["ISO", "xwOBA", "xwOBAcon", "PulledBrl%", "Brl/BIP%", "Sweet Spot%", "FB%", "HH%", "LA", "SwStr%"]
 EXPECTED_RANGES = {"ISO": (0, 2.1), "xwOBA": (0, .9), "xwOBAcon": (0, 2.1), "PulledBrl%": (0, 35), "Brl/BIP%": (0, 45), "Sweet Spot%": (0, 100), "FB%": (0, 100), "HH%": (0, 100), "LA": (-90, 90), "SwStr%": (0, 45)}
 
@@ -140,4 +140,5 @@ def main():
     print(f"\n{'⚠️ QA finished with ' + str(total) + ' warnings/items to review.' if total else '✅ QA finished clean.'}")
 
 if __name__ == "__main__": main()
+
 

@@ -3,7 +3,7 @@ from datetime import date
 from PIL import Image, ImageDraw, ImageFont
 from utils.json_utils import load_json
 
-DATA_FILE = Path("data/processed/hr_targets.json")
+DATA_FILE = Path("data/processed/mlb/hr_targets.json")
 OUTPUT_DIR = Path("outputs/graphics")
 OUTPUT_FILE = OUTPUT_DIR / "alpha_hr_targets.png"
 
@@ -124,3 +124,4 @@ def create_graphic():
 
 if __name__ == "__main__":
     create_graphic()
+

@@ -5,14 +5,17 @@
     "game": "St. Louis Cardinals @ Pittsburgh Pirates",
     "away_team": "St. Louis Cardinals",
     "home_team": "Pittsburgh Pirates",
+    "away_team_id": 138,
+    "home_team_id": 134,
     "away_sp": "Kyle Leahy",
+    "away_sp_id": 681517,
     "home_sp": "Paul Skenes",
+    "home_sp_id": 694973,
     "venue": "PNC Park",
     "status": "Scheduled",
     "game_date_utc": "2026-09-24T16:35:00Z",
     "game_time": "11:35 AM",
-    "game_time_sort": "11:35",
-    "file": "data/tomorrow/processed/games/823326.json"
+    "game_time_sort": "11:35"
   },
   {
     "game_id": "824059",
@@ -20,14 +23,17 @@
     "game": "Chicago White Sox @ Kansas City Royals",
     "away_team": "Chicago White Sox",
     "home_team": "Kansas City Royals",
+    "away_team_id": 145,
+    "home_team_id": 118,
     "away_sp": "",
+    "away_sp_id": null,
     "home_sp": "Randy Dobnak",
+    "home_sp_id": 677976,
     "venue": "Kauffman Stadium",
     "status": "Scheduled",
     "game_date_utc": "2026-09-24T18:10:00Z",
     "game_time": "1:10 PM",
-    "game_time_sort": "13:10",
-    "file": "data/tomorrow/processed/games/824059.json"
+    "game_time_sort": "13:10"
   },
   {
     "game_id": "824623",
@@ -35,14 +41,17 @@
     "game": "Miami Marlins @ Chicago Cubs",
     "away_team": "Miami Marlins",
     "home_team": "Chicago Cubs",
+    "away_team_id": 146,
+    "home_team_id": 112,
     "away_sp": "Tyler Phillips",
+    "away_sp_id": 663969,
     "home_sp": "",
+    "home_sp_id": null,
     "venue": "Wrigley Field",
     "status": "Scheduled",
     "game_date_utc": "2026-09-24T18:20:00Z",
     "game_time": "1:20 PM",
-    "game_time_sort": "13:20",
-    "file": "data/tomorrow/processed/games/824623.json"
+    "game_time_sort": "13:20"
   },
   {
     "game_id": "822842",
@@ -50,14 +59,17 @@
     "game": "New York Mets @ Texas Rangers",
     "away_team": "New York Mets",
     "home_team": "Texas Rangers",
+    "away_team_id": 121,
+    "home_team_id": 140,
     "away_sp": "Zac Thornton",
+    "away_sp_id": 804267,
     "home_sp": "",
+    "home_sp_id": null,
     "venue": "Globe Life Field",
     "status": "Scheduled",
     "game_date_utc": "2026-09-24T18:35:00Z",
     "game_time": "1:35 PM",
-    "game_time_sort": "13:35",
-    "file": "data/tomorrow/processed/games/822842.json"
+    "game_time_sort": "13:35"
   },
   {
     "game_id": "824298",
@@ -65,14 +77,17 @@
     "game": "Arizona Diamondbacks @ Colorado Rockies",
     "away_team": "Arizona Diamondbacks",
     "home_team": "Colorado Rockies",
+    "away_team_id": 109,
+    "home_team_id": 115,
     "away_sp": "Eduardo Rodriguez",
-    "home_sp": "",
+    "away_sp_id": 593958,
+    "home_sp": "Tanner Gordon",
+    "home_sp_id": 685299,
     "venue": "Coors Field",
     "status": "Scheduled",
     "game_date_utc": "2026-09-24T19:10:00Z",
     "game_time": "2:10 PM",
-    "game_time_sort": "14:10",
-    "file": "data/tomorrow/processed/games/824298.json"
+    "game_time_sort": "14:10"
   },
   {
     "game_id": "823411",
@@ -80,14 +95,17 @@
     "game": "Milwaukee Brewers @ Philadelphia Phillies",
     "away_team": "Milwaukee Brewers",
     "home_team": "Philadelphia Phillies",
+    "away_team_id": 158,
+    "home_team_id": 143,
     "away_sp": "",
+    "away_sp_id": null,
     "home_sp": "",
+    "home_sp_id": null,
     "venue": "Citizens Bank Park",
     "status": "Scheduled",
     "game_date_utc": "2026-09-24T22:05:00Z",
     "game_time": "5:05 PM",
-    "game_time_sort": "17:05",
-    "file": "data/tomorrow/processed/games/823411.json"
+    "game_time_sort": "17:05"
   },
   {
     "game_id": "824707",
@@ -95,14 +113,17 @@
     "game": "Cleveland Guardians @ Boston Red Sox",
     "away_team": "Cleveland Guardians",
     "home_team": "Boston Red Sox",
+    "away_team_id": 114,
+    "home_team_id": 111,
     "away_sp": "",
+    "away_sp_id": null,
     "home_sp": "Ranger Suarez",
+    "home_sp_id": 624133,
     "venue": "Fenway Park",
     "status": "Scheduled",
     "game_date_utc": "2026-09-24T22:45:00Z",
     "game_time": "5:45 PM",
-    "game_time_sort": "17:45",
-    "file": "data/tomorrow/processed/games/824707.json"
+    "game_time_sort": "17:45"
   },
   {
     "game_id": "823493",
@@ -110,14 +131,17 @@
     "game": "Tampa Bay Rays @ New York Yankees",
     "away_team": "Tampa Bay Rays",
     "home_team": "New York Yankees",
+    "away_team_id": 139,
+    "home_team_id": 147,
     "away_sp": "Freddy Peralta",
+    "away_sp_id": 642547,
     "home_sp": "Cam Schlittler",
+    "home_sp_id": 693645,
     "venue": "Yankee Stadium",
     "status": "Scheduled",
     "game_date_utc": "2026-09-24T23:05:00Z",
     "game_time": "6:05 PM",
-    "game_time_sort": "18:05",
-    "file": "data/tomorrow/processed/games/823493.json"
+    "game_time_sort": "18:05"
   },
   {
     "game_id": "824866",
@@ -125,14 +149,17 @@
     "game": "Cincinnati Reds @ Atlanta Braves",
     "away_team": "Cincinnati Reds",
     "home_team": "Atlanta Braves",
+    "away_team_id": 113,
+    "home_team_id": 144,
     "away_sp": "Brady Singer",
+    "away_sp_id": 663903,
     "home_sp": "Tyler Mahle",
+    "home_sp_id": 641816,
     "venue": "Truist Park",
     "status": "Scheduled",
     "game_date_utc": "2026-09-24T23:15:00Z",
     "game_time": "6:15 PM",
-    "game_time_sort": "18:15",
-    "file": "data/tomorrow/processed/games/824866.json"
+    "game_time_sort": "18:15"
   },
   {
     "game_id": "824950",
@@ -140,14 +167,17 @@
     "game": "Houston Astros @ Athletics",
     "away_team": "Houston Astros",
     "home_team": "Athletics",
+    "away_team_id": 117,
+    "home_team_id": 133,
     "away_sp": "",
+    "away_sp_id": null,
     "home_sp": "",
+    "home_sp_id": null,
     "venue": "Sutter Health Park",
     "status": "Scheduled",
     "game_date_utc": "2026-09-25T01:40:00Z",
     "game_time": "8:40 PM",
-    "game_time_sort": "20:40",
-    "file": "data/tomorrow/processed/games/824950.json"
+    "game_time_sort": "20:40"
   },
   {
     "game_id": "823087",
@@ -155,14 +185,17 @@
     "game": "Los Angeles Angels @ Seattle Mariners",
     "away_team": "Los Angeles Angels",
     "home_team": "Seattle Mariners",
+    "away_team_id": 108,
+    "home_team_id": 136,
     "away_sp": "",
+    "away_sp_id": null,
     "home_sp": "",
+    "home_sp_id": null,
     "venue": "T-Mobile Park",
     "status": "Scheduled",
     "game_date_utc": "2026-09-25T01:40:00Z",
     "game_time": "8:40 PM",
-    "game_time_sort": "20:40",
-    "file": "data/tomorrow/processed/games/823087.json"
+    "game_time_sort": "20:40"
   },
   {
     "game_id": "823895",
@@ -170,13 +203,16 @@
     "game": "San Diego Padres @ Los Angeles Dodgers",
     "away_team": "San Diego Padres",
     "home_team": "Los Angeles Dodgers",
+    "away_team_id": 135,
+    "home_team_id": 119,
     "away_sp": "Nick Pivetta",
+    "away_sp_id": 601713,
     "home_sp": "Tyler Glasnow",
+    "home_sp_id": 607192,
     "venue": "UNIQLO Field at Dodger Stadium",
     "status": "Scheduled",
     "game_date_utc": "2026-09-25T02:10:00Z",
     "game_time": "9:10 PM",
-    "game_time_sort": "21:10",
-    "file": "data/tomorrow/processed/games/823895.json"
+    "game_time_sort": "21:10"
   }
 ]

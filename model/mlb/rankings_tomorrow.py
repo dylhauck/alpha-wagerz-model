@@ -2,8 +2,8 @@ import json
 from pathlib import Path
 
 
-ALL_GAMES_FILE = Path("data/tomorrow/all_games.json")
-OUTPUT_FILE = Path("data/tomorrow/rankings.json")
+ALL_GAMES_FILE = Path("data/tomorrow/mlb/all_games.json")
+OUTPUT_FILE = Path("data/tomorrow/mlb/rankings.json")
 
 
 def load_json(filepath):
@@ -126,3 +126,4 @@ def build_tomorrow_rankings():
 
 if __name__ == "__main__":
     build_tomorrow_rankings()
+

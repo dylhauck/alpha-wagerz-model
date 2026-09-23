@@ -4,8 +4,8 @@ import pandas as pd
 from utils.file_utils import save_json
 
 TEAMS_URL = "https://statsapi.mlb.com/api/v1/teams?sportId=1"
-OUTPUT_JSON = Path("data/processed/player_reference.json")
-OUTPUT_CSV = Path("data/reference/player_reference.csv")
+OUTPUT_JSON = Path("data/processed/mlb/player_reference.json")
+OUTPUT_CSV = Path("data/reference/mlb/player_reference.csv")
 
 # MLB Stats API supports hydrating roster people in the roster response.
 # This removes the old one-request-per-player detail lookup.
@@ -79,4 +79,6 @@ def build_player_reference():
 
 if __name__ == "__main__":
     build_player_reference()
+
+
 

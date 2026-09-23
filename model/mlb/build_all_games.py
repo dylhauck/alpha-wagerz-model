@@ -2,8 +2,8 @@ from pathlib import Path
 
 from utils.json_utils import load_json, save_json
 
-GAMES_DIR = Path("data/processed/games")
-OUTPUT_FILE = Path("data/processed/all_games.json")
+GAMES_DIR = Path("data/processed/mlb/games")
+OUTPUT_FILE = Path("data/processed/mlb/all_games.json")
 
 
 def build_all_games():
@@ -27,3 +27,4 @@ def build_all_games():
 
 if __name__ == "__main__":
     build_all_games()
+

@@ -23,6 +23,13 @@
     },
     {
       "Category": "HR Target",
+      "Player/Team": "James McCann",
+      "Game": "Arizona Diamondbacks @ Colorado Rockies",
+      "Score": 76.4,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
       "Player/Team": "Matt Olson",
       "Game": "Cincinnati Reds @ Atlanta Braves",
       "Score": 75.3,
@@ -30,9 +37,23 @@
     },
     {
       "Category": "HR Target",
+      "Player/Team": "Pavin Smith",
+      "Game": "Arizona Diamondbacks @ Colorado Rockies",
+      "Score": 75.0,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
       "Player/Team": "Elly De La Cruz",
       "Game": "Cincinnati Reds @ Atlanta Braves",
       "Score": 74.1,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Corbin Carroll",
+      "Game": "Arizona Diamondbacks @ Colorado Rockies",
+      "Score": 73.9,
       "Notes": ""
     },
     {
@@ -118,27 +139,6 @@
       "Game": "San Diego Padres @ Los Angeles Dodgers",
       "Score": 70.3,
       "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Oneil Cruz",
-      "Game": "St. Louis Cardinals @ Pittsburgh Pirates",
-      "Score": 69.5,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Heliot Ramos",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 69.4,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Austin Riley",
-      "Game": "Cincinnati Reds @ Atlanta Braves",
-      "Score": 68.8,
-      "Notes": ""
     }
   ],
   "pitchers": [
@@ -221,6 +221,13 @@
     },
     {
       "Category": "Pitcher K Target",
+      "Player/Team": "Tanner Gordon",
+      "Game": "Arizona Diamondbacks @ Colorado Rockies",
+      "Score": 55.1,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
       "Player/Team": "Zac Thornton",
       "Game": "New York Mets @ Texas Rangers",
       "Score": 52.7,
@@ -251,13 +258,6 @@
       "Category": "Pitcher K Target",
       "Player/Team": "",
       "Game": "New York Mets @ Texas Rangers",
-      "Score": 28.4,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "",
-      "Game": "Arizona Diamondbacks @ Colorado Rockies",
       "Score": 28.4,
       "Notes": ""
     },

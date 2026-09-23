@@ -2,8 +2,8 @@ import json
 from pathlib import Path
 
 
-RAW_SLATE_FILE = "data/raw/todays_slate.json"
-OUTPUT_DIR = Path("data/processed/games")
+RAW_SLATE_FILE = "data/raw/mlb/todays_slate.json"
+OUTPUT_DIR = Path("data/processed/mlb/games")
 
 
 def load_json(filepath):
@@ -51,8 +51,10 @@ def build_game_files():
 
         save_json(game_file, OUTPUT_DIR / f"{game_id}.json")
 
-    print(f"✅ Created {len(slate)} game files in data/processed/games")
+    print(f"✅ Created {len(slate)} game files in data/processed/mlb/games")
 
 
 if __name__ == "__main__":
     build_game_files()
+
+

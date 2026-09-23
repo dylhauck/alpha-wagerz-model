@@ -2,8 +2,8 @@ from pathlib import Path
 
 from utils.json_utils import load_json, save_json
 
-GAMES_DIR = Path("data/processed/games")
-WEATHER_FILE = Path("data/processed/weather.json")
+GAMES_DIR = Path("data/processed/mlb/games")
+WEATHER_FILE = Path("data/processed/mlb/weather.json")
 
 
 VENUE_ALIASES = {
@@ -105,3 +105,4 @@ def attach_weather_to_games():
 
 if __name__ == "__main__":
     attach_weather_to_games()
+

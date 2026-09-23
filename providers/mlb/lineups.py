@@ -4,7 +4,7 @@ from pathlib import Path
 from model.mlb.game_selector import get_game_index
 from utils.file_utils import save_json
 
-OUTPUT_FILE = Path("data/processed/lineups.json")
+OUTPUT_FILE = Path("data/processed/mlb/lineups.json")
 
 
 def get_json(url):
@@ -128,3 +128,4 @@ def build_lineups():
 
 if __name__ == "__main__":
     build_lineups()
+

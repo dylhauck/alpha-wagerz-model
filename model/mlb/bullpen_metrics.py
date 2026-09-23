@@ -2,8 +2,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-RAW_FILE = Path("data/raw/statcast/statcast_last_30_days.csv")
-OUTPUT_FILE = Path("data/processed/bullpen_metrics_last_30_days.csv")
+RAW_FILE = Path("data/raw/mlb/statcast/statcast_last_30_days.csv")
+OUTPUT_FILE = Path("data/processed/mlb/bullpen_metrics_last_30_days.csv")
 
 
 def safe_rate(numerator, denominator, multiplier=1):
@@ -105,3 +105,5 @@ def build_bullpen_metrics():
 
 if __name__ == "__main__":
     build_bullpen_metrics()
+
+

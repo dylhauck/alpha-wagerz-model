@@ -27,7 +27,7 @@ def publish_to_web():
     published = 0
 
     for filename in FILES_TO_PUBLISH:
-        source = MODEL_ROOT / "data" / "processed" / filename
+        source = MODEL_ROOT / "data" / "processed" / "mlb" / filename
         target = WEB_DATA_DIR / filename
 
         if not source.exists():
@@ -45,4 +45,5 @@ def publish_to_web():
 
 if __name__ == "__main__":
     publish_to_web()
+
 

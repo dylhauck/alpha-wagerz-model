@@ -3,10 +3,10 @@ import pandas as pd
 
 from utils.json_utils import load_json, save_json, clean_value
 
-GAMES_DIR = Path("data/processed/games")
-ARSENAL_FILE = Path("data/processed/pitch_arsenal_last_30_days.csv")
-HITTER_PT_FILE = Path("data/processed/hitter_pitch_type_metrics_last_30_days.csv")
-ZONE_FILE = Path("data/processed/pitcher_zone_allowed_last_30_days.csv")
+GAMES_DIR = Path("data/processed/mlb/games")
+ARSENAL_FILE = Path("data/processed/mlb/pitch_arsenal_last_30_days.csv")
+HITTER_PT_FILE = Path("data/processed/mlb/hitter_pitch_type_metrics_last_30_days.csv")
+ZONE_FILE = Path("data/processed/mlb/pitcher_zone_allowed_last_30_days.csv")
 
 
 def safe_float(value, default=0):
@@ -320,3 +320,4 @@ def attach_pitch_type_matchups():
 
 if __name__ == "__main__":
     attach_pitch_type_matchups()
+

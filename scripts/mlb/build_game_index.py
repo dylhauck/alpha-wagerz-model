@@ -2,8 +2,8 @@ import json
 from pathlib import Path
 
 
-GAMES_DIR = Path("data/processed/games")
-OUTPUT_FILE = Path("data/processed/game_index.json")
+GAMES_DIR = Path("data/processed/mlb/games")
+OUTPUT_FILE = Path("data/processed/mlb/game_index.json")
 
 
 def load_json(filepath):
@@ -47,3 +47,4 @@ def build_game_index():
 
 if __name__ == "__main__":
     build_game_index()
+

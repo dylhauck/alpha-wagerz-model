@@ -3,8 +3,8 @@ import pandas as pd
 
 from utils.json_utils import load_json, save_json, clean_value
 
-GAMES_DIR = Path("data/processed/games")
-TEAM_OFFENSE_FILE = Path("data/processed/team_offense_last_30_days.csv")
+GAMES_DIR = Path("data/processed/mlb/games")
+TEAM_OFFENSE_FILE = Path("data/processed/mlb/team_offense_last_30_days.csv")
 
 
 TEAM_NAME_TO_ABBR = {
@@ -94,3 +94,4 @@ def attach_team_context():
 
 if __name__ == "__main__":
     attach_team_context()
+
