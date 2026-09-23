@@ -1,9 +1,9 @@
 import gspread
 from google.oauth2.service_account import Credentials
 
-from model.dashboard import build_dashboard_payload
-from model.dashboard_layout import build_dashboard_rows
-from model.game_selector import get_game_index
+from model.mlb.dashboard import build_dashboard_payload
+from model.mlb.dashboard_layout import build_dashboard_rows
+from model.mlb.game_selector import get_game_index
 
 SHEET_NAME = "Alpha Wagerz Model"
 CREDENTIALS_FILE = "config/google_credentials.json"

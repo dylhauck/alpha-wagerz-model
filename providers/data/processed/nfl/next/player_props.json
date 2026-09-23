@@ -1,0 +1,15 @@
+{
+  "props": [],
+  "counts": {
+    "games": 14,
+    "props": 0,
+    "live_props": 0
+  },
+  "model": {
+    "name": "Alpha Wagerz NFL Player Prop Normalizer",
+    "version": "2.0",
+    "projection_independent": true,
+    "live_odds_preferred": true,
+    "note": "Consumes normalized live sportsbook player props from odds.json. It never manufactures sportsbook lines."
+  }
+}

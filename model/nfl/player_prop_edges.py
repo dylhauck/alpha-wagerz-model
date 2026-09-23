@@ -394,7 +394,7 @@ def build_nfl_player_prop_edges():
     if not PLAYER_PROPS_FILE.exists():
         raise RuntimeError(
             "NFL player props not found. "
-            "Run providers.nfl_player_props first."
+            "Run providers.nfl.nfl_player_props first."
         )
 
     print("   Current slate")
@@ -423,3 +423,4 @@ def build_nfl_player_prop_edges():
 
 if __name__ == "__main__":
     build_nfl_player_prop_edges()
+

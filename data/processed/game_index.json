@@ -114,7 +114,7 @@
     "away_team": "New York Mets",
     "home_team": "Texas Rangers",
     "away_sp": "Nolan McLean",
-    "home_sp": "",
+    "home_sp": "Cody Bradford",
     "venue": "Globe Life Field",
     "status": "Scheduled",
     "file": "data/processed/games/822841.json"
@@ -156,18 +156,6 @@
     "file": "data/processed/games/823492.json"
   },
   {
-    "game_id": "824785",
-    "date": "2026-09-23",
-    "game": "Toronto Blue Jays @ Baltimore Orioles",
-    "away_team": "Toronto Blue Jays",
-    "home_team": "Baltimore Orioles",
-    "away_sp": "Max Scherzer",
-    "home_sp": "",
-    "venue": "Oriole Park at Camden Yards",
-    "status": "Scheduled",
-    "file": "data/processed/games/824785.json"
-  },
-  {
     "game_id": "824784",
     "date": "2026-09-23",
     "game": "Toronto Blue Jays @ Baltimore Orioles",
@@ -180,6 +168,18 @@
     "file": "data/processed/games/824784.json"
   },
   {
+    "game_id": "824785",
+    "date": "2026-09-23",
+    "game": "Toronto Blue Jays @ Baltimore Orioles",
+    "away_team": "Toronto Blue Jays",
+    "home_team": "Baltimore Orioles",
+    "away_sp": "Max Scherzer",
+    "home_sp": "Chris Bassitt",
+    "venue": "Oriole Park at Camden Yards",
+    "status": "Pre-Game",
+    "file": "data/processed/games/824785.json"
+  },
+  {
     "game_id": "824223",
     "date": "2026-09-23",
     "game": "Washington Nationals @ Detroit Tigers",
@@ -188,7 +188,7 @@
     "away_sp": "Richard Lovelady",
     "home_sp": "Framber Valdez",
     "venue": "Comerica Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/games/824223.json"
   }
 ]

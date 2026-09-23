@@ -23,3 +23,4 @@ def normalize_player_name(name) -> str:
 def player_last_name(name) -> str:
     parts = normalize_player_name(name).split()
     return parts[-1] if parts else ""
+

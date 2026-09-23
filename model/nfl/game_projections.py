@@ -4,7 +4,6 @@ import math
 from pathlib import Path
 from typing import Any
 
-from model.attach_weather import build_weather_lookup
 from utils.json_utils import load_json, save_json
 
 
@@ -2127,7 +2126,7 @@ def build_nfl_game_projections():
     if not WEATHER_FILE.exists():
         raise RuntimeError(
             "NFL weather context not found. "
-            "Run providers.nfl_weather first."
+            "Run providers.nfl.nfl_weather first."
         )
 
     print(
@@ -2177,3 +2176,4 @@ def build_nfl_game_projections():
 
 if __name__ == "__main__":
     build_nfl_game_projections()
+

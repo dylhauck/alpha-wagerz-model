@@ -2,8 +2,22 @@
   "hr_targets": [
     {
       "Category": "HR Target",
+      "Player/Team": "Rafael Flores Jr.",
+      "Game": "St. Louis Cardinals @ Pittsburgh Pirates",
+      "Score": 77.5,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
       "Player/Team": "Pete Crow-Armstrong",
       "Game": "Miami Marlins @ Chicago Cubs",
+      "Score": 77.2,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Ronald Acuña Jr.",
+      "Game": "Cincinnati Reds @ Atlanta Braves",
       "Score": 77.2,
       "Notes": ""
     },
@@ -16,128 +30,114 @@
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Rafael Flores Jr.",
-      "Game": "St. Louis Cardinals @ Pittsburgh Pirates",
-      "Score": 75.2,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Ronald Acuña Jr.",
+      "Player/Team": "Elly De La Cruz",
       "Game": "Cincinnati Reds @ Atlanta Braves",
-      "Score": 74.5,
+      "Score": 74.1,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Jake Burger",
       "Game": "New York Mets @ Texas Rangers",
-      "Score": 71.9,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Elly De La Cruz",
-      "Game": "Cincinnati Reds @ Atlanta Braves",
-      "Score": 71.2,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Brewer Hicklen",
-      "Game": "Cincinnati Reds @ Atlanta Braves",
-      "Score": 71.2,
+      "Score": 73.8,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Drake Baldwin",
       "Game": "Cincinnati Reds @ Atlanta Braves",
-      "Score": 71.1,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Tommy Pham",
-      "Game": "Chicago White Sox @ Kansas City Royals",
-      "Score": 70.2,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Spencer Jones",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 70.2,
+      "Score": 73.2,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Brandon Lowe",
       "Game": "St. Louis Cardinals @ Pittsburgh Pirates",
-      "Score": 70.0,
+      "Score": 73.0,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Bryan Reynolds",
       "Game": "St. Louis Cardinals @ Pittsburgh Pirates",
-      "Score": 70.0,
+      "Score": 72.2,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Tommy Pham",
+      "Game": "Chicago White Sox @ Kansas City Royals",
+      "Score": 72.2,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Corey Seager",
       "Game": "New York Mets @ Texas Rangers",
-      "Score": 69.9,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Max Muncy",
-      "Game": "San Diego Padres @ Los Angeles Dodgers",
-      "Score": 69.3,
+      "Score": 72.0,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Michael Conforto",
       "Game": "Miami Marlins @ Chicago Cubs",
-      "Score": 69.1,
+      "Score": 71.9,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Teoscar Hernández",
-      "Game": "San Diego Padres @ Los Angeles Dodgers",
-      "Score": 68.7,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Oneil Cruz",
-      "Game": "St. Louis Cardinals @ Pittsburgh Pirates",
-      "Score": 67.6,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Heliot Ramos",
+      "Player/Team": "Spencer Jones",
       "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 67.5,
+      "Score": 71.4,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Jackson Merrill",
+      "Player/Team": "Max Muncy",
       "Game": "San Diego Padres @ Los Angeles Dodgers",
-      "Score": 67.5,
+      "Score": 71.0,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Brewer Hicklen",
+      "Game": "Cincinnati Reds @ Atlanta Braves",
+      "Score": 70.9,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Will Smith",
+      "Game": "San Diego Padres @ Los Angeles Dodgers",
+      "Score": 70.5,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Josue De Paula",
       "Game": "San Diego Padres @ Los Angeles Dodgers",
-      "Score": 66.7,
+      "Score": 70.3,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Oneil Cruz",
+      "Game": "St. Louis Cardinals @ Pittsburgh Pirates",
+      "Score": 69.5,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Heliot Ramos",
+      "Game": "Tampa Bay Rays @ New York Yankees",
+      "Score": 69.4,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Austin Riley",
+      "Game": "Cincinnati Reds @ Atlanta Braves",
+      "Score": 68.8,
       "Notes": ""
     }
   ],

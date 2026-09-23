@@ -4,56 +4,56 @@ import json
 from pathlib import Path
 from typing import Any
 
-from providers.mlb_tomorrow import (
+from providers.mlb.mlb_tomorrow import (
     build_tomorrow_slate,
 )
-from providers.weather_tomorrow import (
+from providers.mlb.weather_tomorrow import (
     build_tomorrow_weather_file,
 )
-from providers.market_tomorrow import (
+from providers.mlb.market_tomorrow import (
     build_tomorrow_market_lines,
 )
 
-from scripts.build_tomorrow_game_files import (
+from scripts.mlb.build_tomorrow_game_files import (
     build_tomorrow_game_files,
 )
-from scripts.build_tomorrow_game_index import (
+from scripts.mlb.build_tomorrow_game_index import (
     build_tomorrow_game_index,
 )
 
-from providers.lineups_tomorrow import (
+from providers.mlb.lineups_tomorrow import (
     build_tomorrow_lineups,
 )
 
-from model.attach_lineups_tomorrow import (
+from model.mlb.attach_lineups_tomorrow import (
     attach_tomorrow_lineups_to_games,
 )
-from model.normalize_tomorrow_games import (
+from model.mlb.normalize_tomorrow_games import (
     normalize_tomorrow_games,
 )
-from model.attach_tomorrow_player_metrics import (
+from model.mlb.attach_tomorrow_player_metrics import (
     attach_tomorrow_player_metrics,
 )
-from model.fill_tomorrow_player_details import (
+from model.mlb.fill_tomorrow_player_details import (
     fill_tomorrow_player_details,
 )
-from model.finalize_tomorrow_games import (
+from model.mlb.finalize_tomorrow_games import (
     finalize_tomorrow_games,
 )
 
-from model.attach_weather_tomorrow import (
+from model.mlb.attach_weather_tomorrow import (
     attach_tomorrow_weather_to_games,
 )
-from model.attach_market_tomorrow import (
+from model.mlb.attach_market_tomorrow import (
     attach_tomorrow_market_to_games,
 )
-from model.rankings_tomorrow import (
+from model.mlb.rankings_tomorrow import (
     build_tomorrow_rankings,
 )
-from model.export_game_projections_tomorrow import (
+from model.mlb.export_game_projections_tomorrow import (
     export_tomorrow_game_projections,
 )
-from model.publish_tomorrow_to_web import (
+from model.mlb.publish_tomorrow_to_web import (
     publish_tomorrow_to_web,
 )
 
@@ -345,3 +345,4 @@ def run_tomorrow_update():
 
 if __name__ == "__main__":
     run_tomorrow_update()
+

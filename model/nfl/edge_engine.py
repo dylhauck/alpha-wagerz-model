@@ -1198,7 +1198,7 @@ def build_nfl_edges():
     if not MARKET_FILE.exists():
         raise RuntimeError(
             "NFL market data not found. "
-            "Run providers.nfl_market first."
+            "Run providers.nfl.nfl_market first."
         )
 
     print(
@@ -1238,3 +1238,4 @@ def build_nfl_edges():
 
 if __name__ == "__main__":
     build_nfl_edges()
+

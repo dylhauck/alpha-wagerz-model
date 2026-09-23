@@ -1036,3 +1036,4 @@ def build_nfl_rankings():
 
 if __name__ == "__main__":
     build_nfl_rankings()
+

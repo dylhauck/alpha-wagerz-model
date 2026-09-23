@@ -2,7 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 
 from config.team_assets import TEAM_ASSETS
-from model.game_selector import get_game_index
+from model.mlb.game_selector import get_game_index
 
 SHEET_NAME = "Alpha Wagerz Model"
 CREDENTIALS_FILE = "config/google_credentials.json"

@@ -518,6 +518,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 642585,Félix Bautista,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 664991,Grant Wolfram,110,Baltimore Orioles,BAL,P,Pitcher,L,L
 683002,Gunnar Henderson,110,Baltimore Orioles,BAL,SS,Shortstop,L,R
+677008,Heston Kjerstad,110,Baltimore Orioles,BAL,LF,Outfielder,L,R
 669236,Jeremiah Jackson,110,Baltimore Orioles,BAL,2B,Second Base,R,R
 676480,José Barrero,110,Baltimore Orioles,BAL,SS,Shortstop,R,R
 677020,Josh Walker,110,Baltimore Orioles,BAL,P,Pitcher,L,L
@@ -526,7 +527,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 624413,Pete Alonso,110,Baltimore Orioles,BAL,1B,First Base,R,R
 677956,Rece Hinds,110,Baltimore Orioles,BAL,RF,Outfielder,R,R
 670329,Rico Garcia,110,Baltimore Orioles,BAL,P,Pitcher,R,R
-694212,Samuel Basallo,110,Baltimore Orioles,BAL,C,Catcher,L,R
 669358,Shane Baz,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 669432,Trevor Rogers,110,Baltimore Orioles,BAL,P,Pitcher,L,L
 666974,Yennier Cano,110,Baltimore Orioles,BAL,P,Pitcher,R,R
@@ -794,9 +794,9 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 695734,Daylen Lile,120,Washington Nationals,WSH,LF,Outfielder,L,R
 686611,Dylan Crews,120,Washington Nationals,WSH,RF,Outfielder,R,R
 680899,Erik Tolman,120,Washington Nationals,WSH,P,Pitcher,L,L
+681402,Gus Varland,120,Washington Nationals,WSH,P,Pitcher,L,R
 695670,Harry Ford,120,Washington Nationals,WSH,C,Catcher,R,R
 695378,Jack Sinclair,120,Washington Nationals,WSH,P,Pitcher,R,R
-800600,Jackson Kent,120,Washington Nationals,WSH,P,Pitcher,L,L
 696285,Jacob Young,120,Washington Nationals,WSH,CF,Outfielder,R,R
 663623,Jake Irvin,120,Washington Nationals,WSH,P,Pitcher,R,R
 695578,James Wood,120,Washington Nationals,WSH,RF,Outfielder,L,R

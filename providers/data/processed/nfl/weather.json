@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-09-23T16:43:46.111908+00:00",
+  "source": "Open-Meteo",
+  "games": [
+    {
+      "game_id": "2026_03_ATL_GB",
+      "away_team": "ATL",
+      "home_team": "GB",
+      "stadium": "Lambeau Field",
+      "latitude": 44.5013,
+      "longitude": -88.0622,
+      "roof": "outdoor",
+      "kickoff": "2026-09-24T20:15",
+      "available": true,
+      "weather": {
+        "forecast_time": "2026-09-24T20:00",
+        "temperature_f": 57.9,
+        "feels_like_f": 56.4,
+        "humidity_pct": 72.0,
+        "precip_probability_pct": 1.0,
+        "precipitation_in": 0.0,
+        "wind_mph": 3.0,
+        "wind_gust_mph": 7.6,
+        "weather_code": 3,
+        "conditions": "Overcast"
+      },
+      "context": {
+        "severity_score": 0.0,
+        "passing_factor": 1.0,
+        "rushing_factor": 1.0,
+        "scoring_factor": 1.0,
+        "kicking_factor": 1.0,
+        "classification": "NEUTRAL"
+      }
+    }
+  ]
+}

@@ -2718,7 +2718,7 @@ def build_nfl_player_projections():
     if not WEATHER_FILE.exists():
         raise RuntimeError(
             "NFL weather context not found. "
-            "Run providers.nfl_weather first."
+            "Run providers.nfl.nfl_weather first."
         )
 
     print(

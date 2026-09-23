@@ -396,3 +396,4 @@ def create_weather_graphic():
 
 if __name__ == "__main__":
     create_weather_graphic()
+
