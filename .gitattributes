@@ -1,0 +1,6 @@
+# Alpha Wagerz generated model/pipeline outputs
+data/cache/** merge=ours
+data/processed/** merge=ours
+data/raw/** merge=ours
+data/tomorrow/** merge=ours
+graphics/weather/** merge=ours
