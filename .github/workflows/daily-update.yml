@@ -51,7 +51,7 @@ jobs:
 
       - name: Download Statcast master from R2
         run: |
-          mkdir -p alpha-wagerz-model/data/raw/statcast
+          mkdir -p alpha-wagerz-model/data/raw/mlb/statcast
 
           aws s3 cp \
             s3://alpha-wagerz-statcast/statcast_longterm.zip \
@@ -59,14 +59,14 @@ jobs:
             --endpoint-url "$R2_ENDPOINT_URL"
 
           unzip -o /tmp/statcast_longterm.zip \
-            -d alpha-wagerz-model/data/raw/statcast
+            -d alpha-wagerz-model/data/raw/mlb/statcast
 
-          test -f alpha-wagerz-model/data/raw/statcast/statcast_longterm.csv
+          test -f alpha-wagerz-model/data/raw/mlb/statcast/statcast_longterm.csv
 
           # Metadata is tiny and may not exist on the first optimized run.
           if aws s3 cp \
             s3://alpha-wagerz-statcast/statcast_master_metadata.txt \
-            alpha-wagerz-model/data/raw/statcast/statcast_master_metadata.txt \
+            alpha-wagerz-model/data/raw/mlb/statcast/statcast_master_metadata.txt \
             --endpoint-url "$R2_ENDPOINT_URL"; then
             echo "Statcast metadata restored from R2."
           else
@@ -74,7 +74,7 @@ jobs:
           fi
 
           echo "Statcast master restored from R2."
-          ls -lh alpha-wagerz-model/data/raw/statcast/statcast_longterm.csv
+          ls -lh alpha-wagerz-model/data/raw/mlb/statcast/statcast_longterm.csv
 
       - name: Create Google credentials file
         working-directory: alpha-wagerz-model
@@ -95,7 +95,7 @@ jobs:
 
           # Fast ZIP compression. The master remains lossless; this only
           # trades a somewhat larger upload for much less CPU time.
-          cd alpha-wagerz-model/data/raw/statcast
+          cd alpha-wagerz-model/data/raw/mlb/statcast
           zip -j -1 /tmp/statcast_longterm.zip statcast_longterm.csv
           cd ../../../..
 
@@ -105,7 +105,7 @@ jobs:
             --endpoint-url "$R2_ENDPOINT_URL"
 
           aws s3 cp \
-            alpha-wagerz-model/data/raw/statcast/statcast_master_metadata.txt \
+            alpha-wagerz-model/data/raw/mlb/statcast/statcast_master_metadata.txt \
             s3://alpha-wagerz-statcast/statcast_master_metadata.txt \
             --endpoint-url "$R2_ENDPOINT_URL"
 
@@ -119,10 +119,10 @@ jobs:
           git add -A
 
           git reset -- \
-            data/raw/statcast/statcast_longterm.csv \
-            data/raw/statcast/statcast_season.csv \
-            data/raw/statcast/statcast_last_30_days.csv \
-            data/raw/statcast/statcast_master_metadata.txt \
+            data/raw/mlb/statcast/statcast_longterm.csv \
+            data/raw/mlb/statcast/statcast_season.csv \
+            data/raw/mlb/statcast/statcast_last_30_days.csv \
+            data/raw/mlb/statcast/statcast_master_metadata.txt \
             2>/dev/null || true
 
           if git diff --cached --quiet; then
