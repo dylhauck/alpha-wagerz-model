@@ -2,10 +2,14 @@ from __future__ import annotations
 
 import json
 import shutil
+import time
+
 from datetime import datetime
 from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
+
+from requests.exceptions import RequestException
 
 from nba_api.stats.endpoints import scheduleleaguev2
 
@@ -236,13 +240,54 @@ def build_schedule() -> list[dict[str, Any]]:
         "🏀 Loading 2026-27 NBA schedule..."
     )
 
-    response = (
-        scheduleleaguev2.ScheduleLeagueV2(
-            league_id="00",
-            season=CURRENT_SEASON,
-            timeout=60,
+    max_attempts = 3
+    response = None
+
+    for attempt in range(1, max_attempts + 1):
+        try:
+            print(
+                f"   NBA schedule request "
+                f"(attempt {attempt}/{max_attempts})..."
+            )
+
+            response = (
+                scheduleleaguev2.ScheduleLeagueV2(
+                    league_id="00",
+                    season=CURRENT_SEASON,
+                    timeout=90,
+                )
+            )
+
+            print(
+                "   NBA schedule request successful."
+            )
+            break
+
+        except RequestException as exc:
+            print(
+                f"   NBA schedule request failed: "
+                f"on attempt {attempt}: "
+                f"{type(exc).__name__}: {exc}"
+            )
+
+            if attempt == max_attempts:
+                raise
+
+            wait_seconds = attempt * 10
+
+            print(
+                f"   Waiting {wait_seconds} seconds "
+                f"before retrying..."
+            )
+
+            time.sleep(wait_seconds)
+
+
+    if response is None:
+        raise RuntimeError(
+            "NBA schedule request failed "
+            "without returning a response."
         )
-    )
 
     # ScheduleLeagueV2 exposes the actual
     # season schedule as SeasonGames.
