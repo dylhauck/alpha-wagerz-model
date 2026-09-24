@@ -234,6 +234,32 @@ def record_text(
 # SCHEDULE
 # ============================================================
 
+def load_existing_schedule() -> list[dict[str, Any]]:
+    if not SCHEDULE_FILE.exists():
+        raise FileNotFoundError(
+            f"NBA schedule fallback not found: {SCHEDULE_FILE}"
+        )
+
+    payload = json.loads(
+        SCHEDULE_FILE.read_text(
+            encoding="utf-8"
+        )
+    )
+
+    games = payload.get("games")
+
+    if not isinstance(games, list) or not games:
+        raise ValueError(
+            f"NBA schedule fallback is invalid: {SCHEDULE_FILE}"
+        )
+
+    print(
+        f"   Using existing NBA schedule fallback: "
+        f"{len(games)} games"
+    )
+
+    return games
+
 def build_schedule() -> list[dict[str, Any]]:
     print()
     print(
@@ -270,10 +296,8 @@ def build_schedule() -> list[dict[str, Any]]:
                 f"{type(exc).__name__}: {exc}"
             )
 
-            if attempt == max_attempts:
-                raise
-
-            wait_seconds = attempt * 10
+            if attempt < max_attempts:
+                wait_seconds = attempt * 10
 
             print(
                 f"   Waiting {wait_seconds} seconds "
@@ -284,10 +308,11 @@ def build_schedule() -> list[dict[str, Any]]:
 
 
     if response is None:
-        raise RuntimeError(
-            "NBA schedule request failed "
-            "without returning a response."
+        print(
+            "   NBA Stats API unavailable after "
+            f"{max_attempts} attempts."
         )
+        return load_existing_schedule()
 
     # ScheduleLeagueV2 exposes the actual
     # season schedule as SeasonGames.

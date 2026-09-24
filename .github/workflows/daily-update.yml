@@ -84,6 +84,15 @@ jobs:
           mkdir -p config
           printf '%s' "$GOOGLE_CREDENTIALS_JSON" > config/google_credentials.json
 
+      - name: Restore NBA schedule fallback
+        run: |
+          mkdir -p alpha-wagerz-model/data/processed/nba
+          cp alpha-wagerz-web/public/data/nba/schedule.json \
+            alpha-wagerz-model/data/processed/nba/schedule.json
+
+          test -f alpha-wagerz-model/data/processed/nba/schedule.json
+          echo "NBA schedule fallback restored from website repository."          
+
       - name: Run Alpha Wagerz full update
         working-directory: alpha-wagerz-model
         run: |
