@@ -8,7 +8,7 @@
     "away_sp": "Clay Holmes",
     "home_sp": "Alec Gamboa",
     "venue": "Fenway Park",
-    "status": "In Progress",
+    "status": "Final",
     "game_date_utc": "2026-09-25T17:05:00Z",
     "game_time": "12:05 PM",
     "game_time_sort": "12:05"
@@ -22,7 +22,7 @@
     "away_sp": "David Peterson",
     "home_sp": "Brayan Bello",
     "venue": "Fenway Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-25T21:35:00Z",
     "game_time": "4:35 PM",
     "game_time_sort": "16:35"
@@ -36,7 +36,7 @@
     "away_sp": "Trevor Rogers",
     "home_sp": "Brendan Beck",
     "venue": "Yankee Stadium",
-    "status": "Warmup",
+    "status": "In Progress",
     "game_date_utc": "2026-09-25T20:05:00Z",
     "game_time": "3:05 PM",
     "game_time_sort": "15:05"
@@ -92,7 +92,7 @@
     "away_sp": "",
     "home_sp": "Andrew Alvarez",
     "venue": "Nationals Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-25T22:45:00Z",
     "game_time": "5:45 PM",
     "game_time_sort": "17:45"
@@ -148,7 +148,7 @@
     "away_sp": "Tomoyuki Sugano",
     "home_sp": "Sean Burke",
     "venue": "Rate Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-25T23:40:00Z",
     "game_time": "6:40 PM",
     "game_time_sort": "18:40"
@@ -162,7 +162,7 @@
     "away_sp": "Michael McGreevy",
     "home_sp": "Robert Gasser",
     "venue": "American Family Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-25T23:40:00Z",
     "game_time": "6:40 PM",
     "game_time_sort": "18:40"
@@ -176,7 +176,7 @@
     "away_sp": "Jacob deGrom",
     "home_sp": "Joe Ryan",
     "venue": "Target Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "game_date_utc": "2026-09-26T00:10:00Z",
     "game_time": "7:10 PM",
     "game_time_sort": "19:10"

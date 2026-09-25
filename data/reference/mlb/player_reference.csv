@@ -179,13 +179,13 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 642547,Freddy Peralta,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 643377,Griffin Jax,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 693855,Ian Seymour,139,Tampa Bay Rays,TB,P,Pitcher,L,L
-663765,Jake Woodford,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 666018,Jonathan Aranda,139,Tampa Bay Rays,TB,1B,First Base,L,R
 676356,Jonny DeLuca,139,Tampa Bay Rays,TB,RF,Outfielder,R,R
 622761,Jorge Mateo,139,Tampa Bay Rays,TB,SS,Shortstop,R,R
 691406,Junior Caminero,139,Tampa Bay Rays,TB,3B,Third Base,R,R
 687330,Kevin Kelly,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 689414,Liam Hicks,139,Tampa Bay Rays,TB,C,Catcher,L,R
+655889,Manuel Rodríguez,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 663743,Nick Fortes,139,Tampa Bay Rays,TB,C,Catcher,R,R
 607259,Nick Martinez,139,Tampa Bay Rays,TB,P,Pitcher,L,R
 680700,Richie Palacios,139,Tampa Bay Rays,TB,2B,Second Base,L,R
@@ -477,7 +477,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 687263,Zach Neto,108,Los Angeles Angels,LAA,SS,Shortstop,R,R
 694297,Brandon Pfaadt,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
 805299,Brandyn Garcia,109,Arizona Diamondbacks,AZ,P,Pitcher,L,L
-669203,Corbin Burnes,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
 682998,Corbin Carroll,109,Arizona Diamondbacks,AZ,RF,Outfielder,L,L
 642701,Dennis Santana,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
 593958,Eduardo Rodriguez,109,Arizona Diamondbacks,AZ,P,Pitcher,L,L
@@ -488,6 +487,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 660821,Jesús Sánchez,109,Arizona Diamondbacks,AZ,DH,Designated Hitter,L,R
 642528,Jonathan Loáisiga,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
 691783,Jordan Lawlar,109,Arizona Diamondbacks,AZ,CF,Outfielder,R,R
+703615,Jose Cabrera,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
 699912,Jose Fernandez,109,Arizona Diamondbacks,AZ,DH,Designated Hitter,R,R
 666661,Juan Morillo,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
 679885,Justin Martinez,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
@@ -546,13 +546,13 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 663330,Jahmai Jones,111,Boston Red Sox,BOS,DH,Designated Hitter,R,R
 687562,Jake Bennett,111,Boston Red Sox,BOS,P,Pitcher,L,L
 680776,Jarren Duran,111,Boston Red Sox,BOS,LF,Outfielder,L,R
+699151,Jedixson Paez,111,Boston Red Sox,BOS,P,Pitcher,R,R
 663558,Jovani Morán,111,Boston Red Sox,BOS,P,Pitcher,L,L
 681508,Mickey Gasper,111,Boston Red Sox,BOS,DH,Designated Hitter,S,R
 686765,Nick Sogard,111,Boston Red Sox,BOS,2B,Second Base,S,R
 663776,Patrick Sandoval,111,Boston Red Sox,BOS,P,Pitcher,L,L
 801139,Payton Tolle,111,Boston Red Sox,BOS,P,Pitcher,L,L
 624133,Ranger Suarez,111,Boston Red Sox,BOS,P,Pitcher,L,L
-670103,Raymond Burgos,111,Boston Red Sox,BOS,P,Pitcher,L,L
 701350,Roman Anthony,111,Boston Red Sox,BOS,LF,Outfielder,L,R
 543243,Sonny Gray,111,Boston Red Sox,BOS,P,Pitcher,R,R
 596115,Trevor Story,111,Boston Red Sox,BOS,SS,Shortstop,R,R

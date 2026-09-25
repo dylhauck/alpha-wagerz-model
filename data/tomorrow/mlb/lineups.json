@@ -450,8 +450,8 @@
     "home_team": "Toronto Blue Jays",
     "away_sp_id": 695076,
     "away_sp": "Rhett Lowder",
-    "home_sp_id": "",
-    "home_sp": "",
+    "home_sp_id": 702056,
+    "home_sp": "Trey Yesavage",
     "away_hitters": [
       {
         "id": 701398,
@@ -908,21 +908,6 @@
         "lineup_source": "active_roster"
       },
       {
-        "id": 690976,
-        "player_id": 690976,
-        "Player ID": 690976,
-        "name": "Alex Freeland",
-        "Player": "Alex Freeland",
-        "team_id": 119,
-        "Team ID": 119,
-        "team": "Los Angeles Dodgers",
-        "Team": "Los Angeles Dodgers",
-        "position": "2B",
-        "Position": "2B",
-        "batting_order": "",
-        "lineup_source": "active_roster"
-      },
-      {
         "id": 500743,
         "player_id": 500743,
         "Player ID": 500743,
@@ -979,6 +964,21 @@
         "Team": "Los Angeles Dodgers",
         "position": "3B",
         "Position": "3B",
+        "batting_order": "",
+        "lineup_source": "active_roster"
+      },
+      {
+        "id": 687221,
+        "player_id": 687221,
+        "Player ID": 687221,
+        "name": "Dalton Rushing",
+        "Player": "Dalton Rushing",
+        "team_id": 119,
+        "Team ID": 119,
+        "team": "Los Angeles Dodgers",
+        "Team": "Los Angeles Dodgers",
+        "position": "C",
+        "Position": "C",
         "batting_order": "",
         "lineup_source": "active_roster"
       },

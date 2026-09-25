@@ -44,20 +44,8 @@
     "away_sp": "Trevor Rogers",
     "home_sp": "Brendan Beck",
     "venue": "Yankee Stadium",
-    "status": "Warmup",
-    "file": "data/processed/mlb/games/823491.json"
-  },
-  {
-    "game_id": "824703",
-    "date": "2026-09-25",
-    "game": "Chicago Cubs @ Boston Red Sox",
-    "away_team": "Chicago Cubs",
-    "home_team": "Boston Red Sox",
-    "away_sp": "Clay Holmes",
-    "home_sp": "Alec Gamboa",
-    "venue": "Fenway Park",
     "status": "In Progress",
-    "file": "data/processed/mlb/games/824703.json"
+    "file": "data/processed/mlb/games/823491.json"
   },
   {
     "game_id": "824706",
@@ -68,8 +56,20 @@
     "away_sp": "David Peterson",
     "home_sp": "Brayan Bello",
     "venue": "Fenway Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/mlb/games/824706.json"
+  },
+  {
+    "game_id": "824703",
+    "date": "2026-09-25",
+    "game": "Chicago Cubs @ Boston Red Sox",
+    "away_team": "Chicago Cubs",
+    "home_team": "Boston Red Sox",
+    "away_sp": "Clay Holmes",
+    "home_sp": "Alec Gamboa",
+    "venue": "Fenway Park",
+    "status": "Final",
+    "file": "data/processed/mlb/games/824703.json"
   },
   {
     "game_id": "822760",
@@ -104,7 +104,7 @@
     "away_sp": "Tomoyuki Sugano",
     "home_sp": "Sean Burke",
     "venue": "Rate Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/mlb/games/824544.json"
   },
   {
@@ -152,7 +152,7 @@
     "away_sp": "",
     "home_sp": "Andrew Alvarez",
     "venue": "Nationals Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/mlb/games/822681.json"
   },
   {
@@ -176,7 +176,7 @@
     "away_sp": "Michael McGreevy",
     "home_sp": "Robert Gasser",
     "venue": "American Family Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/mlb/games/823735.json"
   },
   {
@@ -200,7 +200,7 @@
     "away_sp": "Jacob deGrom",
     "home_sp": "Joe Ryan",
     "venue": "Target Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/mlb/games/823652.json"
   }
 ]
