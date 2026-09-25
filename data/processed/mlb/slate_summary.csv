@@ -1,17 +1,18 @@
 game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status,game_date_utc,game_time,game_time_sort
-824223,2026-09-23,Washington Nationals @ Detroit Tigers,Washington Nationals,Detroit Tigers,Richard Lovelady,Framber Valdez,Comerica Park,Game Over,2026-09-23T17:10:00Z,12:10 PM,12:10
-824785,2026-09-23,Toronto Blue Jays @ Baltimore Orioles,Toronto Blue Jays,Baltimore Orioles,Max Scherzer,Chris Bassitt,Oriole Park at Camden Yards,In Progress,2026-09-23T17:35:00Z,12:35 PM,12:35
-824784,2026-09-23,Toronto Blue Jays @ Baltimore Orioles,Toronto Blue Jays,Baltimore Orioles,,,Oriole Park at Camden Yards,Scheduled,2026-09-23T22:35:00Z,5:35 PM,17:35
-823168,2026-09-23,Minnesota Twins @ San Francisco Giants,Minnesota Twins,San Francisco Giants,Connor Prielipp,Cesar Perdomo,Oracle Park,In Progress,2026-09-23T19:45:00Z,2:45 PM,14:45
-823327,2026-09-23,St. Louis Cardinals @ Pittsburgh Pirates,St. Louis Cardinals,Pittsburgh Pirates,Matthew Liberatore,Lake Bachar,PNC Park,Pre-Game,2026-09-23T22:40:00Z,5:40 PM,17:40
-823410,2026-09-23,Milwaukee Brewers @ Philadelphia Phillies,Milwaukee Brewers,Philadelphia Phillies,Logan Henderson,Aaron Nola,Citizens Bank Park,Pre-Game,2026-09-23T22:40:00Z,5:40 PM,17:40
-823492,2026-09-23,Tampa Bay Rays @ New York Yankees,Tampa Bay Rays,New York Yankees,Mason Englert,Gerrit Cole,Yankee Stadium,Pre-Game,2026-09-23T23:05:00Z,6:05 PM,18:05
-824710,2026-09-23,Cleveland Guardians @ Boston Red Sox,Cleveland Guardians,Boston Red Sox,Foster Griffin,Sonny Gray,Fenway Park,Pre-Game,2026-09-23T23:10:00Z,6:10 PM,18:10
-824868,2026-09-23,Cincinnati Reds @ Atlanta Braves,Cincinnati Reds,Atlanta Braves,Andrew Abbott,Chris Sale,Truist Park,Pre-Game,2026-09-23T23:15:00Z,6:15 PM,18:15
-824060,2026-09-23,Chicago White Sox @ Kansas City Royals,Chicago White Sox,Kansas City Royals,Bryan Hudson,Seth Lugo,Kauffman Stadium,Pre-Game,2026-09-23T23:40:00Z,6:40 PM,18:40
-824625,2026-09-23,Miami Marlins @ Chicago Cubs,Miami Marlins,Chicago Cubs,Ryan Gusto,Kevin Gausman,Wrigley Field,Scheduled,2026-09-23T23:40:00Z,6:40 PM,18:40
-822841,2026-09-23,New York Mets @ Texas Rangers,New York Mets,Texas Rangers,Nolan McLean,Cody Bradford,Globe Life Field,Scheduled,2026-09-24T00:05:00Z,7:05 PM,19:05
-824301,2026-09-23,Arizona Diamondbacks @ Colorado Rockies,Arizona Diamondbacks,Colorado Rockies,Merrill Kelly,Mason Adams,Coors Field,Pre-Game,2026-09-24T00:40:00Z,7:40 PM,19:40
-824951,2026-09-23,Los Angeles Angels @ Athletics,Los Angeles Angels,Athletics,Walbert Ureña,Jeffrey Springs,Sutter Health Park,Scheduled,2026-09-24T01:40:00Z,8:40 PM,20:40
-823894,2026-09-23,San Diego Padres @ Los Angeles Dodgers,San Diego Padres,Los Angeles Dodgers,Robbie Ray,Yoshinobu Yamamoto,UNIQLO Field at Dodger Stadium,Scheduled,2026-09-24T02:10:00Z,9:10 PM,21:10
-823086,2026-09-23,Houston Astros @ Seattle Mariners,Houston Astros,Seattle Mariners,Ethan Pecko,George Kirby,T-Mobile Park,Scheduled,2026-09-24T02:10:00Z,9:10 PM,21:10
+824703,2026-09-25,Chicago Cubs @ Boston Red Sox,Chicago Cubs,Boston Red Sox,Clay Holmes,Alec Gamboa,Fenway Park,Scheduled,2026-09-25T17:05:00Z,12:05 PM,12:05
+824706,2026-09-25,Chicago Cubs @ Boston Red Sox,Chicago Cubs,Boston Red Sox,David Peterson,Brayan Bello,Fenway Park,Scheduled,2026-09-25T22:05:00Z,5:05 PM,17:05
+823491,2026-09-25,Baltimore Orioles @ New York Yankees,Baltimore Orioles,New York Yankees,Brandon Young,,Yankee Stadium,Scheduled,2026-09-25T20:05:00Z,3:05 PM,15:05
+823489,2026-09-25,Baltimore Orioles @ New York Yankees,Baltimore Orioles,New York Yankees,Trevor Rogers,Brendan Beck,Yankee Stadium,Scheduled,2026-09-25T20:10:00Z,3:10 PM,15:10
+824220,2026-09-25,Pittsburgh Pirates @ Detroit Tigers,Pittsburgh Pirates,Detroit Tigers,Bubba Chandler,Jackson Jobe,Comerica Park,Scheduled,2026-09-25T22:40:00Z,5:40 PM,17:40
+823409,2026-09-25,Tampa Bay Rays @ Philadelphia Phillies,Tampa Bay Rays,Philadelphia Phillies,Freddy Peralta,Cristopher Sánchez,Citizens Bank Park,Scheduled,2026-09-25T22:40:00Z,5:40 PM,17:40
+822681,2026-09-25,New York Mets @ Washington Nationals,New York Mets,Washington Nationals,,Andrew Alvarez,Nationals Park,Scheduled,2026-09-25T22:45:00Z,5:45 PM,17:45
+822760,2026-09-25,Cincinnati Reds @ Toronto Blue Jays,Cincinnati Reds,Toronto Blue Jays,Nick Lodolo,,Rogers Centre,Scheduled,2026-09-25T23:07:00Z,6:07 PM,18:07
+823816,2026-09-25,Atlanta Braves @ Miami Marlins,Atlanta Braves,Miami Marlins,,Eury Pérez,loanDepot park,Scheduled,2026-09-25T23:10:00Z,6:10 PM,18:10
+824058,2026-09-25,Cleveland Guardians @ Kansas City Royals,Cleveland Guardians,Kansas City Royals,Gavin Williams,Noah Cameron,Kauffman Stadium,Scheduled,2026-09-25T23:40:00Z,6:40 PM,18:40
+824544,2026-09-25,Colorado Rockies @ Chicago White Sox,Colorado Rockies,Chicago White Sox,Tomoyuki Sugano,Sean Burke,Rate Field,Scheduled,2026-09-25T23:40:00Z,6:40 PM,18:40
+823735,2026-09-25,St. Louis Cardinals @ Milwaukee Brewers,St. Louis Cardinals,Milwaukee Brewers,Michael McGreevy,Robert Gasser,American Family Field,Scheduled,2026-09-25T23:40:00Z,6:40 PM,18:40
+823652,2026-09-25,Texas Rangers @ Minnesota Twins,Texas Rangers,Minnesota Twins,Jacob deGrom,Joe Ryan,Target Field,Scheduled,2026-09-26T00:10:00Z,7:10 PM,19:10
+824947,2026-09-25,Houston Astros @ Athletics,Houston Astros,Athletics,Hunter Brown,Jacob Lopez,Sutter Health Park,Scheduled,2026-09-26T01:40:00Z,8:40 PM,20:40
+823248,2026-09-25,Arizona Diamondbacks @ San Diego Padres,Arizona Diamondbacks,San Diego Padres,Brandon Pfaadt,,Petco Park,Scheduled,2026-09-26T01:40:00Z,8:40 PM,20:40
+823085,2026-09-25,Los Angeles Angels @ Seattle Mariners,Los Angeles Angels,Seattle Mariners,Reid Detmers,Bryce Miller,T-Mobile Park,Scheduled,2026-09-26T02:10:00Z,9:10 PM,21:10
+823167,2026-09-25,Los Angeles Dodgers @ San Francisco Giants,Los Angeles Dodgers,San Francisco Giants,Tarik Skubal,Yunior Marte,Oracle Park,Scheduled,2026-09-26T02:15:00Z,9:15 PM,21:15
