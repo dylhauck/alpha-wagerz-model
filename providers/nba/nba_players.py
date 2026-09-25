@@ -43,6 +43,10 @@ REQUEST_DELAY_SECONDS = 0.75
 # Number of retries for an individual team.
 MAX_RETRIES = 3
 
+# If this many teams fail consecutively before we have received
+# any players, treat NBA Stats as unavailable and use the fallback.
+MAX_CONSECUTIVE_TEAM_FAILURES = 2
+
 
 # ============================================================
 # HELPERS
@@ -318,6 +322,7 @@ def build_players() -> dict[str, Any]:
     team_rosters: dict[str, list[dict[str, Any]]] = {}
 
     failed_teams: list[str] = []
+    consecutive_failures = 0
 
     for index, team in enumerate(teams, start=1):
         abbr = team["abbr"]
@@ -334,11 +339,35 @@ def build_players() -> dict[str, Any]:
             team_rosters[abbr] = roster
             all_players.extend(roster)
 
+            if roster:
+                consecutive_failures = 0
+            else:
+                consecutive_failures += 1
+
         except Exception as exc:
             print(f"FAILED: {abbr}: {exc}")
 
             failed_teams.append(abbr)
             team_rosters[abbr] = []
+            consecutive_failures += 1
+
+        if (
+            not all_players
+            and consecutive_failures
+            >= MAX_CONSECUTIVE_TEAM_FAILURES
+        ):
+            print()
+            print(
+                "NBA Stats roster API appears unavailable. "
+                f"{consecutive_failures} consecutive teams failed "
+                "before any players were returned."
+            )
+            print(
+                "Stopping live roster requests and switching "
+                "to the existing player fallback."
+            )
+
+            break
 
         if index < len(teams):
             time.sleep(REQUEST_DELAY_SECONDS)
@@ -494,6 +523,32 @@ def validate_players(payload: dict[str, Any]) -> None:
             + ", ".join(failed_teams)
         )
 
+def load_existing_players() -> dict[str, Any]:
+    if not OUTPUT_FILE.exists():
+        raise FileNotFoundError(
+            f"NBA player fallback not found: {OUTPUT_FILE}"
+        )
+
+    payload = json.loads(
+        OUTPUT_FILE.read_text(
+            encoding="utf-8"
+        )
+    )
+
+    players = payload.get("players")
+
+    if not isinstance(players, list) or not players:
+        raise ValueError(
+            f"NBA player fallback is invalid: {OUTPUT_FILE}"
+        )
+
+    print()
+    print(
+        f"Using existing NBA player fallback: "
+        f"{len(players)} players"
+    )
+
+    return payload
 
 # ============================================================
 # MAIN
@@ -501,6 +556,17 @@ def validate_players(payload: dict[str, Any]) -> None:
 
 def main() -> None:
     payload = build_players()
+
+    players = payload.get("players", [])
+
+    if not players:
+        print()
+        print(
+            "NBA Stats roster API returned zero players. "
+            "Using existing player fallback."
+        )
+
+        payload = load_existing_players()
 
     validate_players(payload)
 
