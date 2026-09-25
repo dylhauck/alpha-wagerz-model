@@ -17,10 +17,10 @@
     "game": "Atlanta Braves @ Miami Marlins",
     "away_team": "Atlanta Braves",
     "home_team": "Miami Marlins",
-    "away_sp": "",
+    "away_sp": "Ray Kerr",
     "home_sp": "Eury P\u00e9rez",
     "venue": "loanDepot park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/mlb/games/823816.json"
   },
   {
@@ -29,8 +29,8 @@
     "game": "Baltimore Orioles @ New York Yankees",
     "away_team": "Baltimore Orioles",
     "home_team": "New York Yankees",
-    "away_sp": "Trevor Rogers",
-    "home_sp": "Brendan Beck",
+    "away_sp": "Brandon Young",
+    "home_sp": "",
     "venue": "Yankee Stadium",
     "status": "Scheduled",
     "file": "data/processed/mlb/games/823489.json"
@@ -41,10 +41,10 @@
     "game": "Baltimore Orioles @ New York Yankees",
     "away_team": "Baltimore Orioles",
     "home_team": "New York Yankees",
-    "away_sp": "Brandon Young",
-    "home_sp": "",
+    "away_sp": "Trevor Rogers",
+    "home_sp": "Brendan Beck",
     "venue": "Yankee Stadium",
-    "status": "Scheduled",
+    "status": "Warmup",
     "file": "data/processed/mlb/games/823491.json"
   },
   {
@@ -56,7 +56,7 @@
     "away_sp": "Clay Holmes",
     "home_sp": "Alec Gamboa",
     "venue": "Fenway Park",
-    "status": "Scheduled",
+    "status": "In Progress",
     "file": "data/processed/mlb/games/824703.json"
   },
   {
@@ -78,9 +78,9 @@
     "away_team": "Cincinnati Reds",
     "home_team": "Toronto Blue Jays",
     "away_sp": "Nick Lodolo",
-    "home_sp": "",
+    "home_sp": "Jos\u00e9 Soriano",
     "venue": "Rogers Centre",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/mlb/games/822760.json"
   },
   {
@@ -92,7 +92,7 @@
     "away_sp": "Gavin Williams",
     "home_sp": "Noah Cameron",
     "venue": "Kauffman Stadium",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/mlb/games/824058.json"
   },
   {
@@ -164,7 +164,7 @@
     "away_sp": "Bubba Chandler",
     "home_sp": "Jackson Jobe",
     "venue": "Comerica Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/mlb/games/824220.json"
   },
   {
@@ -188,7 +188,7 @@
     "away_sp": "Freddy Peralta",
     "home_sp": "Cristopher S\u00e1nchez",
     "venue": "Citizens Bank Park",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/mlb/games/823409.json"
   },
   {

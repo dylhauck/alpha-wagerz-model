@@ -350,6 +350,31 @@ def attach_rankings_to_slates(
             f"{relative}"
         )
 
+def load_existing_team_rankings() -> dict[str, Any]:
+    if not OUTPUT_FILE.exists():
+        raise FileNotFoundError(
+            f"NBA team rankings fallback not found: {OUTPUT_FILE}"
+        )
+
+    payload = json.loads(
+        OUTPUT_FILE.read_text(
+            encoding="utf-8"
+        )
+    )
+
+    teams = payload.get("teams")
+
+    if not isinstance(teams, list) or not teams:
+        raise ValueError(
+            f"NBA team rankings fallback is invalid: {OUTPUT_FILE}"
+        )
+
+    print(
+        f"   Using existing NBA team rankings fallback: "
+        f"{len(teams)} teams"
+    )
+
+    return payload
 
 def build_nba_team_rankings():
     print()
@@ -358,17 +383,43 @@ def build_nba_team_rankings():
     )
     print()
 
-    response = (
-        leaguestandings.LeagueStandings(
-            season=CURRENT_SEASON,
-            season_type="Regular Season",
-            timeout=60,
+    try:
+        response = (
+            leaguestandings.LeagueStandings(
+                season=CURRENT_SEASON,
+                season_type="Regular Season",
+                timeout=30,
+            )
         )
-    )
 
-    frame = (
-        response.get_data_frames()[0]
-    )
+        frame = (
+            response.get_data_frames()[0]
+        )
+
+    except Exception as exc:
+        print(
+            f"   NBA standings API unavailable: "
+            f"{type(exc).__name__}: {exc}"
+        )
+
+        payload = load_existing_team_rankings()
+
+        publish(
+            OUTPUT_FILE,
+            WEB_OUTPUT_FILE,
+        )
+
+        attach_rankings_to_slates(
+            payload
+        )
+
+        print()
+        print(
+            "NBA TEAM RANKINGS COMPLETE "
+            "(existing fallback)"
+        )
+
+        return payload
 
     rows = dataframe_records(
         frame

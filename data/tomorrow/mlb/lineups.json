@@ -3133,6 +3133,21 @@
         "lineup_source": "active_roster"
       },
       {
+        "id": 690924,
+        "player_id": 690924,
+        "Player ID": 690924,
+        "name": "Braxton Fulford",
+        "Player": "Braxton Fulford",
+        "team_id": 115,
+        "Team ID": 115,
+        "team": "Colorado Rockies",
+        "Team": "Colorado Rockies",
+        "position": "C",
+        "Position": "C",
+        "batting_order": "",
+        "lineup_source": "active_roster"
+      },
+      {
         "id": 664954,
         "player_id": 664954,
         "Player ID": 664954,
@@ -3174,21 +3189,6 @@
         "Team": "Colorado Rockies",
         "position": "CF",
         "Position": "CF",
-        "batting_order": "",
-        "lineup_source": "active_roster"
-      },
-      {
-        "id": 690924,
-        "player_id": 690924,
-        "Player ID": 690924,
-        "name": "Braxton Fulford",
-        "Player": "Braxton Fulford",
-        "team_id": 115,
-        "Team ID": 115,
-        "team": "Colorado Rockies",
-        "Team": "Colorado Rockies",
-        "position": "DH",
-        "Position": "DH",
         "batting_order": "",
         "lineup_source": "active_roster"
       },

@@ -5177,7 +5177,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-25T13:07:47Z"
+      "market_updated_at": "2026-09-25T19:51:06Z"
     }
   },
   {
@@ -10342,7 +10342,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-25T13:07:48Z"
+      "market_updated_at": "2026-09-25T19:51:06Z"
     }
   },
   {
@@ -15317,24 +15317,24 @@
       "game": "Los Angeles Dodgers @ San Francisco Giants",
       "away_team": "Los Angeles Dodgers",
       "home_team": "San Francisco Giants",
-      "bookmaker": "",
-      "bookmaker_key": "",
+      "bookmaker": "FanDuel",
+      "bookmaker_key": "fanduel",
       "odds_event_id": 63301297,
       "moneyline": {
-        "away": "",
-        "home": ""
+        "away": -334,
+        "home": 270
       },
       "spread": {
-        "away": "",
-        "away_price": "",
-        "home": "",
-        "home_price": ""
+        "away": -1.5,
+        "away_price": -178,
+        "home": 1.5,
+        "home_price": 146
       },
-      "total": "",
+      "total": 7.5,
       "game_total": {
-        "line": "",
-        "over_price": "",
-        "under_price": ""
+        "line": 7.5,
+        "over_price": 104,
+        "under_price": -128
       },
       "team_totals": {
         "away": "",
@@ -15347,7 +15347,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-25T13:07:48Z"
+      "market_updated_at": "2026-09-25T19:51:07Z"
     }
   },
   {
@@ -20490,24 +20490,24 @@
       "game": "New York Mets @ Washington Nationals",
       "away_team": "New York Mets",
       "home_team": "Washington Nationals",
-      "bookmaker": "",
-      "bookmaker_key": "",
+      "bookmaker": "FanDuel",
+      "bookmaker_key": "fanduel",
       "odds_event_id": 63301481,
       "moneyline": {
-        "away": "",
-        "home": ""
+        "away": -136,
+        "home": 116
       },
       "spread": {
-        "away": "",
-        "away_price": "",
-        "home": "",
-        "home_price": ""
+        "away": -1.5,
+        "away_price": 126,
+        "home": 1.5,
+        "home_price": -152
       },
-      "total": "",
+      "total": 8.5,
       "game_total": {
-        "line": "",
-        "over_price": "",
-        "under_price": ""
+        "line": 8.5,
+        "over_price": -102,
+        "under_price": -120
       },
       "team_totals": {
         "away": "",
@@ -20520,7 +20520,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-25T13:07:48Z"
+      "market_updated_at": "2026-09-25T19:51:07Z"
     }
   },
   {
@@ -25689,7 +25689,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-25T13:07:49Z"
+      "market_updated_at": "2026-09-25T19:51:09Z"
     }
   },
   {
@@ -30850,7 +30850,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-25T13:07:49Z"
+      "market_updated_at": "2026-09-25T19:51:09Z"
     }
   },
   {
@@ -36025,7 +36025,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-25T13:07:51Z"
+      "market_updated_at": "2026-09-25T19:51:10Z"
     }
   },
   {
@@ -36394,6 +36394,92 @@
           "id": "691720"
         },
         {
+          "Player": "Braxton Fulford",
+          "Player ID": "690924",
+          "Metric Source": "Blended",
+          "Team Offense": "",
+          "Team ISO": "",
+          "Team xwOBA": "",
+          "Team HR%": "",
+          "Team Brl/BIP%": "",
+          "Team HH%": "",
+          "Bullpen": 50,
+          "Bullpen xwOBA": "",
+          "Bullpen HR/Pitch%": "",
+          "Bullpen Brl/BIP%": "",
+          "Bullpen HH%": "",
+          "Bullpen SwStr%": "",
+          "Pitch Type Score": "",
+          "Pitch Type Notes": "",
+          "Pitch Type Matchups": [],
+          "Arsenal Score": "",
+          "Fastball Matchup": "",
+          "Breaking Ball Matchup": "",
+          "Offspeed Matchup": "",
+          "xHR Matchup": "",
+          "Pitch Arsenal Notes": "",
+          "Hot Zones Allowed": "",
+          "Cold Zones Allowed": "",
+          "Matchup": 59.6,
+          "Test Score": 59.6,
+          "Ceiling": 57.5,
+          "Zone Fit": 53.9,
+          "HR Form": 50.0,
+          "kHR": 57.0,
+          "Pitches": 359,
+          "BIP": 50,
+          "ISO": 0.07008745642468348,
+          "xwOBA": 0.21877407064988763,
+          "xwOBAcon": 0.26992351008363563,
+          "SwStr%": 18.003850425316394,
+          "PulledBrl%": 2.8,
+          "Brl/BIP%": 4.8,
+          "Sweet Spot%": 16.5,
+          "FB%": 43.4,
+          "HH%": 61.099999999999994,
+          "LA": 29.250132275132277,
+          "Recent Pitches": 26,
+          "Recent BIP": 2,
+          "Recent ISO": 0.0,
+          "Recent xwOBA": 0.196774,
+          "Recent xwOBAcon": 0.241,
+          "Recent SwStr%": 23.07692307692308,
+          "Recent PulledBrl%": 0.0,
+          "Recent Brl/BIP%": 0.0,
+          "Recent Sweet Spot%": 0.0,
+          "Recent FB%": 50.0,
+          "Recent HH%": 100.0,
+          "Recent LA": 32.25,
+          "Recent Metric Source": "Last 30",
+          "Season Metric Source": "Season",
+          "Longterm Metric Source": "Longterm",
+          "Power": 51.2,
+          "Contact": 35.0,
+          "Pitcher": 71.4,
+          "Pitch Type": 50,
+          "Team": 50,
+          "Weather": 50,
+          "Park": 67.8,
+          "Recent": 50.0,
+          "Likely": 56.3,
+          "Confidence": 50,
+          "Reasons": [
+            "Balanced profile with no major edge"
+          ],
+          "HR Form Trend": "flat",
+          "HR Arsenal Fit": 50.0,
+          "Bats": "R",
+          "bats": "R",
+          "Throws": "R",
+          "throws": "R",
+          "Position": "C",
+          "position": "C",
+          "Game": "Colorado Rockies @ Chicago White Sox",
+          "game": "Colorado Rockies @ Chicago White Sox",
+          "player_id": "690924",
+          "id": "690924"
+        },
+        {
           "Player": "Brett Sullivan",
           "Player ID": "664954",
           "Metric Source": "Blended",
@@ -36650,92 +36736,6 @@
           "game": "Colorado Rockies @ Chicago White Sox",
           "player_id": "694249",
           "id": "694249"
-        },
-        {
-          "Player": "Braxton Fulford",
-          "Player ID": "690924",
-          "Metric Source": "Blended",
-          "Team Offense": "",
-          "Team ISO": "",
-          "Team xwOBA": "",
-          "Team HR%": "",
-          "Team Brl/BIP%": "",
-          "Team HH%": "",
-          "Bullpen": 50,
-          "Bullpen xwOBA": "",
-          "Bullpen HR/Pitch%": "",
-          "Bullpen Brl/BIP%": "",
-          "Bullpen HH%": "",
-          "Bullpen SwStr%": "",
-          "Pitch Type Score": "",
-          "Pitch Type Notes": "",
-          "Pitch Type Matchups": [],
-          "Arsenal Score": "",
-          "Fastball Matchup": "",
-          "Breaking Ball Matchup": "",
-          "Offspeed Matchup": "",
-          "xHR Matchup": "",
-          "Pitch Arsenal Notes": "",
-          "Hot Zones Allowed": "",
-          "Cold Zones Allowed": "",
-          "Matchup": 59.6,
-          "Test Score": 59.6,
-          "Ceiling": 57.5,
-          "Zone Fit": 53.9,
-          "HR Form": 50.0,
-          "kHR": 57.0,
-          "Pitches": 359,
-          "BIP": 50,
-          "ISO": 0.07008745642468348,
-          "xwOBA": 0.21877407064988763,
-          "xwOBAcon": 0.26992351008363563,
-          "SwStr%": 18.003850425316394,
-          "PulledBrl%": 2.8,
-          "Brl/BIP%": 4.8,
-          "Sweet Spot%": 16.5,
-          "FB%": 43.4,
-          "HH%": 61.099999999999994,
-          "LA": 29.250132275132277,
-          "Recent Pitches": 26,
-          "Recent BIP": 2,
-          "Recent ISO": 0.0,
-          "Recent xwOBA": 0.196774,
-          "Recent xwOBAcon": 0.241,
-          "Recent SwStr%": 23.07692307692308,
-          "Recent PulledBrl%": 0.0,
-          "Recent Brl/BIP%": 0.0,
-          "Recent Sweet Spot%": 0.0,
-          "Recent FB%": 50.0,
-          "Recent HH%": 100.0,
-          "Recent LA": 32.25,
-          "Recent Metric Source": "Last 30",
-          "Season Metric Source": "Season",
-          "Longterm Metric Source": "Longterm",
-          "Power": 51.2,
-          "Contact": 35.0,
-          "Pitcher": 71.4,
-          "Pitch Type": 50,
-          "Team": 50,
-          "Weather": 50,
-          "Park": 67.8,
-          "Recent": 50.0,
-          "Likely": 56.3,
-          "Confidence": 50,
-          "Reasons": [
-            "Balanced profile with no major edge"
-          ],
-          "HR Form Trend": "flat",
-          "HR Arsenal Fit": 50.0,
-          "Bats": "R",
-          "bats": "R",
-          "Throws": "R",
-          "throws": "R",
-          "Position": "DH",
-          "position": "DH",
-          "Game": "Colorado Rockies @ Chicago White Sox",
-          "game": "Colorado Rockies @ Chicago White Sox",
-          "player_id": "690924",
-          "id": "690924"
         },
         {
           "Player": "Jake McCarthy",
@@ -38960,6 +38960,92 @@
         "id": "691720"
       },
       {
+        "Player": "Braxton Fulford",
+        "Player ID": "690924",
+        "Metric Source": "Blended",
+        "Team Offense": "",
+        "Team ISO": "",
+        "Team xwOBA": "",
+        "Team HR%": "",
+        "Team Brl/BIP%": "",
+        "Team HH%": "",
+        "Bullpen": 50,
+        "Bullpen xwOBA": "",
+        "Bullpen HR/Pitch%": "",
+        "Bullpen Brl/BIP%": "",
+        "Bullpen HH%": "",
+        "Bullpen SwStr%": "",
+        "Pitch Type Score": "",
+        "Pitch Type Notes": "",
+        "Pitch Type Matchups": [],
+        "Arsenal Score": "",
+        "Fastball Matchup": "",
+        "Breaking Ball Matchup": "",
+        "Offspeed Matchup": "",
+        "xHR Matchup": "",
+        "Pitch Arsenal Notes": "",
+        "Hot Zones Allowed": "",
+        "Cold Zones Allowed": "",
+        "Matchup": 59.6,
+        "Test Score": 59.6,
+        "Ceiling": 57.5,
+        "Zone Fit": 53.9,
+        "HR Form": 50.0,
+        "kHR": 57.0,
+        "Pitches": 359,
+        "BIP": 50,
+        "ISO": 0.07008745642468348,
+        "xwOBA": 0.21877407064988763,
+        "xwOBAcon": 0.26992351008363563,
+        "SwStr%": 18.003850425316394,
+        "PulledBrl%": 2.8,
+        "Brl/BIP%": 4.8,
+        "Sweet Spot%": 16.5,
+        "FB%": 43.4,
+        "HH%": 61.099999999999994,
+        "LA": 29.250132275132277,
+        "Recent Pitches": 26,
+        "Recent BIP": 2,
+        "Recent ISO": 0.0,
+        "Recent xwOBA": 0.196774,
+        "Recent xwOBAcon": 0.241,
+        "Recent SwStr%": 23.07692307692308,
+        "Recent PulledBrl%": 0.0,
+        "Recent Brl/BIP%": 0.0,
+        "Recent Sweet Spot%": 0.0,
+        "Recent FB%": 50.0,
+        "Recent HH%": 100.0,
+        "Recent LA": 32.25,
+        "Recent Metric Source": "Last 30",
+        "Season Metric Source": "Season",
+        "Longterm Metric Source": "Longterm",
+        "Power": 51.2,
+        "Contact": 35.0,
+        "Pitcher": 71.4,
+        "Pitch Type": 50,
+        "Team": 50,
+        "Weather": 50,
+        "Park": 67.8,
+        "Recent": 50.0,
+        "Likely": 56.3,
+        "Confidence": 50,
+        "Reasons": [
+          "Balanced profile with no major edge"
+        ],
+        "HR Form Trend": "flat",
+        "HR Arsenal Fit": 50.0,
+        "Bats": "R",
+        "bats": "R",
+        "Throws": "R",
+        "throws": "R",
+        "Position": "C",
+        "position": "C",
+        "Game": "Colorado Rockies @ Chicago White Sox",
+        "game": "Colorado Rockies @ Chicago White Sox",
+        "player_id": "690924",
+        "id": "690924"
+      },
+      {
         "Player": "Brett Sullivan",
         "Player ID": "664954",
         "Metric Source": "Blended",
@@ -39216,92 +39302,6 @@
         "game": "Colorado Rockies @ Chicago White Sox",
         "player_id": "694249",
         "id": "694249"
-      },
-      {
-        "Player": "Braxton Fulford",
-        "Player ID": "690924",
-        "Metric Source": "Blended",
-        "Team Offense": "",
-        "Team ISO": "",
-        "Team xwOBA": "",
-        "Team HR%": "",
-        "Team Brl/BIP%": "",
-        "Team HH%": "",
-        "Bullpen": 50,
-        "Bullpen xwOBA": "",
-        "Bullpen HR/Pitch%": "",
-        "Bullpen Brl/BIP%": "",
-        "Bullpen HH%": "",
-        "Bullpen SwStr%": "",
-        "Pitch Type Score": "",
-        "Pitch Type Notes": "",
-        "Pitch Type Matchups": [],
-        "Arsenal Score": "",
-        "Fastball Matchup": "",
-        "Breaking Ball Matchup": "",
-        "Offspeed Matchup": "",
-        "xHR Matchup": "",
-        "Pitch Arsenal Notes": "",
-        "Hot Zones Allowed": "",
-        "Cold Zones Allowed": "",
-        "Matchup": 59.6,
-        "Test Score": 59.6,
-        "Ceiling": 57.5,
-        "Zone Fit": 53.9,
-        "HR Form": 50.0,
-        "kHR": 57.0,
-        "Pitches": 359,
-        "BIP": 50,
-        "ISO": 0.07008745642468348,
-        "xwOBA": 0.21877407064988763,
-        "xwOBAcon": 0.26992351008363563,
-        "SwStr%": 18.003850425316394,
-        "PulledBrl%": 2.8,
-        "Brl/BIP%": 4.8,
-        "Sweet Spot%": 16.5,
-        "FB%": 43.4,
-        "HH%": 61.099999999999994,
-        "LA": 29.250132275132277,
-        "Recent Pitches": 26,
-        "Recent BIP": 2,
-        "Recent ISO": 0.0,
-        "Recent xwOBA": 0.196774,
-        "Recent xwOBAcon": 0.241,
-        "Recent SwStr%": 23.07692307692308,
-        "Recent PulledBrl%": 0.0,
-        "Recent Brl/BIP%": 0.0,
-        "Recent Sweet Spot%": 0.0,
-        "Recent FB%": 50.0,
-        "Recent HH%": 100.0,
-        "Recent LA": 32.25,
-        "Recent Metric Source": "Last 30",
-        "Season Metric Source": "Season",
-        "Longterm Metric Source": "Longterm",
-        "Power": 51.2,
-        "Contact": 35.0,
-        "Pitcher": 71.4,
-        "Pitch Type": 50,
-        "Team": 50,
-        "Weather": 50,
-        "Park": 67.8,
-        "Recent": 50.0,
-        "Likely": 56.3,
-        "Confidence": 50,
-        "Reasons": [
-          "Balanced profile with no major edge"
-        ],
-        "HR Form Trend": "flat",
-        "HR Arsenal Fit": 50.0,
-        "Bats": "R",
-        "bats": "R",
-        "Throws": "R",
-        "throws": "R",
-        "Position": "DH",
-        "position": "DH",
-        "Game": "Colorado Rockies @ Chicago White Sox",
-        "game": "Colorado Rockies @ Chicago White Sox",
-        "player_id": "690924",
-        "id": "690924"
       },
       {
         "Player": "Jake McCarthy",
@@ -41160,24 +41160,24 @@
       "game": "Colorado Rockies @ Chicago White Sox",
       "away_team": "Colorado Rockies",
       "home_team": "Chicago White Sox",
-      "bookmaker": "",
-      "bookmaker_key": "",
+      "bookmaker": "FanDuel",
+      "bookmaker_key": "fanduel",
       "odds_event_id": 63303095,
       "moneyline": {
-        "away": "",
-        "home": ""
+        "away": 194,
+        "home": -235
       },
       "spread": {
-        "away": "",
-        "away_price": "",
-        "home": "",
-        "home_price": ""
+        "away": 1.5,
+        "away_price": -122,
+        "home": -1.5,
+        "home_price": 102
       },
-      "total": "",
+      "total": 8.5,
       "game_total": {
-        "line": "",
-        "over_price": "",
-        "under_price": ""
+        "line": 8.5,
+        "over_price": 110,
+        "under_price": -134
       },
       "team_totals": {
         "away": "",
@@ -41190,7 +41190,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-25T13:07:50Z"
+      "market_updated_at": "2026-09-25T19:51:10Z"
     }
   },
   {
@@ -46323,24 +46323,24 @@
       "game": "St. Louis Cardinals @ Milwaukee Brewers",
       "away_team": "St. Louis Cardinals",
       "home_team": "Milwaukee Brewers",
-      "bookmaker": "",
-      "bookmaker_key": "",
+      "bookmaker": "FanDuel",
+      "bookmaker_key": "fanduel",
       "odds_event_id": 63303123,
       "moneyline": {
-        "away": "",
-        "home": ""
+        "away": 158,
+        "home": -188
       },
       "spread": {
-        "away": "",
-        "away_price": "",
-        "home": "",
-        "home_price": ""
+        "away": 1.5,
+        "away_price": -152,
+        "home": -1.5,
+        "home_price": 126
       },
-      "total": "",
+      "total": 7.5,
       "game_total": {
-        "line": "",
-        "over_price": "",
-        "under_price": ""
+        "line": 7.5,
+        "over_price": -122,
+        "under_price": 100
       },
       "team_totals": {
         "away": "",
@@ -46353,7 +46353,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-25T13:07:50Z"
+      "market_updated_at": "2026-09-25T19:51:10Z"
     }
   },
   {
@@ -51508,7 +51508,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-25T13:07:51Z"
+      "market_updated_at": "2026-09-25T19:51:11Z"
     }
   },
   {
@@ -56677,7 +56677,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-25T13:07:51Z"
+      "market_updated_at": "2026-09-25T19:51:11Z"
     }
   },
   {
@@ -61842,7 +61842,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-25T13:07:52Z"
+      "market_updated_at": "2026-09-25T19:51:12Z"
     }
   },
   {
@@ -67001,7 +67001,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-25T13:07:53Z"
+      "market_updated_at": "2026-09-25T19:51:13Z"
     }
   },
   {
@@ -72152,24 +72152,24 @@
       "game": "Los Angeles Angels @ Seattle Mariners",
       "away_team": "Los Angeles Angels",
       "home_team": "Seattle Mariners",
-      "bookmaker": "",
-      "bookmaker_key": "",
+      "bookmaker": "FanDuel",
+      "bookmaker_key": "fanduel",
       "odds_event_id": 63303731,
       "moneyline": {
-        "away": "",
-        "home": ""
+        "away": 166,
+        "home": -198
       },
       "spread": {
-        "away": "",
-        "away_price": "",
-        "home": "",
-        "home_price": ""
+        "away": 1.5,
+        "away_price": -142,
+        "home": -1.5,
+        "home_price": 118
       },
-      "total": "",
+      "total": 7.5,
       "game_total": {
-        "line": "",
-        "over_price": "",
-        "under_price": ""
+        "line": 7.5,
+        "over_price": -110,
+        "under_price": -110
       },
       "team_totals": {
         "away": "",
@@ -72182,7 +72182,7 @@
       "pitcher_strikeouts": {},
       "market_source": "odds_api_io",
       "market_status": "live",
-      "market_updated_at": "2026-09-25T13:07:52Z"
+      "market_updated_at": "2026-09-25T19:51:12Z"
     }
   }
 ]

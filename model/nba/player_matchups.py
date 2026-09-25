@@ -63,7 +63,7 @@ ALL_SEASONS = [
 
 SEASON_TYPE = "Regular Season"
 
-REQUEST_TIMEOUT = 60
+REQUEST_TIMEOUT = 30
 REQUEST_DELAY_SECONDS = 1.0
 MAX_RETRIES = 3
 
@@ -965,6 +965,68 @@ def build_slate_payload(
 # ============================================================
 # MAIN
 # ============================================================
+def use_existing_matchup_fallback(
+    reason: Exception,
+) -> None:
+    print()
+    print(
+        "NBA Stats player game logs are unavailable."
+    )
+    print(
+        f"Reason: {type(reason).__name__}: {reason}"
+    )
+    print(
+        "Preserving existing NBA player matchup data."
+    )
+
+    required_files = [
+        OUTPUT_FILE,
+        NEXT_OUTPUT_FILE,
+    ]
+
+    for path in required_files:
+        if not path.exists():
+            raise FileNotFoundError(
+                f"NBA player matchup fallback not found: {path}"
+            ) from reason
+
+        payload = load_json(path)
+
+        games = payload.get("games")
+
+        if not isinstance(games, list):
+            raise ValueError(
+                f"NBA player matchup fallback is invalid: {path}"
+            ) from reason
+
+    current_payload = load_json(
+        OUTPUT_FILE
+    )
+
+    next_payload = load_json(
+        NEXT_OUTPUT_FILE
+    )
+
+    write_json(
+        WEB_OUTPUT_FILE,
+        current_payload,
+    )
+
+    write_json(
+        WEB_NEXT_OUTPUT_FILE,
+        next_payload,
+    )
+
+    print(
+        f"Fallback current: {OUTPUT_FILE}"
+    )
+    print(
+        f"Fallback future:  {NEXT_OUTPUT_FILE}"
+    )
+    print(
+        "NBA PLAYER MATCHUP HISTORY COMPLETE "
+        "(existing fallback)"
+    )
 
 def main() -> None:
     print()
@@ -1020,9 +1082,16 @@ def main() -> None:
             f"{season}"
         )
 
-        frame = fetch_season_game_logs(
-            season
-        )
+        try:
+            frame = fetch_season_game_logs(
+                season
+            )
+
+        except Exception as exc:
+            use_existing_matchup_fallback(
+                exc
+            )
+            return
 
         normalized = normalize_game_logs(
             frame,

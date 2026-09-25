@@ -86,7 +86,7 @@ jobs:
 
       - name: Restore NBA fallbacks
         run: |
-          mkdir -p alpha-wagerz-model/data/processed/nba
+          mkdir -p alpha-wagerz-model/data/processed/nba/next
 
           cp alpha-wagerz-web/public/data/nba/schedule.json \
             alpha-wagerz-model/data/processed/nba/schedule.json
@@ -94,10 +94,22 @@ jobs:
           cp alpha-wagerz-web/public/data/nba/players.json \
             alpha-wagerz-model/data/processed/nba/players.json
 
+          cp alpha-wagerz-web/public/data/nba/team_rankings.json \
+            alpha-wagerz-model/data/processed/nba/team_rankings.json
+
+          cp alpha-wagerz-web/public/data/nba/player_matchups.json \
+            alpha-wagerz-model/data/processed/nba/player_matchups.json
+
+          cp alpha-wagerz-web/public/data/nba/next/player_matchups.json \
+            alpha-wagerz-model/data/processed/nba/next/player_matchups.json
+
           test -f alpha-wagerz-model/data/processed/nba/schedule.json
           test -f alpha-wagerz-model/data/processed/nba/players.json
+          test -f alpha-wagerz-model/data/processed/nba/team_rankings.json
+          test -f alpha-wagerz-model/data/processed/nba/player_matchups.json
+          test -f alpha-wagerz-model/data/processed/nba/next/player_matchups.json
 
-          echo "NBA schedule and player fallbacks restored from website repository."
+          echo "NBA fallbacks restored from website repository."
           
       - name: Run Alpha Wagerz full update
         working-directory: alpha-wagerz-model
