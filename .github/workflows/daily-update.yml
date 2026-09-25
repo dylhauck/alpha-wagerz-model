@@ -103,13 +103,13 @@ jobs:
           cp alpha-wagerz-web/public/data/nba/next/player_matchups.json \
             alpha-wagerz-model/data/processed/nba/next/player_matchups.json
 
-          test -f alpha-wagerz-model/data/processed/nba/schedule.json
-          test -f alpha-wagerz-model/data/processed/nba/players.json
-          test -f alpha-wagerz-model/data/processed/nba/team_rankings.json
-          test -f alpha-wagerz-model/data/processed/nba/player_matchups.json
-          test -f alpha-wagerz-model/data/processed/nba/next/player_matchups.json
+          test -s alpha-wagerz-model/data/processed/nba/schedule.json
+          test -s alpha-wagerz-model/data/processed/nba/players.json
+          test -s alpha-wagerz-model/data/processed/nba/team_rankings.json
+          test -s alpha-wagerz-model/data/processed/nba/player_matchups.json
+          test -s alpha-wagerz-model/data/processed/nba/next/player_matchups.json
 
-          echo "NBA fallbacks restored from website repository."
+          echo "Complete NBA fallback state restored."
           
       - name: Run Alpha Wagerz full update
         working-directory: alpha-wagerz-model
@@ -131,10 +131,15 @@ jobs:
             s3://alpha-wagerz-statcast/statcast_longterm.zip \
             --endpoint-url "$R2_ENDPOINT_URL"
 
-          aws s3 cp \
-            alpha-wagerz-model/data/raw/mlb/statcast/statcast_master_metadata.txt \
-            s3://alpha-wagerz-statcast/statcast_master_metadata.txt \
-            --endpoint-url "$R2_ENDPOINT_URL"
+          if [ -f alpha-wagerz-model/data/raw/mlb/statcast/statcast_master_metadata.txt ]; then
+            echo "Uploading Statcast metadata..."
+            aws s3 cp \
+              alpha-wagerz-model/data/raw/mlb/statcast/statcast_master_metadata.txt \
+              s3://alpha-wagerz-statcast/statcast_master_metadata.txt \
+              --endpoint-url "$R2_ENDPOINT_URL"
+          else
+            echo "Statcast metadata file not generated; skipping metadata upload."
+          fi
 
           echo "Updated Statcast master and metadata saved to R2."
 
