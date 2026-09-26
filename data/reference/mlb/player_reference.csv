@@ -83,7 +83,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 593974,Wandy Peralta,135,San Diego Padres,SD,P,Pitcher,L,L
 593428,Xander Bogaerts,135,San Diego Padres,SD,SS,Shortstop,R,R
 673513,Yuki Matsui,135,San Diego Padres,SD,P,Pitcher,L,L
-662253,Andrés Muñoz,136,Seattle Mariners,SEA,P,Pitcher,R,R
 693433,Bryan Woo,136,Seattle Mariners,SEA,P,Pitcher,R,R
 682243,Bryce Miller,136,Seattle Mariners,SEA,P,Pitcher,R,R
 663728,Cal Raleigh,136,Seattle Mariners,SEA,C,Catcher,S,R
@@ -109,6 +108,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 668227,Randy Arozarena,136,Seattle Mariners,SEA,LF,Outfielder,R,R
 622554,Seranthony Domínguez,136,Seattle Mariners,SEA,P,Pitcher,R,R
 621493,Taylor Ward,136,Seattle Mariners,SEA,DH,Designated Hitter,R,R
+700187,Troy Taylor,136,Seattle Mariners,SEA,P,Pitcher,R,R
 645302,Victor Robles,136,Seattle Mariners,SEA,RF,Outfielder,R,R
 642215,Weston Wilson,136,Seattle Mariners,SEA,3B,Third Base,R,R
 668800,Andrew Knizner,137,San Francisco Giants,SF,C,Catcher,R,R
@@ -116,8 +116,8 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 815589,Bo Davidson,137,San Francisco Giants,SF,LF,Outfielder,L,R
 694820,Braxton Roxby,137,San Francisco Giants,SF,P,Pitcher,R,R
 695391,Brett Harris,137,San Francisco Giants,SF,3B,Third Base,R,R
+666808,Camilo Doval,137,San Francisco Giants,SF,P,Pitcher,R,R
 693313,Carson Seymour,137,San Francisco Giants,SF,P,Pitcher,R,R
-702885,Cesar Perdomo,137,San Francisco Giants,SF,P,Pitcher,L,L
 683766,Christian Koss,137,San Francisco Giants,SF,SS,Shortstop,R,R
 701852,Drew Cavanaugh,137,San Francisco Giants,SF,C,Catcher,L,R
 687551,Drew Gilbert,137,San Francisco Giants,SF,CF,Outfielder,L,L
@@ -388,15 +388,15 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 687473,Ryan Gusto,146,Miami Marlins,MIA,P,Pitcher,R,R
 645261,Sandy Alcantara,146,Miami Marlins,MIA,P,Pitcher,R,R
 663969,Tyler Phillips,146,Miami Marlins,MIA,P,Pitcher,R,R
-676604,Tyler Zuber,146,Miami Marlins,MIA,P,Pitcher,R,R
 680767,Victor Vodnik,146,Miami Marlins,MIA,P,Pitcher,R,R
+682790,Wikelman González,146,Miami Marlins,MIA,P,Pitcher,R,R
 669364,Xavier Edwards,146,Miami Marlins,MIA,2B,Second Base,S,R
+529017,Alexander Cornielle,147,New York Yankees,NYY,P,Pitcher,R,R
 645305,Ali Sánchez,147,New York Yankees,NYY,C,Catcher,R,R
 642708,Amed Rosario,147,New York Yankees,NYY,3B,Third Base,R,R
 683011,Anthony Volpe,147,New York Yankees,NYY,SS,Shortstop,R,R
 669224,Austin Wells,147,New York Yankees,NYY,C,Catcher,L,R
 700250,Ben Rice,147,New York Yankees,NYY,DH,Designated Hitter,L,R
-694341,Brendan Beck,147,New York Yankees,NYY,P,Pitcher,R,R
 687396,Brent Headrick,147,New York Yankees,NYY,P,Pitcher,L,L
 693645,Cam Schlittler,147,New York Yankees,NYY,P,Pitcher,R,R
 607074,Carlos Rodón,147,New York Yankees,NYY,P,Pitcher,L,L
@@ -421,10 +421,11 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 660787,Yerry De los Santos,147,New York Yankees,NYY,P,Pitcher,R,R
 676879,Aaron Ashby,158,Milwaukee Brewers,MIL,P,Pitcher,R,L
 682842,Abner Uribe,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
-683734,Andrew Vaughn,158,Milwaukee Brewers,MIL,1B,First Base,R,R
 622608,Antonio Senzatela,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 666310,Bo Naylor,158,Milwaukee Brewers,MIL,C,Catcher,L,R
+663604,Brandon Lockridge,158,Milwaukee Brewers,MIL,LF,Outfielder,R,R
 668930,Brice Turang,158,Milwaukee Brewers,MIL,2B,Second Base,L,R
+669060,Bryse Wilson,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 694477,Chad Patrick,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 592885,Christian Yelich,158,Milwaukee Brewers,MIL,DH,Designated Hitter,L,R
 806198,Cooper Pratt,158,Milwaukee Brewers,MIL,SS,Shortstop,R,R
@@ -441,7 +442,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 690986,Kyle Harrison,158,Milwaukee Brewers,MIL,P,Pitcher,R,L
 701656,Logan Henderson,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 800325,Luis Lara,158,Milwaukee Brewers,MIL,RF,Outfielder,S,R
-680689,Lyon Richardson,158,Milwaukee Brewers,MIL,P,Pitcher,S,R
 688107,Robert Gasser,158,Milwaukee Brewers,MIL,P,Pitcher,L,L
 686217,Sal Frelick,158,Milwaukee Brewers,MIL,RF,Outfielder,L,R
 675660,Shane Drohan,158,Milwaukee Brewers,MIL,P,Pitcher,L,L
@@ -756,12 +756,12 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 686475,Tyler Tolbert,118,Kansas City Royals,KC,SS,Shortstop,R,R
 686469,Vinnie Pasquantino,118,Kansas City Royals,KC,1B,First Base,L,L
 669743,Alex Call,119,Los Angeles Dodgers,LAD,LF,Outfielder,R,R
-690976,Alex Freeland,119,Los Angeles Dodgers,LAD,2B,Second Base,S,R
 681911,Alex Vesia,119,Los Angeles Dodgers,LAD,P,Pitcher,L,L
 681624,Andy Pages,119,Los Angeles Dodgers,LAD,CF,Outfielder,R,R
 605483,Blake Snell,119,Los Angeles Dodgers,LAD,P,Pitcher,L,L
 595014,Blake Treinen,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
 592779,Brock Stewart,119,Los Angeles Dodgers,LAD,P,Pitcher,L,R
+687221,Dalton Rushing,119,Los Angeles Dodgers,LAD,C,Catcher,L,R
 621242,Edwin Díaz,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
 571771,Enrique Hernández,119,Los Angeles Dodgers,LAD,3B,Third Base,R,R
 623465,Evan Phillips,119,Los Angeles Dodgers,LAD,P,Pitcher,R,R
