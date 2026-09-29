@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "game_id": "849851",
+    "date": "2026-09-29",
+    "game": "Boston Red Sox @ New York Yankees",
+    "away_team": "Boston Red Sox",
+    "home_team": "New York Yankees",
+    "away_sp": "Payton Tolle",
+    "home_sp": "Cam Schlittler",
+    "venue": "Yankee Stadium",
+    "status": "Scheduled",
+    "file": "data/processed/mlb/games/849851.json"
+  },
+  {
+    "game_id": "849843",
+    "date": "2026-09-29",
+    "game": "Chicago Cubs @ San Diego Padres",
+    "away_team": "Chicago Cubs",
+    "home_team": "San Diego Padres",
+    "away_sp": "Matthew Boyd",
+    "home_sp": "Michael King",
+    "venue": "Petco Park",
+    "status": "Scheduled",
+    "file": "data/processed/mlb/games/849843.json"
+  },
+  {
+    "game_id": "849849",
+    "date": "2026-09-29",
+    "game": "Chicago White Sox @ Houston Astros",
+    "away_team": "Chicago White Sox",
+    "home_team": "Houston Astros",
+    "away_sp": "Hagen Smith",
+    "home_sp": "AJ Blubaugh",
+    "venue": "Daikin Park",
+    "status": "Scheduled",
+    "file": "data/processed/mlb/games/849849.json"
+  },
+  {
+    "game_id": "849845",
+    "date": "2026-09-29",
+    "game": "Philadelphia Phillies @ Atlanta Braves",
+    "away_team": "Philadelphia Phillies",
+    "home_team": "Atlanta Braves",
+    "away_sp": "Jes\u00fas Luzardo",
+    "home_sp": "Chris Sale",
+    "venue": "Truist Park",
+    "status": "Scheduled",
+    "file": "data/processed/mlb/games/849845.json"
+  }
+]
