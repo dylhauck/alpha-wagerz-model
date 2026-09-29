@@ -267,6 +267,32 @@ def run_tomorrow_update():
             "ℹ️ No MLB games were returned "
             "for tomorrow."
         )
+
+        print()
+        print(
+            "🧹 Clearing previous tomorrow slate"
+        )
+
+        build_tomorrow_game_files()
+        build_tomorrow_game_index()
+
+        save_json(
+            [],
+            TOMORROW_ALL_GAMES_FILE,
+        )
+
+        print()
+        print(
+            "🌐 Publishing empty tomorrow slate"
+        )
+
+        publish_tomorrow_to_web()
+
+        print()
+        print(
+            "✅ Tomorrow's empty slate update complete."
+        )
+
         return
 
     print()

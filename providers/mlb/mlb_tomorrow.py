@@ -66,7 +66,7 @@ def get_tomorrows_slate() -> list[dict]:
         "sportId": 1,
         "startDate": slate_date,
         "endDate": slate_date,
-        "gameTypes": "R",
+        "gameTypes": "R,F,D,L,W",
         "hydrate": "probablePitcher,venue,team",
         "language": "en",
     }
