@@ -4,47 +4,40 @@
       "Category": "HR Target",
       "Player/Team": "Ben Rice",
       "Game": "Boston Red Sox @ New York Yankees",
-      "Score": 82.7,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "George Lombard Jr.",
-      "Game": "Boston Red Sox @ New York Yankees",
-      "Score": 75.4,
+      "Score": 82.5,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Munetaka Murakami",
       "Game": "Chicago White Sox @ Houston Astros",
-      "Score": 75.3,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Austin Wells",
-      "Game": "Boston Red Sox @ New York Yankees",
-      "Score": 75.2,
+      "Score": 77.1,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Lucas Spence",
       "Game": "Chicago White Sox @ Houston Astros",
+      "Score": 76.5,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Willson Contreras",
+      "Game": "Boston Red Sox @ New York Yankees",
       "Score": 75.0,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Spencer Jones",
+      "Player/Team": "George Lombard Jr.",
       "Game": "Boston Red Sox @ New York Yankees",
       "Score": 74.7,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Ryan McMahon",
+      "Player/Team": "Giancarlo Stanton",
       "Game": "Boston Red Sox @ New York Yankees",
       "Score": 74.1,
       "Notes": ""
@@ -53,107 +46,114 @@
       "Category": "HR Target",
       "Player/Team": "Yordan Alvarez",
       "Game": "Chicago White Sox @ Houston Astros",
-      "Score": 72.0,
+      "Score": 73.7,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Heliot Ramos",
+      "Player/Team": "Ryan McMahon",
       "Game": "Boston Red Sox @ New York Yankees",
-      "Score": 71.0,
+      "Score": 73.2,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Ceddanne Rafaela",
+      "Game": "Boston Red Sox @ New York Yankees",
+      "Score": 73.0,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Spencer Jones",
+      "Game": "Boston Red Sox @ New York Yankees",
+      "Score": 72.2,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Austin Wells",
+      "Game": "Boston Red Sox @ New York Yankees",
+      "Score": 71.6,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Jahmai Jones",
+      "Game": "Boston Red Sox @ New York Yankees",
+      "Score": 69.9,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Randal Grichuk",
       "Game": "Chicago White Sox @ Houston Astros",
-      "Score": 68.0,
+      "Score": 69.8,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Austin Riley",
-      "Game": "Philadelphia Phillies @ Atlanta Braves",
-      "Score": 66.5,
+      "Player/Team": "Roman Anthony",
+      "Game": "Boston Red Sox @ New York Yankees",
+      "Score": 69.3,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Wilyer Abreu",
+      "Game": "Boston Red Sox @ New York Yankees",
+      "Score": 69.2,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Christian Walker",
       "Game": "Chicago White Sox @ Houston Astros",
-      "Score": 66.5,
+      "Score": 69.1,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Dominic Smith",
-      "Game": "Philadelphia Phillies @ Atlanta Braves",
-      "Score": 63.8,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Matt Olson",
-      "Game": "Philadelphia Phillies @ Atlanta Braves",
-      "Score": 63.6,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Willson Contreras",
+      "Player/Team": "Heliot Ramos",
       "Game": "Boston Red Sox @ New York Yankees",
-      "Score": 63.4,
+      "Score": 68.1,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Austin Riley",
+      "Game": "Philadelphia Phillies @ Atlanta Braves",
+      "Score": 68.0,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Rowdy Tellez",
+      "Game": "Philadelphia Phillies @ Atlanta Braves",
+      "Score": 67.0,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Nelson Velázquez",
       "Game": "Chicago White Sox @ Houston Astros",
-      "Score": 63.3,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Kyle Schwarber",
-      "Game": "Philadelphia Phillies @ Atlanta Braves",
-      "Score": 62.5,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Michael Harris II",
-      "Game": "Philadelphia Phillies @ Atlanta Braves",
-      "Score": 62.0,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Drake Baldwin",
-      "Game": "Philadelphia Phillies @ Atlanta Braves",
-      "Score": 61.5,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Ronald Acuña Jr.",
-      "Game": "Philadelphia Phillies @ Atlanta Braves",
-      "Score": 61.1,
+      "Score": 66.6,
       "Notes": ""
     }
   ],
   "pitchers": [
     {
       "Category": "Pitcher K Target",
-      "Player/Team": "Sonny Gray",
+      "Player/Team": "Gerrit Cole",
       "Game": "Boston Red Sox @ New York Yankees",
-      "Score": 58.7,
+      "Score": 57.0,
       "Notes": ""
     },
     {
       "Category": "Pitcher K Target",
-      "Player/Team": "Max Fried",
+      "Player/Team": "Ranger Suarez",
       "Game": "Boston Red Sox @ New York Yankees",
-      "Score": 58.1,
+      "Score": 54.3,
       "Notes": ""
     },
     {

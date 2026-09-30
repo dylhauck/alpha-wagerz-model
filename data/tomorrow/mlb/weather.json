@@ -1,54 +1,54 @@
 [
   {
-    "game_id": "849841",
+    "game_id": "849844",
     "game": "Philadelphia Phillies @ Atlanta Braves",
     "venue": "Truist Park",
-    "temperature": 85.9,
-    "humidity": 29,
-    "conditions": "Broken Clouds",
+    "temperature": 87.6,
+    "humidity": 43,
+    "conditions": "Few Clouds",
     "wind_direction": "NEUTRAL",
-    "wind_speed": 5.8,
-    "wind_degrees": 154,
+    "wind_speed": 6.9,
+    "wind_degrees": 133,
     "roof": "open",
-    "forecast_time_utc": "2026-09-30T18:00:00+00:00"
+    "forecast_time_utc": "2026-10-01T18:00:00+00:00"
   },
   {
-    "game_id": "849846",
+    "game_id": "849850",
     "game": "Chicago White Sox @ Houston Astros",
     "venue": "Daikin Park",
-    "temperature": 91.4,
-    "humidity": 60,
+    "temperature": 89.9,
+    "humidity": 57,
     "conditions": "Light Rain",
-    "wind_direction": "NEUTRAL",
-    "wind_speed": 12.8,
-    "wind_degrees": 142,
+    "wind_direction": "OUT TOWARDS LF",
+    "wind_speed": 10.2,
+    "wind_degrees": 154,
     "roof": "retractable",
-    "forecast_time_utc": "2026-09-30T21:00:00+00:00"
+    "forecast_time_utc": "2026-10-01T21:00:00+00:00"
   },
   {
-    "game_id": "849848",
+    "game_id": "849847",
     "game": "Boston Red Sox @ New York Yankees",
     "venue": "Yankee Stadium",
-    "temperature": 66.6,
-    "humidity": 91,
-    "conditions": "Overcast Clouds",
-    "wind_direction": "NEUTRAL",
-    "wind_speed": 5.3,
-    "wind_degrees": 171,
+    "temperature": 68.5,
+    "humidity": 87,
+    "conditions": "Scattered Clouds",
+    "wind_direction": "OUT TOWARDS LF",
+    "wind_speed": 4.5,
+    "wind_degrees": 211,
     "roof": "open",
-    "forecast_time_utc": "2026-10-01T00:00:00+00:00"
+    "forecast_time_utc": "2026-10-02T00:00:00+00:00"
   },
   {
-    "game_id": "849842",
+    "game_id": "849840",
     "game": "Chicago Cubs @ San Diego Padres",
     "venue": "Petco Park",
-    "temperature": 70.4,
-    "humidity": 86,
+    "temperature": 73.7,
+    "humidity": 79,
     "conditions": "Clear Sky",
-    "wind_direction": "OUT",
-    "wind_speed": 1.9,
-    "wind_degrees": 191,
+    "wind_direction": "NEUTRAL",
+    "wind_speed": 4.4,
+    "wind_degrees": 300,
     "roof": "open",
-    "forecast_time_utc": "2026-10-01T03:00:00+00:00"
+    "forecast_time_utc": "2026-10-02T03:00:00+00:00"
   }
 ]

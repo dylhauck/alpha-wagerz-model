@@ -1,6 +1,6 @@
 [
   {
-    "game_id": "849841",
+    "game_id": "849844",
     "game": "Philadelphia Phillies @ Atlanta Braves",
     "lineup_status": "roster_fallback",
     "away_lineup_status": "roster_fallback",
@@ -35,21 +35,6 @@
         "Player ID": 681082,
         "name": "Bryson Stott",
         "Player": "Bryson Stott",
-        "team_id": 143,
-        "Team ID": 143,
-        "team": "Philadelphia Phillies",
-        "Team": "Philadelphia Phillies",
-        "position": "2B",
-        "Position": "2B",
-        "batting_order": "",
-        "lineup_source": "active_roster"
-      },
-      {
-        "id": 650333,
-        "player_id": 650333,
-        "Player ID": 650333,
-        "name": "Luis Arraez",
-        "Player": "Luis Arraez",
         "team_id": 143,
         "Team ID": 143,
         "team": "Philadelphia Phillies",
@@ -195,6 +180,21 @@
         "lineup_source": "active_roster"
       },
       {
+        "id": 805249,
+        "player_id": 805249,
+        "Player ID": 805249,
+        "name": "Otto Kemp",
+        "Player": "Otto Kemp",
+        "team_id": 143,
+        "Team ID": 143,
+        "team": "Philadelphia Phillies",
+        "Team": "Philadelphia Phillies",
+        "position": "LF",
+        "Position": "LF",
+        "batting_order": "",
+        "lineup_source": "active_roster"
+      },
+      {
         "id": 650559,
         "player_id": 650559,
         "Player ID": 650559,
@@ -232,6 +232,21 @@
         "Player ID": 621566,
         "name": "Matt Olson",
         "Player": "Matt Olson",
+        "team_id": 144,
+        "Team ID": 144,
+        "team": "Atlanta Braves",
+        "Team": "Atlanta Braves",
+        "position": "1B",
+        "Position": "1B",
+        "batting_order": "",
+        "lineup_source": "active_roster"
+      },
+      {
+        "id": 642133,
+        "player_id": 642133,
+        "Player ID": 642133,
+        "name": "Rowdy Tellez",
+        "Player": "Rowdy Tellez",
         "team_id": 144,
         "Team ID": 144,
         "team": "Atlanta Braves",
@@ -347,21 +362,6 @@
         "lineup_source": "active_roster"
       },
       {
-        "id": 571657,
-        "player_id": 571657,
-        "Player ID": 571657,
-        "name": "Kyle Farmer",
-        "Player": "Kyle Farmer",
-        "team_id": 144,
-        "Team ID": 144,
-        "team": "Atlanta Braves",
-        "Team": "Atlanta Braves",
-        "position": "DH",
-        "Position": "DH",
-        "batting_order": "",
-        "lineup_source": "active_roster"
-      },
-      {
         "id": 643289,
         "player_id": 643289,
         "Player ID": 643289,
@@ -435,11 +435,26 @@
         "Position": "SS",
         "batting_order": "",
         "lineup_source": "active_roster"
+      },
+      {
+        "id": 663897,
+        "player_id": 663897,
+        "Player ID": 663897,
+        "name": "Luke Williams",
+        "Player": "Luke Williams",
+        "team_id": 144,
+        "Team ID": 144,
+        "team": "Atlanta Braves",
+        "Team": "Atlanta Braves",
+        "position": "SS",
+        "Position": "SS",
+        "batting_order": "",
+        "lineup_source": "active_roster"
       }
     ]
   },
   {
-    "game_id": "849846",
+    "game_id": "849850",
     "game": "Chicago White Sox @ Houston Astros",
     "lineup_status": "roster_fallback",
     "away_lineup_status": "roster_fallback",
@@ -499,11 +514,11 @@
         "lineup_source": "active_roster"
       },
       {
-        "id": 691011,
-        "player_id": 691011,
-        "Player ID": 691011,
-        "name": "Drew Romo",
-        "Player": "Drew Romo",
+        "id": 668670,
+        "player_id": 668670,
+        "Player ID": 668670,
+        "name": "Jake Rogers",
+        "Player": "Jake Rogers",
         "team_id": 145,
         "Team ID": 145,
         "team": "Chicago White Sox",
@@ -756,21 +771,6 @@
         "lineup_source": "active_roster"
       },
       {
-        "id": 678489,
-        "player_id": 678489,
-        "Player ID": 678489,
-        "name": "Jorge Barrosa",
-        "Player": "Jorge Barrosa",
-        "team_id": 117,
-        "Team ID": 117,
-        "team": "Houston Astros",
-        "Team": "Houston Astros",
-        "position": "CF",
-        "Position": "CF",
-        "batting_order": "",
-        "lineup_source": "active_roster"
-      },
-      {
         "id": 828599,
         "player_id": 828599,
         "Player ID": 828599,
@@ -801,11 +801,11 @@
         "lineup_source": "active_roster"
       },
       {
-        "id": 664774,
-        "player_id": 664774,
-        "Player ID": 664774,
-        "name": "LaMonte Wade Jr.",
-        "Player": "LaMonte Wade Jr.",
+        "id": 694388,
+        "player_id": 694388,
+        "Player ID": 694388,
+        "name": "Joey Loperfido",
+        "Player": "Joey Loperfido",
         "team_id": 117,
         "Team ID": 117,
         "team": "Houston Astros",
@@ -893,7 +893,7 @@
     ]
   },
   {
-    "game_id": "849848",
+    "game_id": "849847",
     "game": "Boston Red Sox @ New York Yankees",
     "lineup_status": "roster_fallback",
     "away_lineup_status": "roster_fallback",
@@ -902,10 +902,10 @@
     "away_team": "Boston Red Sox",
     "home_team_id": 147,
     "home_team": "New York Yankees",
-    "away_sp_id": 543243,
-    "away_sp": "Sonny Gray",
-    "home_sp_id": 608331,
-    "home_sp": "Max Fried",
+    "away_sp_id": 624133,
+    "away_sp": "Ranger Suarez",
+    "home_sp_id": 543037,
+    "home_sp": "Gerrit Cole",
     "away_hitters": [
       {
         "id": 575929,
@@ -1240,11 +1240,41 @@
         "lineup_source": "active_roster"
       },
       {
+        "id": 663757,
+        "player_id": 663757,
+        "Player ID": 663757,
+        "name": "Trent Grisham",
+        "Player": "Trent Grisham",
+        "team_id": 147,
+        "Team ID": 147,
+        "team": "New York Yankees",
+        "Team": "New York Yankees",
+        "position": "CF",
+        "Position": "CF",
+        "batting_order": "",
+        "lineup_source": "active_roster"
+      },
+      {
         "id": 700250,
         "player_id": 700250,
         "Player ID": 700250,
         "name": "Ben Rice",
         "Player": "Ben Rice",
+        "team_id": 147,
+        "Team ID": 147,
+        "team": "New York Yankees",
+        "Team": "New York Yankees",
+        "position": "DH",
+        "Position": "DH",
+        "batting_order": "",
+        "lineup_source": "active_roster"
+      },
+      {
+        "id": 519317,
+        "player_id": 519317,
+        "Player ID": 519317,
+        "name": "Giancarlo Stanton",
+        "Player": "Giancarlo Stanton",
         "team_id": 147,
         "Team ID": 147,
         "team": "New York Yankees",
@@ -1332,7 +1362,7 @@
     ]
   },
   {
-    "game_id": "849842",
+    "game_id": "849840",
     "game": "Chicago Cubs @ San Diego Padres",
     "lineup_status": "roster_fallback",
     "away_lineup_status": "roster_fallback",
@@ -1604,21 +1634,6 @@
         "lineup_source": "active_roster"
       },
       {
-        "id": 823550,
-        "player_id": 823550,
-        "Player ID": 823550,
-        "name": "Sung-Mun Song",
-        "Player": "Sung-Mun Song",
-        "team_id": 135,
-        "Team ID": 135,
-        "team": "San Diego Padres",
-        "Team": "San Diego Padres",
-        "position": "2B",
-        "Position": "2B",
-        "batting_order": "",
-        "lineup_source": "active_roster"
-      },
-      {
         "id": 592518,
         "player_id": 592518,
         "Player ID": 592518,
@@ -1699,6 +1714,21 @@
         "Player ID": 669720,
         "name": "Austin Hays",
         "Player": "Austin Hays",
+        "team_id": 135,
+        "Team ID": 135,
+        "team": "San Diego Padres",
+        "Team": "San Diego Padres",
+        "position": "DH",
+        "Position": "DH",
+        "batting_order": "",
+        "lineup_source": "active_roster"
+      },
+      {
+        "id": 609280,
+        "player_id": 609280,
+        "Player ID": 609280,
+        "name": "Miguel Andujar",
+        "Player": "Miguel Andujar",
         "team_id": 135,
         "Team ID": 135,
         "team": "San Diego Padres",
