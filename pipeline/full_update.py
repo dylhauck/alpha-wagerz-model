@@ -1,5 +1,6 @@
 from time import perf_counter
 
+#MLB
 from graphics.create_weather_graphic import create_weather_graphic
 from model.nfl.injury_context import build_nfl_injury_context
 from providers.mlb.mlb_reference import build_reference_files
@@ -59,9 +60,13 @@ from providers.nfl.nfl_player_props import build_nfl_player_props
 from model.nfl.player_prop_edges import build_nfl_player_prop_edges
 from providers.nfl.nfl_odds import build_nfl_odds
 from model.nfl.rankings import build_nfl_rankings
+
 # NBA
 from providers.nba.nba_data import build_nba_data
 from providers.nba.nba_players import main as build_nba_players
+from model.nba.player_stats import main as build_nba_player_stats
+from model.nba.team_stats import main as build_nba_team_stats
+from providers.nba.nba_markets import build_nba_markets
 from model.nba.team_rankings import build_nba_team_rankings
 from model.nba.player_matchups import main as build_nba_player_matchups
 
@@ -155,36 +160,52 @@ def run_full_update():
     print("\n🗄️ Saving history", flush=True)
     timed("save_daily_history", save_daily_history)
 
+    #NFL
     print("\n🏈 NFL Data", flush=True)
     timed("build_all_nfl_data", build_all_nfl_data)
+
     print("\n🏥 NFL Injuries", flush=True)
     timed("build_nfl_injuries", build_nfl_injuries)
+
     print("\n📊 NFL Team Metrics", flush=True)
     timed("build_team_metrics", build_team_metrics)
+
     print("\n👤 NFL Player Metrics", flush=True)
     timed("build_nfl_player_metrics", build_nfl_player_metrics)
+
     print("\n⚔️ NFL Matchup History", flush=True)
     timed("build_nfl_matchups", build_nfl_matchups)
+
     print("\n🧠 NFL Matchup Metrics", flush=True)
     timed("build_nfl_matchup_metrics", build_nfl_matchup_metrics)
+
     print("\n🏥 NFL Injury Context", flush=True)
     timed("build_nfl_injury_context", build_nfl_injury_context)
+
     print("\n🌦️ NFL Weather", flush=True)
     timed("build_nfl_weather", build_nfl_weather)
+
     print("\n🎯 NFL Game Projections", flush=True)
     timed("build_nfl_game_projections", build_nfl_game_projections)
+
     print("\n🏃 NFL Player Projections", flush=True)
     timed("build_nfl_player_projections", build_nfl_player_projections)
+
     print("\n📡 Live NFL Odds", flush=True)
     timed("build_nfl_odds", build_nfl_odds)
+
     print("\n💰 NFL Market", flush=True)
     timed("build_nfl_market", build_nfl_market)
+
     print("\n📈 NFL Edges & Confidence", flush=True)
     timed("build_nfl_edges", build_nfl_edges)
+
     print("\n🏷️ NFL Player Props", flush=True)
     timed("build_nfl_player_props", build_nfl_player_props)
+
     print("\n🎯 NFL Player Prop Edges", flush=True)
     timed("build_nfl_player_prop_edges", build_nfl_player_prop_edges)
+
     print("\n🏆 NFL Rankings / Best Bets", flush=True)
     timed("build_nfl_rankings", build_nfl_rankings)
 
@@ -195,8 +216,17 @@ def run_full_update():
     print("\nNBA Players", flush=True)
     timed("build_nba_players", build_nba_players)
 
+    print("\nNBA Player Stats", flush=True)
+    timed("build_nba_player_stats", build_nba_player_stats)
+
     print("\nNBA Team Rankings", flush=True)
     timed("build_nba_team_rankings", build_nba_team_rankings)
+
+    print("\nNBA Markets", flush=True)
+    timed("build_nba_markets", build_nba_markets)
+
+    print("\nNBA Team Stats", flush=True)
+    timed("build_nba_team_stats", build_nba_team_stats)
 
     print("\nNBA Player Matchups", flush=True)
     timed("build_nba_player_matchups", build_nba_player_matchups)

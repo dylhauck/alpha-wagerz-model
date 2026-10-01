@@ -103,11 +103,23 @@ jobs:
           cp alpha-wagerz-web/public/data/nba/next/player_matchups.json \
             alpha-wagerz-model/data/processed/nba/next/player_matchups.json
 
+          cp alpha-wagerz-web/public/data/nba/player_stats.json \
+            alpha-wagerz-model/data/processed/nba/player_stats.json
+
+          cp alpha-wagerz-web/public/data/nba/player_stats_history.json \
+            alpha-wagerz-model/data/processed/nba/player_stats_history.json
+
+          cp alpha-wagerz-web/public/data/nba/team_stats.json \
+            alpha-wagerz-model/data/processed/nba/team_stats.json
+
           test -s alpha-wagerz-model/data/processed/nba/schedule.json
           test -s alpha-wagerz-model/data/processed/nba/players.json
           test -s alpha-wagerz-model/data/processed/nba/team_rankings.json
           test -s alpha-wagerz-model/data/processed/nba/player_matchups.json
           test -s alpha-wagerz-model/data/processed/nba/next/player_matchups.json
+          test -s alpha-wagerz-model/data/processed/nba/player_stats.json
+          test -s alpha-wagerz-model/data/processed/nba/player_stats_history.json
+          test -s alpha-wagerz-model/data/processed/nba/team_stats.json
 
           echo "Complete NBA fallback state restored."
           
