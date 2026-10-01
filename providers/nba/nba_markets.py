@@ -3,7 +3,7 @@ from __future__ import annotations
 import gzip
 import json
 import os
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError, URLError
@@ -42,7 +42,9 @@ WEB_OUTPUT_FILE = (
     / "market_history.json"
 )
 
-API_KEY = os.getenv("ODDS_API_IO_KEY")
+API_KEY = os.getenv(
+    "ODDS_API_IO_KEY"
+)
 
 BASE_URL = os.getenv(
     "ODDS_API_IO_BASE",
@@ -84,7 +86,17 @@ HISTORY_TO = os.getenv(
 
 MARKETS = "Spread,Totals"
 
-PAGE_SIZE = 100
+# Leave room under the free-plan hourly request allowance
+# for event discovery and any other Odds-API.io calls.
+MAX_ODDS_REQUESTS = int(
+    os.getenv(
+        "NBA_MARKET_MAX_ODDS_REQUESTS",
+        "80",
+    )
+)
+
+# Historical event discovery is split into smaller date windows.
+HISTORY_WINDOW_DAYS = 30
 
 
 # ============================================================
@@ -134,15 +146,25 @@ ABBREVIATION_ALIASES = {
 }
 
 
-def clean_text(value: Any) -> str:
-    return str(value or "").strip()
+def clean_text(
+    value: Any,
+) -> str:
+    return str(
+        value or ""
+    ).strip()
 
 
-def normalize_team(value: Any) -> str:
-    text = clean_text(value)
+def normalize_team(
+    value: Any,
+) -> str:
+    text = clean_text(
+        value
+    )
 
     if text in TEAM_ALIASES:
-        return TEAM_ALIASES[text]
+        return TEAM_ALIASES[
+            text
+        ]
 
     upper = text.upper()
 
@@ -166,7 +188,9 @@ def number(
         ):
             return None
 
-        return float(value)
+        return float(
+            value
+        )
 
     except Exception:
         return None
@@ -182,7 +206,9 @@ def safe_int(
         ):
             return None
 
-        return int(float(value))
+        return int(
+            float(value)
+        )
 
     except Exception:
         return None
@@ -220,7 +246,9 @@ def load_json(
             "r",
             encoding="utf-8",
         ) as handle:
-            payload = json.load(handle)
+            payload = json.load(
+                handle
+            )
 
         if isinstance(
             payload,
@@ -234,6 +262,58 @@ def load_json(
     return None
 
 
+def parse_datetime(
+    value: str,
+) -> datetime:
+    text = (
+        value
+        .strip()
+    )
+
+    if text.endswith("Z"):
+        text = (
+            text[:-1]
+            + "+00:00"
+        )
+
+    parsed = (
+        datetime
+        .fromisoformat(
+            text
+        )
+    )
+
+    if parsed.tzinfo is None:
+        parsed = (
+            parsed.replace(
+                tzinfo=timezone.utc
+            )
+        )
+
+    return (
+        parsed
+        .astimezone(
+            timezone.utc
+        )
+    )
+
+
+def iso_z(
+    value: datetime,
+) -> str:
+    return (
+        value
+        .astimezone(
+            timezone.utc
+        )
+        .isoformat()
+        .replace(
+            "+00:00",
+            "Z",
+        )
+    )
+
+
 # ============================================================
 # HTTP
 # ============================================================
@@ -245,7 +325,8 @@ def api_get(
     query = urlencode(
         {
             key: value
-            for key, value in params.items()
+            for key, value
+            in params.items()
             if value not in (
                 None,
                 "",
@@ -262,8 +343,12 @@ def api_get(
     request = Request(
         url,
         headers={
-            "Accept": "application/json",
-            "User-Agent": "Alpha-Wagerz/1.0",
+            "Accept": (
+                "application/json"
+            ),
+            "User-Agent": (
+                "Alpha-Wagerz/1.0"
+            ),
         },
     )
 
@@ -272,10 +357,13 @@ def api_get(
             request,
             timeout=60,
         ) as response:
-            raw = response.read()
+            raw = (
+                response.read()
+            )
 
             encoding = (
-                response.headers.get(
+                response.headers
+                .get(
                     "Content-Encoding",
                     "",
                 )
@@ -284,30 +372,123 @@ def api_get(
 
             if (
                 "gzip" in encoding
-                or raw[:2] == b"\x1f\x8b"
+                or raw[:2]
+                == b"\x1f\x8b"
             ):
-                raw = gzip.decompress(raw)
+                raw = (
+                    gzip.decompress(
+                        raw
+                    )
+                )
 
             return json.loads(
-                raw.decode("utf-8")
+                raw.decode(
+                    "utf-8"
+                )
             )
 
     except HTTPError as exc:
-        body = exc.read().decode(
-            "utf-8",
-            errors="replace",
+        body = (
+            exc.read()
+            .decode(
+                "utf-8",
+                errors="replace",
+            )
         )
 
         raise RuntimeError(
             "Odds-API.io returned HTTP "
-            f"{exc.code}: {body[:1000]}"
+            f"{exc.code}: "
+            f"{body[:1000]}"
         ) from exc
 
     except URLError as exc:
         raise RuntimeError(
-            "Unable to reach Odds-API.io: "
+            "Unable to reach "
+            "Odds-API.io: "
             f"{exc}"
         ) from exc
+
+
+# ============================================================
+# RESPONSE HELPERS
+# ============================================================
+
+def response_events(
+    payload: Any,
+) -> list[dict[str, Any]]:
+    if isinstance(
+        payload,
+        list,
+    ):
+        return [
+            row
+            for row in payload
+            if isinstance(
+                row,
+                dict,
+            )
+        ]
+
+    if isinstance(
+        payload,
+        dict,
+    ):
+        for key in (
+            "events",
+            "data",
+            "results",
+        ):
+            rows = (
+                payload.get(
+                    key
+                )
+            )
+
+            if isinstance(
+                rows,
+                list,
+            ):
+                return [
+                    row
+                    for row
+                    in rows
+                    if isinstance(
+                        row,
+                        dict,
+                    )
+                ]
+
+    return []
+
+
+def response_object(
+    payload: Any,
+) -> dict[str, Any]:
+    if not isinstance(
+        payload,
+        dict,
+    ):
+        return {}
+
+    for key in (
+        "data",
+        "result",
+        "event",
+    ):
+        value = (
+            payload.get(
+                key
+            )
+        )
+
+        if isinstance(
+            value,
+            dict,
+        ):
+            return value
+
+    return payload
 
 
 # ============================================================
@@ -328,10 +509,18 @@ def market_key(
     market: dict[str, Any],
 ) -> str:
     return (
-        market_name(market)
+        market_name(
+            market
+        )
         .lower()
-        .replace("-", " ")
-        .replace("_", " ")
+        .replace(
+            "-",
+            " ",
+        )
+        .replace(
+            "_",
+            " ",
+        )
     )
 
 
@@ -365,7 +554,9 @@ def first_number(
 ) -> float | None:
     for key in keys:
         value = number(
-            row.get(key)
+            row.get(
+                key
+            )
         )
 
         if value is not None:
@@ -377,13 +568,11 @@ def first_number(
 def balanced_two_way_row(
     rows: list[dict[str, Any]],
 ) -> dict[str, Any] | None:
-    """
-    Select the primary two-way line rather than an alternate.
-    """
-
     candidates = []
 
-    for index, row in enumerate(rows):
+    for index, row in enumerate(
+        rows
+    ):
         line = first_number(
             row,
             "hdp",
@@ -428,8 +617,12 @@ def balanced_two_way_row(
         )
 
         distance_from_even = (
-            abs(over - 2.0)
-            + abs(under - 2.0)
+            abs(
+                over - 2.0
+            )
+            + abs(
+                under - 2.0
+            )
         )
 
         candidates.append(
@@ -452,7 +645,9 @@ def balanced_two_way_row(
         )
     )
 
-    return candidates[0][3]
+    return candidates[
+        0
+    ][3]
 
 
 def parse_spread(
@@ -462,12 +657,10 @@ def parse_spread(
     float | None,
 ]:
     """
-    Odds-API.io Spread uses hdp from the HOME perspective.
+    Odds-API.io Spread hdp is from
+    the HOME perspective.
 
-    Example:
-        hdp = -4.5
-
-    means:
+    hdp = -4.5 means:
         HOME -4.5
         AWAY +4.5
     """
@@ -490,41 +683,60 @@ def parse_spread(
 
         candidates = []
 
-        for index, row in enumerate(rows):
-            home_line = first_number(
-                row,
-                "hdp",
-                "line",
-                "point",
+        for index, row in enumerate(
+            rows
+        ):
+            home_line = (
+                first_number(
+                    row,
+                    "hdp",
+                    "line",
+                    "point",
+                )
             )
 
-            home_price = first_number(
-                row,
-                "home",
+            home_price = (
+                first_number(
+                    row,
+                    "home",
+                )
             )
 
-            away_price = first_number(
-                row,
-                "away",
+            away_price = (
+                first_number(
+                    row,
+                    "away",
+                )
             )
 
             if home_line is None:
                 continue
 
             if (
-                home_price is not None
-                and away_price is not None
+                home_price
+                is not None
+                and away_price
+                is not None
                 and home_price > 1.0
                 and away_price > 1.0
             ):
                 balance = abs(
                     (1.0 / home_price)
-                    - (1.0 / away_price)
+                    - (
+                        1.0
+                        / away_price
+                    )
                 )
 
                 distance = (
-                    abs(home_price - 2.0)
-                    + abs(away_price - 2.0)
+                    abs(
+                        home_price
+                        - 2.0
+                    )
+                    + abs(
+                        away_price
+                        - 2.0
+                    )
                 )
 
             else:
@@ -550,7 +762,9 @@ def parse_spread(
             )
 
             home_spread = (
-                candidates[0][3]
+                candidates[
+                    0
+                ][3]
             )
 
             return (
@@ -578,9 +792,11 @@ def parse_total(
         }:
             continue
 
-        row = balanced_two_way_row(
-            odds_rows(
-                market
+        row = (
+            balanced_two_way_row(
+                odds_rows(
+                    market
+                )
             )
         )
 
@@ -632,7 +848,9 @@ def extract_scores(
     ):
         full_time = (
             periods.get("ft")
-            or periods.get("full_time")
+            or periods.get(
+                "full_time"
+            )
         )
 
         if isinstance(
@@ -640,11 +858,15 @@ def extract_scores(
             dict,
         ):
             home = safe_int(
-                full_time.get("home")
+                full_time.get(
+                    "home"
+                )
             )
 
             away = safe_int(
-                full_time.get("away")
+                full_time.get(
+                    "away"
+                )
             )
 
             if (
@@ -657,11 +879,15 @@ def extract_scores(
                 )
 
     home = safe_int(
-        scores.get("home")
+        scores.get(
+            "home"
+        )
     )
 
     away = safe_int(
-        scores.get("away")
+        scores.get(
+            "away"
+        )
     )
 
     return (
@@ -694,11 +920,16 @@ def bookmaker_markets(
             [],
         )
 
-    # FanDuel first, then DraftKings by default.
+    # FanDuel first, then DraftKings.
     for preferred in BOOKMAKERS:
-        for bookmaker, markets in raw.items():
+        for (
+            bookmaker,
+            markets,
+        ) in raw.items():
             if (
-                clean_text(bookmaker).lower()
+                clean_text(
+                    bookmaker
+                ).lower()
                 != preferred.lower()
             ):
                 continue
@@ -711,7 +942,8 @@ def bookmaker_markets(
                     bookmaker,
                     [
                         market
-                        for market in markets
+                        for market
+                        in markets
                         if isinstance(
                             market,
                             dict,
@@ -719,11 +951,146 @@ def bookmaker_markets(
                     ],
                 )
 
-    # Do not silently substitute an unrelated sportsbook.
+    # Do not silently substitute
+    # another sportsbook.
     return (
         None,
         [],
     )
+
+
+# ============================================================
+# EVENT HELPERS
+# ============================================================
+
+def event_id(
+    event: dict[str, Any],
+) -> str:
+    return clean_text(
+        event.get("id")
+        or event.get(
+            "eventId"
+        )
+        or event.get(
+            "event_id"
+        )
+    )
+
+
+def event_date(
+    event: dict[str, Any],
+) -> str:
+    return clean_text(
+        event.get("date")
+        or event.get(
+            "commence_time"
+        )
+        or event.get(
+            "commenceTime"
+        )
+        or event.get(
+            "start_time"
+        )
+        or event.get(
+            "startTime"
+        )
+    )
+
+
+def event_away_team(
+    event: dict[str, Any],
+) -> str:
+    return clean_text(
+        event.get("away")
+        or event.get(
+            "away_team"
+        )
+        or event.get(
+            "awayTeam"
+        )
+    )
+
+
+def event_home_team(
+    event: dict[str, Any],
+) -> str:
+    return clean_text(
+        event.get("home")
+        or event.get(
+            "home_team"
+        )
+        or event.get(
+            "homeTeam"
+        )
+    )
+
+
+# ============================================================
+# ODDS PAYLOAD MERGING
+# ============================================================
+
+def merge_event_and_odds(
+    event: dict[str, Any],
+    odds_payload: Any,
+) -> dict[str, Any]:
+    merged = dict(
+        event
+    )
+
+    odds_object = (
+        response_object(
+            odds_payload
+        )
+    )
+
+    for (
+        key,
+        value,
+    ) in odds_object.items():
+        merged[
+            key
+        ] = value
+
+    # Preserve identifying information
+    # from the historical event response
+    # if the odds response does not include it.
+    if not event_id(
+        merged
+    ):
+        merged["id"] = (
+            event_id(
+                event
+            )
+        )
+
+    if not event_date(
+        merged
+    ):
+        merged["date"] = (
+            event_date(
+                event
+            )
+        )
+
+    if not event_away_team(
+        merged
+    ):
+        merged["away"] = (
+            event_away_team(
+                event
+            )
+        )
+
+    if not event_home_team(
+        merged
+    ):
+        merged["home"] = (
+            event_home_team(
+                event
+            )
+        )
+
+    return merged
 
 
 # ============================================================
@@ -734,13 +1101,15 @@ def normalize_event(
     event: dict[str, Any],
 ) -> dict[str, Any] | None:
     away_team = normalize_team(
-        event.get("away")
-        or event.get("away_team")
+        event_away_team(
+            event
+        )
     )
 
     home_team = normalize_team(
-        event.get("home")
-        or event.get("home_team")
+        event_home_team(
+            event
+        )
     )
 
     if (
@@ -775,23 +1144,35 @@ def normalize_event(
 
     return {
         "event_id": (
-            event.get("id")
-            or event.get("eventId")
-        ),
-        "date": (
-            event.get("date")
-            or event.get(
-                "commence_time"
+            event_id(
+                event
             )
         ),
-        "status": event.get(
-            "status"
+        "date": (
+            event_date(
+                event
+            )
         ),
-        "away_team": away_team,
-        "home_team": home_team,
-        "away_score": away_score,
-        "home_score": home_score,
-        "bookmaker": bookmaker,
+        "status": (
+            event.get(
+                "status"
+            )
+        ),
+        "away_team": (
+            away_team
+        ),
+        "home_team": (
+            home_team
+        ),
+        "away_score": (
+            away_score
+        ),
+        "home_score": (
+            home_score
+        ),
+        "bookmaker": (
+            bookmaker
+        ),
         "away_spread": (
             round(
                 away_spread,
@@ -823,84 +1204,109 @@ def normalize_event(
 
 
 # ============================================================
-# HISTORICAL CLOSING LINES
+# HISTORICAL DATE WINDOWS
 # ============================================================
 
-def response_events(
-    payload: Any,
-) -> list[dict[str, Any]]:
-    if isinstance(
-        payload,
-        list,
-    ):
-        return [
-            row
-            for row in payload
-            if isinstance(
-                row,
-                dict,
-            )
-        ]
-
-    if isinstance(
-        payload,
-        dict,
-    ):
-        for key in (
-            "events",
-            "data",
-            "results",
-        ):
-            rows = payload.get(
-                key
-            )
-
-            if isinstance(
-                rows,
-                list,
-            ):
-                return [
-                    row
-                    for row in rows
-                    if isinstance(
-                        row,
-                        dict,
-                    )
-                ]
-
-    return []
-
-
-def fetch_closing_lines() -> list[
-    dict[str, Any]
+def history_windows() -> list[
+    tuple[str, str]
 ]:
-    events: list[
-        dict[str, Any]
+    start = parse_datetime(
+        HISTORY_FROM
+    )
+
+    end = parse_datetime(
+        HISTORY_TO
+    )
+
+    windows: list[
+        tuple[str, str]
     ] = []
 
-    skip = 0
+    current = start
 
-    while True:
+    while current <= end:
+        window_end = min(
+            current
+            + timedelta(
+                days=HISTORY_WINDOW_DAYS
+            ),
+            end,
+        )
+
+        windows.append(
+            (
+                iso_z(
+                    current
+                ),
+                iso_z(
+                    window_end
+                ),
+            )
+        )
+
+        current = (
+            window_end
+            + timedelta(
+                seconds=1
+            )
+        )
+
+    return windows
+
+
+# ============================================================
+# HISTORICAL EVENTS
+# ============================================================
+
+def fetch_historical_events() -> list[
+    dict[str, Any]
+]:
+    all_events: dict[
+        str,
+        dict[str, Any],
+    ] = {}
+
+    windows = (
+        history_windows()
+    )
+
+    for (
+        index,
+        (
+            window_from,
+            window_to,
+        ),
+    ) in enumerate(
+        windows,
+        start=1,
+    ):
         print(
-            "Fetching NBA historical closing lines "
-            f"(skip={skip})...",
+            "Fetching NBA historical "
+            "events "
+            f"{index}/{len(windows)} "
+            f"({window_from[:10]} -> "
+            f"{window_to[:10]})...",
             flush=True,
         )
 
         payload = api_get(
-            "historical/closing-lines",
+            "historical/events",
             {
-                "apiKey": API_KEY,
-                "sport": SPORT,
-                "leagues": LEAGUE,
-                "from": HISTORY_FROM,
-                "to": HISTORY_TO,
-                "markets": MARKETS,
-                "bookmakers": ",".join(
-                    BOOKMAKERS
+                "apiKey": (
+                    API_KEY
                 ),
-                "limit": PAGE_SIZE,
-                "skip": skip,
+                "sport": (
+                    SPORT
+                ),
+                "league": (
+                    LEAGUE
+                ),
+                "from": (
+                    window_from
+                ),
+                "to": (
+                    window_to
+                ),
             },
         )
 
@@ -909,30 +1315,78 @@ def fetch_closing_lines() -> list[
         )
 
         print(
-            f"   received {len(rows):,} events",
+            f"   received "
+            f"{len(rows):,} events",
             flush=True,
         )
 
-        if not rows:
-            break
+        for event in rows:
+            identifier = (
+                event_id(
+                    event
+                )
+            )
 
-        events.extend(
-            rows
+            if not identifier:
+                continue
+
+            all_events[
+                identifier
+            ] = event
+
+    events = list(
+        all_events.values()
+    )
+
+    events.sort(
+        key=lambda event: (
+            event_date(
+                event
+            ),
+            event_id(
+                event
+            ),
         )
-
-        if len(rows) < PAGE_SIZE:
-            break
-
-        skip += PAGE_SIZE
+    )
 
     return events
 
 
 # ============================================================
-# FALLBACK
+# HISTORICAL ODDS
 # ============================================================
 
-def preserve_existing() -> bool:
+def fetch_historical_odds(
+    identifier: str,
+) -> Any:
+    return api_get(
+        "historical/odds",
+        {
+            "apiKey": (
+                API_KEY
+            ),
+            "eventId": (
+                identifier
+            ),
+            "bookmakers": (
+                ",".join(
+                    BOOKMAKERS
+                )
+            ),
+            "markets": (
+                MARKETS
+            ),
+        },
+    )
+
+
+# ============================================================
+# EXISTING HISTORY
+# ============================================================
+
+def load_existing_payload() -> (
+    dict[str, Any] | None
+):
     existing = load_json(
         OUTPUT_FILE
     )
@@ -941,6 +1395,107 @@ def preserve_existing() -> bool:
         existing = load_json(
             WEB_OUTPUT_FILE
         )
+
+    return existing
+
+
+def existing_games_by_id() -> dict[
+    str,
+    dict[str, Any],
+]:
+    payload = (
+        load_existing_payload()
+    )
+
+    if not payload:
+        return {}
+
+    games = payload.get(
+        "games",
+        [],
+    )
+
+    if not isinstance(
+        games,
+        list,
+    ):
+        return {}
+
+    result: dict[
+        str,
+        dict[str, Any],
+    ] = {}
+
+    for game in games:
+        if not isinstance(
+            game,
+            dict,
+        ):
+            continue
+
+        identifier = clean_text(
+            game.get(
+                "event_id"
+            )
+        )
+
+        if not identifier:
+            continue
+
+        result[
+            identifier
+        ] = game
+
+    return result
+
+
+def game_has_spread(
+    game: dict[str, Any],
+) -> bool:
+    return (
+        game.get(
+            "away_spread"
+        )
+        is not None
+        and game.get(
+            "home_spread"
+        )
+        is not None
+    )
+
+
+def game_has_total(
+    game: dict[str, Any],
+) -> bool:
+    return (
+        game.get(
+            "total"
+        )
+        is not None
+    )
+
+
+def game_has_market_data(
+    game: dict[str, Any],
+) -> bool:
+    return (
+        game_has_spread(
+            game
+        )
+        and game_has_total(
+            game
+        )
+    )
+
+
+# ============================================================
+# FALLBACK
+# ============================================================
+
+def preserve_existing() -> bool:
+    existing = (
+        load_existing_payload()
+    )
 
     if not existing:
         return False
@@ -975,6 +1530,177 @@ def preserve_existing() -> bool:
 
 
 # ============================================================
+# BUILD OUTPUT
+# ============================================================
+
+def build_payload(
+    games: list[
+        dict[str, Any]
+    ],
+    historical_event_count: int,
+    fetched_this_run: int,
+    failed_this_run: int,
+) -> dict[str, Any]:
+    games.sort(
+        key=lambda game: (
+            clean_text(
+                game.get(
+                    "date"
+                )
+            ),
+            clean_text(
+                game.get(
+                    "away_team"
+                )
+            ),
+            clean_text(
+                game.get(
+                    "home_team"
+                )
+            ),
+        )
+    )
+
+    completed_games = [
+        game
+        for game in games
+        if (
+            game.get(
+                "away_score"
+            )
+            is not None
+            and game.get(
+                "home_score"
+            )
+            is not None
+        )
+    ]
+
+    spread_games = [
+        game
+        for game
+        in completed_games
+        if game_has_spread(
+            game
+        )
+    ]
+
+    total_games = [
+        game
+        for game
+        in completed_games
+        if game_has_total(
+            game
+        )
+    ]
+
+    complete_market_games = [
+        game
+        for game
+        in completed_games
+        if game_has_market_data(
+            game
+        )
+    ]
+
+    return {
+        "generated_at": (
+            datetime.now(
+                timezone.utc
+            ).isoformat()
+        ),
+        "provider": (
+            "odds_api_io"
+        ),
+        "source": (
+            "historical_events_and_odds"
+        ),
+        "sport": (
+            SPORT
+        ),
+        "league": (
+            LEAGUE
+        ),
+        "season": (
+            LAST_SEASON
+        ),
+        "season_type": (
+            "Regular Season"
+        ),
+        "from": (
+            HISTORY_FROM
+        ),
+        "to": (
+            HISTORY_TO
+        ),
+        "bookmaker_preference": (
+            BOOKMAKERS
+        ),
+        "markets": [
+            "Spread",
+            "Totals",
+        ],
+        "incremental": True,
+        "max_odds_requests_per_run": (
+            MAX_ODDS_REQUESTS
+        ),
+        "games": (
+            games
+        ),
+        "counts": {
+            "historical_events": (
+                historical_event_count
+            ),
+            "games": (
+                len(
+                    games
+                )
+            ),
+            "completed_games": (
+                len(
+                    completed_games
+                )
+            ),
+            "spread_games": (
+                len(
+                    spread_games
+                )
+            ),
+            "total_games": (
+                len(
+                    total_games
+                )
+            ),
+            "complete_market_games": (
+                len(
+                    complete_market_games
+                )
+            ),
+            "odds_fetched_this_run": (
+                fetched_this_run
+            ),
+            "odds_failed_this_run": (
+                failed_this_run
+            ),
+        },
+    }
+
+
+def save_payload(
+    payload: dict[str, Any],
+) -> None:
+    write_json(
+        OUTPUT_FILE,
+        payload,
+    )
+
+    write_json(
+        WEB_OUTPUT_FILE,
+        payload,
+    )
+
+
+# ============================================================
 # BUILD
 # ============================================================
 
@@ -987,19 +1713,32 @@ def build_nba_markets() -> bool:
     if not API_KEY:
         raise RuntimeError(
             "Missing ODDS_API_IO_KEY. "
-            "The GitHub Actions workflow already "
-            "provides this secret; for a local run, "
-            "load the same key into the environment."
+            "The GitHub Actions workflow "
+            "provides this secret; for a "
+            "local run, load the same key "
+            "into the environment."
         )
 
+    existing = (
+        existing_games_by_id()
+    )
+
+    print(
+        "Existing historical games: "
+        f"{len(existing):,}",
+        flush=True,
+    )
+
     try:
-        raw_events = (
-            fetch_closing_lines()
+        historical_events = (
+            fetch_historical_events()
         )
 
     except Exception as exc:
         print(
-            f"NBA market history fetch failed: {exc}",
+            "NBA historical event "
+            "fetch failed: "
+            f"{exc}",
             flush=True,
         )
 
@@ -1008,115 +1747,10 @@ def build_nba_markets() -> bool:
 
         raise
 
-    games = []
-
-    for event in raw_events:
-        game = normalize_event(
-            event
-        )
-
-        if game is None:
-            continue
-
-        games.append(
-            game
-        )
-
-    games.sort(
-        key=lambda game: (
-            clean_text(
-                game.get("date")
-            ),
-            clean_text(
-                game.get("away_team")
-            ),
-            clean_text(
-                game.get("home_team")
-            ),
-        )
-    )
-
-    completed_games = [
-        game
-        for game in games
-        if (
-            game.get("away_score")
-            is not None
-            and game.get("home_score")
-            is not None
-        )
-    ]
-
-    spread_games = [
-        game
-        for game in completed_games
-        if (
-            game.get("away_spread")
-            is not None
-            and game.get("home_spread")
-            is not None
-        )
-    ]
-
-    total_games = [
-        game
-        for game in completed_games
-        if game.get("total")
-        is not None
-    ]
-
-    payload = {
-        "generated_at": (
-            datetime.now(
-                timezone.utc
-            ).isoformat()
-        ),
-        "provider": (
-            "odds_api_io"
-        ),
-        "source": (
-            "historical_closing_lines"
-        ),
-        "sport": SPORT,
-        "league": LEAGUE,
-        "season": LAST_SEASON,
-        "season_type": (
-            "Regular Season"
-        ),
-        "from": HISTORY_FROM,
-        "to": HISTORY_TO,
-        "bookmaker_preference": (
-            BOOKMAKERS
-        ),
-        "markets": [
-            "Spread",
-            "Totals",
-        ],
-        "games": games,
-        "counts": {
-            "raw_events": len(
-                raw_events
-            ),
-            "games": len(
-                games
-            ),
-            "completed_games": len(
-                completed_games
-            ),
-            "spread_games": len(
-                spread_games
-            ),
-            "total_games": len(
-                total_games
-            ),
-        },
-    }
-
-    # Never replace good historical data with an empty response.
-    if not games:
+    if not historical_events:
         print(
-            "Odds-API.io returned zero NBA "
-            "historical games.",
+            "Odds-API.io returned zero "
+            "NBA historical events.",
             flush=True,
         )
 
@@ -1124,57 +1758,310 @@ def build_nba_markets() -> bool:
             return False
 
         raise RuntimeError(
-            "No NBA historical closing-line "
-            "games were returned."
+            "No NBA historical events "
+            "were returned."
         )
 
-    write_json(
-        OUTPUT_FILE,
-        payload,
+    print(
+        "\nHistorical NBA events found: "
+        f"{len(historical_events):,}",
+        flush=True,
     )
 
-    write_json(
-        WEB_OUTPUT_FILE,
-        payload,
+    missing_events: list[
+        dict[str, Any]
+    ] = []
+
+    for event in historical_events:
+        identifier = (
+            event_id(
+                event
+            )
+        )
+
+        if not identifier:
+            continue
+
+        saved = existing.get(
+            identifier
+        )
+
+        if (
+            saved is not None
+            and game_has_market_data(
+                saved
+            )
+        ):
+            continue
+
+        missing_events.append(
+            event
+        )
+
+    print(
+        "Events still needing odds:   "
+        f"{len(missing_events):,}",
+        flush=True,
+    )
+
+    batch = (
+        missing_events[
+            :MAX_ODDS_REQUESTS
+        ]
     )
 
     print(
-        "\nNBA MARKET HISTORY COMPLETE",
+        "Odds requests this run:      "
+        f"{len(batch):,} / "
+        f"{MAX_ODDS_REQUESTS:,}",
+        flush=True,
+    )
+
+    fetched = 0
+    failed = 0
+
+    for (
+        index,
+        event,
+    ) in enumerate(
+        batch,
+        start=1,
+    ):
+        identifier = (
+            event_id(
+                event
+            )
+        )
+
+        away = (
+            event_away_team(
+                event
+            )
+        )
+
+        home = (
+            event_home_team(
+                event
+            )
+        )
+
+        print(
+            f"[{index}/{len(batch)}] "
+            f"{away} @ {home} "
+            f"(event {identifier})",
+            flush=True,
+        )
+
+        try:
+            odds_payload = (
+                fetch_historical_odds(
+                    identifier
+                )
+            )
+
+            merged = (
+                merge_event_and_odds(
+                    event,
+                    odds_payload,
+                )
+            )
+
+            normalized = (
+                normalize_event(
+                    merged
+                )
+            )
+
+            if normalized is None:
+                failed += 1
+
+                print(
+                    "   skipped: unable "
+                    "to normalize event",
+                    flush=True,
+                )
+
+                continue
+
+            existing[
+                identifier
+            ] = normalized
+
+            fetched += 1
+
+            spread = (
+                normalized.get(
+                    "home_spread"
+                )
+            )
+
+            total = (
+                normalized.get(
+                    "total"
+                )
+            )
+
+            bookmaker = (
+                normalized.get(
+                    "bookmaker"
+                )
+            )
+
+            print(
+                "   saved: "
+                f"{bookmaker or 'no preferred book'}"
+                " | "
+                f"spread={spread}"
+                " | "
+                f"total={total}",
+                flush=True,
+            )
+
+        except Exception as exc:
+            failed += 1
+
+            print(
+                "   failed: "
+                f"{exc}",
+                flush=True,
+            )
+
+    # Preserve every discovered event in the
+    # database even if its historical odds have
+    # not been fetched yet. This means future
+    # runs can continue filling the same history.
+    for event in historical_events:
+        identifier = (
+            event_id(
+                event
+            )
+        )
+
+        if (
+            not identifier
+            or identifier in existing
+        ):
+            continue
+
+        normalized = (
+            normalize_event(
+                event
+            )
+        )
+
+        if normalized is None:
+            continue
+
+        existing[
+            identifier
+        ] = normalized
+
+    games = list(
+        existing.values()
+    )
+
+    payload = build_payload(
+        games=games,
+        historical_event_count=(
+            len(
+                historical_events
+            )
+        ),
+        fetched_this_run=(
+            fetched
+        ),
+        failed_this_run=(
+            failed
+        ),
+    )
+
+    save_payload(
+        payload
+    )
+
+    counts = (
+        payload[
+            "counts"
+        ]
+    )
+
+    remaining = max(
+        0,
+        len(
+            missing_events
+        )
+        - len(
+            batch
+        ),
+    )
+
+    print(
+        "\nNBA MARKET HISTORY UPDATED",
         flush=True,
     )
 
     print(
-        f"Raw events:       "
-        f"{len(raw_events):,}",
+        "Historical events:        "
+        f"{counts['historical_events']:,}",
         flush=True,
     )
 
     print(
-        f"Completed games:  "
-        f"{len(completed_games):,}",
+        "Stored games:             "
+        f"{counts['games']:,}",
         flush=True,
     )
 
     print(
-        f"Spread games:     "
-        f"{len(spread_games):,}",
+        "Completed games:          "
+        f"{counts['completed_games']:,}",
         flush=True,
     )
 
     print(
-        f"Total games:      "
-        f"{len(total_games):,}",
+        "Games with spreads:       "
+        f"{counts['spread_games']:,}",
         flush=True,
     )
 
     print(
-        f"Model output:     "
+        "Games with totals:        "
+        f"{counts['total_games']:,}",
+        flush=True,
+    )
+
+    print(
+        "Complete market games:    "
+        f"{counts['complete_market_games']:,}",
+        flush=True,
+    )
+
+    print(
+        "Odds fetched this run:    "
+        f"{fetched:,}",
+        flush=True,
+    )
+
+    print(
+        "Odds failures this run:   "
+        f"{failed:,}",
+        flush=True,
+    )
+
+    print(
+        "Remaining after this run: "
+        f"{remaining:,}",
+        flush=True,
+    )
+
+    print(
+        "Model output:             "
         f"{OUTPUT_FILE}",
         flush=True,
     )
 
     print(
-        f"Website output:   "
+        "Website output:           "
         f"{WEB_OUTPUT_FILE}",
         flush=True,
     )

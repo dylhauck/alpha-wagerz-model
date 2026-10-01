@@ -5,8 +5,8 @@
     "game": "Philadelphia Phillies @ Atlanta Braves",
     "away_team": "Philadelphia Phillies",
     "home_team": "Atlanta Braves",
-    "away_sp": "",
-    "home_sp": "",
+    "away_sp": "Aaron Nola",
+    "home_sp": "Ray Kerr",
     "venue": "Truist Park",
     "status": "Scheduled",
     "file": "data/processed/mlb/games/849844.json"
