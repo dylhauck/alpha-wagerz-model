@@ -1,50 +1,14 @@
 [
   {
-    "game_id": "849848",
-    "date": "2026-09-30",
-    "game": "Boston Red Sox @ New York Yankees",
-    "away_team": "Boston Red Sox",
-    "home_team": "New York Yankees",
-    "away_sp": "Sonny Gray",
-    "home_sp": "Max Fried",
-    "venue": "Yankee Stadium",
-    "status": "Scheduled",
-    "file": "data/processed/mlb/games/849848.json"
-  },
-  {
-    "game_id": "849842",
-    "date": "2026-09-30",
-    "game": "Chicago Cubs @ San Diego Padres",
-    "away_team": "Chicago Cubs",
-    "home_team": "San Diego Padres",
-    "away_sp": "Kevin Gausman",
-    "home_sp": "Nick Pivetta",
-    "venue": "Petco Park",
-    "status": "Scheduled",
-    "file": "data/processed/mlb/games/849842.json"
-  },
-  {
-    "game_id": "849846",
-    "date": "2026-09-30",
-    "game": "Chicago White Sox @ Houston Astros",
-    "away_team": "Chicago White Sox",
-    "home_team": "Houston Astros",
-    "away_sp": "Sean Burke",
-    "home_sp": "Hunter Brown",
-    "venue": "Daikin Park",
-    "status": "Scheduled",
-    "file": "data/processed/mlb/games/849846.json"
-  },
-  {
-    "game_id": "849841",
-    "date": "2026-09-30",
+    "game_id": "849844",
+    "date": "2026-10-01",
     "game": "Philadelphia Phillies @ Atlanta Braves",
     "away_team": "Philadelphia Phillies",
     "home_team": "Atlanta Braves",
-    "away_sp": "Cristopher S\u00e1nchez",
-    "home_sp": "Tyler Mahle",
+    "away_sp": "",
+    "home_sp": "",
     "venue": "Truist Park",
     "status": "Scheduled",
-    "file": "data/processed/mlb/games/849841.json"
+    "file": "data/processed/mlb/games/849844.json"
   }
 ]

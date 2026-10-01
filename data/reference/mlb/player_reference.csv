@@ -681,6 +681,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 702332,Caleb Durbin,111,Boston Red Sox,BOS,3B,Third Base,R,R
 678882,Ceddanne Rafaela,111,Boston Red Sox,BOS,CF,Outfielder,R,R
 657136,Connor Wong,111,Boston Red Sox,BOS,C,Catcher,R,R
+678554,Curtis Mead,111,Boston Red Sox,BOS,3B,Third Base,R,R
 669062,Erik Miller,111,Boston Red Sox,BOS,P,Pitcher,L,L
 676979,Garrett Crochet,111,Boston Red Sox,BOS,P,Pitcher,L,L
 676477,Garrett Whitlock,111,Boston Red Sox,BOS,P,Pitcher,R,R
@@ -693,7 +694,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 686765,Nick Sogard,111,Boston Red Sox,BOS,2B,Second Base,S,R
 801139,Payton Tolle,111,Boston Red Sox,BOS,P,Pitcher,L,L
 624133,Ranger Suarez,111,Boston Red Sox,BOS,P,Pitcher,L,L
-701350,Roman Anthony,111,Boston Red Sox,BOS,LF,Outfielder,L,R
 543243,Sonny Gray,111,Boston Red Sox,BOS,P,Pitcher,R,R
 596115,Trevor Story,111,Boston Red Sox,BOS,SS,Shortstop,R,R
 575929,Willson Contreras,111,Boston Red Sox,BOS,1B,First Base,R,R
