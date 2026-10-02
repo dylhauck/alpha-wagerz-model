@@ -51,6 +51,7 @@ from providers.nfl.nfl_injuries import build_nfl_injuries
 from providers.nfl.nfl_weather import build_nfl_weather
 from providers.nfl.nfl_market import build_nfl_market
 from model.nfl.team_metrics import build_team_metrics
+from model.nfl.team_rankings import build_nfl_team_rankings
 from model.nfl.player_metrics import build_nfl_player_metrics
 from model.nfl.matchup_metrics import build_nfl_matchup_metrics
 from model.nfl.game_projections import build_nfl_game_projections
@@ -69,7 +70,7 @@ from model.nba.team_stats import main as build_nba_team_stats
 from providers.nba.nba_markets import build_nba_markets
 from model.nba.team_rankings import build_nba_team_rankings
 from model.nba.player_matchups import main as build_nba_player_matchups
-
+from model.nba.betting_projections import build_nba_betting_projections
 
 def format_duration(seconds):
     minutes, seconds = divmod(seconds, 60)
@@ -164,6 +165,9 @@ def run_full_update():
     print("\n🏈 NFL Data", flush=True)
     timed("build_all_nfl_data", build_all_nfl_data)
 
+    print("\n🏆 NFL Team Rankings", flush=True)
+    timed("build_nfl_team_rankings", build_nfl_team_rankings)
+
     print("\n🏥 NFL Injuries", flush=True)
     timed("build_nfl_injuries", build_nfl_injuries)
 
@@ -230,6 +234,9 @@ def run_full_update():
 
     print("\nNBA Player Matchups", flush=True)
     timed("build_nba_player_matchups", build_nba_player_matchups)
+
+    print("\nNBA Betting Projections", flush=True)
+    timed("build_nba_betting_projections", build_nba_betting_projections)
 
     print("\n✅ Alpha Wagerz full update complete.", flush=True)
     print(f"⏱️ TOTAL FULL UPDATE: {format_duration(perf_counter() - pipeline_start)}", flush=True)
