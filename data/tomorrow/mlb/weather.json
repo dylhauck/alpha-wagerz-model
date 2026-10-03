@@ -1,54 +1,28 @@
 [
   {
-    "game_id": "849829",
-    "game": "Chicago White Sox @ Cleveland Guardians",
-    "venue": "Progressive Field",
-    "temperature": 65.3,
-    "humidity": 65,
-    "conditions": "Clear Sky",
-    "wind_direction": "IN",
-    "wind_speed": 11.5,
-    "wind_degrees": 25,
-    "roof": "open",
-    "forecast_time_utc": "2026-10-03T18:00:00+00:00"
-  },
-  {
-    "game_id": "849828",
-    "game": "Atlanta Braves @ Los Angeles Dodgers",
-    "venue": "UNIQLO Field at Dodger Stadium",
-    "temperature": 101.0,
-    "humidity": 13,
-    "conditions": "Clear Sky",
-    "wind_direction": "OUT",
-    "wind_speed": 7.0,
-    "wind_degrees": 204,
-    "roof": "open",
-    "forecast_time_utc": "2026-10-03T21:00:00+00:00"
-  },
-  {
-    "game_id": "849835",
-    "game": "New York Yankees @ Tampa Bay Rays",
-    "venue": "Tropicana Field",
-    "temperature": 87.1,
-    "humidity": 77,
-    "conditions": "Overcast Clouds",
-    "wind_direction": "NEUTRAL",
-    "wind_speed": 5.3,
-    "wind_degrees": 116,
-    "roof": "dome",
-    "forecast_time_utc": "2026-10-03T21:00:00+00:00"
-  },
-  {
-    "game_id": "849830",
+    "game_id": "849825",
     "game": "San Diego Padres @ Milwaukee Brewers",
     "venue": "American Family Field",
-    "temperature": 56.6,
-    "humidity": 82,
-    "conditions": "Scattered Clouds",
-    "wind_direction": "NEUTRAL",
-    "wind_speed": 4.8,
-    "wind_degrees": 147,
+    "temperature": 64.0,
+    "humidity": 57,
+    "conditions": "Clear Sky",
+    "wind_direction": "OUT TOWARDS RF",
+    "wind_speed": 9.1,
+    "wind_degrees": 304,
     "roof": "retractable",
-    "forecast_time_utc": "2026-10-04T00:00:00+00:00"
+    "forecast_time_utc": "2026-10-04T21:00:00+00:00"
+  },
+  {
+    "game_id": "849823",
+    "game": "Atlanta Braves @ Los Angeles Dodgers",
+    "venue": "UNIQLO Field at Dodger Stadium",
+    "temperature": 94.6,
+    "humidity": 16,
+    "conditions": "Clear Sky",
+    "wind_direction": "OUT",
+    "wind_speed": 5.4,
+    "wind_degrees": 243,
+    "roof": "open",
+    "forecast_time_utc": "2026-10-05T00:00:00+00:00"
   }
 ]
