@@ -1,9 +1,9 @@
 [
   {
-    "game_id": "849825",
-    "game": "San Diego Padres @ Milwaukee Brewers",
-    "away_team": "San Diego Padres",
-    "home_team": "Milwaukee Brewers",
+    "game_id": "849834",
+    "game": "Chicago White Sox @ Cleveland Guardians",
+    "away_team": "Chicago White Sox",
+    "home_team": "Cleveland Guardians",
     "bookmaker": "",
     "bookmaker_key": "",
     "odds_event_id": "",
@@ -36,10 +36,10 @@
     "market_status": "not_returned_by_provider"
   },
   {
-    "game_id": "849823",
-    "game": "Atlanta Braves @ Los Angeles Dodgers",
-    "away_team": "Atlanta Braves",
-    "home_team": "Los Angeles Dodgers",
+    "game_id": "849839",
+    "game": "New York Yankees @ Tampa Bay Rays",
+    "away_team": "New York Yankees",
+    "home_team": "Tampa Bay Rays",
     "bookmaker": "",
     "bookmaker_key": "",
     "odds_event_id": "",

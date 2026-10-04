@@ -1,5 +1,3 @@
 game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status,game_date_utc,game_time,game_time_sort
-849829,2026-10-03,Chicago White Sox @ Cleveland Guardians,Chicago White Sox,Cleveland Guardians,Hagen Smith,Parker Messick,Progressive Field,Scheduled,2026-10-03T17:00:00Z,12:00 PM,12:00
-849828,2026-10-03,Atlanta Braves @ Los Angeles Dodgers,Atlanta Braves,Los Angeles Dodgers,,Tarik Skubal,UNIQLO Field at Dodger Stadium,Scheduled,2026-10-03T20:00:00Z,3:00 PM,15:00
-849835,2026-10-03,New York Yankees @ Tampa Bay Rays,New York Yankees,Tampa Bay Rays,Gerrit Cole,Drew Rasmussen,Tropicana Field,Scheduled,2026-10-03T22:30:00Z,5:30 PM,17:30
-849830,2026-10-03,San Diego Padres @ Milwaukee Brewers,San Diego Padres,Milwaukee Brewers,Robbie Ray,Jacob Misiorowski,American Family Field,Scheduled,2026-10-04T00:30:00Z,7:30 PM,19:30
+849825,2026-10-04,San Diego Padres @ Milwaukee Brewers,San Diego Padres,Milwaukee Brewers,Michael King,Logan Henderson,American Family Field,Scheduled,2026-10-04T20:00:00Z,3:00 PM,15:00
+849823,2026-10-04,Atlanta Braves @ Los Angeles Dodgers,Atlanta Braves,Los Angeles Dodgers,,Blake Snell,UNIQLO Field at Dodger Stadium,Scheduled,2026-10-05T00:00:00Z,7:00 PM,19:00

@@ -1,50 +1,26 @@
 [
   {
-    "game_id": "849828",
-    "date": "2026-10-03",
+    "game_id": "849823",
+    "date": "2026-10-04",
     "game": "Atlanta Braves @ Los Angeles Dodgers",
     "away_team": "Atlanta Braves",
     "home_team": "Los Angeles Dodgers",
     "away_sp": "",
-    "home_sp": "Tarik Skubal",
+    "home_sp": "Blake Snell",
     "venue": "UNIQLO Field at Dodger Stadium",
     "status": "Scheduled",
-    "file": "data/processed/mlb/games/849828.json"
+    "file": "data/processed/mlb/games/849823.json"
   },
   {
-    "game_id": "849829",
-    "date": "2026-10-03",
-    "game": "Chicago White Sox @ Cleveland Guardians",
-    "away_team": "Chicago White Sox",
-    "home_team": "Cleveland Guardians",
-    "away_sp": "Hagen Smith",
-    "home_sp": "Parker Messick",
-    "venue": "Progressive Field",
-    "status": "Scheduled",
-    "file": "data/processed/mlb/games/849829.json"
-  },
-  {
-    "game_id": "849835",
-    "date": "2026-10-03",
-    "game": "New York Yankees @ Tampa Bay Rays",
-    "away_team": "New York Yankees",
-    "home_team": "Tampa Bay Rays",
-    "away_sp": "Gerrit Cole",
-    "home_sp": "Drew Rasmussen",
-    "venue": "Tropicana Field",
-    "status": "Scheduled",
-    "file": "data/processed/mlb/games/849835.json"
-  },
-  {
-    "game_id": "849830",
-    "date": "2026-10-03",
+    "game_id": "849825",
+    "date": "2026-10-04",
     "game": "San Diego Padres @ Milwaukee Brewers",
     "away_team": "San Diego Padres",
     "home_team": "Milwaukee Brewers",
-    "away_sp": "Robbie Ray",
-    "home_sp": "Jacob Misiorowski",
+    "away_sp": "Michael King",
+    "home_sp": "Logan Henderson",
     "venue": "American Family Field",
     "status": "Scheduled",
-    "file": "data/processed/mlb/games/849830.json"
+    "file": "data/processed/mlb/games/849825.json"
   }
 ]
