@@ -225,3 +225,5 @@ __marimo__/
 
 .DS_Store
 .vscode/
+
+echo "data/cache/nba/player_stats_history/" >> .gitignore

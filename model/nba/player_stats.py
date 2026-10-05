@@ -31,6 +31,13 @@ PLAYERS_FILE = NBA_DIR / "players.json"
 
 OUTPUT_FILE = NBA_DIR / "player_stats.json"
 HISTORY_FILE = NBA_DIR / "player_stats_history.json"
+HISTORY_CACHE_DIR = (
+    MODEL_ROOT
+    / "data"
+    / "cache"
+    / "nba"
+    / "player_stats_history"
+)
 
 WEB_OUTPUT_FILE = WEB_NBA_DIR / "player_stats.json"
 WEB_HISTORY_FILE = WEB_NBA_DIR / "player_stats_history.json"
@@ -437,6 +444,560 @@ def combine_stat_blocks(
 # ============================================================
 # BOOTSTRAP HISTORICAL BASELINE
 # ============================================================
+# ============================================================
+# BUILD HISTORICAL BASELINE FROM NBA API
+# ============================================================
+
+HISTORICAL_START_YEAR = 2006
+
+
+def historical_seasons() -> list[str]:
+    """
+    Build NBA season strings from 2006-07 through LAST_SEASON.
+    """
+
+    last_start_year = int(
+        LAST_SEASON.split("-")[0]
+    )
+
+    seasons: list[str] = []
+
+    for year in range(
+        HISTORICAL_START_YEAR,
+        last_start_year + 1,
+    ):
+        next_year = str(year + 1)[-2:]
+
+        seasons.append(
+            f"{year}-{next_year}"
+        )
+
+    return seasons
+
+def historical_cache_file(
+    season: str,
+) -> Path:
+    safe_season = (
+        season
+        .replace("/", "-")
+        .replace("\\", "-")
+    )
+
+    return (
+        HISTORY_CACHE_DIR
+        / f"{safe_season}.json"
+    )
+
+
+def save_historical_season_cache(
+    season: str,
+    frame: pd.DataFrame,
+) -> None:
+    path = historical_cache_file(
+        season
+    )
+
+    path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    clean_frame = frame.astype(object).where(
+        pd.notnull(frame),
+        None,
+    )
+
+    records = clean_frame.to_dict(
+        orient="records"
+    )
+
+    write_json(
+        path,
+        {
+            "season": season,
+            "season_type": SEASON_TYPE,
+            "row_count": len(records),
+            "generated_at": datetime.now(
+                timezone.utc
+            ).isoformat(),
+            "rows": records,
+        },
+    )
+
+
+def load_historical_season_cache(
+    season: str,
+) -> pd.DataFrame | None:
+    path = historical_cache_file(
+        season
+    )
+
+    if not path.exists():
+        return None
+
+    try:
+        payload = load_json(
+            path
+        )
+
+        rows = payload.get(
+            "rows"
+        )
+
+        if not isinstance(
+            rows,
+            list,
+        ):
+            return None
+
+        frame = pd.DataFrame(
+            rows
+        )
+
+        print(
+            f"{season}: using cached "
+            f"historical data "
+            f"({len(frame):,} rows)",
+            flush=True,
+        )
+
+        return frame
+
+    except Exception as exc:
+        print(
+            f"{season}: cache could not "
+            f"be loaded: {exc}",
+            flush=True,
+        )
+
+        return None
+
+
+def fetch_historical_season_game_logs(
+    season: str,
+) -> pd.DataFrame | None:
+    cached = (
+        load_historical_season_cache(
+            season
+        )
+    )
+
+    if cached is not None:
+        return cached
+
+    last_error: Exception | None = None
+
+    for attempt in range(
+        1,
+        MAX_RETRIES + 1,
+    ):
+        try:
+            print(
+                f"Fetching {season} "
+                f"player game logs "
+                f"(attempt "
+                f"{attempt}/{MAX_RETRIES})...",
+                flush=True,
+            )
+
+            response = (
+                playergamelogs.PlayerGameLogs(
+                    season_nullable=season,
+                    season_type_nullable=(
+                        SEASON_TYPE
+                    ),
+                    league_id_nullable="00",
+                    timeout=REQUEST_TIMEOUT,
+                )
+            )
+
+            frames = (
+                response.get_data_frames()
+            )
+
+            if not frames:
+                print(
+                    f"{season}: NBA Stats "
+                    f"returned no frame.",
+                    flush=True,
+                )
+
+                return pd.DataFrame()
+
+            frame = frames[0].copy()
+
+            print(
+                f"{season}: "
+                f"{len(frame):,} "
+                f"player-game rows",
+                flush=True,
+            )
+
+            # Save immediately.
+            # If a later season fails, this work
+            # survives the run.
+            save_historical_season_cache(
+                season,
+                frame,
+            )
+
+            return frame
+
+        except Exception as exc:
+            last_error = exc
+
+            print(
+                f"{season} ERROR: "
+                f"{type(exc).__name__}: "
+                f"{exc}",
+                flush=True,
+            )
+
+            if attempt < MAX_RETRIES:
+                wait_seconds = (
+                    attempt * 5
+                )
+
+                print(
+                    f"Retrying in "
+                    f"{wait_seconds} seconds...",
+                    flush=True,
+                )
+
+                time.sleep(
+                    wait_seconds
+                )
+
+    # IMPORTANT:
+    # One bad NBA Stats season does NOT
+    # destroy the entire historical build.
+    print(
+        f"{season}: FAILED after "
+        f"{MAX_RETRIES} attempts. "
+        f"Continuing with remaining seasons.",
+        flush=True,
+    )
+
+    if last_error is not None:
+        print(
+            f"{season}: final error: "
+            f"{type(last_error).__name__}: "
+            f"{last_error}",
+            flush=True,
+        )
+
+    return None
+
+def build_historical_baseline_from_api(
+    players_by_id: dict[
+        int,
+        dict[str, Any],
+    ],
+) -> dict[str, Any]:
+    print()
+    print("=" * 70)
+    print(
+        "BUILDING NBA HISTORICAL "
+        "PLAYER BASELINE"
+    )
+    print("=" * 70)
+    print()
+
+    seasons = historical_seasons()
+
+    current_player_ids = set(
+        players_by_id.keys()
+    )
+
+    career_raw: dict[
+        int,
+        dict[str, Any],
+    ] = {}
+
+    last_season_raw: dict[
+        int,
+        dict[str, Any],
+    ] = {}
+
+    player_seasons: dict[
+        int,
+        set[str],
+    ] = {}
+
+    successful_seasons: list[str] = []
+    failed_seasons: list[str] = []
+
+    for index, season in enumerate(
+        seasons,
+        start=1,
+    ):
+        print()
+        print(
+            f"[{index}/{len(seasons)}] "
+            f"Historical season {season}",
+            flush=True,
+        )
+
+        frame = (
+            fetch_historical_season_game_logs(
+                season
+            )
+        )
+
+        if frame is None:
+            failed_seasons.append(
+                season
+            )
+            continue
+
+        # An empty frame is still a successful
+        # API/cache response.
+        successful_seasons.append(
+            season
+        )
+
+        if frame.empty:
+            print(
+                f"{season}: no player-game "
+                f"rows to aggregate.",
+                flush=True,
+            )
+            continue
+
+        season_stats = (
+            aggregate_current_season(
+                frame=frame,
+                current_player_ids=(
+                    current_player_ids
+                ),
+            )
+        )
+
+        players_found = 0
+
+        for (
+            player_id,
+            stat_block,
+        ) in season_stats.items():
+
+            if (
+                stat_block.get(
+                    "games",
+                    0,
+                )
+                <= 0
+            ):
+                continue
+
+            players_found += 1
+
+            player_seasons.setdefault(
+                player_id,
+                set(),
+            ).add(
+                season
+            )
+
+            existing_career = (
+                career_raw.get(
+                    player_id,
+                    empty_stat_block(),
+                )
+            )
+
+            career_raw[player_id] = (
+                combine_stat_blocks(
+                    existing_career,
+                    stat_block,
+                )
+            )
+
+            if season == LAST_SEASON:
+                last_season_raw[
+                    player_id
+                ] = stat_block
+
+        print(
+            f"{season}: "
+            f"{players_found:,} "
+            f"current-roster players "
+            f"with history",
+            flush=True,
+        )
+
+        if index < len(seasons):
+            time.sleep(
+                REQUEST_DELAY_SECONDS
+            )
+
+    baseline_players: dict[
+        str,
+        dict[str, Any],
+    ] = {}
+
+    historical_players = 0
+    last_season_players = 0
+
+    for player_id in players_by_id:
+        career_block = (
+            career_raw.get(
+                player_id,
+                empty_stat_block(),
+            )
+        )
+
+        last_block = (
+            last_season_raw.get(
+                player_id,
+                empty_stat_block(),
+            )
+        )
+
+        seasons_played = sorted(
+            player_seasons.get(
+                player_id,
+                set(),
+            )
+        )
+
+        if (
+            career_block.get(
+                "games",
+                0,
+            )
+            > 0
+        ):
+            historical_players += 1
+
+        if (
+            last_block.get(
+                "games",
+                0,
+            )
+            > 0
+        ):
+            last_season_players += 1
+
+        baseline_players[
+            str(player_id)
+        ] = {
+            "career_through_last_season": {
+                "seasons": seasons_played,
+                "season_count": len(
+                    seasons_played
+                ),
+                **career_block,
+            },
+            "last_season": {
+                "season": LAST_SEASON,
+                **last_block,
+            },
+        }
+
+    complete = (
+        len(failed_seasons) == 0
+    )
+
+    payload = {
+        "generated_at": datetime.now(
+            timezone.utc
+        ).isoformat(),
+        "league": "NBA",
+        "season_type": SEASON_TYPE,
+        "through_season": LAST_SEASON,
+        "current_season_excluded": (
+            CURRENT_SEASON
+        ),
+        "historical_start_season": (
+            seasons[0]
+            if seasons
+            else None
+        ),
+        "historical_season_count": (
+            len(seasons)
+        ),
+        "historical_complete": (
+            complete
+        ),
+        "successful_seasons": (
+            successful_seasons
+        ),
+        "failed_seasons": (
+            failed_seasons
+        ),
+        "player_count": len(
+            baseline_players
+        ),
+        "players_with_history": (
+            historical_players
+        ),
+        "players_with_last_season_games": (
+            last_season_players
+        ),
+        "source": "NBA Stats",
+        "players": baseline_players,
+    }
+
+    # Save the assembled baseline even when
+    # incomplete so the work is inspectable.
+    write_json(
+        HISTORY_FILE,
+        payload,
+    )
+
+    write_json(
+        WEB_HISTORY_FILE,
+        payload,
+    )
+
+    print()
+    print("=" * 70)
+    print(
+        "NBA HISTORICAL BASELINE "
+        "BUILD FINISHED"
+    )
+    print("=" * 70)
+    print()
+
+    print(
+        f"Successful seasons: "
+        f"{len(successful_seasons):,}/"
+        f"{len(seasons):,}"
+    )
+
+    print(
+        f"Failed seasons:     "
+        f"{len(failed_seasons):,}"
+    )
+
+    if failed_seasons:
+        print(
+            "Missing: "
+            + ", ".join(
+                failed_seasons
+            )
+        )
+
+    print(
+        f"Players with history: "
+        f"{historical_players:,}"
+    )
+
+    print(
+        f"Players with "
+        f"{LAST_SEASON}: "
+        f"{last_season_players:,}"
+    )
+
+    print(
+        f"Model: {HISTORY_FILE}"
+    )
+
+    print(
+        f"Web:   {WEB_HISTORY_FILE}"
+    )
+
+    return payload
 
 def bootstrap_history_from_existing_stats(
     players_by_id: dict[
@@ -667,41 +1228,133 @@ def load_or_create_history(
         dict[str, Any],
     ],
 ) -> dict[str, Any]:
-    if not HISTORY_FILE.exists():
+
+    if HISTORY_FILE.exists():
+        payload = load_json(
+            HISTORY_FILE
+        )
+
+        if (
+            clean_text(
+                payload.get(
+                    "through_season"
+                )
+            )
+            != LAST_SEASON
+        ):
+            raise RuntimeError(
+                "NBA historical player "
+                "baseline is for "
+                f"{payload.get('through_season')}, "
+                f"but this build expects "
+                f"{LAST_SEASON}."
+            )
+
+        players = payload.get(
+            "players"
+        )
+
+        if not isinstance(
+            players,
+            dict,
+        ):
+            raise ValueError(
+                "NBA historical player "
+                "baseline is invalid."
+            )
+
+        failed_seasons = (
+            payload.get(
+                "failed_seasons",
+                [],
+            )
+        )
+
+        historical_complete = (
+            payload.get(
+                "historical_complete",
+                True,
+            )
+        )
+
+        if (
+            historical_complete
+            and not failed_seasons
+        ):
+            print(
+                "Using complete stored NBA "
+                "historical player baseline.",
+                flush=True,
+            )
+
+            write_json(
+                WEB_HISTORY_FILE,
+                payload,
+            )
+
+            return payload
+
+        print(
+            "Stored historical baseline "
+            "is incomplete.",
+            flush=True,
+        )
+
+        if failed_seasons:
+            print(
+                "Missing seasons: "
+                + ", ".join(
+                    str(season)
+                    for season
+                    in failed_seasons
+                ),
+                flush=True,
+            )
+
+        print(
+            "Resuming historical build. "
+            "Cached seasons will not be "
+            "downloaded again.",
+            flush=True,
+        )
+
+        return (
+            build_historical_baseline_from_api(
+                players_by_id
+            )
+        )
+
+    if OUTPUT_FILE.exists():
+        print(
+            "Historical baseline not found. "
+            "Bootstrapping from existing "
+            "player_stats.json...",
+            flush=True,
+        )
+
         return (
             bootstrap_history_from_existing_stats(
                 players_by_id
             )
         )
 
-    payload = load_json(
-        HISTORY_FILE
+    print(
+        "No historical baseline or "
+        "player_stats.json exists.",
+        flush=True,
     )
 
-    if (
-        clean_text(
-            payload.get("through_season")
-        )
-        != LAST_SEASON
-    ):
-        raise RuntimeError(
-            "NBA historical player baseline is for "
-            f"{payload.get('through_season')}, "
-            f"but this build expects {LAST_SEASON}."
-        )
-
-    players = payload.get(
-        "players"
+    print(
+        "Starting resumable historical "
+        "NBA Stats build...",
+        flush=True,
     )
 
-    if not isinstance(players, dict):
-        raise ValueError(
-            "NBA historical player baseline "
-            "is invalid."
+    return (
+        build_historical_baseline_from_api(
+            players_by_id
         )
-
-    return payload
-
+    )
 
 # ============================================================
 # CURRENT-SEASON NBA API

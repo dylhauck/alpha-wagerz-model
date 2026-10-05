@@ -33,7 +33,7 @@
     },
     "pitcher_strikeouts": {},
     "market_source": "unavailable",
-    "market_status": "not_returned_by_provider"
+    "market_status": "api_unavailable"
   },
   {
     "game_id": "849829",
@@ -69,7 +69,7 @@
     },
     "pitcher_strikeouts": {},
     "market_source": "unavailable",
-    "market_status": "not_returned_by_provider"
+    "market_status": "api_unavailable"
   },
   {
     "game_id": "849835",
@@ -105,7 +105,7 @@
     },
     "pitcher_strikeouts": {},
     "market_source": "unavailable",
-    "market_status": "not_returned_by_provider"
+    "market_status": "api_unavailable"
   },
   {
     "game_id": "849830",
@@ -141,6 +141,6 @@
     },
     "pitcher_strikeouts": {},
     "market_source": "unavailable",
-    "market_status": "not_returned_by_provider"
+    "market_status": "api_unavailable"
   }
 ]

@@ -33,7 +33,7 @@
     },
     "pitcher_strikeouts": {},
     "market_source": "unavailable",
-    "market_status": "not_returned_by_provider"
+    "market_status": "api_unavailable"
   },
   {
     "game_id": "849823",
@@ -69,6 +69,6 @@
     },
     "pitcher_strikeouts": {},
     "market_source": "unavailable",
-    "market_status": "not_returned_by_provider"
+    "market_status": "api_unavailable"
   }
 ]
