@@ -1,28 +1,28 @@
 [
   {
-    "game_id": "849834",
-    "game": "Chicago White Sox @ Cleveland Guardians",
-    "venue": "Progressive Field",
-    "temperature": 59.4,
-    "humidity": 55,
-    "conditions": "Few Clouds",
-    "wind_direction": "NEUTRAL",
-    "wind_speed": 14.5,
-    "wind_degrees": 327,
+    "game_id": "849819",
+    "game": "Los Angeles Dodgers @ Atlanta Braves",
+    "venue": "Truist Park",
+    "temperature": 72.0,
+    "humidity": 50,
+    "conditions": "Clear Sky",
+    "wind_direction": "IN",
+    "wind_speed": 7.7,
+    "wind_degrees": 72,
     "roof": "open",
-    "forecast_time_utc": "2026-10-05T21:00:00+00:00"
+    "forecast_time_utc": "2026-10-06T21:00:00+00:00"
   },
   {
-    "game_id": "849839",
-    "game": "New York Yankees @ Tampa Bay Rays",
-    "venue": "Tropicana Field",
-    "temperature": 81.1,
-    "humidity": 95,
-    "conditions": "Light Rain",
-    "wind_direction": "IN",
-    "wind_speed": 4.4,
-    "wind_degrees": 48,
-    "roof": "dome",
-    "forecast_time_utc": "2026-10-06T00:00:00+00:00"
+    "game_id": "849826",
+    "game": "Milwaukee Brewers @ San Diego Padres",
+    "venue": "Petco Park",
+    "temperature": 92.6,
+    "humidity": 48,
+    "conditions": "Clear Sky",
+    "wind_direction": "NEUTRAL",
+    "wind_speed": 4.5,
+    "wind_degrees": 305,
+    "roof": "open",
+    "forecast_time_utc": "2026-10-07T00:00:00+00:00"
   }
 ]

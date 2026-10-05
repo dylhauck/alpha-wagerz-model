@@ -1,26 +1,26 @@
 [
   {
-    "game_id": "849823",
-    "date": "2026-10-04",
-    "game": "Atlanta Braves @ Los Angeles Dodgers",
-    "away_team": "Atlanta Braves",
-    "home_team": "Los Angeles Dodgers",
-    "away_sp": "",
-    "home_sp": "Blake Snell",
-    "venue": "UNIQLO Field at Dodger Stadium",
+    "game_id": "849834",
+    "date": "2026-10-05",
+    "game": "Chicago White Sox @ Cleveland Guardians",
+    "away_team": "Chicago White Sox",
+    "home_team": "Cleveland Guardians",
+    "away_sp": "Anthony Kay",
+    "home_sp": "Gavin Williams",
+    "venue": "Progressive Field",
     "status": "Scheduled",
-    "file": "data/processed/mlb/games/849823.json"
+    "file": "data/processed/mlb/games/849834.json"
   },
   {
-    "game_id": "849825",
-    "date": "2026-10-04",
-    "game": "San Diego Padres @ Milwaukee Brewers",
-    "away_team": "San Diego Padres",
-    "home_team": "Milwaukee Brewers",
-    "away_sp": "Michael King",
-    "home_sp": "Logan Henderson",
-    "venue": "American Family Field",
+    "game_id": "849839",
+    "date": "2026-10-05",
+    "game": "New York Yankees @ Tampa Bay Rays",
+    "away_team": "New York Yankees",
+    "home_team": "Tampa Bay Rays",
+    "away_sp": "Cam Schlittler",
+    "home_sp": "Freddy Peralta",
+    "venue": "Tropicana Field",
     "status": "Scheduled",
-    "file": "data/processed/mlb/games/849825.json"
+    "file": "data/processed/mlb/games/849839.json"
   }
 ]
