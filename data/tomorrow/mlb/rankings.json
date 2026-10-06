@@ -2,172 +2,200 @@
   "hr_targets": [
     {
       "Category": "HR Target",
-      "Player/Team": "Gavin Sheets",
-      "Game": "Milwaukee Brewers @ San Diego Padres",
-      "Score": 75.8,
+      "Player/Team": "Ben Rice",
+      "Game": "Tampa Bay Rays @ New York Yankees",
+      "Score": 84.1,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Fernando Tatis Jr.",
-      "Game": "Milwaukee Brewers @ San Diego Padres",
-      "Score": 75.0,
+      "Player/Team": "George Lombard Jr.",
+      "Game": "Tampa Bay Rays @ New York Yankees",
+      "Score": 76.0,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Jackson Chourio",
-      "Game": "Milwaukee Brewers @ San Diego Padres",
+      "Player/Team": "Munetaka Murakami",
+      "Game": "Cleveland Guardians @ Chicago White Sox",
+      "Score": 74.5,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Daniel Schneemann",
+      "Game": "Cleveland Guardians @ Chicago White Sox",
       "Score": 74.3,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Manny Machado",
-      "Game": "Milwaukee Brewers @ San Diego Padres",
-      "Score": 72.8,
+      "Player/Team": "Ryan McMahon",
+      "Game": "Tampa Bay Rays @ New York Yankees",
+      "Score": 73.6,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Will Smith",
-      "Game": "Los Angeles Dodgers @ Atlanta Braves",
-      "Score": 68.0,
+      "Player/Team": "Randal Grichuk",
+      "Game": "Cleveland Guardians @ Chicago White Sox",
+      "Score": 69.3,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Jackson Merrill",
-      "Game": "Milwaukee Brewers @ San Diego Padres",
-      "Score": 67.6,
+      "Player/Team": "Heliot Ramos",
+      "Game": "Tampa Bay Rays @ New York Yankees",
+      "Score": 68.3,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Andy Pages",
-      "Game": "Los Angeles Dodgers @ Atlanta Braves",
+      "Player/Team": "Austin Wells",
+      "Game": "Tampa Bay Rays @ New York Yankees",
+      "Score": 67.7,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Patrick Bailey",
+      "Game": "Cleveland Guardians @ Chicago White Sox",
       "Score": 67.5,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Spencer Jones",
+      "Game": "Tampa Bay Rays @ New York Yankees",
+      "Score": 66.5,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Rowdy Tellez",
       "Game": "Los Angeles Dodgers @ Atlanta Braves",
-      "Score": 67.0,
+      "Score": 66.2,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Brice Turang",
-      "Game": "Milwaukee Brewers @ San Diego Padres",
-      "Score": 66.5,
+      "Player/Team": "Junior Caminero",
+      "Game": "Tampa Bay Rays @ New York Yankees",
+      "Score": 65.6,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Austin Riley",
       "Game": "Los Angeles Dodgers @ Atlanta Braves",
-      "Score": 66.0,
+      "Score": 65.3,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Josue De Paula",
-      "Game": "Los Angeles Dodgers @ Atlanta Braves",
-      "Score": 65.4,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Christian Yelich",
+      "Player/Team": "Gavin Sheets",
       "Game": "Milwaukee Brewers @ San Diego Padres",
-      "Score": 64.9,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Max Muncy",
-      "Game": "Los Angeles Dodgers @ Atlanta Braves",
-      "Score": 64.0,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Gary Sánchez",
-      "Game": "Milwaukee Brewers @ San Diego Padres",
-      "Score": 63.2,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Teoscar Hernández",
-      "Game": "Los Angeles Dodgers @ Atlanta Braves",
-      "Score": 62.8,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Xander Bogaerts",
-      "Game": "Milwaukee Brewers @ San Diego Padres",
-      "Score": 62.6,
+      "Score": 62.0,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Matt Olson",
       "Game": "Los Angeles Dodgers @ Atlanta Braves",
-      "Score": 62.0,
+      "Score": 61.6,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Jake Bauers",
-      "Game": "Milwaukee Brewers @ San Diego Padres",
-      "Score": 61.4,
+      "Player/Team": "Max Muncy",
+      "Game": "Los Angeles Dodgers @ Atlanta Braves",
+      "Score": 61.5,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Andy Pages",
+      "Game": "Los Angeles Dodgers @ Atlanta Braves",
+      "Score": 61.5,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Michael Harris II",
       "Game": "Los Angeles Dodgers @ Atlanta Braves",
-      "Score": 61.1,
+      "Score": 61.5,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Garrett Mitchell",
+      "Player/Team": "Jackson Chourio",
       "Game": "Milwaukee Brewers @ San Diego Padres",
-      "Score": 60.5,
+      "Score": 61.4,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Will Smith",
+      "Game": "Los Angeles Dodgers @ Atlanta Braves",
+      "Score": 61.1,
       "Notes": ""
     }
   ],
   "pitchers": [
     {
       "Category": "Pitcher K Target",
-      "Player/Team": "Chris Sale",
+      "Player/Team": "Max Fried",
+      "Game": "Tampa Bay Rays @ New York Yankees",
+      "Score": 57.1,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "Nick Martinez",
+      "Game": "Tampa Bay Rays @ New York Yankees",
+      "Score": 54.7,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "",
+      "Game": "Cleveland Guardians @ Chicago White Sox",
+      "Score": 28.4,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "",
+      "Game": "Cleveland Guardians @ Chicago White Sox",
+      "Score": 28.4,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "",
       "Game": "Los Angeles Dodgers @ Atlanta Braves",
-      "Score": 72.0,
+      "Score": 28.4,
       "Notes": ""
     },
     {
       "Category": "Pitcher K Target",
-      "Player/Team": "Yoshinobu Yamamoto",
+      "Player/Team": "",
       "Game": "Los Angeles Dodgers @ Atlanta Braves",
-      "Score": 62.3,
+      "Score": 28.4,
       "Notes": ""
     },
     {
       "Category": "Pitcher K Target",
-      "Player/Team": "Nick Pivetta",
+      "Player/Team": "",
       "Game": "Milwaukee Brewers @ San Diego Padres",
-      "Score": 62.0,
+      "Score": 28.4,
       "Notes": ""
     },
     {
       "Category": "Pitcher K Target",
-      "Player/Team": "Dustin May",
+      "Player/Team": "",
       "Game": "Milwaukee Brewers @ San Diego Padres",
-      "Score": 55.2,
+      "Score": 28.4,
       "Notes": ""
     }
   ]
