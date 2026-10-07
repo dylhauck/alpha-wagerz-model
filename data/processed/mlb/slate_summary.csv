@@ -1,3 +1,5 @@
 game_id,date,game,away_team,home_team,away_sp,home_sp,venue,status,game_date_utc,game_time,game_time_sort
-849819,2026-10-06,Los Angeles Dodgers @ Atlanta Braves,Los Angeles Dodgers,Atlanta Braves,Yoshinobu Yamamoto,Chris Sale,Truist Park,Scheduled,2026-10-06T22:00:00Z,5:00 PM,17:00
-849826,2026-10-06,Milwaukee Brewers @ San Diego Padres,Milwaukee Brewers,San Diego Padres,Dustin May,Nick Pivetta,Petco Park,Scheduled,2026-10-07T01:30:00Z,8:30 PM,20:30
+849833,2026-10-07,Cleveland Guardians @ Chicago White Sox,Cleveland Guardians,Chicago White Sox,Daniel Espino,Sean Newcomb,Rate Field,Scheduled,2026-10-07T20:00:00Z,3:00 PM,15:00
+849822,2026-10-07,Los Angeles Dodgers @ Atlanta Braves,Los Angeles Dodgers,Atlanta Braves,Tyler Glasnow,Tyler Mahle,Truist Park,Scheduled,2026-10-07T22:00:00Z,5:00 PM,17:00
+849838,2026-10-07,Tampa Bay Rays @ New York Yankees,Tampa Bay Rays,New York Yankees,Nick Martinez,Max Fried,Yankee Stadium,Scheduled,2026-10-08T00:00:00Z,7:00 PM,19:00
+849827,2026-10-07,Milwaukee Brewers @ San Diego Padres,Milwaukee Brewers,San Diego Padres,,Walker Buehler,Petco Park,Scheduled,2026-10-08T02:00:00Z,9:00 PM,21:00
