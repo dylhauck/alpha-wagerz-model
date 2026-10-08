@@ -187,29 +187,56 @@ def local_slate_window():
 def fetch_today_events():
     start, end = today_event_window()
 
-    payload = get_json(
-        "events",
-        {
-            "sport": "baseball",
-            "league": "usa-mlb",
-            "status": "pending",
-            "from": start,
-            "to": end,
-        },
-    )
+    leagues = [
+        "usa-mlb",
+        "usa-mlb-playoffs",
+    ]
 
-    if isinstance(payload, list):
-        return payload
+    all_events = []
+    seen_ids = set()
 
-    if isinstance(payload, dict):
-        for key in ("events", "data", "results", "items"):
-            value = payload.get(key)
+    for league in leagues:
+        payload = get_json(
+            "events",
+            {
+                "sport": "baseball",
+                "league": league,
+                "status": "pending",
+                "from": start,
+                "to": end,
+            },
+        )
 
-            if isinstance(value, list):
-                return value
+        if isinstance(payload, list):
+            events = payload
+        elif isinstance(payload, dict):
+            events = next(
+                (
+                    payload[key]
+                    for key in ("events", "data", "results", "items")
+                    if isinstance(payload.get(key), list)
+                ),
+                [],
+            )
+        else:
+            events = []
 
-    return []
+        print(
+            f"📅 {league}: {len(events)} pending events"
+        )
 
+        for event in events:
+            event_id = str(event.get("id") or "")
+
+            if event_id and event_id in seen_ids:
+                continue
+
+            if event_id:
+                seen_ids.add(event_id)
+
+            all_events.append(event)
+
+    return all_events
 
 def fetch_event_odds(event_id):
     if not event_id:

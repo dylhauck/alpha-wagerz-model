@@ -648,57 +648,23 @@ def build_player_touchdown_projection(
             "injury_status": injury_status,
         },
 
-        "environment": {
-            "projected_team_points": round(
-                f(
-                    environment.get(
-                        "projected_team_points"
-                    )
-                ),
-                1,
+        # Raw numerical context for the website. These are display-only
+        # values; the touchdown probability calculation above is unchanged.
+        "actual_data": {
+            "current_games": int(rates["games"]),
+            "current_rushing_tds_per_game": round(rates["current_rushing_td_rate"], 3),
+            "current_receiving_tds_per_game": round(rates["current_receiving_td_rate"], 3),
+            "career_rushing_tds_per_game": round(rates["career_rushing_td_rate"], 3),
+            "career_receiving_tds_per_game": round(rates["career_receiving_td_rate"], 3),
+            "projected_rushing_tds": round(projected_rushing_tds, 3),
+            "projected_receiving_tds": round(projected_receiving_tds, 3),
+            "projected_team_points": (
+                round(f(environment.get("projected_team_points")), 1)
+                if isinstance(environment, dict)
+                and environment.get("projected_team_points") not in (None, "")
+                else None
             ),
-
-            "scoring_factor": round(
-                f(
-                    environment.get(
-                        "scoring_factor"
-                    ),
-                    1.0,
-                ),
-                3,
-            ),
-        },
-
-        "matchup": {
-            "overall_factor": round(
-                f(
-                    matchup.get(
-                        "overall_factor"
-                    ),
-                    1.0,
-                ),
-                3,
-            ),
-
-            "passing_factor": round(
-                f(
-                    matchup.get(
-                        "passing_factor"
-                    ),
-                    1.0,
-                ),
-                3,
-            ),
-
-            "rushing_factor": round(
-                f(
-                    matchup.get(
-                        "rushing_factor"
-                    ),
-                    1.0,
-                ),
-                3,
-            ),
+            "injury_status": injury_status or None,
         },
 
         "model": {
