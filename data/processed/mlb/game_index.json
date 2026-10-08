@@ -1,50 +1,14 @@
 [
   {
-    "game_id": "849833",
-    "date": "2026-10-07",
+    "game_id": "849832",
+    "date": "2026-10-08",
     "game": "Cleveland Guardians @ Chicago White Sox",
     "away_team": "Cleveland Guardians",
     "home_team": "Chicago White Sox",
-    "away_sp": "Daniel Espino",
-    "home_sp": "Sean Newcomb",
+    "away_sp": "Parker Messick",
+    "home_sp": "Hagen Smith",
     "venue": "Rate Field",
     "status": "Scheduled",
-    "file": "data/processed/mlb/games/849833.json"
-  },
-  {
-    "game_id": "849822",
-    "date": "2026-10-07",
-    "game": "Los Angeles Dodgers @ Atlanta Braves",
-    "away_team": "Los Angeles Dodgers",
-    "home_team": "Atlanta Braves",
-    "away_sp": "Tyler Glasnow",
-    "home_sp": "Tyler Mahle",
-    "venue": "Truist Park",
-    "status": "Scheduled",
-    "file": "data/processed/mlb/games/849822.json"
-  },
-  {
-    "game_id": "849827",
-    "date": "2026-10-07",
-    "game": "Milwaukee Brewers @ San Diego Padres",
-    "away_team": "Milwaukee Brewers",
-    "home_team": "San Diego Padres",
-    "away_sp": "",
-    "home_sp": "Walker Buehler",
-    "venue": "Petco Park",
-    "status": "Scheduled",
-    "file": "data/processed/mlb/games/849827.json"
-  },
-  {
-    "game_id": "849838",
-    "date": "2026-10-07",
-    "game": "Tampa Bay Rays @ New York Yankees",
-    "away_team": "Tampa Bay Rays",
-    "home_team": "New York Yankees",
-    "away_sp": "Nick Martinez",
-    "home_sp": "Max Fried",
-    "venue": "Yankee Stadium",
-    "status": "Scheduled",
-    "file": "data/processed/mlb/games/849838.json"
+    "file": "data/processed/mlb/games/849832.json"
   }
 ]

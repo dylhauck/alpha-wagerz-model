@@ -94,6 +94,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 605397,Joe Musgrove,135,San Diego Padres,SD,P,Pitcher,R,R
 669134,Luis Campusano,135,San Diego Padres,SD,C,Catcher,R,R
 592518,Manny Machado,135,San Diego Padres,SD,3B,Third Base,R,R
+695243,Mason Miller,135,San Diego Padres,SD,P,Pitcher,R,R
 650633,Michael King,135,San Diego Padres,SD,P,Pitcher,R,R
 609280,Miguel Andujar,135,San Diego Padres,SD,DH,Designated Hitter,R,R
 601713,Nick Pivetta,135,San Diego Padres,SD,P,Pitcher,R,R
@@ -101,7 +102,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 669392,Samad Taylor,135,San Diego Padres,SD,LF,Outfielder,R,R
 664034,Ty France,135,San Diego Padres,SD,1B,First Base,R,R
 621111,Walker Buehler,135,San Diego Padres,SD,P,Pitcher,R,R
-593974,Wandy Peralta,135,San Diego Padres,SD,P,Pitcher,L,L
 593428,Xander Bogaerts,135,San Diego Padres,SD,SS,Shortstop,R,R
 673513,Yuki Matsui,135,San Diego Padres,SD,P,Pitcher,L,L
 662253,Andrés Muñoz,136,Seattle Mariners,SEA,P,Pitcher,R,R
@@ -301,7 +301,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 807727,Charles McAdoo,141,Toronto Blue Jays,TOR,2B,Second Base,R,R
 695445,Chase Lee,141,Toronto Blue Jays,TOR,P,Pitcher,R,R
 676914,Davis Schneider,141,Toronto Blue Jays,TOR,LF,Outfielder,R,R
-687288,Devereaux Harrison,141,Toronto Blue Jays,TOR,P,Pitcher,R,R
 656302,Dylan Cease,141,Toronto Blue Jays,TOR,P,Pitcher,R,R
 676391,Ernie Clement,141,Toronto Blue Jays,TOR,2B,Second Base,R,R
 543807,George Springer,141,Toronto Blue Jays,TOR,DH,Designated Hitter,R,R

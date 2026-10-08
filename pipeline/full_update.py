@@ -61,6 +61,7 @@ from providers.nfl.nfl_player_props import build_nfl_player_props
 from model.nfl.player_prop_edges import build_nfl_player_prop_edges
 from providers.nfl.nfl_odds import build_nfl_odds
 from model.nfl.rankings import build_nfl_rankings
+from model.nfl.touchdown_projections import build_touchdown_projections
 
 # NBA
 from providers.nba.nba_data import build_nba_data
@@ -194,6 +195,9 @@ def run_full_update():
 
     print("\n🏃 NFL Player Projections", flush=True)
     timed("build_nfl_player_projections", build_nfl_player_projections)
+
+    print("\n🏈 NFL Touchdown Projections", flush=True)
+    timed("build_touchdown_projections", build_touchdown_projections)
 
     print("\n📡 Live NFL Odds", flush=True)
     timed("build_nfl_odds", build_nfl_odds)
