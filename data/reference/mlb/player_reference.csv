@@ -81,27 +81,41 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 670970,Adrian Morejon,135,San Diego Padres,SD,P,Pitcher,L,L
 669720,Austin Hays,135,San Diego Padres,SD,DH,Designated Hitter,R,R
 699134,Bradgley Rodriguez,135,San Diego Padres,SD,P,Pitcher,R,R
+663554,Casey Mize,135,San Diego Padres,SD,P,Pitcher,R,R
 688158,David Morgan,135,San Diego Padres,SD,P,Pitcher,R,R
 687957,Dustin Harris,135,San Diego Padres,SD,LF,Outfielder,L,R
 806956,Ethan Salas,135,San Diego Padres,SD,C,Catcher,L,R
 665487,Fernando Tatis Jr.,135,San Diego Padres,SD,RF,Outfielder,R,R
 666023,Freddy Fermin,135,San Diego Padres,SD,C,Catcher,R,R
+669398,Gage Workman,135,San Diego Padres,SD,3B,Third Base,L,R
+678184,Garrett Hawkins,135,San Diego Padres,SD,P,Pitcher,R,R
 657757,Gavin Sheets,135,San Diego Padres,SD,1B,First Base,L,L
+656288,Griffin Canning,135,San Diego Padres,SD,P,Pitcher,R,R
+676702,Hunter Stratton,135,San Diego Padres,SD,P,Pitcher,R,R
+676664,JP Sears,135,San Diego Padres,SD,P,Pitcher,R,L
 701538,Jackson Merrill,135,San Diego Padres,SD,CF,Outfielder,L,R
 630105,Jake Cronenworth,135,San Diego Padres,SD,2B,Second Base,L,R
 687749,Jase Bowen,135,San Diego Padres,SD,RF,Outfielder,R,R
 592094,Jason Adam,135,San Diego Padres,SD,P,Pitcher,R,R
+669093,Jeremiah Estrada,135,San Diego Padres,SD,P,Pitcher,S,R
+666745,Jhony Brito,135,San Diego Padres,SD,P,Pitcher,R,R
 605397,Joe Musgrove,135,San Diego Padres,SD,P,Pitcher,R,R
+606996,Kyle Hart,135,San Diego Padres,SD,P,Pitcher,L,L
 669134,Luis Campusano,135,San Diego Padres,SD,C,Catcher,R,R
 592518,Manny Machado,135,San Diego Padres,SD,3B,Third Base,R,R
+669200,Mason McCoy,135,San Diego Padres,SD,2B,Second Base,R,R
 695243,Mason Miller,135,San Diego Padres,SD,P,Pitcher,R,R
 650633,Michael King,135,San Diego Padres,SD,P,Pitcher,R,R
 609280,Miguel Andujar,135,San Diego Padres,SD,DH,Designated Hitter,R,R
 601713,Nick Pivetta,135,San Diego Padres,SD,P,Pitcher,R,R
+681190,Randy Vásquez,135,San Diego Padres,SD,P,Pitcher,R,R
 592662,Robbie Ray,135,San Diego Padres,SD,P,Pitcher,L,L
 669392,Samad Taylor,135,San Diego Padres,SD,LF,Outfielder,R,R
+823550,Sung-Mun Song,135,San Diego Padres,SD,2B,Second Base,L,R
 664034,Ty France,135,San Diego Padres,SD,1B,First Base,R,R
 621111,Walker Buehler,135,San Diego Padres,SD,P,Pitcher,R,R
+593974,Wandy Peralta,135,San Diego Padres,SD,P,Pitcher,L,L
+695238,Will Wagner,135,San Diego Padres,SD,DH,Designated Hitter,L,R
 593428,Xander Bogaerts,135,San Diego Padres,SD,SS,Shortstop,R,R
 673513,Yuki Matsui,135,San Diego Padres,SD,P,Pitcher,L,L
 662253,Andrés Muñoz,136,Seattle Mariners,SEA,P,Pitcher,R,R
@@ -409,29 +423,43 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 554430,Zack Wheeler,143,Philadelphia Phillies,PHI,P,Pitcher,L,R
 700363,AJ Smith-Shawver,144,Atlanta Braves,ATL,P,Pitcher,R,R
 663586,Austin Riley,144,Atlanta Braves,ATL,3B,Third Base,R,R
+686628,Blake Burkhalter,144,Atlanta Braves,ATL,P,Pitcher,R,R
 608718,Brent Suter,144,Atlanta Braves,ATL,P,Pitcher,L,L
 676551,Brewer Hicklen,144,Atlanta Braves,ATL,RF,Outfielder,R,R
+693821,Bryce Elder,144,Atlanta Braves,ATL,P,Pitcher,R,R
 519242,Chris Sale,144,Atlanta Braves,ATL,P,Pitcher,L,L
+680577,DaShawn Keirsey Jr.,144,Atlanta Braves,ATL,CF,Outfielder,L,L
 800311,Didier Fuentes,144,Atlanta Braves,ATL,P,Pitcher,R,R
+642086,Dominic Smith,144,Atlanta Braves,ATL,DH,Designated Hitter,L,L
 686948,Drake Baldwin,144,Atlanta Braves,ATL,C,Catcher,L,R
 689266,Dylan Dodd,144,Atlanta Braves,ATL,P,Pitcher,L,L
 669276,Dylan Lee,144,Atlanta Braves,ATL,P,Pitcher,L,L
 656550,Grant Holmes,144,Atlanta Braves,ATL,P,Pitcher,L,R
 673490,Ha-Seong Kim,144,Atlanta Braves,ATL,SS,Shortstop,R,R
 702275,JR Ritchie,144,Atlanta Braves,ATL,P,Pitcher,R,R
+675916,James Karinchak,144,Atlanta Braves,ATL,P,Pitcher,R,R
+805347,Jim Jarvis,144,Atlanta Braves,ATL,SS,Shortstop,L,R
+571657,Kyle Farmer,144,Atlanta Braves,ATL,DH,Designated Hitter,R,R
 657041,Lane Thomas,144,Atlanta Braves,ATL,LF,Outfielder,R,R
+663897,Luke Williams,144,Atlanta Braves,ATL,SS,Shortstop,R,R
+527048,Martín Pérez,144,Atlanta Braves,ATL,P,Pitcher,L,L
 621566,Matt Olson,144,Atlanta Braves,ATL,1B,First Base,L,R
 643289,Mauricio Dubón,144,Atlanta Braves,ATL,LF,Outfielder,R,R
+675627,Michael Grove,144,Atlanta Braves,ATL,P,Pitcher,R,R
 671739,Michael Harris II,144,Atlanta Braves,ATL,CF,Outfielder,L,L
 573262,Mike Yastrzemski,144,Atlanta Braves,ATL,LF,Outfielder,L,L
+702566,Owen Murphy,144,Atlanta Braves,ATL,P,Pitcher,R,R
 645277,Ozzie Albies,144,Atlanta Braves,ATL,2B,Second Base,S,R
 628452,Raisel Iglesias,144,Atlanta Braves,ATL,P,Pitcher,R,R
 678061,Ray Kerr,144,Atlanta Braves,ATL,P,Pitcher,L,L
+625643,Reynaldo López,144,Atlanta Braves,ATL,P,Pitcher,R,R
 663158,Robert Suarez,144,Atlanta Braves,ATL,P,Pitcher,R,R
+691548,Rolddy Muñoz,144,Atlanta Braves,ATL,P,Pitcher,R,R
 660670,Ronald Acuña Jr.,144,Atlanta Braves,ATL,RF,Outfielder,R,R
 642133,Rowdy Tellez,144,Atlanta Braves,ATL,1B,First Base,L,L
 669221,Sean Murphy,144,Atlanta Braves,ATL,C,Catcher,R,R
 641816,Tyler Mahle,144,Atlanta Braves,ATL,P,Pitcher,R,R
+700413,Tyler Uberstine,144,Atlanta Braves,ATL,P,Pitcher,R,R
 682989,Victor Mederos,144,Atlanta Braves,ATL,P,Pitcher,R,R
 643217,Andrew Benintendi,145,Chicago White Sox,CWS,DH,Designated Hitter,L,L
 641743,Anthony Kay,145,Chicago White Sox,CWS,P,Pitcher,L,L
@@ -498,32 +526,46 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 682790,Wikelman González,146,Miami Marlins,MIA,P,Pitcher,R,R
 669364,Xavier Edwards,146,Miami Marlins,MIA,2B,Second Base,S,R
 694350,Zach Brzykcy,146,Miami Marlins,MIA,P,Pitcher,R,R
+592450,Aaron Judge,147,New York Yankees,NYY,RF,Outfielder,R,R
 645305,Ali Sánchez,147,New York Yankees,NYY,C,Catcher,R,R
+642708,Amed Rosario,147,New York Yankees,NYY,3B,Third Base,R,R
+683409,Angel Chivilli,147,New York Yankees,NYY,P,Pitcher,R,R
 683011,Anthony Volpe,147,New York Yankees,NYY,SS,Shortstop,R,R
 669224,Austin Wells,147,New York Yankees,NYY,C,Catcher,L,R
 700250,Ben Rice,147,New York Yankees,NYY,DH,Designated Hitter,L,R
+690440,Bradley Hanner,147,New York Yankees,NYY,P,Pitcher,R,R
+694341,Brendan Beck,147,New York Yankees,NYY,P,Pitcher,R,R
 687396,Brent Headrick,147,New York Yankees,NYY,P,Pitcher,L,L
 693645,Cam Schlittler,147,New York Yankees,NYY,P,Pitcher,R,R
 607074,Carlos Rodón,147,New York Yankees,NYY,P,Pitcher,L,L
+657376,Clarke Schmidt,147,New York Yankees,NYY,P,Pitcher,R,R
 641355,Cody Bellinger,147,New York Yankees,NYY,LF,Outfielder,L,L
 670280,David Bednar,147,New York Yankees,NYY,P,Pitcher,L,R
+695684,Elmer Rodríguez,147,New York Yankees,NYY,P,Pitcher,L,R
 806146,George Lombard Jr.,147,New York Yankees,NYY,SS,Shortstop,R,R
 543037,Gerrit Cole,147,New York Yankees,NYY,P,Pitcher,R,R
 519317,Giancarlo Stanton,147,New York Yankees,NYY,DH,Designated Hitter,R,R
 671218,Heliot Ramos,147,New York Yankees,NYY,LF,Outfielder,R,R
+641555,J.C. Escarra,147,New York Yankees,NYY,C,Catcher,L,R
+691176,Jasson Domínguez,147,New York Yankees,NYY,RF,Outfielder,S,R
 665862,Jazz Chisholm Jr.,147,New York Yankees,NYY,2B,Second Base,L,R
 670167,John Schreiber,147,New York Yankees,NYY,P,Pitcher,R,R
 676609,José Caballero,147,New York Yankees,NYY,SS,Shortstop,R,R
 671277,Luis García Jr.,147,New York Yankees,NYY,1B,First Base,L,R
+661563,Luis Gil,147,New York Yankees,NYY,P,Pitcher,R,R
 608331,Max Fried,147,New York Yankees,NYY,P,Pitcher,L,L
+680474,Max Schuemann,147,New York Yankees,NYY,LF,Outfielder,R,R
+605242,Michael Fulmer,147,New York Yankees,NYY,P,Pitcher,R,R
 621112,Paul Blackburn,147,New York Yankees,NYY,P,Pitcher,R,R
 502671,Paul Goldschmidt,147,New York Yankees,NYY,1B,First Base,R,R
 641857,Ryan McMahon,147,New York Yankees,NYY,3B,Third Base,L,R
 677960,Ryan Weathers,147,New York Yankees,NYY,P,Pitcher,R,L
 642232,Ryan Yarbrough,147,New York Yankees,NYY,P,Pitcher,R,L
 682987,Spencer Jones,147,New York Yankees,NYY,CF,Outfielder,L,L
+657612,Tim Hill,147,New York Yankees,NYY,P,Pitcher,R,L
 663757,Trent Grisham,147,New York Yankees,NYY,CF,Outfielder,L,L
 701542,Will Warren,147,New York Yankees,NYY,P,Pitcher,R,R
+660787,Yerry De los Santos,147,New York Yankees,NYY,P,Pitcher,R,R
 676879,Aaron Ashby,158,Milwaukee Brewers,MIL,P,Pitcher,R,L
 682842,Abner Uribe,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 683734,Andrew Vaughn,158,Milwaukee Brewers,MIL,1B,First Base,R,R

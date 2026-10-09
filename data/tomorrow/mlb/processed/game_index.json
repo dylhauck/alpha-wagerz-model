@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "game_id": "849831",
+    "date": "2026-10-10",
+    "game": "Chicago White Sox @ Cleveland Guardians",
+    "away_team": "Chicago White Sox",
+    "home_team": "Cleveland Guardians",
+    "away_sp": "",
+    "home_sp": "",
+    "venue": "Progressive Field",
+    "status": "Scheduled",
+    "game_date_utc": "2026-10-11T00:00:00Z",
+    "game_time": "7:00 PM",
+    "game_time_sort": "19:00",
+    "file": "data/tomorrow/mlb/processed/games/849831.json"
+  }
+]

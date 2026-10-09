@@ -1,28 +1,15 @@
 [
   {
-    "game_id": "849832",
-    "game": "Cleveland Guardians @ Chicago White Sox",
-    "venue": "Rate Field",
-    "temperature": 68.7,
-    "humidity": 39,
-    "conditions": "Clear Sky",
-    "wind_direction": "OUT",
-    "wind_speed": 5.4,
-    "wind_degrees": 294,
+    "game_id": "849831",
+    "game": "Chicago White Sox @ Cleveland Guardians",
+    "venue": "Progressive Field",
+    "temperature": 66.8,
+    "humidity": 57,
+    "conditions": "Scattered Clouds",
+    "wind_direction": "NEUTRAL",
+    "wind_speed": 14.2,
+    "wind_degrees": 134,
     "roof": "open",
-    "forecast_time_utc": "2026-10-08T21:00:00+00:00"
-  },
-  {
-    "game_id": "849837",
-    "game": "Tampa Bay Rays @ New York Yankees",
-    "venue": "Yankee Stadium",
-    "temperature": 63.5,
-    "humidity": 58,
-    "conditions": "Clear Sky",
-    "wind_direction": "OUT",
-    "wind_speed": 4.1,
-    "wind_degrees": 290,
-    "roof": "open",
-    "forecast_time_utc": "2026-10-09T00:00:00+00:00"
+    "forecast_time_utc": "2026-10-11T00:00:00+00:00"
   }
 ]

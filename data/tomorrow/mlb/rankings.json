@@ -2,171 +2,157 @@
   "hr_targets": [
     {
       "Category": "HR Target",
-      "Player/Team": "Ben Rice",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 80.0,
+      "Player/Team": "Munetaka Murakami",
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 81.7,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Daniel Schneemann",
-      "Game": "Cleveland Guardians @ Chicago White Sox",
-      "Score": 77.5,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Munetaka Murakami",
-      "Game": "Cleveland Guardians @ Chicago White Sox",
-      "Score": 77.5,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Junior Caminero",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 77.2,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Jonathan Aranda",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 72.3,
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 81.7,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Randal Grichuk",
-      "Game": "Cleveland Guardians @ Chicago White Sox",
-      "Score": 71.7,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "George Lombard Jr.",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 71.1,
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 75.3,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Patrick Bailey",
-      "Game": "Cleveland Guardians @ Chicago White Sox",
-      "Score": 70.4,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Ryan McMahon",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 68.2,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Nick Fortes",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 63.2,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Heliot Ramos",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 62.5,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Cedric Mullins",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 62.2,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Taylor Walls",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 61.9,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Austin Wells",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 61.7,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Kyle Teel",
-      "Game": "Cleveland Guardians @ Chicago White Sox",
-      "Score": 60.2,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Spencer Jones",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 60.0,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Jonny DeLuca",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 59.7,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Yandy Díaz",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 59.3,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Victor Mesa Jr.",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 59.3,
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 74.7,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Jo Adell",
-      "Game": "Cleveland Guardians @ Chicago White Sox",
-      "Score": 57.6,
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 63.2,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Kyle Teel",
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 61.2,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Luisangel Acuña",
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 57.8,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Chase Meidroth",
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 56.7,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Chase DeLauter",
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 56.5,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Andrew Benintendi",
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 55.4,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Brenton Doyle",
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 55.3,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Austin Hedges",
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 54.9,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Tommy Pham",
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 53.9,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Travis Bazzana",
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 53.6,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "David Fry",
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 53.3,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Nathaniel Lowe",
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 50.8,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Miguel Vargas",
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 49.8,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Sam Antonacci",
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 48.8,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Brayan Rocchio",
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 48.3,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Colson Montgomery",
+      "Game": "Chicago White Sox @ Cleveland Guardians",
+      "Score": 48.2,
       "Notes": ""
     }
   ],
   "pitchers": [
     {
       "Category": "Pitcher K Target",
-      "Player/Team": "Carlos Rodón",
-      "Game": "Tampa Bay Rays @ New York Yankees",
-      "Score": 62.7,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
       "Player/Team": "",
-      "Game": "Cleveland Guardians @ Chicago White Sox",
+      "Game": "Chicago White Sox @ Cleveland Guardians",
       "Score": 28.4,
       "Notes": ""
     },
     {
       "Category": "Pitcher K Target",
       "Player/Team": "",
-      "Game": "Cleveland Guardians @ Chicago White Sox",
-      "Score": 28.4,
-      "Notes": ""
-    },
-    {
-      "Category": "Pitcher K Target",
-      "Player/Team": "",
-      "Game": "Tampa Bay Rays @ New York Yankees",
+      "Game": "Chicago White Sox @ Cleveland Guardians",
       "Score": 28.4,
       "Notes": ""
     }
