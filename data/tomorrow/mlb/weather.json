@@ -1,15 +1,15 @@
 [
   {
-    "game_id": "849831",
-    "game": "Chicago White Sox @ Cleveland Guardians",
-    "venue": "Progressive Field",
-    "temperature": 66.8,
-    "humidity": 57,
-    "conditions": "Scattered Clouds",
-    "wind_direction": "NEUTRAL",
-    "wind_speed": 14.2,
-    "wind_degrees": 134,
-    "roof": "open",
-    "forecast_time_utc": "2026-10-11T00:00:00+00:00"
+    "game_id": "849809",
+    "game": "Los Angeles Dodgers @ Milwaukee Brewers",
+    "venue": "American Family Field",
+    "temperature": 63.3,
+    "humidity": 71,
+    "conditions": "Clear Sky",
+    "wind_direction": "OUT TOWARDS LF",
+    "wind_speed": 4.5,
+    "wind_degrees": 198,
+    "roof": "retractable",
+    "forecast_time_utc": "2026-10-12T00:00:00+00:00"
   }
 ]

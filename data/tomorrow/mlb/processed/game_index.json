@@ -1,17 +1,17 @@
 [
   {
-    "game_id": "849831",
-    "date": "2026-10-10",
-    "game": "Chicago White Sox @ Cleveland Guardians",
-    "away_team": "Chicago White Sox",
-    "home_team": "Cleveland Guardians",
-    "away_sp": "",
+    "game_id": "849809",
+    "date": "2026-10-11",
+    "game": "Los Angeles Dodgers @ Milwaukee Brewers",
+    "away_team": "Los Angeles Dodgers",
+    "home_team": "Milwaukee Brewers",
+    "away_sp": "Tarik Skubal",
     "home_sp": "",
-    "venue": "Progressive Field",
+    "venue": "American Family Field",
     "status": "Scheduled",
-    "game_date_utc": "2026-10-11T00:00:00Z",
+    "game_date_utc": "2026-10-12T00:00:00Z",
     "game_time": "7:00 PM",
     "game_time_sort": "19:00",
-    "file": "data/tomorrow/mlb/processed/games/849831.json"
+    "file": "data/tomorrow/mlb/processed/games/849809.json"
   }
 ]

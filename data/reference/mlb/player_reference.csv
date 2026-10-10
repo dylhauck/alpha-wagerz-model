@@ -429,6 +429,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 693821,Bryce Elder,144,Atlanta Braves,ATL,P,Pitcher,R,R
 519242,Chris Sale,144,Atlanta Braves,ATL,P,Pitcher,L,L
 680577,DaShawn Keirsey Jr.,144,Atlanta Braves,ATL,CF,Outfielder,L,L
+664849,Danny Young,144,Atlanta Braves,ATL,P,Pitcher,L,L
 800311,Didier Fuentes,144,Atlanta Braves,ATL,P,Pitcher,R,R
 642086,Dominic Smith,144,Atlanta Braves,ATL,DH,Designated Hitter,L,L
 686948,Drake Baldwin,144,Atlanta Braves,ATL,C,Catcher,L,R
@@ -441,7 +442,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 805347,Jim Jarvis,144,Atlanta Braves,ATL,SS,Shortstop,L,R
 571657,Kyle Farmer,144,Atlanta Braves,ATL,DH,Designated Hitter,R,R
 657041,Lane Thomas,144,Atlanta Braves,ATL,LF,Outfielder,R,R
-663897,Luke Williams,144,Atlanta Braves,ATL,SS,Shortstop,R,R
 527048,Martín Pérez,144,Atlanta Braves,ATL,P,Pitcher,L,L
 621566,Matt Olson,144,Atlanta Braves,ATL,1B,First Base,L,R
 643289,Mauricio Dubón,144,Atlanta Braves,ATL,LF,Outfielder,R,R
