@@ -2,157 +2,171 @@
   "hr_targets": [
     {
       "Category": "HR Target",
-      "Player/Team": "Jackson Chourio",
-      "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 78.3,
+      "Player/Team": "Daniel Schneemann",
+      "Game": "Cleveland Guardians @ Tampa Bay Rays",
+      "Score": 82.7,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Patrick Bailey",
+      "Game": "Cleveland Guardians @ Tampa Bay Rays",
+      "Score": 76.4,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Max Muncy",
       "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 78.1,
+      "Score": 70.5,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Junior Caminero",
+      "Game": "Cleveland Guardians @ Tampa Bay Rays",
+      "Score": 68.0,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Jackson Chourio",
+      "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
+      "Score": 67.5,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Teoscar Hernández",
       "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 73.9,
+      "Score": 67.3,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Christian Yelich",
-      "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 71.0,
+      "Player/Team": "Jonathan Aranda",
+      "Game": "Cleveland Guardians @ Tampa Bay Rays",
+      "Score": 65.6,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Jo Adell",
+      "Game": "Cleveland Guardians @ Tampa Bay Rays",
+      "Score": 64.9,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Andy Pages",
       "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 70.3,
+      "Score": 64.0,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Brice Turang",
+      "Player/Team": "Christian Yelich",
       "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 67.6,
+      "Score": 62.5,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Enrique Hernández",
       "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 66.1,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Will Smith",
-      "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 64.8,
+      "Score": 61.5,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Josue De Paula",
       "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 64.8,
+      "Score": 60.0,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Will Smith",
+      "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
+      "Score": 59.7,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Brice Turang",
+      "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
+      "Score": 59.6,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Gary Sánchez",
       "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 64.0,
+      "Score": 57.9,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "William Contreras",
-      "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 60.9,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Jake Bauers",
-      "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 60.1,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "David Hamilton",
-      "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 58.2,
+      "Player/Team": "Chase DeLauter",
+      "Game": "Cleveland Guardians @ Tampa Bay Rays",
+      "Score": 56.6,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Freddie Freeman",
       "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 57.6,
+      "Score": 56.4,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Andrew Vaughn",
+      "Player/Team": "William Contreras",
       "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 56.5,
+      "Score": 56.3,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Garrett Mitchell",
-      "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 55.7,
+      "Player/Team": "Austin Hedges",
+      "Game": "Cleveland Guardians @ Tampa Bay Rays",
+      "Score": 56.0,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Mookie Betts",
+      "Player/Team": "Jake Bauers",
       "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 53.5,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Joey Ortiz",
-      "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 52.0,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Luis Lara",
-      "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 51.9,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Tommy Edman",
-      "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 50.7,
+      "Score": 55.3,
       "Notes": ""
     }
   ],
   "pitchers": [
     {
       "Category": "Pitcher K Target",
-      "Player/Team": "Tarik Skubal",
+      "Player/Team": "Yoshinobu Yamamoto",
       "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
-      "Score": 73.8,
+      "Score": 62.9,
       "Notes": ""
     },
     {
       "Category": "Pitcher K Target",
       "Player/Team": "",
       "Game": "Los Angeles Dodgers @ Milwaukee Brewers",
+      "Score": 28.4,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "",
+      "Game": "Cleveland Guardians @ Tampa Bay Rays",
+      "Score": 28.4,
+      "Notes": ""
+    },
+    {
+      "Category": "Pitcher K Target",
+      "Player/Team": "",
+      "Game": "Cleveland Guardians @ Tampa Bay Rays",
       "Score": 28.4,
       "Notes": ""
     }
