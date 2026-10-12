@@ -1,28 +1,15 @@
 [
   {
-    "game_id": "849812",
-    "game": "Los Angeles Dodgers @ Milwaukee Brewers",
-    "venue": "American Family Field",
-    "temperature": 82.6,
-    "humidity": 54,
-    "conditions": "Few Clouds",
-    "wind_direction": "OUT",
-    "wind_speed": 10.7,
-    "wind_degrees": 221,
-    "roof": "retractable",
-    "forecast_time_utc": "2026-10-12T21:00:00+00:00"
-  },
-  {
-    "game_id": "849820",
+    "game_id": "849813",
     "game": "Cleveland Guardians @ Tampa Bay Rays",
     "venue": "Tropicana Field",
-    "temperature": 78.1,
+    "temperature": 77.3,
     "humidity": 80,
     "conditions": "Clear Sky",
     "wind_direction": "NEUTRAL",
-    "wind_speed": 6.0,
-    "wind_degrees": 342,
+    "wind_speed": 7.2,
+    "wind_degrees": 360,
     "roof": "dome",
-    "forecast_time_utc": "2026-10-13T00:00:00+00:00"
+    "forecast_time_utc": "2026-10-14T00:00:00+00:00"
   }
 ]

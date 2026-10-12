@@ -1,42 +1,6 @@
 [
   {
-    "game_id": "849812",
-    "game": "Los Angeles Dodgers @ Milwaukee Brewers",
-    "away_team": "Los Angeles Dodgers",
-    "home_team": "Milwaukee Brewers",
-    "bookmaker": "",
-    "bookmaker_key": "",
-    "odds_event_id": "",
-    "moneyline": {
-      "away": "",
-      "home": ""
-    },
-    "spread": {
-      "away": "",
-      "away_price": "",
-      "home": "",
-      "home_price": ""
-    },
-    "total": "",
-    "game_total": {
-      "line": "",
-      "over_price": "",
-      "under_price": ""
-    },
-    "team_totals": {
-      "away": "",
-      "away_over_price": "",
-      "away_under_price": "",
-      "home": "",
-      "home_over_price": "",
-      "home_under_price": ""
-    },
-    "pitcher_strikeouts": {},
-    "market_source": "unavailable",
-    "market_status": "not_returned_by_provider"
-  },
-  {
-    "game_id": "849820",
+    "game_id": "849813",
     "game": "Cleveland Guardians @ Tampa Bay Rays",
     "away_team": "Cleveland Guardians",
     "home_team": "Tampa Bay Rays",
