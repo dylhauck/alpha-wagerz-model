@@ -238,6 +238,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 695336,Thomas Saggese,138,St. Louis Cardinals,STL,SS,Shortstop,R,R
 687363,Victor Scott II,138,St. Louis Cardinals,STL,CF,Outfielder,L,L
 810938,Ben Williamson,139,Tampa Bay Rays,TB,2B,Second Base,R,R
+811315,Brody Hopkins,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 641329,Bryan Baker,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 592155,Cam Booser,139,Tampa Bay Rays,TB,P,Pitcher,L,L
 656775,Cedric Mullins,139,Tampa Bay Rays,TB,CF,Outfielder,L,L
@@ -245,7 +246,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 642121,Cole Sulser,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 656876,Drew Rasmussen,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 642547,Freddy Peralta,139,Tampa Bay Rays,TB,P,Pitcher,R,R
-664076,Garrett Cleavinger,139,Tampa Bay Rays,TB,P,Pitcher,R,L
 643377,Griffin Jax,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 693855,Ian Seymour,139,Tampa Bay Rays,TB,P,Pitcher,L,L
 666018,Jonathan Aranda,139,Tampa Bay Rays,TB,1B,First Base,L,R
@@ -836,7 +836,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 671922,Cade Smith,114,Cleveland Guardians,CLE,P,Pitcher,R,R
 800050,Chase DeLauter,114,Cleveland Guardians,CLE,RF,Outfielder,L,L
 682982,Daniel Espino,114,Cleveland Guardians,CLE,P,Pitcher,R,R
-682177,Daniel Schneemann,114,Cleveland Guardians,CLE,CF,Outfielder,L,R
 681807,David Fry,114,Cleveland Guardians,CLE,RF,Outfielder,R,R
 681870,Erik Sabrowski,114,Cleveland Guardians,CLE,P,Pitcher,R,L
 656492,Foster Griffin,114,Cleveland Guardians,CLE,P,Pitcher,R,L
@@ -851,6 +850,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 672275,Patrick Bailey,114,Cleveland Guardians,CLE,C,Catcher,S,R
 690984,Petey Halpin,114,Cleveland Guardians,CLE,CF,Outfielder,L,R
 542888,Shawn Armstrong,114,Cleveland Guardians,CLE,P,Pitcher,R,R
+677944,Slade Cecconi,114,Cleveland Guardians,CLE,P,Pitcher,R,R
 680757,Steven Kwan,114,Cleveland Guardians,CLE,LF,Outfielder,L,L
 676440,Tanner Bibee,114,Cleveland Guardians,CLE,P,Pitcher,R,R
 682120,Tim Herrin,114,Cleveland Guardians,CLE,P,Pitcher,L,L

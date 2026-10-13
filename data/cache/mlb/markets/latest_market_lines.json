@@ -1,99 +1,21 @@
 [
   {
-    "game_id": "849812",
-    "game": "Los Angeles Dodgers @ Milwaukee Brewers",
-    "away_team": "Los Angeles Dodgers",
-    "home_team": "Milwaukee Brewers",
-    "bookmaker": "FanDuel",
-    "bookmaker_key": "fanduel",
-    "odds_event_id": 75060876,
-    "moneyline": {
-      "away": -136,
-      "home": 116
-    },
-    "spread": {
-      "away": 1.5,
-      "away_price": -340,
-      "home": -1.5,
-      "home_price": 250
-    },
-    "total": 6.5,
-    "game_total": {
-      "line": 6.5,
-      "over_price": -124,
-      "under_price": 102
-    },
-    "team_totals": {
-      "away": 3.5,
-      "away_over_price": -106,
-      "away_under_price": -120,
-      "home": 2.5,
-      "home_over_price": -142,
-      "home_under_price": 112
-    },
-    "pitcher_strikeouts": {
-      "jacob misiorowski": {
-        "player": "Jacob Misiorowski",
-        "normalized_name": "jacob misiorowski",
-        "line": 7.5,
-        "over_price": 108,
-        "under_price": -138,
-        "bookmaker": "FanDuel",
-        "bookmaker_key": "fanduel",
-        "market_name": "Pitcher Strikeouts"
-      },
-      "tarik skubal": {
-        "player": "Tarik Skubal",
-        "normalized_name": "tarik skubal",
-        "line": 7.5,
-        "over_price": 114,
-        "under_price": -146,
-        "bookmaker": "FanDuel",
-        "bookmaker_key": "fanduel",
-        "market_name": "Pitcher Strikeouts"
-      },
-      "logan henderson": {
-        "player": "Logan Henderson",
-        "normalized_name": "logan henderson",
-        "line": 5.5,
-        "over_price": -115,
-        "under_price": -111,
-        "bookmaker": "FanDuel",
-        "bookmaker_key": "fanduel",
-        "market_name": "Pitcher Strikeouts"
-      },
-      "yoshinobu yamamoto": {
-        "player": "Yoshinobu Yamamoto",
-        "normalized_name": "yoshinobu yamamoto",
-        "line": 6.5,
-        "over_price": -125,
-        "under_price": -102,
-        "bookmaker": "FanDuel",
-        "bookmaker_key": "fanduel",
-        "market_name": "Pitcher Strikeouts"
-      }
-    },
-    "market_source": "odds_api_io",
-    "market_status": "live",
-    "market_updated_at": "2026-10-12T12:38:38Z"
-  },
-  {
-    "game_id": "849820",
+    "game_id": "849813",
     "game": "Cleveland Guardians @ Tampa Bay Rays",
     "away_team": "Cleveland Guardians",
     "home_team": "Tampa Bay Rays",
     "bookmaker": "FanDuel",
     "bookmaker_key": "fanduel",
-    "odds_event_id": 75060850,
+    "odds_event_id": 75060852,
     "moneyline": {
-      "away": 138,
-      "home": -164
+      "away": 112,
+      "home": -132
     },
     "spread": {
       "away": 1.5,
-      "away_price": -164,
+      "away_price": -200,
       "home": -1.5,
-      "home_price": 136
+      "home_price": 164
     },
     "total": 6.5,
     "game_total": {
@@ -102,14 +24,12 @@
       "under_price": 104
     },
     "team_totals": {
-      "away": 2.5,
-      "away_over_price": -142,
-      "away_under_price": 112,
+      "away": 3.5,
+      "away_over_price": 122,
+      "away_under_price": -156,
       "home": 3.5,
-      "home_over_price": -108,
-      "home_under_price": -118,
-      "away_bookmaker": "FanDuel",
-      "home_bookmaker": "FanDuel"
+      "home_over_price": 102,
+      "home_under_price": -130
     },
     "pitcher_strikeouts": {
       "drew rasmussen": {
@@ -131,10 +51,30 @@
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
+      },
+      "freddy peralta": {
+        "player": "Freddy Peralta",
+        "normalized_name": "freddy peralta",
+        "line": 3.5,
+        "over_price": -132,
+        "under_price": 104,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
+      },
+      "parker messick": {
+        "player": "Parker Messick",
+        "normalized_name": "parker messick",
+        "line": 4.5,
+        "over_price": -150,
+        "under_price": 118,
+        "bookmaker": "FanDuel",
+        "bookmaker_key": "fanduel",
+        "market_name": "Pitcher Strikeouts"
       }
     },
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-10-12T12:38:38Z"
+    "market_updated_at": "2026-10-13T12:22:40Z"
   }
 ]

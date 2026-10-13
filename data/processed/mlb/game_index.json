@@ -1,26 +1,14 @@
 [
   {
-    "game_id": "849820",
-    "date": "2026-10-12",
+    "game_id": "849813",
+    "date": "2026-10-13",
     "game": "Cleveland Guardians @ Tampa Bay Rays",
     "away_team": "Cleveland Guardians",
     "home_team": "Tampa Bay Rays",
-    "away_sp": "Foster Griffin",
-    "home_sp": "Drew Rasmussen",
+    "away_sp": "Parker Messick",
+    "home_sp": "Freddy Peralta",
     "venue": "Tropicana Field",
     "status": "Scheduled",
-    "file": "data/processed/mlb/games/849820.json"
-  },
-  {
-    "game_id": "849812",
-    "date": "2026-10-12",
-    "game": "Los Angeles Dodgers @ Milwaukee Brewers",
-    "away_team": "Los Angeles Dodgers",
-    "home_team": "Milwaukee Brewers",
-    "away_sp": "Yoshinobu Yamamoto",
-    "home_sp": "Logan Henderson",
-    "venue": "American Family Field",
-    "status": "Scheduled",
-    "file": "data/processed/mlb/games/849812.json"
+    "file": "data/processed/mlb/games/849813.json"
   }
 ]
