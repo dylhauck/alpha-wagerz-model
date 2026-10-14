@@ -1,73 +1,55 @@
 [
   {
-    "game_id": "849813",
-    "game": "Cleveland Guardians @ Tampa Bay Rays",
-    "away_team": "Cleveland Guardians",
-    "home_team": "Tampa Bay Rays",
+    "game_id": "849811",
+    "game": "Milwaukee Brewers @ Los Angeles Dodgers",
+    "away_team": "Milwaukee Brewers",
+    "home_team": "Los Angeles Dodgers",
     "bookmaker": "FanDuel",
     "bookmaker_key": "fanduel",
-    "odds_event_id": 75060852,
+    "odds_event_id": 75060878,
     "moneyline": {
-      "away": 112,
-      "home": -132
+      "away": 150,
+      "home": -178
     },
     "spread": {
       "away": 1.5,
-      "away_price": -200,
+      "away_price": -150,
       "home": -1.5,
-      "home_price": 164
+      "home_price": 125
     },
-    "total": 6.5,
+    "total": 7.5,
     "game_total": {
-      "line": 6.5,
-      "over_price": -128,
-      "under_price": 104
+      "line": 7.5,
+      "over_price": -104,
+      "under_price": -118
     },
     "team_totals": {
       "away": 3.5,
       "away_over_price": 122,
       "away_under_price": -156,
       "home": 3.5,
-      "home_over_price": 102,
-      "home_under_price": -130
+      "home_over_price": -154,
+      "home_under_price": 120,
+      "away_bookmaker": "FanDuel",
+      "home_bookmaker": "FanDuel"
     },
     "pitcher_strikeouts": {
-      "drew rasmussen": {
-        "player": "Drew Rasmussen",
-        "normalized_name": "drew rasmussen",
-        "line": 5.5,
-        "over_price": -138,
-        "under_price": 108,
+      "blake snell": {
+        "player": "Blake Snell",
+        "normalized_name": "blake snell",
+        "line": 6.5,
+        "over_price": 128,
+        "under_price": -164,
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
       },
-      "foster griffin": {
-        "player": "Foster Griffin",
-        "normalized_name": "foster griffin",
+      "robert gasser": {
+        "player": "Robert Gasser",
+        "normalized_name": "robert gasser",
         "line": 3.5,
-        "over_price": -130,
-        "under_price": 102,
-        "bookmaker": "FanDuel",
-        "bookmaker_key": "fanduel",
-        "market_name": "Pitcher Strikeouts"
-      },
-      "freddy peralta": {
-        "player": "Freddy Peralta",
-        "normalized_name": "freddy peralta",
-        "line": 3.5,
-        "over_price": -132,
-        "under_price": 104,
-        "bookmaker": "FanDuel",
-        "bookmaker_key": "fanduel",
-        "market_name": "Pitcher Strikeouts"
-      },
-      "parker messick": {
-        "player": "Parker Messick",
-        "normalized_name": "parker messick",
-        "line": 4.5,
-        "over_price": -150,
-        "under_price": 118,
+        "over_price": -111,
+        "under_price": -115,
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
@@ -75,6 +57,6 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-10-13T12:22:40Z"
+    "market_updated_at": "2026-10-14T09:57:51Z"
   }
 ]

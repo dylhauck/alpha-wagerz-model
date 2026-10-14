@@ -1,15 +1,15 @@
 [
   {
-    "game_id": 849813,
-    "date": "2026-10-13",
-    "game": "Cleveland Guardians @ Tampa Bay Rays",
-    "away_team": "Cleveland Guardians",
-    "home_team": "Tampa Bay Rays",
-    "away_sp": "Parker Messick",
-    "home_sp": "Freddy Peralta",
-    "venue": "Tropicana Field",
+    "game_id": 849811,
+    "date": "2026-10-14",
+    "game": "Milwaukee Brewers @ Los Angeles Dodgers",
+    "away_team": "Milwaukee Brewers",
+    "home_team": "Los Angeles Dodgers",
+    "away_sp": "Robert Gasser",
+    "home_sp": "Blake Snell",
+    "venue": "UNIQLO Field at Dodger Stadium",
     "status": "Scheduled",
-    "game_date_utc": "2026-10-14T00:00:00Z",
+    "game_date_utc": "2026-10-15T00:00:00Z",
     "game_time": "7:00 PM",
     "game_time_sort": "19:00"
   }

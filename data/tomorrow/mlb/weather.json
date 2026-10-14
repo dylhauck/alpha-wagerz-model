@@ -1,15 +1,28 @@
 [
   {
-    "game_id": "849811",
+    "game_id": "849818",
+    "game": "Tampa Bay Rays @ Cleveland Guardians",
+    "venue": "Progressive Field",
+    "temperature": 72.6,
+    "humidity": 76,
+    "conditions": "Light Rain",
+    "wind_direction": "IN",
+    "wind_speed": 10.7,
+    "wind_degrees": 88,
+    "roof": "open",
+    "forecast_time_utc": "2026-10-15T21:00:00+00:00"
+  },
+  {
+    "game_id": "849810",
     "game": "Milwaukee Brewers @ Los Angeles Dodgers",
     "venue": "UNIQLO Field at Dodger Stadium",
-    "temperature": 81.4,
-    "humidity": 21,
+    "temperature": 86.1,
+    "humidity": 13,
     "conditions": "Clear Sky",
-    "wind_direction": "OUT",
-    "wind_speed": 6.2,
-    "wind_degrees": 214,
+    "wind_direction": "IN",
+    "wind_speed": 3.9,
+    "wind_degrees": 59,
     "roof": "open",
-    "forecast_time_utc": "2026-10-15T00:00:00+00:00"
+    "forecast_time_utc": "2026-10-16T00:00:00+00:00"
   }
 ]

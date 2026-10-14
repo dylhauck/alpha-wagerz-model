@@ -1,17 +1,32 @@
 [
   {
-    "game_id": "849811",
-    "date": "2026-10-14",
+    "game_id": "849818",
+    "date": "2026-10-15",
+    "game": "Tampa Bay Rays @ Cleveland Guardians",
+    "away_team": "Tampa Bay Rays",
+    "home_team": "Cleveland Guardians",
+    "away_sp": "Griffin Jax",
+    "home_sp": "",
+    "venue": "Progressive Field",
+    "status": "Scheduled",
+    "game_date_utc": "2026-10-15T22:00:00Z",
+    "game_time": "5:00 PM",
+    "game_time_sort": "17:00",
+    "file": "data/tomorrow/mlb/processed/games/849818.json"
+  },
+  {
+    "game_id": "849810",
+    "date": "2026-10-15",
     "game": "Milwaukee Brewers @ Los Angeles Dodgers",
     "away_team": "Milwaukee Brewers",
     "home_team": "Los Angeles Dodgers",
-    "away_sp": "Robert Gasser",
+    "away_sp": "",
     "home_sp": "",
     "venue": "UNIQLO Field at Dodger Stadium",
     "status": "Scheduled",
-    "game_date_utc": "2026-10-15T00:00:00Z",
-    "game_time": "7:00 PM",
-    "game_time_sort": "19:00",
-    "file": "data/tomorrow/mlb/processed/games/849811.json"
+    "game_date_utc": "2026-10-16T01:00:00Z",
+    "game_time": "8:00 PM",
+    "game_time_sort": "20:00",
+    "file": "data/tomorrow/mlb/processed/games/849810.json"
   }
 ]
