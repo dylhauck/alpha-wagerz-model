@@ -1,26 +1,14 @@
 [
   {
-    "game_id": "849810",
-    "date": "2026-10-15",
-    "game": "Milwaukee Brewers @ Los Angeles Dodgers",
-    "away_team": "Milwaukee Brewers",
-    "home_team": "Los Angeles Dodgers",
-    "away_sp": "",
-    "home_sp": "Tyler Glasnow",
-    "venue": "UNIQLO Field at Dodger Stadium",
-    "status": "Scheduled",
-    "file": "data/processed/mlb/games/849810.json"
-  },
-  {
-    "game_id": "849818",
-    "date": "2026-10-15",
+    "game_id": "849817",
+    "date": "2026-10-16",
     "game": "Tampa Bay Rays @ Cleveland Guardians",
     "away_team": "Tampa Bay Rays",
     "home_team": "Cleveland Guardians",
-    "away_sp": "Griffin Jax",
-    "home_sp": "Gavin Williams",
+    "away_sp": "Nick Martinez",
+    "home_sp": "",
     "venue": "Progressive Field",
     "status": "Scheduled",
-    "file": "data/processed/mlb/games/849818.json"
+    "file": "data/processed/mlb/games/849817.json"
   }
 ]
