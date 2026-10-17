@@ -1,14 +1,14 @@
 [
   {
-    "game_id": "849817",
-    "date": "2026-10-16",
+    "game_id": "849816",
+    "date": "2026-10-17",
     "game": "Tampa Bay Rays @ Cleveland Guardians",
     "away_team": "Tampa Bay Rays",
     "home_team": "Cleveland Guardians",
     "away_sp": "Nick Martinez",
-    "home_sp": "",
+    "home_sp": "Shawn Armstrong",
     "venue": "Progressive Field",
     "status": "Scheduled",
-    "file": "data/processed/mlb/games/849817.json"
+    "file": "data/processed/mlb/games/849816.json"
   }
 ]

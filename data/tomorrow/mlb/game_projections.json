@@ -1,9 +1,9 @@
 [
   {
-    "game_id": "849816",
+    "game_id": "849817",
     "game": "Tampa Bay Rays @ Cleveland Guardians",
-    "game_time": "7:00 PM",
-    "game_time_sort": "19:00",
+    "game_time": "4:00 PM",
+    "game_time_sort": "16:00",
     "venue": "Progressive Field",
     "away_team": "Tampa Bay Rays",
     "home_team": "Cleveland Guardians",
@@ -14,7 +14,7 @@
     "away_win_probability": 49,
     "home_win_probability": 51,
     "market": {
-      "game_id": "849816",
+      "game_id": "849817",
       "game": "Tampa Bay Rays @ Cleveland Guardians",
       "away_team": "Tampa Bay Rays",
       "home_team": "Cleveland Guardians",

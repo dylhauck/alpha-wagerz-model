@@ -1,7 +1,7 @@
 [
   {
-    "game_id": "849816",
-    "date": "2026-10-17",
+    "game_id": "849817",
+    "date": "2026-10-18",
     "game": "Tampa Bay Rays @ Cleveland Guardians",
     "away_team": "Tampa Bay Rays",
     "home_team": "Cleveland Guardians",
@@ -13,8 +13,8 @@
     "home_sp_id": null,
     "venue": "Progressive Field",
     "status": "Scheduled",
-    "game_date_utc": "2026-10-18T00:00:00Z",
-    "game_time": "7:00 PM",
-    "game_time_sort": "19:00"
+    "game_date_utc": "2026-10-18T21:00:00Z",
+    "game_time": "4:00 PM",
+    "game_time_sort": "16:00"
   }
 ]
