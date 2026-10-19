@@ -3,12 +3,12 @@
     "game_id": "849814",
     "game": "Cleveland Guardians @ Tampa Bay Rays",
     "venue": "Tropicana Field",
-    "temperature": 69.3,
+    "temperature": 70.7,
     "humidity": 66,
-    "conditions": "Clear Sky",
+    "conditions": "Scattered Clouds",
     "wind_direction": "IN",
-    "wind_speed": 7.6,
-    "wind_degrees": 28,
+    "wind_speed": 8.2,
+    "wind_degrees": 29,
     "roof": "dome",
     "forecast_time_utc": "2026-10-21T00:00:00+00:00"
   }

@@ -72,6 +72,7 @@ from providers.nba.nba_markets import build_nba_markets
 from model.nba.team_rankings import build_nba_team_rankings
 from model.nba.player_matchups import main as build_nba_player_matchups
 from model.nba.betting_projections import build_nba_betting_projections
+from model.nba.build_nba_period_projections import main as build_nba_period_projections
 
 def format_duration(seconds):
     minutes, seconds = divmod(seconds, 60)
@@ -241,6 +242,9 @@ def run_full_update():
 
     print("\nNBA Betting Projections", flush=True)
     timed("build_nba_betting_projections", build_nba_betting_projections)
+
+    print("\nNBA Period Projections", flush=True)
+    timed("build_nba_period_projections", build_nba_period_projections)
 
     print("\n✅ Alpha Wagerz full update complete.", flush=True)
     print(f"⏱️ TOTAL FULL UPDATE: {format_duration(perf_counter() - pipeline_start)}", flush=True)

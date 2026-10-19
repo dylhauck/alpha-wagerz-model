@@ -5,10 +5,10 @@
     "game": "Cleveland Guardians @ Tampa Bay Rays",
     "away_team": "Cleveland Guardians",
     "home_team": "Tampa Bay Rays",
-    "away_sp": "",
+    "away_sp": "Shawn Armstrong",
     "home_sp": "Freddy Peralta",
     "venue": "Tropicana Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/mlb/games/849815.json"
   }
 ]
