@@ -1,7 +1,7 @@
 [
   {
-    "game_id": "849815",
-    "date": "2026-10-19",
+    "game_id": "849814",
+    "date": "2026-10-20",
     "game": "Cleveland Guardians @ Tampa Bay Rays",
     "away_team": "Cleveland Guardians",
     "home_team": "Tampa Bay Rays",
@@ -9,9 +9,9 @@
     "home_sp": "",
     "venue": "Tropicana Field",
     "status": "Scheduled",
-    "game_date_utc": "2026-10-20T00:08:00Z",
+    "game_date_utc": "2026-10-21T00:08:00Z",
     "game_time": "7:08 PM",
     "game_time_sort": "19:08",
-    "file": "data/tomorrow/mlb/processed/games/849815.json"
+    "file": "data/tomorrow/mlb/processed/games/849814.json"
   }
 ]

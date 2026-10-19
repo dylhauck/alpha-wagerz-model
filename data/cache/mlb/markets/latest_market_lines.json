@@ -1,83 +1,45 @@
 [
   {
-    "game_id": "849817",
-    "game": "Tampa Bay Rays @ Cleveland Guardians",
-    "away_team": "Tampa Bay Rays",
-    "home_team": "Cleveland Guardians",
+    "game_id": "849815",
+    "game": "Cleveland Guardians @ Tampa Bay Rays",
+    "away_team": "Cleveland Guardians",
+    "home_team": "Tampa Bay Rays",
     "bookmaker": "FanDuel",
     "bookmaker_key": "fanduel",
-    "odds_event_id": 75703324,
+    "odds_event_id": 75060858,
     "moneyline": {
-      "away": -124,
-      "home": 106
+      "away": 128,
+      "home": -152
     },
     "spread": {
       "away": 1.5,
-      "away_price": -330,
+      "away_price": -194,
       "home": -1.5,
-      "home_price": 240
+      "home_price": 160
     },
     "total": 6.5,
     "game_total": {
       "line": 6.5,
-      "over_price": -102,
-      "under_price": -120
+      "over_price": -118,
+      "under_price": -104
     },
     "team_totals": {
-      "away": 3.5,
-      "away_over_price": 116,
-      "away_under_price": -148,
-      "home": 2.5,
-      "home_over_price": -130,
-      "home_under_price": 102
+      "away": 2.5,
+      "away_over_price": -142,
+      "away_under_price": 112,
+      "home": 3.5,
+      "home_over_price": 100,
+      "home_under_price": -128,
+      "away_bookmaker": "FanDuel",
+      "home_bookmaker": "FanDuel"
     },
     "pitcher_strikeouts": {
-      "gavin williams": {
-        "player": "Gavin Williams",
-        "normalized_name": "gavin williams",
-        "line": 6.5,
-        "over_price": -104,
-        "under_price": -122,
-        "bookmaker": "FanDuel",
-        "bookmaker_key": "fanduel",
-        "market_name": "Pitcher Strikeouts"
-      },
-      "griffin jax": {
-        "player": "Griffin Jax",
-        "normalized_name": "griffin jax",
-        "line": 3.5,
-        "over_price": -148,
-        "under_price": 116,
-        "bookmaker": "FanDuel",
-        "bookmaker_key": "fanduel",
-        "market_name": "Pitcher Strikeouts"
-      },
-      "nick martinez": {
-        "player": "Nick Martinez",
-        "normalized_name": "nick martinez",
-        "line": 2.5,
+      "freddy peralta": {
+        "player": "Freddy Peralta",
+        "normalized_name": "freddy peralta",
+        "line": 4.5,
         "over_price": 128,
         "under_price": -164,
-        "bookmaker": "FanDuel",
-        "bookmaker_key": "fanduel",
-        "market_name": "Pitcher Strikeouts"
-      },
-      "drew rasmussen": {
-        "player": "Drew Rasmussen",
-        "normalized_name": "drew rasmussen",
-        "line": 5.5,
-        "over_price": -115,
-        "under_price": -111,
-        "bookmaker": "FanDuel",
-        "bookmaker_key": "fanduel",
-        "market_name": "Pitcher Strikeouts"
-      },
-      "parker messick": {
-        "player": "Parker Messick",
-        "normalized_name": "parker messick",
-        "line": 4.5,
-        "over_price": -120,
-        "under_price": -108,
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
@@ -85,6 +47,6 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-10-18T09:18:49Z"
+    "market_updated_at": "2026-10-19T10:31:09Z"
   }
 ]
