@@ -1,14 +1,1 @@
-[
-  {
-    "game_id": "849815",
-    "date": "2026-10-19",
-    "game": "Cleveland Guardians @ Tampa Bay Rays",
-    "away_team": "Cleveland Guardians",
-    "home_team": "Tampa Bay Rays",
-    "away_sp": "Shawn Armstrong",
-    "home_sp": "Freddy Peralta",
-    "venue": "Tropicana Field",
-    "status": "Pre-Game",
-    "file": "data/processed/mlb/games/849815.json"
-  }
-]
+[]
