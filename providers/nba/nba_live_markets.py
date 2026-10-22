@@ -277,36 +277,36 @@ def main():
     )
     teams_out, props_out = [], []
     for away, home, game, event_id in targets:
-            data = odds_by_event.get(str(event_id))
-            if not isinstance(data, dict):
-                print(f'WARN {away} @ {home}: odds unavailable', flush=True)
+        data = odds_by_event.get(str(event_id))
+        if not isinstance(data, dict):
+            print(f'WARN {away} @ {home}: odds unavailable', flush=True)
+            continue
+        if 'bookmakers' not in data and isinstance(data.get('data'), dict):
+            data = data['data']
+        book_items = bookmaker_items(data)
+        output = {'game_id': game.get('game_id'), 'event_id': event_id, 'away_team': away, 'home_team': home, 'full_game': {}, 'periods': {}}
+        for book in BOOKS:
+            entry = next(((b, ms) for b, ms in book_items if norm(b) == norm(book)), None)
+            if not entry:
                 continue
-            if 'bookmakers' not in data and isinstance(data.get('data'), dict):
-                data = data['data']
-            book_items = bookmaker_items(data)
-            output = {'game_id': game.get('game_id'), 'event_id': event_id, 'away_team': away, 'home_team': home, 'full_game': {}, 'periods': {}}
-            for book in BOOKS:
-                entry = next(((b, ms) for b, ms in book_items if norm(b) == norm(book)), None)
-                if not entry:
-                    continue
-                book_name, markets = entry
-                full, periods = parse_team(book_name, markets)
-                output['full_game'] = merge_market(output['full_game'], full)
-                for key, market in periods.items():
-                    output['periods'][key] = merge_market(output['periods'].get(key), market)
-                found_props = parse_props(book_name, markets, event_id, game.get('game_id'))
-                props_out.extend(found_props)
-                print(f'  {book_name}: {len(markets)} markets | {len(found_props)} parsed player props')
-                if DEBUG:
-                    for m in markets:
-                        if isinstance(m, dict):
-                            print('    ', market_name(m), '| odds rows:', len(rows(m)))
-                    if not found_props:
-                        sample = next((m for m in markets if isinstance(m, dict) and ('player' in market_name(m).lower() or classify(market_name(m)))), None)
-                        if sample:
-                            print('    UNPARSED PLAYER MARKET SAMPLE:', json.dumps(sample, ensure_ascii=False)[:5000])
-            teams_out.append(output)
-            print(f'{away} @ {home}: ML={bool(output["full_game"].get("moneyline"))}, spread={bool(output["full_game"].get("spread"))}, total={bool(output["full_game"].get("total"))}, team_totals={output["full_game"].get("team_totals")}, props={sum(p["event_id"] == event_id for p in props_out)}', flush=True)
+            book_name, markets = entry
+            full, periods = parse_team(book_name, markets)
+            output['full_game'] = merge_market(output['full_game'], full)
+            for key, market in periods.items():
+                output['periods'][key] = merge_market(output['periods'].get(key), market)
+            found_props = parse_props(book_name, markets, event_id, game.get('game_id'))
+            props_out.extend(found_props)
+            print(f'  {book_name}: {len(markets)} markets | {len(found_props)} parsed player props')
+            if DEBUG:
+                for m in markets:
+                    if isinstance(m, dict):
+                        print('    ', market_name(m), '| odds rows:', len(rows(m)))
+                if not found_props:
+                    sample = next((m for m in markets if isinstance(m, dict) and ('player' in market_name(m).lower() or classify(market_name(m)))), None)
+                    if sample:
+                        print('    UNPARSED PLAYER MARKET SAMPLE:', json.dumps(sample, ensure_ascii=False)[:5000])
+        teams_out.append(output)
+        print(f'{away} @ {home}: ML={bool(output["full_game"].get("moneyline"))}, spread={bool(output["full_game"].get("spread"))}, total={bool(output["full_game"].get("total"))}, team_totals={output["full_game"].get("team_totals")}, props={sum(p["event_id"] == event_id for p in props_out)}', flush=True)
     team_payload = {'generated_at': now.isoformat(), 'games': teams_out}
     prop_payload = {'generated_at': now.isoformat(), 'props': props_out}
     for directory in (MODEL, WEB):
