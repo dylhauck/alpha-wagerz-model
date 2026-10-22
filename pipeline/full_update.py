@@ -112,15 +112,29 @@ def run_mlb_update():
     print("\n🌤️ Weather", flush=True)
     timed("build_weather_file", build_weather_file)
 
-    print("\n⚾ Metrics", flush=True)
-    timed("build_hitter_metrics", build_hitter_metrics)
-    timed("build_pitcher_metrics", build_pitcher_metrics)
-    timed("build_pitch_mix", build_pitch_mix)
-    timed("build_hitter_pitch_type_metrics", build_hitter_pitch_type_metrics)
-    timed("build_pitch_arsenal_metrics", build_pitch_arsenal_metrics)
-    timed("build_zone_allowed_metrics", build_zone_allowed_metrics)
-    timed("build_team_offense_metrics", build_team_offense_metrics)
-    timed("build_bullpen_metrics", build_bullpen_metrics)
+    print("\n⚾ Metrics (parallel hitter/pitcher groups)", flush=True)
+    import subprocess
+    import sys
+    from concurrent.futures import ThreadPoolExecutor
+
+    def run_metric_group(group):
+        return subprocess.run(
+            [sys.executable, "-u", "-m", "pipeline.full_update",
+             "--metric-group", group],
+            check=False,
+        ).returncode
+
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        hitter_job = executor.submit(run_metric_group, "hitter")
+        pitcher_job = executor.submit(run_metric_group, "pitcher")
+        hitter_status = hitter_job.result()
+        pitcher_status = pitcher_job.result()
+
+    if hitter_status or pitcher_status:
+        raise RuntimeError(
+            "MLB metric group failed: "
+            f"hitter={hitter_status}, pitcher={pitcher_status}"
+        )
 
     print("\n🔗 Attachments", flush=True)
     timed("attach_weather_to_games", attach_weather_to_games)
@@ -161,6 +175,22 @@ def run_mlb_update():
 
     print("\n🗄️ Saving history", flush=True)
     timed("save_daily_history", save_daily_history)
+
+
+def run_mlb_metric_group(group):
+    """Keep all original metric computations; isolate disjoint output groups."""
+    if group == "hitter":
+        timed("build_hitter_metrics", build_hitter_metrics)
+        timed("build_hitter_pitch_type_metrics", build_hitter_pitch_type_metrics)
+        timed("build_team_offense_metrics", build_team_offense_metrics)
+    elif group == "pitcher":
+        timed("build_pitcher_metrics", build_pitcher_metrics)
+        timed("build_pitch_mix", build_pitch_mix)
+        timed("build_pitch_arsenal_metrics", build_pitch_arsenal_metrics)
+        timed("build_zone_allowed_metrics", build_zone_allowed_metrics)
+        timed("build_bullpen_metrics", build_bullpen_metrics)
+    else:
+        raise ValueError(f"Unknown MLB metric group: {group}")
 
 
 def run_nfl_update():
@@ -316,7 +346,9 @@ def run_full_update():
 if __name__ == "__main__":
     import sys
 
-    if len(sys.argv) == 3 and sys.argv[1] == "--sport":
+    if len(sys.argv) == 3 and sys.argv[1] == "--metric-group":
+        run_mlb_metric_group(sys.argv[2])
+    elif len(sys.argv) == 3 and sys.argv[1] == "--sport":
         sport = sys.argv[2].lower()
         runners = {
             "mlb": run_mlb_update,
