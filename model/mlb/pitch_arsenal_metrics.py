@@ -105,9 +105,26 @@ def build_pitch_arsenal_metrics():
     df["stand"] = df["stand"].fillna("")
     df["is_bip"] = df["type"] == "X"
     df["is_hard_hit"] = df["launch_speed"] >= 95
-    df["is_barrel"] = df.apply(is_barrel, axis=1)
+    df["is_barrel"] = (df["launch_speed"].ge(98) & df["launch_angle"].between(26, 30))
     df["is_swinging_strike"] = df["description"].str.contains("swinging_strike", na=False)
-    df["xHR"] = df.apply(expected_hr_value, axis=1)
+    ev = pd.to_numeric(df["launch_speed"], errors="coerce")
+    la = pd.to_numeric(df["launch_angle"], errors="coerce")
+    distance = pd.to_numeric(df["hit_distance_sc"], errors="coerce")
+    valid = ev.notna() & la.notna()
+    score = np.select(
+        [
+            valid & ev.ge(105) & la.between(20, 34),
+            valid & ev.ge(100) & la.between(22, 35),
+            valid & ev.ge(98) & la.between(24, 32),
+            valid & ev.ge(95) & la.between(20, 36),
+        ],
+        [0.65, 0.45, 0.30, 0.12],
+        default=0.0,
+    )
+    score = score + np.where(valid & distance.ge(390), 0.15,
+                             np.where(valid & distance.ge(375), 0.08, 0.0))
+    df["xHR"] = np.where(df["events"].eq("home_run"), 1.0,
+                         np.where(valid, np.minimum(score, 1.0), 0.0))
 
     grouped = df.groupby(
         ["pitcher", "player_name", "stand", "pitch_type", "pitch_family"],
@@ -137,7 +154,13 @@ def build_pitch_arsenal_metrics():
     grouped["SwStr%"] = safe_rate(grouped["SwStr"], grouped["Pitches"], 100)
     grouped["xHR/Pitch%"] = safe_rate(grouped["xHR"], grouped["Pitches"], 100)
 
-    grouped["Pitch Arsenal Grade"] = grouped.apply(grade_pitch, axis=1)
+    grouped["Pitch Arsenal Grade"] = (
+        grouped["xwOBA"] * 90
+        + grouped["Brl/BIP%"] * 1.5
+        + grouped["HH%"] * 0.45
+        + grouped["xHR/Pitch%"] * 8
+        - grouped["SwStr%"] * 0.45
+    ).clip(0, 100)
 
     final = grouped[[
         "pitcher",
