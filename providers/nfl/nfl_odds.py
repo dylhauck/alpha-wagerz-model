@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import gzip
 from functools import lru_cache
-from concurrent.futures import ThreadPoolExecutor
+from providers.odds_bulk import fetch_many
 import json
 import os
 from datetime import datetime, timedelta, timezone
@@ -1228,21 +1228,18 @@ def build_for_slate(
     failures = 0
 
     workers = max(1, min(6, int(os.getenv('NFL_ODDS_WORKERS', '4'))))
+    odds_by_event = fetch_many(
+        [event.get("id") for event, _ in matched],
+        fetch_event_odds,
+        lambda ids: api_get("odds/multi", {
+            "apiKey": API_KEY,
+            "eventIds": ",".join(ids),
+            "bookmakers": ",".join(BOOKMAKERS),
+        }),
+        workers=workers,
+    )
 
-    def fetch_pair(pair):
-        event, slate_game = pair
-        event_id = event.get('id')
-        if event_id is None:
-            return pair, None, None
-        try:
-            return pair, fetch_event_odds(event_id), None
-        except Exception as exc:
-            return pair, None, exc
-
-    with ThreadPoolExecutor(max_workers=workers) as pool:
-        results = list(pool.map(fetch_pair, matched))
-
-    for (event, slate_game), fetched_odds, fetch_error in results:
+    for event, slate_game in matched:
         event_id = event.get(
             "id"
         )
@@ -1251,9 +1248,9 @@ def build_for_slate(
             continue
 
         try:
-            if fetch_error is not None:
-                raise RuntimeError(str(fetch_error))
-            odds_payload = fetched_odds
+            odds_payload = odds_by_event.get(str(event_id))
+            if not isinstance(odds_payload, dict):
+                raise RuntimeError('No odds returned for event')
 
             games.append(
                 normalize_event_odds(
