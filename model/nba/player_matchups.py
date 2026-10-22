@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import math
 import time
 from collections import defaultdict
@@ -63,9 +64,9 @@ ALL_SEASONS = [
 
 SEASON_TYPE = "Regular Season"
 
-REQUEST_TIMEOUT = 30
+REQUEST_TIMEOUT = int(os.getenv('NBA_STATS_TIMEOUT', '30'))
 REQUEST_DELAY_SECONDS = 1.0
-MAX_RETRIES = 3
+MAX_RETRIES = int(os.getenv('NBA_STATS_MAX_RETRIES', '3'))
 
 
 # ============================================================
