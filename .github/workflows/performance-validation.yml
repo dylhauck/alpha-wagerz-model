@@ -1,0 +1,45 @@
+name: Performance Optimization Validation
+
+on:
+  push:
+    branches:
+      - performance-optimization
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout model branch
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile all Python modules
+        run: python -m compileall -q pipeline providers model scripts
+      - name: Validate performance patch structure
+        run: |
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+
+          for path in (
+              'providers/mlb/market.py',
+              'providers/nfl/nfl_odds.py',
+              'providers/nba/nba_live_markets.py',
+          ):
+              source = Path(path).read_text(encoding='utf-8')
+              tree = ast.parse(source, filename=path)
+              assert any(
+                  isinstance(node, ast.ImportFrom)
+                  and node.module == 'concurrent.futures'
+                  and any(alias.name == 'ThreadPoolExecutor' for alias in node.names)
+                  for node in ast.walk(tree)
+              ), f'{path}: concurrent odds fetching not found'
+              print(f'OK: {path}')
+          PY
