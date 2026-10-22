@@ -299,13 +299,11 @@ def build_schedule() -> list[dict[str, Any]]:
 
             if attempt < max_attempts:
                 wait_seconds = attempt * 10
-
-            print(
-                f"   Waiting {wait_seconds} seconds "
-                f"before retrying..."
-            )
-
-            time.sleep(wait_seconds)
+                print(
+                    f"   Waiting {wait_seconds} seconds "
+                    f"before retrying..."
+                )
+                time.sleep(wait_seconds)
 
 
     if response is None:
