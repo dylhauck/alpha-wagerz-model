@@ -1,4 +1,5 @@
 import os
+from concurrent.futures import ThreadPoolExecutor
 import re
 from datetime import datetime, time, timedelta, timezone
 from pathlib import Path
@@ -1212,7 +1213,12 @@ def build_market_lines():
         api_events = fetch_today_events()
         print(f"📅 Odds-API.io returned {len(api_events)} pending MLB events today")
 
-        for api_event in api_events:
+        # Fetch independent odds requests concurrently; preserve sequential matching and writes.
+        workers = max(1, min(6, int(os.getenv('MLB_ODDS_WORKERS', '4'))))
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            odds_results = list(pool.map(lambda event: fetch_event_odds(event.get('id')), api_events))
+
+        for api_event, odds_payload in zip(api_events, odds_results):
             local_game = find_matching_game(api_event, local_games, used_game_ids)
 
             if not local_game:
@@ -1222,7 +1228,6 @@ def build_market_lines():
                 )
                 continue
 
-            odds_payload = fetch_event_odds(api_event.get("id"))
             payload = build_live_payload(
                 api_event,
                 local_game,
