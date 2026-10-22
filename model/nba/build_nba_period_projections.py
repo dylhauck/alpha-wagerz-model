@@ -38,6 +38,10 @@ MIN_TEAMS = 28
 
 REQUEST_DELAY = 1.5
 
+NBA_API_MAX_RETRIES = 3
+NBA_API_TIMEOUT = 30
+NBA_API_RETRY_DELAY = 5
+
 # These are provisional assumptions, not empirically
 # calibrated period-level standard deviations.
 DEFAULT_MARGIN_SD = 8.0
@@ -135,36 +139,60 @@ def load_history():
             flush=True,
         )
 
-        endpoint = leaguedashteamstats.LeagueDashTeamStats(
-            season=SEASON,
-            season_type_all_star="Regular Season",
-            league_id_nullable="00",
-            period=q,
-            per_mode_detailed="PerGame",
-            timeout=60,
-        )
+        # Retry transient API failures without changing projection calculations.
+        # Validate the response before accepting an attempt.
+        df = None
+        for attempt in range(1, NBA_API_MAX_RETRIES + 1):
+            try:
+                print(
+                    f"NBA Q{q} API request "
+                    f"(attempt {attempt}/{NBA_API_MAX_RETRIES})...",
+                    flush=True,
+                )
 
-        df = endpoint.get_data_frames()[0]
+                endpoint = leaguedashteamstats.LeagueDashTeamStats(
+                    season=SEASON,
+                    season_type_all_star="Regular Season",
+                    league_id_nullable="00",
+                    period=q,
+                    per_mode_detailed="PerGame",
+                    timeout=NBA_API_TIMEOUT,
+                )
 
-        required = {
-            "TEAM_ID",
-            "PTS",
-        }
+                candidate = endpoint.get_data_frames()[0]
+                if candidate.empty:
+                    raise RuntimeError(f"NBA API returned no Q{q} team data.")
 
-        if df.empty:
-            raise RuntimeError(
-                f"NBA API returned no Q{q} team data. "
-                "Check NBA API availability and season."
-            )
+                required = {"TEAM_ID", "PTS"}
+                missing = required - set(candidate.columns)
+                if missing:
+                    raise RuntimeError(
+                        f"NBA API Q{q} response missing columns: "
+                        f"{sorted(missing)}. Available columns: "
+                        f"{list(candidate.columns)}"
+                    )
 
-        missing = required - set(df.columns)
+                df = candidate
+                print(f"NBA Q{q} API request successful.", flush=True)
+                break
 
-        if missing:
-            raise RuntimeError(
-                f"NBA API Q{q} response missing columns: "
-                f"{sorted(missing)}. "
-                f"Available columns: {list(df.columns)}"
-            )
+            except Exception as exc:
+                print(
+                    f"WARNING: NBA Q{q} request failed "
+                    f"({attempt}/{NBA_API_MAX_RETRIES}): {exc}",
+                    flush=True,
+                )
+                if attempt == NBA_API_MAX_RETRIES:
+                    raise RuntimeError(
+                        f"NBA Q{q} API failed after "
+                        f"{NBA_API_MAX_RETRIES} attempts."
+                    ) from exc
+                wait_time = NBA_API_RETRY_DELAY * attempt
+                print(f"Retrying in {wait_time} seconds...", flush=True)
+                time.sleep(wait_time)
+
+        if df is None:
+            raise RuntimeError(f"Unable to retrieve NBA Q{q} statistics.")
 
         valid_count = 0
 

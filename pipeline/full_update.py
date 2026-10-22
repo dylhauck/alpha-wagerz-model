@@ -246,7 +246,19 @@ def run_full_update():
     timed("build_nba_betting_projections", build_nba_betting_projections)
 
     print("\nNBA Period Projections", flush=True)
-    timed("build_nba_period_projections", build_nba_period_projections)
+
+    try:
+        timed(
+            "build_nba_period_projections",
+            build_nba_period_projections,
+        )
+    except Exception as exc:
+        print(
+            f"⚠️ NBA Period Projections failed: {exc}", flush=True,
+        )
+        print(
+            "⚠️ Continuing with NBA Live Markets and Future Slate.", flush=True,
+        )
 
     print("\n📡 NBA Live Markets", flush=True)
     timed("build_nba_live_markets", build_nba_live_markets)
