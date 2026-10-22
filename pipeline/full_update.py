@@ -89,10 +89,7 @@ def timed(label, func, *args, **kwargs):
         print(f"⏱️ {label}: {format_duration(perf_counter() - start)}", flush=True)
 
 
-def run_full_update():
-    pipeline_start = perf_counter()
-    print("🐺 Starting Alpha Wagerz full update...", flush=True)
-
+def run_mlb_update():
     print("\n📚 Reference data", flush=True)
     timed("build_reference_files", build_reference_files)
     timed("build_player_reference", build_player_reference)
@@ -165,6 +162,8 @@ def run_full_update():
     print("\n🗄️ Saving history", flush=True)
     timed("save_daily_history", save_daily_history)
 
+
+def run_nfl_update():
     #NFL
     print("\n🏈 NFL Data", flush=True)
     timed("build_all_nfl_data", build_all_nfl_data)
@@ -220,6 +219,8 @@ def run_full_update():
     print("\n🏆 NFL Rankings / Best Bets", flush=True)
     timed("build_nfl_rankings", build_nfl_rankings)
 
+
+def run_nba_update():
     # NBA
     print("\nNBA Data", flush=True)
     timed("build_nba_data", build_nba_data)
@@ -266,10 +267,66 @@ def run_full_update():
     print("\n🔮 NBA Future Slate", flush=True)
     timed("build_nba_future_pipeline", build_nba_future_pipeline)
 
+
+def run_full_update():
+    """Run independent sport pipelines concurrently in separate processes.
+
+    Sports write to disjoint MLB/NFL/NBA output trees. Each sport retains
+    its existing sequential ordering, validations, and calculations.
+    """
+    import os
+    import subprocess
+    import sys
+    from concurrent.futures import ThreadPoolExecutor
+
+    pipeline_start = perf_counter()
+    print("🐺 Starting parallel Alpha Wagerz full update...", flush=True)
+    sports = ("mlb", "nfl", "nba")
+
+    def run_sport(sport):
+        started = perf_counter()
+        print(f"▶️ Starting {sport.upper()} pipeline", flush=True)
+        completed = subprocess.run(
+            [sys.executable, "-u", "-m", "pipeline.full_update", "--sport", sport],
+            check=False,
+        )
+        print(
+            f"⏱️ {sport.upper()} pipeline: "
+            f"{format_duration(perf_counter() - started)} "
+            f"(exit={completed.returncode})",
+            flush=True,
+        )
+        return sport, completed.returncode
+
+    with ThreadPoolExecutor(max_workers=3) as executor:
+        results = list(executor.map(run_sport, sports))
+
+    failures = [sport for sport, code in results if code != 0]
+    if failures:
+        raise RuntimeError(f"Sport pipelines failed: {', '.join(failures)}")
+
     print("\n✅ Alpha Wagerz full update complete.", flush=True)
-    print(f"⏱️ TOTAL FULL UPDATE: {format_duration(perf_counter() - pipeline_start)}", flush=True)
+    print(
+        f"⏱️ TOTAL FULL UPDATE: "
+        f"{format_duration(perf_counter() - pipeline_start)}",
+        flush=True,
+    )
 
 
 if __name__ == "__main__":
-    run_full_update()
+    import sys
 
+    if len(sys.argv) == 3 and sys.argv[1] == "--sport":
+        sport = sys.argv[2].lower()
+        runners = {
+            "mlb": run_mlb_update,
+            "nfl": run_nfl_update,
+            "nba": run_nba_update,
+        }
+        if sport not in runners:
+            raise SystemExit(f"Unknown sport: {sport}")
+        runners[sport]()
+    elif len(sys.argv) == 1:
+        run_full_update()
+    else:
+        raise SystemExit("Usage: python -m pipeline.full_update [--sport mlb|nfl|nba]")
