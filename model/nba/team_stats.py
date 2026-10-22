@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import time
 from collections import defaultdict
 from datetime import datetime, timezone
@@ -20,8 +21,8 @@ LAST_SEASON = "2025-26"
 
 SEASON_TYPE = "Regular Season"
 
-REQUEST_TIMEOUT = 30
-MAX_ATTEMPTS = 3
+REQUEST_TIMEOUT = int(os.getenv('NBA_STATS_TIMEOUT', '30'))
+MAX_ATTEMPTS = int(os.getenv('NBA_STATS_MAX_RETRIES', '3'))
 RETRY_DELAY_SECONDS = 5
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
