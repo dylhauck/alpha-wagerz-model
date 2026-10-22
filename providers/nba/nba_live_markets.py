@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import gzip
+from concurrent.futures import ThreadPoolExecutor
 import json
 import os
 import re
@@ -20,6 +21,8 @@ API_KEY = os.getenv('ODDS_API_IO_KEY')
 BASE = os.getenv('ODDS_API_IO_BASE', 'https://api.odds-api.io/v3').rstrip('/')
 BOOKS = [x.strip() for x in os.getenv('NBA_ODDS_API_IO_BOOKMAKERS', 'FanDuel,DraftKings').split(',') if x.strip()]
 DEBUG = os.getenv('NBA_MARKETS_DEBUG', '0') == '1'
+# Cap concurrency to protect the provider and keep request behavior predictable.
+ODDS_WORKERS = max(1, min(6, int(os.getenv('NBA_ODDS_WORKERS', '4'))))
 
 ALIASES = {'ATL':'Atlanta Hawks','BOS':'Boston Celtics','BKN':'Brooklyn Nets','CHA':'Charlotte Hornets','CHI':'Chicago Bulls','CLE':'Cleveland Cavaliers','DAL':'Dallas Mavericks','DEN':'Denver Nuggets','DET':'Detroit Pistons','GSW':'Golden State Warriors','HOU':'Houston Rockets','IND':'Indiana Pacers','LAC':'Los Angeles Clippers','LAL':'Los Angeles Lakers','MEM':'Memphis Grizzlies','MIA':'Miami Heat','MIL':'Milwaukee Bucks','MIN':'Minnesota Timberwolves','NOP':'New Orleans Pelicans','NYK':'New York Knicks','OKC':'Oklahoma City Thunder','ORL':'Orlando Magic','PHI':'Philadelphia 76ers','PHX':'Phoenix Suns','POR':'Portland Trail Blazers','SAC':'Sacramento Kings','SAS':'San Antonio Spurs','TOR':'Toronto Raptors','UTA':'Utah Jazz','WAS':'Washington Wizards'}
 
@@ -240,50 +243,66 @@ def main():
     for game in slate_games:
         if isinstance(game, dict):
             matched[(team(game.get('away_abbr') or game.get('away_team')), team(game.get('home_abbr') or game.get('home_team')))] = game
-    teams_out, props_out = [], []
+    # Fetch independent events concurrently, then parse in original event order.
+    # This preserves output schemas and avoids concurrent writes to output files.
+    targets = []
     for event in events:
         if not isinstance(event, dict):
             continue
         away, home = event_teams(event)
-        if (away, home) not in matched:
-            continue
-        game = matched[(away, home)]
+        game = matched.get((away, home))
         event_id = event.get('id') or event.get('eventId')
-        if not event_id:
-            continue
+        if game is not None and event_id:
+            targets.append((away, home, game, event_id))
+
+    def fetch_odds(target):
+        away, home, game, event_id = target
         try:
-            data = api_get('odds', {'apiKey': API_KEY, 'eventId': event_id, 'bookmakers': ','.join(BOOKS)})
+            data = api_get('odds', {
+                'apiKey': API_KEY,
+                'eventId': event_id,
+                'bookmakers': ','.join(BOOKS),
+            })
+            return target, data, None
         except Exception as exc:
-            print(f'WARN {away} @ {home}: {exc}', flush=True)
-            continue
-        if not isinstance(data, dict):
-            continue
-        if 'bookmakers' not in data and isinstance(data.get('data'), dict):
-            data = data['data']
-        book_items = bookmaker_items(data)
-        output = {'game_id': game.get('game_id'), 'event_id': event_id, 'away_team': away, 'home_team': home, 'full_game': {}, 'periods': {}}
-        for book in BOOKS:
-            entry = next(((b, ms) for b, ms in book_items if norm(b) == norm(book)), None)
-            if not entry:
+            return target, None, exc
+
+    teams_out, props_out = [], []
+    with ThreadPoolExecutor(max_workers=ODDS_WORKERS) as pool:
+        results = pool.map(fetch_odds, targets)
+        for target, data, error in results:
+            away, home, game, event_id = target
+            if error is not None:
+                print(f'WARN {away} @ {home}: {error}', flush=True)
                 continue
-            book_name, markets = entry
-            full, periods = parse_team(book_name, markets)
-            output['full_game'] = merge_market(output['full_game'], full)
-            for key, market in periods.items():
-                output['periods'][key] = merge_market(output['periods'].get(key), market)
-            found_props = parse_props(book_name, markets, event_id, game.get('game_id'))
-            props_out.extend(found_props)
-            print(f'  {book_name}: {len(markets)} markets | {len(found_props)} parsed player props')
-            if DEBUG:
-                for m in markets:
-                    if isinstance(m, dict):
-                        print('    ', market_name(m), '| odds rows:', len(rows(m)))
-                if not found_props:
-                    sample = next((m for m in markets if isinstance(m, dict) and ('player' in market_name(m).lower() or classify(market_name(m)))), None)
-                    if sample:
-                        print('    UNPARSED PLAYER MARKET SAMPLE:', json.dumps(sample, ensure_ascii=False)[:5000])
-        teams_out.append(output)
-        print(f'{away} @ {home}: ML={bool(output["full_game"].get("moneyline"))}, spread={bool(output["full_game"].get("spread"))}, total={bool(output["full_game"].get("total"))}, team_totals={output["full_game"].get("team_totals")}, props={sum(p["event_id"] == event_id for p in props_out)}', flush=True)
+            if not isinstance(data, dict):
+                continue
+            if 'bookmakers' not in data and isinstance(data.get('data'), dict):
+                data = data['data']
+            book_items = bookmaker_items(data)
+            output = {'game_id': game.get('game_id'), 'event_id': event_id, 'away_team': away, 'home_team': home, 'full_game': {}, 'periods': {}}
+            for book in BOOKS:
+                entry = next(((b, ms) for b, ms in book_items if norm(b) == norm(book)), None)
+                if not entry:
+                    continue
+                book_name, markets = entry
+                full, periods = parse_team(book_name, markets)
+                output['full_game'] = merge_market(output['full_game'], full)
+                for key, market in periods.items():
+                    output['periods'][key] = merge_market(output['periods'].get(key), market)
+                found_props = parse_props(book_name, markets, event_id, game.get('game_id'))
+                props_out.extend(found_props)
+                print(f'  {book_name}: {len(markets)} markets | {len(found_props)} parsed player props')
+                if DEBUG:
+                    for m in markets:
+                        if isinstance(m, dict):
+                            print('    ', market_name(m), '| odds rows:', len(rows(m)))
+                    if not found_props:
+                        sample = next((m for m in markets if isinstance(m, dict) and ('player' in market_name(m).lower() or classify(market_name(m)))), None)
+                        if sample:
+                            print('    UNPARSED PLAYER MARKET SAMPLE:', json.dumps(sample, ensure_ascii=False)[:5000])
+            teams_out.append(output)
+            print(f'{away} @ {home}: ML={bool(output["full_game"].get("moneyline"))}, spread={bool(output["full_game"].get("spread"))}, total={bool(output["full_game"].get("total"))}, team_totals={output["full_game"].get("team_totals")}, props={sum(p["event_id"] == event_id for p in props_out)}', flush=True)
     team_payload = {'generated_at': now.isoformat(), 'games': teams_out}
     prop_payload = {'generated_at': now.isoformat(), 'props': props_out}
     for directory in (MODEL, WEB):
