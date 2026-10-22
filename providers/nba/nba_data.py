@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import time
 
@@ -266,7 +267,7 @@ def build_schedule() -> list[dict[str, Any]]:
         "🏀 Loading 2026-27 NBA schedule..."
     )
 
-    max_attempts = 3
+    max_attempts = int(os.getenv('NBA_STATS_MAX_RETRIES', '3'))
     response = None
 
     for attempt in range(1, max_attempts + 1):
@@ -280,7 +281,7 @@ def build_schedule() -> list[dict[str, Any]]:
                 scheduleleaguev2.ScheduleLeagueV2(
                     league_id="00",
                     season=CURRENT_SEASON,
-                    timeout=90,
+                    timeout=int(os.getenv('NBA_STATS_TIMEOUT', '90')),
                 )
             )
 
