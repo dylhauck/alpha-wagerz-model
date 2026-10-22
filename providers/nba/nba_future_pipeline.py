@@ -84,11 +84,21 @@ def projections():
         betting.build_nba_betting_projections()
 
     import model.nba.build_nba_period_projections as periods
-    with overridden(periods,
-                    SOURCE=NEXT / 'betting_projections.json',
-                    OUT=NEXT / 'team_projections.json',
-                    WEB=WEB_NEXT / 'team_projections.json'):
-        periods.main()
+    try:
+        with overridden(periods,
+                        SOURCE=NEXT / 'betting_projections.json',
+                        OUT=NEXT / 'team_projections.json',
+                        WEB=WEB_NEXT / 'team_projections.json'):
+            periods.main()
+    except Exception as exc:
+        # NBA stats frequently times out on GitHub-hosted runners.
+        # Preserve existing projections rather than publish invented numbers.
+        # Continue to build independent live markets and player props.
+        print(
+            f"WARNING: Future NBA period projections unavailable: {exc}. "
+            "Preserving any existing period projection data.",
+            flush=True,
+        )
 
 
 def markets():
