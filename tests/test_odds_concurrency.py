@@ -80,6 +80,21 @@ class OddsConcurrencyTests(unittest.TestCase):
         )
         self.assertIn("reserved_ids.add(", function)
 
+    def test_sports_run_in_isolated_parallel_processes(self):
+        source = (ROOT / "pipeline/full_update.py").read_text(encoding="utf-8")
+        tree = ast.parse(source)
+        functions = {
+            node.name: node for node in tree.body
+            if isinstance(node, ast.FunctionDef)
+        }
+        for sport in ("mlb", "nfl", "nba"):
+            self.assertIn(f"run_{sport}_update", functions)
+        self.assertIn("subprocess.run(", source)
+        self.assertIn("ThreadPoolExecutor(max_workers=3)", source)
+        self.assertIn("check=False", source)
+        self.assertIn("if failures:", source)
+        self.assertIn("results = list(executor.map(run_sport, sports))", source)
+
     def test_nba_parses_in_original_order(self):
         source = (ROOT / "providers/nba/nba_live_markets.py").read_text(encoding="utf-8")
         self.assertIn("for away, home, game, event_id in targets:", source)
