@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import math
+import os
 import statistics
 import time
 
@@ -38,9 +39,9 @@ MIN_TEAMS = 28
 
 REQUEST_DELAY = 1.5
 
-NBA_API_MAX_RETRIES = 3
-NBA_API_TIMEOUT = 30
-NBA_API_RETRY_DELAY = 5
+NBA_API_MAX_RETRIES = int(os.getenv('NBA_STATS_MAX_RETRIES', '3'))
+NBA_API_TIMEOUT = int(os.getenv('NBA_STATS_TIMEOUT', '30'))
+NBA_API_RETRY_DELAY = int(os.getenv('NBA_STATS_RETRY_DELAY', '5'))
 
 # These are provisional assumptions, not empirically
 # calibrated period-level standard deviations.
