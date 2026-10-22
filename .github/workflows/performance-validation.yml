@@ -39,9 +39,9 @@ jobs:
               tree = ast.parse(source, filename=path)
               assert any(
                   isinstance(node, ast.ImportFrom)
-                  and node.module == 'concurrent.futures'
-                  and any(alias.name == 'ThreadPoolExecutor' for alias in node.names)
+                  and node.module == 'providers.odds_bulk'
+                  and any(alias.name == 'fetch_many' for alias in node.names)
                   for node in ast.walk(tree)
-              ), f'{path}: concurrent odds fetching not found'
+              ), f'{path}: bulk odds fetching not found'
               print(f'OK: {path}')
           PY
