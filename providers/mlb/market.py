@@ -1213,21 +1213,29 @@ def build_market_lines():
         api_events = fetch_today_events()
         print(f"📅 Odds-API.io returned {len(api_events)} pending MLB events today")
 
-        # Fetch independent odds requests concurrently; preserve sequential matching and writes.
-        workers = max(1, min(6, int(os.getenv('MLB_ODDS_WORKERS', '4'))))
-        with ThreadPoolExecutor(max_workers=workers) as pool:
-            odds_results = list(pool.map(lambda event: fetch_event_odds(event.get('id')), api_events))
-
-        for api_event, odds_payload in zip(api_events, odds_results):
-            local_game = find_matching_game(api_event, local_games, used_game_ids)
-
+        # Match slate games before requesting odds: never spend API quota
+        # on unmatched events. Reserve matches to prevent duplicate games.
+        matched_events = []
+        reserved_ids = set(used_game_ids)
+        for api_event in api_events:
+            local_game = find_matching_game(api_event, local_games, reserved_ids)
             if not local_game:
                 print(
                     "⚠️ Could not match odds event: "
                     f"{api_event.get('away')} @ {api_event.get('home')}"
                 )
                 continue
+            matched_events.append((api_event, local_game))
+            reserved_ids.add(str(local_game.get("game_id")))
 
+        workers = max(1, min(6, int(os.getenv('MLB_ODDS_WORKERS', '4'))))
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            odds_results = list(pool.map(
+                lambda pair: fetch_event_odds(pair[0].get("id")),
+                matched_events,
+            ))
+
+        for (api_event, local_game), odds_payload in zip(matched_events, odds_results):
             payload = build_live_payload(
                 api_event,
                 local_game,
