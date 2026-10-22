@@ -126,13 +126,16 @@ jobs:
 
           echo "Complete NBA fallback state restored."
           
+      # The current season changes daily; never reuse an older day's snapshot.
+      - name: Set NBA history cache date
+        id: nba-cache-date
+        run: echo "date=$(TZ=America/Chicago date +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+
       - name: Restore cached NBA quarter history
         uses: actions/cache@v4
         with:
           path: alpha-wagerz-model/data/processed/nba/historical_quarters_2025-26.json
-          key: nba-quarter-history-2025-26-${{ hashFiles('alpha-wagerz-model/model/nba/build_nba_period_projections.py') }}
-          restore-keys: |
-            nba-quarter-history-2025-26-
+          key: nba-quarter-history-2025-26-${{ steps.nba-cache-date.outputs.date }}-${{ hashFiles('alpha-wagerz-model/model/nba/build_nba_period_projections.py') }}
 
       - name: Run Alpha Wagerz full update
         working-directory: alpha-wagerz-model
