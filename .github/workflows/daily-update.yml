@@ -27,6 +27,7 @@ jobs:
           token: ${{ secrets.ALPHA_WAGERZ_PAT }}
           path: alpha-wagerz-model
           fetch-depth: 0
+          ref: ${{ github.ref_name }}
 
       - name: Checkout website repository
         uses: actions/checkout@v6
@@ -156,6 +157,7 @@ jobs:
           echo "Updated Statcast master and metadata saved to R2."
 
       - name: Commit updated model data
+        if: github.ref_name == 'main'
         working-directory: alpha-wagerz-model
         run: |
           git config user.name "Alpha Wagerz Automation"
@@ -177,6 +179,7 @@ jobs:
           fi
 
       - name: Commit updated website data
+        if: github.ref_name == 'main'
         working-directory: alpha-wagerz-web
         run: |
           git config user.name "Alpha Wagerz Automation"
