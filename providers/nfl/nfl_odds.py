@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import gzip
+from functools import lru_cache
 from concurrent.futures import ThreadPoolExecutor
 import json
 import os
@@ -1182,6 +1183,7 @@ def normalize_event_odds(
 # FETCH EVENT ODDS
 # =========================================================
 
+@lru_cache(maxsize=256)
 def fetch_event_odds(
     event_id: Any,
 ) -> dict[str, Any]:
@@ -1388,6 +1390,8 @@ def build_nfl_odds():
             f"{SLATE_FILE}"
         )
 
+    # Avoid retaining live odds between separate pipeline invocations.
+    fetch_event_odds.cache_clear()
     events = fetch_events()
 
     print(
