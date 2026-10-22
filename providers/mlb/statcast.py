@@ -266,7 +266,7 @@ def build_recent_and_season_from_master(days_back=30):
         # strings lexicographically is identical to chronological comparison
         # and avoids parsing millions of timestamps into Python date objects.
         dates = chunk["game_date"].astype("string")
-        iso_dates = dates.str.fullmatch(r"\\d{4}-\\d{2}-\\d{2}").fillna(False)
+        iso_dates = dates.str.fullmatch(r"\d{4}-\d{2}-\d{2}").fillna(False)
         if iso_dates.all():
             season_mask = dates.ge(season_start.isoformat()) & dates.le(today.isoformat())
             recent_mask = dates.ge(recent_start.isoformat()) & dates.le(today.isoformat())
