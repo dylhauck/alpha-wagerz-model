@@ -1,5 +1,5 @@
 import os
-from concurrent.futures import ThreadPoolExecutor
+from providers.odds_bulk import fetch_many
 import re
 from datetime import datetime, time, timedelta, timezone
 from pathlib import Path
@@ -1229,13 +1229,18 @@ def build_market_lines():
             reserved_ids.add(str(local_game.get("game_id")))
 
         workers = max(1, min(6, int(os.getenv('MLB_ODDS_WORKERS', '4'))))
-        with ThreadPoolExecutor(max_workers=workers) as pool:
-            odds_results = list(pool.map(
-                lambda pair: fetch_event_odds(pair[0].get("id")),
-                matched_events,
-            ))
+        odds_by_event = fetch_many(
+            [event.get("id") for event, _ in matched_events],
+            fetch_event_odds,
+            lambda ids: get_json("odds/multi", {
+                "eventIds": ",".join(ids),
+                "bookmakers": ",".join(BOOKMAKERS),
+            }),
+            workers=workers,
+        )
 
-        for (api_event, local_game), odds_payload in zip(matched_events, odds_results):
+        for api_event, local_game in matched_events:
+            odds_payload = odds_by_event.get(str(api_event.get("id")), {})
             payload = build_live_payload(
                 api_event,
                 local_game,
