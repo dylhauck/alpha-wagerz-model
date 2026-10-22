@@ -17,6 +17,10 @@ jobs:
 
     env:
       ODDS_API_IO_KEY: ${{ secrets.ODDS_API_IO_KEY }}
+      # GitHub-hosted runners often cannot reach stats.nba.com reliably.
+      # Avoid blocking the entire slate on repeated 30-second timeouts.
+      NBA_STATS_MAX_RETRIES: '1'
+      NBA_STATS_TIMEOUT: '10'
       OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
       AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
