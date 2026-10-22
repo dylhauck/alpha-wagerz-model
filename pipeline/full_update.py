@@ -178,7 +178,35 @@ def run_mlb_update():
 
 
 def run_mlb_metric_group(group):
-    """Keep all original metric computations; isolate disjoint output groups."""
+    """Run independent metric families with a bounded, read-only CSV cache.
+
+    Only the last-30-days Statcast file is cached. The full-season and
+    historical files remain streamed from disk to avoid retaining multiple
+    gigabytes in each worker. Each consumer receives a deep copy, preserving
+    existing in-place calculations and results.
+    """
+    import pandas as pd
+    from pathlib import Path
+
+    original_read_csv = pd.read_csv
+    cached_recent = None
+    recent_path = Path("data/raw/mlb/statcast/statcast_last_30_days.csv").resolve()
+
+    def read_csv_cached(filepath_or_buffer, *args, **kwargs):
+        nonlocal cached_recent
+        if (
+            isinstance(filepath_or_buffer, (str, Path))
+            and Path(filepath_or_buffer).resolve() == recent_path
+            and not args
+            and set(kwargs).issubset({"low_memory"})
+        ):
+            if cached_recent is None:
+                cached_recent = original_read_csv(filepath_or_buffer, **kwargs)
+                print("📦 Cached last-30-day Statcast CSV for metric worker", flush=True)
+            return cached_recent.copy(deep=True)
+        return original_read_csv(filepath_or_buffer, *args, **kwargs)
+
+    pd.read_csv = read_csv_cached
     if group == "hitter":
         timed("build_hitter_metrics", build_hitter_metrics)
         timed("build_hitter_pitch_type_metrics", build_hitter_pitch_type_metrics)
