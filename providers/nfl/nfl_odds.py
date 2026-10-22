@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import gzip
+from concurrent.futures import ThreadPoolExecutor
 import json
 import os
 from datetime import datetime, timedelta, timezone
@@ -1224,7 +1225,22 @@ def build_for_slate(
     games = []
     failures = 0
 
-    for event, slate_game in matched:
+    workers = max(1, min(6, int(os.getenv('NFL_ODDS_WORKERS', '4'))))
+
+    def fetch_pair(pair):
+        event, slate_game = pair
+        event_id = event.get('id')
+        if event_id is None:
+            return pair, None, None
+        try:
+            return pair, fetch_event_odds(event_id), None
+        except Exception as exc:
+            return pair, None, exc
+
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        results = list(pool.map(fetch_pair, matched))
+
+    for (event, slate_game), fetched_odds, fetch_error in results:
         event_id = event.get(
             "id"
         )
@@ -1233,11 +1249,9 @@ def build_for_slate(
             continue
 
         try:
-            odds_payload = (
-                fetch_event_odds(
-                    event_id
-                )
-            )
+            if fetch_error is not None:
+                raise RuntimeError(str(fetch_error))
+            odds_payload = fetched_odds
 
             games.append(
                 normalize_event_odds(
