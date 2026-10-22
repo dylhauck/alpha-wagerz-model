@@ -42,7 +42,12 @@ def pitching_team(row):
 def build_bullpen_metrics():
     df = pd.read_csv(RAW_FILE, low_memory=False)
 
-    df["pitching_team"] = df.apply(pitching_team, axis=1)
+    topbot = df["inning_topbot"].astype(str).str.lower()
+    df["pitching_team"] = np.select(
+        [topbot.eq("top"), topbot.eq("bot")],
+        [df["home_team"].fillna(""), df["away_team"].fillna("")],
+        default="",
+    )
 
     # Basic bullpen approximation:
     # innings 6+ are more likely bullpen appearances.
@@ -51,7 +56,7 @@ def build_bullpen_metrics():
     df["is_bip"] = df["type"] == "X"
     df["is_hr"] = df["events"] == "home_run"
     df["is_hard_hit"] = df["launch_speed"] >= 95
-    df["is_barrel"] = df.apply(is_barrel, axis=1)
+    df["is_barrel"] = (df["launch_speed"].ge(98) & df["launch_angle"].between(26, 30))
     df["is_swinging_strike"] = df["description"].str.contains("swinging_strike", na=False)
 
     grouped = df.groupby("pitching_team", dropna=False).agg(
