@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import gzip
-from concurrent.futures import ThreadPoolExecutor
+from providers.odds_bulk import fetch_many
 import json
 import os
 import re
@@ -255,27 +255,31 @@ def main():
         if game is not None and event_id:
             targets.append((away, home, game, event_id))
 
-    def fetch_odds(target):
-        away, home, game, event_id = target
-        try:
-            data = api_get('odds', {
-                'apiKey': API_KEY,
-                'eventId': event_id,
-                'bookmakers': ','.join(BOOKS),
-            })
-            return target, data, None
-        except Exception as exc:
-            return target, None, exc
+    def fetch_single(event_id):
+        return api_get('odds', {
+            'apiKey': API_KEY,
+            'eventId': event_id,
+            'bookmakers': ','.join(BOOKS),
+        })
 
+    def fetch_multi(event_ids):
+        return api_get('odds/multi', {
+            'apiKey': API_KEY,
+            'eventIds': ','.join(event_ids),
+            'bookmakers': ','.join(BOOKS),
+        })
+
+    odds_by_event = fetch_many(
+        [target[3] for target in targets],
+        fetch_single,
+        fetch_multi,
+        workers=ODDS_WORKERS,
+    )
     teams_out, props_out = [], []
-    with ThreadPoolExecutor(max_workers=ODDS_WORKERS) as pool:
-        results = pool.map(fetch_odds, targets)
-        for target, data, error in results:
-            away, home, game, event_id = target
-            if error is not None:
-                print(f'WARN {away} @ {home}: {error}', flush=True)
-                continue
+    for away, home, game, event_id in targets:
+            data = odds_by_event.get(str(event_id))
             if not isinstance(data, dict):
+                print(f'WARN {away} @ {home}: odds unavailable', flush=True)
                 continue
             if 'bookmakers' not in data and isinstance(data.get('data'), dict):
                 data = data['data']
