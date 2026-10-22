@@ -22,6 +22,8 @@ jobs:
           python-version: '3.12'
       - name: Compile all Python modules
         run: python -m compileall -q pipeline providers model scripts
+      - name: Run odds concurrency regression tests
+        run: python -m unittest discover -s tests -p 'test_odds_concurrency.py' -v
       - name: Validate performance patch structure
         run: |
           python - <<'PY'
