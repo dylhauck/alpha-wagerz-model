@@ -82,7 +82,7 @@ class OddsConcurrencyTests(unittest.TestCase):
 
     def test_nba_parses_in_original_order(self):
         source = (ROOT / "providers/nba/nba_live_markets.py").read_text(encoding="utf-8")
-        self.assertIn("for target, data, error in results:", source)
+        self.assertIn("for away, home, game, event_id in targets:", source)
         self.assertIn("for book in BOOKS:", source)
         self.assertIn("for directory in (MODEL, WEB):", source)
 
