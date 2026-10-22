@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "game_id": "849805",
+    "date": "2026-10-23",
+    "game": "Tampa Bay Rays @ Milwaukee Brewers",
+    "away_team": "Tampa Bay Rays",
+    "home_team": "Milwaukee Brewers",
+    "away_team_id": 139,
+    "home_team_id": 158,
+    "away_sp": "",
+    "away_sp_id": null,
+    "home_sp": "Jacob Misiorowski",
+    "home_sp_id": 694819,
+    "venue": "American Family Field",
+    "status": "Scheduled",
+    "game_date_utc": "2026-10-24T00:00:00Z",
+    "game_time": "7:00 PM",
+    "game_time_sort": "19:00"
+  }
+]
