@@ -22,7 +22,7 @@ class OddsConcurrencyTests(unittest.TestCase):
                 source = (ROOT / relative).read_text(encoding="utf-8")
                 compile(source, relative, "exec")
 
-    def test_bounded_concurrent_fetchers(self):
+    def test_provider_uses_shared_bulk_fetcher(self):
         for relative in (
             "providers/mlb/market.py",
             "providers/nfl/nfl_odds.py",
@@ -30,25 +30,53 @@ class OddsConcurrencyTests(unittest.TestCase):
         ):
             with self.subTest(relative=relative):
                 source = (ROOT / relative).read_text(encoding="utf-8")
-                tree = ast.parse(source)
-                calls = [
-                    node for node in ast.walk(tree)
-                    if isinstance(node, ast.Call)
-                    and isinstance(node.func, ast.Name)
-                    and node.func.id == "ThreadPoolExecutor"
-                ]
-                self.assertEqual(len(calls), 1)
-                self.assertTrue(
-                    any(keyword.arg == "max_workers" for keyword in calls[0].keywords)
-                )
-                self.assertIn("pool.map(", source)
+                self.assertIn("from providers.odds_bulk import fetch_many", source)
+                self.assertIn("fetch_many(", source)
+                self.assertIn("odds/multi", source)
+
+    def test_bulk_results_are_keyed_by_event_id(self):
+        from providers.odds_bulk import fetch_many
+
+        batches = []
+        def multi(ids):
+            batches.append(ids)
+            return [
+                {"id": event_id, "bookmakers": {"FanDuel": []}}
+                for event_id in reversed(ids)
+            ]
+
+        result = fetch_many(
+            range(1, 24),
+            lambda event_id: self.fail("Unexpected individual fallback"),
+            multi,
+            workers=2,
+        )
+        self.assertEqual(len(batches), 3)
+        self.assertEqual(len(result), 23)
+        self.assertEqual(result["1"]["id"], "1" if isinstance(result["1"]["id"], str) else 1)
+
+    def test_bulk_fallback_for_missing_events(self):
+        from providers.odds_bulk import fetch_many
+        singles = []
+        def single(event_id):
+            singles.append(event_id)
+            return {"id": event_id, "bookmakers": {}}
+
+        result = fetch_many(
+            ["a", "b"],
+            single,
+            lambda ids: [{"id": "b", "bookmakers": {}}],
+            workers=1,
+        )
+        self.assertEqual(singles, ["a"])
+        self.assertEqual(set(result), {"a", "b"})
 
     def test_mlb_matches_before_fetching(self):
         source = (ROOT / "providers/mlb/market.py").read_text(encoding="utf-8")
         function = source[source.index("def build_market_lines():"):]
         self.assertLess(
             function.index("matched_events.append("),
-            function.index("odds_results = list(pool.map("),
+            function.index("odds_by_event = fetch_many("),
         )
         self.assertIn("reserved_ids.add(", function)
 
