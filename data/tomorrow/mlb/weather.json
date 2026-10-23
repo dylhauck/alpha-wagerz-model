@@ -1,15 +1,15 @@
 [
   {
-    "game_id": "849805",
+    "game_id": "849802",
     "game": "Tampa Bay Rays @ Milwaukee Brewers",
     "venue": "American Family Field",
-    "temperature": 56.6,
-    "humidity": 69,
-    "conditions": "Overcast Clouds",
+    "temperature": 58.7,
+    "humidity": 74,
+    "conditions": "Light Rain",
     "wind_direction": "NEUTRAL",
-    "wind_speed": 6.4,
-    "wind_degrees": 156,
+    "wind_speed": 5.8,
+    "wind_degrees": 170,
     "roof": "retractable",
-    "forecast_time_utc": "2026-10-24T00:00:00+00:00"
+    "forecast_time_utc": "2026-10-25T00:00:00+00:00"
   }
 ]

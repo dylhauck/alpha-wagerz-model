@@ -4,156 +4,156 @@
       "Category": "HR Target",
       "Player/Team": "Junior Caminero",
       "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 79.7,
+      "Score": 80.2,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Jake Bauers",
       "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 71.6,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Jonathan Aranda",
-      "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 71.1,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Yandy Díaz",
-      "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 68.9,
+      "Score": 72.7,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Jackson Chourio",
       "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 66.9,
+      "Score": 67.1,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Cedric Mullins",
       "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 66.6,
+      "Score": 66.0,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Yandy Díaz",
+      "Game": "Tampa Bay Rays @ Milwaukee Brewers",
+      "Score": 66.0,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "William Contreras",
       "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 65.5,
+      "Score": 65.8,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Gary Sánchez",
+      "Player/Team": "Jonathan Aranda",
       "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 63.6,
+      "Score": 65.4,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Garrett Mitchell",
       "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 63.2,
+      "Score": 63.3,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Victor Mesa Jr.",
+      "Player/Team": "Gary Sánchez",
       "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 62.0,
+      "Score": 62.5,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Christian Yelich",
       "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 61.2,
+      "Score": 61.1,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Ryan Vilade",
+      "Player/Team": "Victor Mesa Jr.",
       "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 58.2,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Nick Fortes",
-      "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 57.0,
+      "Score": 58.1,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Brice Turang",
       "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 55.9,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Jorge Mateo",
-      "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 55.0,
+      "Score": 58.0,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "David Hamilton",
       "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 54.4,
+      "Score": 57.0,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Jonny DeLuca",
+      "Player/Team": "Nick Fortes",
       "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 54.3,
+      "Score": 56.3,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Liam Hicks",
+      "Player/Team": "Ryan Vilade",
       "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 53.2,
+      "Score": 55.3,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Richie Palacios",
+      "Player/Team": "Jorge Mateo",
       "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 52.7,
+      "Score": 52.1,
       "Notes": ""
     },
     {
       "Category": "HR Target",
       "Player/Team": "Andrew Vaughn",
       "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 50.7,
+      "Score": 51.5,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Jonny DeLuca",
+      "Game": "Tampa Bay Rays @ Milwaukee Brewers",
+      "Score": 50.5,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Liam Hicks",
+      "Game": "Tampa Bay Rays @ Milwaukee Brewers",
+      "Score": 48.9,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Richie Palacios",
+      "Game": "Tampa Bay Rays @ Milwaukee Brewers",
+      "Score": 48.6,
       "Notes": ""
     }
   ],
   "pitchers": [
     {
       "Category": "Pitcher K Target",
-      "Player/Team": "Jacob Misiorowski",
+      "Player/Team": "Logan Henderson",
       "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 70.7,
+      "Score": 60.7,
       "Notes": ""
     },
     {
       "Category": "Pitcher K Target",
-      "Player/Team": "",
+      "Player/Team": "Drew Rasmussen",
       "Game": "Tampa Bay Rays @ Milwaukee Brewers",
-      "Score": 28.4,
+      "Score": 60.2,
       "Notes": ""
     }
   ]

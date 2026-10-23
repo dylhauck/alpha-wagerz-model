@@ -238,7 +238,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 695336,Thomas Saggese,138,St. Louis Cardinals,STL,SS,Shortstop,R,R
 687363,Victor Scott II,138,St. Louis Cardinals,STL,CF,Outfielder,L,L
 810938,Ben Williamson,139,Tampa Bay Rays,TB,2B,Second Base,R,R
-811315,Brody Hopkins,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 641329,Bryan Baker,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 592155,Cam Booser,139,Tampa Bay Rays,TB,P,Pitcher,L,L
 656775,Cedric Mullins,139,Tampa Bay Rays,TB,CF,Outfielder,L,L
@@ -246,6 +245,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 642121,Cole Sulser,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 656876,Drew Rasmussen,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 642547,Freddy Peralta,139,Tampa Bay Rays,TB,P,Pitcher,R,R
+664076,Garrett Cleavinger,139,Tampa Bay Rays,TB,P,Pitcher,R,L
 643377,Griffin Jax,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 693855,Ian Seymour,139,Tampa Bay Rays,TB,P,Pitcher,L,L
 666018,Jonathan Aranda,139,Tampa Bay Rays,TB,1B,First Base,L,R
@@ -570,8 +570,8 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 682842,Abner Uribe,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 683734,Andrew Vaughn,158,Milwaukee Brewers,MIL,1B,First Base,R,R
 622608,Antonio Senzatela,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
+605540,Brandon Woodruff,158,Milwaukee Brewers,MIL,P,Pitcher,L,R
 668930,Brice Turang,158,Milwaukee Brewers,MIL,2B,Second Base,L,R
-694477,Chad Patrick,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 592885,Christian Yelich,158,Milwaukee Brewers,MIL,DH,Designated Hitter,L,R
 806198,Cooper Pratt,158,Milwaukee Brewers,MIL,SS,Shortstop,R,R
 669084,DL Hall,158,Milwaukee Brewers,MIL,P,Pitcher,L,L
@@ -975,7 +975,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 670541,Yordan Alvarez,117,Houston Astros,HOU,DH,Designated Hitter,L,R
 805904,Zach Cole,117,Houston Astros,HOU,LF,Outfielder,L,R
 701305,Zach Dezenzo,117,Houston Astros,HOU,LF,Outfielder,R,R
-656638,Alex Lange,118,Kansas City Royals,KC,P,Pitcher,R,R
 543238,Anthony Gose,118,Kansas City Royals,KC,P,Pitcher,L,L
 694360,Beck Way,118,Kansas City Royals,KC,P,Pitcher,R,R
 695667,Ben Kudrna,118,Kansas City Royals,KC,P,Pitcher,R,R
@@ -985,7 +984,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 671162,Connor Thomas,118,Kansas City Royals,KC,P,Pitcher,L,L
 518886,Craig Kimbrel,118,Kansas City Royals,KC,P,Pitcher,R,R
 663738,Daniel Lynch IV,118,Kansas City Royals,KC,P,Pitcher,L,L
-668834,Easton McGee,118,Kansas City Royals,KC,P,Pitcher,R,R
 686555,Isaac Collins,118,Kansas City Royals,KC,LF,Outfielder,S,R
 695506,Jac Caglianone,118,Kansas City Royals,KC,RF,Outfielder,L,L
 663704,James McArthur,118,Kansas City Royals,KC,P,Pitcher,R,R
@@ -996,7 +994,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 668674,Lucas Erceg,118,Kansas City Royals,KC,P,Pitcher,L,R
 571912,Luke Maile,118,Kansas City Royals,KC,C,Catcher,R,R
 672580,Maikel Garcia,118,Kansas City Royals,KC,3B,Third Base,R,R
-696131,Mason Black,118,Kansas City Royals,KC,P,Pitcher,R,R
 683090,Matthew Lugo,118,Kansas City Royals,KC,LF,Outfielder,R,R
 686681,Michael Massey,118,Kansas City Royals,KC,2B,Second Base,L,R
 608379,Michael Wacha,118,Kansas City Royals,KC,P,Pitcher,R,R
