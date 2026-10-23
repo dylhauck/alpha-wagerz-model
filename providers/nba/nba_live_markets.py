@@ -156,7 +156,9 @@ def parse_team(book, markets):
                 # Prefer a two-sided, competitively priced main market; never
                 # select the first alternate solely because it appears first.
                 if (line is not None and over_price is not None and
-                        under_price is not None):
+                        under_price is not None and
+                        -300 <= over_price <= 300 and
+                        -300 <= under_price <= 300):
                     candidate = {'line': line, 'over_odds': over_price,
                                  'under_odds': under_price}
                     current = target['total']
