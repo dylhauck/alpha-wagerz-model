@@ -108,15 +108,21 @@ def get_text(value: Any) -> str:
     return clean(value)
 
 
+ESPN_TEAM_IDS = dict(zip(
+    map(str, range(1, 31)),
+    ("ATL BOS NOP CHI CLE DAL DEN DET GSW HOU IND LAC LAL MIA MIL MIN "
+     "BKN NYK ORL PHI PHX POR SAC SAS OKC UTA WAS TOR MEM CHA").split(),
+))
+
+
 def get_team_code(value: Any) -> str:
     if isinstance(value, dict):
-        return normalize_team(
-            value.get("abbreviation")
-            or value.get("teamAbbreviation")
-            or value.get("code")
-        )
-
-    return normalize_team(value)
+        code = value.get("abbreviation") or value.get("teamAbbreviation") or value.get("code")
+        if code:
+            return normalize_team(code)
+        return ESPN_TEAM_IDS.get(clean(value.get("id")), "")
+    code = normalize_team(value)
+    return ESPN_TEAM_IDS.get(code, code)
 
 
 def normalize_status(value: Any) -> str:
@@ -232,7 +238,7 @@ def parse_injury(
         injury = {}
 
     team = get_team_code(
-        entry.get("team")
+        entry.get("team") or entry.get("teamId")
     ) or fallback_team
 
     player_name = clean(
@@ -273,6 +279,8 @@ def parse_injury(
     detail = clean(
         details.get("longComment")
         or details.get("shortComment")
+        or entry.get("longComment")
+        or entry.get("shortComment")
         or injury.get("description")
         or entry.get("description")
     )
@@ -333,37 +341,32 @@ def extract_injuries(payload: dict) -> list[dict]:
         if not isinstance(group, dict):
             continue
 
-        group_team = get_team_code(
-            group.get("team")
-        )
-
-        # ESPN commonly groups injuries by team.
+        # ESPN league injuries are typically flat entries, but grouped
+        # team payloads are supported as well.
         entries = group.get("injuries")
-
-        if not isinstance(entries, list):
+        if isinstance(entries, list):
+            group_team = get_team_code(
+                group.get("team") or group.get("abbreviation") or group.get("id")
+            )
+        else:
             entries = [group]
+            group_team = ""
 
         for entry in entries:
-            row = parse_injury(
-                entry,
-                fallback_team=group_team,
-            )
-
+            row = parse_injury(entry, fallback_team=group_team)
             if row is None:
                 continue
+            key = (row["team"], row["player_id"] or row["player_name"],
+                   row["status"], row["injury"])
+            if key not in seen:
+                seen.add(key)
+                rows.append(row)
 
-            key = (
-                row["team"],
-                row["player_id"] or row["player_name"],
-                row["status"],
-                row["injury"],
-            )
-
-            if key in seen:
-                continue
-
-            seen.add(key)
-            rows.append(row)
+    if groups and not rows:
+        raise ValueError(
+            "ESPN returned injury entries but none were parsed; "
+            "refusing to publish a misleading empty report."
+        )
 
     return sorted(
         rows,
