@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import time
 from pathlib import Path
 from typing import Any
@@ -35,17 +36,17 @@ WEB_OUTPUT_FILE = WEB_NBA_DIR / "players.json"
 
 CURRENT_SEASON = "2026-27"
 
-REQUEST_TIMEOUT = 60
+REQUEST_TIMEOUT = int(os.getenv('NBA_STATS_TIMEOUT', '60'))
 
 # NBA Stats can become unhappy when hit too quickly.
 REQUEST_DELAY_SECONDS = 0.75
 
 # Number of retries for an individual team.
-MAX_RETRIES = 3
+MAX_RETRIES = int(os.getenv('NBA_STATS_MAX_RETRIES', '3'))
 
 # If this many teams fail consecutively before we have received
 # any players, treat NBA Stats as unavailable and use the fallback.
-MAX_CONSECUTIVE_TEAM_FAILURES = 2
+MAX_CONSECUTIVE_TEAM_FAILURES = int(os.getenv('NBA_STATS_MAX_TEAM_FAILURES', '2'))
 
 
 # ============================================================

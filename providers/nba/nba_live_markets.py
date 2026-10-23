@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import gzip
+from providers.odds_bulk import fetch_many
 import json
 import os
 import re
@@ -20,6 +21,8 @@ API_KEY = os.getenv('ODDS_API_IO_KEY')
 BASE = os.getenv('ODDS_API_IO_BASE', 'https://api.odds-api.io/v3').rstrip('/')
 BOOKS = [x.strip() for x in os.getenv('NBA_ODDS_API_IO_BOOKMAKERS', 'FanDuel,DraftKings').split(',') if x.strip()]
 DEBUG = os.getenv('NBA_MARKETS_DEBUG', '0') == '1'
+# Cap concurrency to protect the provider and keep request behavior predictable.
+ODDS_WORKERS = max(1, min(6, int(os.getenv('NBA_ODDS_WORKERS', '4'))))
 
 ALIASES = {'ATL':'Atlanta Hawks','BOS':'Boston Celtics','BKN':'Brooklyn Nets','CHA':'Charlotte Hornets','CHI':'Chicago Bulls','CLE':'Cleveland Cavaliers','DAL':'Dallas Mavericks','DEN':'Denver Nuggets','DET':'Detroit Pistons','GSW':'Golden State Warriors','HOU':'Houston Rockets','IND':'Indiana Pacers','LAC':'Los Angeles Clippers','LAL':'Los Angeles Lakers','MEM':'Memphis Grizzlies','MIA':'Miami Heat','MIL':'Milwaukee Bucks','MIN':'Minnesota Timberwolves','NOP':'New Orleans Pelicans','NYK':'New York Knicks','OKC':'Oklahoma City Thunder','ORL':'Orlando Magic','PHI':'Philadelphia 76ers','PHX':'Phoenix Suns','POR':'Portland Trail Blazers','SAC':'Sacramento Kings','SAS':'San Antonio Spurs','TOR':'Toronto Raptors','UTA':'Utah Jazz','WAS':'Washington Wizards'}
 
@@ -147,8 +150,27 @@ def parse_team(book, markets):
             elif ('total' in name or 'over/under' in name) and 'team' not in name:
                 line = first(row, 'hdp', 'line', 'point')
                 over, under = first(row, 'over', 'overOdds', 'over_odds'), first(row, 'under', 'underOdds', 'under_odds')
-                if line is not None and (over is not None or under is not None) and target['total'] is None:
-                    target['total'] = {'line': line, 'over_odds': american(over), 'under_odds': american(under)}
+                over_price, under_price = american(over), american(under)
+                # Providers can return alternate game totals alongside the
+                # main line (e.g. 205.5 at -10000/+2500 instead of ~240).
+                # Prefer a two-sided, competitively priced main market; never
+                # select the first alternate solely because it appears first.
+                if (line is not None and over_price is not None and
+                        under_price is not None and
+                        -300 <= over_price <= 300 and
+                        -300 <= under_price <= 300):
+                    candidate = {'line': line, 'over_odds': over_price,
+                                 'under_odds': under_price}
+                    current = target['total']
+                    def quality(total):
+                        o, u = total['over_odds'], total['under_odds']
+                        # Both prices near even odds indicates the primary
+                        # total. This is a selection criterion, not a model
+                        # projection or a fabricated sportsbook line.
+                        return abs(o + 110) + abs(u + 110)
+                    if (current is None or
+                            quality(candidate) < quality(current)):
+                        target['total'] = candidate
     return result, periods
 
 PROP_TYPES = {
@@ -240,23 +262,43 @@ def main():
     for game in slate_games:
         if isinstance(game, dict):
             matched[(team(game.get('away_abbr') or game.get('away_team')), team(game.get('home_abbr') or game.get('home_team')))] = game
-    teams_out, props_out = [], []
+    # Fetch independent events concurrently, then parse in original event order.
+    # This preserves output schemas and avoids concurrent writes to output files.
+    targets = []
     for event in events:
         if not isinstance(event, dict):
             continue
         away, home = event_teams(event)
-        if (away, home) not in matched:
-            continue
-        game = matched[(away, home)]
+        game = matched.get((away, home))
         event_id = event.get('id') or event.get('eventId')
-        if not event_id:
-            continue
-        try:
-            data = api_get('odds', {'apiKey': API_KEY, 'eventId': event_id, 'bookmakers': ','.join(BOOKS)})
-        except Exception as exc:
-            print(f'WARN {away} @ {home}: {exc}', flush=True)
-            continue
+        if game is not None and event_id:
+            targets.append((away, home, game, event_id))
+
+    def fetch_single(event_id):
+        return api_get('odds', {
+            'apiKey': API_KEY,
+            'eventId': event_id,
+            'bookmakers': ','.join(BOOKS),
+        })
+
+    def fetch_multi(event_ids):
+        return api_get('odds/multi', {
+            'apiKey': API_KEY,
+            'eventIds': ','.join(event_ids),
+            'bookmakers': ','.join(BOOKS),
+        })
+
+    odds_by_event = fetch_many(
+        [target[3] for target in targets],
+        fetch_single,
+        fetch_multi,
+        workers=ODDS_WORKERS,
+    )
+    teams_out, props_out = [], []
+    for away, home, game, event_id in targets:
+        data = odds_by_event.get(str(event_id))
         if not isinstance(data, dict):
+            print(f'WARN {away} @ {home}: odds unavailable', flush=True)
             continue
         if 'bookmakers' not in data and isinstance(data.get('data'), dict):
             data = data['data']

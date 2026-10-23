@@ -89,10 +89,7 @@ def timed(label, func, *args, **kwargs):
         print(f"⏱️ {label}: {format_duration(perf_counter() - start)}", flush=True)
 
 
-def run_full_update():
-    pipeline_start = perf_counter()
-    print("🐺 Starting Alpha Wagerz full update...", flush=True)
-
+def run_mlb_update():
     print("\n📚 Reference data", flush=True)
     timed("build_reference_files", build_reference_files)
     timed("build_player_reference", build_player_reference)
@@ -115,15 +112,22 @@ def run_full_update():
     print("\n🌤️ Weather", flush=True)
     timed("build_weather_file", build_weather_file)
 
-    print("\n⚾ Metrics", flush=True)
-    timed("build_hitter_metrics", build_hitter_metrics)
-    timed("build_pitcher_metrics", build_pitcher_metrics)
-    timed("build_pitch_mix", build_pitch_mix)
-    timed("build_hitter_pitch_type_metrics", build_hitter_pitch_type_metrics)
-    timed("build_pitch_arsenal_metrics", build_pitch_arsenal_metrics)
-    timed("build_zone_allowed_metrics", build_zone_allowed_metrics)
-    timed("build_team_offense_metrics", build_team_offense_metrics)
-    timed("build_bullpen_metrics", build_bullpen_metrics)
+    print("\n⚾ Metrics (sequential hitter/pitcher groups; reduced peak RAM)", flush=True)
+    import subprocess
+    import sys
+
+    for group in ("hitter", "pitcher"):
+        print(f"▶️ Starting MLB {group} metric worker", flush=True)
+        result = subprocess.run(
+            [sys.executable, "-u", "-m", "pipeline.full_update",
+             "--metric-group", group],
+            check=False,
+        )
+        if result.returncode:
+            raise RuntimeError(
+                f"MLB {group} metric group failed (exit={result.returncode})"
+            )
+        print(f"✅ MLB {group} metric worker completed", flush=True)
 
     print("\n🔗 Attachments", flush=True)
     timed("attach_weather_to_games", attach_weather_to_games)
@@ -165,6 +169,37 @@ def run_full_update():
     print("\n🗄️ Saving history", flush=True)
     timed("save_daily_history", save_daily_history)
 
+
+def run_mlb_metric_group(group):
+    """Run independent MLB metric families without retaining giant CSV frames.
+
+    Each metric reads its own input and releases it on completion. Avoid
+    keeping a cached 786k-row DataFrame plus deep copies alive in each
+    concurrent worker, which can multiply peak memory usage.
+    """
+    import resource
+
+    def metric(name, function):
+        timed(name, function)
+        # Linux ru_maxrss is KiB; this is the worker's peak resident memory.
+        peak_mib = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
+        print(f"📊 MLB {group} worker peak RSS after {name}: {peak_mib:.0f} MiB", flush=True)
+
+    if group == "hitter":
+        metric("build_hitter_metrics", build_hitter_metrics)
+        metric("build_hitter_pitch_type_metrics", build_hitter_pitch_type_metrics)
+        metric("build_team_offense_metrics", build_team_offense_metrics)
+    elif group == "pitcher":
+        metric("build_pitcher_metrics", build_pitcher_metrics)
+        metric("build_pitch_mix", build_pitch_mix)
+        metric("build_pitch_arsenal_metrics", build_pitch_arsenal_metrics)
+        metric("build_zone_allowed_metrics", build_zone_allowed_metrics)
+        metric("build_bullpen_metrics", build_bullpen_metrics)
+    else:
+        raise ValueError(f"Unknown MLB metric group: {group}")
+
+
+def run_nfl_update():
     #NFL
     print("\n🏈 NFL Data", flush=True)
     timed("build_all_nfl_data", build_all_nfl_data)
@@ -220,6 +255,8 @@ def run_full_update():
     print("\n🏆 NFL Rankings / Best Bets", flush=True)
     timed("build_nfl_rankings", build_nfl_rankings)
 
+
+def run_nba_update():
     # NBA
     print("\nNBA Data", flush=True)
     timed("build_nba_data", build_nba_data)
@@ -266,10 +303,68 @@ def run_full_update():
     print("\n🔮 NBA Future Slate", flush=True)
     timed("build_nba_future_pipeline", build_nba_future_pipeline)
 
+
+def run_full_update():
+    """Run independent sport pipelines concurrently in separate processes.
+
+    Sports write to disjoint MLB/NFL/NBA output trees. Each sport retains
+    its existing sequential ordering, validations, and calculations.
+    """
+    import os
+    import subprocess
+    import sys
+    from concurrent.futures import ThreadPoolExecutor
+
+    pipeline_start = perf_counter()
+    print("🐺 Starting parallel Alpha Wagerz full update...", flush=True)
+    sports = ("mlb", "nfl", "nba")
+
+    def run_sport(sport):
+        started = perf_counter()
+        print(f"▶️ Starting {sport.upper()} pipeline", flush=True)
+        completed = subprocess.run(
+            [sys.executable, "-u", "-m", "pipeline.full_update", "--sport", sport],
+            check=False,
+        )
+        print(
+            f"⏱️ {sport.upper()} pipeline: "
+            f"{format_duration(perf_counter() - started)} "
+            f"(exit={completed.returncode})",
+            flush=True,
+        )
+        return sport, completed.returncode
+
+    with ThreadPoolExecutor(max_workers=3) as executor:
+        results = list(executor.map(run_sport, sports))
+
+    failures = [sport for sport, code in results if code != 0]
+    if failures:
+        raise RuntimeError(f"Sport pipelines failed: {', '.join(failures)}")
+
     print("\n✅ Alpha Wagerz full update complete.", flush=True)
-    print(f"⏱️ TOTAL FULL UPDATE: {format_duration(perf_counter() - pipeline_start)}", flush=True)
+    print(
+        f"⏱️ TOTAL FULL UPDATE: "
+        f"{format_duration(perf_counter() - pipeline_start)}",
+        flush=True,
+    )
 
 
 if __name__ == "__main__":
-    run_full_update()
+    import sys
 
+    if len(sys.argv) == 3 and sys.argv[1] == "--metric-group":
+        run_mlb_metric_group(sys.argv[2])
+    elif len(sys.argv) == 3 and sys.argv[1] == "--sport":
+        sport = sys.argv[2].lower()
+        runners = {
+            "mlb": run_mlb_update,
+            "nfl": run_nfl_update,
+            "nba": run_nba_update,
+        }
+        if sport not in runners:
+            raise SystemExit(f"Unknown sport: {sport}")
+        runners[sport]()
+    elif len(sys.argv) == 1:
+        run_full_update()
+    else:
+        raise SystemExit("Usage: python -m pipeline.full_update [--sport mlb|nfl|nba]")

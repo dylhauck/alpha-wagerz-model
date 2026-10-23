@@ -75,8 +75,23 @@ def build_zone_allowed_metrics():
 
     df["is_bip"] = df["type"] == "X"
     df["is_hard_hit"] = df["launch_speed"] >= 95
-    df["is_barrel"] = df.apply(is_barrel, axis=1)
-    df["xHR"] = df.apply(expected_hr_value, axis=1)
+    df["is_barrel"] = (df["launch_speed"].ge(98) & df["launch_angle"].between(26, 30))
+    ev = pd.to_numeric(df["launch_speed"], errors="coerce")
+    la = pd.to_numeric(df["launch_angle"], errors="coerce")
+    valid = ev.notna() & la.notna()
+    df["xHR"] = np.where(
+        df["events"].eq("home_run"), 1.0,
+        np.select(
+            [
+                valid & ev.ge(105) & la.between(20, 34),
+                valid & ev.ge(100) & la.between(22, 35),
+                valid & ev.ge(98) & la.between(24, 32),
+                valid & ev.ge(95) & la.between(20, 36),
+            ],
+            [0.65, 0.45, 0.30, 0.12],
+            default=0.0,
+        ),
+    )
 
     grouped = df.groupby(
         ["pitcher", "player_name", "zone"],
@@ -93,7 +108,12 @@ def build_zone_allowed_metrics():
     grouped["Brl/BIP%"] = safe_rate(grouped["Barrels"], grouped["BIP"], 100)
     grouped["HH%"] = safe_rate(grouped["HH"], grouped["BIP"], 100)
     grouped["xHR/Pitch%"] = safe_rate(grouped["xHR"], grouped["Pitches"], 100)
-    grouped["Zone Score"] = grouped.apply(zone_score, axis=1)
+    grouped["Zone Score"] = (
+        grouped["xwOBA"] * 95
+        + grouped["Brl/BIP%"] * 1.5
+        + grouped["HH%"] * 0.5
+        + grouped["xHR/Pitch%"] * 8
+    ).clip(0, 100)
     grouped["Zone Label"] = grouped["Zone Score"].apply(zone_label)
 
     final = grouped[[

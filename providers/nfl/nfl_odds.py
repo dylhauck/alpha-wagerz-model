@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import gzip
+from functools import lru_cache
+from providers.odds_bulk import fetch_many
 import json
 import os
 from datetime import datetime, timedelta, timezone
@@ -1181,6 +1183,7 @@ def normalize_event_odds(
 # FETCH EVENT ODDS
 # =========================================================
 
+@lru_cache(maxsize=256)
 def fetch_event_odds(
     event_id: Any,
 ) -> dict[str, Any]:
@@ -1224,6 +1227,18 @@ def build_for_slate(
     games = []
     failures = 0
 
+    workers = max(1, min(6, int(os.getenv('NFL_ODDS_WORKERS', '4'))))
+    odds_by_event = fetch_many(
+        [event.get("id") for event, _ in matched],
+        fetch_event_odds,
+        lambda ids: api_get("odds/multi", {
+            "apiKey": API_KEY,
+            "eventIds": ",".join(ids),
+            "bookmakers": ",".join(BOOKMAKERS),
+        }),
+        workers=workers,
+    )
+
     for event, slate_game in matched:
         event_id = event.get(
             "id"
@@ -1233,11 +1248,9 @@ def build_for_slate(
             continue
 
         try:
-            odds_payload = (
-                fetch_event_odds(
-                    event_id
-                )
-            )
+            odds_payload = odds_by_event.get(str(event_id))
+            if not isinstance(odds_payload, dict):
+                raise RuntimeError('No odds returned for event')
 
             games.append(
                 normalize_event_odds(
@@ -1374,6 +1387,8 @@ def build_nfl_odds():
             f"{SLATE_FILE}"
         )
 
+    # Avoid retaining live odds between separate pipeline invocations.
+    fetch_event_odds.cache_clear()
     events = fetch_events()
 
     print(

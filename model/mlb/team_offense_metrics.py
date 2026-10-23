@@ -54,13 +54,20 @@ def get_batting_team(row):
 def build_team_offense_metrics():
     df = pd.read_csv(RAW_FILE, low_memory=False)
 
-    df["batting_team"] = df.apply(get_batting_team, axis=1)
+    df["batting_team"] = np.select(
+        [df["inning_topbot"].astype(str).str.lower().eq("top"),
+         df["inning_topbot"].astype(str).str.lower().eq("bot")],
+        [df["away_team"].fillna(""), df["home_team"].fillna("")],
+        default="",
+    )
 
     df["is_bip"] = df["type"] == "X"
     df["is_hard_hit"] = df["launch_speed"] >= 95
-    df["is_barrel"] = df.apply(is_barrel, axis=1)
+    df["is_barrel"] = (df["launch_speed"].ge(98) & df["launch_angle"].between(26, 30))
     df["is_hr"] = df["events"] == "home_run"
-    df["total_bases"] = df["events"].apply(total_bases)
+    df["total_bases"] = df["events"].map(
+        {"single": 1, "double": 2, "triple": 3, "home_run": 4}
+    ).fillna(0).astype(int)
 
     at_bat_events = [
         "single", "double", "triple", "home_run",

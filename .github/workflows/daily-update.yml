@@ -11,9 +11,16 @@ jobs:
   daily-update:
     runs-on: ubuntu-latest
     timeout-minutes: 180
+    concurrency:
+      group: alpha-wagerz-daily-${{ github.ref_name }}
+      cancel-in-progress: false
 
     env:
       ODDS_API_IO_KEY: ${{ secrets.ODDS_API_IO_KEY }}
+      # GitHub-hosted runners often cannot reach stats.nba.com reliably.
+      # Avoid blocking the entire slate on repeated 30-second timeouts.
+      NBA_STATS_MAX_RETRIES: '1'
+      NBA_STATS_TIMEOUT: '10'
       OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
       AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
@@ -26,7 +33,8 @@ jobs:
           repository: dylhauck/alpha-wagerz-model
           token: ${{ secrets.ALPHA_WAGERZ_PAT }}
           path: alpha-wagerz-model
-          fetch-depth: 0
+          fetch-depth: 1
+          ref: ${{ github.ref_name }}
 
       - name: Checkout website repository
         uses: actions/checkout@v6
@@ -34,7 +42,7 @@ jobs:
           repository: dylhauck/alpha-wagerz-web
           token: ${{ secrets.ALPHA_WAGERZ_PAT }}
           path: alpha-wagerz-web
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -46,8 +54,7 @@ jobs:
       - name: Install Python dependencies
         working-directory: alpha-wagerz-model
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          python -m pip install -r requirements.txt
 
       - name: Download Statcast master from R2
         run: |
@@ -123,12 +130,19 @@ jobs:
 
           echo "Complete NBA fallback state restored."
           
+      - name: Restore cached NBA quarter history
+        uses: actions/cache@v4
+        with:
+          path: alpha-wagerz-model/data/processed/nba/historical_quarters_2025-26.json
+          key: nba-quarter-history-2025-26-${{ hashFiles('alpha-wagerz-model/model/nba/build_nba_period_projections.py') }}
+
       - name: Run Alpha Wagerz full update
         working-directory: alpha-wagerz-model
         run: |
           python -u -m scripts.run_full_update
 
       - name: Save updated Statcast master to R2
+        if: github.ref_name == 'main'
         run: |
           rm -f /tmp/statcast_longterm.zip
 
@@ -156,6 +170,7 @@ jobs:
           echo "Updated Statcast master and metadata saved to R2."
 
       - name: Commit updated model data
+        if: github.ref_name == 'main'
         working-directory: alpha-wagerz-model
         run: |
           git config user.name "Alpha Wagerz Automation"
@@ -177,6 +192,7 @@ jobs:
           fi
 
       - name: Commit updated website data
+        if: github.ref_name == 'main'
         working-directory: alpha-wagerz-web
         run: |
           git config user.name "Alpha Wagerz Automation"

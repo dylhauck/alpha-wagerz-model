@@ -1819,6 +1819,7 @@ def build_nba_markets() -> bool:
 
     fetched = 0
     failed = 0
+    consecutive_empty = 0
 
     for (
         index,
@@ -1882,6 +1883,33 @@ def build_nba_markets() -> bool:
                 )
 
                 continue
+
+            # A successful HTTP response is not necessarily usable odds.
+            # Do not mark empty markets as fetched or overwrite good history.
+            if not (game_has_spread(normalized) or game_has_total(normalized)):
+                failed += 1
+                consecutive_empty += 1
+                print(
+                    "   unavailable: no usable preferred-book spread or total",
+                    flush=True,
+                )
+                if consecutive_empty >= 3:
+                    print(
+                        "⚠️ Historical odds endpoint returned three consecutive "
+                        "empty markets; stopping this batch to protect API quota.",
+                        flush=True,
+                    )
+                    break
+                continue
+
+            consecutive_empty = 0
+            saved = existing.get(identifier)
+            if saved is not None:
+                # Preserve already populated market fields if a response
+                # contains only one of the two requested market types.
+                for field in ("away_spread", "home_spread", "total"):
+                    if normalized.get(field) is None and saved.get(field) is not None:
+                        normalized[field] = saved[field]
 
             existing[
                 identifier
@@ -1985,14 +2013,12 @@ def build_nba_markets() -> bool:
         ]
     )
 
-    remaining = max(
-        0,
-        len(
-            missing_events
-        )
-        - len(
-            batch
-        ),
+    # Count actual completed markets, not attempted requests or empty
+    # responses. Empty responses must remain eligible for future backfill.
+    remaining = sum(
+        1
+        for event in historical_events
+        if not game_has_market_data(existing.get(event_id(event), {}))
     )
 
     print(

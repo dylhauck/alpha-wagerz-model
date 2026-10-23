@@ -47,8 +47,10 @@ def build_hitter_pitch_type_metrics():
 
     df["is_bip"] = df["type"] == "X"
     df["is_hard_hit"] = df["launch_speed"] >= 95
-    df["is_barrel"] = df.apply(is_barrel, axis=1)
-    df["total_bases"] = df["events"].apply(total_bases)
+    df["is_barrel"] = (df["launch_speed"].ge(98) & df["launch_angle"].between(26, 30))
+    df["total_bases"] = df["events"].map(
+        {"single": 1, "double": 2, "triple": 3, "home_run": 4}
+    ).fillna(0).astype(int)
 
     at_bat_events = [
         "single", "double", "triple", "home_run",

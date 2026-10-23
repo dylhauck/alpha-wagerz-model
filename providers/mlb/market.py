@@ -1,4 +1,5 @@
 import os
+from providers.odds_bulk import fetch_many
 import re
 from datetime import datetime, time, timedelta, timezone
 from pathlib import Path
@@ -1212,17 +1213,34 @@ def build_market_lines():
         api_events = fetch_today_events()
         print(f"📅 Odds-API.io returned {len(api_events)} pending MLB events today")
 
+        # Match slate games before requesting odds: never spend API quota
+        # on unmatched events. Reserve matches to prevent duplicate games.
+        matched_events = []
+        reserved_ids = set(used_game_ids)
         for api_event in api_events:
-            local_game = find_matching_game(api_event, local_games, used_game_ids)
-
+            local_game = find_matching_game(api_event, local_games, reserved_ids)
             if not local_game:
                 print(
                     "⚠️ Could not match odds event: "
                     f"{api_event.get('away')} @ {api_event.get('home')}"
                 )
                 continue
+            matched_events.append((api_event, local_game))
+            reserved_ids.add(str(local_game.get("game_id")))
 
-            odds_payload = fetch_event_odds(api_event.get("id"))
+        workers = max(1, min(6, int(os.getenv('MLB_ODDS_WORKERS', '4'))))
+        odds_by_event = fetch_many(
+            [event.get("id") for event, _ in matched_events],
+            fetch_event_odds,
+            lambda ids: get_json("odds/multi", {
+                "eventIds": ",".join(ids),
+                "bookmakers": ",".join(BOOKMAKERS),
+            }),
+            workers=workers,
+        )
+
+        for api_event, local_game in matched_events:
+            odds_payload = odds_by_event.get(str(api_event.get("id")), {})
             payload = build_live_payload(
                 api_event,
                 local_game,
