@@ -75,6 +75,7 @@ from model.nba.betting_projections import build_nba_betting_projections
 from model.nba.build_nba_period_projections import main as build_nba_period_projections
 from providers.nba.nba_live_markets import main as build_nba_live_markets
 from providers.nba.nba_future_pipeline import main as build_nba_future_pipeline
+from providers.nba.nba_injuries import build_nba_injuries
 
 def format_duration(seconds):
     minutes, seconds = divmod(seconds, 60)
@@ -299,6 +300,9 @@ def run_nba_update():
 
     print("\n📡 NBA Live Markets", flush=True)
     timed("build_nba_live_markets", build_nba_live_markets)
+
+    print("\n🏥 NBA Injuries", flush=True)
+    timed("build_nba_injuries", build_nba_injuries)
 
     print("\n🔮 NBA Future Slate", flush=True)
     timed("build_nba_future_pipeline", build_nba_future_pipeline)
