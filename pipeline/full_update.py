@@ -112,29 +112,22 @@ def run_mlb_update():
     print("\n🌤️ Weather", flush=True)
     timed("build_weather_file", build_weather_file)
 
-    print("\n⚾ Metrics (parallel hitter/pitcher groups)", flush=True)
+    print("\n⚾ Metrics (sequential hitter/pitcher groups; reduced peak RAM)", flush=True)
     import subprocess
     import sys
-    from concurrent.futures import ThreadPoolExecutor
 
-    def run_metric_group(group):
-        return subprocess.run(
+    for group in ("hitter", "pitcher"):
+        print(f"▶️ Starting MLB {group} metric worker", flush=True)
+        result = subprocess.run(
             [sys.executable, "-u", "-m", "pipeline.full_update",
              "--metric-group", group],
             check=False,
-        ).returncode
-
-    with ThreadPoolExecutor(max_workers=2) as executor:
-        hitter_job = executor.submit(run_metric_group, "hitter")
-        pitcher_job = executor.submit(run_metric_group, "pitcher")
-        hitter_status = hitter_job.result()
-        pitcher_status = pitcher_job.result()
-
-    if hitter_status or pitcher_status:
-        raise RuntimeError(
-            "MLB metric group failed: "
-            f"hitter={hitter_status}, pitcher={pitcher_status}"
         )
+        if result.returncode:
+            raise RuntimeError(
+                f"MLB {group} metric group failed (exit={result.returncode})"
+            )
+        print(f"✅ MLB {group} metric worker completed", flush=True)
 
     print("\n🔗 Attachments", flush=True)
     timed("attach_weather_to_games", attach_weather_to_games)
