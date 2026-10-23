@@ -124,7 +124,11 @@ def build_metrics_from_file(raw_file, output_file, label):
         return pd.DataFrame()
 
     player_lookup = load_player_reference()
-    df = pd.read_csv(raw_file, low_memory=False)
+    # Limit memory use: read only source fields used by hitter calculations.
+    fields = {"batter", "player_name", "type", "description", "launch_speed",
+              "launch_angle", "bb_type", "events", "estimated_woba_using_speedangle",
+              "pitch_type", "hc_x", "hc_y", "stand"}
+    df = pd.read_csv(raw_file, usecols=lambda name: name in fields, low_memory=False)
 
     if df.empty or "batter" not in df.columns:
         print(f"⚠️ No usable batter data in {raw_file}. Skipping {label}.")
