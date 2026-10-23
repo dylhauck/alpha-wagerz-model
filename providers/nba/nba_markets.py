@@ -2013,14 +2013,12 @@ def build_nba_markets() -> bool:
         ]
     )
 
-    remaining = max(
-        0,
-        len(
-            missing_events
-        )
-        - len(
-            batch
-        ),
+    # Count actual completed markets, not attempted requests or empty
+    # responses. Empty responses must remain eligible for future backfill.
+    remaining = sum(
+        1
+        for event in historical_events
+        if not game_has_market_data(existing.get(event_id(event), {}))
     )
 
     print(
