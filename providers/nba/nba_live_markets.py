@@ -150,8 +150,25 @@ def parse_team(book, markets):
             elif ('total' in name or 'over/under' in name) and 'team' not in name:
                 line = first(row, 'hdp', 'line', 'point')
                 over, under = first(row, 'over', 'overOdds', 'over_odds'), first(row, 'under', 'underOdds', 'under_odds')
-                if line is not None and (over is not None or under is not None) and target['total'] is None:
-                    target['total'] = {'line': line, 'over_odds': american(over), 'under_odds': american(under)}
+                over_price, under_price = american(over), american(under)
+                # Providers can return alternate game totals alongside the
+                # main line (e.g. 205.5 at -10000/+2500 instead of ~240).
+                # Prefer a two-sided, competitively priced main market; never
+                # select the first alternate solely because it appears first.
+                if (line is not None and over_price is not None and
+                        under_price is not None):
+                    candidate = {'line': line, 'over_odds': over_price,
+                                 'under_odds': under_price}
+                    current = target['total']
+                    def quality(total):
+                        o, u = total['over_odds'], total['under_odds']
+                        # Both prices near even odds indicates the primary
+                        # total. This is a selection criterion, not a model
+                        # projection or a fabricated sportsbook line.
+                        return abs(o + 110) + abs(u + 110)
+                    if (current is None or
+                            quality(candidate) < quality(current)):
+                        target['total'] = candidate
     return result, periods
 
 PROP_TYPES = {
