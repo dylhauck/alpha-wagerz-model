@@ -72,7 +72,11 @@ def write(path, obj):
 # HISTORICAL QUARTER DATA
 # ============================================================
 
+_HISTORY_UNAVAILABLE_THIS_RUN = False
+
+
 def load_history():
+    global _HISTORY_UNAVAILABLE_THIS_RUN
     """
     Fetch 2025-26 NBA quarter-level team averages.
 
@@ -82,6 +86,12 @@ def load_history():
     The resulting cache stores one scoring average and
     one points-allowed average for each team and quarter.
     """
+
+    if _HISTORY_UNAVAILABLE_THIS_RUN:
+        raise RuntimeError(
+            "NBA historical quarter API already timed out in this run; "
+            "preserving existing period projections."
+        )
 
     from nba_api.stats.endpoints import leaguedashteamstats
     from nba_api.stats.static import teams as nba_teams
@@ -184,6 +194,7 @@ def load_history():
                     flush=True,
                 )
                 if attempt == NBA_API_MAX_RETRIES:
+                    _HISTORY_UNAVAILABLE_THIS_RUN = True
                     raise RuntimeError(
                         f"NBA Q{q} API failed after "
                         f"{NBA_API_MAX_RETRIES} attempts."
