@@ -46,7 +46,12 @@ def build_metrics_from_file(raw_file, output_file, label):
         print(f"⚠️ Missing {raw_file}. Skipping {label} pitcher metrics.")
         return pd.DataFrame()
 
-    df = pd.read_csv(raw_file, low_memory=False)
+    # Read only fields used by pitcher calculations to limit peak RAM.
+    fields = {"pitcher", "player_name", "pitcher_name", "pitch_type",
+              "type", "description", "launch_speed", "launch_angle",
+              "bb_type", "events", "estimated_woba_using_speedangle",
+              "release_speed"}
+    df = pd.read_csv(raw_file, usecols=lambda name: name in fields, low_memory=False)
 
     if df.empty or "pitcher" not in df.columns:
         print(f"⚠️ No usable pitcher data in {raw_file}. Skipping {label}.")
