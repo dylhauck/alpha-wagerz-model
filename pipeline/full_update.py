@@ -178,45 +178,30 @@ def run_mlb_update():
 
 
 def run_mlb_metric_group(group):
-    """Run independent metric families with a bounded, read-only CSV cache.
+    """Run independent MLB metric families without retaining giant CSV frames.
 
-    Only the last-30-days Statcast file is cached. The full-season and
-    historical files remain streamed from disk to avoid retaining multiple
-    gigabytes in each worker. Each consumer receives a deep copy, preserving
-    existing in-place calculations and results.
+    Each metric reads its own input and releases it on completion. Avoid
+    keeping a cached 786k-row DataFrame plus deep copies alive in each
+    concurrent worker, which can multiply peak memory usage.
     """
-    import pandas as pd
-    from pathlib import Path
+    import resource
 
-    original_read_csv = pd.read_csv
-    cached_recent = None
-    recent_path = Path("data/raw/mlb/statcast/statcast_last_30_days.csv").resolve()
+    def metric(name, function):
+        timed(name, function)
+        # Linux ru_maxrss is KiB; this is the worker's peak resident memory.
+        peak_mib = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
+        print(f"📊 MLB {group} worker peak RSS after {name}: {peak_mib:.0f} MiB", flush=True)
 
-    def read_csv_cached(filepath_or_buffer, *args, **kwargs):
-        nonlocal cached_recent
-        if (
-            isinstance(filepath_or_buffer, (str, Path))
-            and Path(filepath_or_buffer).resolve() == recent_path
-            and not args
-            and set(kwargs).issubset({"low_memory"})
-        ):
-            if cached_recent is None:
-                cached_recent = original_read_csv(filepath_or_buffer, **kwargs)
-                print("📦 Cached last-30-day Statcast CSV for metric worker", flush=True)
-            return cached_recent.copy(deep=True)
-        return original_read_csv(filepath_or_buffer, *args, **kwargs)
-
-    pd.read_csv = read_csv_cached
     if group == "hitter":
-        timed("build_hitter_metrics", build_hitter_metrics)
-        timed("build_hitter_pitch_type_metrics", build_hitter_pitch_type_metrics)
-        timed("build_team_offense_metrics", build_team_offense_metrics)
+        metric("build_hitter_metrics", build_hitter_metrics)
+        metric("build_hitter_pitch_type_metrics", build_hitter_pitch_type_metrics)
+        metric("build_team_offense_metrics", build_team_offense_metrics)
     elif group == "pitcher":
-        timed("build_pitcher_metrics", build_pitcher_metrics)
-        timed("build_pitch_mix", build_pitch_mix)
-        timed("build_pitch_arsenal_metrics", build_pitch_arsenal_metrics)
-        timed("build_zone_allowed_metrics", build_zone_allowed_metrics)
-        timed("build_bullpen_metrics", build_bullpen_metrics)
+        metric("build_pitcher_metrics", build_pitcher_metrics)
+        metric("build_pitch_mix", build_pitch_mix)
+        metric("build_pitch_arsenal_metrics", build_pitch_arsenal_metrics)
+        metric("build_zone_allowed_metrics", build_zone_allowed_metrics)
+        metric("build_bullpen_metrics", build_bullpen_metrics)
     else:
         raise ValueError(f"Unknown MLB metric group: {group}")
 
