@@ -4,11 +4,11 @@
     "game": "Tampa Bay Rays @ Milwaukee Brewers",
     "venue": "American Family Field",
     "temperature": 58.7,
-    "humidity": 74,
-    "conditions": "Light Rain",
+    "humidity": 75,
+    "conditions": "Scattered Clouds",
     "wind_direction": "NEUTRAL",
-    "wind_speed": 5.8,
-    "wind_degrees": 170,
+    "wind_speed": 5.9,
+    "wind_degrees": 175,
     "roof": "retractable",
     "forecast_time_utc": "2026-10-25T00:00:00+00:00"
   }

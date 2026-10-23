@@ -13,9 +13,9 @@
     },
     "spread": {
       "away": 1.5,
-      "away_price": -150,
+      "away_price": -144,
       "home": -1.5,
-      "home_price": 125
+      "home_price": 118
     },
     "total": 6.5,
     "game_total": {
@@ -25,8 +25,8 @@
     },
     "team_totals": {
       "away": 2.5,
-      "away_over_price": -113,
-      "away_under_price": -113,
+      "away_over_price": -106,
+      "away_under_price": -120,
       "home": 3.5,
       "home_over_price": -113,
       "home_under_price": -113
@@ -46,8 +46,8 @@
         "player": "Nick Martinez",
         "normalized_name": "nick martinez",
         "line": 3.5,
-        "over_price": 150,
-        "under_price": -194,
+        "over_price": 148,
+        "under_price": -192,
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
@@ -55,6 +55,6 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-10-23T19:39:37Z"
+    "market_updated_at": "2026-10-23T21:53:49Z"
   }
 ]
