@@ -1,14 +1,1 @@
-[
-  {
-    "game_id": "849802",
-    "date": "2026-10-24",
-    "game": "Tampa Bay Rays @ Milwaukee Brewers",
-    "away_team": "Tampa Bay Rays",
-    "home_team": "Milwaukee Brewers",
-    "away_sp": "Drew Rasmussen",
-    "home_sp": "Logan Henderson",
-    "venue": "American Family Field",
-    "status": "Scheduled",
-    "file": "data/processed/mlb/games/849802.json"
-  }
-]
+[]

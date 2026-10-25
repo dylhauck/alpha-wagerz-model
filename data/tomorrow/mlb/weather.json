@@ -1,15 +1,15 @@
 [
   {
-    "game_id": "849802",
-    "game": "Tampa Bay Rays @ Milwaukee Brewers",
-    "venue": "American Family Field",
-    "temperature": 58.7,
-    "humidity": 75,
-    "conditions": "Scattered Clouds",
-    "wind_direction": "NEUTRAL",
-    "wind_speed": 5.9,
-    "wind_degrees": 175,
-    "roof": "retractable",
-    "forecast_time_utc": "2026-10-25T00:00:00+00:00"
+    "game_id": "849804",
+    "game": "Milwaukee Brewers @ Tampa Bay Rays",
+    "venue": "Tropicana Field",
+    "temperature": 73.5,
+    "humidity": 67,
+    "conditions": "Clear Sky",
+    "wind_direction": "IN",
+    "wind_speed": 13.2,
+    "wind_degrees": 47,
+    "roof": "dome",
+    "forecast_time_utc": "2026-10-27T00:00:00+00:00"
   }
 ]
