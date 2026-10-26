@@ -1000,23 +1000,52 @@ def use_existing_matchup_fallback(
                 f"NBA player matchup fallback is invalid: {path}"
             ) from reason
 
-    current_payload = load_json(
-        OUTPUT_FILE
-    )
+    # Rebase preserved historical player data onto today's actual slate.
+    # Without this, a timeout republishes an old slate (e.g. Oct 23)
+    # and the frontend cannot match today's game IDs.
+    old_current = load_json(OUTPUT_FILE)
+    old_next = load_json(NEXT_OUTPUT_FILE)
+    historical_games = old_current["games"] + old_next["games"]
+    players_by_team = {}
+    for game in historical_games:
+        for side in ("away", "home"):
+            team = normalize_team_abbreviation(game.get(f"{side}_team"))
+            players = game.get(f"{side}_players", [])
+            if team and isinstance(players, list) and players:
+                players_by_team.setdefault(team, players)
 
-    next_payload = load_json(
-        NEXT_OUTPUT_FILE
-    )
+    def rebase(slate_path, slate_type):
+        slate = load_json(slate_path)
+        result = dict(old_current if slate_type == "current" else old_next)
+        result["generated_at"] = datetime.now(timezone.utc).isoformat()
+        result["slate_type"] = slate_type
+        result["slate_date"] = slate.get("slate_date")
+        result["games"] = []
+        for game in get_games_from_slate(slate):
+            away = get_team_from_game(game, "away")
+            home = get_team_from_game(game, "home")
+            result["games"].append({
+                "game_id": get_game_id(game),
+                "game_date": get_game_date(game),
+                "away_team": away,
+                "home_team": home,
+                "away_players": players_by_team.get(away, []),
+                "home_players": players_by_team.get(home, []),
+            })
+        result["game_count"] = len(result["games"])
+        result.setdefault("metadata", {})["fallback_note"] = (
+            "Historical matchup data reused due to NBA Stats timeout; "
+            "current-season splits may be stale."
+        )
+        return result
 
-    write_json(
-        WEB_OUTPUT_FILE,
-        current_payload,
-    )
+    current_payload = rebase(CURRENT_SLATE_FILE, "current")
+    next_payload = rebase(NEXT_SLATE_FILE, "next")
 
-    write_json(
-        WEB_NEXT_OUTPUT_FILE,
-        next_payload,
-    )
+    write_json(OUTPUT_FILE, current_payload)
+    write_json(NEXT_OUTPUT_FILE, next_payload)
+    write_json(WEB_OUTPUT_FILE, current_payload)
+    write_json(WEB_NEXT_OUTPUT_FILE, next_payload)
 
     print(
         f"Fallback current: {OUTPUT_FILE}"
