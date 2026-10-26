@@ -736,6 +736,64 @@ def find_current_and_next_slate(
 # BUILD
 # ============================================================
 
+def refresh_completed_scores(games: list[dict[str, Any]]) -> None:
+    """Overlay final results from ESPN's date-specific scoreboard.
+
+    NBA ScheduleLeagueV2 sometimes lags days behind on final statuses.
+    ESPN supplies completed results without changing the schedule source.
+    """
+    import requests
+    from datetime import timedelta
+
+    today = datetime.now(CENTRAL).date()
+    day = REGULAR_SEASON_START
+    by_match = {
+        (str(g.get("game_date")), g.get("away_abbr"), g.get("home_abbr")): g
+        for g in games
+    }
+    espn_codes = {"GS": "GSW", "NY": "NYK", "NO": "NOP", "SA": "SAS", "UTAH": "UTA"}
+    refreshed = 0
+    failed_days = []
+    while day < today:
+        stamp = day.strftime("%Y%m%d")
+        try:
+            response = requests.get(
+                "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard",
+                params={"dates": stamp, "limit": 100},
+                timeout=12,
+            )
+            response.raise_for_status()
+            events = response.json().get("events", [])
+            for event in events:
+                comp = (event.get("competitions") or [{}])[0]
+                status = comp.get("status") or event.get("status") or {}
+                if not status.get("type", {}).get("completed"):
+                    continue
+                teams = {}
+                for side in comp.get("competitors", []):
+                    code = str(side.get("team", {}).get("abbreviation") or "").upper()
+                    code = espn_codes.get(code, code)
+                    score = safe_int(side.get("score"))
+                    teams[side.get("homeAway")] = (code, score)
+                away, home = teams.get("away"), teams.get("home")
+                if not away or not home or away[1] is None or home[1] is None:
+                    continue
+                game = by_match.get((day.isoformat(), away[0], home[0]))
+                if game:
+                    game["away_score"] = away[1]
+                    game["home_score"] = home[1]
+                    game["status_code"] = 3
+                    game["status"] = "Final"
+                    refreshed += 1
+        except (requests.RequestException, ValueError, KeyError) as exc:
+            failed_days.append(stamp)
+            print(f"   NBA ESPN scoreboard unavailable for {stamp}: {exc}")
+        day += timedelta(days=1)
+    print(f"   Refreshed {refreshed} NBA final results from ESPN")
+    if failed_days:
+        print(f"   WARNING: Could not verify final scores for: {', '.join(failed_days)}")
+
+
 def refresh_team_records(games: list[dict[str, Any]]) -> None:
     """Calculate pregame records from completed regular-season games.
 
@@ -782,6 +840,7 @@ def build_nba_data() -> None:
 
     games = build_schedule()
 
+    refresh_completed_scores(games)
     refresh_team_records(games)
 
     (
