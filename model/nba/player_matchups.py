@@ -995,7 +995,7 @@ def use_existing_matchup_fallback(
 
         games = payload.get("games")
 
-        if not isinstance(games, list):
+        if not isinstance(games, list) or not games:
             raise ValueError(
                 f"NBA player matchup fallback is invalid: {path}"
             ) from reason
@@ -1141,6 +1141,12 @@ def main() -> None:
         for player_data
         in matchup_database.values()
     )
+
+    if not matchup_database:
+        use_existing_matchup_fallback(
+            RuntimeError("NBA Stats returned no usable player matchup history")
+        )
+        return
 
     print(
         f"Players with historical data: "
