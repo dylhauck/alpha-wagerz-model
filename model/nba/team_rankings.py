@@ -259,13 +259,7 @@ def attach_rankings_to_slates(
                     )
                 )
 
-                game[
-                    "away_record"
-                ] = standings.get(
-                    "record",
-                    "0-0",
-                )
-
+                # Preserve records calculated from verified final scores\n                # by nba_data; standings fallback may be days old.\n
                 game[
                     "away_nba_rank"
                 ] = standings.get(
@@ -292,13 +286,7 @@ def attach_rankings_to_slates(
                     )
                 )
 
-                game[
-                    "home_record"
-                ] = standings.get(
-                    "record",
-                    "0-0",
-                )
-
+                # Preserve records calculated from verified final scores\n                # by nba_data; standings fallback may be days old.\n
                 game[
                     "home_nba_rank"
                 ] = standings.get(
