@@ -351,6 +351,7 @@ def parse_injury(
         "estimated_return_date": return_date,
         "reported_date": reported_date,
         "source": "ESPN",
+        "return_date_source": "ESPN" if return_date else "",
     }
 
 
@@ -408,6 +409,65 @@ def extract_injuries(payload: dict) -> list[dict]:
             row["player_name"],
         ),
     )
+
+
+# ============================================================
+# RETURN DATE FALLBACK — CBS SPORTS
+# ESPN's league JSON currently omits returnDate for every injury.
+# Use independently published estimated dates only when ESPN has none.
+# ============================================================
+
+def enrich_return_dates(rows: list[dict]) -> None:
+    import re
+    from bs4 import BeautifulSoup
+    from datetime import date
+
+    missing = [row for row in rows if not row["estimated_return_date"]]
+    if not missing:
+        return
+    try:
+        response = requests.get(
+            "https://www.cbssports.com/nba/injuries/",
+            headers={"User-Agent": "Mozilla/5.0", "Accept": "text/html"},
+            timeout=25,
+        )
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, "html.parser")
+        matches = {}
+        for tr in soup.select("tr"):
+            cells = tr.find_all("td")
+            if len(cells) < 5:
+                continue
+            name_cell = cells[0]
+            links = name_cell.find_all("a")
+            name = links[-1].get_text(" ", strip=True) if links else name_cell.get_text(" ", strip=True)
+            name = " ".join(name.casefold().split())
+            status_text = cells[-1].get_text(" ", strip=True)
+            match = re.search(
+                r"expected to be out until at least\s+"
+                r"((?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
+                r"[a-z]*\s+\d{1,2}(?:,?\s+\d{4})?)",
+                status_text, re.IGNORECASE,
+            )
+            if name and match:
+                matches[name] = match.group(1)
+        filled = 0
+        today = date.today()
+        for row in missing:
+            key = " ".join(row["player_name"].casefold().split())
+            value = matches.get(key)
+            if not value:
+                continue
+            # Keep the published month/day rather than inventing a year.
+            row["estimated_return_date"] = value
+            row["return_date_source"] = "CBS Sports"
+            filled += 1
+        print(
+            f"CBS Sports estimated return dates: {filled}/{len(missing)} "
+            f"(parsed {len(matches)} dated entries)", flush=True,
+        )
+    except (requests.RequestException, ValueError) as exc:
+        print(f"CBS Sports return-date fallback unavailable: {exc}", flush=True)
 
 
 # ============================================================
@@ -487,6 +547,7 @@ def build_nba_injuries():
             break
     print(f"ESPN injury schema samples: {json.dumps(raw_samples)}", flush=True)
     injuries = extract_injuries(payload)
+    enrich_return_dates(injuries)
     print(f"ESPN estimated return dates available: {sum(bool(row['estimated_return_date']) for row in injuries)}/{len(injuries)}", flush=True)
     if not injuries:
         groups = payload.get("injuries", [])
@@ -532,7 +593,7 @@ def build_nba_injuries():
         "generated_at": datetime.now(
             timezone.utc
         ).isoformat(),
-        "source": "ESPN",
+        "source": "ESPN (injuries); CBS Sports (estimated return fallback)",
         "slate_date": slate.get("slate_date"),
         "status": "ok",
         "injury_count": len(injuries),
