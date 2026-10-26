@@ -736,6 +736,33 @@ def find_current_and_next_slate(
 # BUILD
 # ============================================================
 
+def refresh_team_records(games: list[dict[str, Any]]) -> None:
+    """Calculate pregame records from completed regular-season games.
+
+    ScheduleLeagueV2's awayTeam_wins/homeTeam_wins fields can be stale
+    snapshots. Do not count today's game until it is final, and never
+    infer wins from unplayed games.
+    """
+    from collections import defaultdict
+
+    records = defaultdict(lambda: [0, 0])
+    for game in sorted(games, key=lambda g: (str(g.get("game_date") or ""), str(g.get("game_datetime_utc") or ""), str(g.get("game_id") or ""))):
+        away = game.get("away_abbr") or game.get("away_team")
+        home = game.get("home_abbr") or game.get("home_team")
+        if not away or not home:
+            continue
+        game["away_record"] = f"{records[away][0]}-{records[away][1]}"
+        game["home_record"] = f"{records[home][0]}-{records[home][1]}"
+        if game.get("status_code") != 3:
+            continue
+        a, h = game.get("away_score"), game.get("home_score")
+        if a is None or h is None or a == h:
+            continue
+        winner, loser = (away, home) if a > h else (home, away)
+        records[winner][0] += 1
+        records[loser][1] += 1
+
+
 def build_nba_data() -> None:
     print()
     print(
@@ -754,6 +781,8 @@ def build_nba_data() -> None:
     )
 
     games = build_schedule()
+
+    refresh_team_records(games)
 
     (
         current_games,
