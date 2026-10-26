@@ -1369,6 +1369,47 @@ def build_team_payload(
 # FALLBACK
 # ============================================================
 
+def sync_current_records_from_schedule(payload: dict[str, Any]) -> None:
+    """Use completed regular-season games for current W/L even if stats API fails."""
+    schedule = load_json(NBA_DIR / "schedule.json")
+    if not schedule or not isinstance(schedule.get("games"), list):
+        print("WARNING: No valid schedule; cannot refresh team records.", flush=True)
+        return
+    records = defaultdict(lambda: [0, 0])
+    for game in schedule["games"]:
+        if not isinstance(game, dict) or game.get("status_code") != 3:
+            continue
+        if game.get("game_type") != "REG" or game.get("season") != CURRENT_SEASON:
+            continue
+        away = normalize_market_team(game.get("away_team"))
+        home = normalize_market_team(game.get("home_team"))
+        a, h = game.get("away_score"), game.get("home_score")
+        if away not in TEAM_INFO or home not in TEAM_INFO or a is None or h is None:
+            continue
+        try:
+            a, h = int(a), int(h)
+        except (ValueError, TypeError):
+            continue
+        if a == h:
+            continue
+        winner, loser = (away, home) if a > h else (home, away)
+        records[winner][0] += 1
+        records[loser][1] += 1
+    for team in payload.get("teams", []):
+        code = normalize_market_team(team.get("team"))
+        if code not in TEAM_INFO:
+            continue
+        wins, losses = records[code]
+        current = team.setdefault("current_season", empty_season_block(CURRENT_SEASON))
+        current["games"] = wins + losses
+        current["record"] = {
+            "wins": wins, "losses": losses,
+            "win_pct": round_pct(ratio(wins, wins + losses)),
+        }
+    payload["generated_at"] = utc_now_iso()
+    print("NBA team_stats records synchronized from completed schedule games (30 teams).", flush=True)
+
+
 def republish_existing_output() -> bool:
     """
     If NBA Stats is unavailable, preserve the most recent
@@ -1396,6 +1437,8 @@ def republish_existing_output() -> bool:
         list,
     ):
         return False
+
+    sync_current_records_from_schedule(existing)
 
     write_json(
         OUTPUT_FILE,
