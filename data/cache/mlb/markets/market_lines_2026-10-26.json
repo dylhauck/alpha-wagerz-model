@@ -29,9 +29,7 @@
       "away_under_price": -128,
       "home": 3.5,
       "home_over_price": -102,
-      "home_under_price": -125,
-      "away_bookmaker": "FanDuel",
-      "home_bookmaker": "FanDuel"
+      "home_under_price": -125
     },
     "pitcher_strikeouts": {
       "freddy peralta": {
@@ -57,6 +55,6 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-10-26T10:43:09Z"
+    "market_updated_at": "2026-10-26T12:08:28Z"
   }
 ]
