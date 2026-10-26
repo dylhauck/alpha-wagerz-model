@@ -13,23 +13,23 @@
     },
     "spread": {
       "away": 1.5,
-      "away_price": -235,
+      "away_price": -230,
       "home": -1.5,
-      "home_price": 180
+      "home_price": 176
     },
     "total": 7.5,
     "game_total": {
       "line": 7.5,
-      "over_price": 112,
-      "under_price": -138
+      "over_price": 106,
+      "under_price": -130
     },
     "team_totals": {
       "away": 3.5,
-      "away_over_price": 100,
-      "away_under_price": -128,
+      "away_over_price": -104,
+      "away_under_price": -122,
       "home": 3.5,
-      "home_over_price": -104,
-      "home_under_price": -122
+      "home_over_price": -106,
+      "home_under_price": -120
     },
     "pitcher_strikeouts": {
       "freddy peralta": {
@@ -46,8 +46,8 @@
         "player": "Robert Gasser",
         "normalized_name": "robert gasser",
         "line": 3.5,
-        "over_price": 112,
-        "under_price": -142,
+        "over_price": 118,
+        "under_price": -150,
         "bookmaker": "FanDuel",
         "bookmaker_key": "fanduel",
         "market_name": "Pitcher Strikeouts"
@@ -55,6 +55,6 @@
     },
     "market_source": "odds_api_io",
     "market_status": "live",
-    "market_updated_at": "2026-10-26T17:47:34Z"
+    "market_updated_at": "2026-10-26T21:05:42Z"
   }
 ]
