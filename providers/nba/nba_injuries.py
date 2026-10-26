@@ -56,6 +56,26 @@ TEAM_ALIASES = {
     "BRK": "BKN",
     "CHA": "CHA",
     "CHO": "CHA",
+    "WSH": "WAS",
+}
+
+TEAM_NAMES = {
+    "ATLANTA HAWKS": "ATL", "BOSTON CELTICS": "BOS",
+    "BROOKLYN NETS": "BKN", "CHARLOTTE HORNETS": "CHA",
+    "CHICAGO BULLS": "CHI", "CLEVELAND CAVALIERS": "CLE",
+    "DALLAS MAVERICKS": "DAL", "DENVER NUGGETS": "DEN",
+    "DETROIT PISTONS": "DET", "GOLDEN STATE WARRIORS": "GSW",
+    "HOUSTON ROCKETS": "HOU", "INDIANA PACERS": "IND",
+    "LOS ANGELES CLIPPERS": "LAC", "LA CLIPPERS": "LAC",
+    "LOS ANGELES LAKERS": "LAL", "MEMPHIS GRIZZLIES": "MEM",
+    "MIAMI HEAT": "MIA", "MILWAUKEE BUCKS": "MIL",
+    "MINNESOTA TIMBERWOLVES": "MIN", "NEW ORLEANS PELICANS": "NOP",
+    "NEW YORK KNICKS": "NYK", "OKLAHOMA CITY THUNDER": "OKC",
+    "ORLANDO MAGIC": "ORL", "PHILADELPHIA 76ERS": "PHI",
+    "PHOENIX SUNS": "PHX", "PORTLAND TRAIL BLAZERS": "POR",
+    "SACRAMENTO KINGS": "SAC", "SAN ANTONIO SPURS": "SAS",
+    "TORONTO RAPTORS": "TOR", "UTAH JAZZ": "UTA",
+    "WASHINGTON WIZARDS": "WAS",
 }
 
 
@@ -89,10 +109,7 @@ def clean(value: Any) -> str:
 def normalize_team(value: Any) -> str:
     team = clean(value).upper()
 
-    return TEAM_ALIASES.get(
-        team,
-        team,
-    )
+    return TEAM_NAMES.get(team, TEAM_ALIASES.get(team, team))
 
 
 def get_text(value: Any) -> str:
@@ -232,7 +249,7 @@ def parse_injury(
         injury = {}
 
     team = get_team_code(
-        entry.get("team")
+        entry.get("team") or athlete.get("team")
     ) or fallback_team
 
     player_name = clean(
@@ -334,7 +351,8 @@ def extract_injuries(payload: dict) -> list[dict]:
             continue
 
         group_team = get_team_code(
-            group.get("team")
+            group.get("team") or group.get("abbreviation")
+            or group.get("displayName") or group.get("name")
         )
 
         # ESPN commonly groups injuries by team.
@@ -426,6 +444,10 @@ def build_nba_injuries():
     payload = fetch_injuries()
 
     injuries = extract_injuries(payload)
+    if not injuries:
+        groups = payload.get("injuries", [])
+        print(f"WARNING: ESPN returned {len(groups)} injury groups but 0 usable player records; refusing to publish an empty successful report.", flush=True)
+        raise RuntimeError("NBA injury data empty or incompatible with ESPN response; existing published report left unchanged")
 
     slate = load_slate()
 
