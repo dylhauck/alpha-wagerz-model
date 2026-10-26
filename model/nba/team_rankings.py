@@ -259,7 +259,8 @@ def attach_rankings_to_slates(
                     )
                 )
 
-                # Preserve records calculated from verified final scores\n                # by nba_data; standings fallback may be days old.\n
+                # Keep the verified pregame record from nba_data.
+
                 game[
                     "away_nba_rank"
                 ] = standings.get(
@@ -286,7 +287,8 @@ def attach_rankings_to_slates(
                     )
                 )
 
-                # Preserve records calculated from verified final scores\n                # by nba_data; standings fallback may be days old.\n
+                # Keep the verified pregame record from nba_data.
+
                 game[
                     "home_nba_rank"
                 ] = standings.get(
@@ -364,6 +366,37 @@ def load_existing_team_rankings() -> dict[str, Any]:
 
     return payload
 
+def refresh_fallback_records(payload: dict[str, Any]) -> dict[str, Any]:
+    """Rebuild all 30 standings records from the refreshed final-game schedule."""
+    schedule_file = NBA_DIR / "schedule.json"
+    schedule = json.loads(schedule_file.read_text(encoding="utf-8"))
+    games = schedule.get("games", [])
+    from collections import defaultdict
+    records = defaultdict(lambda: [0, 0])
+    for game in games:
+        if game.get("status_code") != 3 or game.get("game_type") != "REG":
+            continue
+        away = normalize_team(game.get("away_team"))
+        home = normalize_team(game.get("home_team"))
+        a, h = game.get("away_score"), game.get("home_score")
+        if not away or not home or a is None or h is None or a == h:
+            continue
+        winner, loser = (away, home) if a > h else (home, away)
+        records[winner][0] += 1
+        records[loser][1] += 1
+    for team in payload["teams"]:
+        code = normalize_team(team.get("team"))
+        wins, losses = records[code]
+        standings = team.setdefault("standings", {})
+        standings["wins"] = wins
+        standings["losses"] = losses
+        standings["record"] = f"{wins}-{losses}"
+        standings["win_pct"] = wins / (wins + losses) if wins + losses else 0
+    payload["generated_at"] = datetime.now(CENTRAL).isoformat()
+    print(f"   Recalculated records for {len(payload['teams'])} NBA teams from completed games")
+    return payload
+
+
 def build_nba_team_rankings():
     print()
     print(
@@ -390,7 +423,8 @@ def build_nba_team_rankings():
             f"{type(exc).__name__}: {exc}"
         )
 
-        payload = load_existing_team_rankings()
+        payload = refresh_fallback_records(load_existing_team_rankings())
+        save_json(payload, OUTPUT_FILE)
 
         publish(
             OUTPUT_FILE,
