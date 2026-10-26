@@ -751,8 +751,9 @@ def refresh_completed_scores(games: list[dict[str, Any]]) -> None:
         (str(g.get("game_date")), g.get("away_abbr"), g.get("home_abbr")): g
         for g in games
     }
-    espn_codes = {"GS": "GSW", "NY": "NYK", "NO": "NOP", "SA": "SAS", "UTAH": "UTA"}
+    espn_codes = {"GS": "GSW", "NY": "NYK", "NO": "NOP", "SA": "SAS", "UTAH": "UTA", "WSH": "WAS"}
     refreshed = 0
+    unmatched = []
     failed_days = []
     while day < today:
         stamp = day.strftime("%Y%m%d")
@@ -785,11 +786,15 @@ def refresh_completed_scores(games: list[dict[str, Any]]) -> None:
                     game["status_code"] = 3
                     game["status"] = "Final"
                     refreshed += 1
+                else:
+                    unmatched.append(f"{stamp}: {away[0]} @ {home[0]}")
         except (requests.RequestException, ValueError, KeyError) as exc:
             failed_days.append(stamp)
             print(f"   NBA ESPN scoreboard unavailable for {stamp}: {exc}")
         day += timedelta(days=1)
     print(f"   Refreshed {refreshed} NBA final results from ESPN")
+    if unmatched:
+        print(f"   WARNING: {len(unmatched)} ESPN final games did not match the schedule: {unmatched[:15]}")
     if failed_days:
         print(f"   WARNING: Could not verify final scores for: {', '.join(failed_days)}")
 
