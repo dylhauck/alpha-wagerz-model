@@ -278,7 +278,8 @@ def parse_injury(
     )
 
     injury_side = get_text(
-        injury.get("side")
+        injury.get("location")
+        or injury.get("side")
         or entry.get("side")
     )
 
@@ -288,14 +289,18 @@ def parse_injury(
         details = {}
 
     detail = clean(
-        details.get("longComment")
+        entry.get("longComment")
+        or entry.get("shortComment")
+        or details.get("longComment")
         or details.get("shortComment")
         or injury.get("description")
         or entry.get("description")
     )
 
     return_date = clean(
-        details.get("returnDate")
+        entry.get("returnDate")
+        or entry.get("returnAt")
+        or details.get("returnDate")
         or details.get("returnAt")
         or injury.get("returnDate")
         or entry.get("returnDate")
@@ -457,6 +462,7 @@ def build_nba_injuries():
     payload = fetch_injuries()
 
     injuries = extract_injuries(payload)
+    print(f"ESPN estimated return dates available: {sum(bool(row['estimated_return_date']) for row in injuries)}/{len(injuries)}", flush=True)
     if not injuries:
         groups = payload.get("injuries", [])
         print(f"WARNING: ESPN returned {len(groups)} injury groups but 0 usable player records; refusing to publish an empty successful report.", flush=True)
