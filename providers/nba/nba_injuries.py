@@ -461,6 +461,31 @@ def build_nba_injuries():
 
     payload = fetch_injuries()
 
+    # Diagnose ESPN's actual response schema when estimated dates are missing.
+    # Log only the first two player records to keep workflow output manageable.
+    raw_samples = []
+    for group in payload.get("injuries", []):
+        if not isinstance(group, dict):
+            continue
+        entries = group.get("injuries")
+        if not isinstance(entries, list):
+            entries = [group]
+        for entry in entries:
+            if isinstance(entry, dict):
+                raw_samples.append({
+                    "player": (entry.get("athlete") or {}).get("displayName"),
+                    "entry_keys": sorted(entry.keys()),
+                    "entry_returnDate": entry.get("returnDate"),
+                    "injury_keys": sorted((entry.get("injury") or {}).keys())
+                        if isinstance(entry.get("injury"), dict) else [],
+                    "injury_returnDate": (entry.get("injury") or {}).get("returnDate")
+                        if isinstance(entry.get("injury"), dict) else None,
+                })
+                if len(raw_samples) == 2:
+                    break
+        if len(raw_samples) == 2:
+            break
+    print(f"ESPN injury schema samples: {json.dumps(raw_samples)}", flush=True)
     injuries = extract_injuries(payload)
     print(f"ESPN estimated return dates available: {sum(bool(row['estimated_return_date']) for row in injuries)}/{len(injuries)}", flush=True)
     if not injuries:
