@@ -307,13 +307,26 @@ def parse_injury(
     )
 
     injury_description = " ".join(
-        part
-        for part in [
-            injury_side,
-            injury_type,
-        ]
-        if part
+        part for part in [injury_side, injury_type] if part
     )
+    # ESPN sometimes places a status enum (INJURY_STATUS_OUT)
+    # in the type field. Never display that as an injury diagnosis.
+    if "INJURY_STATUS_" in injury_description.upper():
+        injury_description = ""
+    if not injury_description:
+        for candidate in (
+            injury.get("shortComment"),
+            injury.get("longComment"),
+            details.get("shortComment"),
+            details.get("longComment"),
+            entry.get("shortComment"),
+            entry.get("longComment"),
+            detail,
+        ):
+            candidate = clean(candidate)
+            if candidate and "INJURY_STATUS_" not in candidate.upper():
+                injury_description = candidate
+                break
 
     return {
         "player_id": clean(
