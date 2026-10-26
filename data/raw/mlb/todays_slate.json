@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "game_id": 849804,
+    "date": "2026-10-26",
+    "game": "Milwaukee Brewers @ Tampa Bay Rays",
+    "away_team": "Milwaukee Brewers",
+    "home_team": "Tampa Bay Rays",
+    "away_sp": "Robert Gasser",
+    "home_sp": "Freddy Peralta",
+    "venue": "Tropicana Field",
+    "status": "Scheduled",
+    "game_date_utc": "2026-10-27T00:00:00Z",
+    "game_time": "7:00 PM",
+    "game_time_sort": "19:00"
+  }
+]

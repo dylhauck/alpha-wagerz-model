@@ -1,0 +1,38 @@
+[
+  {
+    "game_id": "849803",
+    "game": "Milwaukee Brewers @ Tampa Bay Rays",
+    "away_team": "Milwaukee Brewers",
+    "home_team": "Tampa Bay Rays",
+    "bookmaker": "",
+    "bookmaker_key": "",
+    "odds_event_id": "",
+    "moneyline": {
+      "away": "",
+      "home": ""
+    },
+    "spread": {
+      "away": "",
+      "away_price": "",
+      "home": "",
+      "home_price": ""
+    },
+    "total": "",
+    "game_total": {
+      "line": "",
+      "over_price": "",
+      "under_price": ""
+    },
+    "team_totals": {
+      "away": "",
+      "away_over_price": "",
+      "away_under_price": "",
+      "home": "",
+      "home_over_price": "",
+      "home_under_price": ""
+    },
+    "pitcher_strikeouts": {},
+    "market_source": "unavailable",
+    "market_status": "not_returned_by_provider"
+  }
+]

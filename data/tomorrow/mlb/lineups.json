@@ -1,6 +1,6 @@
 [
   {
-    "game_id": "849804",
+    "game_id": "849803",
     "game": "Milwaukee Brewers @ Tampa Bay Rays",
     "lineup_status": "roster_fallback",
     "away_lineup_status": "roster_fallback",
@@ -9,10 +9,10 @@
     "away_team": "Milwaukee Brewers",
     "home_team_id": 139,
     "home_team": "Tampa Bay Rays",
-    "away_sp_id": 688107,
-    "away_sp": "Robert Gasser",
-    "home_sp_id": 642547,
-    "home_sp": "Freddy Peralta",
+    "away_sp_id": "",
+    "away_sp": "",
+    "home_sp_id": "",
+    "home_sp": "",
     "away_hitters": [
       {
         "id": 683734,
