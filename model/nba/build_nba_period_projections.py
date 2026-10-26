@@ -555,7 +555,11 @@ def main():
     # LOAD HISTORICAL QUARTER AVERAGES
     # --------------------------------------------------------
 
-    history = load_history()
+    try:
+        history = load_history()
+    except (RuntimeError, OSError, ValueError) as exc:
+        print(f"NBA quarter history unavailable: {exc}. Publishing current full-game projections without period estimates.", flush=True)
+        history = {}
 
     # --------------------------------------------------------
     # LEAGUE QUARTER WEIGHTS
@@ -571,21 +575,16 @@ def main():
             ]
         )
         for q in range(1, 5)
-    ]
+    ] if history else []
 
     league_sum = sum(
         league_for
     )
 
-    if league_sum <= 0:
-        raise RuntimeError(
-            "Invalid league quarter scoring totals."
-        )
+    if history and league_sum <= 0:
+        raise RuntimeError("Invalid league quarter scoring totals.")
 
-    league_weights = [
-        value / league_sum
-        for value in league_for
-    ]
+    league_weights = [value / league_sum for value in league_for] if history else []
 
     # --------------------------------------------------------
     # BUILD GAME PROJECTIONS
@@ -620,12 +619,13 @@ def main():
         # ----------------------------------------------------
 
         if (
-            away_team not in history
+            not history
+            or away_team not in history
             or home_team not in history
         ):
             result["periods_status"] = (
-                "unavailable: historical "
-                "quarter splits missing"
+                "unavailable: historical quarter splits missing; "
+                "full-game model projection is current"
             )
 
             games.append(result)
