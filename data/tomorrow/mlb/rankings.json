@@ -2,16 +2,16 @@
   "hr_targets": [
     {
       "Category": "HR Target",
-      "Player/Team": "William Contreras",
+      "Player/Team": "Junior Caminero",
       "Game": "Milwaukee Brewers @ Tampa Bay Rays",
-      "Score": 77.1,
+      "Score": 77.0,
       "Notes": ""
     },
     {
       "Category": "HR Target",
-      "Player/Team": "Junior Caminero",
+      "Player/Team": "William Contreras",
       "Game": "Milwaukee Brewers @ Tampa Bay Rays",
-      "Score": 77.1,
+      "Score": 76.7,
       "Notes": ""
     },
     {
@@ -32,14 +32,7 @@
       "Category": "HR Target",
       "Player/Team": "Yandy Díaz",
       "Game": "Milwaukee Brewers @ Tampa Bay Rays",
-      "Score": 72.7,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Jake Bauers",
-      "Game": "Milwaukee Brewers @ Tampa Bay Rays",
-      "Score": 71.7,
+      "Score": 72.8,
       "Notes": ""
     },
     {
@@ -51,9 +44,16 @@
     },
     {
       "Category": "HR Target",
+      "Player/Team": "Jake Bauers",
+      "Game": "Milwaukee Brewers @ Tampa Bay Rays",
+      "Score": 71.5,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
       "Player/Team": "Jonathan Aranda",
       "Game": "Milwaukee Brewers @ Tampa Bay Rays",
-      "Score": 69.7,
+      "Score": 69.4,
       "Notes": ""
     },
     {
@@ -95,14 +95,7 @@
       "Category": "HR Target",
       "Player/Team": "Sal Frelick",
       "Game": "Milwaukee Brewers @ Tampa Bay Rays",
-      "Score": 53.7,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Jonny DeLuca",
-      "Game": "Milwaukee Brewers @ Tampa Bay Rays",
-      "Score": 52.5,
+      "Score": 53.8,
       "Notes": ""
     },
     {
@@ -110,6 +103,13 @@
       "Player/Team": "Ryan Vilade",
       "Game": "Milwaukee Brewers @ Tampa Bay Rays",
       "Score": 52.5,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Jonny DeLuca",
+      "Game": "Milwaukee Brewers @ Tampa Bay Rays",
+      "Score": 52.3,
       "Notes": ""
     },
     {
@@ -123,13 +123,6 @@
       "Category": "HR Target",
       "Player/Team": "Andrew Vaughn",
       "Game": "Milwaukee Brewers @ Tampa Bay Rays",
-      "Score": 51.3,
-      "Notes": ""
-    },
-    {
-      "Category": "HR Target",
-      "Player/Team": "Victor Mesa Jr.",
-      "Game": "Milwaukee Brewers @ Tampa Bay Rays",
       "Score": 51.1,
       "Notes": ""
     },
@@ -138,6 +131,13 @@
       "Player/Team": "Luis Lara",
       "Game": "Milwaukee Brewers @ Tampa Bay Rays",
       "Score": 51.0,
+      "Notes": ""
+    },
+    {
+      "Category": "HR Target",
+      "Player/Team": "Victor Mesa Jr.",
+      "Game": "Milwaukee Brewers @ Tampa Bay Rays",
+      "Score": 50.9,
       "Notes": ""
     }
   ],
