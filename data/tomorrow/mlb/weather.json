@@ -1,15 +1,15 @@
 [
   {
-    "game_id": "849803",
+    "game_id": "849799",
     "game": "Milwaukee Brewers @ Tampa Bay Rays",
     "venue": "Tropicana Field",
-    "temperature": 75.0,
-    "humidity": 59,
-    "conditions": "Clear Sky",
+    "temperature": 75.2,
+    "humidity": 76,
+    "conditions": "Few Clouds",
     "wind_direction": "IN",
-    "wind_speed": 12.9,
-    "wind_degrees": 49,
+    "wind_speed": 13.1,
+    "wind_degrees": 40,
     "roof": "dome",
-    "forecast_time_utc": "2026-10-28T00:00:00+00:00"
+    "forecast_time_utc": "2026-10-29T00:00:00+00:00"
   }
 ]
