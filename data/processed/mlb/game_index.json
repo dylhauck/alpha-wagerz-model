@@ -1,14 +1,14 @@
 [
   {
-    "game_id": "849803",
-    "date": "2026-10-27",
+    "game_id": "849799",
+    "date": "2026-10-28",
     "game": "Milwaukee Brewers @ Tampa Bay Rays",
     "away_team": "Milwaukee Brewers",
     "home_team": "Tampa Bay Rays",
-    "away_sp": "",
-    "home_sp": "Griffin Jax",
+    "away_sp": "Jacob Misiorowski",
+    "home_sp": "",
     "venue": "Tropicana Field",
     "status": "Scheduled",
-    "file": "data/processed/mlb/games/849803.json"
+    "file": "data/processed/mlb/games/849799.json"
   }
 ]
