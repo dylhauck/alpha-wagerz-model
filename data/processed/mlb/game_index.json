@@ -6,9 +6,9 @@
     "away_team": "Milwaukee Brewers",
     "home_team": "Tampa Bay Rays",
     "away_sp": "Jacob Misiorowski",
-    "home_sp": "",
+    "home_sp": "Drew Rasmussen",
     "venue": "Tropicana Field",
-    "status": "Scheduled",
+    "status": "Pre-Game",
     "file": "data/processed/mlb/games/849799.json"
   }
 ]
