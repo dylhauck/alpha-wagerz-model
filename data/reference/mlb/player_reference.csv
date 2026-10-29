@@ -2,7 +2,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 675961,Alika Williams,133,Athletics,ATH,SS,Shortstop,R,R
 804556,Braden Nett,133,Athletics,ATH,P,Pitcher,R,R
 669620,Brady Basso,133,Athletics,ATH,P,Pitcher,R,L
-661531,Brian Serven,133,Athletics,ATH,C,Catcher,R,R
 666126,Carlos Cortes,133,Athletics,ATH,RF,Outfielder,L,S
 688297,Chris Roycroft,133,Athletics,ATH,P,Pitcher,R,R
 687231,Darell Hernaiz,133,Athletics,ATH,SS,Shortstop,R,R
@@ -11,9 +10,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 680723,Drew Rom,133,Athletics,ATH,P,Pitcher,L,L
 665660,Elvis Alvarado,133,Athletics,ATH,P,Pitcher,R,R
 695611,Gage Jump,133,Athletics,ATH,P,Pitcher,L,L
-664129,Geoff Hartlieb,133,Athletics,ATH,P,Pitcher,R,R
 696522,Hayden Juenger,133,Athletics,ATH,P,Pitcher,R,R
-692013,Henry Baez,133,Athletics,ATH,P,Pitcher,R,R
 703607,Henry Bolte,133,Athletics,ATH,CF,Outfielder,R,R
 663687,Hogan Harris,133,Athletics,ATH,P,Pitcher,R,L
 685801,Hunter Bigge,133,Athletics,ATH,P,Pitcher,R,R
@@ -22,8 +19,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 643446,Jeff McNeil,133,Athletics,ATH,2B,Second Base,L,R
 605488,Jeffrey Springs,133,Athletics,ATH,P,Pitcher,L,L
 697812,Joe Rock,133,Athletics,ATH,P,Pitcher,L,L
-683155,Joey Estes,133,Athletics,ATH,P,Pitcher,R,R
-671286,Johnathan Rodríguez,133,Athletics,ATH,RF,Outfielder,R,R
 641680,Jonah Heim,133,Athletics,ATH,C,Catcher,S,R
 811965,Joshua Kuroda-Grauer,133,Athletics,ATH,3B,Third Base,R,R
 695034,Kade Morris,133,Athletics,ATH,P,Pitcher,R,R
@@ -32,7 +27,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 806960,Luis Morales,133,Athletics,ATH,P,Pitcher,R,R
 686930,Mason Barnett,133,Athletics,ATH,P,Pitcher,R,R
 691777,Max Muncy,133,Athletics,ATH,3B,Third Base,R,R
-683021,Michael Stefanic,133,Athletics,ATH,2B,Second Base,R,R
+681987,Nate Eaton,133,Athletics,ATH,LF,Outfielder,R,R
 656240,Scott Blewett,133,Athletics,ATH,P,Pitcher,R,R
 686751,Seth Johnson,133,Athletics,ATH,P,Pitcher,R,R
 669127,Shea Langeliers,133,Athletics,ATH,C,Catcher,R,R
@@ -133,6 +128,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 676106,Emerson Hancock,136,Seattle Mariners,SEA,P,Pitcher,R,R
 642100,Gabe Speier,136,Seattle Mariners,SEA,P,Pitcher,L,L
 669923,George Kirby,136,Seattle Mariners,SEA,P,Pitcher,R,R
+687529,Grant McCray,136,Seattle Mariners,SEA,CF,Outfielder,L,R
 571948,Hoby Milner,136,Seattle Mariners,SEA,P,Pitcher,L,L
 641487,J.P. Crawford,136,Seattle Mariners,SEA,SS,Shortstop,L,R
 640902,Jhonny Pereda,136,Seattle Mariners,SEA,C,Catcher,R,R
@@ -155,13 +151,11 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 621493,Taylor Ward,136,Seattle Mariners,SEA,DH,Designated Hitter,R,R
 700187,Troy Taylor,136,Seattle Mariners,SEA,P,Pitcher,R,R
 681890,Troy Watson,136,Seattle Mariners,SEA,P,Pitcher,R,R
-645302,Victor Robles,136,Seattle Mariners,SEA,RF,Outfielder,R,R
 642215,Weston Wilson,136,Seattle Mariners,SEA,3B,Third Base,R,R
 680862,Willie MacIver,136,Seattle Mariners,SEA,C,Catcher,R,R
 668800,Andrew Knizner,137,San Francisco Giants,SF,C,Catcher,R,R
 683627,Anthony Molina,137,San Francisco Giants,SF,P,Pitcher,R,R
 815589,Bo Davidson,137,San Francisco Giants,SF,RF,Outfielder,L,R
-694820,Braxton Roxby,137,San Francisco Giants,SF,P,Pitcher,R,R
 695391,Brett Harris,137,San Francisco Giants,SF,3B,Third Base,R,R
 805811,Bryce Eldridge,137,San Francisco Giants,SF,DH,Designated Hitter,L,R
 666808,Camilo Doval,137,San Francisco Giants,SF,P,Pitcher,R,R
@@ -172,9 +166,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 687551,Drew Gilbert,137,San Francisco Giants,SF,CF,Outfielder,L,L
 701474,Duncan Davitt,137,San Francisco Giants,SF,P,Pitcher,R,R
 681916,Dylan Smith,137,San Francisco Giants,SF,P,Pitcher,R,R
-687529,Grant McCray,137,San Francisco Giants,SF,CF,Outfielder,L,R
 664141,JT Brubaker,137,San Francisco Giants,SF,P,Pitcher,R,R
-671345,Jason Foley,137,San Francisco Giants,SF,P,Pitcher,R,R
 669270,Joel Kuhnel,137,San Francisco Giants,SF,P,Pitcher,R,R
 813841,Jonah Cox,137,San Francisco Giants,SF,CF,Outfielder,R,R
 808982,Jung Hoo Lee,137,San Francisco Giants,SF,RF,Outfielder,L,R
@@ -184,7 +176,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 683363,Matt Wilkinson,137,San Francisco Giants,SF,P,Pitcher,R,L
 700280,Miguel Mendez,137,San Francisco Giants,SF,P,Pitcher,R,R
 801501,Nate Furman,137,San Francisco Giants,SF,2B,Second Base,L,R
-678545,Osleivis Basabe,137,San Francisco Giants,SF,2B,Second Base,R,R
 665665,Reiver Sanmartin,137,San Francisco Giants,SF,P,Pitcher,L,L
 676254,Ryan Walker,137,San Francisco Giants,SF,P,Pitcher,R,R
 656529,Sam Hentges,137,San Francisco Giants,SF,P,Pitcher,L,L
@@ -465,6 +456,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 641743,Anthony Kay,145,Chicago White Sox,CWS,P,Pitcher,L,L
 695731,Braden Montgomery,145,Chicago White Sox,CWS,RF,Outfielder,S,R
 686668,Brenton Doyle,145,Chicago White Sox,CWS,CF,Outfielder,R,R
+681460,Brooks Baldwin,145,Chicago White Sox,CWS,LF,Outfielder,S,R
 663542,Bryan Hudson,145,Chicago White Sox,CWS,P,Pitcher,L,L
 805367,Chase Meidroth,145,Chicago White Sox,CWS,2B,Second Base,R,R
 669684,Chris Murphy,145,Chicago White Sox,CWS,P,Pitcher,L,L
@@ -482,13 +474,17 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 663698,Joey Bart,145,Chicago White Sox,CWS,C,Catcher,R,R
 686563,Jonathan Cannon,145,Chicago White Sox,CWS,P,Pitcher,R,R
 663855,Jordan Hicks,145,Chicago White Sox,CWS,P,Pitcher,R,R
+673929,Jordan Leasure,145,Chicago White Sox,CWS,P,Pitcher,R,R
 678577,Junior Perez,145,Chicago White Sox,CWS,CF,Outfielder,R,R
+681066,Ky Bush,145,Chicago White Sox,CWS,P,Pitcher,L,L
 691019,Kyle Teel,145,Chicago White Sox,CWS,C,Catcher,L,R
 622491,Luis Castillo,145,Chicago White Sox,CWS,P,Pitcher,R,R
 682668,Luisangel Acuña,145,Chicago White Sox,CWS,SS,Shortstop,R,R
 678246,Miguel Vargas,145,Chicago White Sox,CWS,3B,Third Base,R,R
+678024,Mike Vasil,145,Chicago White Sox,CWS,P,Pitcher,L,R
 808959,Munetaka Murakami,145,Chicago White Sox,CWS,1B,First Base,L,R
 702273,Noah Schultz,145,Chicago White Sox,CWS,P,Pitcher,L,L
+672860,Prelander Berroa,145,Chicago White Sox,CWS,P,Pitcher,R,R
 545341,Randal Grichuk,145,Chicago White Sox,CWS,DH,Designated Hitter,R,R
 807747,Rikuu Nishida,145,Chicago White Sox,CWS,RF,Outfielder,L,R
 803011,Sam Antonacci,145,Chicago White Sox,CWS,LF,Outfielder,L,R
@@ -496,6 +492,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 656794,Sean Newcomb,145,Chicago White Sox,CWS,P,Pitcher,L,L
 681343,Shane Smith,145,Chicago White Sox,CWS,P,Pitcher,R,R
 701780,Tanner McDougal,145,Chicago White Sox,CWS,P,Pitcher,R,R
+695020,Tanner Murray,145,Chicago White Sox,CWS,LF,Outfielder,R,R
 502054,Tommy Pham,145,Chicago White Sox,CWS,DH,Designated Hitter,R,R
 670950,Trevor Richards,145,Chicago White Sox,CWS,P,Pitcher,R,R
 671976,Tristan Peters,145,Chicago White Sox,CWS,CF,Outfielder,L,R
@@ -748,7 +745,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 692225,Kristian Campbell,111,Boston Red Sox,BOS,OF,Outfield,R,R
 807799,Masataka Yoshida,111,Boston Red Sox,BOS,DH,Designated Hitter,L,R
 681508,Mickey Gasper,111,Boston Red Sox,BOS,DH,Designated Hitter,S,R
-681987,Nate Eaton,111,Boston Red Sox,BOS,LF,Outfielder,R,R
 686765,Nick Sogard,111,Boston Red Sox,BOS,2B,Second Base,S,R
 663776,Patrick Sandoval,111,Boston Red Sox,BOS,P,Pitcher,L,L
 801139,Payton Tolle,111,Boston Red Sox,BOS,P,Pitcher,L,L
@@ -806,9 +802,8 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 621053,Tyler Ferguson,112,Chicago Cubs,CHC,P,Pitcher,R,R
 621438,Tyrone Taylor,112,Chicago Cubs,CHC,LF,Outfielder,R,R
 671096,Andrew Abbott,113,Cincinnati Reds,CIN,P,Pitcher,L,L
-663903,Brady Singer,113,Cincinnati Reds,CIN,P,Pitcher,R,R
+694362,Blake Dunn,113,Cincinnati Reds,CIN,CF,Outfielder,R,R
 682227,Brandon Williamson,113,Cincinnati Reds,CIN,P,Pitcher,R,L
-656271,Brock Burke,113,Cincinnati Reds,CIN,P,Pitcher,L,L
 699115,Carlos Jorge,113,Cincinnati Reds,CIN,CF,Outfielder,L,R
 686730,Carson Spiers,113,Cincinnati Reds,CIN,P,Pitcher,R,R
 695505,Chase Burns,113,Cincinnati Reds,CIN,P,Pitcher,R,R
@@ -822,6 +817,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 553993,Eugenio Suárez,113,Cincinnati Reds,CIN,DH,Designated Hitter,R,R
 668933,Graham Ashcraft,113,Cincinnati Reds,CIN,P,Pitcher,L,R
 699302,Héctor Rodríguez,113,Cincinnati Reds,CIN,RF,Outfielder,L,R
+668881,Hunter Greene,113,Cincinnati Reds,CIN,P,Pitcher,R,R
 668709,JJ Bleday,113,Cincinnati Reds,CIN,LF,Outfielder,L,L
 683742,Jose Franco,113,Cincinnati Reds,CIN,P,Pitcher,R,R
 624431,Jose Trevino,113,Cincinnati Reds,CIN,C,Catcher,R,R
@@ -837,9 +833,9 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 572955,Pierce Johnson,113,Cincinnati Reds,CIN,P,Pitcher,R,R
 695076,Rhett Lowder,113,Cincinnati Reds,CIN,P,Pitcher,R,R
 701398,Sal Stewart,113,Cincinnati Reds,CIN,1B,First Base,R,R
+668715,Spencer Steer,113,Cincinnati Reds,CIN,1B,First Base,R,R
 622088,Tejay Antone,113,Cincinnati Reds,CIN,P,Pitcher,R,R
 663574,Tony Santillan,113,Cincinnati Reds,CIN,P,Pitcher,R,R
-663886,Tyler Stephenson,113,Cincinnati Reds,CIN,C,Catcher,R,R
 677943,Will Banfield,113,Cincinnati Reds,CIN,C,Catcher,R,R
 687209,Zach Maxwell,113,Cincinnati Reds,CIN,P,Pitcher,R,R
 685112,Zach McCambley,113,Cincinnati Reds,CIN,P,Pitcher,L,R
@@ -967,7 +963,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 695001,Alimber Santa,117,Houston Astros,HOU,P,Pitcher,R,R
 656986,Bennett Sousa,117,Houston Astros,HOU,P,Pitcher,L,L
 694728,Brice Matthews,117,Houston Astros,HOU,CF,Outfielder,R,R
-650556,Bryan Abreu,117,Houston Astros,HOU,P,Pitcher,R,R
 687911,Bryan King,117,Houston Astros,HOU,P,Pitcher,R,L
 701358,Cam Smith,117,Houston Astros,HOU,RF,Outfielder,R,R
 543877,Christian Vázquez,117,Houston Astros,HOU,C,Catcher,R,R
@@ -1084,6 +1079,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 687605,Andrew Pinckney,120,Washington Nationals,WSH,LF,Outfielder,R,R
 695418,Brad Lord,120,Washington Nationals,WSH,P,Pitcher,R,R
 691781,Brady House,120,Washington Nationals,WSH,3B,Third Base,R,R
+694820,Braxton Roxby,120,Washington Nationals,WSH,P,Pitcher,R,R
 682928,CJ Abrams,120,Washington Nationals,WSH,SS,Shortstop,L,R
 676917,Cade Cavalli,120,Washington Nationals,WSH,P,Pitcher,R,R
 687223,Carson Palmquist,120,Washington Nationals,WSH,P,Pitcher,L,L
