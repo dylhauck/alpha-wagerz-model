@@ -1,14 +1,1 @@
-[
-  {
-    "game_id": "849799",
-    "date": "2026-10-28",
-    "game": "Milwaukee Brewers @ Tampa Bay Rays",
-    "away_team": "Milwaukee Brewers",
-    "home_team": "Tampa Bay Rays",
-    "away_sp": "Jacob Misiorowski",
-    "home_sp": "Drew Rasmussen",
-    "venue": "Tropicana Field",
-    "status": "Pre-Game",
-    "file": "data/processed/mlb/games/849799.json"
-  }
-]
+[]
