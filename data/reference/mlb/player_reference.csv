@@ -138,7 +138,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 681890,Troy Watson,136,Seattle Mariners,SEA,P,Pitcher,R,R
 642215,Weston Wilson,136,Seattle Mariners,SEA,3B,Third Base,R,R
 680862,Willie MacIver,136,Seattle Mariners,SEA,C,Catcher,R,R
-668800,Andrew Knizner,137,San Francisco Giants,SF,C,Catcher,R,R
 683627,Anthony Molina,137,San Francisco Giants,SF,P,Pitcher,R,R
 815589,Bo Davidson,137,San Francisco Giants,SF,RF,Outfielder,L,R
 695391,Brett Harris,137,San Francisco Giants,SF,3B,Third Base,R,R
@@ -766,10 +765,10 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 700932,Kyle Manzardo,114,Cleveland Guardians,CLE,1B,First Base,L,R
 671106,Logan Allen,114,Cleveland Guardians,CLE,P,Pitcher,R,L
 670036,Matt Festa,114,Cleveland Guardians,CLE,P,Pitcher,R,R
+675455,Milan Tolentino,114,Cleveland Guardians,CLE,SS,Shortstop,L,R
 800048,Parker Messick,114,Cleveland Guardians,CLE,P,Pitcher,L,L
 672275,Patrick Bailey,114,Cleveland Guardians,CLE,C,Catcher,S,R
 690984,Petey Halpin,114,Cleveland Guardians,CLE,CF,Outfielder,L,R
-542888,Shawn Armstrong,114,Cleveland Guardians,CLE,P,Pitcher,R,R
 677944,Slade Cecconi,114,Cleveland Guardians,CLE,P,Pitcher,R,R
 680757,Steven Kwan,114,Cleveland Guardians,CLE,LF,Outfielder,L,L
 676440,Tanner Bibee,114,Cleveland Guardians,CLE,P,Pitcher,R,R
