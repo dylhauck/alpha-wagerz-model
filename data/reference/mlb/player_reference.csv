@@ -92,7 +92,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 592518,Manny Machado,135,San Diego Padres,SD,3B,Third Base,R,R
 669200,Mason McCoy,135,San Diego Padres,SD,2B,Second Base,R,R
 695243,Mason Miller,135,San Diego Padres,SD,P,Pitcher,R,R
-650633,Michael King,135,San Diego Padres,SD,P,Pitcher,R,R
 609280,Miguel Andujar,135,San Diego Padres,SD,DH,Designated Hitter,R,R
 601713,Nick Pivetta,135,San Diego Padres,SD,P,Pitcher,R,R
 681190,Randy Vásquez,135,San Diego Padres,SD,P,Pitcher,R,R
@@ -320,7 +319,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 681252,Jack Anderson,142,Minnesota Twins,MIN,P,Pitcher,R,R
 656546,Jeff Hoffman,142,Minnesota Twins,MIN,P,Pitcher,R,R
 657746,Joe Ryan,142,Minnesota Twins,MIN,P,Pitcher,R,R
-605137,Josh Bell,142,Minnesota Twins,MIN,DH,Designated Hitter,S,R
 701785,Kaelen Culpepper,142,Minnesota Twins,MIN,SS,Shortstop,R,R
 696070,Kendry Rojas,142,Minnesota Twins,MIN,P,Pitcher,L,L
 665019,Kody Clemens,142,Minnesota Twins,MIN,2B,Second Base,L,R
@@ -516,7 +514,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 806198,Cooper Pratt,158,Milwaukee Brewers,MIL,SS,Shortstop,R,R
 669084,DL Hall,158,Milwaukee Brewers,MIL,P,Pitcher,L,L
 666152,David Hamilton,158,Milwaukee Brewers,MIL,3B,Third Base,L,R
-669160,Dustin May,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 669003,Garrett Mitchell,158,Milwaukee Brewers,MIL,CF,Outfielder,L,R
 596142,Gary Sánchez,158,Milwaukee Brewers,MIL,C,Catcher,R,R
 694192,Jackson Chourio,158,Milwaukee Brewers,MIL,LF,Outfielder,R,R
@@ -540,6 +537,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 691946,George Klassen,108,Los Angeles Angels,LAA,P,Pitcher,R,R
 680570,Grayson Rodriguez,108,Los Angeles Angels,LAA,P,Pitcher,L,R
 672569,Gustavo Campero,108,Los Angeles Angels,LAA,OF,Outfield,S,R
+686799,Jack Kochanowicz,108,Los Angeles Angels,LAA,P,Pitcher,L,R
 820862,José Fermin,108,Los Angeles Angels,LAA,P,Pitcher,R,R
 642350,Jose Siri,108,Los Angeles Angels,LAA,LF,Outfielder,R,R
 666139,Josh Lowe,108,Los Angeles Angels,LAA,LF,Outfielder,L,R
@@ -549,6 +547,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 815083,Mitch Farris,108,Los Angeles Angels,LAA,P,Pitcher,L,L
 694208,Moisés Ballesteros,108,Los Angeles Angels,LAA,DH,Designated Hitter,L,R
 805373,Nacho Alvarez Jr.,108,Los Angeles Angels,LAA,SS,Shortstop,R,R
+695950,Nicolo Pinazzi,108,Los Angeles Angels,LAA,P,Pitcher,L,L
 694384,Nolan Schanuel,108,Los Angeles Angels,LAA,1B,First Base,L,R
 672724,Oswald Peraza,108,Los Angeles Angels,LAA,2B,Second Base,R,R
 672282,Reid Detmers,108,Los Angeles Angels,LAA,P,Pitcher,L,L
@@ -662,7 +661,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 670103,Raymond Burgos,111,Boston Red Sox,BOS,P,Pitcher,L,L
 701350,Roman Anthony,111,Boston Red Sox,BOS,LF,Outfielder,L,R
 663853,Romy Gonzalez,111,Boston Red Sox,BOS,DH,Designated Hitter,R,R
-543243,Sonny Gray,111,Boston Red Sox,BOS,P,Pitcher,R,R
 656557,Tanner Houck,111,Boston Red Sox,BOS,P,Pitcher,R,R
 596115,Trevor Story,111,Boston Red Sox,BOS,SS,Shortstop,R,R
 701719,Tyler Samaniego,111,Boston Red Sox,BOS,P,Pitcher,R,L
@@ -674,7 +672,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 681230,BJ Murray Jr.,112,Chicago Cubs,CHC,3B,Third Base,S,R
 666129,Braxton Garrett,112,Chicago Cubs,CHC,P,Pitcher,R,L
 573204,Caleb Thielbar,112,Chicago Cubs,CHC,P,Pitcher,R,L
-608348,Carson Kelly,112,Chicago Cubs,CHC,C,Catcher,R,R
 605280,Clay Holmes,112,Chicago Cubs,CHC,P,Pitcher,R,R
 607067,Colin Rea,112,Chicago Cubs,CHC,P,Pitcher,R,R
 694037,Daniel Palencia,112,Chicago Cubs,CHC,P,Pitcher,R,R
@@ -692,7 +689,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 681909,Justin Dean,112,Chicago Cubs,CHC,CF,Outfielder,R,R
 682634,Kevin Alcántara,112,Chicago Cubs,CHC,DH,Designated Hitter,R,R
 807713,Matt Shaw,112,Chicago Cubs,CHC,RF,Outfielder,R,R
-571510,Matthew Boyd,112,Chicago Cubs,CHC,P,Pitcher,L,L
 683737,Michael Busch,112,Chicago Cubs,CHC,1B,First Base,L,R
 665804,Miguel Amaya,112,Chicago Cubs,CHC,C,Catcher,R,R
 663538,Nico Hoerner,112,Chicago Cubs,CHC,2B,Second Base,R,R
