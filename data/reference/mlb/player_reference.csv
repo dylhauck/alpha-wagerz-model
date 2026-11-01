@@ -596,7 +596,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 669194,Ryne Nelson,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
 694374,Tim Tawa,109,Arizona Diamondbacks,AZ,1B,First Base,R,R
 694371,Tommy Troy,109,Arizona Diamondbacks,AZ,LF,Outfielder,R,R
-544150,Albert Suárez,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 695380,Alex Hoppe,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 689296,Anthony Nunez,110,Baltimore Orioles,BAL,P,Pitcher,S,R
 677942,Blaze Alexander,110,Baltimore Orioles,BAL,3B,Third Base,R,R
@@ -608,7 +607,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 687952,Christian Encarnacion-Strand,110,Baltimore Orioles,BAL,3B,Third Base,R,R
 681047,Christian Franklin,110,Baltimore Orioles,BAL,CF,Outfielder,R,R
 691723,Coby Mayo,110,Baltimore Orioles,BAL,3B,Third Base,R,R
-676051,Codi Heuer,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 681297,Colton Cowser,110,Baltimore Orioles,BAL,CF,Outfielder,L,R
 687637,Dylan Beavers,110,Baltimore Orioles,BAL,LF,Outfielder,L,R
 642585,Félix Bautista,110,Baltimore Orioles,BAL,P,Pitcher,R,R
@@ -617,11 +615,9 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 677008,Heston Kjerstad,110,Baltimore Orioles,BAL,LF,Outfielder,L,R
 702616,Jackson Holliday,110,Baltimore Orioles,BAL,2B,Second Base,L,R
 669236,Jeremiah Jackson,110,Baltimore Orioles,BAL,2B,Second Base,R,R
-676480,José Barrero,110,Baltimore Orioles,BAL,SS,Shortstop,R,R
 677020,Josh Walker,110,Baltimore Orioles,BAL,P,Pitcher,L,L
 665750,Leody Taveras,110,Baltimore Orioles,BAL,CF,Outfielder,S,R
 801725,Luis De León,110,Baltimore Orioles,BAL,P,Pitcher,L,L
-673357,Luis Robert Jr.,110,Baltimore Orioles,BAL,CF,Outfielder,R,R
 624413,Pete Alonso,110,Baltimore Orioles,BAL,1B,First Base,R,R
 677956,Rece Hinds,110,Baltimore Orioles,BAL,RF,Outfielder,R,R
 701655,Reed Trimble,110,Baltimore Orioles,BAL,LF,Outfielder,S,R
@@ -709,8 +705,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 667472,Dane Myers,113,Cincinnati Reds,CIN,CF,Outfielder,R,R
 695490,Edwin Arroyo,113,Cincinnati Reds,CIN,2B,Second Base,S,R
 682829,Elly De La Cruz,113,Cincinnati Reds,CIN,SS,Shortstop,S,R
-641941,Emilio Pagán,113,Cincinnati Reds,CIN,P,Pitcher,L,R
-553993,Eugenio Suárez,113,Cincinnati Reds,CIN,DH,Designated Hitter,R,R
 668933,Graham Ashcraft,113,Cincinnati Reds,CIN,P,Pitcher,L,R
 699302,Héctor Rodríguez,113,Cincinnati Reds,CIN,RF,Outfielder,L,R
 668881,Hunter Greene,113,Cincinnati Reds,CIN,P,Pitcher,R,R
@@ -726,7 +720,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 666157,Nick Lodolo,113,Cincinnati Reds,CIN,P,Pitcher,L,L
 682622,Noelvi Marte,113,Cincinnati Reds,CIN,RF,Outfielder,R,R
 665828,Oswaldo Cabrera,113,Cincinnati Reds,CIN,3B,Third Base,S,R
-572955,Pierce Johnson,113,Cincinnati Reds,CIN,P,Pitcher,R,R
 695076,Rhett Lowder,113,Cincinnati Reds,CIN,P,Pitcher,R,R
 701398,Sal Stewart,113,Cincinnati Reds,CIN,1B,First Base,R,R
 668715,Spencer Steer,113,Cincinnati Reds,CIN,1B,First Base,R,R
