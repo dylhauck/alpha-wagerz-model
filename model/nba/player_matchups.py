@@ -1006,13 +1006,65 @@ def use_existing_matchup_fallback(
     old_current = load_json(OUTPUT_FILE)
     old_next = load_json(NEXT_OUTPUT_FILE)
     historical_games = old_current["games"] + old_next["games"]
-    players_by_team = {}
+    # Index historical matchup rows by player AND opponent. A row for
+    # CLE vs BKN must never be relabeled as CLE vs OKC.
+    saved_splits = {}
     for game in historical_games:
         for side in ("away", "home"):
-            team = normalize_team_abbreviation(game.get(f"{side}_team"))
-            players = game.get(f"{side}_players", [])
-            if team and isinstance(players, list) and players:
-                players_by_team.setdefault(team, players)
+            opponent = normalize_team_abbreviation(
+                game.get("home_team" if side == "away" else "away_team")
+            )
+            for player in game.get(f"{side}_players", []):
+                player_id = safe_int(player.get("player_id"))
+                if player_id and opponent:
+                    saved_splits[(player_id, opponent)] = player
+
+    # The roster, not old slate coverage, determines which teams appear.
+    roster_payload = load_json(PLAYERS_FILE)
+    _, players_by_team = build_player_reference(roster_payload)
+
+    def empty_split(season=None, seasons=None):
+        split = {
+            "games": 0, "min_per_game": 0, "pts_per_game": 0,
+            "fg3m_per_game": 0, "reb_per_game": 0, "ast_per_game": 0,
+            "stl_per_game": 0, "blk_per_game": 0, "tov_per_game": 0,
+            "fg_pct": 0, "fg3_pct": 0, "ft_pct": 0,
+            "fantasy_per_game": 0,
+        }
+        if season:
+            split["season"] = season
+        if seasons:
+            split["seasons"] = seasons
+        return split
+
+    def player_rows(team, opponent):
+        rows = []
+        for roster_player in players_by_team.get(team, []):
+            player_id = roster_player["player_id"]
+            historical = saved_splits.get((player_id, opponent))
+            if historical:
+                row = dict(historical)
+                row.update(roster_player)
+                row["opponent"] = opponent
+            else:
+                by_season = {}
+                for season in ALL_SEASONS:
+                    by_season[season] = {
+                        **empty_split(), "game_dates": [],
+                    }
+                row = {
+                    **roster_player,
+                    "opponent": opponent,
+                    "splits": {
+                        "current_season": empty_split(season=CURRENT_SEASON),
+                        "last_season": empty_split(season=LAST_SEASON),
+                        "last_3_seasons": empty_split(seasons=LAST_3_SEASONS),
+                        "by_season": by_season,
+                    },
+                    "matchup_history_unavailable": True,
+                }
+            rows.append(row)
+        return rows
 
     def rebase(slate_path, slate_type):
         slate = load_json(slate_path)
@@ -1029,13 +1081,14 @@ def use_existing_matchup_fallback(
                 "game_date": get_game_date(game),
                 "away_team": away,
                 "home_team": home,
-                "away_players": players_by_team.get(away, []),
-                "home_players": players_by_team.get(home, []),
+                "away_players": player_rows(away, home),
+                "home_players": player_rows(home, away),
             })
         result["game_count"] = len(result["games"])
         result.setdefault("metadata", {})["fallback_note"] = (
-            "Historical matchup data reused due to NBA Stats timeout; "
-            "current-season splits may be stale."
+            "Current roster players shown for every team. Only saved "
+            "opponent-specific splits are reused; missing matchup "
+            "history is marked unavailable (zero games), never invented."
         )
         return result
 
