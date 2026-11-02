@@ -137,37 +137,10 @@ jobs:
           key: nba-quarter-history-2025-26-${{ hashFiles('alpha-wagerz-model/model/nba/build_nba_period_projections.py') }}
 
       - name: Run Alpha Wagerz full update
+        id: full_update
         working-directory: alpha-wagerz-model
         run: |
           python -u -m scripts.run_full_update
-
-      - name: Save updated Statcast master to R2
-        if: github.ref_name == 'main'
-        run: |
-          rm -f /tmp/statcast_longterm.zip
-
-          # Fast ZIP compression. The master remains lossless; this only
-          # trades a somewhat larger upload for much less CPU time.
-          cd alpha-wagerz-model/data/raw/mlb/statcast
-          zip -j -1 /tmp/statcast_longterm.zip statcast_longterm.csv
-          cd ../../../..
-
-          aws s3 cp \
-            /tmp/statcast_longterm.zip \
-            s3://alpha-wagerz-statcast/statcast_longterm.zip \
-            --endpoint-url "$R2_ENDPOINT_URL"
-
-          if [ -f alpha-wagerz-model/data/raw/mlb/statcast/statcast_master_metadata.txt ]; then
-            echo "Uploading Statcast metadata..."
-            aws s3 cp \
-              alpha-wagerz-model/data/raw/mlb/statcast/statcast_master_metadata.txt \
-              s3://alpha-wagerz-statcast/statcast_master_metadata.txt \
-              --endpoint-url "$R2_ENDPOINT_URL"
-          else
-            echo "Statcast metadata file not generated; skipping metadata upload."
-          fi
-
-          echo "Updated Statcast master and metadata saved to R2."
 
       - name: Commit updated model data
         if: github.ref_name == 'main'
@@ -205,3 +178,38 @@ jobs:
             git commit -m "Automated daily Alpha Wagerz data update"
             git push origin main
           fi
+
+      - name: Save updated Statcast master to R2
+        if: ${{ always() && github.ref_name == 'main' && steps.full_update.outcome == 'success' }}
+        continue-on-error: true
+        run: |
+          rm -f /tmp/statcast_longterm.zip
+
+          # Fast ZIP compression. The master remains lossless; this only
+          # trades a somewhat larger upload for much less CPU time.
+          cd alpha-wagerz-model/data/raw/mlb/statcast
+          zip -j -1 /tmp/statcast_longterm.zip statcast_longterm.csv
+          cd ../../../..
+
+          # Limit multipart concurrency and increase part size for large R2 uploads.
+          aws configure set default.s3.max_concurrent_requests 2
+          aws configure set default.s3.multipart_chunksize 128MB
+          aws configure set default.retry_mode standard
+          aws configure set default.max_attempts 5
+
+          aws s3 cp \
+            /tmp/statcast_longterm.zip \
+            s3://alpha-wagerz-statcast/statcast_longterm.zip \
+            --endpoint-url "$R2_ENDPOINT_URL"
+
+          if [ -f alpha-wagerz-model/data/raw/mlb/statcast/statcast_master_metadata.txt ]; then
+            echo "Uploading Statcast metadata..."
+            aws s3 cp \
+              alpha-wagerz-model/data/raw/mlb/statcast/statcast_master_metadata.txt \
+              s3://alpha-wagerz-statcast/statcast_master_metadata.txt \
+              --endpoint-url "$R2_ENDPOINT_URL"
+          else
+            echo "Statcast metadata file not generated; skipping metadata upload."
+          fi
+
+          echo "Updated Statcast master and metadata saved to R2."
