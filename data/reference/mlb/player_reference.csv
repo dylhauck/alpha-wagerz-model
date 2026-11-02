@@ -33,6 +33,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 695720,Tommy White,133,Athletics,ATH,1B,First Base,R,R
 814305,Yunior Tur,133,Athletics,ATH,P,Pitcher,R,R
 680869,Zack Gelof,133,Athletics,ATH,3B,Third Base,R,R
+668731,Akil Baddoo,134,Pittsburgh Pirates,PIT,LF,Outfielder,L,L
 699008,Antwone Kelly,134,Pittsburgh Pirates,PIT,P,Pitcher,R,R
 695257,Billy Cook,134,Pittsburgh Pirates,PIT,CF,Outfielder,R,R
 685126,Brandon Eisert,134,Pittsburgh Pirates,PIT,P,Pitcher,L,L
@@ -40,6 +41,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 668804,Bryan Reynolds,134,Pittsburgh Pirates,PIT,LF,Outfielder,S,R
 696149,Bubba Chandler,134,Pittsburgh Pirates,PIT,P,Pitcher,S,R
 669387,Carmen Mlodzinski,134,Pittsburgh Pirates,PIT,P,Pitcher,R,R
+682848,Endy Rodríguez,134,Pittsburgh Pirates,PIT,C,Catcher,S,R
 699013,Esmerlyn Valdez,134,Pittsburgh Pirates,PIT,RF,Outfielder,R,R
 681895,Evan Sisk,134,Pittsburgh Pirates,PIT,P,Pitcher,L,L
 680779,Henry Davis,134,Pittsburgh Pirates,PIT,C,Catcher,R,R
@@ -55,6 +57,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 669199,Lake Bachar,134,Pittsburgh Pirates,PIT,P,Pitcher,R,R
 596133,Luke Weaver,134,Pittsburgh Pirates,PIT,P,Pitcher,R,R
 682254,Mason Montgomery,134,Pittsburgh Pirates,PIT,P,Pitcher,L,L
+656605,Mitch Keller,134,Pittsburgh Pirates,PIT,P,Pitcher,R,R
 693304,Nick Gonzales,134,Pittsburgh Pirates,PIT,3B,Third Base,R,R
 694377,Nick Yorke,134,Pittsburgh Pirates,PIT,3B,Third Base,R,R
 668716,Noah Murdock,134,Pittsburgh Pirates,PIT,P,Pitcher,R,R
@@ -102,6 +105,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 673513,Yuki Matsui,135,San Diego Padres,SD,P,Pitcher,L,L
 662253,Andrés Muñoz,136,Seattle Mariners,SEA,P,Pitcher,R,R
 680977,Brendan Donovan,136,Seattle Mariners,SEA,3B,Third Base,L,R
+680695,Brennen Davis,136,Seattle Mariners,SEA,CF,Outfielder,R,R
 801126,Brock Rodden,136,Seattle Mariners,SEA,SS,Shortstop,S,R
 693433,Bryan Woo,136,Seattle Mariners,SEA,P,Pitcher,R,R
 682243,Bryce Miller,136,Seattle Mariners,SEA,P,Pitcher,R,R
@@ -109,6 +113,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 672841,Carlos Vargas,136,Seattle Mariners,SEA,P,Pitcher,R,R
 677961,Cole Wilcox,136,Seattle Mariners,SEA,P,Pitcher,R,R
 702284,Cole Young,136,Seattle Mariners,SEA,2B,Second Base,L,R
+806068,Colt Emerson,136,Seattle Mariners,SEA,SS,Shortstop,L,R
 681867,Cooper Criswell,136,Seattle Mariners,SEA,P,Pitcher,R,R
 686527,Dominic Canzone,136,Seattle Mariners,SEA,DH,Designated Hitter,L,R
 660825,Eduard Bazardo,136,Seattle Mariners,SEA,P,Pitcher,R,R
@@ -120,22 +125,22 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 640902,Jhonny Pereda,136,Seattle Mariners,SEA,C,Catcher,R,R
 678606,José A. Ferrer,136,Seattle Mariners,SEA,P,Pitcher,L,L
 647304,Josh Naylor,136,Seattle Mariners,SEA,1B,First Base,L,L
-681006,Josh Simpson,136,Seattle Mariners,SEA,P,Pitcher,L,L
 677594,Julio Rodríguez,136,Seattle Mariners,SEA,CF,Outfielder,R,R
 807739,Kade Anderson,136,Seattle Mariners,SEA,P,Pitcher,L,L
 703155,Lazaro Montes,136,Seattle Mariners,SEA,RF,Outfielder,L,R
 660844,Leo Rivas,136,Seattle Mariners,SEA,3B,Third Base,S,R
+688138,Logan Evans,136,Seattle Mariners,SEA,P,Pitcher,R,R
 669302,Logan Gilbert,136,Seattle Mariners,SEA,P,Pitcher,R,R
+670042,Luke Raley,136,Seattle Mariners,SEA,RF,Outfielder,L,R
+666374,Matt Brash,136,Seattle Mariners,SEA,P,Pitcher,R,R
 703197,Michael Arroyo,136,Seattle Mariners,SEA,SS,Shortstop,R,R
 621074,Michael Rucker,136,Seattle Mariners,SEA,P,Pitcher,R,R
 669911,Michael Toglia,136,Seattle Mariners,SEA,1B,First Base,S,L
-621550,Patrick Wisdom,136,Seattle Mariners,SEA,3B,Third Base,R,R
+689546,Nick Davila,136,Seattle Mariners,SEA,P,Pitcher,R,R
 673662,Robinson Ortiz,136,Seattle Mariners,SEA,P,Pitcher,L,L
 669208,Ryan Bliss,136,Seattle Mariners,SEA,2B,Second Base,R,R
 622554,Seranthony Domínguez,136,Seattle Mariners,SEA,P,Pitcher,R,R
 700187,Troy Taylor,136,Seattle Mariners,SEA,P,Pitcher,R,R
-681890,Troy Watson,136,Seattle Mariners,SEA,P,Pitcher,R,R
-642215,Weston Wilson,136,Seattle Mariners,SEA,3B,Third Base,R,R
 680862,Willie MacIver,136,Seattle Mariners,SEA,C,Catcher,R,R
 683627,Anthony Molina,137,San Francisco Giants,SF,P,Pitcher,R,R
 815589,Bo Davidson,137,San Francisco Giants,SF,RF,Outfielder,L,R
@@ -305,7 +310,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 687570,Connor Prielipp,142,Minnesota Twins,MIN,P,Pitcher,L,L
 665152,Dean Kremer,142,Minnesota Twins,MIN,P,Pitcher,R,R
 691181,Emmanuel Rodriguez,142,Minnesota Twins,MIN,CF,Outfielder,L,L
-679358,Eric Orze,142,Minnesota Twins,MIN,P,Pitcher,R,R
 694224,Gabriel Gonzalez,142,Minnesota Twins,MIN,RF,Outfielder,R,R
 670183,Garrett Acton,142,Minnesota Twins,MIN,P,Pitcher,L,R
 694230,Hendry Mendez,142,Minnesota Twins,MIN,OF,Outfield,L,L
@@ -610,17 +614,21 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 683002,Gunnar Henderson,110,Baltimore Orioles,BAL,SS,Shortstop,L,R
 702616,Jackson Holliday,110,Baltimore Orioles,BAL,2B,Second Base,L,R
 669236,Jeremiah Jackson,110,Baltimore Orioles,BAL,2B,Second Base,R,R
+676059,Jordan Westburg,110,Baltimore Orioles,BAL,3B,Third Base,R,R
 677020,Josh Walker,110,Baltimore Orioles,BAL,P,Pitcher,L,L
 687985,Josh White,110,Baltimore Orioles,BAL,P,Pitcher,R,R
+680694,Kyle Bradish,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 801725,Luis De León,110,Baltimore Orioles,BAL,P,Pitcher,L,L
 624413,Pete Alonso,110,Baltimore Orioles,BAL,1B,First Base,R,R
 691769,Philip Abner,110,Baltimore Orioles,BAL,P,Pitcher,L,L
 677956,Rece Hinds,110,Baltimore Orioles,BAL,RF,Outfielder,R,R
 701655,Reed Trimble,110,Baltimore Orioles,BAL,LF,Outfielder,S,R
 670329,Rico Garcia,110,Baltimore Orioles,BAL,P,Pitcher,R,R
+664854,Ryan Helsley,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 694212,Samuel Basallo,110,Baltimore Orioles,BAL,C,Catcher,L,R
 669358,Shane Baz,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 694346,Trey Gibson,110,Baltimore Orioles,BAL,P,Pitcher,R,R
+641933,Tyler O'Neill,110,Baltimore Orioles,BAL,RF,Outfielder,R,R
 682274,Yaramil Hiraldo,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 666974,Yennier Cano,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 681439,Zach Morgan,110,Baltimore Orioles,BAL,C,Catcher,R,R
@@ -668,6 +676,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 694037,Daniel Palencia,112,Chicago Cubs,CHC,P,Pitcher,R,R
 621020,Dansby Swanson,112,Chicago Cubs,CHC,SS,Shortstop,R,R
 665795,Edward Cabrera,112,Chicago Cubs,CHC,P,Pitcher,R,R
+679358,Eric Orze,112,Chicago Cubs,CHC,P,Pitcher,R,R
 681799,Ethan Roberts,112,Chicago Cubs,CHC,P,Pitcher,R,R
 672356,Gabriel Arias,112,Chicago Cubs,CHC,3B,Third Base,R,R
 668970,Gavin Hollowell,112,Chicago Cubs,CHC,P,Pitcher,R,R
