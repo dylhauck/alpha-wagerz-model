@@ -157,7 +157,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 691785,Marcelo Mayer,137,San Francisco Giants,SF,2B,Second Base,L,R
 683363,Matt Wilkinson,137,San Francisco Giants,SF,P,Pitcher,R,L
 700280,Miguel Mendez,137,San Francisco Giants,SF,P,Pitcher,R,R
-801501,Nate Furman,137,San Francisco Giants,SF,2B,Second Base,L,R
 665665,Reiver Sanmartin,137,San Francisco Giants,SF,P,Pitcher,L,L
 676254,Ryan Walker,137,San Francisco Giants,SF,P,Pitcher,R,R
 656529,Sam Hentges,137,San Francisco Giants,SF,P,Pitcher,L,L
@@ -235,6 +234,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 683748,Victor Mesa Jr.,139,Tampa Bay Rays,TB,RF,Outfielder,L,L
 650490,Yandy Díaz,139,Tampa Bay Rays,TB,DH,Designated Hitter,R,R
 671936,Adam Macko,140,Texas Rangers,TEX,P,Pitcher,L,L
+695778,Aidan Curry,140,Texas Rangers,TEX,P,Pitcher,R,R
 696030,Alejandro Osuna,140,Texas Rangers,TEX,LF,Outfielder,L,L
 687239,Ben Peoples,140,Texas Rangers,TEX,P,Pitcher,L,R
 607043,Brandon Nimmo,140,Texas Rangers,TEX,RF,Outfielder,L,R
@@ -968,9 +968,9 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 693312,Kyle Nicolas,120,Washington Nationals,WSH,P,Pitcher,R,R
 691384,Luis Perales,120,Washington Nationals,WSH,P,Pitcher,R,R
 683083,Nasim Nuñez,120,Washington Nationals,WSH,2B,Second Base,S,R
+801501,Nate Furman,120,Washington Nationals,WSH,2B,Second Base,L,R
 687377,Orlando Ribalta,120,Washington Nationals,WSH,P,Pitcher,R,R
 687606,Paxton Schultz,120,Washington Nationals,WSH,P,Pitcher,L,R
-663992,Richard Lovelady,120,Washington Nationals,WSH,P,Pitcher,L,L
 683000,Riley Cornelio,120,Washington Nationals,WSH,P,Pitcher,R,R
 702021,Will Dion,120,Washington Nationals,WSH,P,Pitcher,L,L
 691002,Yohandy Morales,120,Washington Nationals,WSH,1B,First Base,R,R
