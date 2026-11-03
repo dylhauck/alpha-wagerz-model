@@ -1212,6 +1212,13 @@ def use_existing_matchup_fallback(
     )
 
 def main() -> None:
+    # The daily pipeline must not download four historical seasons or
+    # thousands of ESPN player logs. A separate backfill refreshes history.
+    if os.getenv("NBA_MATCHUPS_FAST_DAILY", "0") == "1":
+        use_existing_matchup_fallback(
+            RuntimeError("Fast daily mode: historical refresh runs separately")
+        )
+        return
     print()
     print("=" * 70)
     print("BUILDING NBA PLAYER MATCHUP HISTORY")
