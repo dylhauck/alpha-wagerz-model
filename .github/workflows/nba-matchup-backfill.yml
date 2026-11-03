@@ -1,0 +1,59 @@
+name: NBA Historical Matchup Backfill
+
+on:
+  workflow_dispatch:
+
+jobs:
+  historical-backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    permissions:
+      contents: write
+    env:
+      NBA_STATS_MAX_RETRIES: '1'
+      NBA_STATS_TIMEOUT: '15'
+      NBA_MATCHUPS_FAST_DAILY: '0'
+    steps:
+      - name: Checkout model
+        uses: actions/checkout@v4
+        with:
+          repository: dylhauck/alpha-wagerz-model
+          token: ${{ secrets.ALPHA_WAGERZ_PAT }}
+          path: alpha-wagerz-model
+          ref: main
+      - name: Checkout web
+        uses: actions/checkout@v4
+        with:
+          repository: dylhauck/alpha-wagerz-web
+          token: ${{ secrets.ALPHA_WAGERZ_PAT }}
+          path: alpha-wagerz-web
+          ref: main
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        working-directory: alpha-wagerz-model
+        run: pip install -r requirements.txt
+      - name: Restore rosters and slate references
+        run: |
+          mkdir -p alpha-wagerz-model/data/processed/nba/next
+          cp alpha-wagerz-web/public/data/nba/players.json alpha-wagerz-model/data/processed/nba/players.json
+          cp alpha-wagerz-web/public/data/nba/player_matchups.json alpha-wagerz-model/data/processed/nba/player_matchups.json
+          cp alpha-wagerz-web/public/data/nba/next/player_matchups.json alpha-wagerz-model/data/processed/nba/next/player_matchups.json
+      - name: Refresh slate and rebuild historical matchup statistics
+        working-directory: alpha-wagerz-model
+        run: |
+          python -c "from providers.nba.nba_data import build_nba_data; build_nba_data()"
+          python -m model.nba.player_matchups
+      - name: Publish matchup data to website
+        working-directory: alpha-wagerz-web
+        run: |
+          git config user.name "Alpha Wagerz Automation"
+          git config user.email "actions@github.com"
+          git add public/data/nba/player_matchups.json public/data/nba/next/player_matchups.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh historical NBA player matchup statistics"
+            git pull --rebase origin main
+            git push origin main
+          fi
