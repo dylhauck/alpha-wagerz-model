@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any
 
 import pandas as pd
-from nba_api.stats.endpoints import playergamelogs
+from nba_api.stats.endpoints import playergamelogs, leaguedashplayerstats
 
 
 # ============================================================
@@ -1536,6 +1536,41 @@ def aggregate_current_season(
     return output
 
 
+def fetch_season_totals_from_league() -> dict[int, dict[str, Any]]:
+    """Independent season-total endpoint; GP is supplied by the NBA, not inferred from a truncated log."""
+    response = leaguedashplayerstats.LeagueDashPlayerStats(
+        season=CURRENT_SEASON,
+        season_type_all_star=SEASON_TYPE,
+        per_mode_detailed="Totals",
+        league_id_nullable="00",
+        timeout=REQUEST_TIMEOUT,
+    )
+    frames = response.get_data_frames()
+    if not frames or frames[0].empty:
+        raise RuntimeError("NBA league player season totals unavailable")
+    frame = frames[0]
+    results: dict[int, dict[str, Any]] = {}
+    for _, row in frame.iterrows():
+        pid = safe_int(row.get("PLAYER_ID"))
+        games = safe_int(row.get("GP"))
+        if pid <= 0 or games <= 0:
+            continue
+        totals = empty_totals()
+        totals["min"] = safe_float(row.get("MIN"))
+        for key, source in (
+            ("pts", "PTS"), ("reb", "REB"), ("ast", "AST"),
+            ("stl", "STL"), ("blk", "BLK"), ("tov", "TOV"),
+            ("fgm", "FGM"), ("fga", "FGA"),
+            ("fg3m", "FG3M"), ("fg3a", "FG3A"),
+            ("ftm", "FTM"), ("fta", "FTA"),
+        ):
+            totals[key] = safe_int(row.get(source))
+        results[pid] = build_stat_block_from_totals(games, totals)
+    print(f"NBA league totals: {len(results)} players; max GP="
+          f"{max((v['games'] for v in results.values()), default=0)}", flush=True)
+    return results
+
+
 # ============================================================
 # BUILD FRONTEND PLAYER DATA
 # ============================================================
@@ -1856,25 +1891,40 @@ def main() -> None:
     print("=" * 70)
     print()
 
+    # Prefer NBA's season TOTALS endpoint: GP and all totals are already
+    # season-wide, so a one-game log cannot corrupt the Players page.
+    frame = pd.DataFrame()
     try:
-        frame = (
-            fetch_current_season_game_logs()
-        )
+        current_stats = fetch_season_totals_from_league()
+        if not current_stats:
+            raise RuntimeError("Season totals contained no players")
+    except Exception as totals_exc:
+        print(f"League season totals unavailable: {totals_exc}", flush=True)
+        try:
+            frame = fetch_current_season_game_logs()
+            current_stats = aggregate_current_season(
+                frame=frame, current_player_ids=current_player_ids
+            )
+        except Exception as exc:
+            use_existing_output_fallback(exc)
+            return
 
-    except Exception as exc:
-        use_existing_output_fallback(
-            exc
+    # Never overwrite a fuller published season with a truncated response.
+    if OUTPUT_FILE.exists():
+        previous = load_json(OUTPUT_FILE)
+        previous_players = previous.get("players", [])
+        previous_gp = max(
+            (safe_int(p.get("current_season", {}).get("games"))
+             for p in previous_players if isinstance(p, dict)),
+            default=0,
         )
-        return
-
-    current_stats = (
-        aggregate_current_season(
-            frame=frame,
-            current_player_ids=(
-                current_player_ids
-            ),
-        )
-    )
+        new_gp = max((v["games"] for v in current_stats.values()), default=0)
+        if new_gp < previous_gp:
+            print(f"Rejecting regressed season data: GP {new_gp} < {previous_gp}")
+            use_existing_output_fallback(
+                RuntimeError("New season totals have fewer games than existing data")
+            )
+            return
 
     # --------------------------------------------------------
     # Build final output
