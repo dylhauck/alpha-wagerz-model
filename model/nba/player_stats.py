@@ -1384,6 +1384,9 @@ def fetch_current_season_game_logs() -> pd.DataFrame:
                         SEASON_TYPE
                     ),
                     league_id_nullable="00",
+                    last_n_games_nullable=0,
+                    date_from_nullable="",
+                    date_to_nullable="",
                     timeout=REQUEST_TIMEOUT,
                 )
             )
@@ -1403,6 +1406,27 @@ def fetch_current_season_game_logs() -> pd.DataFrame:
                 f"{CURRENT_SEASON}: "
                 f"{len(frame):,} player-game rows"
             )
+
+            # Reject obviously truncated season responses rather than
+            # publishing one-game-per-player averages as season stats.
+            if not frame.empty:
+                if "GAME_ID" in frame.columns:
+                    distinct_games = frame["GAME_ID"].nunique()
+                else:
+                    distinct_games = 0
+                max_player_games = (
+                    frame.groupby("PLAYER_ID").size().max()
+                    if "PLAYER_ID" in frame.columns else 0
+                )
+                print(
+                    f"Season coverage: {distinct_games} games; "
+                    f"max player GP={max_player_games}", flush=True
+                )
+                if distinct_games > 15 and max_player_games <= 1:
+                    raise ValueError(
+                        "NBA Stats returned truncated one-game-per-player "
+                        "data; refusing to publish incorrect season totals"
+                    )
 
             return frame
 
