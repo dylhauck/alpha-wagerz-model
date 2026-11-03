@@ -1481,14 +1481,30 @@ def fetch_espn_season_boxscores(players_by_id: dict[int, dict[str, Any]]) -> dic
     today = datetime.now(timezone.utc).date()
     start = date(int(CURRENT_SEASON[:4]), 10, 1)
     url = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard"
-    response = requests.get(url, params={"dates": f"{start:%Y%m%d}-{today:%Y%m%d}", "limit": 600}, timeout=15)
-    response.raise_for_status()
-    events = response.json().get("events", [])
-    completed = [
+    # ESPN scoreboard accepts a single YYYYMMDD date, not a date range.
+    # Request each date concurrently; reject partial calendars.
+    days = [start + timedelta(days=i) for i in range((today - start).days + 1)]
+    def get_day(day):
+        response = requests.get(url, params={"dates": day.strftime("%Y%m%d"), "limit": 100}, timeout=12)
+        response.raise_for_status()
+        return response.json().get("events", [])
+
+    events = []
+    failures = []
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        futures = {executor.submit(get_day, day): day for day in days}
+        for future in as_completed(futures):
+            try:
+                events.extend(future.result())
+            except Exception as exc:
+                failures.append((futures[future], str(exc)))
+    if failures:
+        raise RuntimeError(f"ESPN scoreboard missing {len(failures)} days: {failures[:3]}")
+    completed = list(dict.fromkeys(
         str(event["id"]) for event in events
         if event.get("status", {}).get("type", {}).get("completed") is True
         and event.get("season", {}).get("type", 2) == 2
-    ]
+    ))
     if len(completed) < 10:
         raise RuntimeError(f"ESPN season scoreboard returned only {len(completed)} completed games")
     print(f"ESPN fallback: {len(completed)} completed games", flush=True)
