@@ -535,6 +535,11 @@ def build_player_touchdown_projection(
         {},
     )
 
+    # These factors already exist in player_projections; carry them to the
+    # touchdown display without changing touchdown probability calculations.
+    environment = environment if isinstance(environment, dict) else {}
+    matchup = matchup if isinstance(matchup, dict) else {}
+
     return {
         "player_id": clean_text(
             player.get("player_id")
@@ -582,6 +587,20 @@ def build_player_touchdown_projection(
             ),
         },
 
+        "environment": {
+            "projected_team_points": environment.get("projected_team_points"),
+            "scoring_factor": environment.get("scoring_factor"),
+        },
+        "matchup": {
+            "overall_factor": matchup.get("overall_factor"),
+            "rushing_factor": matchup.get("rushing_factor"),
+            "passing_factor": matchup.get("passing_factor"),
+        },
+        "projected_opportunities": {
+            "passing_attempts": f(nested(projection, "passing", "attempts")),
+            "rushing_attempts": f(nested(projection, "rushing", "carries")),
+            "targets": f(nested(projection, "receiving", "targets")),
+        },
         "inputs": {
             "current_games": int(
                 rates["games"]
@@ -711,6 +730,35 @@ def build_touchdown_payload(
 
         if result is not None:
             output_players.append(result)
+
+    # Usage is the player's share of projected team opportunities,
+    # not a relative-to-career multiplier. QB = team QB pass attempts;
+    # RB/WR/TE = team carries + targets (excluding QB pass attempts).
+    team_totals: dict[str, float] = {}
+    for row in output_players:
+        team = clean_text(row.get("team"))
+        opportunities = row["projected_opportunities"]
+        if row["position"] == "QB":
+            key = team + ":QB"
+            volume = opportunities["passing_attempts"]
+        else:
+            key = team + ":SKILL"
+            volume = opportunities["rushing_attempts"] + opportunities["targets"]
+        team_totals[key] = team_totals.get(key, 0.0) + volume
+    for row in output_players:
+        team = clean_text(row.get("team"))
+        opportunities = row.pop("projected_opportunities")
+        if row["position"] == "QB":
+            key = team + ":QB"
+            volume = opportunities["passing_attempts"]
+        else:
+            key = team + ":SKILL"
+            volume = opportunities["rushing_attempts"] + opportunities["targets"]
+        denominator = team_totals.get(key, 0.0)
+        row["inputs"]["usage_percentage"] = (
+            round(100.0 * volume / denominator, 1)
+            if denominator > 0 else None
+        )
 
     output_players.sort(
         key=lambda row: (
