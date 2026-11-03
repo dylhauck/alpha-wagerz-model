@@ -20,8 +20,9 @@ jobs:
       # GitHub-hosted runners often cannot reach stats.nba.com reliably.
       # Give NBA Stats requests time to respond, retrying transient failures.
       # This applies to NBA player matchup history and current-season stats.
-      NBA_STATS_MAX_RETRIES: '3'
-      NBA_STATS_TIMEOUT: '60'
+      NBA_STATS_MAX_RETRIES: '1'
+      NBA_STATS_TIMEOUT: '10'
+      NBA_MATCHUPS_FAST_DAILY: '1'
       OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
       AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
