@@ -4,6 +4,10 @@ import json
 import os
 import math
 import time
+import re
+import requests
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import date, timedelta
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -1458,6 +1462,105 @@ def fetch_current_season_game_logs() -> pd.DataFrame:
     ) from last_error
 
 
+def fetch_espn_season_boxscores(players_by_id: dict[int, dict[str, Any]]) -> dict[int, dict[str, Any]]:
+    """Fast ESPN fallback when stats.nba.com blocks GitHub-hosted runners.
+
+    Fetch one season scoreboard and completed-game boxscores concurrently.
+    Only completed regular-season games count; never invent missing games.
+    """
+    from collections import defaultdict
+    def normalized(value: str) -> str:
+        import unicodedata
+        value = unicodedata.normalize("NFKD", value or "")
+        return re.sub(r"[^a-z0-9]", "", "".join(c for c in value if not unicodedata.combining(c)).lower())
+
+    by_name = defaultdict(list)
+    for pid, player in players_by_id.items():
+        by_name[normalized(player["player_name"])].append(pid)
+
+    today = datetime.now(timezone.utc).date()
+    start = date(int(CURRENT_SEASON[:4]), 10, 1)
+    url = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard"
+    response = requests.get(url, params={"dates": f"{start:%Y%m%d}-{today:%Y%m%d}", "limit": 600}, timeout=15)
+    response.raise_for_status()
+    events = response.json().get("events", [])
+    completed = [
+        str(event["id"]) for event in events
+        if event.get("status", {}).get("type", {}).get("completed") is True
+        and event.get("season", {}).get("type", 2) == 2
+    ]
+    if len(completed) < 10:
+        raise RuntimeError(f"ESPN season scoreboard returned only {len(completed)} completed games")
+    print(f"ESPN fallback: {len(completed)} completed games", flush=True)
+
+    def get_boxscore(event_id: str):
+        r = requests.get(
+            "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/summary",
+            params={"event": event_id}, timeout=12
+        )
+        r.raise_for_status()
+        return event_id, r.json().get("boxscore", {}).get("players", [])
+
+    results = {}
+    with ThreadPoolExecutor(max_workers=12) as executor:
+        futures = [executor.submit(get_boxscore, event_id) for event_id in completed]
+        for future in as_completed(futures):
+            try:
+                event_id, teams = future.result()
+                results[event_id] = teams
+            except Exception as exc:
+                print(f"ESPN boxscore request failed: {exc}", flush=True)
+    if len(results) < len(completed) * .95:
+        raise RuntimeError(f"Incomplete ESPN boxscores: {len(results)}/{len(completed)}; preserving existing data")
+
+    player_games = defaultdict(dict)
+    for event_id, teams in results.items():
+        for team in teams:
+            team_abbr = team.get("team", {}).get("abbreviation", "").upper()
+            for group in team.get("statistics", []):
+                labels = [str(label).upper() for label in group.get("labels", [])]
+                for athlete in group.get("athletes", []):
+                    if athlete.get("didNotPlay") or athlete.get("stats") is None:
+                        continue
+                    name = athlete.get("athlete", {}).get("displayName", "")
+                    candidates = by_name.get(normalized(name), [])
+                    if not candidates:
+                        continue
+                    pid = next((p for p in candidates if players_by_id[p]["team"] == team_abbr), candidates[0])
+                    values = dict(zip(labels, athlete.get("stats", [])))
+                    if not values or values.get("MIN", "") in ("", "--", "DNP"):
+                        continue
+                    def number(label):
+                        return safe_float(values.get(label, 0))
+                    def made_attempt(label):
+                        parts = str(values.get(label, "0-0")).split("-")
+                        return (safe_int(parts[0]), safe_int(parts[1])) if len(parts) == 2 else (0, 0)
+                    fgm, fga = made_attempt("FG")
+                    fg3m, fg3a = made_attempt("3PT")
+                    ftm, fta = made_attempt("FT")
+                    totals = {
+                        "min": number("MIN"), "pts": number("PTS"),
+                        "reb": number("REB"), "ast": number("AST"),
+                        "stl": number("STL"), "blk": number("BLK"),
+                        "tov": number("TO"), "fgm": fgm, "fga": fga,
+                        "fg3m": fg3m, "fg3a": fg3a, "ftm": ftm, "fta": fta,
+                    }
+                    player_games[pid][event_id] = totals
+
+    output = {}
+    for pid, games in player_games.items():
+        totals = empty_totals()
+        for game in games.values():
+            for key in totals:
+                totals[key] += game[key]
+        output[pid] = build_stat_block_from_totals(len(games), totals)
+    max_gp = max((block["games"] for block in output.values()), default=0)
+    print(f"ESPN fallback: {len(output)} players; max GP={max_gp}", flush=True)
+    if len(output) < 200 or max_gp <= 1:
+        raise RuntimeError("ESPN player season stats incomplete; refusing to publish")
+    return output
+
+
 # ============================================================
 # CURRENT-SEASON AGGREGATION
 # ============================================================
@@ -1906,8 +2009,12 @@ def main() -> None:
                 frame=frame, current_player_ids=current_player_ids
             )
         except Exception as exc:
-            use_existing_output_fallback(exc)
-            return
+            print(f"NBA game logs unavailable: {exc}; trying ESPN season boxscores", flush=True)
+            try:
+                current_stats = fetch_espn_season_boxscores(players_by_id)
+            except Exception as espn_exc:
+                use_existing_output_fallback(espn_exc)
+                return
 
     # Never overwrite a fuller published season with a truncated response.
     if OUTPUT_FILE.exists():
