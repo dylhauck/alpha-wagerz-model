@@ -402,6 +402,106 @@ def fetch_season_game_logs(
     ) from last_error
 
 
+# ESPN provides a separate game-log service that does not use stats.nba.com.
+# Resolve ESPN IDs by team roster/name; NBA and ESPN player IDs differ.
+def fetch_espn_game_logs(players_by_team):
+    import requests
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    from difflib import SequenceMatcher
+
+    session = requests.Session()
+    session.headers.update({"User-Agent": "Mozilla/5.0 (compatible; AlphaWagerz/1.0)"})
+    espn_ids = {}
+    for team, players in players_by_team.items():
+        try:
+            response = session.get(
+                f"https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/{team.lower()}/roster",
+                timeout=18,
+            )
+            response.raise_for_status()
+            payload = response.json()
+            athletes = payload.get("athletes", [])
+            roster = []
+            for group in athletes:
+                if isinstance(group, dict) and "items" in group:
+                    roster.extend(group["items"])
+                elif isinstance(group, dict):
+                    roster.append(group)
+            by_name = {
+                "".join(c for c in str(a.get("displayName", "")).casefold() if c.isalnum()): a
+                for a in roster if a.get("id")
+            }
+            for player in players:
+                key = "".join(c for c in player["player_name"].casefold() if c.isalnum())
+                athlete = by_name.get(key)
+                if athlete:
+                    espn_ids[player["player_id"]] = (str(athlete["id"]), player)
+        except (requests.RequestException, ValueError) as exc:
+            print(f"  ESPN roster {team} unavailable: {exc}", flush=True)
+    print(f"  ESPN matched {len(espn_ids)} player IDs", flush=True)
+
+    def get_logs(item):
+        player_id, (espn_id, player) = item
+        result = []
+        for season in ALL_SEASONS:
+            try:
+                year = int(season.split("-")[0]) + 1
+                response = requests.get(
+                    f"https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/{espn_id}/gamelog",
+                    params={"season": year, "seasontype": 2},
+                    headers={"User-Agent": "Mozilla/5.0"},
+                    timeout=18,
+                )
+                response.raise_for_status()
+                data = response.json()
+                # ESPN provides per-event stat arrays and labels in the
+                # response; never assume an unlabeled column order.
+                labels = data.get("labels", [])
+                events = data.get("events", {})
+                for category in data.get("seasonTypes", []):
+                    for grouping in category.get("categories", []):
+                        for event in grouping.get("events", []):
+                            event_id = str(event.get("eventId") or event.get("id") or "")
+                            detail = events.get(event_id, {})
+                            opponent = normalize_team_abbreviation(
+                                (detail.get("opponent") or {}).get("abbreviation")
+                                if isinstance(detail.get("opponent"), dict)
+                                else ""
+                            )
+                            stats = event.get("stats", [])
+                            if not opponent or not isinstance(stats, list) or not labels:
+                                continue
+                            values = dict(zip(labels, stats))
+                            def num(*names):
+                                for name in names:
+                                    if name in values:
+                                        return safe_float(values[name])
+                                return 0.0
+                            result.append({
+                                "season": season, "player_id": player_id,
+                                "player_name": player["player_name"], "team": player["team"],
+                                "opponent": opponent, "game_id": event_id,
+                                "game_date": extract_game_date(detail.get("gameDate") or detail.get("date")),
+                                "min": num("MIN"), "pts": num("PTS"), "reb": num("REB"),
+                                "ast": num("AST"), "stl": num("STL"), "blk": num("BLK"),
+                                "tov": num("TO", "TOV"), "fg3m": num("3PM"),
+                                "fgm": num("FGM"), "fga": num("FGA"),
+                                "fg3a": num("3PA"), "ftm": num("FTM"),
+                                "fta": num("FTA"), "fantasy_points": 0.0,
+                            })
+            except (requests.RequestException, ValueError, TypeError):
+                continue
+        return result
+
+    all_rows = []
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        futures = [pool.submit(get_logs, item) for item in espn_ids.items()]
+        for future in as_completed(futures):
+            all_rows.extend(future.result())
+    print(f"  ESPN alternate game logs: {len(all_rows)} verified rows", flush=True)
+    return all_rows
+
+
 # ============================================================
 # NORMALIZE GAME LOGS
 # ============================================================
@@ -1171,10 +1271,20 @@ def main() -> None:
             )
 
         except Exception as exc:
-            use_existing_matchup_fallback(
-                exc
-            )
-            return
+            print(f"NBA Stats unavailable: {exc}. Trying ESPN game logs.", flush=True)
+            try:
+                all_logs = fetch_espn_game_logs(players_by_team)
+            except Exception as espn_exc:
+                print(f"ESPN game logs unavailable: {espn_exc}", flush=True)
+                all_logs = []
+            if not all_logs:
+                use_existing_matchup_fallback(exc)
+                return
+            season_counts = {
+                season_name: sum(row["season"] == season_name for row in all_logs)
+                for season_name in ALL_SEASONS
+            }
+            break
 
         normalized = normalize_game_logs(
             frame,
