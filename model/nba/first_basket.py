@@ -148,6 +148,8 @@ def update_history():
     ids = []
     for days_ago in range(1, 29):
         day = today - timedelta(days=days_ago)
+        if day < datetime(2026, 10, 20).date():
+            continue
         try:
             ids.extend(get_events(day))
         except (requests.RequestException, ValueError, KeyError) as exc:
@@ -263,12 +265,12 @@ def make_forecast(game, matchup, history, roster):
             return base
         observed.append((player, stats))
     # Empirical Bayes smoothing with a 10% prior per starter.
-    # Probabilities are normalized across the ten candidates because
-    # exactly one player scores the game's first made field goal.
+    # Each value is the player's estimated unconditional first-field-goal
+    # chance per start; do NOT normalize to 100% across projected starters,
+    # since an unexpected starter or reserve could score first.
     raw = [(row["first_baskets"] + 2) / (row["starts"] + 20)
            for _, row in observed]
-    denominator = sum(raw)
-    if denominator <= 0:
+    if not any(raw):
         base["reason"] = "No usable first-field-goal observations"
         return base
     base["players"] = [
@@ -276,7 +278,7 @@ def make_forecast(game, matchup, history, roster):
             "player_id": player["player_id"],
             "player_name": player["player_name"],
             "team": player["team"],
-            "probability": round(100 * raw[i] / denominator, 2),
+            "probability": round(100 * raw[i], 2),
             "first_shot_rate": round(100 * stats["first_shots"] / stats["starts"], 2),
             "first_basket_rate": round(100 * stats["first_baskets"] / stats["starts"], 2),
             "starts_sample": stats["starts"],
@@ -287,8 +289,9 @@ def make_forecast(game, matchup, history, roster):
     base["players"].sort(key=lambda x: x["probability"], reverse=True)
     base["status"] = "estimated"
     base["reason"] = (
-        "Small-sample, smoothed historical first-basket estimate; "
-        "tip-off probability and confirmed starters not available"
+        "Small-sample, smoothed first-basket estimate from verified starts; "
+        "opening-tip probabilities, current injuries, and confirmed starters "
+        "are not yet included"
     )
     return base
 
