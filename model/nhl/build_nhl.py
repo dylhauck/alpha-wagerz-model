@@ -150,9 +150,21 @@ def player_history(games):
                 entry["team"] = team
                 goalie_name = goalie.get("name") or {}
                 entry["name"] = goalie_name.get("default") if isinstance(goalie_name, dict) else str(goalie_name)
-                entry["saves"] += int(number(goalie.get("saves")))
-                entry["goals_against"] += int(number(goalie.get("goalsAgainst")))
-                entry["shots_against"] += int(number(goalie.get("shotsAgainst")))
+                saves_raw = goalie.get("saves")
+                # NHL boxscore commonly represents saves as "saves/shots".
+                if isinstance(saves_raw, str) and "/" in saves_raw:
+                    saved, faced = saves_raw.split("/", 1)
+                    saves = int(number(saved))
+                    shots = int(number(faced))
+                else:
+                    saves = int(number(saves_raw))
+                    shots = int(number(goalie.get("shotsAgainst")))
+                conceded = int(number(goalie.get("goalsAgainst")))
+                if not shots and saves + conceded:
+                    shots = saves + conceded
+                entry["saves"] += saves
+                entry["goals_against"] += conceded
+                entry["shots_against"] += shots
             for group in ("forwards", "defense"):
                 for p in roster.get(group) or []:
                     pid = str(p.get("playerId") or "")
