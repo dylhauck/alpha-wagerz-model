@@ -111,6 +111,9 @@ def player_history(games):
     teams = defaultdict(lambda: {"games": 0, "goals_for": 0, "goals_against": 0,
                                  "wins": 0, "last_games": []})
     matchups = defaultdict(list)
+    goalies = defaultdict(lambda: {"games": 0, "shots_against": 0,
+                                   "goals_against": 0, "saves": 0,
+                                   "team": "", "name": ""})
     boxscores = {}
     with ThreadPoolExecutor(max_workers=6) as pool:
         futures = {pool.submit(fetch, f"gamecenter/{game['id']}/boxscore"): str(game['id']) for game in games[:140]}
@@ -138,6 +141,18 @@ def player_history(games):
             continue
         for side, team in (("awayTeam", a), ("homeTeam", h)):
             roster = ((box.get("playerByGameStats") or {}).get("awayTeam" if side == "awayTeam" else "homeTeam") or {})
+            for goalie in roster.get("goalies") or []:
+                gid = str(goalie.get("playerId") or "")
+                if not gid:
+                    continue
+                entry = goalies[gid]
+                entry["games"] += 1
+                entry["team"] = team
+                goalie_name = goalie.get("name") or {}
+                entry["name"] = goalie_name.get("default") if isinstance(goalie_name, dict) else str(goalie_name)
+                entry["saves"] += int(number(goalie.get("saves")))
+                entry["goals_against"] += int(number(goalie.get("goalsAgainst")))
+                entry["shots_against"] += int(number(goalie.get("shotsAgainst")))
             for group in ("forwards", "defense"):
                 for p in roster.get(group) or []:
                     pid = str(p.get("playerId") or "")
@@ -156,7 +171,7 @@ def player_history(games):
                     row["position"] = str(p.get("position") or "")
                     name = p.get("name") or {}
                     row["name"] = name.get("default") if isinstance(name, dict) else str(name)
-    return records, teams, matchups
+    return records, teams, matchups, goalies
 
 
 def build_nhl():
@@ -164,7 +179,7 @@ def build_nhl():
     today_games = scheduled_games(today)
     tomorrow_games = scheduled_games(today + timedelta(days=1))
     history_games = previous_games(today)
-    player_stats, team_stats, head_to_head = player_history(history_games)
+    player_stats, team_stats, head_to_head, goalie_stats = player_history(history_games)
     player_rows = []
     for pid, p in player_stats.items():
         n = p["games"]
@@ -180,6 +195,21 @@ def build_nhl():
             "toi_minutes_per_game": round(p["toi_seconds"] / n / 60, 2),
         })
     player_rows.sort(key=lambda p: (p["goals_per_game"], p["shots_per_game"]), reverse=True)
+    goalie_rows = []
+    for pid, p in goalie_stats.items():
+        if not p["games"]:
+            continue
+        goalie_rows.append({
+            "player_id": pid, "name": p["name"], "team": p["team"],
+            "games": p["games"], "saves": p["saves"],
+            "shots_against": p["shots_against"],
+            "goals_against": p["goals_against"],
+            "save_percentage": round(p["saves"] / p["shots_against"], 3)
+            if p["shots_against"] else None,
+            "goals_against_per_appearance": round(p["goals_against"] / p["games"], 2),
+        })
+    goalie_rows.sort(key=lambda p: p["games"], reverse=True)
+
     team_rows = []
     for team, t in team_stats.items():
         n = t["games"]
@@ -248,7 +278,7 @@ def build_nhl():
         save(subdir, "projections.json", {"games": projections})
         save(subdir, "anytime_goals.json", {"games": goal_graphs})
         save(subdir, "matchup_history.json", {"games": histories})
-        save(subdir, "players.json", {"players": player_rows})
+        save(subdir, "players.json", {"players": player_rows, "goalies": goalie_rows})
         save(subdir, "teams.json", {"teams": team_rows})
         save(subdir, "injuries.json", {"status": "unavailable", "injuries": [],
                                        "message": "Verified NHL injury feed not connected."})
