@@ -805,10 +805,17 @@ def build_touchdown_payload(
 
         if result is not None:
             display_factors = player_display_factors(player, metrics)
-            result["environment"]["scoring_factor"] = display_factors["scoring"]
-            result["matchup"]["overall_factor"] = display_factors["overall"]
-            result["matchup"]["rushing_factor"] = display_factors["rushing"]
-            result["matchup"]["passing_factor"] = display_factors["passing"]
+            # Keep the upstream team matchup/environment value whenever
+            # player-specific history is insufficient. Never erase a
+            # populated field with None (which renders as a dash).
+            if display_factors["scoring"] is not None:
+                result["environment"]["scoring_factor"] = display_factors["scoring"]
+            if display_factors["overall"] is not None:
+                result["matchup"]["overall_factor"] = display_factors["overall"]
+            if display_factors["rushing"] is not None:
+                result["matchup"]["rushing_factor"] = display_factors["rushing"]
+            if display_factors["passing"] is not None:
+                result["matchup"]["passing_factor"] = display_factors["passing"]
             output_players.append(result)
 
     # Usage is the player's share of projected team opportunities,
