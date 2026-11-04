@@ -9,6 +9,7 @@ import json
 import math
 import shutil
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -108,6 +109,14 @@ def player_history(games):
     teams = defaultdict(lambda: {"games": 0, "goals_for": 0, "goals_against": 0,
                                  "wins": 0, "last_games": []})
     matchups = defaultdict(list)
+    boxscores = {}
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        futures = {pool.submit(fetch, f"gamecenter/{game['id']}/boxscore"): str(game['id']) for game in games[:60]}
+        for future in as_completed(futures):
+            try:
+                boxscores[futures[future]] = future.result()
+            except (requests.RequestException, ValueError) as exc:
+                print(f"  NHL boxscore {futures[future]} unavailable: {exc}", flush=True)
     for game in games:
         a, h = game["away"], game["home"]
         ag, hg = game.get("away_score"), game.get("home_score")
@@ -122,10 +131,8 @@ def player_history(games):
                                          "goals_for": scored, "goals_against": conceded,
                                          "date": game["date"]})
             matchups[tuple(sorted((a, h)))].append(game)
-        try:
-            box = fetch(f"gamecenter/{game['id']}/boxscore")
-        except (requests.RequestException, ValueError) as exc:
-            print(f"  NHL boxscore {game['id']} unavailable: {exc}", flush=True)
+        box = boxscores.get(str(game["id"]))
+        if not box:
             continue
         for side, team in (("awayTeam", a), ("homeTeam", h)):
             roster = ((box.get("playerByGameStats") or {}).get("awayTeam" if side == "awayTeam" else "homeTeam") or {})
