@@ -135,7 +135,8 @@ def opening_events(game_id):
             break
     if not first_made or not first_shots:
         return None
-    return {"teams": teams, "starters": starters, "athletes": athletes,
+    game_date = str((((payload.get("header") or {}).get("competitions") or [{}])[0]).get("date") or "")
+    return {"game_date": game_date, "teams": teams, "starters": starters, "athletes": athletes,
             "first_shots": first_shots, "first_made": first_made,
             "tip_winner": tip_winner}
 
@@ -196,45 +197,100 @@ def normalized_name(value):
     )
 
 
+def previous_starting_five(team, history, unavailable):
+    """Most recent verified actual starting five, not the previous projection."""
+    team = normalized_team(team)
+    ordered = sorted(
+        history.items(),
+        key=lambda item: (str(item[1].get("game_date") or ""), item[0]),
+        reverse=True,
+    )
+    for game_id, record in ordered:
+        teams = record.get("teams") or {}
+        athletes = record.get("athletes") or {}
+        for tid, abbreviation in teams.items():
+            if normalized_team(abbreviation) != team:
+                continue
+            starters = (record.get("starters") or {}).get(tid) or []
+            if len(starters) != 5:
+                continue
+            names = [athletes.get(str(pid)) for pid in starters]
+            if not all(names) or len({normalized_name(n) for n in names}) != 5:
+                continue
+            if any((team, normalized_name(n)) in unavailable for n in names):
+                continue
+            return names, game_id
+    return None, None
+
+
 def candidate_rows(game, matchup, history, roster, unavailable=None):
     unavailable = unavailable or set()
-    players = []
+    selected = []
+    lineup_sources = {}
     for side in ("away", "home"):
+        team = game.get(f"{side}_abbr") or game.get(f"{side}_team")
+        team_code = normalized_team(team)
+        available = []
         for player in matchup.get(f"{side}_players", []):
             if not isinstance(player, dict):
                 continue
             current = (player.get("splits") or {}).get("current_season") or {}
-            if not current.get("games") or not current.get("min_per_game"):
-                continue
-            team_code = normalized_team(game.get(f"{side}_abbr") or game.get(f"{side}_team"))
+            previous = (player.get("splits") or {}).get("last_season") or {}
+            minutes = float(current.get("min_per_game") or previous.get("min_per_game") or 0)
             if (team_code, normalized_name(player.get("player_name"))) in unavailable:
                 continue
-            players.append({
+            available.append({
                 "player_id": player.get("player_id"),
                 "player_name": player.get("player_name"),
-                "team": game.get(f"{side}_abbr") or game.get(f"{side}_team"),
-                "side": side,
-                "minutes": float(current.get("min_per_game") or 0),
-                "fg_pct": float(current.get("fg_pct") or 0),
+                "team": team, "side": side,
+                "minutes": minutes,
+                "fg_pct": float(current.get("fg_pct") or previous.get("fg_pct") or 0),
             })
-    starters = []
-    for side in ("away", "home"):
-        starters += sorted(
-            [p for p in players if p["side"] == side],
+        # Existing projected starters are usable only with five players
+        # supported by current-season minutes. Otherwise use last actual five.
+        projected = sorted(
+            [p for p in available if p["minutes"] > 0],
             key=lambda p: p["minutes"], reverse=True,
         )[:5]
-    if len(starters) != 10:
-        return [], "incomplete projected starting lineup"
-    return starters, None
-
+        current_valid = len([
+            p for p in projected
+            if any(
+                normalized_name(p["player_name"]) == normalized_name(row.get("player_name"))
+                and float(((row.get("splits") or {}).get("current_season") or {}).get("min_per_game") or 0) > 0
+                for row in matchup.get(f"{side}_players", [])
+            )
+        ]) == 5
+        if current_valid:
+            selected.extend(projected)
+            lineup_sources[side] = "projected_by_minutes"
+            continue
+        names, previous_game = previous_starting_five(team_code, history, unavailable)
+        if not names:
+            return [], lineup_sources, f"No usable projection or verified previous starting five for {team_code}"
+        by_name = {normalized_name(p["player_name"]): p for p in available}
+        last_five = []
+        for name in names:
+            player = by_name.get(normalized_name(name))
+            if player is None:
+                # A historical starter can be missing from the matchup data.
+                # Keep the verified name, but never invent an NBA player ID.
+                player = {"player_id": None, "player_name": name,
+                          "team": team, "side": side, "minutes": 0, "fg_pct": 0}
+            last_five.append(player)
+        selected.extend(last_five)
+        lineup_sources[side] = "previous_confirmed_lineup"
+        lineup_sources[f"{side}_previous_game_id"] = previous_game
+    return selected, lineup_sources, None
 
 def make_forecast(game, matchup, history, roster, unavailable=None):
-    starters, error = candidate_rows(game, matchup, history, roster, unavailable)
+    starters, lineup_sources, error = candidate_rows(game, matchup, history, roster, unavailable)
     base = {
         "game_id": game.get("game_id"),
         "away_team": game.get("away_abbr") or game.get("away_team"),
         "home_team": game.get("home_abbr") or game.get("home_team"),
-        "lineup_status": "projected_by_minutes",
+        "lineup_status": ("previous_confirmed_lineup" if "previous_confirmed_lineup" in lineup_sources.values() else "projected_by_minutes"),
+        "lineup_sources": lineup_sources,
+        "projected_starters": starters,
         "source": "ESPN NBA play-by-play",
         "history_games": len(history), "players": [],
         "status": "unavailable", "reason": error,
@@ -292,7 +348,7 @@ def make_forecast(game, matchup, history, roster, unavailable=None):
             "first_shot_rate": round(100 * stats["first_shots"] / stats["starts"], 2),
             "first_basket_rate": round(100 * stats["first_baskets"] / stats["starts"], 2),
             "starts_sample": stats["starts"],
-            "lineup_status": "projected_by_minutes",
+            "lineup_status": lineup_sources.get(player["side"], "projected_by_minutes"),
         }
         for i, (player, stats) in enumerate(observed)
     ]
