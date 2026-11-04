@@ -196,7 +196,8 @@ def normalized_name(value):
     )
 
 
-def candidate_rows(game, matchup, history, roster):
+def candidate_rows(game, matchup, history, roster, unavailable=None):
+    unavailable = unavailable or set()
     players = []
     for side in ("away", "home"):
         for player in matchup.get(f"{side}_players", []):
@@ -204,6 +205,9 @@ def candidate_rows(game, matchup, history, roster):
                 continue
             current = (player.get("splits") or {}).get("current_season") or {}
             if not current.get("games") or not current.get("min_per_game"):
+                continue
+            team_code = normalized_team(game.get(f"{side}_abbr") or game.get(f"{side}_team"))
+            if (team_code, normalized_name(player.get("player_name"))) in unavailable:
                 continue
             players.append({
                 "player_id": player.get("player_id"),
@@ -224,8 +228,8 @@ def candidate_rows(game, matchup, history, roster):
     return starters, None
 
 
-def make_forecast(game, matchup, history, roster):
-    starters, error = candidate_rows(game, matchup, history, roster)
+def make_forecast(game, matchup, history, roster, unavailable=None):
+    starters, error = candidate_rows(game, matchup, history, roster, unavailable)
     base = {
         "game_id": game.get("game_id"),
         "away_team": game.get("away_abbr") or game.get("away_team"),
@@ -312,10 +316,19 @@ def build_first_basket():
         games = slate if isinstance(slate, list) else slate.get("games", [])
         matchup_games = matchups if isinstance(matchups, list) else matchups.get("games", [])
         by_id = {str(x.get("game_id")): x for x in matchup_games}
+        injury_payload = read(folder / "injuries.json")
+        unavailable = set()
+        for injury in injury_payload.get("injuries", []):
+            status = str(injury.get("status") or "").strip().lower()
+            if status in ("out", "doubtful", "suspended"):
+                unavailable.add((
+                    normalized_team(injury.get("team")),
+                    normalized_name(injury.get("player_name")),
+                ))
         forecasts = []
         for game in games:
             matchup = by_id.get(str(game.get("game_id")), {})
-            forecasts.append(make_forecast(game, matchup, history, roster))
+            forecasts.append(make_forecast(game, matchup, history, roster, unavailable))
         output = {"generated_at": datetime.now(timezone.utc).isoformat(),
                   "slate_type": subdir or "current",
                   "games": forecasts}
