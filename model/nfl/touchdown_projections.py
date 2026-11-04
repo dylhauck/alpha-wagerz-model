@@ -779,6 +779,25 @@ def build_touchdown_payload(
             "passing": passing,
         }
 
+    # Allocate the shared defensive rushing factor according to each
+    # player's projected rushing workload. QB shares are compared with
+    # other QBs on their team; skill-position shares with skill players.
+    # A player with no projected carries has neutral rushing exposure.
+    rushing_team_totals: dict[str, float] = {}
+    for source_player in players:
+        source_position = normalize_position(source_player.get("position"))
+        if source_position not in SUPPORTED_POSITIONS:
+            continue
+        source_team = clean_text(source_player.get("team"))
+        source_group = "QB" if source_position == "QB" else "SKILL"
+        source_key = source_team + ":" + source_group
+        source_carries = max(
+            0.0, f(nested(source_player, "projection", "rushing", "carries"))
+        )
+        rushing_team_totals[source_key] = (
+            rushing_team_totals.get(source_key, 0.0) + source_carries
+        )
+
     output_players = []
 
     missing_metrics = 0
@@ -814,6 +833,21 @@ def build_touchdown_payload(
                 result["matchup"]["overall_factor"] = display_factors["overall"]
             if display_factors["rushing"] is not None:
                 result["matchup"]["rushing_factor"] = display_factors["rushing"]
+            else:
+                # Without individual rushing history, show the impact
+                # of the defense on this player's projected workload,
+                # rather than repeating the team factor for everyone.
+                group = "QB" if result["position"] == "QB" else "SKILL"
+                team_key = clean_text(result.get("team")) + ":" + group
+                team_carries = rushing_team_totals.get(team_key, 0.0)
+                player_carries = max(
+                    0.0, f(nested(player, "projection", "rushing", "carries"))
+                )
+                defense_factor = f(nested(player, "matchup", "rushing_factor"), 1.0)
+                share = min(1.0, player_carries / team_carries) if team_carries > 0 else 0.0
+                result["matchup"]["rushing_factor"] = round(
+                    1.0 + (defense_factor - 1.0) * share, 3
+                )
             if display_factors["passing"] is not None:
                 result["matchup"]["passing_factor"] = display_factors["passing"]
             output_players.append(result)
