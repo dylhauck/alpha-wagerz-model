@@ -713,8 +713,8 @@ def build_touchdown_payload(
         environment = player.get("environment") or {}
         position = normalize_position(player.get("position"))
 
-        def stat(section: str, key: str) -> float:
-            return max(0.0, f(nested(metrics, section, key)))
+        def stat(*keys: str) -> float:
+            return max(0.0, f(nested(metrics, *keys)))
 
         def projected(section: str, key: str) -> float:
             return max(0.0, f(nested(projection, section, key)))
