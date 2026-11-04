@@ -71,6 +71,7 @@ from model.nba.team_stats import main as build_nba_team_stats
 from providers.nba.nba_markets import build_nba_markets
 from model.nba.team_rankings import build_nba_team_rankings
 from model.nba.player_matchups import main as build_nba_player_matchups
+from model.nba.first_basket import build_first_basket
 from model.nba.betting_projections import build_nba_betting_projections
 from model.nba.build_nba_period_projections import main as build_nba_period_projections
 from providers.nba.nba_live_markets import main as build_nba_live_markets
@@ -306,6 +307,13 @@ def run_nba_update():
 
     print("\n🔮 NBA Future Slate", flush=True)
     timed("build_nba_future_pipeline", build_nba_future_pipeline)
+
+    # Optional evidence-based first-basket projections. Do not fail the
+    # existing NBA/NFL/MLB daily update if ESPN is unavailable.
+    try:
+        timed("build_first_basket", build_first_basket)
+    except Exception as exc:
+        print(f"⚠️ NBA first basket unavailable: {exc}", flush=True)
 
 
 def run_full_update():
