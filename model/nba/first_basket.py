@@ -182,6 +182,12 @@ def player_lookup():
     return result
 
 
+def normalized_team(value):
+    abbr = str(value or "").strip().upper()
+    return {"NY": "NYK", "GS": "GSW", "SA": "SAS",
+            "UTAH": "UTA", "NO": "NOP", "WSH": "WAS"}.get(abbr, abbr)
+
+
 def normalized_name(value):
     import unicodedata
     return "".join(
@@ -245,7 +251,7 @@ def make_forecast(game, matchup, history, roster):
             for x in (record.get("first_shots") or {}).values()
         }
         for tid, starter_ids in actual_starters.items():
-            team = str(team_abbrs.get(tid) or "")
+            team = normalized_team(team_abbrs.get(tid))
             for pid in starter_ids:
                 name = normalized_name(athletes.get(pid))
                 if not name:
@@ -256,7 +262,7 @@ def make_forecast(game, matchup, history, roster):
                 counts[key]["first_baskets"] += int(pid == first_made)
     observed = []
     for player in starters:
-        key = (str(player["team"]).upper(), normalized_name(player["player_name"]))
+        key = (normalized_team(player["team"]), normalized_name(player["player_name"]))
         stats = counts[key]
         if stats["starts"] < 3:
             base["reason"] = (
