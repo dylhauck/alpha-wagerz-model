@@ -1,4 +1,5 @@
 from time import perf_counter
+from model.nhl.build_nhl import build_nhl
 
 #MLB
 from graphics.create_weather_graphic import create_weather_graphic
@@ -316,6 +317,15 @@ def run_nba_update():
         print(f"⚠️ NBA first basket unavailable: {exc}", flush=True)
 
 
+def run_nhl_update():
+    print("\\n🏒 NHL Data / Anytime Goals / Matchup History", flush=True)
+    try:
+        timed("build_nhl", build_nhl)
+    except Exception as exc:
+        # NHL is new; never interrupt established sports on provider errors.
+        print(f"⚠️ NHL update unavailable: {exc}", flush=True)
+
+
 def run_full_update():
     """Run independent sport pipelines concurrently in separate processes.
 
@@ -329,7 +339,7 @@ def run_full_update():
 
     pipeline_start = perf_counter()
     print("🐺 Starting parallel Alpha Wagerz full update...", flush=True)
-    sports = ("mlb", "nfl", "nba")
+    sports = ("mlb", "nfl", "nba", "nhl")
 
     def run_sport(sport):
         started = perf_counter()
@@ -346,7 +356,7 @@ def run_full_update():
         )
         return sport, completed.returncode
 
-    with ThreadPoolExecutor(max_workers=3) as executor:
+    with ThreadPoolExecutor(max_workers=4) as executor:
         results = list(executor.map(run_sport, sports))
 
     failures = [sport for sport, code in results if code != 0]
@@ -372,6 +382,7 @@ if __name__ == "__main__":
             "mlb": run_mlb_update,
             "nfl": run_nfl_update,
             "nba": run_nba_update,
+            "nhl": run_nhl_update,
         }
         if sport not in runners:
             raise SystemExit(f"Unknown sport: {sport}")
@@ -379,4 +390,4 @@ if __name__ == "__main__":
     elif len(sys.argv) == 1:
         run_full_update()
     else:
-        raise SystemExit("Usage: python -m pipeline.full_update [--sport mlb|nfl|nba]")
+        raise SystemExit("Usage: python -m pipeline.full_update [--sport mlb|nfl|nba|nhl]")
