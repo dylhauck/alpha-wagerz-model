@@ -704,6 +704,81 @@ def build_touchdown_payload(
 
     players = extract_players(payload)
 
+    # Build matchup-adjusted player baselines from the same per-game
+    # player metrics used by the projection engine. These are display
+    # ratings, not additional touchdown probability multipliers.
+    def player_display_factors(player: dict[str, Any], metrics: dict[str, Any]) -> dict[str, Any]:
+        projection = player.get("projection") or {}
+        matchup = player.get("matchup") or {}
+        environment = player.get("environment") or {}
+        position = normalize_position(player.get("position"))
+
+        def stat(section: str, key: str) -> float:
+            return max(0.0, f(nested(metrics, section, key)))
+
+        def projected(section: str, key: str) -> float:
+            return max(0.0, f(nested(projection, section, key)))
+
+        def adjusted_factor(projected_value: float, baseline: float) -> float | None:
+            if baseline <= 0 or projected_value <= 0:
+                return None
+            return round(clamp(projected_value / baseline, 0.70, 1.30), 3)
+
+        # A player's projected output relative to their own current
+        # season production captures usage, efficiency, and game context.
+        # No baseline => unknown rather than a fabricated neutral value.
+        pass_baseline = stat("passing", "yards_per_game")
+        rush_baseline = stat("rushing", "yards_per_game")
+        rec_baseline = stat("receiving", "yards_per_game")
+        pass_projected = projected("passing", "yards")
+        rush_projected = projected("rushing", "yards")
+        rec_projected = projected("receiving", "yards")
+
+        passing = adjusted_factor(pass_projected, pass_baseline)
+        rushing = adjusted_factor(rush_projected, rush_baseline)
+        components = [
+            (pass_projected, pass_baseline),
+            (rush_projected, rush_baseline),
+            (rec_projected, rec_baseline),
+        ]
+        projected_total = sum(p for p, b in components if b > 0)
+        baseline_total = sum(b for p, b in components if b > 0)
+        overall = adjusted_factor(projected_total, baseline_total)
+
+        # Receiving-only players have a real passing matchup exposure.
+        if passing is None and rec_baseline > 0:
+            passing = adjusted_factor(rec_projected, rec_baseline)
+
+        # Scoring opportunity is individual: compare projected scoring
+        # TDs with the player's own historical rate, when available.
+        current_td_rate = (
+            stat("rushing", "touchdowns_per_game")
+            + stat("receiving", "touchdowns_per_game")
+        )
+        career_td_rate = (
+            stat("career", "averages", "rushing_tds")
+            + stat("career", "averages", "receiving_tds")
+        )
+        baseline_td = current_td_rate if current_td_rate > 0 else career_td_rate
+        scoring = adjusted_factor(
+            projected("rushing", "touchdowns") + projected("receiving", "touchdowns"),
+            baseline_td,
+        )
+        # QB passing TDs are not anytime-scoring TDs; use passing TD
+        # opportunity for the QB's scoring environment display only.
+        if position == "QB":
+            scoring = adjusted_factor(
+                projected("passing", "touchdowns"),
+                stat("passing", "touchdowns_per_game"),
+            )
+
+        return {
+            "scoring": scoring,
+            "overall": overall,
+            "rushing": rushing,
+            "passing": passing,
+        }
+
     output_players = []
 
     missing_metrics = 0
@@ -729,6 +804,11 @@ def build_touchdown_payload(
         )
 
         if result is not None:
+            display_factors = player_display_factors(player, metrics)
+            result["environment"]["scoring_factor"] = display_factors["scoring"]
+            result["matchup"]["overall_factor"] = display_factors["overall"]
+            result["matchup"]["rushing_factor"] = display_factors["rushing"]
+            result["matchup"]["passing_factor"] = display_factors["passing"]
             output_players.append(result)
 
     # Usage is the player's share of projected team opportunities,
