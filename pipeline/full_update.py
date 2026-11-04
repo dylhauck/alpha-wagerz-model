@@ -318,7 +318,7 @@ def run_nba_update():
 
 
 def run_nhl_update():
-    print("\\n🏒 NHL Data / Anytime Goals / Matchup History", flush=True)
+    print("\n🏒 NHL Data / Anytime Goals / Matchup History", flush=True)
     try:
         timed("build_nhl", build_nhl)
     except Exception as exc:
@@ -344,17 +344,23 @@ def run_full_update():
     def run_sport(sport):
         started = perf_counter()
         print(f"▶️ Starting {sport.upper()} pipeline", flush=True)
-        completed = subprocess.run(
-            [sys.executable, "-u", "-m", "pipeline.full_update", "--sport", sport],
-            check=False,
-        )
+        try:
+            completed = subprocess.run(
+                [sys.executable, "-u", "-m", "pipeline.full_update", "--sport", sport],
+                check=False,
+                timeout=90 if sport == "nhl" else None,
+            )
+            code = completed.returncode
+        except subprocess.TimeoutExpired:
+            print("⚠️ NHL exceeded its 90-second time budget; existing sports continue.", flush=True)
+            code = 0 if sport == "nhl" else 1
         print(
             f"⏱️ {sport.upper()} pipeline: "
             f"{format_duration(perf_counter() - started)} "
-            f"(exit={completed.returncode})",
+            f"(exit={code})",
             flush=True,
         )
-        return sport, completed.returncode
+        return sport, code
 
     with ThreadPoolExecutor(max_workers=4) as executor:
         results = list(executor.map(run_sport, sports))
