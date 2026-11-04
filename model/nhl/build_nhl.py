@@ -79,13 +79,15 @@ def scheduled_games(day):
     return games
 
 
-def previous_games(day, lookback=24):
+def previous_games(day, lookback=42):
     # Pull historical games from one weekly schedule call per seven days.
     completed = {}
     for days in range(1, lookback + 1, 7):
         previous = day - timedelta(days=days)
         payload = fetch(f"schedule/{previous.isoformat()}")
         for section in payload.get("gameWeek") or []:
+            if not section.get("date") or section["date"] >= day.isoformat():
+                continue
             for game in section.get("games") or []:
                 if game.get("gameState") not in ("FINAL", "OFF"):
                     continue
@@ -105,13 +107,13 @@ def previous_games(day, lookback=24):
 def player_history(games):
     records = defaultdict(lambda: {"games": 0, "goals": 0, "shots": 0,
                                     "assists": 0, "points": 0, "toi": 0,
-                                    "team": "", "name": "", "position": ""})
+                                    "team": "", "name": "", "position": "", "toi_seconds": 0})
     teams = defaultdict(lambda: {"games": 0, "goals_for": 0, "goals_against": 0,
                                  "wins": 0, "last_games": []})
     matchups = defaultdict(list)
     boxscores = {}
     with ThreadPoolExecutor(max_workers=6) as pool:
-        futures = {pool.submit(fetch, f"gamecenter/{game['id']}/boxscore"): str(game['id']) for game in games[:60]}
+        futures = {pool.submit(fetch, f"gamecenter/{game['id']}/boxscore"): str(game['id']) for game in games[:140]}
         for future in as_completed(futures):
             try:
                 boxscores[futures[future]] = future.result()
@@ -147,6 +149,9 @@ def player_history(games):
                     row["shots"] += int(number(p.get("sog")))
                     row["assists"] += int(number(p.get("assists")))
                     row["points"] += int(number(p.get("points")))
+                    toi = str(p.get("toi") or "0:00").split(":")
+                    if len(toi) == 2:
+                        row["toi_seconds"] += int(number(toi[0])) * 60 + int(number(toi[1]))
                     row["team"] = team
                     row["position"] = str(p.get("position") or "")
                     name = p.get("name") or {}
@@ -172,6 +177,7 @@ def build_nhl():
             "points": p["points"], "shots": p["shots"],
             "goals_per_game": round(p["goals"] / n, 3),
             "shots_per_game": round(p["shots"] / n, 3),
+            "toi_minutes_per_game": round(p["toi_seconds"] / n / 60, 2),
         })
     player_rows.sort(key=lambda p: (p["goals_per_game"], p["shots_per_game"]), reverse=True)
     team_rows = []
@@ -218,14 +224,19 @@ def build_nhl():
                     continue
                 team_rate = t["goals_for"] / t["games"]
                 adjustment = max(0.65, min(1.35, own / team_rate)) if team_rate else 1.0
-                expected = p["goals_per_game"] * adjustment
+                # Shrink noisy recent scoring towards shots-based scoring
+                # opportunity; the prior is explicitly heuristic.
+                shooting_rate = (p["goals"] + 1.5) / (p["shots"] + 15) if p["shots"] else 0.09
+                shot_based = p["shots_per_game"] * shooting_rate
+                expected = (0.65 * p["goals_per_game"] + 0.35 * shot_based) * adjustment
                 candidates.append({
                     "player_id": p["player_id"], "name": p["name"], "team": p["team"],
                     "games": p["games"], "goals_per_game": p["goals_per_game"],
                     "shots_per_game": p["shots_per_game"],
+                    "toi_minutes_per_game": p["toi_minutes_per_game"],
                     "goal_probability": round(100 * (1 - math.exp(-expected)), 1),
                     "expected_goals": round(expected, 3),
-                    "source": "recent_goal_rate_poisson_baseline",
+                    "source": "recent_goals_shots_shrinkage_poisson_baseline",
                 })
             candidates.sort(key=lambda p: p["goal_probability"], reverse=True)
             goal_graphs.append({"game_id": game["game_id"], "players": candidates})
