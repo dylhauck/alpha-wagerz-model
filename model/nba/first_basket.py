@@ -74,16 +74,41 @@ def team_id(play):
 def opening_events(game_id):
     payload = fetch(f"{BASE}/summary?event={game_id}")
     plays = payload.get("plays") or []
-    if not plays:
+    if isinstance(plays, dict):
+        plays = plays.get("items") or []
+    if not isinstance(plays, list) or not plays:
         return None
     competitors = (
         ((payload.get("header") or {}).get("competitions") or [{}])[0]
         .get("competitors") or []
     )
-    teams = [str(x.get("team", {}).get("id") or x.get("id") or "") for x in competitors]
-    if len(teams) != 2 or not all(teams):
+    teams = {}
+    for comp in competitors:
+        team = comp.get("team") or {}
+        if team.get("id") and team.get("abbreviation"):
+            teams[str(team["id"])] = str(team["abbreviation"]).upper()
+    if len(teams) != 2:
         return None
-    team_first_shot = {}
+    athletes = {}
+    starters = {}
+    for group in (payload.get("boxscore") or {}).get("players") or []:
+        team = group.get("team") or {}
+        tid = str(team.get("id") or "")
+        if tid not in teams:
+            continue
+        starters[tid] = []
+        for stat_group in group.get("statistics") or []:
+            for entry in stat_group.get("athletes") or []:
+                athlete = entry.get("athlete") or {}
+                pid = str(athlete.get("id") or "")
+                name = athlete.get("displayName") or athlete.get("fullName")
+                if pid and name:
+                    athletes[pid] = name
+                    if entry.get("starter") is True:
+                        starters[tid].append(pid)
+    if any(len(starters.get(tid, [])) != 5 for tid in teams):
+        return None
+    first_shots = {}
     first_made = None
     tip_winner = None
     for play in plays:
@@ -94,28 +119,25 @@ def opening_events(game_id):
         team = team_id(play)
         athlete = athlete_id(play)
         if tip_winner is None and ("jump ball" in kind or "jump ball" in description):
-            # ESPN does not consistently encode jump-ball winners.
-            # Record only when the play explicitly identifies a winning team.
             if "wins tip" in description and team in teams:
                 tip_winner = team
         if not team or not athlete:
             continue
-        # ESPN made/missed shot play types; explicitly exclude free throws.
         free_throw = "free throw" in kind or "free throw" in description
         made = ("made" in kind or "makes" in description) and not free_throw
         missed = ("missed" in kind or "misses" in description) and not free_throw
         if not (made or missed):
             continue
-        if team not in team_first_shot:
-            team_first_shot[team] = {"player": athlete, "made": made}
+        if team not in first_shots:
+            first_shots[team] = {"player": athlete, "made": made}
         if made:
             first_made = {"player": athlete, "team": team}
             break
-    if not first_made or len(team_first_shot) == 0:
+    if not first_made or not first_shots:
         return None
-    return {"teams": teams, "first_shots": team_first_shot,
-            "first_made": first_made, "tip_winner": tip_winner}
-
+    return {"teams": teams, "starters": starters, "athletes": athletes,
+            "first_shots": first_shots, "first_made": first_made,
+            "tip_winner": tip_winner}
 
 def update_history():
     saved = read(HISTORY)
@@ -158,9 +180,15 @@ def player_lookup():
     return result
 
 
+def normalized_name(value):
+    import unicodedata
+    return "".join(
+        ch for ch in unicodedata.normalize("NFKD", str(value or "").lower())
+        if ch.isalnum()
+    )
+
+
 def candidate_rows(game, matchup, history, roster):
-    # ESPN play-by-play athlete IDs are ESPN IDs; player_matchups may
-    # contain NBA Stats IDs. Only use a verified crosswalk if present.
     players = []
     for side in ("away", "home"):
         for player in matchup.get(f"{side}_players", []):
@@ -169,13 +197,8 @@ def candidate_rows(game, matchup, history, roster):
             current = (player.get("splits") or {}).get("current_season") or {}
             if not current.get("games") or not current.get("min_per_game"):
                 continue
-            espn_id = str(player.get("espn_id") or "")
-            if not espn_id:
-                roster_row = roster.get(str(player.get("player_id") or ""), {})
-                espn_id = str(roster_row.get("espn_id") or "")
             players.append({
                 "player_id": player.get("player_id"),
-                "espn_id": espn_id,
                 "player_name": player.get("player_name"),
                 "team": game.get(f"{side}_abbr") or game.get(f"{side}_team"),
                 "side": side,
@@ -190,15 +213,14 @@ def candidate_rows(game, matchup, history, roster):
         )[:5]
     if len(starters) != 10:
         return [], "incomplete projected starting lineup"
-    if any(not p["espn_id"] for p in starters):
-        return starters, "ESPN player ID crosswalk unavailable"
     return starters, None
 
 
 def make_forecast(game, matchup, history, roster):
     starters, error = candidate_rows(game, matchup, history, roster)
     base = {
-        "game_id": game.get("game_id"), "away_team": game.get("away_abbr") or game.get("away_team"),
+        "game_id": game.get("game_id"),
+        "away_team": game.get("away_abbr") or game.get("away_team"),
         "home_team": game.get("home_abbr") or game.get("home_team"),
         "lineup_status": "projected_by_minutes",
         "source": "ESPN NBA play-by-play",
@@ -207,35 +229,67 @@ def make_forecast(game, matchup, history, roster):
     }
     if error:
         return base
-    first = Counter()
-    shots = Counter()
-    starts = Counter()
-    tip = Counter()
+    # Historical denominators must be games where this athlete ACTUALLY
+    # started; never divide by unrelated league games.
+    counts = defaultdict(lambda: {"starts": 0, "first_shots": 0,
+                                  "first_baskets": 0})
     for record in history.values():
-        team_ids = record.get("teams") or []
-        if len(team_ids) != 2:
-            continue
-        tip_winner = record.get("tip_winner")
-        if tip_winner:
-            tip[tip_winner] += 1
-        first_made = record.get("first_made") or {}
-        made_player = str(first_made.get("player") or "")
-        for player in starters:
-            pid = player["espn_id"]
-            if pid == made_player:
-                first[pid] += 1
-            for shot in (record.get("first_shots") or {}).values():
-                if str(shot.get("player") or "") == pid:
-                    shots[pid] += 1
-    # Without verified starter appearances and team ID mapping,
-    # a count across all games is NOT a first-basket hit rate.
-    # Do not turn these raw counts into betting probabilities.
+        team_abbrs = record.get("teams") or {}
+        actual_starters = record.get("starters") or {}
+        athletes = record.get("athletes") or {}
+        first_made = str((record.get("first_made") or {}).get("player") or "")
+        first_shots = {
+            str(x.get("player") or "")
+            for x in (record.get("first_shots") or {}).values()
+        }
+        for tid, starter_ids in actual_starters.items():
+            team = str(team_abbrs.get(tid) or "")
+            for pid in starter_ids:
+                name = normalized_name(athletes.get(pid))
+                if not name:
+                    continue
+                key = (team, name)
+                counts[key]["starts"] += 1
+                counts[key]["first_shots"] += int(pid in first_shots)
+                counts[key]["first_baskets"] += int(pid == first_made)
+    observed = []
+    for player in starters:
+        key = (str(player["team"]).upper(), normalized_name(player["player_name"]))
+        stats = counts[key]
+        if stats["starts"] < 3:
+            base["reason"] = (
+                "Insufficient verified opening-play history for all ten projected starters"
+            )
+            return base
+        observed.append((player, stats))
+    # Empirical Bayes smoothing with a 10% prior per starter.
+    # Probabilities are normalized across the ten candidates because
+    # exactly one player scores the game's first made field goal.
+    raw = [(row["first_baskets"] + 2) / (row["starts"] + 20)
+           for _, row in observed]
+    denominator = sum(raw)
+    if denominator <= 0:
+        base["reason"] = "No usable first-field-goal observations"
+        return base
+    base["players"] = [
+        {
+            "player_id": player["player_id"],
+            "player_name": player["player_name"],
+            "team": player["team"],
+            "probability": round(100 * raw[i] / denominator, 2),
+            "first_shot_rate": round(100 * stats["first_shots"] / stats["starts"], 2),
+            "first_basket_rate": round(100 * stats["first_baskets"] / stats["starts"], 2),
+            "starts_sample": stats["starts"],
+            "lineup_status": "projected_by_minutes",
+        }
+        for i, (player, stats) in enumerate(observed)
+    ]
+    base["players"].sort(key=lambda x: x["probability"], reverse=True)
+    base["status"] = "estimated"
     base["reason"] = (
-        "Verified starter appearances, ESPN team mapping and opening-tip "
-        "history are required before first-basket probabilities can be published"
+        "Small-sample, smoothed historical first-basket estimate; "
+        "tip-off probability and confirmed starters not available"
     )
-    base["observed_first_baskets"] = dict(first)
-    base["observed_first_shots"] = dict(shots)
     return base
 
 
