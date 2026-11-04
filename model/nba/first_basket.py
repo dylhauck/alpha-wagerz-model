@@ -320,45 +320,83 @@ def make_forecast(game, matchup, history, roster, unavailable=None):
                 counts[key]["starts"] += 1
                 counts[key]["first_shots"] += int(pid in first_shots)
                 counts[key]["first_baskets"] += int(pid == first_made)
+    # Each player's sample is evaluated independently. A rookie or a
+    # missing ESPN record must never blank the other nine players.
+    # An individual without observed starts receives a conservative
+    # estimated opportunity proxy, not fabricated first-basket history.
     observed = []
     for player in starters:
         key = (normalized_team(player["team"]), normalized_name(player["player_name"]))
-        stats = counts[key]
-        if stats["starts"] < 3:
-            base["reason"] = (
-                "Insufficient verified opening-play history for all ten projected starters"
-            )
-            return base
-        observed.append((player, stats))
-    # Empirical Bayes smoothing with a 10% prior per starter.
-    # Each value is the player's estimated unconditional first-field-goal
-    # chance per start; do NOT normalize to 100% across projected starters,
-    # since an unexpected starter or reserve could score first.
-    raw = [(row["first_baskets"] + 2) / (row["starts"] + 20)
-           for _, row in observed]
-    if not any(raw):
-        base["reason"] = "No usable first-field-goal observations"
-        return base
+        observed.append((player, counts[key]))
+
+    verified = [stats for _, stats in observed if stats["starts"] >= 3]
+    if not verified:
+        # With no usable play-by-play, we can display player-level
+        # statistical estimates, but must label them as unvalidated.
+        base["reason"] = (
+            "No verified first-basket history for these starters; "
+            "showing unvalidated scoring-efficiency estimates"
+        )
+    else:
+        base["reason"] = (
+            "Observed first-basket rates where available; limited-history "
+            "players use estimated scoring-efficiency priors. "
+            "Starting lineups are not confirmed and opening-tip odds are not included."
+        )
+
+    # A league-wide prior is intentionally NOT inferred from games
+    # missing starter participation. The proxy uses only player stats.
+    # Minutes/FG% are not measured first-shot frequency.
+    raw = []
+    sources = []
+    for player, stats in observed:
+        fg = max(0.0, min(1.0, player["fg_pct"]))
+        minutes = max(0.0, player["minutes"])
+        # A neutral 10% prior, modestly informed by actual player
+        # minutes and field-goal efficiency; deliberately shrunk.
+        prior = max(0.04, min(0.18,
+            0.10 * (0.65 + 0.35 * min(minutes, 36) / 30)
+            * (0.7 + 0.3 * fg / 0.45)
+        ))
+        if stats["starts"] >= 3:
+            # Individual Bayesian smoothing; a short sample is
+            # blended with the player's baseline, not discarded.
+            chance = (stats["first_baskets"] + 12 * prior) / (stats["starts"] + 12)
+            source = "historical_blend"
+        else:
+            chance = prior
+            source = "statistical_fallback"
+        raw.append(chance)
+        sources.append(source)
+
+    # Keep probability mass for potential non-starters or unexpected
+    # lineup changes. Never inflate a candidate simply because other
+    # starters are missing historical records.
+    total = sum(raw)
+    scale = min(1.0, 0.94 / total) if total > 0 else 1.0
     base["players"] = [
         {
             "player_id": player["player_id"],
             "player_name": player["player_name"],
             "team": player["team"],
-            "probability": round(100 * raw[i], 2),
-            "first_shot_rate": round(100 * stats["first_shots"] / stats["starts"], 2),
-            "first_basket_rate": round(100 * stats["first_baskets"] / stats["starts"], 2),
+            "probability": round(100 * raw[i] * scale, 2),
+            "first_shot_rate": (
+                round(100 * stats["first_shots"] / stats["starts"], 2)
+                if stats["starts"] else None
+            ),
+            "first_basket_rate": (
+                round(100 * stats["first_baskets"] / stats["starts"], 2)
+                if stats["starts"] else None
+            ),
             "starts_sample": stats["starts"],
+            "estimate_source": sources[i],
             "lineup_status": lineup_sources.get(player["side"], "projected_by_minutes"),
         }
         for i, (player, stats) in enumerate(observed)
     ]
     base["players"].sort(key=lambda x: x["probability"], reverse=True)
     base["status"] = "estimated"
-    base["reason"] = (
-        "Small-sample, smoothed first-basket estimate from verified starts; "
-        "opening-tip probabilities, current injuries, and confirmed starters "
-        "are not yet included"
-    )
+
     return base
 
 
