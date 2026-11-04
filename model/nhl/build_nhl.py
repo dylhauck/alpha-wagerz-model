@@ -8,6 +8,7 @@ from __future__ import annotations
 import json
 import math
 import shutil
+import os
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta
@@ -24,7 +25,7 @@ CENTRAL = ZoneInfo("America/Chicago")
 
 
 def fetch(path):
-    response = requests.get(f"{API}/{path}", timeout=18,
+    response = requests.get(f"{API}/{path}", timeout=8,
                             headers={"User-Agent": "AlphaWagerz/1.0"})
     response.raise_for_status()
     return response.json()
@@ -79,7 +80,7 @@ def scheduled_games(day):
     return games
 
 
-def previous_games(day, lookback=42):
+def previous_games(day, lookback=21):
     # Pull historical games from one weekly schedule call per seven days.
     completed = {}
     for days in range(1, lookback + 1, 7):
@@ -114,14 +115,40 @@ def player_history(games):
     goalies = defaultdict(lambda: {"games": 0, "shots_against": 0,
                                    "goals_against": 0, "saves": 0,
                                    "team": "", "name": ""})
+    cache_dir = DATA / "boxscore_cache"
+    cache_dir.mkdir(parents=True, exist_ok=True)
     boxscores = {}
-    with ThreadPoolExecutor(max_workers=6) as pool:
-        futures = {pool.submit(fetch, f"gamecenter/{game['id']}/boxscore"): str(game['id']) for game in games[:140]}
-        for future in as_completed(futures):
+    missing = []
+    for game in games:
+        gid = str(game["id"])
+        cached = cache_dir / (gid + ".json")
+        if cached.exists():
             try:
-                boxscores[futures[future]] = future.result()
-            except (requests.RequestException, ValueError) as exc:
-                print(f"  NHL boxscore {futures[future]} unavailable: {exc}", flush=True)
+                boxscores[gid] = json.loads(cached.read_text(encoding="utf-8"))
+                continue
+            except (ValueError, OSError):
+                pass
+        missing.append(game)
+    max_new = max(0, int(os.getenv("NHL_MAX_NEW_BOXSCORES", "36")))
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        futures = {
+            pool.submit(fetch, "gamecenter/" + str(game["id"]) + "/boxscore"): str(game["id"])
+            for game in missing[:max_new]
+        }
+        for future in as_completed(futures):
+            gid = futures[future]
+            try:
+                payload = future.result()
+                if not payload.get("playerByGameStats"):
+                    continue
+                boxscores[gid] = payload
+                (cache_dir / (gid + ".json")).write_text(
+                    json.dumps(payload, ensure_ascii=False), encoding="utf-8"
+                )
+            except (requests.RequestException, ValueError, OSError) as exc:
+                print("NHL boxscore " + gid + " unavailable: " + str(exc), flush=True)
+    print("NHL history: " + str(len(boxscores)) + " loaded; " +
+          str(len(missing)) + " uncached; max new " + str(max_new), flush=True)
     for game in games:
         a, h = game["away"], game["home"]
         ag, hg = game.get("away_score"), game.get("home_score")
