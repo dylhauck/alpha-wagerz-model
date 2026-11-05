@@ -1,0 +1,72 @@
+"""NHL period scoring model using observed period scores from completed NHL games.
+
+No equal-third splitting: periods are learned from actual gamecenter landing
+linescores. Missing periods remain null. Reuses the existing 21-day game list.
+"""
+from __future__ import annotations
+import json
+from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
+from .build_nhl import DATA, fetch, save
+
+PERIODS=("1st Period","2nd Period","3rd Period")
+CACHE=DATA/"period_score_cache.json"
+
+def _period_scores(payload):
+    """NHL landing linescore periods have away/home integer scores."""
+    periods=(payload.get("summary") or {}).get("scoring") or []
+    # scoring summary contains goals arrays, not aggregate scores; use linescore
+    lines=(payload.get("summary") or {}).get("linescore") or payload.get("linescore") or {}
+    entries=lines.get("byPeriod") or lines.get("periods") or []
+    result=[]
+    for period in entries:
+        descriptor=period.get("periodDescriptor") or {}
+        index=descriptor.get("number") or period.get("period")
+        if index not in (1,2,3): continue
+        away=period.get("away")
+        home=period.get("home")
+        if isinstance(away,dict): away=away.get("goals")
+        if isinstance(home,dict): home=home.get("goals")
+        if not isinstance(away,int) or not isinstance(home,int): continue
+        result.append((index,away,home))
+    return result
+
+def build_period_projections(history_games,slates,max_fetch=36):
+    try: cache=json.loads(CACHE.read_text()) if CACHE.exists() else {}
+    except (OSError,ValueError): cache={}
+    pending=[g for g in history_games if str(g["id"]) not in cache][:max_fetch]
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        tasks={pool.submit(fetch,f'gamecenter/{g["id"]}/landing'):g for g in pending}
+        for task in as_completed(tasks):
+            game=tasks[task]
+            try:
+                scores=_period_scores(task.result())
+                if len(scores)==3: cache[str(game["id"])]=scores
+            except Exception as exc:
+                print(f'NHL period history {game["id"]} unavailable: {exc}',flush=True)
+    CACHE.parent.mkdir(parents=True,exist_ok=True)
+    CACHE.write_text(json.dumps(cache),encoding="utf-8")
+    team_periods=defaultdict(lambda:defaultdict(lambda:{"gf":0,"ga":0,"n":0}))
+    for game in history_games:
+        scores=cache.get(str(game["id"])) or []
+        for index,away,home in scores:
+            for team,gf,ga in ((game["away"],away,home),(game["home"],home,away)):
+                stats=team_periods[team][index]
+                stats["gf"]+=gf;stats["ga"]+=ga;stats["n"]+=1
+    for subdir,games in slates:
+        output=[]
+        for game in games:
+            periods={}
+            for i,label in enumerate(PERIODS,1):
+                a=team_periods[game["away"]][i]
+                h=team_periods[game["home"]][i]
+                if min(a["n"],h["n"])<3:
+                    periods[label]={"away_goals":None,"home_goals":None,"sample_games":min(a["n"],h["n"])}
+                    continue
+                away=(a["gf"]/a["n"]+h["ga"]/h["n"])/2
+                home=(h["gf"]/h["n"]+a["ga"]/a["n"])/2
+                periods[label]={"away_goals":round(away,3),"home_goals":round(home,3),"sample_games":min(a["n"],h["n"])}
+            output.append({"game_id":game["game_id"],"away":game["away"],"home":game["home"],"periods":periods})
+        save(subdir,"period_projections.json",{"model":"observed_period_scoring_baseline","games":output})
+    print(f'NHL period model: {len(cache)} completed games with period linescores',flush=True)
