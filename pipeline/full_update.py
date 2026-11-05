@@ -63,6 +63,7 @@ from model.nfl.player_prop_edges import build_nfl_player_prop_edges
 from providers.nfl.nfl_odds import build_nfl_odds
 from model.nfl.rankings import build_nfl_rankings
 from model.nfl.touchdown_projections import build_touchdown_projections
+from model.nfl.period_projections import build_nfl_period_projections
 
 # NBA
 from providers.nba.nba_data import build_nba_data
@@ -233,6 +234,12 @@ def run_nfl_update():
 
     print("\n🎯 NFL Game Projections", flush=True)
     timed("build_nfl_game_projections", build_nfl_game_projections)
+
+    print("\\n🏈 NFL Quarter/Half Projections", flush=True)
+    try:
+        timed("build_nfl_period_projections", build_nfl_period_projections)
+    except Exception as exc:
+        print(f"⚠️ NFL period projections unavailable: {exc}", flush=True)
 
     print("\n🏃 NFL Player Projections", flush=True)
     timed("build_nfl_player_projections", build_nfl_player_projections)
