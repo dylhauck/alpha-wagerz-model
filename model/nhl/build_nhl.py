@@ -336,8 +336,9 @@ def build_nhl():
         print(f"NHL season statistics unavailable; retaining previous data: {exc}", flush=True)
 
 
-    from .enrichment import build_nhl_injuries, build_nhl_career_stats, build_nhl_matchup_history
+    from .enrichment import build_nhl_injuries, build_nhl_career_stats, build_nhl_matchup_history, rebuild_nhl_goal_graphs
     for label, function, args in (
+        ("anytime goal graph", rebuild_nhl_goal_graphs, ((("", today_games), ("next", tomorrow_games)),)),
         ("injuries", build_nhl_injuries, ()),
         ("career statistics", build_nhl_career_stats, ()),
         ("matchup history", build_nhl_matchup_history, ((("", today_games), ("next", tomorrow_games)),)),
