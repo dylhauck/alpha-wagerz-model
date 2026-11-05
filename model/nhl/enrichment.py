@@ -98,34 +98,92 @@ def build_nhl_career_stats():
     print(f"NHL career totals published for {len(covered)} players",flush=True)
 
 def build_nhl_matchup_history(slates):
-    """Complete head-to-head results for two seasons from official club schedules."""
-    now=datetime.now(ZoneInfo("America/Chicago"))
-    start=now.year if now.month>=9 else now.year-1
-    seasons=(f"{start}{start+1}",f"{start-1}{start}")
-    teams=sorted({g[side] for _,games in slates for g in games for side in ("away","home") if g.get(side)})
-    if not teams:return
-    results={}
-    with ThreadPoolExecutor(max_workers=8) as pool:
-        jobs={pool.submit(fetch,f"club-schedule-season/{team}/{season}"):(team,season) for team in teams for season in seasons}
-        for job in as_completed(jobs):
-            team,season=jobs[job]
+    """Build per-player history against each opponent from verified cached NHL boxscores.
+
+    Does not substitute team-v-team final scores for player-v-opponent history.
+    Cached completed games are reused, so this adds no NHL API requests.
+    """
+    cache_dir=DATA/"boxscore_cache"
+    indexed=defaultdict(list)
+    if cache_dir.exists():
+        for path in cache_dir.glob("*.json"):
             try:
-                payload=job.result()
-                if not isinstance(payload.get("games"),list):continue
-                for g in payload["games"]:
-                    if g.get("gameState") not in ("FINAL","OFF"):continue
-                    a=g.get("awayTeam") or {};h=g.get("homeTeam") or {}
-                    away=a.get("abbrev");home=h.get("abbrev")
-                    if not away or not home or a.get("score") is None or h.get("score") is None:continue
-                    gid=str(g.get("id") or "")
-                    if gid:results[gid]={"id":g.get("id"),"date":g.get("gameDate"),"away":away,"home":home,
-                                        "away_score":a["score"],"home_score":h["score"]}
-            except Exception as exc:print(f"NHL schedule {team} {season}: {exc}",flush=True)
-    if not results:raise ValueError("No verified final games in NHL schedules")
-    lookup=defaultdict(list)
-    for game in results.values():
-        lookup[tuple(sorted((game["away"],game["home"])))].append(game)
-    for games in lookup.values():games.sort(key=lambda g:g["date"] or "",reverse=True)
+                box=json.loads(path.read_text(encoding="utf-8"))
+                away=(box.get("awayTeam") or {}).get("abbrev")
+                home=(box.get("homeTeam") or {}).get("abbrev")
+                if not away or not home:continue
+                date=box.get("gameDate") or ""
+                rosters=box.get("playerByGameStats") or {}
+                for side,team,opponent in (("awayTeam",away,home),("homeTeam",home,away)):
+                    roster=rosters.get(side) or {}
+                    for group in ("forwards","defense"):
+                        for player in roster.get(group) or []:
+                            pid=str(player.get("playerId") or "")
+                            if not pid:continue
+                            name=_name(player.get("name"))
+                            indexed[(team,opponent,pid)].append({
+                                "date":date,"player_id":pid,"player":name,"team":team,
+                                "opponent":opponent,"position":player.get("position") or "",
+                                "goals":int(player.get("goals") or 0),
+                                "assists":int(player.get("assists") or 0),
+                                "points":int(player.get("points") or 0),
+                                "shots":int(player.get("sog") or 0)})
+            except (OSError,ValueError,TypeError):continue
     for subdir,games in slates:
-        save(subdir,"matchup_history.json",{"games":[{"game_id":g["game_id"],"games":lookup.get(tuple(sorted((g["away"],g["home"]))),[])[:10]} for g in games]})
-    print(f"NHL matchup history: {len(results)} completed games across {len(teams)} scheduled teams",flush=True)
+        output=[]
+        for game in games:
+            away,home=game["away"],game["home"]
+            rows=[]
+            for (team,opponent,pid),appearances in indexed.items():
+                if (team,opponent) not in ((away,home),(home,away)):continue
+                n=len(appearances)
+                rows.append({"player_id":pid,"player":appearances[-1]["player"],
+                             "team":team,"opponent":opponent,"position":appearances[-1]["position"],
+                             "games":n,"goals":sum(p["goals"] for p in appearances),
+                             "assists":sum(p["assists"] for p in appearances),
+                             "points":sum(p["points"] for p in appearances),
+                             "shots":sum(p["shots"] for p in appearances),
+                             "goals_per_game":round(sum(p["goals"] for p in appearances)/n,2),
+                             "shots_per_game":round(sum(p["shots"] for p in appearances)/n,2)})
+            rows.sort(key=lambda p:(p["points"],p["shots"]),reverse=True)
+            output.append({"game_id":game["game_id"],"players":rows})
+        save(subdir,"matchup_history.json",{"games":output})
+    print(f"NHL player matchup history: {len(indexed)} player/opponent records from cached boxscores",flush=True)
+
+
+def rebuild_nhl_goal_graphs(slates):
+    """Use full-season verified player totals, not a 21-day sparse sample."""
+    try:payload=json.loads((DATA/"players.json").read_text(encoding="utf-8"))
+    except (OSError,ValueError):return
+    players=payload.get("players") or []
+    if len(players)<300:
+        print(f"NHL goal graph: only {len(players)} players; keeping existing data",flush=True)
+        return
+    for subdir,games in slates:
+        output=[]
+        for game in games:
+            away,home=game["away"],game["home"]
+            candidates=[]
+            for p in players:
+                if p.get("team") not in (away,home):continue
+                n=int(p.get("games") or 0)
+                if n<3:continue
+                goals=float(p.get("goals") or 0)
+                shots=float(p.get("shots") or 0)
+                # Empirical Bayes shrinkage to avoid extreme small-sample rates.
+                goal_rate=(goals+1.0)/(n+5.0)
+                shot_rate=(shots+12.0)/(n+5.0)
+                expected=max(0.0,0.75*goal_rate+0.25*shot_rate*0.09)
+                probability=100*(1-__import__("math").exp(-expected))
+                candidates.append({"player_id":p.get("player_id"),"name":p.get("name"),
+                                   "team":p.get("team"),"games":n,
+                                   "goals_per_game":round(goals/n,3),
+                                   "shots_per_game":round(shots/n,3),
+                                   "goal_probability":round(probability,1),
+                                   "expected_goals":round(expected,3),
+                                   "source":"season_goals_shots_shrunk_poisson_baseline"})
+            candidates.sort(key=lambda p:p["goal_probability"],reverse=True)
+            output.append({"game_id":game["game_id"],"players":candidates})
+        if any(g["players"] for g in output):
+            save(subdir,"anytime_goals.json",{"games":output})
+            print(f"NHL {subdir or 'current'} goal graph: {sum(len(g['players']) for g in output)} players",flush=True)
