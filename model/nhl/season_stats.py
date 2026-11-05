@@ -61,4 +61,36 @@ def build_nhl_season_stats():
         save("",filename,dataset)
         print(f"NHL {season}: published {len(dataset['players'])} skaters, {len(dataset['goalies'])} goalies",flush=True)
     # Team standings are consumed by the website's live NHL standings route.
+    def team_rows(entries):
+        rows=[]
+        for item in entries:
+            code=(item.get("teamAbbrev") or {}).get("default")
+            if not code:continue
+            gp=int(item.get("gamesPlayed") or 0)
+            gf=int(item.get("goalFor") or 0);ga=int(item.get("goalAgainst") or 0)
+            streak=item.get("streakCode") or ""
+            rows.append({"team":code,"games":gp,"wins":int(item.get("wins") or 0),
+                         "losses":int(item.get("losses") or 0),"ot_losses":int(item.get("otLosses") or 0),
+                         "points":int(item.get("points") or 0),"goals_for":gf,"goals_against":ga,
+                         "goals_for_per_game":round(gf/gp,2) if gp else 0,
+                         "goals_against_per_game":round(ga/gp,2) if gp else 0,
+                         "streak":str(streak)+str(item.get("streakCount") or 0) if streak else "",
+                         "division_rank":item.get("divisionSequence"),
+                         "conference_rank":item.get("conferenceSequence"),
+                         "league_rank":item.get("leagueSequence"),
+                         "home_wins":item.get("homeWins"),"home_losses":item.get("homeLosses"),
+                         "home_ot_losses":item.get("homeOtLosses"),"away_wins":item.get("roadWins"),
+                         "away_losses":item.get("roadLosses"),"away_ot_losses":item.get("roadOtLosses")})
+        return rows
+    current_teams=team_rows(standings)
+    if len(current_teams)>=30:
+        save("","teams.json",{"teams":current_teams})
+        save("next","teams.json",{"teams":current_teams})
     save("","standings.json",{"season":current,"standings":standings})
+    try:
+        prior=fetch(f"standings/{int(current[:4])}-04-17").get("standings") or []
+        previous_teams=team_rows(prior)
+        if len(previous_teams)>=30:
+            save("","teams_last_season.json",{"teams":previous_teams})
+    except Exception as exc:
+        print(f"NHL previous-season standings unavailable: {exc}",flush=True)
