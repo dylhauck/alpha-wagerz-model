@@ -23,7 +23,7 @@ def _fetch_espn():
     return response.json()
 
 def build_nhl_injuries():
-    """Fail closed: never replace a verified injury feed with empty/unknown data."""
+    """Publish only explicitly reported NHL injuries from ESPN."""
     payload=_fetch_espn()
     if not isinstance(payload,dict) or not isinstance(payload.get("injuries"),list):
         raise ValueError("ESPN NHL injury response missing injuries list")
@@ -33,13 +33,24 @@ def build_nhl_injuries():
         code=str(team.get("abbreviation") or "").upper()
         for item in group.get("injuries") or []:
             athlete=item.get("athlete") or {}
-            status=item.get("status") or item.get("type") or {}
-            if isinstance(status,dict):status=status.get("description") or status.get("name")
+            raw_status=item.get("status") or item.get("type") or ""
+            status=(raw_status.get("description") or raw_status.get("name") or raw_status.get("displayName") or "") if isinstance(raw_status,dict) else str(raw_status)
             name=athlete.get("displayName") or athlete.get("fullName")
-            if not name or not status:continue
-            rows.append({"player":name,"name":name,"team":code,"status":str(status),
-                         "detail":item.get("details") or {},"source":"ESPN"})
-    # A zero-result response may be legitimate, but never silently erase an existing feed.
+            if not name or not status or not code:continue
+            details=item.get("details") or {}
+            if not isinstance(details,dict):details={"detail":str(details)}
+            injury=details.get("type") or details.get("injury") or item.get("description") or ""
+            if isinstance(injury,dict):injury=injury.get("description") or injury.get("name") or ""
+            description=details.get("detail") or details.get("description") or item.get("longComment") or ""
+            if isinstance(description,dict):description=description.get("description") or ""
+            position=athlete.get("position") or {}
+            if isinstance(position,dict):position=position.get("abbreviation") or position.get("name") or ""
+            return_date=details.get("returnDate") or details.get("estimatedReturn") or ""
+            rows.append({"player":name,"name":name,"player_id":str(athlete.get("id") or ""),
+                         "team":code,"position":str(position),"status":str(status),
+                         "injury":str(injury),"detail":str(description),
+                         "estimated_return_date":str(return_date),
+                         "source":"ESPN"})
     if not rows:raise ValueError("No verified injuries returned; existing output retained")
     for subdir in ("","next"):
         save(subdir,"injuries.json",{"status":"verified","source":"ESPN","injuries":rows})
