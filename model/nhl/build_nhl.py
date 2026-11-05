@@ -325,8 +325,7 @@ def build_nhl():
         save(subdir, "matchup_history.json", {"games": histories})
         save(subdir, "players.json", {"players": player_rows, "goalies": goalie_rows})
         save(subdir, "teams.json", {"teams": team_rows})
-        save(subdir, "injuries.json", {"status": "unavailable", "injuries": [],
-                                       "message": "Verified NHL injury feed not connected."})
+        # Injury feed is published by enrichment only after verification.\n        # Never overwrite an existing verified report with an empty placeholder.
         print(f"  NHL {subdir or 'current'}: {len(games)} games, {len(player_rows)} historical skaters", flush=True)
 
     try:
