@@ -326,6 +326,12 @@ def build_nhl():
                                        "message": "Verified NHL injury feed not connected."})
         print(f"  NHL {subdir or 'current'}: {len(games)} games, {len(player_rows)} historical skaters", flush=True)
 
+    try:
+        from .season_stats import build_nhl_season_stats
+        build_nhl_season_stats()
+    except Exception as exc:
+        print(f"NHL season statistics unavailable; retaining previous data: {exc}", flush=True)
+
 
 if __name__ == "__main__":
     build_nhl()
