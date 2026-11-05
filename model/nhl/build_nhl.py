@@ -261,6 +261,9 @@ def build_nhl():
         })
     team_rows.sort(key=lambda t: t["goals_for_per_game"], reverse=True)
 
+    from .period_pipeline import build_period_projections
+    build_period_projections(history_games, (("", today_games), ("next", tomorrow_games)))
+
     for subdir, games in (("", today_games), ("next", tomorrow_games)):
         projections = []
         goal_graphs = []
