@@ -262,7 +262,10 @@ def build_nhl():
     team_rows.sort(key=lambda t: t["goals_for_per_game"], reverse=True)
 
     from .period_pipeline import build_period_projections
-    build_period_projections(history_games, (("", today_games), ("next", tomorrow_games)))
+    try:
+        build_period_projections(history_games, (("", today_games), ("next", tomorrow_games)))
+    except Exception as exc:
+        print(f"NHL period model unavailable: {exc}", flush=True)
 
     for subdir, games in (("", today_games), ("next", tomorrow_games)):
         projections = []
@@ -331,6 +334,18 @@ def build_nhl():
         build_nhl_season_stats()
     except Exception as exc:
         print(f"NHL season statistics unavailable; retaining previous data: {exc}", flush=True)
+
+
+    from .enrichment import build_nhl_injuries, build_nhl_career_stats, build_nhl_matchup_history
+    for label, function, args in (
+        ("injuries", build_nhl_injuries, ()),
+        ("career statistics", build_nhl_career_stats, ()),
+        ("matchup history", build_nhl_matchup_history, ((("", today_games), ("next", tomorrow_games)),)),
+    ):
+        try:
+            function(*args)
+        except Exception as exc:
+            print(f"NHL {label} unavailable; retaining existing data: {exc}", flush=True)
 
 
 if __name__ == "__main__":
