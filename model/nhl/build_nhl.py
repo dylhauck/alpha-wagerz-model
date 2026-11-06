@@ -17,6 +17,8 @@ from zoneinfo import ZoneInfo
 
 import requests
 
+from .outcome_probabilities import outcome_probabilities
+
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "data" / "processed" / "nhl"
 WEB = ROOT.parent / "alpha-wagerz-web" / "public" / "data" / "nhl"
@@ -282,12 +284,15 @@ def build_nhl():
                 (th["goals_for"] / th["games"] + ta["goals_against"] / ta["games"]) / 2
                 if ta and th and ta["games"] and th["games"] else None
             )
+            sample_games = min(ta["games"], th["games"]) if ta and th else 0
+            probabilities = outcome_probabilities(away_goals, home_goals, sample_games)
             projections.append({
                 "game_id": game["game_id"], "away": away, "home": home,
                 "away_goals": round(away_goals, 2) if away_goals is not None else None,
                 "home_goals": round(home_goals, 2) if home_goals is not None else None,
                 "model": "recent_goals_for_against_baseline",
-                "sample_games": min(ta["games"], th["games"]) if ta and th else 0,
+                "sample_games": sample_games,
+                "probabilities": probabilities,
             })
             candidates = []
             for p in player_rows:
