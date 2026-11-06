@@ -112,8 +112,16 @@ def is_period(name):
     return False
 
 def period_key(name):
-    s = name.lower()
-    for pattern, key in [(r'\bq1\b|first quarter|1st quarter', 'Q1'), (r'\bq2\b|second quarter|2nd quarter', 'Q2'), (r'\bq3\b|third quarter|3rd quarter', 'Q3'), (r'\bq4\b|fourth quarter|4th quarter', 'Q4'), (r'\b2h\b|second half|2nd half', '2H'), (r'\b1h\b|first half|1st half|\bht\b|half time|halftime', '1H')]:
+    s = re.sub(r'[_-]+', ' ', str(name).lower())
+    patterns = [
+        (r'\\b(?:q\\s*1|1st quarter|first quarter|quarter 1|1st qtr|1q)\\b', 'Q1'),
+        (r'\\b(?:q\\s*2|2nd quarter|second quarter|quarter 2|2nd qtr|2q)\\b', 'Q2'),
+        (r'\\b(?:q\\s*3|3rd quarter|third quarter|quarter 3|3rd qtr|3q)\\b', 'Q3'),
+        (r'\\b(?:q\\s*4|4th quarter|fourth quarter|quarter 4|4th qtr|4q)\\b', 'Q4'),
+        (r'\\b(?:2h|2nd half|second half|half 2)\\b', '2H'),
+        (r'\\b(?:1h|1st half|first half|half 1|half time|halftime|ht)\\b', '1H'),
+    ]
+    for pattern, key in patterns:
         if re.search(pattern, s):
             return key
     return None
@@ -324,7 +332,7 @@ def main():
                     sample = next((m for m in markets if isinstance(m, dict) and ('player' in market_name(m).lower() or classify(market_name(m)))), None)
                     if sample:
                         print('    UNPARSED PLAYER MARKET SAMPLE:', json.dumps(sample, ensure_ascii=False)[:5000])
-        teams_out.append(output)
+        if not output['periods']:\n            print(f'WARN {away} @ {home}: no quarter/half markets parsed; check provider market names', flush=True)\n        teams_out.append(output)
         print(f'{away} @ {home}: ML={bool(output["full_game"].get("moneyline"))}, spread={bool(output["full_game"].get("spread"))}, total={bool(output["full_game"].get("total"))}, team_totals={output["full_game"].get("team_totals")}, props={sum(p["event_id"] == event_id for p in props_out)}', flush=True)
     team_payload = {'generated_at': now.isoformat(), 'games': teams_out}
     prop_payload = {'generated_at': now.isoformat(), 'props': props_out}
