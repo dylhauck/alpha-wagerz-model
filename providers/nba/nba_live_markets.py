@@ -236,7 +236,11 @@ def parse_props(book, markets, event_id, game_id):
     return props
 
 def parse_first_basket(book, markets, event_id, game_id):
-    """Extract named first-made-basket selections only; never infer odds."""
+    """Parse first made field goal (not first points) from bookmaker markets.
+
+    Odds-API.io can expose a named player selection either in a market's
+    odds rows or in a nested outcomes/selections collection.
+    """
     result = []
     seen = set()
     for market in markets:
@@ -244,22 +248,36 @@ def parse_first_basket(book, markets, event_id, game_id):
             continue
         name = market_name(market)
         normalized = norm(name)
-        if not any(token in normalized for token in ('firstbasket', 'firstfieldgoal', 'firstfg', 'firstscorer', 'firstpointsscorer')):
+        if not any(token in normalized for token in
+                   ('firstbasket', 'firstfieldgoal', 'firstfg', 'firstmadebasket',
+                    'firstmadefieldgoal', 'firstfieldgoalscorer')):
             continue
-        # First points and first basket are different markets; exclude free throws.
-        if 'firstpoints' in normalized or 'firstscorer' in normalized and 'basket' not in normalized and 'fieldgoal' not in normalized:
+        if 'firstpoints' in normalized or 'firstteam' in normalized:
             continue
-        for row in rows(market):
-            player = str(row.get('label') or row.get('name') or row.get('player_name') or row.get('playerName') or row.get('player') or '').strip()
-            if not player or norm(player) in ('anyplayer', 'none', 'other'):
+        raw_rows = market.get('odds') or market.get('outcomes') or market.get('selections') or []
+        if isinstance(raw_rows, dict):
+            raw_rows = raw_rows.get('outcomes') or raw_rows.get('selections') or raw_rows.get('odds') or []
+        if not isinstance(raw_rows, list):
+            continue
+        for row in raw_rows:
+            if not isinstance(row, dict):
                 continue
-            raw_price = first(row, 'price', 'odds', 'americanOdds', 'american_odds', 'value', 'yes')
+            player = str(row.get('player_name') or row.get('playerName') or row.get('player')
+                         or row.get('participant') or row.get('label') or row.get('name') or '').strip()
+            player = re.sub(r'\\s*\\((?:first basket|first field goal|first fg)\\)\\s*$', '', player, flags=re.I).strip()
+            if not player or norm(player) in ('anyplayer', 'none', 'other', 'yes', 'no'):
+                continue
+            raw_price = first(row, 'price', 'americanOdds', 'american_odds', 'value', 'yes')
+            if raw_price is None:
+                value = row.get('odds')
+                if isinstance(value, (int, float, str)):
+                    raw_price = number(value)
             if raw_price is None:
                 continue
             price = american(raw_price)
             if price is None:
                 continue
-            identity = (norm(player), game_id)
+            identity = (norm(player), str(game_id))
             if identity in seen:
                 continue
             seen.add(identity)
@@ -370,6 +388,9 @@ def main():
             print(f'WARN {away} @ {home}: no quarter/half markets parsed; check provider market names', flush=True)
         teams_out.append(output)
         print(f'{away} @ {home}: ML={bool(output["full_game"].get("moneyline"))}, spread={bool(output["full_game"].get("spread"))}, total={bool(output["full_game"].get("total"))}, team_totals={output["full_game"].get("team_totals")}, props={sum(p["event_id"] == event_id for p in props_out)}', flush=True)
+    print(f'NBA first-basket: {len(first_basket_out)} priced selections from configured books', flush=True)
+    if not first_basket_out:
+        print('WARN: No first-basket market selections found in returned bookmaker odds; inspect market names with NBA_MARKETS_DEBUG=1.', flush=True)
     team_payload = {'generated_at': now.isoformat(), 'games': teams_out}
     prop_payload = {'generated_at': now.isoformat(), 'props': props_out}
     basket_payload = {'generated_at': now.isoformat(), 'props': first_basket_out}
