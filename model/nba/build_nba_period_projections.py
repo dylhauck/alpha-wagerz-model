@@ -618,18 +618,15 @@ def main():
         # VERIFY TEAM HISTORY
         # ----------------------------------------------------
 
-        if (
-            not history
-            or away_team not in history
-            or home_team not in history
-        ):
-            result["periods_status"] = (
-                "unavailable: historical quarter splits missing; "
-                "full-game model projection is current"
-            )
-
-            games.append(result)
-            continue
+        has_team_history = (
+            bool(history)
+            and away_team in history
+            and home_team in history
+        )
+        # Keep all six period projections available even when the
+        # historical NBA Stats endpoint is down. Uniform quarter
+        # weights are a transparent fallback, not historical splits.
+        fallback_weights = [0.25, 0.25, 0.25, 0.25]
 
         # ----------------------------------------------------
         # READ FULL-GAME MODEL SCORES
@@ -648,18 +645,12 @@ def main():
         # ----------------------------------------------------
 
         away_weights = calculate_fractions(
-            away_team,
-            home_team,
-            history,
-            league_weights,
-        )
+            away_team, home_team, history, league_weights,
+        ) if has_team_history else fallback_weights
 
         home_weights = calculate_fractions(
-            home_team,
-            away_team,
-            history,
-            league_weights,
-        )
+            home_team, away_team, history, league_weights,
+        ) if has_team_history else fallback_weights
 
         # ----------------------------------------------------
         # PROVISIONAL VARIANCE ASSUMPTIONS
@@ -698,9 +689,9 @@ def main():
             )
 
         result["periods_status"] = (
-            "Estimated from 2025-26 historical "
-            "quarter scoring averages; "
-            "probabilities not backtested"
+            "Estimated from 2025-26 historical quarter scoring averages; probabilities not backtested"
+            if has_team_history else
+            "Fallback: full-game model distributed evenly across quarters; no verified quarter history"
         )
 
         games.append(result)
