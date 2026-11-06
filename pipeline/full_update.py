@@ -62,6 +62,7 @@ from model.nfl.edge_engine import build_nfl_edges
 from providers.nfl.nfl_player_props import build_nfl_player_props
 from model.nfl.player_prop_edges import build_nfl_player_prop_edges
 from providers.nfl.nfl_odds import build_nfl_odds
+from providers.nfl.nfl_period_markets import build_nfl_period_markets
 from model.nfl.rankings import build_nfl_rankings
 from model.nfl.touchdown_projections import build_touchdown_projections
 from model.nfl.period_projections import build_nfl_period_projections
@@ -250,6 +251,12 @@ def run_nfl_update():
 
     print("\n📡 Live NFL Odds", flush=True)
     timed("build_nfl_odds", build_nfl_odds)
+
+    print("\\n🏈 NFL Quarter/Half Sportsbook Markets", flush=True)
+    try:
+        timed("build_nfl_period_markets", build_nfl_period_markets)
+    except Exception as exc:
+        print(f"⚠️ NFL period sportsbook markets unavailable: {exc}", flush=True)
 
     print("\n💰 NFL Market", flush=True)
     timed("build_nfl_market", build_nfl_market)
