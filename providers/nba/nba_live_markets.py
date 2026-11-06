@@ -114,12 +114,12 @@ def is_period(name):
 def period_key(name):
     s = re.sub(r'[_-]+', ' ', str(name).lower())
     patterns = [
-        (r'\\b(?:q\\s*1|1st quarter|first quarter|quarter 1|1st qtr|1q)\\b', 'Q1'),
-        (r'\\b(?:q\\s*2|2nd quarter|second quarter|quarter 2|2nd qtr|2q)\\b', 'Q2'),
-        (r'\\b(?:q\\s*3|3rd quarter|third quarter|quarter 3|3rd qtr|3q)\\b', 'Q3'),
-        (r'\\b(?:q\\s*4|4th quarter|fourth quarter|quarter 4|4th qtr|4q)\\b', 'Q4'),
-        (r'\\b(?:2h|2nd half|second half|half 2)\\b', '2H'),
-        (r'\\b(?:1h|1st half|first half|half 1|half time|halftime|ht)\\b', '1H'),
+        (r'\b(?:q\s*1|1st quarter|first quarter|quarter 1|1st qtr|1q)\b', 'Q1'),
+        (r'\b(?:q\s*2|2nd quarter|second quarter|quarter 2|2nd qtr|2q)\b', 'Q2'),
+        (r'\b(?:q\s*3|3rd quarter|third quarter|quarter 3|3rd qtr|3q)\b', 'Q3'),
+        (r'\b(?:q\s*4|4th quarter|fourth quarter|quarter 4|4th qtr|4q)\b', 'Q4'),
+        (r'\b(?:2h|2nd half|second half|half 2)\b', '2H'),
+        (r'\b(?:1h|1st half|first half|half 1|half time|halftime|ht)\b', '1H'),
     ]
     for pattern, key in patterns:
         if re.search(pattern, s):
