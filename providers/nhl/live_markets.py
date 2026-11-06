@@ -52,6 +52,22 @@ def get_events(key, league):
         "to": (now+timedelta(days=3)).isoformat()})
     return result.get("events", []) if isinstance(result, dict) else result
 
+def hockey_markets(markets):
+    """Normalize period labels for the shared market parser, without changing odds."""
+    converted=[]
+    for market in markets:
+        if not isinstance(market,dict):
+            continue
+        row=dict(market)
+        name=str(row.get("name") or row.get("market") or row.get("type") or row.get("key") or "")
+        for token, replacement in (("1st Period","Q1"),("2nd Period","Q2"),("3rd Period","Q3"),
+                                   ("First Period","Q1"),("Second Period","Q2"),("Third Period","Q3")):
+            name=re.sub(re.escape(token),replacement,name,flags=re.IGNORECASE)
+        if name!=str(row.get("name") or row.get("market") or row.get("type") or row.get("key") or ""):
+            row["name"]=name
+        converted.append(row)
+    return converted
+
 def build_nhl_live_markets():
     key = os.getenv("ODDS_API_IO_KEY")
     if not key:
@@ -107,9 +123,10 @@ def build_nhl_live_markets():
             for book in books:
                 found=next(((name, markets) for name,markets in entries if norm(name)==norm(book)),None)
                 if found:
-                    parsed,partial=parse_team(*found)
+                    parsed,partial=parse_team(found[0],hockey_markets(found[1]))
                     full=merge_market(full,parsed)
                     for label,market in partial.items():
+                        label={"Q1":"1st Period","Q2":"2nd Period","Q3":"3rd Period"}.get(label,label)
                         periods[label]=merge_market(periods.get(label),market)
             if any(full.get(k) for k in ("moneyline","spread","total","team_totals")):
                 output.append({"game_id":game["game_id"],"away_team":game["away"],"home_team":game["home"],
