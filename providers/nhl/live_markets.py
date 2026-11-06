@@ -53,18 +53,31 @@ def get_events(key, league):
     return result.get("events", []) if isinstance(result, dict) else result
 
 def hockey_markets(markets):
-    """Normalize period labels for the shared market parser, without changing odds."""
+    """Normalize NHL period labels and market types without changing prices."""
     converted=[]
     for market in markets:
-        if not isinstance(market,dict):
-            continue
+        if not isinstance(market,dict): continue
         row=dict(market)
         name=str(row.get("name") or row.get("market") or row.get("type") or row.get("key") or "")
-        for token, replacement in (("1st Period","Q1"),("2nd Period","Q2"),("3rd Period","Q3"),
-                                   ("First Period","Q1"),("Second Period","Q2"),("Third Period","Q3")):
-            name=re.sub(re.escape(token),replacement,name,flags=re.IGNORECASE)
-        if name!=str(row.get("name") or row.get("market") or row.get("type") or row.get("key") or ""):
-            row["name"]=name
+        period=None
+        for expression,label in ((r"\b(?:1st|first)\s+period\b|\bperiod\s*1\b|\bp1\b|\b1p\b","Q1"),
+                                 (r"\b(?:2nd|second)\s+period\b|\bperiod\s*2\b|\bp2\b|\b2p\b","Q2"),
+                                 (r"\b(?:3rd|third)\s+period\b|\bperiod\s*3\b|\bp3\b|\b3p\b","Q3")):
+            if re.search(expression,name,re.IGNORECASE):
+                period=label
+                name=re.sub(expression," ",name,flags=re.IGNORECASE)
+                break
+        if not period:
+            converted.append(row)
+            continue
+        normalized=name.strip().lower()
+        if any(x in normalized for x in ("3-way","3 way","three way","draw","1x2")): continue
+        if any(x in normalized for x in ("moneyline","money line","winner","to win","result")): kind="Moneyline"
+        elif any(x in normalized for x in ("puck line","spread","handicap")): kind="Spread"
+        elif any(x in normalized for x in ("team total","team goals")): kind="Team Total"
+        elif any(x in normalized for x in ("total","over/under","over under","goals")): kind="Total"
+        else: continue
+        row["name"]=period+" "+kind+(" "+normalized if kind=="Team Total" else "")
         converted.append(row)
     return converted
 
@@ -117,7 +130,14 @@ def build_nhl_live_markets():
                 continue
             if "bookmakers" not in raw and isinstance(raw.get("data"),dict):
                 raw=raw["data"]
-            entries=bookmaker_items(raw)
+            # Do not use the NBA helper: it filters using NBA bookmaker settings.
+            bookmakers=raw.get("bookmakers",{})
+            if isinstance(bookmakers,dict):
+                entries=[(name,markets) for name,markets in bookmakers.items() if isinstance(markets,list)]
+            elif isinstance(bookmakers,list):
+                entries=[(str(b.get("name") or b.get("title")),b.get("markets",[])) for b in bookmakers if isinstance(b,dict) and isinstance(b.get("markets"),list)]
+            else:
+                entries=[]
             full={}
             periods={}
             for book in books:
@@ -128,7 +148,8 @@ def build_nhl_live_markets():
                     for label,market in partial.items():
                         label={"Q1":"1st Period","Q2":"2nd Period","Q3":"3rd Period"}.get(label,label)
                         periods[label]=merge_market(periods.get(label),market)
-            if any(full.get(k) for k in ("moneyline","spread","total","team_totals")):
+            if any(full.get(k) for k in ("moneyline","spread","total","team_totals")) or any(any(m.get(k) for k in ("moneyline","spread","total","team_totals")) for m in periods.values()):
+                print(f"NHL {game['away']} @ {game['home']}: parsed periods {list(periods)}",flush=True)
                 output.append({"game_id":game["game_id"],"away_team":game["away"],"home_team":game["home"],
                     "event_id":eid,"full_game":full,"periods":periods})
         if not output:
