@@ -332,7 +332,9 @@ def main():
                     sample = next((m for m in markets if isinstance(m, dict) and ('player' in market_name(m).lower() or classify(market_name(m)))), None)
                     if sample:
                         print('    UNPARSED PLAYER MARKET SAMPLE:', json.dumps(sample, ensure_ascii=False)[:5000])
-        if not output['periods']:\n            print(f'WARN {away} @ {home}: no quarter/half markets parsed; check provider market names', flush=True)\n        teams_out.append(output)
+        if not output['periods']:
+            print(f'WARN {away} @ {home}: no quarter/half markets parsed; check provider market names', flush=True)
+        teams_out.append(output)
         print(f'{away} @ {home}: ML={bool(output["full_game"].get("moneyline"))}, spread={bool(output["full_game"].get("spread"))}, total={bool(output["full_game"].get("total"))}, team_totals={output["full_game"].get("team_totals")}, props={sum(p["event_id"] == event_id for p in props_out)}', flush=True)
     team_payload = {'generated_at': now.isoformat(), 'games': teams_out}
     prop_payload = {'generated_at': now.isoformat(), 'props': props_out}
