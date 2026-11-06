@@ -1,5 +1,6 @@
 from time import perf_counter
 from model.nhl.build_nhl import build_nhl
+from providers.nhl.live_markets import build_nhl_live_markets
 
 #MLB
 from graphics.create_weather_graphic import create_weather_graphic
@@ -328,6 +329,7 @@ def run_nhl_update():
     print("\n🏒 NHL Data / Anytime Goals / Matchup History", flush=True)
     try:
         timed("build_nhl", build_nhl)
+        timed("build_nhl_live_markets", build_nhl_live_markets)
     except Exception as exc:
         # NHL is new; never interrupt established sports on provider errors.
         print(f"⚠️ NHL update unavailable: {exc}", flush=True)
@@ -355,11 +357,11 @@ def run_full_update():
             completed = subprocess.run(
                 [sys.executable, "-u", "-m", "pipeline.full_update", "--sport", sport],
                 check=False,
-                timeout=90 if sport == "nhl" else None,
+                timeout=180 if sport == "nhl" else None,
             )
             code = completed.returncode
         except subprocess.TimeoutExpired:
-            print("⚠️ NHL exceeded its 90-second time budget; existing sports continue.", flush=True)
+            print("⚠️ NHL exceeded its 180-second time budget; existing sports continue.", flush=True)
             code = 0 if sport == "nhl" else 1
         print(
             f"⏱️ {sport.upper()} pipeline: "
