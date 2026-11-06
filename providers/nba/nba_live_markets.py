@@ -235,6 +235,39 @@ def parse_props(book, markets, event_id, game_id):
             })
     return props
 
+def parse_first_basket(book, markets, event_id, game_id):
+    """Extract named first-made-basket selections only; never infer odds."""
+    result = []
+    seen = set()
+    for market in markets:
+        if not isinstance(market, dict):
+            continue
+        name = market_name(market)
+        normalized = norm(name)
+        if not any(token in normalized for token in ('firstbasket', 'firstfieldgoal', 'firstfg', 'firstscorer', 'firstpointsscorer')):
+            continue
+        # First points and first basket are different markets; exclude free throws.
+        if 'firstpoints' in normalized or 'firstscorer' in normalized and 'basket' not in normalized and 'fieldgoal' not in normalized:
+            continue
+        for row in rows(market):
+            player = str(row.get('label') or row.get('name') or row.get('player_name') or row.get('playerName') or row.get('player') or '').strip()
+            if not player or norm(player) in ('anyplayer', 'none', 'other'):
+                continue
+            raw_price = first(row, 'price', 'odds', 'americanOdds', 'american_odds', 'value', 'yes')
+            if raw_price is None:
+                continue
+            price = american(raw_price)
+            if price is None:
+                continue
+            identity = (norm(player), game_id)
+            if identity in seen:
+                continue
+            seen.add(identity)
+            result.append({'game_id': game_id, 'event_id': event_id, 'player_name': player,
+                           'odds': price, 'sportsbook': book, 'market_name': name})
+    return result
+
+
 def score_market(m):
     return sum(m.get(k) is not None for k in ('moneyline', 'spread', 'total', 'team_totals'))
 
@@ -302,7 +335,7 @@ def main():
         fetch_multi,
         workers=ODDS_WORKERS,
     )
-    teams_out, props_out = [], []
+    teams_out, props_out, first_basket_out = [], [], []
     for away, home, game, event_id in targets:
         data = odds_by_event.get(str(event_id))
         if not isinstance(data, dict):
@@ -323,6 +356,7 @@ def main():
                 output['periods'][key] = merge_market(output['periods'].get(key), market)
             found_props = parse_props(book_name, markets, event_id, game.get('game_id'))
             props_out.extend(found_props)
+            first_basket_out.extend(parse_first_basket(book_name, markets, event_id, game.get("game_id")))
             print(f'  {book_name}: {len(markets)} markets | {len(found_props)} parsed player props')
             if DEBUG:
                 for m in markets:
@@ -338,13 +372,14 @@ def main():
         print(f'{away} @ {home}: ML={bool(output["full_game"].get("moneyline"))}, spread={bool(output["full_game"].get("spread"))}, total={bool(output["full_game"].get("total"))}, team_totals={output["full_game"].get("team_totals")}, props={sum(p["event_id"] == event_id for p in props_out)}', flush=True)
     team_payload = {'generated_at': now.isoformat(), 'games': teams_out}
     prop_payload = {'generated_at': now.isoformat(), 'props': props_out}
+    basket_payload = {'generated_at': now.isoformat(), 'props': first_basket_out}
     for directory in (MODEL, WEB):
         directory.mkdir(parents=True, exist_ok=True)
-        for filename, payload in [('live_team_markets.json', team_payload), ('player_prop_markets.json', prop_payload)]:
+        for filename, payload in [('live_team_markets.json', team_payload), ('player_prop_markets.json', prop_payload), ('first_basket_markets.json', basket_payload)]:
             path = directory / filename
             path.write_text(json.dumps(payload, indent=2), encoding='utf-8')
             print(f'Saved {path}', flush=True)
-    print(f'Games: {len(teams_out)} | player props: {len(props_out)}', flush=True)
+    print(f'Games: {len(teams_out)} | player props: {len(props_out)} | first basket prices: {len(first_basket_out)}', flush=True)
     if not props_out:
         print('NOTE: No recognizable player prop rows returned. Run with NBA_MARKETS_DEBUG=1 to inspect market shapes.', flush=True)
 
