@@ -93,17 +93,33 @@ def event_teams(event):
 def bookmaker_items(payload):
     raw = payload.get('bookmakers', {}) if isinstance(payload, dict) else {}
     if isinstance(raw, dict):
-        return [(name, markets) for name, markets in raw.items() if isinstance(markets, list) and any(norm(name) == norm(b) for b in BOOKS)]
-    if isinstance(raw, list):
-        return [(str(x.get('name') or x.get('title')), x.get('markets', [])) for x in raw if isinstance(x, dict) and isinstance(x.get('markets'), list) and any(norm(x.get('name') or x.get('title')) == norm(b) for b in BOOKS)]
-    return []
+        entries = list(raw.items())
+    elif isinstance(raw, list):
+        entries = [(str(x.get('name') or x.get('title') or x.get('key') or ''),
+                    x.get('markets') or x.get('odds') or [])
+                   for x in raw if isinstance(x, dict)]
+    else:
+        return []
+    result = []
+    for name, markets in entries:
+        if not any(norm(name) == norm(book) for book in BOOKS):
+            continue
+        if isinstance(markets, dict):
+            markets = [dict(value, name=value.get('name') or key)
+                       for key, value in markets.items() if isinstance(value, dict)]
+        if isinstance(markets, list):
+            result.append((name, markets))
+    return result
 
 def market_name(m):
     return str(m.get('name') or m.get('market') or m.get('type') or m.get('key') or '')
 
 def rows(m):
-    raw = m.get('odds', [])
+    raw = m.get('odds') or m.get('outcomes') or m.get('selections') or []
+    if isinstance(raw, dict):
+        raw = raw.get('odds') or raw.get('outcomes') or raw.get('selections') or []
     return [x for x in raw if isinstance(x, dict)] if isinstance(raw, list) else []
+
 
 def is_period(name):
     s = name.lower()
@@ -379,7 +395,9 @@ def main():
                 output['periods'][key] = merge_market(output['periods'].get(key), market)
             found_props = parse_props(book_name, markets, event_id, game.get('game_id'))
             props_out.extend(found_props)
-            first_basket_out.extend(parse_first_basket(book_name, markets, event_id, game.get("game_id")))
+            found_baskets = parse_first_basket(book_name, markets, event_id, game.get("game_id"))
+            first_basket_out.extend(found_baskets)
+            print(f'  {book_name}: {len(found_baskets)} first-basket YES prices', flush=True)
             print(f'  {book_name}: {len(markets)} markets | {len(found_props)} parsed player props')
             if DEBUG:
                 for m in markets:
