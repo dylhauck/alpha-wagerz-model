@@ -248,10 +248,10 @@ def parse_props(book, markets, event_id, game_id):
     return props
 
 def parse_first_basket(book, markets, event_id, game_id):
-    """Parse first made field goal (not first points) from bookmaker markets.
+    """Extract verified first-made-field-goal prices from pregame markets.
 
-    Odds-API.io can expose a named player selection either in a market's
-    odds rows or in a nested outcomes/selections collection.
+    First points (including possible free throws) is a different settlement
+    market and must not be paired with first-made-basket probabilities.
     """
     result = []
     seen = set()
@@ -260,11 +260,13 @@ def parse_first_basket(book, markets, event_id, game_id):
             continue
         name = market_name(market)
         normalized = norm(name)
-        if not any(token in normalized for token in
-                   ('firstbasket', 'firstfieldgoal', 'firstfg', 'firstmadebasket',
-                    'firstmadefieldgoal', 'firstfieldgoalscorer')):
-            continue
-        if 'firstpoints' in normalized or 'firstteam' in normalized:
+        is_basket = any(token in normalized for token in (
+            'firstbasket', 'firstfieldgoal', 'firstfg', 'firstmadebasket',
+            'firstmadefieldgoal', 'firstfieldgoalscorer',
+        ))
+        if not is_basket or any(token in normalized for token in (
+            'firstpoints', 'firstpoint', 'firstteam', 'teamfirst',
+        )):
             continue
         raw_rows = market.get('odds') or market.get('outcomes') or market.get('selections') or []
         if isinstance(raw_rows, dict):
@@ -284,17 +286,16 @@ def parse_first_basket(book, markets, event_id, game_id):
                 value = row.get('odds')
                 if isinstance(value, (int, float, str)):
                     raw_price = number(value)
-            if raw_price is None:
-                continue
             price = american(raw_price)
-            if price is None:
+            if price is None or abs(price) < 100:
                 continue
-            identity = (norm(player), str(game_id))
+            identity = (norm(player), str(game_id), norm(book))
             if identity in seen:
                 continue
             seen.add(identity)
             result.append({'game_id': game_id, 'event_id': event_id, 'player_name': player,
-                           'odds': price, 'sportsbook': book, 'market_name': name})
+                           'odds': price, 'sportsbook': book, 'market_name': name,
+                           'market_type': 'first_made_field_goal'})
     return result
 
 
@@ -402,7 +403,8 @@ def main():
         print(f'{away} @ {home}: ML={bool(output["full_game"].get("moneyline"))}, spread={bool(output["full_game"].get("spread"))}, total={bool(output["full_game"].get("total"))}, team_totals={output["full_game"].get("team_totals")}, props={sum(p["event_id"] == event_id for p in props_out)}', flush=True)
     print(f'NBA first-basket: {len(first_basket_out)} priced selections from configured books', flush=True)
     if not first_basket_out:
-        print('WARN: No first-basket market selections found in returned bookmaker odds; inspect market names with NBA_MARKETS_DEBUG=1.', flush=True)
+        print('WARN: No first-made-field-goal prices found in returned pregame bookmaker odds.', flush=True)
+        print('      First Point is not interchangeable with First Basket; check provider market availability.', flush=True)
     team_payload = {'generated_at': now.isoformat(), 'games': teams_out}
     prop_payload = {'generated_at': now.isoformat(), 'props': props_out}
     basket_payload = {'generated_at': now.isoformat(), 'props': first_basket_out}
