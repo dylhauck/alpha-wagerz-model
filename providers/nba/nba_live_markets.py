@@ -248,10 +248,11 @@ def parse_props(book, markets, event_id, game_id):
     return props
 
 def parse_first_basket(book, markets, event_id, game_id):
-    """Extract verified first-made-field-goal prices from pregame markets.
+    """Extract yes-only First Basket selections embedded in Player Props.
 
-    First points (including possible free throws) is a different settlement
-    market and must not be paired with first-made-basket probabilities.
+    Odds-API.io returns rows like:
+      {"label": "Anthony Davis (First Basket)", "hdp": 0.5, "over": "6.500"}
+    The 'over' field is the decimal YES price, not a two-sided points prop.
     """
     result = []
     seen = set()
@@ -259,43 +260,34 @@ def parse_first_basket(book, markets, event_id, game_id):
         if not isinstance(market, dict):
             continue
         name = market_name(market)
-        normalized = norm(name)
-        is_basket = any(token in normalized for token in (
-            'firstbasket', 'firstfieldgoal', 'firstfg', 'firstmadebasket',
-            'firstmadefieldgoal', 'firstfieldgoalscorer',
-        ))
-        if not is_basket or any(token in normalized for token in (
-            'firstpoints', 'firstpoint', 'firstteam', 'teamfirst',
-        )):
+        # The provider embeds First Basket in the generic Player Props market.
+        # Also accept a standalone First Basket market if one is ever returned.
+        if 'player' not in norm(name) and 'firstbasket' not in norm(name):
             continue
-        raw_rows = market.get('odds') or market.get('outcomes') or market.get('selections') or []
-        if isinstance(raw_rows, dict):
-            raw_rows = raw_rows.get('outcomes') or raw_rows.get('selections') or raw_rows.get('odds') or []
-        if not isinstance(raw_rows, list):
-            continue
-        for row in raw_rows:
-            if not isinstance(row, dict):
+        for row in rows(market):
+            label = str(row.get('label') or row.get('name') or '').strip()
+            match = re.fullmatch(r'\\s*(.*?)\\s*\\(First Basket\\)\\s*', label, flags=re.I)
+            if not match:
                 continue
-            player = str(row.get('player_name') or row.get('playerName') or row.get('player')
-                         or row.get('participant') or row.get('label') or row.get('name') or '').strip()
-            player = re.sub(r'\\s*\\((?:first basket|first field goal|first fg)\\)\\s*$', '', player, flags=re.I).strip()
-            if not player or norm(player) in ('anyplayer', 'none', 'other', 'yes', 'no'):
+            player = match.group(1).strip()
+            if not player or norm(player) in ('anyplayer', 'none', 'other'):
                 continue
-            raw_price = first(row, 'price', 'americanOdds', 'american_odds', 'value', 'yes')
-            if raw_price is None:
-                value = row.get('odds')
-                if isinstance(value, (int, float, str)):
-                    raw_price = number(value)
-            price = american(raw_price)
+            # Explicitly decimal YES odds: never require an under side.
+            decimal_yes = first(row, 'over', 'overOdds', 'over_odds')
+            if decimal_yes is None or decimal_yes <= 1:
+                continue
+            price = american(decimal_yes)
             if price is None or abs(price) < 100:
                 continue
             identity = (norm(player), str(game_id), norm(book))
             if identity in seen:
                 continue
             seen.add(identity)
-            result.append({'game_id': game_id, 'event_id': event_id, 'player_name': player,
-                           'odds': price, 'sportsbook': book, 'market_name': name,
-                           'market_type': 'first_made_field_goal'})
+            result.append({
+                'game_id': game_id, 'event_id': event_id, 'player_name': player,
+                'odds': price, 'sportsbook': book, 'market_name': 'First Basket',
+                'market_type': 'first_made_field_goal',
+            })
     return result
 
 
