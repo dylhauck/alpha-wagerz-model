@@ -14,10 +14,30 @@ PERIODS=("1st Period","2nd Period","3rd Period")
 CACHE=DATA/"period_score_cache.json"
 
 def _period_scores(payload):
-    """NHL landing linescore periods have away/home integer scores."""
-    periods=(payload.get("summary") or {}).get("scoring") or []
-    # scoring summary contains goals arrays, not aggregate scores; use linescore
-    lines=(payload.get("summary") or {}).get("linescore") or payload.get("linescore") or {}
+    """Read period goal counts from NHL gamecenter landing responses.
+
+    The landing endpoint exposes summary.scoring as a list of period objects
+    with individual goal events. It does not consistently include linescore.
+    """
+    summary=payload.get("summary") or {}
+    scoring=summary.get("scoring") or []
+    if isinstance(scoring,list):
+        result=[]
+        for idx,period in enumerate(scoring[:3],1):
+            if not isinstance(period,dict): continue
+            descriptor=period.get("periodDescriptor") or {}
+            number=descriptor.get("number") or period.get("period") or idx
+            if number not in (1,2,3): continue
+            goals=period.get("goals")
+            if not isinstance(goals,list): continue
+            away=sum(1 for goal in goals if goal.get("teamAbbrev") == payload.get("awayTeam",{}).get("abbrev"))
+            home=sum(1 for goal in goals if goal.get("teamAbbrev") == payload.get("homeTeam",{}).get("abbrev"))
+            # The scoring list is complete for a final game, including
+            # scoreless periods (goals=[]).
+            result.append((number,away,home))
+        if len(result)==3:
+            return result
+    lines=summary.get("linescore") or payload.get("linescore") or {}
     entries=lines.get("byPeriod") or lines.get("periods") or []
     result=[]
     for period in entries:
@@ -28,8 +48,8 @@ def _period_scores(payload):
         home=period.get("home")
         if isinstance(away,dict): away=away.get("goals")
         if isinstance(home,dict): home=home.get("goals")
-        if not isinstance(away,int) or not isinstance(home,int): continue
-        result.append((index,away,home))
+        if isinstance(away,int) and isinstance(home,int):
+            result.append((index,away,home))
     return result
 
 def build_period_projections(history_games,slates,max_fetch=36):
