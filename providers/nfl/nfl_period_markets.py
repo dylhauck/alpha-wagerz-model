@@ -6,7 +6,7 @@ import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from dotenv import load_dotenv
-from providers.nba.nba_live_markets import api_get, parse_team, merge_market, norm, market_name
+from providers.nba.nba_live_markets import api_get, parse_team, merge_market, norm, market_name, bookmaker_items
 from providers.odds_bulk import fetch_many
 from providers.nfl.nfl_odds import normalize_team
 
@@ -95,12 +95,7 @@ def build_nfl_period_markets():
             raw=fetched.get(str(eid))
             if not isinstance(raw,dict): continue
             if "bookmakers" not in raw and isinstance(raw.get("data"),dict):raw=raw["data"]
-            bookmakers=raw.get("bookmakers",{})
-            if isinstance(bookmakers,dict):
-                items=[(name,markets) for name,markets in bookmakers.items() if isinstance(markets,list)]
-            elif isinstance(bookmakers,list):
-                items=[(b.get("name") or b.get("title"),b.get("markets",[])) for b in bookmakers if isinstance(b,dict)]
-            else:items=[]
+            items=bookmaker_items(raw)
             periods={}
             for book in books:
                 entry=next(((n,m) for n,m in items if norm(n)==norm(book)),None)
@@ -111,6 +106,9 @@ def build_nfl_period_markets():
                 for label,market in parsed.items():
                     periods[label]=merge_market(periods.get(label),market)
             if periods:
+                for label in ("Q1","Q2","Q3","Q4","1H","2H"):
+                    if label not in periods:
+                        print(f"NFL {away} @ {home}: {label} sportsbook markets unavailable",flush=True)
                 output.append({"game_id":g.get("game_id"),"away_team":away,
                     "home_team":home,"periods":periods})
             else:
