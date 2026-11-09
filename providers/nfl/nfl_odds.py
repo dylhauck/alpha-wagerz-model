@@ -357,61 +357,31 @@ def match_events_to_slate(
 # ODDS PARSING
 # =========================================================
 
-def bookmaker_items(
-    payload: dict[str, Any],
-) -> list[
-    tuple[
-        str,
-        list[dict[str, Any]],
-    ]
-]:
-    raw = payload.get(
-        "bookmakers",
-        {},
-    )
-
-    if not isinstance(
-        raw,
-        dict,
-    ):
+def bookmaker_items(payload: dict[str, Any]) -> list[tuple[str, list[dict[str, Any]]]]:
+    """Accept both keyed and list-form bookmaker payloads from the odds API."""
+    raw = payload.get("bookmakers", {})
+    if isinstance(raw, dict):
+        pairs = raw.items()
+    elif isinstance(raw, list):
+        pairs = [
+            (book.get("key") or book.get("name") or book.get("title") or "",
+             book.get("markets") or book.get("odds") or [])
+            for book in raw if isinstance(book, dict)
+        ]
+    else:
         return []
-
     items = []
-
-    for bookmaker, markets in raw.items():
-        if not isinstance(
-            markets,
-            list,
-        ):
-            continue
-
-        items.append(
-            (
-                clean_text(
-                    bookmaker
-                ),
-                [
-                    market
-                    for market in markets
-                    if isinstance(
-                        market,
-                        dict,
-                    )
-                ],
-            )
-        )
-
-    items.sort(
-        key=lambda item: (
-            BOOKMAKER_PRIORITY.get(
-                item[0].lower(),
-                999,
-            ),
-            item[0].lower(),
-        )
-    )
-
-    return items
+    for bookmaker, markets in pairs:
+        if isinstance(markets, dict):
+            markets = [
+                dict(value, name=value.get("name") or name)
+                for name, value in markets.items() if isinstance(value, dict)
+            ]
+        if isinstance(markets, list):
+            items.append((clean_text(bookmaker), [m for m in markets if isinstance(m, dict)]))
+    return sorted(items, key=lambda item: (
+        BOOKMAKER_PRIORITY.get(item[0].lower(), 999), item[0].lower()
+    ))
 
 
 def market_name(
@@ -437,28 +407,11 @@ def market_key(
     )
 
 
-def odds_rows(
-    market: dict[str, Any],
-) -> list[dict[str, Any]]:
-    rows = market.get(
-        "odds",
-        [],
-    )
-
-    if not isinstance(
-        rows,
-        list,
-    ):
-        return []
-
-    return [
-        row
-        for row in rows
-        if isinstance(
-            row,
-            dict,
-        )
-    ]
+def odds_rows(market: dict[str, Any]) -> list[dict[str, Any]]:
+    rows = market.get("odds") or market.get("outcomes") or market.get("selections") or []
+    if isinstance(rows, dict):
+        rows = rows.get("outcomes") or rows.get("selections") or rows.get("odds") or []
+    return [row for row in rows if isinstance(row, dict)] if isinstance(rows, list) else []
 
 
 def first_number(
@@ -918,10 +871,7 @@ def normalize_player_props(
     props = []
 
     for market in markets:
-        name = market_name(
-            market
-        )
-
+        name = market_name(market)
         prop_type = identify_prop_type(
             name
         )
