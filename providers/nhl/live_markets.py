@@ -73,11 +73,14 @@ def hockey_markets(markets):
         normalized=name.strip().lower()
         if any(x in normalized for x in ("3-way","3 way","three way","draw","1x2")): continue
         if any(x in normalized for x in ("moneyline","money line","winner","to win","result")): kind="Moneyline"
-        elif any(x in normalized for x in ("puck line","spread","handicap")): kind="Spread"
+        elif any(x in normalized for x in ("puck line","puckline","spread","handicap")): kind="Spread"
         elif any(x in normalized for x in ("team total","team goals")): kind="Team Total"
         elif any(x in normalized for x in ("total","over/under","over under","goals")): kind="Total"
         else: continue
         row["name"]=period+" "+kind+(" "+normalized if kind=="Team Total" else "")
+        if not isinstance(row.get("odds"),list):
+            selections=row.get("outcomes") or row.get("selections")
+            if isinstance(selections,list): row["odds"]=selections
         converted.append(row)
     return converted
 
@@ -143,7 +146,10 @@ def build_nhl_live_markets():
             for book in books:
                 found=next(((name, markets) for name,markets in entries if norm(name)==norm(book)),None)
                 if found:
-                    parsed,partial=parse_team(found[0],hockey_markets(found[1]))
+                    converted=hockey_markets(found[1])
+                    parsed,partial=parse_team(found[0],converted)
+                    recognized=[m.get("name") for m in converted if isinstance(m,dict) and re.match(r"^Q[123] ",str(m.get("name","")))]
+                    print(f"NHL period markets {game['away']} @ {game['home']} {book}: {len(recognized)} recognized, parsed {list(partial)}",flush=True)
                     full=merge_market(full,parsed)
                     for label,market in partial.items():
                         label={"Q1":"1st Period","Q2":"2nd Period","Q3":"3rd Period"}.get(label,label)
