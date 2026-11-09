@@ -1574,6 +1574,10 @@ def main() -> None:
         )
     )
 
+    # Use consistent schedule-derived scoring and game counts even when
+    # the NBA stats endpoint returns an incomplete current-season sample.
+    sync_current_records_from_schedule(payload)
+
     write_json(
         OUTPUT_FILE,
         payload,
