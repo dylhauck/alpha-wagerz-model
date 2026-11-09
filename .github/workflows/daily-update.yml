@@ -138,11 +138,26 @@ jobs:
           path: alpha-wagerz-model/data/processed/nba/historical_quarters_2025-26.json
           key: nba-quarter-history-2025-26-${{ hashFiles('alpha-wagerz-model/model/nba/build_nba_period_projections.py') }}
 
+      - name: Restore NHL historical period scoring cache
+        uses: actions/cache/restore@v4
+        with:
+          path: alpha-wagerz-model/data/processed/nhl/period_score_cache.json
+          key: nhl-period-scores-${{ github.run_id }}
+          restore-keys: |
+            nhl-period-scores-
+
       - name: Run Alpha Wagerz full update
         id: full_update
         working-directory: alpha-wagerz-model
         run: |
           python -u -m scripts.run_full_update
+
+      - name: Save NHL historical period scoring cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: alpha-wagerz-model/data/processed/nhl/period_score_cache.json
+          key: nhl-period-scores-${{ github.run_id }}
 
       - name: Commit updated model data
         if: github.ref_name == 'main'
