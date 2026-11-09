@@ -2,10 +2,11 @@
 from __future__ import annotations
 import json
 import os
+import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from dotenv import load_dotenv
-from providers.nba.nba_live_markets import api_get, parse_team, merge_market, norm
+from providers.nba.nba_live_markets import api_get, parse_team, merge_market, norm, market_name
 from providers.odds_bulk import fetch_many
 from providers.nfl.nfl_odds import normalize_team
 
@@ -13,6 +14,36 @@ ROOT=Path(__file__).resolve().parents[2]
 load_dotenv(ROOT/".env")
 MODEL=ROOT/"data"/"processed"/"nfl"
 WEB=ROOT.parent/"alpha-wagerz-web"/"public"/"data"/"nfl"
+
+def normalize_period_markets(markets):
+    """Accept quarter/half naming variants without changing sportsbook prices."""
+    normalized=[]
+    labels=(
+        (r"\\b(?:first|1st)\\s*(?:quarter|qtr)\\b|\\bquarter\\s*1\\b|\\bq1\\b|\\b1q\\b", "Q1"),
+        (r"\\b(?:second|2nd)\\s*(?:quarter|qtr)\\b|\\bquarter\\s*2\\b|\\bq2\\b|\\b2q\\b", "Q2"),
+        (r"\\b(?:third|3rd)\\s*(?:quarter|qtr)\\b|\\bquarter\\s*3\\b|\\bq3\\b|\\b3q\\b", "Q3"),
+        (r"\\b(?:fourth|4th)\\s*(?:quarter|qtr)\\b|\\bquarter\\s*4\\b|\\bq4\\b|\\b4q\\b", "Q4"),
+        (r"\\b(?:first|1st)\\s*half\\b|\\bhalf\\s*1\\b|\\b1h\\b", "1H"),
+        (r"\\b(?:second|2nd)\\s*half\\b|\\bhalf\\s*2\\b|\\b2h\\b", "2H"),
+    )
+    for market in markets:
+        if not isinstance(market,dict):continue
+        name=market_name(market)
+        period=next((label for pattern,label in labels if re.search(pattern,name,re.I)),None)
+        if not period:continue
+        kind=name.lower()
+        if "team" in kind and any(x in kind for x in ("total","points")):category="Team Total"
+        elif any(x in kind for x in ("moneyline","money line","winner","to win","result")):category="Moneyline"
+        elif any(x in kind for x in ("spread","handicap","point line")):category="Spread"
+        elif any(x in kind for x in ("total","over/under","over under","points")):category="Total"
+        else:continue
+        row=dict(market)
+        row["name"]=period+" "+category+(" "+name if category=="Team Total" else "")
+        if not isinstance(row.get("odds"),list):
+            choices=row.get("outcomes") or row.get("selections")
+            if isinstance(choices,list):row["odds"]=choices
+        normalized.append(row)
+    return normalized
 
 def build_nfl_period_markets():
     key=os.getenv("ODDS_API_IO_KEY")
@@ -74,7 +105,9 @@ def build_nfl_period_markets():
             for book in books:
                 entry=next(((n,m) for n,m in items if norm(n)==norm(book)),None)
                 if not entry:continue
-                _,parsed=parse_team(*entry)
+                converted=normalize_period_markets(entry[1])
+                _,parsed=parse_team(entry[0],converted)
+                print(f"NFL {away} @ {home} {book}: {len(converted)} recognized quarter/half markets, parsed {list(parsed)}",flush=True)
                 for label,market in parsed.items():
                     periods[label]=merge_market(periods.get(label),market)
             if periods:
