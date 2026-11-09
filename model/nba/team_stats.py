@@ -1370,14 +1370,19 @@ def build_team_payload(
 # ============================================================
 
 def sync_current_records_from_schedule(payload: dict[str, Any]) -> None:
-    """Use completed regular-season games for current W/L even if stats API fails."""
+    """Synchronize W/L AND scoring rates from the same completed games.
+
+    Previously this function updated games=10 while leaving a one-game
+    per_game scoring sample untouched, corrupting the projection weights.
+    """
     schedule = load_json(NBA_DIR / "schedule.json")
     if not schedule or not isinstance(schedule.get("games"), list):
         print("WARNING: No valid schedule; cannot refresh team records.", flush=True)
         return
-    records = defaultdict(lambda: [0, 0])
+    records = defaultdict(lambda: {"wins": 0, "losses": 0, "pts": 0.0, "allowed": 0.0})
+    seen = set()
     for game in schedule["games"]:
-        if not isinstance(game, dict) or game.get("status_code") != 3:
+        if not isinstance(game, dict) or safe_int(game.get("status_code")) != 3:
             continue
         if game.get("game_type") != "REG" or game.get("season") != CURRENT_SEASON:
             continue
@@ -1390,24 +1395,56 @@ def sync_current_records_from_schedule(payload: dict[str, Any]) -> None:
             a, h = int(a), int(h)
         except (ValueError, TypeError):
             continue
-        if a == h:
+        game_id = str(game.get("game_id") or "")
+        if a == h or a < 40 or h < 40 or (game_id and game_id in seen):
             continue
-        winner, loser = (away, home) if a > h else (home, away)
-        records[winner][0] += 1
-        records[loser][1] += 1
+        if game_id:
+            seen.add(game_id)
+        for team, scored, conceded in ((away, a, h), (home, h, a)):
+            item = records[team]
+            item["pts"] += scored
+            item["allowed"] += conceded
+            item["wins" if scored > conceded else "losses"] += 1
+
+    if not records:
+        print("WARNING: No completed schedule games; retaining original team stats.", flush=True)
+        return
     for team in payload.get("teams", []):
         code = normalize_market_team(team.get("team"))
-        if code not in TEAM_INFO:
+        if code not in records:
             continue
-        wins, losses = records[code]
+        item = records[code]
+        wins, losses = item["wins"], item["losses"]
+        games = wins + losses
+        if not games:
+            continue
         current = team.setdefault("current_season", empty_season_block(CURRENT_SEASON))
-        current["games"] = wins + losses
+        prior_games = safe_int(current.get("games"))
+        pg = current.setdefault("per_game", {})
+        previous_pts = safe_float(pg.get("pts"))
+        current["games"] = games
         current["record"] = {
             "wins": wins, "losses": losses,
-            "win_pct": round_pct(ratio(wins, wins + losses)),
+            "win_pct": round_pct(ratio(wins, games)),
         }
+        pg["pts"] = round_stat(item["pts"] / games)
+        pg["pts_allowed"] = round_stat(item["allowed"] / games)
+        pg["point_diff"] = round_stat((item["pts"] - item["allowed"]) / games)
+        totals = current.setdefault("totals", {})
+        totals["pts"] = round(item["pts"])
+        totals["pts_allowed"] = round(item["allowed"])
+        totals["point_diff"] = round(item["pts"] - item["allowed"])
+        # Other per-game stats cannot be assumed to cover all schedule
+        # games if the stats API returned only a partial sample.
+        if prior_games != games:
+            print(f"NBA {code}: repaired scoring baseline ({prior_games} stat games vs {games} schedule games); "
+                  f"PTS {previous_pts:.1f} -> {pg['pts']:.1f}", flush=True)
+            for key in ("reb", "ast", "stl", "blk", "tov", "fg3m"):
+                pg[key] = 0.0
+            for key in ("fg_pct", "fg3_pct", "ft_pct"):
+                current.setdefault("percentages", {})[key] = 0.0
     payload["generated_at"] = utc_now_iso()
-    print("NBA team_stats records synchronized from completed schedule games (30 teams).", flush=True)
+    print(f"NBA team_stats synchronized scoring and records from {len(seen)} completed schedule games.", flush=True)
 
 
 def republish_existing_output() -> bool:
