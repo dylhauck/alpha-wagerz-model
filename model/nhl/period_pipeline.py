@@ -67,7 +67,7 @@ def _period_scores(payload):
             result.append((index,away,home))
     return result
 
-def build_period_projections(history_games,slates,max_fetch=36):
+def build_period_projections(history_games,slates,max_fetch=90):
     try: cache=json.loads(CACHE.read_text()) if CACHE.exists() else {}
     except (OSError,ValueError): cache={}
     pending=[g for g in history_games if str(g["id"]) not in cache][:max_fetch]
