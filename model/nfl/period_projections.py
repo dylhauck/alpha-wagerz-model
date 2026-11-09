@@ -7,6 +7,7 @@ from __future__ import annotations
 from collections import defaultdict
 from pathlib import Path
 import json
+import math
 import nflreadpy as nfl
 from utils.json_utils import save_json
 
@@ -43,6 +44,16 @@ def build_nfl_period_projections():
         hs=row.get("total_home_score");a=row.get("total_away_score")
         if hs is None or a is None:continue
         snapshots[key]=(row.get("home_team"),row.get("away_team"),float(hs),float(a))
+    # Empirical quarter margins establish a data-derived uncertainty scale.
+    margins=defaultdict(list)
+    for gid in {gid for gid,q in snapshots if (gid,4) in snapshots}:
+        prev=(0.0,0.0)
+        for q in (1,2,3,4):
+            entry=snapshots.get((gid,q))
+            if not entry:continue
+            _,_,hs,aw=entry
+            margins[q].append((hs-prev[0])-(aw-prev[1]))
+            prev=(hs,aw)
     rates=defaultdict(lambda:defaultdict(lambda:{"for":0.0,"against":0.0,"n":0}))
     game_ids={gid for gid,q in snapshots if (gid,4) in snapshots}
     for gid in game_ids:
@@ -72,8 +83,22 @@ def build_nfl_period_projections():
                 if len(vals)!=len(quarters):
                     periods[label]={"away_points":None,"home_points":None,"sample_games":0}
                 else:
-                    periods[label]={"away_points":round(sum(x[0] for x in vals),2),
-                                    "home_points":round(sum(x[1] for x in vals),2),
+                    away_pts=sum(x[0] for x in vals)
+                    home_pts=sum(x[1] for x in vals)
+                    # Estimate regulation period winner probability from observed
+                    # scoring variance; ties remain possible in individual quarters.
+                    variance=sum(
+                        (sum((v-sum(margins[q])/len(margins[q]))**2 for v in margins[q]) /
+                         max(1,len(margins[q])-1))
+                        for q in quarters if len(margins[q])>=3
+                    )
+                    sd=math.sqrt(variance) if variance>0 else None
+                    home_win=(0.5*(1+math.erf((home_pts-away_pts)/(sd*math.sqrt(2))))
+                              if sd is not None else None)
+                    periods[label]={"away_points":round(away_pts,2),
+                                    "home_points":round(home_pts,2),
+                                    "home_win_probability":round(home_win,4) if home_win is not None else None,
+                                    "away_win_probability":round(1-home_win,4) if home_win is not None else None,
                                     "sample_games":min(rates[away][q]["n"] for q in quarters)}
             result.append({"game_id":game.get("game_id") or game.get("id"),"away":away,"home":home,"periods":periods})
         payload={"model":"observed_nfl_quarter_scoring_baseline","season":season,"games":result}
