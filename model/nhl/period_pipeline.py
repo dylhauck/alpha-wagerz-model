@@ -27,11 +27,21 @@ def _period_scores(payload):
             if not isinstance(period,dict): continue
             descriptor=period.get("periodDescriptor") or {}
             number=descriptor.get("number") or period.get("period") or idx
+            try: number=int(number)
+            except (TypeError,ValueError): continue
             if number not in (1,2,3): continue
             goals=period.get("goals")
             if not isinstance(goals,list): continue
-            away=sum(1 for goal in goals if goal.get("teamAbbrev") == payload.get("awayTeam",{}).get("abbrev"))
-            home=sum(1 for goal in goals if goal.get("teamAbbrev") == payload.get("homeTeam",{}).get("abbrev"))
+            def abbreviation(goal):
+                value=goal.get("teamAbbrev") or goal.get("team") or ""
+                if isinstance(value,dict): value=value.get("default") or value.get("abbrev") or ""
+                return str(value).upper()
+            away_code=payload.get("awayTeam",{}).get("abbrev") or ""
+            home_code=payload.get("homeTeam",{}).get("abbrev") or ""
+            if isinstance(away_code,dict): away_code=away_code.get("default") or ""
+            if isinstance(home_code,dict): home_code=home_code.get("default") or ""
+            away=sum(1 for goal in goals if abbreviation(goal)==str(away_code).upper())
+            home=sum(1 for goal in goals if abbreviation(goal)==str(home_code).upper())
             # The scoring list is complete for a final game, including
             # scoreless periods (goals=[]).
             result.append((number,away,home))
@@ -39,6 +49,11 @@ def _period_scores(payload):
             return result
     lines=summary.get("linescore") or payload.get("linescore") or {}
     entries=lines.get("byPeriod") or lines.get("periods") or []
+    if not entries:
+        away_periods=(payload.get("awayTeam") or {}).get("periods") or []
+        home_periods=(payload.get("homeTeam") or {}).get("periods") or []
+        if len(away_periods)>=3 and len(home_periods)>=3:
+            entries=[{"period":i+1,"away":away_periods[i].get("goals"),"home":home_periods[i].get("goals")} for i in range(3)]
     result=[]
     for period in entries:
         descriptor=period.get("periodDescriptor") or {}
@@ -62,7 +77,14 @@ def build_period_projections(history_games,slates,max_fetch=36):
             game=tasks[task]
             try:
                 scores=_period_scores(task.result())
-                if len(scores)==3: cache[str(game["id"])]=scores
+                if len(scores)!=3:
+                    # Gamecenter boxscore supplies a separate linescore on
+                    # some API versions; use it when landing omits periods.
+                    scores=_period_scores(fetch(f'gamecenter/{game["id"]}/boxscore'))
+                if len(scores)==3:
+                    cache[str(game["id"])]=scores
+                else:
+                    print(f'NHL period history {game["id"]}: no complete period scores',flush=True)
             except Exception as exc:
                 print(f'NHL period history {game["id"]} unavailable: {exc}',flush=True)
     CACHE.parent.mkdir(parents=True,exist_ok=True)
