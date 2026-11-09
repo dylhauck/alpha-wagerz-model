@@ -81,11 +81,22 @@ def build_period_projections(history_games,slates,max_fetch=36):
             for i,label in enumerate(PERIODS,1):
                 a=team_periods[game["away"]][i]
                 h=team_periods[game["home"]][i]
-                if min(a["n"],h["n"])<3:
+                if min(a["n"],h["n"])<1:
                     periods[label]={"away_goals":None,"home_goals":None,"sample_games":min(a["n"],h["n"])}
                     continue
-                away=(a["gf"]/a["n"]+h["ga"]/h["n"])/2
-                home=(h["gf"]/h["n"]+a["ga"]/a["n"])/2
+                # Shrink small observed samples toward a league-wide period
+                # scoring prior instead of suppressing every projection.
+                # This is a model estimate, not a sportsbook line.
+                league_gf = sum(t[i]["gf"] for t in team_periods.values())
+                league_n = sum(t[i]["n"] for t in team_periods.values())
+                prior = league_gf / league_n if league_n else 1.0
+                shrink = 5.0
+                away_attack = (a["gf"] + shrink * prior) / (a["n"] + shrink)
+                away_defense = (a["ga"] + shrink * prior) / (a["n"] + shrink)
+                home_attack = (h["gf"] + shrink * prior) / (h["n"] + shrink)
+                home_defense = (h["ga"] + shrink * prior) / (h["n"] + shrink)
+                away = (away_attack + home_defense) / 2
+                home = (home_attack + away_defense) / 2
                 periods[label]={"away_goals":round(away,3),"home_goals":round(home,3),"sample_games":min(a["n"],h["n"])}
             output.append({"game_id":game["game_id"],"away":game["away"],"home":game["home"],"periods":periods})
         save(subdir,"period_projections.json",{"model":"observed_period_scoring_baseline","games":output})
