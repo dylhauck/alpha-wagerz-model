@@ -221,7 +221,19 @@ def parse_props(book, markets, event_id, game_id):
             line = first(row, 'hdp', 'line', 'point')
             over = first(row, 'over', 'overOdds', 'over_odds')
             under = first(row, 'under', 'underOdds', 'under_odds')
-            if line is None or (over is None and under is None):
+            # A two-sided, same-line quote is required before a selection
+            # can be treated as a normal Over/Under player prop. The feed
+            # sometimes returns one-sided 0.5 FG3M selections with prices
+            # incompatible with the standard made-three market.
+            if line is None or line < 0 or over is None or under is None:
+                continue
+            over_price, under_price = american(over), american(under)
+            if (over_price is None or under_price is None or
+                    abs(over_price) < 100 or abs(under_price) < 100):
+                continue
+            if prop_type == 'fg3m' and line == 0.5:
+                # 0.5 3PM is especially prone to provider market
+                # misclassification; suppress pending verified mapping.
                 continue
             identifier = (norm(player), prop_type, line, norm(book))
             if identifier in seen:
@@ -229,7 +241,7 @@ def parse_props(book, markets, event_id, game_id):
             seen.add(identifier)
             props.append({
                 'player_name': player, 'prop_type': prop_type, 'line': line,
-                'over_odds': american(over), 'under_odds': american(under),
+                'over_odds': over_price, 'under_odds': under_price,
                 'sportsbook': book, 'event_id': event_id, 'game_id': game_id,
                 'market_name': stat if match else name,
             })
