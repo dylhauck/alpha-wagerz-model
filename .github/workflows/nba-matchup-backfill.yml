@@ -2,6 +2,9 @@ name: NBA Historical Matchup Backfill
 
 on:
   workflow_dispatch:
+  schedule:
+    # Weekly refresh, separate from the time-sensitive daily model update.
+    - cron: "20 8 * * 1"
 
 jobs:
   historical-backfill:
