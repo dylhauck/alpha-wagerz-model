@@ -40,6 +40,8 @@ NEXT_OUTPUT_FILE = NBA_NEXT_DIR / "player_matchups.json"
 
 WEB_OUTPUT_FILE = WEB_NBA_DIR / "player_matchups.json"
 WEB_NEXT_OUTPUT_FILE = WEB_NBA_NEXT_DIR / "player_matchups.json"
+MATCHUP_CACHE_FILE = NBA_DIR / "player_matchup_cache.json"
+WEB_MATCHUP_CACHE_FILE = WEB_NBA_DIR / "player_matchup_cache.json"
 
 
 # ============================================================
@@ -1106,6 +1108,20 @@ def use_existing_matchup_fallback(
     old_current = load_json(OUTPUT_FILE)
     old_next = load_json(NEXT_OUTPUT_FILE)
     historical_games = old_current["games"] + old_next["games"]
+    # A persistent opponent-level cache survives slate rotation. Slate files
+    # alone cannot contain every opponent a player may face tomorrow.
+    cached_splits = {}
+    for cache_path in (MATCHUP_CACHE_FILE, WEB_MATCHUP_CACHE_FILE):
+        if cache_path.exists():
+            try:
+                cache = load_json(cache_path)
+                for player_id, opponents in cache.get("players", {}).items():
+                    for opponent, splits in opponents.items():
+                        if isinstance(splits, dict):
+                            cached_splits[(safe_int(player_id), normalize_team_abbreviation(opponent))] = splits
+                break
+            except (OSError, ValueError, TypeError) as exc:
+                print(f"Invalid NBA matchup cache {cache_path}: {exc}", flush=True)
     # Index historical matchup rows by player AND opponent. A row for
     # CLE vs BKN must never be relabeled as CLE vs OKC.
     saved_splits = {}
@@ -1118,6 +1134,10 @@ def use_existing_matchup_fallback(
                 player_id = safe_int(player.get("player_id"))
                 if player_id and opponent:
                     saved_splits[(player_id, opponent)] = player
+
+    # Prefer the complete historical cache; retain legacy slate splits only
+    # for pairs not yet present in the cache.
+    saved_splits.update({key: {"splits": splits} for key, splits in cached_splits.items()})
 
     # The roster, not old slate coverage, determines which teams appear.
     roster_payload = load_json(PLAYERS_FILE)
@@ -1421,6 +1441,17 @@ def main() -> None:
         f"{next_payload['game_count']} "
         f"future slate games"
     )
+
+    # Persist all player/opponent splits, not only those on these two slates.
+    cache_payload = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "players": {
+            str(player_id): record.get("opponents", {})
+            for player_id, record in matchup_database.items()
+        },
+    }
+    write_json(MATCHUP_CACHE_FILE, cache_payload)
+    write_json(WEB_MATCHUP_CACHE_FILE, cache_payload)
 
     # Add source metadata.
     metadata = {
