@@ -1184,10 +1184,11 @@ def use_existing_matchup_fallback(
         for roster_player in players_by_team.get(team, []):
             player_id = roster_player["player_id"]
             historical = saved_splits.get((player_id, opponent))
-            if historical:
+            if historical and has_real_history(historical.get("splits", {})):
                 row = dict(historical)
                 row.update(roster_player)
                 row["opponent"] = opponent
+                row.pop("matchup_history_unavailable", None)
             else:
                 by_season = {}
                 for season in ALL_SEASONS:
