@@ -102,6 +102,20 @@ def run_mlb_update():
 
     print("\n🗓️ Slate / lineups", flush=True)
     timed("update_today", update_today)
+    # No MLB games in the offseason: do not load millions of Statcast
+    # pitches or rebuild season metrics on every daily update. This is
+    # independent of the other three sports and keeps the unified job alive.
+    import json
+    from pathlib import Path
+    slate_path = Path("data/raw/mlb/todays_slate.json")
+    if slate_path.exists():
+        with slate_path.open(encoding="utf-8") as handle:
+            slate = json.load(handle)
+        if isinstance(slate, list) and not slate:
+            print("⚾ No MLB games on today's slate; skipping expensive MLB "
+                  "Statcast and metrics rebuild. Existing historical data is preserved.",
+                  flush=True)
+            return
     timed("build_team_context_file", build_team_context_file)
 
     print("\n🏥 Injury report", flush=True)
