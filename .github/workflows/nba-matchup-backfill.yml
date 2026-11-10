@@ -41,6 +41,7 @@ jobs:
           cp alpha-wagerz-web/public/data/nba/players.json alpha-wagerz-model/data/processed/nba/players.json
           cp alpha-wagerz-web/public/data/nba/player_matchups.json alpha-wagerz-model/data/processed/nba/player_matchups.json
           cp alpha-wagerz-web/public/data/nba/next/player_matchups.json alpha-wagerz-model/data/processed/nba/next/player_matchups.json
+          if [ -f alpha-wagerz-web/public/data/nba/player_matchup_cache.json ]; then cp alpha-wagerz-web/public/data/nba/player_matchup_cache.json alpha-wagerz-model/data/processed/nba/player_matchup_cache.json; fi
       - name: Refresh slate and rebuild historical matchup statistics
         working-directory: alpha-wagerz-model
         run: |
@@ -51,7 +52,7 @@ jobs:
         run: |
           git config user.name "Alpha Wagerz Automation"
           git config user.email "actions@github.com"
-          git add public/data/nba/player_matchups.json public/data/nba/next/player_matchups.json
+          git add public/data/nba/player_matchups.json public/data/nba/next/player_matchups.json public/data/nba/player_matchup_cache.json
           if ! git diff --cached --quiet; then
             git commit -m "Refresh historical NBA player matchup statistics"
             git pull --rebase origin main
