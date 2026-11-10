@@ -112,6 +112,11 @@ jobs:
           cp alpha-wagerz-web/public/data/nba/next/player_matchups.json \
             alpha-wagerz-model/data/processed/nba/next/player_matchups.json
 
+          if [ -s alpha-wagerz-web/public/data/nba/player_matchup_cache.json ]; then
+            cp alpha-wagerz-web/public/data/nba/player_matchup_cache.json \
+              alpha-wagerz-model/data/processed/nba/player_matchup_cache.json
+          fi
+
           cp alpha-wagerz-web/public/data/nba/player_stats.json \
             alpha-wagerz-model/data/processed/nba/player_stats.json
 
