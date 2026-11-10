@@ -1137,7 +1137,29 @@ def use_existing_matchup_fallback(
 
     # Prefer the complete historical cache; retain legacy slate splits only
     # for pairs not yet present in the cache.
-    saved_splits.update({key: {"splits": splits} for key, splits in cached_splits.items()})
+    def has_real_history(splits):
+        if not isinstance(splits, dict):
+            return False
+        return any(
+            isinstance(splits.get(period), dict)
+            and (splits[period].get("games") or 0) > 0
+            and (splits[period].get("min_per_game") or 0) > 0
+            for period in ("current_season", "last_season", "last_3_seasons")
+        )
+
+    for key, splits in cached_splits.items():
+        previous = saved_splits.get(key, {}).get("splits", {})
+        if has_real_history(splits) or not has_real_history(previous):
+            saved_splits[key] = {"splits": splits}
+
+    cached_valid = sum(has_real_history(p.get("splits", {})) for p in saved_splits.values())
+    print(f"NBA matchup fallback: {len(cached_splits)} cached opponent pairs, "
+          f"{cached_valid} pairs with verified playing time", flush=True)
+    if not cached_valid:
+        raise RuntimeError(
+            "NBA matchup history cache and prior slates have no usable statistics; "
+            "refusing to overwrite website data with zero-only fallback"
+        )
 
     # The roster, not old slate coverage, determines which teams appear.
     roster_payload = load_json(PLAYERS_FILE)
