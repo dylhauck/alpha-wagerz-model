@@ -1369,6 +1369,44 @@ def main() -> None:
         )
     )
 
+    # NBA Stats/ESPN can return partial player coverage without raising.
+    # Merge previously verified opponent splits BEFORE building either slate.
+    # Never replace a populated player/opponent history with an empty result.
+    previous_cache = {}
+    for cache_path in (MATCHUP_CACHE_FILE, WEB_MATCHUP_CACHE_FILE):
+        if not cache_path.exists():
+            continue
+        try:
+            previous_cache = load_json(cache_path).get("players", {})
+            if isinstance(previous_cache, dict):
+                break
+        except (OSError, ValueError, TypeError) as exc:
+            print(f"NBA history cache read failed: {exc}", flush=True)
+    recovered = 0
+    for player_id, player in players_by_id.items():
+        previous_opponents = previous_cache.get(str(player_id), {})
+        if not isinstance(previous_opponents, dict):
+            continue
+        record = matchup_database.setdefault(
+            player_id, {**player, "opponents": {}}
+        )
+        for opponent, prior_splits in previous_opponents.items():
+            opponent = normalize_team_abbreviation(opponent)
+            if not isinstance(prior_splits, dict):
+                continue
+            existing = record["opponents"].get(opponent)
+            def valid_history(splits):
+                return isinstance(splits, dict) and any(
+                    isinstance(splits.get(period), dict)
+                    and (splits[period].get("games") or 0) > 0
+                    and (splits[period].get("min_per_game") or 0) > 0
+                    for period in ("current_season", "last_season", "last_3_seasons")
+                )
+            if valid_history(prior_splits) and not valid_history(existing):
+                record["opponents"][opponent] = prior_splits
+                recovered += 1
+    print(f"NBA matchup history: recovered {recovered} missing opponent splits from persistent cache", flush=True)
+
     players_with_history = len(
         matchup_database
     )
