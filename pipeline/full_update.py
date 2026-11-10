@@ -122,18 +122,27 @@ def run_mlb_update():
     import subprocess
     import sys
 
-    for group in ("hitter", "pitcher"):
-        print(f"▶️ Starting MLB {group} metric worker", flush=True)
-        result = subprocess.run(
-            [sys.executable, "-u", "-m", "pipeline.full_update",
-             "--metric-group", group],
-            check=False,
-        )
-        if result.returncode:
-            raise RuntimeError(
-                f"MLB {group} metric group failed (exit={result.returncode})"
+    # Run each expensive metric in its own process. The previous hitter worker
+    # retained the entire season-sized DataFrame after writing its CSV, then
+    # started another metric without releasing the worker's peak memory.
+    metric_groups = {
+        "hitter": ("build_hitter_metrics", "build_hitter_pitch_type_metrics",
+                   "build_team_offense_metrics"),
+        "pitcher": ("build_pitcher_metrics", "build_pitch_mix",
+                    "build_pitch_arsenal_metrics", "build_zone_allowed_metrics",
+                    "build_bullpen_metrics"),
+    }
+    for group, metrics in metric_groups.items():
+        for name in metrics:
+            print(f"▶️ Starting MLB {name} isolated worker", flush=True)
+            result = subprocess.run(
+                [sys.executable, "-u", "-m", "pipeline.full_update",
+                 "--metric", name],
+                check=False,
             )
-        print(f"✅ MLB {group} metric worker completed", flush=True)
+            if result.returncode:
+                raise RuntimeError(f"MLB {name} failed (exit={result.returncode})")
+            print(f"✅ MLB {name} completed", flush=True)
 
     print("\n🔗 Attachments", flush=True)
     timed("attach_weather_to_games", attach_weather_to_games)
@@ -392,7 +401,22 @@ def run_full_update():
 if __name__ == "__main__":
     import sys
 
-    if len(sys.argv) == 3 and sys.argv[1] == "--metric-group":
+    if len(sys.argv) == 3 and sys.argv[1] == "--metric":
+        metric_functions = {
+            "build_hitter_metrics": build_hitter_metrics,
+            "build_hitter_pitch_type_metrics": build_hitter_pitch_type_metrics,
+            "build_team_offense_metrics": build_team_offense_metrics,
+            "build_pitcher_metrics": build_pitcher_metrics,
+            "build_pitch_mix": build_pitch_mix,
+            "build_pitch_arsenal_metrics": build_pitch_arsenal_metrics,
+            "build_zone_allowed_metrics": build_zone_allowed_metrics,
+            "build_bullpen_metrics": build_bullpen_metrics,
+        }
+        metric_name = sys.argv[2]
+        if metric_name not in metric_functions:
+            raise SystemExit(f"Unknown MLB metric: {metric_name}")
+        timed(metric_name, metric_functions[metric_name])
+    elif len(sys.argv) == 3 and sys.argv[1] == "--metric-group":
         run_mlb_metric_group(sys.argv[2])
     elif len(sys.argv) == 3 and sys.argv[1] == "--sport":
         sport = sys.argv[2].lower()
