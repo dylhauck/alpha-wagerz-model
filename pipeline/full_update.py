@@ -343,21 +343,20 @@ def run_nhl_update():
 
 
 def run_full_update():
-    """Run independent sport pipelines concurrently in separate processes.
+    """Run each sport in an isolated subprocess within ONE daily workflow.
 
-    Sports write to disjoint MLB/NFL/NBA output trees. Each sport retains
-    its existing sequential ordering, validations, and calculations.
+    Sequential execution prevents four simultaneous sport workers from
+    exhausting the GitHub-hosted runner while MLB processes large Statcast
+    files. Each subprocess releases memory before the next sport starts.
     """
-    import os
     import subprocess
     import sys
-    from concurrent.futures import ThreadPoolExecutor
 
     pipeline_start = perf_counter()
-    print("🐺 Starting parallel Alpha Wagerz full update...", flush=True)
-    sports = ("mlb", "nfl", "nba", "nhl")
-
-    def run_sport(sport):
+    print("🐺 Starting memory-safe sequential Alpha Wagerz full update...", flush=True)
+    sports = ("nba", "nfl", "nhl", "mlb")
+    results = []
+    for sport in sports:
         started = perf_counter()
         print(f"▶️ Starting {sport.upper()} pipeline", flush=True)
         try:
@@ -368,7 +367,7 @@ def run_full_update():
             )
             code = completed.returncode
         except subprocess.TimeoutExpired:
-            print("⚠️ NHL exceeded its 180-second time budget; existing sports continue.", flush=True)
+            print("⚠️ NHL exceeded its 180-second time budget; other sports continue.", flush=True)
             code = 0 if sport == "nhl" else 1
         print(
             f"⏱️ {sport.upper()} pipeline: "
@@ -376,10 +375,7 @@ def run_full_update():
             f"(exit={code})",
             flush=True,
         )
-        return sport, code
-
-    with ThreadPoolExecutor(max_workers=4) as executor:
-        results = list(executor.map(run_sport, sports))
+        results.append((sport, code))
 
     failures = [sport for sport, code in results if code != 0]
     if failures:
