@@ -1442,6 +1442,25 @@ def main() -> None:
         f"future slate games"
     )
 
+    # A successful API response is not proof of usable statistics. Reject
+    # malformed ESPN responses that contain player rows but zero scoring data.
+    usable_pairs = sum(
+        1 for record in matchup_database.values()
+        for splits in record.get("opponents", {}).values()
+        if any(
+            (splits.get(season, {}).get("games", 0) or 0) > 0
+            and (splits.get(season, {}).get("min_per_game", 0) or 0) > 0
+            for season in ("current_season", "last_season", "last_3_seasons")
+        )
+    )
+    if usable_pairs == 0:
+        print("NBA matchup source returned no usable minutes/history; refusing zero-only publish", flush=True)
+        use_existing_matchup_fallback(
+            RuntimeError("Historical matchup API data has no usable minutes")
+        )
+        return
+    print(f"NBA historical matchup validation: {usable_pairs} player/opponent pairs with minutes", flush=True)
+
     # Persist all player/opponent splits, not only those on these two slates.
     cache_payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
