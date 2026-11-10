@@ -414,10 +414,30 @@ def fetch_espn_game_logs(players_by_team):
     session = requests.Session()
     session.headers.update({"User-Agent": "Mozilla/5.0 (compatible; AlphaWagerz/1.0)"})
     espn_ids = {}
+    # ESPN uses its own team identifiers. Abbreviations are not reliable
+    # roster URL identifiers (notably MIL, MIA and UTA).
+    espn_team_ids = {
+        "ATL": 1, "BOS": 2, "BKN": 17, "CHA": 30, "CHI": 4,
+        "CLE": 5, "DAL": 6, "DEN": 7, "DET": 8, "GSW": 9,
+        "HOU": 10, "IND": 11, "LAC": 12, "LAL": 13, "MEM": 29,
+        "MIA": 14, "MIL": 15, "MIN": 16, "NOP": 3, "NYK": 18,
+        "OKC": 25, "ORL": 19, "PHI": 20, "PHX": 21, "POR": 22,
+        "SAC": 23, "SAS": 24, "TOR": 28, "UTA": 26, "WAS": 27,
+    }
+    def name_key(name):
+        import unicodedata
+        value = unicodedata.normalize("NFKD", str(name).casefold())
+        return "".join(c for c in value if c.isalnum() and not unicodedata.combining(c))
+
     for team, players in players_by_team.items():
+        matched = 0
+        team_id = espn_team_ids.get(team)
+        if team_id is None:
+            print(f"  ESPN unknown team identifier: {team}", flush=True)
+            continue
         try:
             response = session.get(
-                f"https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/{team.lower()}/roster",
+                f"https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/{team_id}/roster",
                 timeout=18,
             )
             response.raise_for_status()
@@ -430,14 +450,15 @@ def fetch_espn_game_logs(players_by_team):
                 elif isinstance(group, dict):
                     roster.append(group)
             by_name = {
-                "".join(c for c in str(a.get("displayName", "")).casefold() if c.isalnum()): a
+                name_key(a.get("displayName", "")): a
                 for a in roster if a.get("id")
             }
             for player in players:
-                key = "".join(c for c in player["player_name"].casefold() if c.isalnum())
-                athlete = by_name.get(key)
+                athlete = by_name.get(name_key(player["player_name"]))
                 if athlete:
                     espn_ids[player["player_id"]] = (str(athlete["id"]), player)
+                    matched += 1
+            print(f"  ESPN {team}: matched {matched}/{len(players)} roster players", flush=True)
         except (requests.RequestException, ValueError) as exc:
             print(f"  ESPN roster {team} unavailable: {exc}", flush=True)
     print(f"  ESPN matched {len(espn_ids)} player IDs", flush=True)
