@@ -42,13 +42,14 @@ jobs:
         run: |
           mkdir -p alpha-wagerz-model/data/processed/nba/next
           cp alpha-wagerz-web/public/data/nba/players.json alpha-wagerz-model/data/processed/nba/players.json
+          cp alpha-wagerz-web/public/data/nba/slate.json alpha-wagerz-model/data/processed/nba/slate.json
+          cp alpha-wagerz-web/public/data/nba/next/slate.json alpha-wagerz-model/data/processed/nba/next/slate.json
           cp alpha-wagerz-web/public/data/nba/player_matchups.json alpha-wagerz-model/data/processed/nba/player_matchups.json
           cp alpha-wagerz-web/public/data/nba/next/player_matchups.json alpha-wagerz-model/data/processed/nba/next/player_matchups.json
           if [ -f alpha-wagerz-web/public/data/nba/player_matchup_cache.json ]; then cp alpha-wagerz-web/public/data/nba/player_matchup_cache.json alpha-wagerz-model/data/processed/nba/player_matchup_cache.json; fi
-      - name: Refresh slate and rebuild historical matchup statistics
+      - name: Rebuild historical matchup statistics using existing slates
         working-directory: alpha-wagerz-model
         run: |
-          python -c "from providers.nba.nba_data import build_nba_data; build_nba_data()"
           python -m model.nba.player_matchups
       - name: Publish matchup data to website
         working-directory: alpha-wagerz-web
