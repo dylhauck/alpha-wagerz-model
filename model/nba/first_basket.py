@@ -223,13 +223,53 @@ def previous_starting_five(team, history, unavailable):
     return None, None
 
 
-def candidate_rows(game, matchup, history, roster, unavailable=None):
+ESPN_TEAM_IDS = {
+    "ATL": 1, "BOS": 2, "BKN": 17, "CHA": 30, "CHI": 4,
+    "CLE": 5, "DAL": 6, "DEN": 7, "DET": 8, "GSW": 9,
+    "HOU": 10, "IND": 11, "LAC": 12, "LAL": 13, "MEM": 29,
+    "MIA": 14, "MIL": 15, "MIN": 16, "NOP": 3, "NYK": 18,
+    "OKC": 25, "ORL": 19, "PHI": 20, "PHX": 21, "POR": 22,
+    "SAC": 23, "SAS": 24, "TOR": 28, "UTA": 26, "WAS": 27,
+}
+
+
+def verified_rosters(teams):
+    """Resolve actual team membership independently of stale matchup files."""
+    result = {}
+    for team in teams:
+        team = normalized_team(team)
+        if team in result:
+            continue
+        try:
+            payload = fetch(f"{BASE}/teams/{ESPN_TEAM_IDS[team]}/roster")
+            names = set()
+            for group in payload.get("athletes", []):
+                entries = group.get("items", []) if "items" in group else [group]
+                for athlete in entries:
+                    if isinstance(athlete, dict):
+                        name = athlete.get("displayName") or athlete.get("fullName")
+                        if name:
+                            names.add(normalized_name(name))
+            if names:
+                result[team] = names
+            else:
+                print(f"  First basket {team}: roster empty; cannot verify starters", flush=True)
+        except (KeyError, requests.RequestException, ValueError, TypeError) as exc:
+            print(f"  First basket {team}: roster verification failed: {exc}", flush=True)
+    return result
+
+
+def candidate_rows(game, matchup, history, roster, unavailable=None, verified=None):
     unavailable = unavailable or set()
+    verified = verified or {}
     selected = []
     lineup_sources = {}
     for side in ("away", "home"):
         team = game.get(f"{side}_abbr") or game.get(f"{side}_team")
         team_code = normalized_team(team)
+        valid_names = verified.get(team_code)
+        if not valid_names:
+            return [], lineup_sources, f"Current roster not verified for {team_code}"
         available = []
         for player in matchup.get(f"{side}_players", []):
             if not isinstance(player, dict):
@@ -237,7 +277,7 @@ def candidate_rows(game, matchup, history, roster, unavailable=None):
             current = (player.get("splits") or {}).get("current_season") or {}
             previous = (player.get("splits") or {}).get("last_season") or {}
             minutes = float(current.get("min_per_game") or previous.get("min_per_game") or 0)
-            if (team_code, normalized_name(player.get("player_name"))) in unavailable:
+            if (team_code, normalized_name(player.get("player_name"))) in unavailable or normalized_name(player.get("player_name")) not in valid_names:
                 continue
             available.append({
                 "player_id": player.get("player_id"),
@@ -252,21 +292,14 @@ def candidate_rows(game, matchup, history, roster, unavailable=None):
             [p for p in available if p["minutes"] > 0],
             key=lambda p: p["minutes"], reverse=True,
         )[:5]
-        current_valid = len([
-            p for p in projected
-            if any(
-                normalized_name(p["player_name"]) == normalized_name(row.get("player_name"))
-                and float(((row.get("splits") or {}).get("current_season") or {}).get("min_per_game") or 0) > 0
-                for row in matchup.get(f"{side}_players", [])
-            )
-        ]) == 5
+        current_valid = len(projected) == 5
         if current_valid:
             selected.extend(projected)
             lineup_sources[side] = "projected_by_minutes"
             continue
         names, previous_game = previous_starting_five(team_code, history, unavailable)
-        if not names:
-            return [], lineup_sources, f"No usable projection or verified previous starting five for {team_code}"
+        if not names or any(normalized_name(name) not in valid_names for name in names):
+            return [], lineup_sources, f"No five available, roster-verified candidates for {team_code}"
         by_name = {normalized_name(p["player_name"]): p for p in available}
         last_five = []
         for name in names:
@@ -282,8 +315,8 @@ def candidate_rows(game, matchup, history, roster, unavailable=None):
         lineup_sources[f"{side}_previous_game_id"] = previous_game
     return selected, lineup_sources, None
 
-def make_forecast(game, matchup, history, roster, unavailable=None):
-    starters, lineup_sources, error = candidate_rows(game, matchup, history, roster, unavailable)
+def make_forecast(game, matchup, history, roster, unavailable=None, verified=None):
+    starters, lineup_sources, error = candidate_rows(game, matchup, history, roster, unavailable, verified)
     base = {
         "game_id": game.get("game_id"),
         "away_team": game.get("away_abbr") or game.get("away_team"),
@@ -419,10 +452,12 @@ def build_first_basket():
                     normalized_team(injury.get("team")),
                     normalized_name(injury.get("player_name")),
                 ))
+        teams = {normalized_team(game.get(f"{side}_abbr") or game.get(f"{side}_team")) for game in games for side in ("away", "home")}
+        verified = verified_rosters(teams)
         forecasts = []
         for game in games:
             matchup = by_id.get(str(game.get("game_id")), {})
-            forecasts.append(make_forecast(game, matchup, history, roster, unavailable))
+            forecasts.append(make_forecast(game, matchup, history, roster, unavailable, verified))
         output = {"generated_at": datetime.now(timezone.utc).isoformat(),
                   "slate_type": subdir or "current",
                   "games": forecasts}
