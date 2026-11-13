@@ -1,10 +1,8 @@
 name: NBA Historical Matchup Backfill
 
 on:
+  # Manual recovery only; the daily update now refreshes matchup history.
   workflow_dispatch:
-  schedule:
-    # Refresh history daily, separately from the time-sensitive daily model update.
-    - cron: "20 8 * * *"
 
 jobs:
   historical-backfill:
