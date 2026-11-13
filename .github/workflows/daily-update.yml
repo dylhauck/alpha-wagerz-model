@@ -158,21 +158,21 @@ jobs:
         run: |
           python -u -m scripts.run_full_update
 
-      # Refresh NBA matchup history after the main update so the latest player
-      # reference and slate are available. A bounded failure must not block
-      # publishing the other four sports.
-      - name: Refresh NBA historical matchup data
+      # Recover both missing teams from the same verified player-history
+      # pipeline used for the rest of the NBA. Each invocation merges the
+      # previous cache, so the second team must run after the first.
+      - name: Refresh Houston and San Antonio matchup history
         if: steps.full_update.outcome == 'success'
         working-directory: alpha-wagerz-model
-        timeout-minutes: 8
-        continue-on-error: true
+        timeout-minutes: 20
         env:
           NBA_MATCHUPS_FAST_DAILY: '0'
-          # Target Houston first while its opponent history is being recovered.
-          # Existing verified splits for other teams are preserved from cache.
-          NBA_MATCHUPS_TEAM: 'HOU'
         run: |
-          python -u -m model.nba.player_matchups
+          for team in HOU SAS; do
+            echo "::group::NBA matchup recovery: $team"
+            NBA_MATCHUPS_TEAM="$team" python -u -m model.nba.player_matchups
+            echo "::endgroup::"
+          done
 
       - name: Save NHL historical period scoring cache
         if: always()
