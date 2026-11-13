@@ -1384,10 +1384,25 @@ def main() -> None:
 
     season_counts: dict[str, int] = {}
 
-    for index, season in enumerate(
-        ALL_SEASONS,
-        start=1,
-    ):
+    targeted_team = os.getenv("NBA_MATCHUPS_TEAM", "").strip().upper()
+    if targeted_team:
+        if targeted_team not in players_by_team:
+            raise ValueError(f"Unknown NBA matchup target team: {targeted_team}")
+        print(f"Targeted matchup recovery: {targeted_team}; bypassing slow NBA Stats bulk calls", flush=True)
+        all_logs = fetch_espn_game_logs({targeted_team: players_by_team[targeted_team]})
+        if not all_logs:
+            raise RuntimeError(f"No verified ESPN game logs for {targeted_team}; refusing empty publication")
+        season_counts = {
+            name: sum(row["season"] == name for row in all_logs)
+            for name in ALL_SEASONS
+        }
+        print(f"{targeted_team}: recovered {len(all_logs)} game logs", flush=True)
+
+    if not targeted_team:
+        for index, season in enumerate(
+            ALL_SEASONS,
+            start=1,
+        ):
         print()
         print(
             f"[{index}/{len(ALL_SEASONS)}] "
