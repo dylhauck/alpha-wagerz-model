@@ -1399,10 +1399,10 @@ def main() -> None:
         print(f"{targeted_team}: recovered {len(all_logs)} game logs", flush=True)
 
     if not targeted_team:
-            for index, season in enumerate(
-                ALL_SEASONS,
-                start=1,
-            ):
+        for index, season in enumerate(
+            ALL_SEASONS,
+            start=1,
+        ):
             print()
             print(
                 f"[{index}/{len(ALL_SEASONS)}] "
