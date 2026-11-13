@@ -97,6 +97,7 @@ TEAM_ABBREVIATION_MAP = {
     "NOP": "NOP",
     "NO": "NOP",
     "NYK": "NYK",
+    "NY": "NYK",
     "OKC": "OKC",
     "ORL": "ORL",
     "PHI": "PHI",
@@ -108,6 +109,7 @@ TEAM_ABBREVIATION_MAP = {
     "TOR": "TOR",
     "UTA": "UTA",
     "WAS": "WAS",
+    "WSH": "WAS",
 }
 
 
