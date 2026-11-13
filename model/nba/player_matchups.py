@@ -1451,6 +1451,45 @@ def main() -> None:
         )
     )
 
+    # A nonempty NBA Stats response can still omit entire teams or
+    # players. Identify missing histories for the actual current/next
+    # slate and request ESPN only for those players.
+    try:
+        needed_pairs = set()
+        for slate_path in (CURRENT_SLATE_FILE, NEXT_SLATE_FILE):
+            for game in get_games_from_slate(load_json(slate_path)):
+                away, home = get_team_from_game(game, "away"), get_team_from_game(game, "home")
+                if away and home:
+                    needed_pairs.add((away, home))
+                    needed_pairs.add((home, away))
+        missing_by_team = {}
+        for team, opponent in needed_pairs:
+            missing = []
+            for player in players_by_team.get(team, []):
+                splits = matchup_database.get(player["player_id"], {}).get("opponents", {}).get(opponent, {})
+                if not (splits.get("last_3_seasons", {}).get("games", 0) > 0):
+                    missing.append(player)
+            if missing:
+                missing_by_team.setdefault(team, {})[opponent] = missing
+        targets = {}
+        for team, opponents in missing_by_team.items():
+            unique = {p["player_id"]: p for group in opponents.values() for p in group}
+            targets[team] = list(unique.values())
+        if targets:
+            print(f"NBA matchup gap-fill: {sum(map(len, targets.values()))} players across {len(targets)} teams", flush=True)
+            supplemental = fetch_espn_game_logs(targets)
+            if supplemental:
+                seen = {(row["player_id"], row["season"], row["game_id"]) for row in all_logs}
+                new_rows = [row for row in supplemental
+                            if (row["player_id"], row["season"], row["game_id"]) not in seen]
+                all_logs.extend(new_rows)
+                matchup_database = build_matchup_database(all_logs, players_by_id)
+                print(f"NBA matchup gap-fill: merged {len(new_rows)} unique ESPN game logs", flush=True)
+            else:
+                print("NBA matchup gap-fill: ESPN returned no verified logs", flush=True)
+    except (OSError, ValueError, TypeError, KeyError) as exc:
+        print(f"NBA matchup gap-fill skipped: {exc}", flush=True)
+
     # NBA Stats/ESPN can return partial player coverage without raising.
     # Merge previously verified opponent splits BEFORE building either slate.
     # Never replace a populated player/opponent history with an empty result.
