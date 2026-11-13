@@ -447,14 +447,23 @@ def fetch_espn_game_logs(players_by_team):
             athletes = payload.get("athletes", [])
             roster = []
             for group in athletes:
-                if isinstance(group, dict) and "items" in group:
+                if isinstance(group, dict) and isinstance(group.get("items"), list):
                     roster.extend(group["items"])
+                elif isinstance(group, dict) and isinstance(group.get("athletes"), list):
+                    roster.extend(group["athletes"])
                 elif isinstance(group, dict):
                     roster.append(group)
-            by_name = {
-                name_key(a.get("displayName", "")): a
-                for a in roster if a.get("id")
-            }
+            by_name = {}
+            for athlete in roster:
+                if not isinstance(athlete, dict):
+                    continue
+                athlete = athlete.get("athlete", athlete)
+                if not isinstance(athlete, dict) or not athlete.get("id"):
+                    continue
+                for field in ("displayName", "fullName", "shortName"):
+                    key = name_key(athlete.get(field, ""))
+                    if key:
+                        by_name[key] = athlete
             for player in players:
                 athlete = by_name.get(name_key(player["player_name"]))
                 if athlete:
@@ -500,8 +509,14 @@ def fetch_espn_game_logs(players_by_team):
                             if isinstance(opp, dict):
                                 opp = opp.get("team", opp)
                                 if isinstance(opp, dict):
-                                    opp = opp.get("abbreviation") or opp.get("shortDisplayName") or ""
-                            opponent = normalize_team_abbreviation(opp)
+                                    opp = (opp.get("abbreviation") or opp.get("shortDisplayName")
+                                           or opp.get("id") or "")
+                            # ESPN event opponent objects sometimes carry only
+                            # numeric ESPN team IDs (not abbreviations).
+                            espn_id_to_team = {str(v): k for k, v in espn_team_ids.items()}
+                            opponent = normalize_team_abbreviation(
+                                espn_id_to_team.get(str(opp), opp)
+                            )
                             stats = event.get("stats", [])
                             if isinstance(stats, dict):
                                 values = stats
