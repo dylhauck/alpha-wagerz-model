@@ -991,6 +991,12 @@ def build_team_players_vs_opponent(
                 ],
                 "number": player["number"],
                 "splits": opponent_data,
+                "matchup_history_unavailable": not any(
+                    isinstance(opponent_data.get(period), dict)
+                    and opponent_data[period].get("games", 0) > 0
+                    and opponent_data[period].get("min_per_game", 0) > 0
+                    for period in ("current_season", "last_season", "last_3_seasons")
+                ),
             }
         )
 
