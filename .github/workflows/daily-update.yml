@@ -158,6 +158,19 @@ jobs:
         run: |
           python -u -m scripts.run_full_update
 
+      # Refresh NBA matchup history after the main update so the latest player
+      # reference and slate are available. A bounded failure must not block
+      # publishing the other four sports.
+      - name: Refresh NBA historical matchup data
+        if: steps.full_update.outcome == 'success'
+        working-directory: alpha-wagerz-model
+        timeout-minutes: 8
+        continue-on-error: true
+        env:
+          NBA_MATCHUPS_FAST_DAILY: '0'
+        run: |
+          python -u -m model.nba.player_matchups
+
       - name: Save NHL historical period scoring cache
         if: always()
         uses: actions/cache/save@v4
