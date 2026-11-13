@@ -168,6 +168,9 @@ jobs:
         continue-on-error: true
         env:
           NBA_MATCHUPS_FAST_DAILY: '0'
+          # Target Houston first while its opponent history is being recovered.
+          # Existing verified splits for other teams are preserved from cache.
+          NBA_MATCHUPS_TEAM: 'HOU'
         run: |
           python -u -m model.nba.player_matchups
 
