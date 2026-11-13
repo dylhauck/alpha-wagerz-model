@@ -491,14 +491,27 @@ def fetch_espn_game_logs(players_by_team):
                             detail = events.get(event_id, {})
                             if not isinstance(detail, dict):
                                 detail = {}
+                            # ESPN's opponent may be a team object, a
+                            # nested team, or an ID. Never accept an unknown
+                            # opponent code as a legitimate matchup.
                             opp = detail.get("opponent") or event.get("opponent") or {}
-                            opponent = normalize_team_abbreviation(
-                                opp.get("abbreviation", "") if isinstance(opp, dict) else opp
-                            )
+                            if isinstance(opp, dict):
+                                opp = opp.get("team", opp)
+                                if isinstance(opp, dict):
+                                    opp = opp.get("abbreviation") or opp.get("shortDisplayName") or ""
+                            opponent = normalize_team_abbreviation(opp)
                             stats = event.get("stats", [])
-                            if not opponent or not isinstance(stats, list) or not labels or len(stats) != len(labels):
+                            if isinstance(stats, dict):
+                                values = stats
+                            elif isinstance(stats, list) and labels and len(stats) == len(labels):
+                                values = dict(zip(labels, stats))
+                            else:
                                 continue
-                            values = dict(zip(labels, stats))
+                            if opponent not in TEAM_ABBREVIATION_MAP.values():
+                                continue
+                            # Skip DNP/empty events, not just missing labels.
+                            if not any(str(values.get(k, "")).strip() for k in ("MIN", "PTS")):
+                                continue
                             def num(*names):
                                 for name in names:
                                     if name in values:
@@ -1389,6 +1402,26 @@ def main() -> None:
             frame,
             season,
         )
+        # A successful but empty NBA Stats response is not historical
+        # coverage. Request ESPN rather than silently publishing zeros.
+        if not normalized and season != CURRENT_SEASON:
+            print(f"  {season}: empty NBA Stats response; switching to ESPN", flush=True)
+            try:
+                espn_rows = fetch_espn_game_logs(players_by_team)
+            except Exception as espn_exc:
+                print(f"ESPN game logs unavailable: {espn_exc}", flush=True)
+                espn_rows = []
+            if not espn_rows:
+                use_existing_matchup_fallback(
+                    RuntimeError(f"No verified historical logs for {season}")
+                )
+                return
+            all_logs.extend(espn_rows)
+            season_counts = {
+                name: sum(row["season"] == name for row in all_logs)
+                for name in ALL_SEASONS
+            }
+            break
 
         season_counts[season] = len(
             normalized
