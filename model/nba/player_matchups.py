@@ -479,20 +479,24 @@ def fetch_espn_game_logs(players_by_team):
                 data = response.json()
                 # ESPN provides per-event stat arrays and labels in the
                 # response; never assume an unlabeled column order.
-                labels = data.get("labels", [])
                 events = data.get("events", {})
                 for category in data.get("seasonTypes", []):
                     for grouping in category.get("categories", []):
+                        # ESPN sometimes places stat labels on the category,
+                        # not at the response root. Empty root labels caused
+                        # every event in the fallback to be silently skipped.
+                        labels = grouping.get("labels") or category.get("labels") or data.get("labels") or []
                         for event in grouping.get("events", []):
                             event_id = str(event.get("eventId") or event.get("id") or "")
                             detail = events.get(event_id, {})
+                            if not isinstance(detail, dict):
+                                detail = {}
+                            opp = detail.get("opponent") or event.get("opponent") or {}
                             opponent = normalize_team_abbreviation(
-                                (detail.get("opponent") or {}).get("abbreviation")
-                                if isinstance(detail.get("opponent"), dict)
-                                else ""
+                                opp.get("abbreviation", "") if isinstance(opp, dict) else opp
                             )
                             stats = event.get("stats", [])
-                            if not opponent or not isinstance(stats, list) or not labels:
+                            if not opponent or not isinstance(stats, list) or not labels or len(stats) != len(labels):
                                 continue
                             values = dict(zip(labels, stats))
                             def num(*names):
@@ -500,6 +504,19 @@ def fetch_espn_game_logs(players_by_team):
                                     if name in values:
                                         return safe_float(values[name])
                                 return 0.0
+                            def shooting(*names):
+                                for name in names:
+                                    raw = str(values.get(name, ""))
+                                    if "-" in raw:
+                                        parts = raw.split("-", 1)
+                                        try:
+                                            return float(parts[0]), float(parts[1])
+                                        except ValueError:
+                                            pass
+                                return 0.0, 0.0
+                            fgm, fga = shooting("FG", "FGM-FGA")
+                            fg3m, fg3a = shooting("3PT", "3PM-3PA")
+                            ftm, fta = shooting("FT", "FTM-FTA")
                             result.append({
                                 "season": season, "player_id": player_id,
                                 "player_name": player["player_name"], "team": player["team"],
@@ -507,10 +524,10 @@ def fetch_espn_game_logs(players_by_team):
                                 "game_date": extract_game_date(detail.get("gameDate") or detail.get("date")),
                                 "min": num("MIN"), "pts": num("PTS"), "reb": num("REB"),
                                 "ast": num("AST"), "stl": num("STL"), "blk": num("BLK"),
-                                "tov": num("TO", "TOV"), "fg3m": num("3PM"),
-                                "fgm": num("FGM"), "fga": num("FGA"),
-                                "fg3a": num("3PA"), "ftm": num("FTM"),
-                                "fta": num("FTA"), "fantasy_points": 0.0,
+                                "tov": num("TO", "TOV"), "fg3m": num("3PM") or fg3m,
+                                "fgm": num("FGM") or fgm, "fga": num("FGA") or fga,
+                                "fg3a": num("3PA") or fg3a, "ftm": num("FTM") or ftm,
+                                "fta": num("FTA") or fta, "fantasy_points": 0.0,
                             })
             except (requests.RequestException, ValueError, TypeError):
                 continue
@@ -521,7 +538,12 @@ def fetch_espn_game_logs(players_by_team):
         futures = [pool.submit(get_logs, item) for item in espn_ids.items()]
         for future in as_completed(futures):
             all_rows.extend(future.result())
-    print(f"  ESPN alternate game logs: {len(all_rows)} verified rows", flush=True)
+    # A response containing rows is not sufficient if the data cannot
+    # produce meaningful historical matchup statistics.
+    usable = sum(row["min"] > 0 for row in all_rows)
+    print(f"  ESPN alternate game logs: {len(all_rows)} rows; {usable} with minutes", flush=True)
+    if not usable:
+        return []
     return all_rows
 
 
