@@ -1,4 +1,4 @@
-name: NBA Historical Matchup Backfill
+name: NBA Historical Matchup Backfill (Houston Recovery)
 
 on:
   # Manual recovery only; the daily update now refreshes matchup history.
@@ -14,6 +14,7 @@ jobs:
       NBA_STATS_MAX_RETRIES: '1'
       NBA_STATS_TIMEOUT: '15'
       NBA_MATCHUPS_FAST_DAILY: '0'
+      NBA_MATCHUPS_TEAM: 'HOU'
     steps:
       - name: Checkout model
         uses: actions/checkout@v4
