@@ -1399,77 +1399,77 @@ def main() -> None:
         print(f"{targeted_team}: recovered {len(all_logs)} game logs", flush=True)
 
     if not targeted_team:
-        for index, season in enumerate(
-            ALL_SEASONS,
-            start=1,
-        ):
-        print()
-        print(
-            f"[{index}/{len(ALL_SEASONS)}] "
-            f"{season}"
-        )
-
-        try:
-            frame = fetch_season_game_logs(
-                season
+            for index, season in enumerate(
+                ALL_SEASONS,
+                start=1,
+            ):
+            print()
+            print(
+                f"[{index}/{len(ALL_SEASONS)}] "
+                f"{season}"
             )
 
-        except Exception as exc:
-            print(f"NBA Stats unavailable: {exc}. Trying ESPN game logs.", flush=True)
             try:
-                all_logs = fetch_espn_game_logs(players_by_team)
-            except Exception as espn_exc:
-                print(f"ESPN game logs unavailable: {espn_exc}", flush=True)
-                all_logs = []
-            if not all_logs:
-                use_existing_matchup_fallback(exc)
-                return
-            season_counts = {
-                season_name: sum(row["season"] == season_name for row in all_logs)
-                for season_name in ALL_SEASONS
-            }
-            break
-
-        normalized = normalize_game_logs(
-            frame,
-            season,
-        )
-        # A successful but empty NBA Stats response is not historical
-        # coverage. Request ESPN rather than silently publishing zeros.
-        if not normalized and season != CURRENT_SEASON:
-            print(f"  {season}: empty NBA Stats response; switching to ESPN", flush=True)
-            try:
-                espn_rows = fetch_espn_game_logs(players_by_team)
-            except Exception as espn_exc:
-                print(f"ESPN game logs unavailable: {espn_exc}", flush=True)
-                espn_rows = []
-            if not espn_rows:
-                use_existing_matchup_fallback(
-                    RuntimeError(f"No verified historical logs for {season}")
+                frame = fetch_season_game_logs(
+                    season
                 )
-                return
-            all_logs.extend(espn_rows)
-            season_counts = {
-                name: sum(row["season"] == name for row in all_logs)
-                for name in ALL_SEASONS
-            }
-            break
 
-        season_counts[season] = len(
-            normalized
-        )
+            except Exception as exc:
+                print(f"NBA Stats unavailable: {exc}. Trying ESPN game logs.", flush=True)
+                try:
+                    all_logs = fetch_espn_game_logs(players_by_team)
+                except Exception as espn_exc:
+                    print(f"ESPN game logs unavailable: {espn_exc}", flush=True)
+                    all_logs = []
+                if not all_logs:
+                    use_existing_matchup_fallback(exc)
+                    return
+                season_counts = {
+                    season_name: sum(row["season"] == season_name for row in all_logs)
+                    for season_name in ALL_SEASONS
+                }
+                break
 
-        all_logs.extend(normalized)
-
-        print(
-            f"    Normalized: "
-            f"{len(normalized):,} rows"
-        )
-
-        if index < len(ALL_SEASONS):
-            time.sleep(
-                REQUEST_DELAY_SECONDS
+            normalized = normalize_game_logs(
+                frame,
+                season,
             )
+            # A successful but empty NBA Stats response is not historical
+            # coverage. Request ESPN rather than silently publishing zeros.
+            if not normalized and season != CURRENT_SEASON:
+                print(f"  {season}: empty NBA Stats response; switching to ESPN", flush=True)
+                try:
+                    espn_rows = fetch_espn_game_logs(players_by_team)
+                except Exception as espn_exc:
+                    print(f"ESPN game logs unavailable: {espn_exc}", flush=True)
+                    espn_rows = []
+                if not espn_rows:
+                    use_existing_matchup_fallback(
+                        RuntimeError(f"No verified historical logs for {season}")
+                    )
+                    return
+                all_logs.extend(espn_rows)
+                season_counts = {
+                    name: sum(row["season"] == name for row in all_logs)
+                    for name in ALL_SEASONS
+                }
+                break
+
+            season_counts[season] = len(
+                normalized
+            )
+
+            all_logs.extend(normalized)
+
+            print(
+                f"    Normalized: "
+                f"{len(normalized):,} rows"
+            )
+
+            if index < len(ALL_SEASONS):
+                time.sleep(
+                    REQUEST_DELAY_SECONDS
+                )
 
     print()
     print("=" * 70)
