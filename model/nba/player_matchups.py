@@ -86,6 +86,7 @@ TEAM_ABBREVIATION_MAP = {
     "DEN": "DEN",
     "DET": "DET",
     "GSW": "GSW",
+    "GS": "GSW",  # ESPN game logs abbreviate Golden State as GS
     "HOU": "HOU",
     "IND": "IND",
     "LAC": "LAC",
@@ -1674,6 +1675,33 @@ def main() -> None:
         )
         return
     print(f"NBA historical matchup validation: {usable_pairs} player/opponent pairs with minutes", flush=True)
+
+    # Validate the requested team's actual slate opponents, not just the
+    # overall database. A successful fetch for unrelated opponents must not
+    # silently publish a fully blank matchup table.
+    if targeted_team:
+        target_opponents = set()
+        for game in current_games + next_games:
+            away = get_team_from_game(game, "away")
+            home = get_team_from_game(game, "home")
+            if away == targeted_team and home:
+                target_opponents.add(home)
+            elif home == targeted_team and away:
+                target_opponents.add(away)
+        for opponent in sorted(target_opponents):
+            covered = sum(
+                1 for player in players_by_team[targeted_team]
+                if (matchup_database.get(player["player_id"], {})
+                    .get("opponents", {}).get(opponent, {})
+                    .get("last_3_seasons", {}).get("games", 0) or 0) > 0
+            )
+            print(f"NBA targeted matchup coverage: {targeted_team} vs {opponent}: "
+                  f"{covered}/{len(players_by_team[targeted_team])} players", flush=True)
+            if covered == 0:
+                raise RuntimeError(
+                    f"No verified matchup history for {targeted_team} vs {opponent}; "
+                    "refusing to publish a blank targeted recovery"
+                )
 
     # Persist all player/opponent splits, not only those on these two slates.
     cache_payload = {
