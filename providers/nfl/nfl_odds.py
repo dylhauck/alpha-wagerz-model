@@ -359,13 +359,16 @@ def match_events_to_slate(
 
 def bookmaker_items(payload: dict[str, Any]) -> list[tuple[str, list[dict[str, Any]]]]:
     """Accept both keyed and list-form bookmaker payloads from the odds API."""
-    raw = payload.get("bookmakers", {})
+    raw = payload.get("bookmakers") or payload.get("books") or payload.get("odds")
+    if not raw:
+        raw = {key: value for key, value in payload.items()
+               if key.lower() in BOOKMAKER_PRIORITY}
     if isinstance(raw, dict):
         pairs = raw.items()
     elif isinstance(raw, list):
         pairs = [
             (book.get("key") or book.get("name") or book.get("title") or "",
-             book.get("markets") or book.get("odds") or [])
+             book.get("markets") or book.get("odds") or book.get("data") or [])
             for book in raw if isinstance(book, dict)
         ]
     else:
@@ -389,7 +392,11 @@ def market_name(
 ) -> str:
     return clean_text(
         market.get("name")
+        or market.get("market_name")
+        or market.get("marketName")
         or market.get("market")
+        or market.get("key")
+        or market.get("label")
         or market.get("type")
     )
 
@@ -408,7 +415,9 @@ def market_key(
 
 
 def odds_rows(market: dict[str, Any]) -> list[dict[str, Any]]:
-    rows = market.get("odds") or market.get("outcomes") or market.get("selections") or []
+    rows = next((market.get(k) for k in ("outcomes", "odds", "selections",
+                 "participants", "players", "values", "rows")
+                 if isinstance(market.get(k), list)), [])
     if isinstance(rows, dict):
         rows = rows.get("outcomes") or rows.get("selections") or rows.get("odds") or []
     return [row for row in rows if isinstance(row, dict)] if isinstance(rows, list) else []
@@ -883,9 +892,12 @@ def normalize_player_props(
             market
         ):
             player_name = clean_text(
-                row.get("label")
+                row.get("player_name")
                 or row.get("player")
+                or row.get("label")
                 or row.get("name")
+                or row.get("participant")
+                or row.get("description")
             )
 
             if not player_name:
