@@ -286,33 +286,37 @@ def candidate_rows(game, matchup, history, roster, unavailable=None, verified=No
                 "minutes": minutes,
                 "fg_pct": float(current.get("fg_pct") or previous.get("fg_pct") or 0),
             })
-        # Existing projected starters are usable only with five players
-        # supported by current-season minutes. Otherwise use last actual five.
+        # Prefer the latest actual starting five when every member is still
+        # roster-verified and available. Minutes are only a fallback.
+        names, previous_game = previous_starting_five(team_code, history, unavailable)
+        by_name = {normalized_name(p["player_name"]): p for p in available}
+        if (len(names) == 5
+                and len({normalized_name(name) for name in names}) == 5
+                and all(normalized_name(name) in valid_names
+                        and (team_code, normalized_name(name)) not in unavailable
+                        for name in names)):
+            last_five = []
+            for name in names:
+                player = by_name.get(normalized_name(name))
+                if player is None:
+                    # A verified roster member can be absent from matchup
+                    # metrics; retain the identity without inventing stats.
+                    player = {"player_id": None, "player_name": name,
+                              "team": team, "side": side, "minutes": 0, "fg_pct": 0}
+                last_five.append(player)
+            selected.extend(last_five)
+            lineup_sources[side] = "previous_confirmed_lineup"
+            lineup_sources[f"{side}_previous_game_id"] = previous_game
+            continue
+
         projected = sorted(
             [p for p in available if p["minutes"] > 0],
             key=lambda p: p["minutes"], reverse=True,
         )[:5]
-        current_valid = len(projected) == 5
-        if current_valid:
-            selected.extend(projected)
-            lineup_sources[side] = "projected_by_minutes"
-            continue
-        names, previous_game = previous_starting_five(team_code, history, unavailable)
-        if not names or any(normalized_name(name) not in valid_names for name in names):
+        if len(projected) != 5:
             return [], lineup_sources, f"No five available, roster-verified candidates for {team_code}"
-        by_name = {normalized_name(p["player_name"]): p for p in available}
-        last_five = []
-        for name in names:
-            player = by_name.get(normalized_name(name))
-            if player is None:
-                # A historical starter can be missing from the matchup data.
-                # Keep the verified name, but never invent an NBA player ID.
-                player = {"player_id": None, "player_name": name,
-                          "team": team, "side": side, "minutes": 0, "fg_pct": 0}
-            last_five.append(player)
-        selected.extend(last_five)
-        lineup_sources[side] = "previous_confirmed_lineup"
-        lineup_sources[f"{side}_previous_game_id"] = previous_game
+        selected.extend(projected)
+        lineup_sources[side] = "projected_by_minutes"
     return selected, lineup_sources, None
 
 def make_forecast(game, matchup, history, roster, unavailable=None, verified=None):
