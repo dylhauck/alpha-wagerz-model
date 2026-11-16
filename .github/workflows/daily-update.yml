@@ -28,6 +28,12 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
       R2_ENDPOINT_URL: ${{ secrets.R2_ENDPOINT_URL }}
+      # R2 uses the "auto" signing region. Avoid AWS CLI checksum
+      # extensions that are not required for these S3-compatible objects.
+      AWS_DEFAULT_REGION: auto
+      AWS_REGION: auto
+      AWS_REQUEST_CHECKSUM_CALCULATION: when_required
+      AWS_RESPONSE_CHECKSUM_VALIDATION: when_required
 
     steps:
       - name: Checkout model repository
@@ -62,6 +68,31 @@ jobs:
       - name: Download Statcast master from R2
         run: |
           mkdir -p alpha-wagerz-model/data/raw/mlb/statcast
+
+          # Validate the account-level S3 endpoint before making a request.
+          # Never print credentials or the endpoint's full URL.
+          if [ -z "${R2_ENDPOINT_URL:-}" ]; then
+            echo "::error::R2_ENDPOINT_URL secret is missing."
+            exit 1
+          fi
+          R2_ENDPOINT_URL="${R2_ENDPOINT_URL%/}"
+          if ! python -c 'import os,sys,urllib.parse; u=urllib.parse.urlparse(os.environ["R2_ENDPOINT_URL"].strip()); sys.exit(0 if u.scheme=="https" and u.hostname and u.hostname.endswith(".r2.cloudflarestorage.com") and u.path in ("", "/") and not u.query and not u.fragment else 1)'; then
+            echo "::error::R2_ENDPOINT_URL must be the account-level https://<account-id>.r2.cloudflarestorage.com endpoint (no bucket or object path)."
+            exit 1
+          fi
+
+          # Fail with a clear diagnostic on a persistent 400 instead of
+          # masking configuration errors with unlimited retries.
+          aws configure set default.retry_mode standard
+          aws configure set default.max_attempts 4
+          if ! aws s3api head-object \
+            --bucket alpha-wagerz-statcast \
+            --key statcast_longterm.zip \
+            --endpoint-url "$R2_ENDPOINT_URL" \
+            --output json >/dev/null; then
+            echo "::error::R2 could not access statcast_longterm.zip. Verify R2 endpoint, object existence and token permissions (Object Read)."
+            exit 1
+          fi
 
           aws s3 cp \
             s3://alpha-wagerz-statcast/statcast_longterm.zip \
