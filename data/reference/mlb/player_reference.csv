@@ -180,7 +180,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 646240,Rafael Devers,137,San Francisco Giants,SF,1B,First Base,L,R
 678495,Randy Rodríguez,137,San Francisco Giants,SF,P,Pitcher,R,R
 592858,Rowan Wick,137,San Francisco Giants,SF,P,Pitcher,L,R
-676254,Ryan Walker,137,San Francisco Giants,SF,P,Pitcher,R,R
 656529,Sam Hentges,137,San Francisco Giants,SF,P,Pitcher,L,L
 814154,Scott Bandura,137,San Francisco Giants,SF,LF,Outfielder,L,R
 805345,Trent Harris,137,San Francisco Giants,SF,P,Pitcher,R,R
@@ -575,6 +574,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 701656,Logan Henderson,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 800325,Luis Lara,158,Milwaukee Brewers,MIL,RF,Outfielder,S,R
 688107,Robert Gasser,158,Milwaukee Brewers,MIL,P,Pitcher,L,L
+676254,Ryan Walker,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 686217,Sal Frelick,158,Milwaukee Brewers,MIL,RF,Outfielder,L,R
 675660,Shane Drohan,158,Milwaukee Brewers,MIL,P,Pitcher,L,L
 656730,Trevor Megill,158,Milwaukee Brewers,MIL,P,Pitcher,L,R
