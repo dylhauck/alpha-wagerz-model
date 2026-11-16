@@ -1214,13 +1214,40 @@ def build_for_slate(
             if not isinstance(odds_payload, dict):
                 raise RuntimeError('No odds returned for event')
 
-            games.append(
-                normalize_event_odds(
-                    event,
-                    slate_game,
-                    odds_payload,
-                )
+            normalized = normalize_event_odds(
+                event,
+                slate_game,
+                odds_payload,
             )
+
+            # The bulk odds response can contain game markets without
+            # the player-market rows returned by the per-event endpoint.
+            # Only make the extra request when the bulk result has no props.
+            if not normalized["player_props"]:
+                try:
+                    detailed = fetch_event_odds(event_id)
+                    detailed_normalized = normalize_event_odds(
+                        event, slate_game, detailed
+                    )
+                    if detailed_normalized["player_props"]:
+                        normalized["player_props"] = detailed_normalized["player_props"]
+                        print(
+                            f"   NFL player props restored via per-event odds: "
+                            f"{len(normalized['player_props'])} rows for {event_id}"
+                        )
+                    else:
+                        print(
+                            f"   ⚠️ NFL event {event_id}: no player props "
+                            "in either bulk or per-event odds response."
+                        )
+                except Exception as prop_exc:
+                    # Keep valid team odds; do not invent missing player markets.
+                    print(
+                        f"   ⚠️ NFL player-prop fallback failed for "
+                        f"{event_id}: {type(prop_exc).__name__}"
+                    )
+
+            games.append(normalized)
 
         except RuntimeError as exc:
             failures += 1
