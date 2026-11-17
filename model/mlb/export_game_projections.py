@@ -7,6 +7,7 @@ ALL_GAMES_FILE = Path("data/processed/mlb/all_games.json")
 MARKET_LINES_FILE = Path("data/processed/mlb/market_lines.json")
 OUTPUT_FILE = Path("data/processed/mlb/game_projections.json")
 K_LINES_OVERRIDE_FILE = Path("data/raw/mlb/k_lines_override.json")
+INJURY_REPORT_FILE = Path("data/processed/mlb/injury_report.json")
 
 def f(value, default=0):
     try:
@@ -533,6 +534,14 @@ def export_game_projections():
 
     output = []
     missing_k_props = []
+    injury_report = load_json(INJURY_REPORT_FILE, default={})
+    unavailable = {
+        norm(row.get("player"))
+        for row in injury_report.get("players", [])
+        if str(row.get("availability") or "").upper() == "OUT" and row.get("player")
+    }
+    if games and not INJURY_REPORT_FILE.exists():
+        raise FileNotFoundError("MLB injury report required before projecting active lineups")
 
     for game in games:
         away_team = game.get("away_team", "")
@@ -543,6 +552,14 @@ def export_game_projections():
 
         away_pitcher = get_pitcher_for_team(game, away_team)
         home_pitcher = get_pitcher_for_team(game, home_team)
+        # A confirmed unavailable starter invalidates the lineup-based
+        # projection; do not replace them with invented performance estimates.
+        starters = away_hitters + home_hitters
+        starter_names = [norm(h.get("Player") or h.get("Name") or h.get("player")) for h in starters if isinstance(h, dict)]
+        pitcher_names = [norm(p.get("Pitcher")) for p in (away_pitcher, home_pitcher) if isinstance(p, dict)]
+        if any(name in unavailable for name in starter_names + pitcher_names if name):
+            print(f"MLB skipping {game.get('game')}: reported unavailable starter in lineup", flush=True)
+            continue
 
         weather_score = avg(
             [h.get("Weather") for h in away_hitters[:3] + home_hitters[:3]],
