@@ -140,6 +140,26 @@ def build_nhl_matchup_history(slates):
                                 "points":int(player.get("points") or 0),
                                 "shots":int(player.get("sog") or 0)})
             except (OSError,ValueError,TypeError):continue
+    # Use the freshly published injury report. An unmatched report is not
+    # grounds to remove a player; only exact team + player matches qualify.
+    unavailable = set()
+    injury_path = DATA / "injuries.json"
+    if injury_path.exists():
+        try:
+            injury_payload = json.loads(injury_path.read_text(encoding="utf-8"))
+            for row in injury_payload.get("injuries", []):
+                status = str(row.get("status") or "").upper().replace(" ", "")
+                if status in {"OUT", "IR", "IR-LT", "INJUREDRESERVE", "LONGTERMINJUREDRESERVE", "DOUBTFUL", "QUESTIONABLE", "GTD", "SUSPENDED"}:
+                    team = str(row.get("team") or "").upper()
+                    name = str(row.get("player") or row.get("name") or "").casefold().strip()
+                    if team and name:
+                        unavailable.add((team, name))
+        except (OSError, ValueError, TypeError):
+            print("NHL goal graph: injury report unreadable; preserving existing graph", flush=True)
+            return
+    else:
+        print("NHL goal graph: injury report unavailable; preserving existing graph", flush=True)
+        return
     for subdir,games in slates:
         output=[]
         for game in games:
@@ -177,6 +197,7 @@ def rebuild_nhl_goal_graphs(slates):
             candidates=[]
             for p in players:
                 if p.get("team") not in (away,home):continue
+                if (str(p.get("team") or "").upper(), str(p.get("name") or "").casefold().strip()) in unavailable:continue
                 n=int(p.get("games") or 0)
                 if n<3:continue
                 goals=float(p.get("goals") or 0)
