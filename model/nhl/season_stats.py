@@ -39,6 +39,59 @@ def _rows(results):
             goalies.append({"player_id":str(p.get("playerId") or ""),"name":(_name(p.get("firstName"))+" "+_name(p.get("lastName"))).strip(),"team":code,"position":"G","games":games,"saves":saves,"shots_against":shots,"goals_against":against,"save_percentage":round(saves/shots,3) if shots else None,"goals_against_per_appearance":round(against/games,2)})
     return {"players":skaters,"goalies":goalies}
 
+
+def _career_row(row):
+    player_id = str(row.get("player_id") or "")
+    if not player_id.isdigit():
+        return None
+    payload = fetch(f"player/{player_id}/landing")
+    totals = (payload.get("careerTotals") or {}).get("regularSeason") or {}
+    games = int(totals.get("gamesPlayed") or 0)
+    if not games:
+        return None
+    result = dict(row)
+    result["games"] = games
+    if row.get("position") == "G":
+        saves = int(totals.get("saves") or 0)
+        shots = int(totals.get("shotsAgainst") or 0)
+        against = int(totals.get("goalsAgainst") or 0)
+        result.update(saves=saves, shots_against=shots, goals_against=against,
+                      save_percentage=round(saves / shots, 3) if shots else None,
+                      goals_against_per_appearance=round(against / games, 2))
+    else:
+        goals = int(totals.get("goals") or 0)
+        shots = int(totals.get("shots") or 0)
+        result.update(goals=goals, assists=int(totals.get("assists") or 0),
+                      points=int(totals.get("points") or 0), shots=shots,
+                      goals_per_game=round(goals / games, 3),
+                      shots_per_game=round(shots / games, 3))
+    return result
+
+
+def build_nhl_career_stats(dataset):
+    """Only publish fully retrieved official regular-season career totals."""
+    roster = (dataset.get("players") or []) + (dataset.get("goalies") or [])
+    unique = {str(p.get("player_id")): p for p in roster if p.get("player_id")}
+    output = {"players": [], "goalies": []}
+    failures = 0
+    with ThreadPoolExecutor(max_workers=12) as pool:
+        futures = [pool.submit(_career_row, player) for player in unique.values()]
+        for future in as_completed(futures):
+            try:
+                row = future.result()
+                if row is None:
+                    failures += 1
+                else:
+                    output["goalies" if row.get("position") == "G" else "players"].append(row)
+            except Exception:
+                failures += 1
+    if failures or len(output["players"]) < 300:
+        print(f"NHL career: {failures} incomplete records; retaining existing data", flush=True)
+        return
+    save("", "players_career.json", output)
+    print(f"NHL career: published {len(output['players'])} skaters and {len(output['goalies'])} goalies", flush=True)
+
+
 def build_nhl_season_stats():
     standings=fetch("standings/now").get("standings") or []
     codes=_team_codes(standings)
@@ -59,6 +112,8 @@ def build_nhl_season_stats():
             print(f"NHL {season}: incomplete ({len(results)} clubs, {len(dataset['players'])} skaters); retaining existing data",flush=True)
             continue
         save("",filename,dataset)
+        if season == current:
+            build_nhl_career_stats(dataset)
         print(f"NHL {season}: published {len(dataset['players'])} skaters, {len(dataset['goalies'])} goalies",flush=True)
     # Team standings are consumed by the website's live NHL standings route.
     def team_rows(entries):
