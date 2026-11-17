@@ -675,7 +675,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 801725,Luis De León,110,Baltimore Orioles,BAL,P,Pitcher,L,L
 624413,Pete Alonso,110,Baltimore Orioles,BAL,1B,First Base,R,R
 691769,Philip Abner,110,Baltimore Orioles,BAL,P,Pitcher,L,L
-677956,Rece Hinds,110,Baltimore Orioles,BAL,RF,Outfielder,R,R
 701655,Reed Trimble,110,Baltimore Orioles,BAL,LF,Outfielder,S,R
 670329,Rico Garcia,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 664854,Ryan Helsley,110,Baltimore Orioles,BAL,P,Pitcher,R,R
@@ -975,7 +974,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 676510,Nolan Hoffman,118,Kansas City Royals,KC,P,Pitcher,R,R
 677976,Randy Dobnak,118,Kansas City Royals,KC,P,Pitcher,R,R
 686701,Ryan Bergert,118,Kansas City Royals,KC,P,Pitcher,R,R
-521692,Salvador Perez,118,Kansas City Royals,KC,DH,Designated Hitter,R,R
+521692,Salvador Perez,118,Kansas City Royals,KC,C,Catcher,R,R
 607625,Seth Lugo,118,Kansas City Royals,KC,P,Pitcher,R,R
 702352,Spencer Bivens,118,Kansas City Royals,KC,P,Pitcher,R,R
 686632,Steven Zobac,118,Kansas City Royals,KC,P,Pitcher,L,R
