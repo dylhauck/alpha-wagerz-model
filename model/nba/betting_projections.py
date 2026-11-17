@@ -21,6 +21,7 @@ TEAM_STATS_PATH = PROCESSED_DIR / "team_stats.json"
 TEAM_RANKINGS_PATH = PROCESSED_DIR / "team_rankings.json"
 PLAYER_STATS_PATH = PROCESSED_DIR / "player_stats.json"
 PLAYER_MATCHUPS_PATH = PROCESSED_DIR / "player_matchups.json"
+INJURIES_PATH = PROCESSED_DIR / "injuries.json"
 
 OUTPUT_PATH = PROCESSED_DIR / "betting_projections.json"
 WEB_OUTPUT_PATH = WEB_DIR / "betting_projections.json"
@@ -484,12 +485,25 @@ def _player_projection(
     }
 
 
+def _injury_status_index(payload: Dict[str, Any]) -> Dict[Tuple[str, str], str]:
+    """Match explicit team and player identifiers; never guess a roster."""
+    index: Dict[Tuple[str, str], str] = {}
+    for row in payload.get("injuries", []):
+        team = str(row.get("team") or "").strip().upper()
+        name = str(row.get("player_name") or row.get("player") or "").strip().casefold()
+        status = str(row.get("status") or "").strip().upper().replace(" ", "")
+        if team and name and status:
+            index[(team, name)] = status
+    return index
+
+
 def _game_player_projections(
     game_id: str,
     away_team: str,
     home_team: str,
     player_stats: Dict[int, Dict[str, Any]],
     matchup_games: Dict[str, Dict[str, Any]],
+    injuries: Dict[Tuple[str, str], str],
 ) -> Dict[str, List[Dict[str, Any]]]:
     matchup_game = matchup_games.get(game_id) or {}
 
@@ -511,6 +525,12 @@ def _game_player_projections(
         team = str(player.get("team") or "").upper()
 
         if team not in {away_team, home_team}:
+            continue
+
+        # Unavailable or uncertain players must not generate confident props.
+        # Teammate redistribution requires measured on/off samples.
+        status = injuries.get((team, str(player.get("player_name") or "").strip().casefold()), "")
+        if status in {"OUT", "IR", "INJUREDRESERVE", "SUSPENDED", "DOUBTFUL", "QUESTIONABLE", "GTD", "GAMETIMEDECISION"}:
             continue
 
         projection = _player_projection(
@@ -658,6 +678,7 @@ def _project_game(
     league: Dict[str, float],
     player_stats: Dict[int, Dict[str, Any]],
     matchup_games: Dict[str, Dict[str, Any]],
+    injuries: Dict[Tuple[str, str], str],
 ) -> Dict[str, Any]:
     game_id = str(game.get("game_id") or "")
 
@@ -730,6 +751,7 @@ def _project_game(
         home_team,
         player_stats,
         matchup_games,
+        injuries,
     )
 
     away_ranking = team_rankings.get(away_team) or {}
@@ -826,6 +848,8 @@ def build_nba_betting_projections() -> Dict[str, Any]:
     team_rankings_payload = _load_json(TEAM_RANKINGS_PATH)
     player_stats_payload = _load_json(PLAYER_STATS_PATH)
     player_matchups_payload = _load_json(PLAYER_MATCHUPS_PATH)
+    injuries_payload = _load_json(INJURIES_PATH)
+    injuries = _injury_status_index(injuries_payload)
 
     team_stats = _index_team_stats(team_stats_payload)
     team_rankings = _index_team_rankings(
@@ -860,6 +884,7 @@ def build_nba_betting_projections() -> Dict[str, Any]:
                 league=league,
                 player_stats=player_stats,
                 matchup_games=matchup_games,
+                injuries=injuries,
             )
 
             games.append(projection)
