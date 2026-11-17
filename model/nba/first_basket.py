@@ -290,7 +290,7 @@ def candidate_rows(game, matchup, history, roster, unavailable=None, verified=No
         # roster-verified and available. Minutes are only a fallback.
         names, previous_game = previous_starting_five(team_code, history, unavailable)
         by_name = {normalized_name(p["player_name"]): p for p in available}
-        if (len(names) == 5
+        if (names is not None and len(names) == 5
                 and len({normalized_name(name) for name in names}) == 5
                 and all(normalized_name(name) in valid_names
                         and (team_code, normalized_name(name)) not in unavailable
