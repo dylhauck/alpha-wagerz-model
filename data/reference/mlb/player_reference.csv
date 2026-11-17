@@ -1,6 +1,5 @@
 player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,throws
 675961,Alika Williams,133,Athletics,ATH,SS,Shortstop,R,R
-804556,Braden Nett,133,Athletics,ATH,P,Pitcher,R,R
 669620,Brady Basso,133,Athletics,ATH,P,Pitcher,R,L
 667670,Brent Rooker,133,Athletics,ATH,DH,Designated Hitter,R,R
 666126,Carlos Cortes,133,Athletics,ATH,RF,Outfielder,L,S
@@ -32,6 +31,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 691777,Max Muncy,133,Athletics,ATH,3B,Third Base,R,R
 681987,Nate Eaton,133,Athletics,ATH,LF,Outfielder,R,R
 701762,Nick Kurtz,133,Athletics,ATH,1B,First Base,L,L
+670103,Raymond Burgos,133,Athletics,ATH,P,Pitcher,L,L
 656240,Scott Blewett,133,Athletics,ATH,P,Pitcher,R,R
 686751,Seth Johnson,133,Athletics,ATH,P,Pitcher,R,R
 669127,Shea Langeliers,133,Athletics,ATH,C,Catcher,R,R
@@ -674,7 +674,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 680694,Kyle Bradish,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 801725,Luis De León,110,Baltimore Orioles,BAL,P,Pitcher,L,L
 624413,Pete Alonso,110,Baltimore Orioles,BAL,1B,First Base,R,R
-691769,Philip Abner,110,Baltimore Orioles,BAL,P,Pitcher,L,L
 701655,Reed Trimble,110,Baltimore Orioles,BAL,LF,Outfielder,S,R
 670329,Rico Garcia,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 664854,Ryan Helsley,110,Baltimore Orioles,BAL,P,Pitcher,R,R
@@ -701,6 +700,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 676477,Garrett Whitlock,111,Boston Red Sox,BOS,P,Pitcher,R,R
 669711,Greg Weissert,111,Boston Red Sox,BOS,P,Pitcher,R,R
 663330,Jahmai Jones,111,Boston Red Sox,BOS,DH,Designated Hitter,R,R
+641343,Jake Bauers,111,Boston Red Sox,BOS,1B,First Base,L,L
 687562,Jake Bennett,111,Boston Red Sox,BOS,P,Pitcher,L,L
 680776,Jarren Duran,111,Boston Red Sox,BOS,LF,Outfielder,L,R
 699151,Jedixson Paez,111,Boston Red Sox,BOS,P,Pitcher,R,R
@@ -714,7 +714,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 686765,Nick Sogard,111,Boston Red Sox,BOS,2B,Second Base,S,R
 801139,Payton Tolle,111,Boston Red Sox,BOS,P,Pitcher,L,L
 624133,Ranger Suarez,111,Boston Red Sox,BOS,P,Pitcher,L,L
-670103,Raymond Burgos,111,Boston Red Sox,BOS,P,Pitcher,L,L
 701350,Roman Anthony,111,Boston Red Sox,BOS,LF,Outfielder,L,R
 663853,Romy Gonzalez,111,Boston Red Sox,BOS,DH,Designated Hitter,R,R
 656557,Tanner Houck,111,Boston Red Sox,BOS,P,Pitcher,R,R
@@ -1025,7 +1024,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 687605,Andrew Pinckney,120,Washington Nationals,WSH,LF,Outfielder,R,R
 695418,Brad Lord,120,Washington Nationals,WSH,P,Pitcher,R,R
 691781,Brady House,120,Washington Nationals,WSH,3B,Third Base,R,R
-694820,Braxton Roxby,120,Washington Nationals,WSH,P,Pitcher,R,R
 682928,CJ Abrams,120,Washington Nationals,WSH,SS,Shortstop,L,R
 676917,Cade Cavalli,120,Washington Nationals,WSH,P,Pitcher,R,R
 687223,Carson Palmquist,120,Washington Nationals,WSH,P,Pitcher,L,L
@@ -1047,13 +1045,13 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 695578,James Wood,120,Washington Nationals,WSH,RF,Outfielder,L,R
 688692,Jared Simpson,120,Washington Nationals,WSH,P,Pitcher,L,L
 678391,Jorbit Vivas,120,Washington Nationals,WSH,3B,Third Base,L,R
-680686,Josiah Gray,120,Washington Nationals,WSH,P,Pitcher,R,R
 660688,Keibert Ruiz,120,Washington Nationals,WSH,C,Catcher,S,R
 691384,Luis Perales,120,Washington Nationals,WSH,P,Pitcher,R,R
 663362,Matt Waldron,120,Washington Nationals,WSH,P,Pitcher,R,R
 683083,Nasim Nuñez,120,Washington Nationals,WSH,2B,Second Base,S,R
 801501,Nate Furman,120,Washington Nationals,WSH,2B,Second Base,L,R
 687377,Orlando Ribalta,120,Washington Nationals,WSH,P,Pitcher,R,R
+691769,Philip Abner,120,Washington Nationals,WSH,P,Pitcher,L,L
 665665,Reiver Sanmartin,120,Washington Nationals,WSH,P,Pitcher,L,L
 683000,Riley Cornelio,120,Washington Nationals,WSH,P,Pitcher,R,R
 702021,Will Dion,120,Washington Nationals,WSH,P,Pitcher,L,L
