@@ -320,6 +320,9 @@ def run_nba_update():
     print("\nNBA Player Matchups", flush=True)
     timed("build_nba_player_matchups", build_nba_player_matchups)
 
+    print("\n🏥 NBA Injuries", flush=True)
+    timed("build_nba_injuries", build_nba_injuries)
+
     print("\nNBA Betting Projections", flush=True)
     timed("build_nba_betting_projections", build_nba_betting_projections)
 
@@ -341,8 +344,7 @@ def run_nba_update():
     print("\n📡 NBA Live Markets", flush=True)
     timed("build_nba_live_markets", build_nba_live_markets)
 
-    print("\n🏥 NBA Injuries", flush=True)
-    timed("build_nba_injuries", build_nba_injuries)
+
 
     print("\n🔮 NBA Future Slate", flush=True)
     timed("build_nba_future_pipeline", build_nba_future_pipeline)
