@@ -119,7 +119,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 680695,Brennen Davis,136,Seattle Mariners,SEA,CF,Outfielder,R,R
 801126,Brock Rodden,136,Seattle Mariners,SEA,SS,Shortstop,S,R
 693433,Bryan Woo,136,Seattle Mariners,SEA,P,Pitcher,R,R
-682243,Bryce Miller,136,Seattle Mariners,SEA,P,Pitcher,R,R
 663728,Cal Raleigh,136,Seattle Mariners,SEA,C,Catcher,S,R
 672841,Carlos Vargas,136,Seattle Mariners,SEA,P,Pitcher,R,R
 677961,Cole Wilcox,136,Seattle Mariners,SEA,P,Pitcher,R,R
@@ -133,16 +132,16 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 669923,George Kirby,136,Seattle Mariners,SEA,P,Pitcher,R,R
 687529,Grant McCray,136,Seattle Mariners,SEA,CF,Outfielder,L,R
 676755,Isaac Mattson,136,Seattle Mariners,SEA,P,Pitcher,R,R
+663704,James McArthur,136,Seattle Mariners,SEA,P,Pitcher,R,R
 640902,Jhonny Pereda,136,Seattle Mariners,SEA,C,Catcher,R,R
-678606,José A. Ferrer,136,Seattle Mariners,SEA,P,Pitcher,L,L
 647304,Josh Naylor,136,Seattle Mariners,SEA,1B,First Base,L,L
 677594,Julio Rodríguez,136,Seattle Mariners,SEA,CF,Outfielder,R,R
 807739,Kade Anderson,136,Seattle Mariners,SEA,P,Pitcher,L,L
 703155,Lazaro Montes,136,Seattle Mariners,SEA,RF,Outfielder,L,R
 660844,Leo Rivas,136,Seattle Mariners,SEA,3B,Third Base,S,R
-688138,Logan Evans,136,Seattle Mariners,SEA,P,Pitcher,R,R
 669302,Logan Gilbert,136,Seattle Mariners,SEA,P,Pitcher,R,R
 670042,Luke Raley,136,Seattle Mariners,SEA,RF,Outfielder,L,R
+672580,Maikel Garcia,136,Seattle Mariners,SEA,3B,Third Base,R,R
 666374,Matt Brash,136,Seattle Mariners,SEA,P,Pitcher,R,R
 703197,Michael Arroyo,136,Seattle Mariners,SEA,SS,Shortstop,R,R
 621074,Michael Rucker,136,Seattle Mariners,SEA,P,Pitcher,R,R
@@ -1004,6 +1003,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 694360,Beck Way,118,Kansas City Royals,KC,P,Pitcher,R,R
 695667,Ben Kudrna,118,Kansas City Royals,KC,P,Pitcher,R,R
 677951,Bobby Witt Jr.,118,Kansas City Royals,KC,SS,Shortstop,R,R
+682243,Bryce Miller,118,Kansas City Royals,KC,P,Pitcher,R,R
 679922,Carlos Duran,118,Kansas City Royals,KC,P,Pitcher,R,R
 811287,Carson Roccaforte,118,Kansas City Royals,KC,CF,Outfielder,L,L
 695600,Carter Jensen,118,Kansas City Royals,KC,C,Catcher,L,R
@@ -1011,13 +1011,13 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 663738,Daniel Lynch IV,118,Kansas City Royals,KC,P,Pitcher,L,L
 686555,Isaac Collins,118,Kansas City Royals,KC,LF,Outfielder,S,R
 695506,Jac Caglianone,118,Kansas City Royals,KC,RF,Outfielder,L,L
-663704,James McArthur,118,Kansas City Royals,KC,P,Pitcher,R,R
 670231,John Rave,118,Kansas City Royals,KC,RF,Outfielder,L,L
+678606,José A. Ferrer,118,Kansas City Royals,KC,P,Pitcher,L,L
 621016,Jose Cuas,118,Kansas City Royals,KC,P,Pitcher,R,R
 664728,Kyle Isbel,118,Kansas City Royals,KC,CF,Outfielder,L,R
+688138,Logan Evans,118,Kansas City Royals,KC,P,Pitcher,R,R
 814351,Lucas Braun,118,Kansas City Royals,KC,P,Pitcher,R,R
 668674,Lucas Erceg,118,Kansas City Royals,KC,P,Pitcher,L,R
-672580,Maikel Garcia,118,Kansas City Royals,KC,3B,Third Base,R,R
 683090,Matthew Lugo,118,Kansas City Royals,KC,LF,Outfielder,R,R
 686681,Michael Massey,118,Kansas City Royals,KC,2B,Second Base,L,R
 608379,Michael Wacha,118,Kansas City Royals,KC,P,Pitcher,R,R
