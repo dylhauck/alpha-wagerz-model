@@ -30,13 +30,27 @@ def build_nhl_injuries():
     rows=[]
     for group in payload["injuries"]:
         team=group.get("team") or {}
-        code=str(team.get("abbreviation") or "").upper()
+        if isinstance(team, str):
+            team={"displayName":team}
+        from providers.nhl.live_markets import team as normalize_nhl_team
+        code=(normalize_nhl_team(team.get("abbreviation"))
+              or normalize_nhl_team(team.get("displayName"))
+              or normalize_nhl_team(team.get("name"))
+              or normalize_nhl_team(group.get("teamName"))
+              or normalize_nhl_team(group.get("displayName"))
+              or "")
         for item in group.get("injuries") or []:
             athlete=item.get("athlete") or {}
             raw_status=item.get("status") or item.get("type") or ""
             status=(raw_status.get("description") or raw_status.get("name") or raw_status.get("displayName") or "") if isinstance(raw_status,dict) else str(raw_status)
             name=athlete.get("displayName") or athlete.get("fullName")
-            if not name or not status or not code:continue
+            player_team=athlete.get("team") or {}
+            if isinstance(player_team, str):
+                player_team={"displayName":player_team}
+            player_code=(code or normalize_nhl_team(player_team.get("abbreviation"))
+                         or normalize_nhl_team(player_team.get("displayName"))
+                         or normalize_nhl_team(item.get("team")) or "")
+            if not name or not status or not player_code:continue
             details=item.get("details") or {}
             if not isinstance(details,dict):details={"detail":str(details)}
             injury=details.get("type") or details.get("injury") or item.get("description") or ""
@@ -47,7 +61,7 @@ def build_nhl_injuries():
             if isinstance(position,dict):position=position.get("abbreviation") or position.get("name") or ""
             return_date=details.get("returnDate") or details.get("estimatedReturn") or ""
             rows.append({"player":name,"name":name,"player_id":str(athlete.get("id") or ""),
-                         "team":code,"position":str(position),"status":str(status),
+                         "team":player_code,"position":str(position),"status":str(status),
                          "injury":str(injury),"detail":str(description),
                          "estimated_return_date":str(return_date),
                          "source":"ESPN"})
