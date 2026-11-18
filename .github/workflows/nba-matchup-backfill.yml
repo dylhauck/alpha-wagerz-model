@@ -54,8 +54,24 @@ jobs:
           if [ -f alpha-wagerz-web/public/data/nba/player_matchup_cache.json ]; then cp alpha-wagerz-web/public/data/nba/player_matchup_cache.json alpha-wagerz-model/data/processed/nba/player_matchup_cache.json; fi
       - name: Rebuild historical matchup statistics using existing slates
         working-directory: alpha-wagerz-model
+        shell: bash
         run: |
-          python -m model.nba.player_matchups
+          set -euo pipefail
+          echo "Recovering matchup history for team: ${NBA_MATCHUPS_TEAM}"
+          # Transient ESPN DNS failures must not publish blank matchup data.
+          # Retry the same targeted recovery, not a full-league rebuild.
+          for attempt in 1 2 3; do
+            if python -u -m model.nba.player_matchups; then
+              echo "Verified targeted recovery completed for ${NBA_MATCHUPS_TEAM}"
+              exit 0
+            fi
+            if [ "$attempt" -eq 3 ]; then
+              echo "::error::Targeted matchup recovery failed after 3 attempts. Existing website data was not published over."
+              exit 1
+            fi
+            echo "Attempt $attempt failed; waiting for ESPN connectivity before retry."
+            sleep $((attempt * 30))
+          done
       - name: Publish matchup data to website
         working-directory: alpha-wagerz-web
         run: |
