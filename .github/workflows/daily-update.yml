@@ -192,14 +192,14 @@ jobs:
       # Recover missing teams from the same verified player-history pipeline.
       # Each invocation merges the previous cache; run sequentially to retain
       # history recovered for earlier teams.
-      - name: Refresh Houston, San Antonio and New Orleans matchup history
+      - name: Refresh Houston, San Antonio, New Orleans and Lakers matchup history
         if: steps.full_update.outcome == 'success'
         working-directory: alpha-wagerz-model
         timeout-minutes: 20
         env:
           NBA_MATCHUPS_FAST_DAILY: '0'
         run: |
-          for team in HOU SAS NOP; do
+          for team in HOU SAS NOP LAL; do
             echo "::group::NBA matchup recovery: $team"
             NBA_MATCHUPS_TEAM="$team" python -u -m model.nba.player_matchups
             echo "::endgroup::"
