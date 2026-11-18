@@ -128,6 +128,52 @@ def validate_nhl_market(market):
             market["total"] = None
     return market
 
+def parse_shots_props(markets, game_id, book):
+    """Accept only explicitly priced, two-sided NHL shots-on-goal player markets."""
+    rows = []
+    for market in markets:
+        if not isinstance(market, dict):
+            continue
+        name = str(market.get("name") or market.get("market") or "")
+        if not re.search(r"(?:player\\s+)?shots\\s+on\\s+goal|player\\s+shots\\b", name, re.I):
+            continue
+        if re.search(r"alternate|alternative|\\balt\\b|period", name, re.I):
+            continue
+        outcomes = market.get("odds") or market.get("outcomes") or market.get("selections") or []
+        if not isinstance(outcomes, list):
+            continue
+        grouped = {}
+        for outcome in outcomes:
+            if not isinstance(outcome, dict):
+                continue
+            label = str(outcome.get("name") or outcome.get("label") or outcome.get("selection") or "")
+            direction = re.search(r"\\b(over|under)\\b", label, re.I)
+            if not direction:
+                continue
+            player = str(outcome.get("player") or outcome.get("playerName") or outcome.get("participant") or "").strip()
+            if isinstance(outcome.get("player"), dict):
+                player = str(outcome["player"].get("name") or "")
+            if not player:
+                player = re.sub(r"\\b(?:over|under)\\b.*", "", label, flags=re.I).strip(" -:")
+            line = outcome.get("line", outcome.get("point", outcome.get("handicap")))
+            if line is None:
+                match = re.search(r"\\b(?:over|under)\\s*([0-9]+(?:\\.[0-9]+)?)", label, re.I)
+                line = match.group(1) if match else None
+            try:
+                line = float(line)
+            except (ValueError, TypeError):
+                continue
+            price = outcome.get("price", outcome.get("odds"))
+            from providers.nba.nba_live_markets import american
+            price = american(price)
+            if not player or not 0.5 <= line <= 12.5 or line % 1 != 0.5 or price is None:
+                continue
+            grouped.setdefault((norm(player), line), {"player_name": player, "game_id": game_id,
+                "prop_type": "shots_on_goal", "line": line, "bookmaker": book})[direction.group(1).lower() + "_odds"] = price
+        rows.extend(row for row in grouped.values() if row.get("over_odds") is not None and row.get("under_odds") is not None)
+    return rows
+
+
 def build_nhl_live_markets():
     key = os.getenv("ODDS_API_IO_KEY")
     if not key:
@@ -171,6 +217,7 @@ def build_nhl_live_markets():
             print(f"NHL odds fetch failed: {exc}",flush=True)
             continue
         output = []
+        player_props = []
         for eid, game in targets:
             raw = odds.get(str(eid))
             if not isinstance(raw,dict):
@@ -190,6 +237,7 @@ def build_nhl_live_markets():
             for book in books:
                 found=next(((name, markets) for name,markets in entries if norm(name)==norm(book)),None)
                 if found:
+                    player_props.extend(parse_shots_props(found[1], game["game_id"], found[0]))
                     converted=hockey_markets(found[1])
                     parsed,partial=parse_team(found[0],converted)
                     recognized=[m.get("name") for m in converted if isinstance(m,dict) and re.match(r"^Q[123] ",str(m.get("name","")))]
@@ -209,6 +257,11 @@ def build_nhl_live_markets():
         for folder in (DATA / subdir,WEB / subdir):
             folder.mkdir(parents=True,exist_ok=True)
             (folder/"live_team_markets.json").write_text(json.dumps(payload,indent=2),encoding="utf-8")
+        # Publish only genuine two-sided sportsbook quotes. An empty result
+        # explicitly represents unavailable player markets for this slate.
+        prop_payload = {"generated_at": payload["generated_at"], "props": player_props}
+        for folder in (DATA / subdir, WEB / subdir):
+            (folder / "player_prop_markets.json").write_text(json.dumps(prop_payload, indent=2), encoding="utf-8")
         print(f"NHL {subdir or 'current'} sportsbook markets: {len(output)} games matched",flush=True)
 
 if __name__=="__main__":
