@@ -1,8 +1,14 @@
-name: NBA Historical Matchup Backfill (Houston Recovery)
+name: NBA Historical Matchup Backfill
 
 on:
   # Manual recovery only; the daily update now refreshes matchup history.
   workflow_dispatch:
+    inputs:
+      team:
+        description: "NBA team abbreviation to recover (e.g. LAL, HOU, NOP)"
+        required: true
+        default: "LAL"
+        type: string
 
 jobs:
   historical-backfill:
@@ -14,7 +20,7 @@ jobs:
       NBA_STATS_MAX_RETRIES: '1'
       NBA_STATS_TIMEOUT: '15'
       NBA_MATCHUPS_FAST_DAILY: '0'
-      NBA_MATCHUPS_TEAM: 'HOU'
+      NBA_MATCHUPS_TEAM: ${{ inputs.team }}
     steps:
       - name: Checkout model
         uses: actions/checkout@v4
