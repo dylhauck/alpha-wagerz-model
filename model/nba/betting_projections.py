@@ -368,6 +368,55 @@ def _index_matchup_games(
     return indexed
 
 
+# Empirical per-game dispersion from cached NBA box scores, not an assumed
+# square-root variance. Missing or insufficient samples remain unavailable.
+HISTORICAL_GAMELOG_CACHE = ROOT / "data" / "cache" / "nba" / "player_stats_history" / "2025-26.json"
+PLAYER_SD_MIN_GAMES = 15
+_player_sd_cache = None
+
+
+def _historical_player_sd() -> Dict[int, Dict[str, float]]:
+    global _player_sd_cache
+    if _player_sd_cache is not None:
+        return _player_sd_cache
+    _player_sd_cache = {}
+    if not HISTORICAL_GAMELOG_CACHE.exists():
+        return _player_sd_cache
+    try:
+        payload = _load_json(HISTORICAL_GAMELOG_CACHE)
+        grouped: Dict[int, Dict[str, List[float]]] = {}
+        for row in payload.get("rows", []):
+            pid = _safe_int(row.get("PLAYER_ID"))
+            if not pid:
+                continue
+            try:
+                stats = {name: float(row[column]) for name, column in (
+                    ("pts", "PTS"), ("reb", "REB"), ("ast", "AST"),
+                    ("fg3m", "FG3M"), ("stl", "STL"), ("blk", "BLK"))}
+            except (KeyError, ValueError, TypeError):
+                continue
+            stats.update(pra=stats["pts"] + stats["reb"] + stats["ast"],
+                         pr=stats["pts"] + stats["reb"],
+                         pa=stats["pts"] + stats["ast"],
+                         ra=stats["reb"] + stats["ast"])
+            for name, value in stats.items():
+                grouped.setdefault(pid, {}).setdefault(name, []).append(value)
+        for pid, metrics in grouped.items():
+            dispersions = {}
+            for name, values in metrics.items():
+                if len(values) < PLAYER_SD_MIN_GAMES:
+                    continue
+                avg = sum(values) / len(values)
+                variance = sum((v - avg) ** 2 for v in values) / (len(values) - 1)
+                if variance > 0:
+                    dispersions[name] = round(math.sqrt(variance), 3)
+            if dispersions:
+                _player_sd_cache[pid] = dispersions
+    except (OSError, ValueError, TypeError, json.JSONDecodeError) as exc:
+        print(f"NBA historical dispersion unavailable: {exc}", flush=True)
+    return _player_sd_cache
+
+
 def _player_projection(
     player: Dict[str, Any],
     matchup_player: Optional[Dict[str, Any]],
@@ -451,6 +500,8 @@ def _player_projection(
         PLAYER_CURRENT_FULL_WEIGHT_GAMES,
     )
 
+    empirical_sd = _historical_player_sd().get(_safe_int(player.get("player_id")), {})
+
     return {
         "player_id": player.get("player_id"),
         "player_name": player.get("player_name"),
@@ -481,6 +532,7 @@ def _player_projection(
             "pr": _round(pts + reb, 1),
             "pa": _round(pts + ast, 1),
             "ra": _round(reb + ast, 1),
+            **{name + "_sd": value for name, value in empirical_sd.items()},
         },
     }
 
