@@ -60,9 +60,9 @@ def hockey_markets(markets):
     """
     converted = []
     period_patterns = (
-        (r"\\b(?:1st|first|1)\\s*(?:period|per|prd)\\b|\\b(?:period|per|prd)\\s*(?:1st|first|1)\\b|\\b(?:p1|1p)\\b", "Q1"),
-        (r"\\b(?:2nd|second|2)\\s*(?:period|per|prd)\\b|\\b(?:period|per|prd)\\s*(?:2nd|second|2)\\b|\\b(?:p2|2p)\\b", "Q2"),
-        (r"\\b(?:3rd|third|3)\\s*(?:period|per|prd)\\b|\\b(?:period|per|prd)\\s*(?:3rd|third|3)\\b|\\b(?:p3|3p)\\b", "Q3"),
+        (r"\b(?:1st|first|1)\s*(?:period|per|prd)\b|\b(?:period|per|prd)\s*(?:1st|first|1)\b|\b(?:p1|1p)\b", "Q1"),
+        (r"\b(?:2nd|second|2)\s*(?:period|per|prd)\b|\b(?:period|per|prd)\s*(?:2nd|second|2)\b|\b(?:p2|2p)\b", "Q2"),
+        (r"\b(?:3rd|third|3)\s*(?:period|per|prd)\b|\b(?:period|per|prd)\s*(?:3rd|third|3)\b|\b(?:p3|3p)\b", "Q3"),
     )
     for market in markets:
         if not isinstance(market, dict):
@@ -79,7 +79,7 @@ def hockey_markets(markets):
         normalized = name.lower()
         if any(token in normalized for token in ("alternate", "alternative", "alt line", "alt total", "alt spread", "player", "race to", "odd/even")):
             continue
-        if any(re.search(pattern, normalized) for pattern in (r"\\b3\\s*way\\b", r"\\bthree\\s*way\\b", r"\\b1x2\\b", r"\\bdraw\\b", r"\\btie\\b")):
+        if any(re.search(pattern, normalized) for pattern in (r"\b3\s*way\b", r"\bthree\s*way\b", r"\b1x2\b", r"\bdraw\b", r"\btie\b")):
             continue
         if any(token in normalized for token in ("team total", "team goals", "teamtotal")):
             kind = "Team Total"
@@ -97,7 +97,7 @@ def hockey_markets(markets):
             continue
         # Shared parser understands Q1/Q2/Q3 and spread/total/moneyline.
         # Keep home/away in the team-total name for side identification.
-        side = " Home" if re.search(r"\\bhome\\b", normalized) else " Away" if re.search(r"\\baway\\b", normalized) else ""
+        side = " Home" if re.search(r"\bhome\b", normalized) else " Away" if re.search(r"\baway\b", normalized) else ""
         row["name"] = (period + " " if period else "") + kind + (side if kind == "Team Total" else "")
         if not isinstance(row.get("odds"), list):
             selections = row.get("outcomes") or row.get("selections")
