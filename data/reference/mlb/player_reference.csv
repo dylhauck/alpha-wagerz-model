@@ -260,7 +260,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 689414,Liam Hicks,139,Tampa Bay Rays,TB,C,Catcher,L,R
 655889,Manuel Rodríguez,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 669438,Mason Englert,139,Tampa Bay Rays,TB,P,Pitcher,S,R
-663743,Nick Fortes,139,Tampa Bay Rays,TB,C,Catcher,R,R
 680700,Richie Palacios,139,Tampa Bay Rays,TB,2B,Second Base,L,R
 686752,Ryan Pepiot,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 668723,Ryan Vilade,139,Tampa Bay Rays,TB,RF,Outfielder,R,R
@@ -381,6 +380,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 668904,Royce Lewis,142,Minnesota Twins,MIN,1B,First Base,R,R
 680777,Ryan Jeffers,142,Minnesota Twins,MIN,C,Catcher,R,R
 668952,Ryan Kreidler,142,Minnesota Twins,MIN,SS,Shortstop,R,R
+543243,Sonny Gray,142,Minnesota Twins,MIN,P,Pitcher,R,R
 671737,Taj Bradley,142,Minnesota Twins,MIN,P,Pitcher,R,R
 667297,Tommy Nance,142,Minnesota Twins,MIN,P,Pitcher,R,R
 701519,Travis Adams,142,Minnesota Twins,MIN,P,Pitcher,R,R
@@ -620,6 +620,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 691946,George Klassen,108,Los Angeles Angels,LAA,P,Pitcher,R,R
 680570,Grayson Rodriguez,108,Los Angeles Angels,LAA,P,Pitcher,L,R
 672569,Gustavo Campero,108,Los Angeles Angels,LAA,OF,Outfield,S,R
+690291,Jace Jung,108,Los Angeles Angels,LAA,3B,Third Base,L,R
 686799,Jack Kochanowicz,108,Los Angeles Angels,LAA,P,Pitcher,L,R
 820862,José Fermin,108,Los Angeles Angels,LAA,P,Pitcher,R,R
 642350,Jose Siri,108,Los Angeles Angels,LAA,LF,Outfielder,R,R
@@ -734,7 +735,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 678394,Brayan Bello,111,Boston Red Sox,BOS,P,Pitcher,R,R
 702332,Caleb Durbin,111,Boston Red Sox,BOS,3B,Third Base,R,R
 678882,Ceddanne Rafaela,111,Boston Red Sox,BOS,CF,Outfielder,R,R
-657136,Connor Wong,111,Boston Red Sox,BOS,C,Catcher,R,R
 678554,Curtis Mead,111,Boston Red Sox,BOS,3B,Third Base,R,R
 642201,Eli White,111,Boston Red Sox,BOS,CF,Outfielder,R,R
 669062,Erik Miller,111,Boston Red Sox,BOS,P,Pitcher,L,L
@@ -753,6 +753,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 676710,Kutter Crawford,111,Boston Red Sox,BOS,P,Pitcher,R,R
 807799,Masataka Yoshida,111,Boston Red Sox,BOS,DH,Designated Hitter,L,R
 681508,Mickey Gasper,111,Boston Red Sox,BOS,DH,Designated Hitter,S,R
+663743,Nick Fortes,111,Boston Red Sox,BOS,C,Catcher,R,R
 686765,Nick Sogard,111,Boston Red Sox,BOS,2B,Second Base,S,R
 801139,Payton Tolle,111,Boston Red Sox,BOS,P,Pitcher,L,L
 624133,Ranger Suarez,111,Boston Red Sox,BOS,P,Pitcher,L,L
