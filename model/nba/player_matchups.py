@@ -475,6 +475,31 @@ def fetch_espn_game_logs(players_by_team):
             print(f"  ESPN roster {team} unavailable: {exc}", flush=True)
     print(f"  ESPN matched {len(espn_ids)} player IDs", flush=True)
 
+    # ESPN sometimes returns a nickname, full team name, or numeric team ID
+    # instead of a canonical three-letter abbreviation. Normalize all forms.
+    espn_id_to_team = {str(v): k for k, v in espn_team_ids.items()}
+    espn_aliases = {
+        "UTAH": "UTA", "JAZZ": "UTA", "UTAH JAZZ": "UTA",
+        "LOS ANGELES LAKERS": "LAL", "LA LAKERS": "LAL", "LAKERS": "LAL",
+        "LOS ANGELES CLIPPERS": "LAC", "LA CLIPPERS": "LAC",
+        "NEW ORLEANS PELICANS": "NOP", "PELICANS": "NOP",
+        "SAN ANTONIO SPURS": "SAS", "SPURS": "SAS",
+        "HOUSTON ROCKETS": "HOU", "ROCKETS": "HOU",
+        "NEW YORK KNICKS": "NYK", "KNICKS": "NYK",
+    }
+    def espn_opponent(value):
+        if isinstance(value, dict):
+            team = value.get("team", value)
+            if isinstance(team, dict):
+                for field in ("id", "abbreviation", "shortDisplayName", "displayName", "name", "nickname"):
+                    resolved = espn_opponent(team.get(field))
+                    if resolved:
+                        return resolved
+            return ""
+        raw = str(value or "").strip().upper()
+        canonical = espn_id_to_team.get(raw) or espn_aliases.get(raw) or normalize_team_abbreviation(raw)
+        return canonical if canonical in espn_team_ids else ""
+
     def get_logs(item):
         player_id, (espn_id, player) = item
         result = []
@@ -506,17 +531,11 @@ def fetch_espn_game_logs(players_by_team):
                             # ESPN's opponent may be a team object, a
                             # nested team, or an ID. Never accept an unknown
                             # opponent code as a legitimate matchup.
-                            opp = detail.get("opponent") or event.get("opponent") or {}
-                            if isinstance(opp, dict):
-                                opp = opp.get("team", opp)
-                                if isinstance(opp, dict):
-                                    opp = (opp.get("abbreviation") or opp.get("shortDisplayName")
-                                           or opp.get("id") or "")
-                            # ESPN event opponent objects sometimes carry only
-                            # numeric ESPN team IDs (not abbreviations).
-                            espn_id_to_team = {str(v): k for k, v in espn_team_ids.items()}
-                            opponent = normalize_team_abbreviation(
-                                espn_id_to_team.get(str(opp), opp)
+                            opponent = (
+                                espn_opponent(detail.get("opponent"))
+                                or espn_opponent(event.get("opponent"))
+                                or espn_opponent(detail.get("opponentId"))
+                                or espn_opponent(event.get("opponentId"))
                             )
                             stats = event.get("stats", [])
                             if isinstance(stats, dict):
@@ -569,6 +588,12 @@ def fetch_espn_game_logs(players_by_team):
         futures = [pool.submit(get_logs, item) for item in espn_ids.items()]
         for future in as_completed(futures):
             all_rows.extend(future.result())
+    for team in players_by_team:
+        counts = {}
+        for row in all_rows:
+            if row["team"] == team and row["min"] > 0:
+                counts[row["opponent"]] = counts.get(row["opponent"], 0) + 1
+        print(f"  ESPN {team} verified opponents: {dict(sorted(counts.items()))}", flush=True)
     # A response containing rows is not sufficient if the data cannot
     # produce meaningful historical matchup statistics.
     usable = sum(row["min"] > 0 for row in all_rows)
