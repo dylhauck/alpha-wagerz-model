@@ -277,7 +277,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 687239,Ben Peoples,140,Texas Rangers,TEX,P,Pitcher,L,R
 607043,Brandon Nimmo,140,Texas Rangers,TEX,RF,Outfielder,L,R
 695508,Cam Cauley,140,Texas Rangers,TEX,CF,Outfielder,R,R
-691945,Carter Baumler,140,Texas Rangers,TEX,P,Pitcher,R,R
 681217,Chase Silseth,140,Texas Rangers,TEX,P,Pitcher,R,R
 674003,Cody Bradford,140,Texas Rangers,TEX,P,Pitcher,L,L
 683227,Cody Freeman,140,Texas Rangers,TEX,3B,Third Base,R,R
@@ -351,7 +350,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 682818,Yohendrick Piñango,141,Toronto Blue Jays,TOR,LF,Outfielder,L,L
 702176,Alan Roden,142,Minnesota Twins,MIN,RF,Outfielder,L,R
 702193,Andrew Morris,142,Minnesota Twins,MIN,P,Pitcher,R,R
-607455,Anthony Banda,142,Minnesota Twins,MIN,P,Pitcher,L,L
 668885,Austin Martin,142,Minnesota Twins,MIN,RF,Outfielder,R,R
 641927,Bailey Ober,142,Minnesota Twins,MIN,P,Pitcher,R,R
 805346,Ben Ross,142,Minnesota Twins,MIN,SS,Shortstop,R,R
@@ -693,6 +691,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 689296,Anthony Nunez,110,Baltimore Orioles,BAL,P,Pitcher,S,R
 800406,Aron Estrada,110,Baltimore Orioles,BAL,2B,Second Base,S,R
 677942,Blaze Alexander,110,Baltimore Orioles,BAL,3B,Third Base,R,R
+804556,Braden Nett,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 687064,Brandon Young,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 688867,Braxton Bragg,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 700249,Cade Povich,110,Baltimore Orioles,BAL,P,Pitcher,L,L
