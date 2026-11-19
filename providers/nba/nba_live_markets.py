@@ -340,19 +340,57 @@ def main():
     slate_games = slate if isinstance(slate, list) else slate.get('games', [])
     matched = {}
     for game in slate_games:
-        if isinstance(game, dict):
-            matched[(team(game.get('away_abbr') or game.get('away_team')), team(game.get('home_abbr') or game.get('home_team')))] = game
+        if not isinstance(game, dict):
+            continue
+        away = team(game.get('away_abbr') or game.get('away_team'))
+        home = team(game.get('home_abbr') or game.get('home_team'))
+        if away and home:
+            matched[(away, home)] = game
+
+    # Match only verified teams, including common sportsbook display variants.
+    # Do not guess an event based on partial names or a reversed matchup.
+    def canonical_event_team(value):
+        candidate = team(value)
+        if candidate in ALIASES:
+            return candidate
+        aliases = {
+            'laclippers': 'LAC', 'losangelesclippers': 'LAC',
+            'laclippersnba': 'LAC', 'sanantoniospurs': 'SAS',
+            'nyknicks': 'NYK', 'newyorkknicks': 'NYK',
+            'goldenstatewarriors': 'GSW', 'portlandtrailblazers': 'POR',
+        }
+        return aliases.get(norm(value), candidate)
+
+    def raw_event_team(event, side):
+        value = event.get(side) or event.get(side + 'Team') or event.get(side + '_team')
+        if isinstance(value, dict):
+            return value.get('name') or value.get('team') or value.get('abbreviation') or ''
+        return value or ''
+
     # Fetch independent events concurrently, then parse in original event order.
-    # This preserves output schemas and avoids concurrent writes to output files.
     targets = []
+    targeted_games = set()
     for event in events:
         if not isinstance(event, dict):
             continue
-        away, home = event_teams(event)
+        raw_away, raw_home = raw_event_team(event, 'away'), raw_event_team(event, 'home')
+        away, home = canonical_event_team(raw_away), canonical_event_team(raw_home)
         game = matched.get((away, home))
         event_id = event.get('id') or event.get('eventId')
-        if game is not None and event_id:
-            targets.append((away, home, game, event_id))
+        if game is None:
+            print(f'NBA event unmatched: {raw_away!r} @ {raw_home!r} -> {away} @ {home} (event {event_id})', flush=True)
+            continue
+        if not event_id:
+            print(f'WARN NBA {away} @ {home}: matched event has no event ID', flush=True)
+            continue
+        if (away, home) in targeted_games:
+            print(f'WARN NBA {away} @ {home}: duplicate provider event {event_id}; retaining first', flush=True)
+            continue
+        targets.append((away, home, game, event_id))
+        targeted_games.add((away, home))
+    for away, home in matched:
+        if (away, home) not in targeted_games:
+            print(f'WARN NBA {away} @ {home}: no matching pending provider event; check team aliases, event status and API time window', flush=True)
 
     def fetch_single(event_id):
         return api_get('odds', {
@@ -411,6 +449,10 @@ def main():
             print(f'WARN {away} @ {home}: no quarter/half markets parsed; check provider market names', flush=True)
         teams_out.append(output)
         print(f'{away} @ {home}: ML={bool(output["full_game"].get("moneyline"))}, spread={bool(output["full_game"].get("spread"))}, total={bool(output["full_game"].get("total"))}, team_totals={output["full_game"].get("team_totals")}, props={sum(p["event_id"] == event_id for p in props_out)}', flush=True)
+    published = {(row['away_team'], row['home_team']) for row in teams_out}
+    for away, home in matched:
+        if (away, home) not in published:
+            print(f'WARN NBA {away} @ {home}: missing from published live markets; sportsbook prices not available to Alpha Picks', flush=True)
     print(f'NBA first-basket: {len(first_basket_out)} priced selections from configured books', flush=True)
     if not first_basket_out:
         print('WARN: No first-made-field-goal prices found in returned pregame bookmaker odds.', flush=True)
