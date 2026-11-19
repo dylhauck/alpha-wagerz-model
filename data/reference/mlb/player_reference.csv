@@ -479,6 +479,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 663436,Davis Martin,145,Chicago White Sox,CWS,P,Pitcher,L,R
 691011,Drew Romo,145,Chicago White Sox,CWS,C,Catcher,S,R
 689672,Drew Thorpe,145,Chicago White Sox,CWS,P,Pitcher,L,R
+669160,Dustin May,145,Chicago White Sox,CWS,P,Pitcher,R,R
 700337,Edgar Quero,145,Chicago White Sox,CWS,C,Catcher,S,R
 688363,Graham Pauley,145,Chicago White Sox,CWS,3B,Third Base,L,R
 691799,Grant Taylor,145,Chicago White Sox,CWS,P,Pitcher,R,R
@@ -487,7 +488,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 692243,Jaden Woods,145,Chicago White Sox,CWS,P,Pitcher,L,L
 686563,Jonathan Cannon,145,Chicago White Sox,CWS,P,Pitcher,R,R
 663855,Jordan Hicks,145,Chicago White Sox,CWS,P,Pitcher,R,R
-673929,Jordan Leasure,145,Chicago White Sox,CWS,P,Pitcher,R,R
 691019,Kyle Teel,145,Chicago White Sox,CWS,C,Catcher,L,R
 622491,Luis Castillo,145,Chicago White Sox,CWS,P,Pitcher,R,R
 682668,Luisangel Acuña,145,Chicago White Sox,CWS,SS,Shortstop,R,R
@@ -1015,7 +1015,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 670231,John Rave,118,Kansas City Royals,KC,RF,Outfielder,L,L
 678606,José A. Ferrer,118,Kansas City Royals,KC,P,Pitcher,L,L
 621016,Jose Cuas,118,Kansas City Royals,KC,P,Pitcher,R,R
-664728,Kyle Isbel,118,Kansas City Royals,KC,CF,Outfielder,L,R
 688138,Logan Evans,118,Kansas City Royals,KC,P,Pitcher,R,R
 814351,Lucas Braun,118,Kansas City Royals,KC,P,Pitcher,R,R
 668674,Lucas Erceg,118,Kansas City Royals,KC,P,Pitcher,L,R
