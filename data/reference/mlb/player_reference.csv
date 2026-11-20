@@ -140,7 +140,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 703155,Lazaro Montes,136,Seattle Mariners,SEA,RF,Outfielder,L,R
 660844,Leo Rivas,136,Seattle Mariners,SEA,3B,Third Base,S,R
 669302,Logan Gilbert,136,Seattle Mariners,SEA,P,Pitcher,R,R
-670042,Luke Raley,136,Seattle Mariners,SEA,RF,Outfielder,L,R
 672580,Maikel Garcia,136,Seattle Mariners,SEA,3B,Third Base,R,R
 666374,Matt Brash,136,Seattle Mariners,SEA,P,Pitcher,R,R
 703197,Michael Arroyo,136,Seattle Mariners,SEA,SS,Shortstop,R,R
@@ -223,7 +222,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 669461,Matthew Liberatore,138,St. Louis Cardinals,STL,P,Pitcher,L,L
 700241,Michael McGreevy,138,St. Louis Cardinals,STL,P,Pitcher,L,R
 701675,Nathan Church,138,St. Louis Cardinals,STL,CF,Outfielder,L,L
-669357,Nolan Gorman,138,St. Louis Cardinals,STL,3B,Third Base,L,R
 686780,Pedro Pagés,138,St. Louis Cardinals,STL,C,Catcher,R,R
 687273,Quinn Mathews,138,St. Louis Cardinals,STL,P,Pitcher,L,L
 690916,Richard Fitts,138,St. Louis Cardinals,STL,P,Pitcher,R,R
@@ -241,6 +239,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 700246,Carson Williams,139,Tampa Bay Rays,TB,SS,Shortstop,R,R
 668984,Casey Legumina,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 802415,Chandler Simpson,139,Tampa Bay Rays,TB,LF,Outfielder,L,R
+683766,Christian Koss,139,Tampa Bay Rays,TB,SS,Shortstop,R,R
 642121,Cole Sulser,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 656876,Drew Rasmussen,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 670955,Edwin Uceta,139,Tampa Bay Rays,TB,P,Pitcher,R,R
@@ -291,7 +290,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 656641,Jacob Latz,140,Texas Rangers,TEX,P,Pitcher,R,L
 594798,Jacob deGrom,140,Texas Rangers,TEX,P,Pitcher,L,R
 669394,Jake Burger,140,Texas Rangers,TEX,1B,First Base,R,R
-676130,José Buttó,140,Texas Rangers,TEX,P,Pitcher,R,R
 692030,Jose Corniell,140,Texas Rangers,TEX,P,Pitcher,R,R
 673962,Josh Jung,140,Texas Rangers,TEX,3B,Third Base,R,R
 687985,Josh White,140,Texas Rangers,TEX,P,Pitcher,R,R
@@ -322,7 +320,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 686551,Christian Cairo,141,Toronto Blue Jays,TOR,SS,Shortstop,R,R
 664074,Cody Ponce,141,Toronto Blue Jays,TOR,P,Pitcher,R,R
 806413,Daniel Guerra,141,Toronto Blue Jays,TOR,P,Pitcher,R,R
-676914,Davis Schneider,141,Toronto Blue Jays,TOR,LF,Outfielder,R,R
 656302,Dylan Cease,141,Toronto Blue Jays,TOR,P,Pitcher,R,R
 676391,Ernie Clement,141,Toronto Blue Jays,TOR,2B,Second Base,R,R
 814005,Jake Bloss,141,Toronto Blue Jays,TOR,P,Pitcher,R,R
@@ -389,12 +386,9 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 605400,Aaron Nola,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
 660604,Alan Rangel,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
 686934,Alex McFarlane,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
-694851,Andrew Hoffmann,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
 691725,Andrew Painter,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
 641745,Brad Keller,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
 669016,Brandon Marsh,143,Philadelphia Phillies,PHI,LF,Outfielder,L,R
-695391,Brett Harris,143,Philadelphia Phillies,PHI,3B,Third Base,R,R
-650559,Bryan De La Cruz,143,Philadelphia Phillies,PHI,RF,Outfielder,R,R
 804858,Bryan Rincon,143,Philadelphia Phillies,PHI,SS,Shortstop,S,R
 547180,Bryce Harper,143,Philadelphia Phillies,PHI,1B,First Base,L,R
 681082,Bryson Stott,143,Philadelphia Phillies,PHI,2B,Second Base,L,R
@@ -411,12 +405,12 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 661395,Jhoan Duran,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
 679032,Johan Rojas,143,Philadelphia Phillies,PHI,CF,Outfielder,R,R
 680742,Jonathan Bowlan,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
+673929,Jordan Leasure,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
 702222,Justin Crawford,143,Philadelphia Phillies,PHI,CF,Outfielder,L,R
 670224,Kameron Misner,143,Philadelphia Phillies,PHI,CF,Outfielder,L,L
 679775,Kyle Backhus,143,Philadelphia Phillies,PHI,P,Pitcher,L,L
 656941,Kyle Schwarber,143,Philadelphia Phillies,PHI,DH,Designated Hitter,L,R
 676661,Max Lazar,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
-691330,Moisés Chace,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
 689147,Orion Kerkering,143,Philadelphia Phillies,PHI,P,Pitcher,R,R
 805249,Otto Kemp,143,Philadelphia Phillies,PHI,LF,Outfielder,R,R
 665561,Rafael Marchán,143,Philadelphia Phillies,PHI,C,Catcher,S,R
@@ -558,7 +552,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 641355,Cody Bellinger,147,New York Yankees,NYY,LF,Outfielder,L,L
 670280,David Bednar,147,New York Yankees,NYY,P,Pitcher,L,R
 695684,Elmer Rodríguez,147,New York Yankees,NYY,P,Pitcher,L,R
-518585,Fernando Cruz,147,New York Yankees,NYY,P,Pitcher,R,R
 682003,Garrett Martin,147,New York Yankees,NYY,RF,Outfielder,R,R
 806146,George Lombard Jr.,147,New York Yankees,NYY,SS,Shortstop,R,R
 543037,Gerrit Cole,147,New York Yankees,NYY,P,Pitcher,R,R
@@ -570,7 +563,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 665645,Kervin Castro,147,New York Yankees,NYY,P,Pitcher,R,R
 694805,Kyle Carr,147,New York Yankees,NYY,P,Pitcher,L,L
 671277,Luis García Jr.,147,New York Yankees,NYY,1B,First Base,L,R
-661563,Luis Gil,147,New York Yankees,NYY,P,Pitcher,R,R
 682617,Marco Luciano,147,New York Yankees,NYY,SS,Shortstop,R,R
 608331,Max Fried,147,New York Yankees,NYY,P,Pitcher,L,L
 680474,Max Schuemann,147,New York Yankees,NYY,LF,Outfielder,R,R
@@ -866,7 +858,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 684974,Craig Yoho,114,Cleveland Guardians,CLE,P,Pitcher,R,R
 682982,Daniel Espino,114,Cleveland Guardians,CLE,P,Pitcher,R,R
 682177,Daniel Schneemann,114,Cleveland Guardians,CLE,CF,Outfielder,L,R
-681807,David Fry,114,Cleveland Guardians,CLE,RF,Outfielder,R,R
 681870,Erik Sabrowski,114,Cleveland Guardians,CLE,P,Pitcher,R,L
 680916,Franco Aleman,114,Cleveland Guardians,CLE,P,Pitcher,R,R
 668909,Gavin Williams,114,Cleveland Guardians,CLE,P,Pitcher,L,R
@@ -899,6 +890,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 664954,Brett Sullivan,115,Colorado Rockies,COL,C,Catcher,L,R
 700164,Bryant Betancourt,115,Colorado Rockies,COL,C,Catcher,L,R
 801403,Chase Dollander,115,Colorado Rockies,COL,P,Pitcher,R,R
+695445,Chase Lee,115,Colorado Rockies,COL,P,Pitcher,R,R
 694249,Cole Carrigg,115,Colorado Rockies,COL,CF,Outfielder,S,R
 681393,Connor Norby,115,Colorado Rockies,COL,2B,Second Base,R,R
 663436,Davis Martin,115,Colorado Rockies,COL,P,Pitcher,L,R
@@ -911,7 +903,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 677955,Jaden Hill,115,Colorado Rockies,COL,P,Pitcher,R,R
 664983,Jake McCarthy,115,Colorado Rockies,COL,LF,Outfielder,L,L
 676105,Jeff Criswell,115,Colorado Rockies,COL,P,Pitcher,R,R
-623474,Jimmy Herget,115,Colorado Rockies,COL,P,Pitcher,R,R
 687597,Jordan Beck,115,Colorado Rockies,COL,RF,Outfielder,R,R
 675848,Juan Mejia,115,Colorado Rockies,COL,P,Pitcher,R,R
 592178,Kris Bryant,115,Colorado Rockies,COL,DH,Designated Hitter,R,R
@@ -1006,7 +997,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 682610,Roddery Muñoz,117,Houston Astros,HOU,P,Pitcher,R,R
 669854,Ronel Blanco,117,Houston Astros,HOU,P,Pitcher,R,R
 837227,Tatsuya Imai,117,Houston Astros,HOU,P,Pitcher,R,R
-666211,Taylor Trammell,117,Houston Astros,HOU,LF,Outfielder,L,L
 673237,Yainer Diaz,117,Houston Astros,HOU,C,Catcher,R,R
 670541,Yordan Alvarez,117,Houston Astros,HOU,DH,Designated Hitter,L,R
 805904,Zach Cole,117,Houston Astros,HOU,LF,Outfielder,L,R
@@ -1133,14 +1123,13 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 683146,Brett Baty,121,New York Mets,NYM,3B,Third Base,L,R
 701807,Carson Benge,121,New York Mets,NYM,RF,Outfielder,L,R
 681035,Christian Scott,121,New York Mets,NYM,P,Pitcher,R,R
-666624,Christopher Morel,121,New York Mets,NYM,1B,First Base,R,R
 672335,Cionel Pérez,121,New York Mets,NYM,P,Pitcher,R,L
 650960,Daniel Duarte,121,New York Mets,NYM,P,Pitcher,R,R
 673380,Dedniel Núñez,121,New York Mets,NYM,P,Pitcher,R,R
 642207,Devin Williams,121,New York Mets,NYM,P,Pitcher,R,R
 682626,Francisco Alvarez,121,New York Mets,NYM,C,Catcher,R,R
 596019,Francisco Lindor,121,New York Mets,NYM,SS,Shortstop,S,R
-663584,Hayden Senger,121,New York Mets,NYM,C,Catcher,R,R
+681402,Gus Varland,121,New York Mets,NYM,P,Pitcher,L,R
 681252,Jack Anderson,121,New York Mets,NYM,P,Pitcher,R,R
 674073,Jack Weisenburger,121,New York Mets,NYM,P,Pitcher,R,R
 676724,Jared Young,121,New York Mets,NYM,1B,First Base,L,R
@@ -1165,4 +1154,5 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 640455,Sean Manaea,121,New York Mets,NYM,P,Pitcher,R,L
 668964,Tobias Myers,121,New York Mets,NYM,P,Pitcher,R,R
 656731,Tylor Megill,121,New York Mets,NYM,P,Pitcher,R,R
+814305,Yunior Tur,121,New York Mets,NYM,P,Pitcher,R,R
 804267,Zac Thornton,121,New York Mets,NYM,P,Pitcher,L,L
