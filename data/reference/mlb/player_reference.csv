@@ -250,7 +250,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 669261,Jack Suwinski,139,Tampa Bay Rays,TB,RF,Outfielder,L,L
 689200,Jacob Melton,139,Tampa Bay Rays,TB,LF,Outfielder,L,L
 699130,Jadher Areinamo,139,Tampa Bay Rays,TB,2B,Second Base,R,R
-669947,Jesse Scholtens,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 671212,Joe Boyle,139,Tampa Bay Rays,TB,P,Pitcher,R,R
 666018,Jonathan Aranda,139,Tampa Bay Rays,TB,1B,First Base,L,R
 676356,Jonny DeLuca,139,Tampa Bay Rays,TB,RF,Outfielder,R,R
@@ -320,7 +319,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 703520,Brett Bateman,141,Toronto Blue Jays,TOR,CF,Outfielder,L,L
 689149,Chad Dallas,141,Toronto Blue Jays,TOR,P,Pitcher,R,R
 807727,Charles McAdoo,141,Toronto Blue Jays,TOR,2B,Second Base,R,R
-695445,Chase Lee,141,Toronto Blue Jays,TOR,P,Pitcher,R,R
+686551,Christian Cairo,141,Toronto Blue Jays,TOR,SS,Shortstop,R,R
 664074,Cody Ponce,141,Toronto Blue Jays,TOR,P,Pitcher,R,R
 806413,Daniel Guerra,141,Toronto Blue Jays,TOR,P,Pitcher,R,R
 676914,Davis Schneider,141,Toronto Blue Jays,TOR,LF,Outfielder,R,R
@@ -474,7 +473,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 669684,Chris Murphy,145,Chicago White Sox,CWS,P,Pitcher,L,L
 695657,Colson Montgomery,145,Chicago White Sox,CWS,SS,Shortstop,L,R
 689818,David Sandlin,145,Chicago White Sox,CWS,P,Pitcher,R,R
-663436,Davis Martin,145,Chicago White Sox,CWS,P,Pitcher,L,R
 691011,Drew Romo,145,Chicago White Sox,CWS,C,Catcher,S,R
 689672,Drew Thorpe,145,Chicago White Sox,CWS,P,Pitcher,L,R
 669160,Dustin May,145,Chicago White Sox,CWS,P,Pitcher,R,R
@@ -487,7 +485,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 686563,Jonathan Cannon,145,Chicago White Sox,CWS,P,Pitcher,R,R
 663855,Jordan Hicks,145,Chicago White Sox,CWS,P,Pitcher,R,R
 691019,Kyle Teel,145,Chicago White Sox,CWS,C,Catcher,L,R
-622491,Luis Castillo,145,Chicago White Sox,CWS,P,Pitcher,R,R
 682668,Luisangel Acuña,145,Chicago White Sox,CWS,SS,Shortstop,R,R
 678246,Miguel Vargas,145,Chicago White Sox,CWS,3B,Third Base,R,R
 678024,Mike Vasil,145,Chicago White Sox,CWS,P,Pitcher,L,R
@@ -497,6 +494,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 807747,Rikuu Nishida,145,Chicago White Sox,CWS,RF,Outfielder,L,R
 803011,Sam Antonacci,145,Chicago White Sox,CWS,LF,Outfielder,L,R
 680732,Sean Burke,145,Chicago White Sox,CWS,P,Pitcher,R,R
+807743,Sean Sullivan,145,Chicago White Sox,CWS,P,Pitcher,R,L
 681343,Shane Smith,145,Chicago White Sox,CWS,P,Pitcher,R,R
 701780,Tanner McDougal,145,Chicago White Sox,CWS,P,Pitcher,R,R
 695020,Tanner Murray,145,Chicago White Sox,CWS,LF,Outfielder,R,R
@@ -584,16 +582,27 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 676879,Aaron Ashby,158,Milwaukee Brewers,MIL,P,Pitcher,R,L
 682842,Abner Uribe,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 683734,Andrew Vaughn,158,Milwaukee Brewers,MIL,1B,First Base,R,R
+672582,Angel Zerpa,158,Milwaukee Brewers,MIL,P,Pitcher,L,L
+666310,Bo Naylor,158,Milwaukee Brewers,MIL,C,Catcher,L,R
+663604,Brandon Lockridge,158,Milwaukee Brewers,MIL,LF,Outfielder,R,R
+687075,Brandon Sproat,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
+702153,Brian Fitzpatrick,158,Milwaukee Brewers,MIL,P,Pitcher,S,L
 668930,Brice Turang,158,Milwaukee Brewers,MIL,2B,Second Base,L,R
 687726,Cameron Wagoner,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
+694477,Chad Patrick,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 592885,Christian Yelich,158,Milwaukee Brewers,MIL,DH,Designated Hitter,L,R
+689441,Coleman Crow,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
+676467,Colton Gordon,158,Milwaukee Brewers,MIL,P,Pitcher,L,L
 806198,Cooper Pratt,158,Milwaukee Brewers,MIL,SS,Shortstop,R,R
 669084,DL Hall,158,Milwaukee Brewers,MIL,P,Pitcher,L,L
 666152,David Hamilton,158,Milwaukee Brewers,MIL,3B,Third Base,L,R
 802506,Dylan O'Rae,158,Milwaukee Brewers,MIL,2B,Second Base,L,R
 669003,Garrett Mitchell,158,Milwaukee Brewers,MIL,CF,Outfielder,L,R
+668831,Garrett Stallings,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
+681982,Grant Anderson,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 694192,Jackson Chourio,158,Milwaukee Brewers,MIL,LF,Outfielder,R,R
 694819,Jacob Misiorowski,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
+691620,Jeferson Quero,158,Milwaukee Brewers,MIL,C,Catcher,R,R
 702518,Jett Williams,158,Milwaukee Brewers,MIL,SS,Shortstop,R,R
 687401,Joey Ortiz,158,Milwaukee Brewers,MIL,SS,Shortstop,R,R
 690986,Kyle Harrison,158,Milwaukee Brewers,MIL,P,Pitcher,R,L
@@ -601,12 +610,14 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 800325,Luis Lara,158,Milwaukee Brewers,MIL,RF,Outfielder,S,R
 702726,Luke Adams,158,Milwaukee Brewers,MIL,3B,Third Base,R,R
 687783,Matthew Wood,158,Milwaukee Brewers,MIL,C,Catcher,L,R
+682990,Quinn Priester,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 688107,Robert Gasser,158,Milwaukee Brewers,MIL,P,Pitcher,L,L
 676254,Ryan Walker,158,Milwaukee Brewers,MIL,P,Pitcher,R,R
 686217,Sal Frelick,158,Milwaukee Brewers,MIL,RF,Outfielder,L,R
 675660,Shane Drohan,158,Milwaukee Brewers,MIL,P,Pitcher,L,L
 804249,Tate Kuehner,158,Milwaukee Brewers,MIL,P,Pitcher,L,L
 656730,Trevor Megill,158,Milwaukee Brewers,MIL,P,Pitcher,L,R
+672012,Tyler Black,158,Milwaukee Brewers,MIL,DH,Designated Hitter,L,R
 661388,William Contreras,158,Milwaukee Brewers,MIL,C,Catcher,R,R
 690829,Ben Joyce,108,Los Angeles Angels,LAA,P,Pitcher,R,R
 676620,Blake Weiman,108,Los Angeles Angels,LAA,P,Pitcher,R,L
@@ -772,6 +783,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 666129,Braxton Garrett,112,Chicago Cubs,CHC,P,Pitcher,R,L
 805664,Brody McCullough,112,Chicago Cubs,CHC,P,Pitcher,R,R
 690990,Cade Horton,112,Chicago Cubs,CHC,P,Pitcher,R,R
+694646,Chayce McDermott,112,Chicago Cubs,CHC,P,Pitcher,L,R
 694037,Daniel Palencia,112,Chicago Cubs,CHC,P,Pitcher,R,R
 621020,Dansby Swanson,112,Chicago Cubs,CHC,SS,Shortstop,R,R
 665795,Edward Cabrera,112,Chicago Cubs,CHC,P,Pitcher,R,R
@@ -889,6 +901,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 801403,Chase Dollander,115,Colorado Rockies,COL,P,Pitcher,R,R
 694249,Cole Carrigg,115,Colorado Rockies,COL,CF,Outfielder,S,R
 681393,Connor Norby,115,Colorado Rockies,COL,2B,Second Base,R,R
+663436,Davis Martin,115,Colorado Rockies,COL,P,Pitcher,L,R
 678662,Ezequiel Tovar,115,Colorado Rockies,COL,SS,Shortstop,R,R
 687312,Gabriel Hughes,115,Colorado Rockies,COL,P,Pitcher,R,R
 802686,Hayden Harris,115,Colorado Rockies,COL,P,Pitcher,L,L
@@ -903,6 +916,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 675848,Juan Mejia,115,Colorado Rockies,COL,P,Pitcher,R,R
 592178,Kris Bryant,115,Colorado Rockies,COL,DH,Designated Hitter,R,R
 691720,Kyle Karros,115,Colorado Rockies,COL,3B,Third Base,R,R
+622491,Luis Castillo,115,Colorado Rockies,COL,P,Pitcher,R,R
 815081,Mark Manfredi,115,Colorado Rockies,COL,P,Pitcher,R,L
 690279,Mason Adams,115,Colorado Rockies,COL,P,Pitcher,R,R
 685326,McCade Brown,115,Colorado Rockies,COL,P,Pitcher,R,R
@@ -910,7 +924,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 693308,Nick Frasso,115,Colorado Rockies,COL,P,Pitcher,R,R
 663372,Ryan Feltner,115,Colorado Rockies,COL,P,Pitcher,R,R
 690022,Ryan Ritter,115,Colorado Rockies,COL,SS,Shortstop,R,R
-807743,Sean Sullivan,115,Colorado Rockies,COL,P,Pitcher,R,L
 694514,Sterlin Thompson,115,Colorado Rockies,COL,RF,Outfielder,L,R
 681198,TJ Rumfield,115,Colorado Rockies,COL,1B,First Base,L,R
 685299,Tanner Gordon,115,Colorado Rockies,COL,P,Pitcher,L,R
@@ -1119,7 +1132,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 666182,Bo Bichette,121,New York Mets,NYM,3B,Third Base,R,R
 683146,Brett Baty,121,New York Mets,NYM,3B,Third Base,L,R
 701807,Carson Benge,121,New York Mets,NYM,RF,Outfielder,L,R
-694646,Chayce McDermott,121,New York Mets,NYM,P,Pitcher,L,R
 681035,Christian Scott,121,New York Mets,NYM,P,Pitcher,R,R
 666624,Christopher Morel,121,New York Mets,NYM,1B,First Base,R,R
 672335,Cionel Pérez,121,New York Mets,NYM,P,Pitcher,R,L
