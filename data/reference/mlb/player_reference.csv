@@ -698,6 +698,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 687637,Dylan Beavers,110,Baltimore Orioles,BAL,LF,Outfielder,L,R
 690961,Enrique Bradfield Jr.,110,Baltimore Orioles,BAL,CF,Outfielder,L,L
 642585,Félix Bautista,110,Baltimore Orioles,BAL,P,Pitcher,R,R
+642547,Freddy Peralta,110,Baltimore Orioles,BAL,P,Pitcher,R,R
 664991,Grant Wolfram,110,Baltimore Orioles,BAL,P,Pitcher,L,L
 683002,Gunnar Henderson,110,Baltimore Orioles,BAL,SS,Shortstop,L,R
 702616,Jackson Holliday,110,Baltimore Orioles,BAL,2B,Second Base,L,R
@@ -1135,6 +1136,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 681320,Nate Lavender,121,New York Mets,NYM,P,Pitcher,L,L
 703492,Nick Morabito,121,New York Mets,NYM,LF,Outfielder,R,R
 690997,Nolan McLean,121,New York Mets,NYM,P,Pitcher,R,R
+502671,Paul Goldschmidt,121,New York Mets,NYM,1B,First Base,R,R
 701487,Pierson Ohl,121,New York Mets,NYM,P,Pitcher,R,R
 657585,Reed Garrett,121,New York Mets,NYM,P,Pitcher,R,R
 476594,Robert Stock,121,New York Mets,NYM,P,Pitcher,L,R
