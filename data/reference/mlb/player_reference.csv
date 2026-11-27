@@ -94,6 +94,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 687749,Jase Bowen,135,San Diego Padres,SD,RF,Outfielder,R,R
 669093,Jeremiah Estrada,135,San Diego Padres,SD,P,Pitcher,S,R
 666745,Jhony Brito,135,San Diego Padres,SD,P,Pitcher,R,R
+668941,JoJo Romero,135,San Diego Padres,SD,P,Pitcher,L,L
 605397,Joe Musgrove,135,San Diego Padres,SD,P,Pitcher,R,R
 606996,Kyle Hart,135,San Diego Padres,SD,P,Pitcher,L,L
 669134,Luis Campusano,135,San Diego Padres,SD,C,Catcher,R,R
@@ -110,6 +111,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 593974,Wandy Peralta,135,San Diego Padres,SD,P,Pitcher,L,L
 695238,Will Wagner,135,San Diego Padres,SD,DH,Designated Hitter,L,R
 593428,Xander Bogaerts,135,San Diego Padres,SD,SS,Shortstop,R,R
+506433,Yu Darvish,135,San Diego Padres,SD,P,Pitcher,R,R
 673513,Yuki Matsui,135,San Diego Padres,SD,P,Pitcher,L,L
 662253,Andrés Muñoz,136,Seattle Mariners,SEA,P,Pitcher,R,R
 680977,Brendan Donovan,136,Seattle Mariners,SEA,3B,Third Base,L,R
@@ -996,6 +998,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 670541,Yordan Alvarez,117,Houston Astros,HOU,DH,Designated Hitter,L,R
 805904,Zach Cole,117,Houston Astros,HOU,LF,Outfielder,L,R
 701305,Zach Dezenzo,117,Houston Astros,HOU,LF,Outfielder,R,R
+664761,Alec Bohm,118,Kansas City Royals,KC,3B,Third Base,R,R
 682785,Angel Bastardo,118,Kansas City Royals,KC,P,Pitcher,R,R
 694360,Beck Way,118,Kansas City Royals,KC,P,Pitcher,R,R
 695667,Ben Kudrna,118,Kansas City Royals,KC,P,Pitcher,R,R
@@ -1018,7 +1021,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 683090,Matthew Lugo,118,Kansas City Royals,KC,LF,Outfielder,R,R
 686681,Michael Massey,118,Kansas City Royals,KC,2B,Second Base,L,R
 608379,Michael Wacha,118,Kansas City Royals,KC,P,Pitcher,R,R
-687765,Mitch Spence,118,Kansas City Royals,KC,P,Pitcher,R,R
 663878,Nate Pearson,118,Kansas City Royals,KC,P,Pitcher,R,R
 679845,Nick Loftin,118,Kansas City Royals,KC,3B,Third Base,R,R
 702070,Noah Cameron,118,Kansas City Royals,KC,P,Pitcher,L,L
