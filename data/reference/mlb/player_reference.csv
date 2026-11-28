@@ -51,7 +51,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 682848,Endy Rodríguez,134,Pittsburgh Pirates,PIT,C,Catcher,S,R
 699013,Esmerlyn Valdez,134,Pittsburgh Pirates,PIT,RF,Outfielder,R,R
 681895,Evan Sisk,134,Pittsburgh Pirates,PIT,P,Pitcher,L,L
-680779,Henry Davis,134,Pittsburgh Pirates,PIT,C,Catcher,R,R
 682995,Hunter Barco,134,Pittsburgh Pirates,PIT,P,Pitcher,L,L
 687394,Jack Brannigan,134,Pittsburgh Pirates,PIT,SS,Shortstop,R,R
 694378,Jacob Gonzalez,134,Pittsburgh Pirates,PIT,SS,Shortstop,L,R
@@ -75,6 +74,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 656811,Ryan O'Hearn,134,Pittsburgh Pirates,PIT,RF,Outfielder,L,L
 687462,Spencer Horwitz,134,Pittsburgh Pirates,PIT,1B,First Base,L,R
 802419,Thomas Harrington,134,Pittsburgh Pirates,PIT,P,Pitcher,R,R
+694374,Tim Tawa,134,Pittsburgh Pirates,PIT,1B,First Base,R,R
 682997,Tyler Callihan,134,Pittsburgh Pirates,PIT,LF,Outfielder,L,R
 696062,Wilber Dotel,134,Pittsburgh Pirates,PIT,P,Pitcher,R,R
 670990,Yohan Ramírez,134,Pittsburgh Pirates,PIT,P,Pitcher,R,R
@@ -326,6 +326,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 692064,José Rodríguez,141,Toronto Blue Jays,TOR,P,Pitcher,S,R
 667755,José Soriano,141,Toronto Blue Jays,TOR,P,Pitcher,R,R
 669701,Josh Smith,141,Toronto Blue Jays,TOR,2B,Second Base,L,R
+838343,Kaima Taira,141,Toronto Blue Jays,TOR,P,Pitcher,R,R
 672960,Kazuma Okamoto,141,Toronto Blue Jays,TOR,3B,Third Base,R,R
 686973,Louis Varland,141,Toronto Blue Jays,TOR,P,Pitcher,L,R
 689254,Mason Fluharty,141,Toronto Blue Jays,TOR,P,Pitcher,R,L
@@ -360,6 +361,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 657746,Joe Ryan,142,Minnesota Twins,MIN,P,Pitcher,R,R
 701785,Kaelen Culpepper,142,Minnesota Twins,MIN,SS,Shortstop,R,R
 696070,Kendry Rojas,142,Minnesota Twins,MIN,P,Pitcher,L,L
+656464,Kevin Ginkel,142,Minnesota Twins,MIN,P,Pitcher,L,R
 665019,Kody Clemens,142,Minnesota Twins,MIN,2B,Second Base,L,R
 681892,Kody Funderburk,142,Minnesota Twins,MIN,P,Pitcher,L,L
 807712,Luke Keaschall,142,Minnesota Twins,MIN,2B,Second Base,R,R
@@ -434,6 +436,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 702275,JR Ritchie,144,Atlanta Braves,ATL,P,Pitcher,R,R
 805347,Jim Jarvis,144,Atlanta Braves,ATL,SS,Shortstop,L,R
 666214,Joey Wentz,144,Atlanta Braves,ATL,P,Pitcher,L,L
+595777,Jurickson Profar,144,Atlanta Braves,ATL,LF,Outfielder,S,R
 621566,Matt Olson,144,Atlanta Braves,ATL,1B,First Base,L,R
 671739,Michael Harris II,144,Atlanta Braves,ATL,CF,Outfielder,L,L
 573262,Mike Yastrzemski,144,Atlanta Braves,ATL,LF,Outfielder,L,L
@@ -447,6 +450,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 660670,Ronald Acuña Jr.,144,Atlanta Braves,ATL,RF,Outfielder,R,R
 669221,Sean Murphy,144,Atlanta Braves,ATL,C,Catcher,R,R
 680885,Spencer Schwellenbach,144,Atlanta Braves,ATL,P,Pitcher,R,R
+675911,Spencer Strider,144,Atlanta Braves,ATL,P,Pitcher,R,R
 700413,Tyler Uberstine,144,Atlanta Braves,ATL,P,Pitcher,R,R
 682989,Victor Mederos,144,Atlanta Braves,ATL,P,Pitcher,R,R
 643217,Andrew Benintendi,145,Chicago White Sox,CWS,DH,Designated Hitter,L,L
@@ -662,6 +666,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 672515,Gabriel Moreno,109,Arizona Diamondbacks,AZ,C,Catcher,R,R
 672695,Geraldo Perdomo,109,Arizona Diamondbacks,AZ,SS,Shortstop,S,R
 672629,Gerardo Carrillo,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
+680779,Henry Davis,109,Arizona Diamondbacks,AZ,C,Catcher,R,R
 670912,Johan Oviedo,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
 691783,Jordan Lawlar,109,Arizona Diamondbacks,AZ,CF,Outfielder,R,R
 703615,Jose Cabrera,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
@@ -680,7 +685,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 814439,Ryan Waldschmidt,109,Arizona Diamondbacks,AZ,CF,Outfielder,R,R
 669194,Ryne Nelson,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
 801517,Spencer Giesting,109,Arizona Diamondbacks,AZ,P,Pitcher,L,L
-694374,Tim Tawa,109,Arizona Diamondbacks,AZ,1B,First Base,R,R
 694371,Tommy Troy,109,Arizona Diamondbacks,AZ,LF,Outfielder,R,R
 682988,Tyler Locklear,109,Arizona Diamondbacks,AZ,1B,First Base,R,R
 800286,Wellington Aracena,109,Arizona Diamondbacks,AZ,P,Pitcher,R,R
@@ -890,10 +894,10 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 695445,Chase Lee,115,Colorado Rockies,COL,P,Pitcher,R,R
 694249,Cole Carrigg,115,Colorado Rockies,COL,CF,Outfielder,S,R
 681393,Connor Norby,115,Colorado Rockies,COL,2B,Second Base,R,R
+656849,David Peterson,115,Colorado Rockies,COL,P,Pitcher,L,L
 663436,Davis Martin,115,Colorado Rockies,COL,P,Pitcher,L,R
 678662,Ezequiel Tovar,115,Colorado Rockies,COL,SS,Shortstop,R,R
 687312,Gabriel Hughes,115,Colorado Rockies,COL,P,Pitcher,R,R
-802686,Hayden Harris,115,Colorado Rockies,COL,P,Pitcher,L,L
 696100,Hunter Goodman,115,Colorado Rockies,COL,C,Catcher,R,R
 694968,Jack Mahoney,115,Colorado Rockies,COL,P,Pitcher,R,R
 702484,Jackson Cox,115,Colorado Rockies,COL,P,Pitcher,R,R
@@ -921,7 +925,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 691728,Zac Veen,115,Colorado Rockies,COL,LF,Outfielder,L,R
 688642,Zach Agnos,115,Colorado Rockies,COL,P,Pitcher,R,R
 808825,Andrew Sears,116,Detroit Tigers,DET,P,Pitcher,L,L
-689225,Beau Brieske,116,Detroit Tigers,DET,P,Pitcher,R,R
 701162,Ben Malgeri,116,Detroit Tigers,DET,RF,Outfielder,R,R
 676428,Brant Hurter,116,Detroit Tigers,DET,P,Pitcher,L,L
 669724,Brenan Hanifee,116,Detroit Tigers,DET,P,Pitcher,R,R
@@ -934,6 +937,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 641941,Emilio Pagán,116,Detroit Tigers,DET,P,Pitcher,L,R
 646241,Enmanuel De Jesus,116,Detroit Tigers,DET,P,Pitcher,L,L
 664285,Framber Valdez,116,Detroit Tigers,DET,P,Pitcher,R,L
+673490,Ha-Seong Kim,116,Detroit Tigers,DET,SS,Shortstop,R,R
 701678,Hao-Yu Lee,116,Detroit Tigers,DET,2B,Second Base,R,R
 695549,Jackson Jobe,116,Detroit Tigers,DET,P,Pitcher,R,R
 621097,Jacob Waguespack,116,Detroit Tigers,DET,P,Pitcher,R,R
@@ -944,6 +948,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 681481,Kerry Carpenter,116,Detroit Tigers,DET,RF,Outfielder,L,R
 805808,Kevin McGonigle,116,Detroit Tigers,DET,SS,Shortstop,L,R
 640448,Kyle Finnegan,116,Detroit Tigers,DET,P,Pitcher,R,R
+661563,Luis Gil,116,Detroit Tigers,DET,P,Pitcher,R,R
 801194,Max Anderson,116,Detroit Tigers,DET,2B,Second Base,R,R
 703601,Max Clark,116,Detroit Tigers,DET,CF,Outfielder,L,L
 678009,Parker Meadows,116,Detroit Tigers,DET,CF,Outfielder,L,R
@@ -954,7 +959,6 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 679529,Spencer Torkelson,116,Detroit Tigers,DET,1B,First Base,R,R
 699073,Thayron Liranzo,116,Detroit Tigers,DET,C,Catcher,S,R
 675512,Troy Melton,116,Detroit Tigers,DET,P,Pitcher,R,R
-691907,Tsung-Che Cheng,116,Detroit Tigers,DET,SS,Shortstop,L,R
 680744,Ty Madden,116,Detroit Tigers,DET,P,Pitcher,R,R
 663947,Tyler Holton,116,Detroit Tigers,DET,P,Pitcher,L,L
 672761,Wenceel Pérez,116,Detroit Tigers,DET,RF,Outfielder,S,R
@@ -1008,6 +1012,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 679922,Carlos Duran,118,Kansas City Royals,KC,P,Pitcher,R,R
 811287,Carson Roccaforte,118,Kansas City Royals,KC,CF,Outfielder,L,L
 695600,Carter Jensen,118,Kansas City Royals,KC,C,Catcher,L,R
+666142,Cole Ragans,118,Kansas City Royals,KC,P,Pitcher,L,L
 671162,Connor Thomas,118,Kansas City Royals,KC,P,Pitcher,L,L
 663738,Daniel Lynch IV,118,Kansas City Royals,KC,P,Pitcher,L,L
 686555,Isaac Collins,118,Kansas City Royals,KC,LF,Outfielder,S,R
@@ -1018,6 +1023,7 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 688138,Logan Evans,118,Kansas City Royals,KC,P,Pitcher,R,R
 814351,Lucas Braun,118,Kansas City Royals,KC,P,Pitcher,R,R
 668674,Lucas Erceg,118,Kansas City Royals,KC,P,Pitcher,L,R
+679883,Luinder Avila,118,Kansas City Royals,KC,P,Pitcher,R,R
 683090,Matthew Lugo,118,Kansas City Royals,KC,LF,Outfielder,R,R
 686681,Michael Massey,118,Kansas City Royals,KC,2B,Second Base,L,R
 608379,Michael Wacha,118,Kansas City Royals,KC,P,Pitcher,R,R
@@ -1030,6 +1036,8 @@ player_id,player_name,team_id,team_name,team_abbr,position,position_name,bats,th
 521692,Salvador Perez,118,Kansas City Royals,KC,C,Catcher,R,R
 607625,Seth Lugo,118,Kansas City Royals,KC,P,Pitcher,R,R
 702352,Spencer Bivens,118,Kansas City Royals,KC,P,Pitcher,R,R
+663568,Stephen Kolek,118,Kansas City Royals,KC,P,Pitcher,R,R
+674444,Steven Cruz,118,Kansas City Royals,KC,P,Pitcher,R,R
 686632,Steven Zobac,118,Kansas City Royals,KC,P,Pitcher,L,R
 664062,Tony Gonsolin,118,Kansas City Royals,KC,P,Pitcher,R,R
 686475,Tyler Tolbert,118,Kansas City Royals,KC,SS,Shortstop,R,R
